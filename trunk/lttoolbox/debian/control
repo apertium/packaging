@@ -1,0 +1,39 @@
+Source: lttoolbox
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), autotools-dev, libxml2-dev, pkg-config (>= 0.20 ), zlib1g-dev (>= 1.2.3 ), libxml2-utils, gawk, xsltproc, flex, automake, libpcre3-dev, libtool, devscripts, dh-autoreconf
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: lttoolbox
+Architecture: any
+Depends: liblttoolbox3-3.3-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Apertium lexical processing modules and tools
+ The lttoolbox contains the augmented letter transducer tools for natural
+ language processing used by Apertium, a platform for building rule-based
+ and hybrid machine translation systems. The software is also useful
+ for making morphological analysers and generators for natural language
+ processing applications.
+
+Package: liblttoolbox3-3.3-0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: liblttoolbox3
+Conflicts: liblttoolbox3
+Description: Shared library for lttoolbox
+ Contains shared library for lttoolbox.
+
+Package: liblttoolbox3-3.3-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Pre-Depends: ${misc:Pre-Depends}
+Depends: liblttoolbox3-3.3-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Provides: liblttoolbox3-dev
+Conflicts: liblttoolbox3-dev
+Description: Development library for lttoolbox
+ Contains development files for lttoolbox.
