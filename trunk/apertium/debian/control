@@ -1,0 +1,53 @@
+Source: apertium
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), dh-autoreconf, autotools-dev, autoconf, libxml2-dev, pkg-config (>= 0.20), liblttoolbox3-3.3-dev (>= 3.3), libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16), flex (>= 2.5.33), libpcre3-dev
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: apertium
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, lttoolbox (>= 3.3), libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16)
+Description: Shallow-transfer machine translation engine
+ An open-source shallow-transfer machine translation
+ engine, Apertium is initially aimed at related-language pairs.
+ .
+ It uses finite-state transducers for lexical processing,
+ hidden Markov models for part-of-speech tagging, and
+ finite-state based chunking for structural transfer.
+ .
+ The system is largely based upon systems already developed by
+ the Transducens  group at the Universitat d'Alacant, such as
+ interNOSTRUM (Spanish-Catalan, http://www.internostrum.com/welcome.php)
+ and Traductor Universia (Spanish-Portuguese,
+ http://traductor.universia.net).
+ .
+ It will be possible to use Apertium to build machine translation
+ systems for a variety of related-language pairs simply providing
+ the linguistic data needed in the right format.
+ .
+
+Package: libapertium3-3.3-0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: libapertium3
+Conflicts: libapertium3
+Description: Shared library for Apertium
+ Contains shared library for the Apertium shallow-transfer
+ machine translation engine.
+
+Package: libapertium3-3.3-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libapertium3-3.3-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Provides: libapertium3-dev
+Conflicts: libapertium3-dev
+Description: Development library for Apertium
+ Contains development files for the Apertium shallow-transfer
+ machine translation engine.
