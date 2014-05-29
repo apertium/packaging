@@ -16,18 +16,21 @@ do
 		echo "Updating $DISTRO for $ARCH"
 		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/
 		echo "Building $DISTRO for $ARCH"
-		cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/
+		time cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-$DISTRO-$ARCH.log
 	done
 done
 
+rm -f /home/apertium/public_html/apt/logs/apertium-reprepro.log
 for DISTRO in wheezy jessie sid
 do
-	reprepro -b /home/apertium/public_html/apt/debian/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb
+	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/apertium-reprepro.log
+	reprepro -b /home/apertium/public_html/apt/debian/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-reprepro.log
 done
 
 for DISTRO in precise saucy trusty utopic
 do
-	reprepro -b /home/apertium/public_html/apt/ubuntu/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb
+	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/apertium-reprepro.log
+	reprepro -b /home/apertium/public_html/apt/ubuntu/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-reprepro.log
 done
 
 chown -R apertium:apertium /home/apertium/public_html/apt
