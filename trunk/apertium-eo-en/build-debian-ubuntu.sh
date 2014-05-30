@@ -12,13 +12,10 @@ mkdir -p /home/apertium/public_html/apt/logs/apertium-eo-en/
 cd /tmp/autopkg.*
 for DISTRO in wheezy jessie sid precise saucy trusty utopic
 do
-	for ARCH in i386 amd64
-	do
-		echo "Updating $DISTRO for $ARCH"
-		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/
-		echo "Building $DISTRO for $ARCH"
-		time cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-eo-en/$DISTRO-$ARCH.log
-	done
+	echo "Updating $DISTRO for i386"
+	cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/
+	echo "Building $DISTRO for i386"
+	time cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-eo-en/$DISTRO-i386.log
 done
 
 rm -f /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log

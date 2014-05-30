@@ -9,7 +9,7 @@ Homepage: http://apertium.org/
 
 Package: apertium-eo-en
 Architecture: all
-Depends: apertium, ${shlibs:Depends}, ${misc:Depends}
+Depends: apertium (>= 3.3), ${shlibs:Depends}, ${misc:Depends}
 Description: Apertium linguistic data to translate between Esperanto and English
  This is a linguistic package for the Apertium shallow-transfer
  machine translation system. The package can be used to translate
