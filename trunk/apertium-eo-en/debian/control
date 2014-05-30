@@ -1,0 +1,16 @@
+Source: apertium-eo-en
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 9.0), dh-autoreconf, autotools-dev, lttoolbox (>= 3.3), apertium (>= 3.3), libapertium3-3.3-dev, libxml2-utils (>= 2.6.26), xsltproc (>= 1.1.20), pkg-config (>= 0.21)
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: apertium-eo-en
+Architecture: all
+Depends: apertium, ${shlibs:Depends}, ${misc:Depends}
+Description: Apertium linguistic data to translate between Esperanto and English
+ This is a linguistic package for the Apertium shallow-transfer
+ machine translation system. The package can be used to translate
+ between Esperanto and English.
