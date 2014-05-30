@@ -17,6 +17,6 @@ time cowbuilder --build *.dsc --basepath /var/cache/pbuilder/base-trusty-amd64.c
 
 rm -f /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log
 echo "reprepro" >> /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log
-reprepro -b /home/apertium/public_html/apt/ubuntu/ includedeb data /var/cache/pbuilder/result/*_all.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log
+reprepro -b /home/apertium/public_html/apt/data/ includedeb data /var/cache/pbuilder/result/*_all.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log
 
 chown -R apertium:apertium /home/apertium/public_html/apt
