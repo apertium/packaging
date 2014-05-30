@@ -15,11 +15,23 @@ my %opts = (
 	'm' => 'Tino Didriksen <mail@tinodidriksen.com>',
 	'e' => 'Tino Didriksen <mail@tinodidriksen.com>',
 	'dv' => 1,
+	'fv' => 1,
 );
 GetOptions(
 	'm=s' => \$opts{'m'},
 	'e=s' => \$opts{'e'},
 	'distv=i' => \$opts{'dv'},
+	'flavv=i' => \$opts{'fv'},
+);
+
+my %distros = (
+	'wheezy' => 'debian',
+	'jessie' => 'debian',
+	'sid' => 'debian',
+	'precise' => 'ubuntu',
+	'saucy' => 'ubuntu',
+	'trusty' => 'ubuntu',
+	'utopic' => 'ubuntu',
 );
 
 print `rm -rf /tmp/autopkg.*`;
@@ -56,24 +68,30 @@ print `svn export https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr/ '
 print `tar -jcvf 'apertium-br-fr_$version.orig.tar.bz2' -T orig.lst`;
 print `svn export https://svn.code.sf.net/p/apertium/svn/branches/packaging/trunk/apertium-br-fr/debian/ 'apertium-br-fr-$version/debian/'`;
 
-my $chver = $version.'-'.$opts{'dv'};
-my $chlog = <<CHLOG;
-apertium-br-fr ($chver) all; urgency=low
+foreach my $distro (keys %distros) {
+	my $chver = $version.'-';
+	if ($distros{$distro} eq 'ubuntu') {
+		$chver .= "0ubuntu";
+	}
+	$chver .= $opts{'dv'}."~".$distro.$opts{'fv'};
+	my $chlog = <<CHLOG;
+apertium-br-fr ($chver) $distro; urgency=low
 
   * Automatic build - see changelog via: svn log https://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr/
 
  -- $opts{e}  $date
 CHLOG
 
-`cp -al 'apertium-br-fr-$version' 'apertium-br-fr-$chver'`;
-unlink "apertium-br-fr-$chver/debian/changelog";
-open FILE, ">apertium-br-fr-$chver/debian/changelog" or die "Could not write to debian/changelog: $!\n";
-print FILE $chlog;
-close FILE;
-print `dpkg-source '-DMaintainer=$opts{m}' '-DUploaders=$opts{e}' -b 'apertium-br-fr-$chver'`;
-chdir "apertium-br-fr-$chver";
-print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../apertium-br-fr_$chver\_source.changes'`;
-chdir '..';
-print `debsign 'apertium-br-fr_$chver\_source.changes'`;
+	`cp -al 'apertium-br-fr-$version' 'apertium-br-fr-$chver'`;
+	unlink "apertium-br-fr-$chver/debian/changelog";
+	open FILE, ">apertium-br-fr-$chver/debian/changelog" or die "Could not write to debian/changelog: $!\n";
+	print FILE $chlog;
+	close FILE;
+	print `dpkg-source '-DMaintainer=$opts{m}' '-DUploaders=$opts{e}' -b 'apertium-br-fr-$chver'`;
+	chdir "apertium-br-fr-$chver";
+	print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../apertium-br-fr_$chver\_source.changes'`;
+	chdir '..';
+	print `debsign 'apertium-br-fr_$chver\_source.changes'`;
+}
 
 chdir "/tmp";

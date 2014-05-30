@@ -10,13 +10,22 @@ rm -fv /var/cache/pbuilder/result/*
 mkdir -p /home/apertium/public_html/apt/logs/apertium-br-fr/
 
 cd /tmp/autopkg.*
-echo "Updating trusty for amd64"
-cowbuilder --update --no-cowdancer-update --basepath /var/cache/pbuilder/base-trusty-amd64.cow/
-echo "Building trusty for amd64"
-time cowbuilder --build *.dsc --basepath /var/cache/pbuilder/base-trusty-amd64.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-br-fr/trusty-amd64.log
+for DISTRO in wheezy jessie sid precise saucy trusty utopic
+do
+	for ARCH in i386 amd64
+	do
+		echo "Updating $DISTRO for $ARCH"
+		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/
+		echo "Building $DISTRO for $ARCH"
+		time cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-br-fr/$DISTRO-$ARCH.log
+	done
+done
 
 rm -f /home/apertium/public_html/apt/logs/apertium-br-fr/reprepro.log
-echo "reprepro" >> /home/apertium/public_html/apt/logs/apertium-br-fr/reprepro.log
-reprepro -b /home/apertium/public_html/apt/data/ includedeb data /var/cache/pbuilder/result/*_all.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-br-fr/reprepro.log
+for DISTRO in wheezy jessie sid precise saucy trusty utopic
+do
+	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/apertium-br-fr/reprepro.log
+	reprepro -b /home/apertium/public_html/apt/nightly/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/apertium-br-fr/reprepro.log
+done
 
 chown -R apertium:apertium /home/apertium/public_html/apt

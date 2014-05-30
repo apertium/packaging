@@ -22,16 +22,10 @@ do
 done
 
 rm -f /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
-for DISTRO in wheezy jessie sid
+for DISTRO in wheezy jessie sid precise saucy trusty utopic
 do
 	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
-	reprepro -b /home/apertium/public_html/apt/debian/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
-done
-
-for DISTRO in precise saucy trusty utopic
-do
-	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
-	reprepro -b /home/apertium/public_html/apt/ubuntu/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
+	reprepro -b /home/apertium/public_html/apt/nightly/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/lttoolbox/reprepro.log
 done
 
 chown -R apertium:apertium /home/apertium/public_html/apt
