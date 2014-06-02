@@ -1,0 +1,28 @@
+Source: foma
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 9.0), libtool, flex, bison, libreadline-dev, zlib1g-dev, libtinfo-dev
+Standards-Version: 3.9.5
+Homepage: https://code.google.com/p/foma/
+
+Package: foma
+Architecture: any
+Provides:foma
+Depends: libfoma-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Foma helps with constructing various finite-state automata
+ Foma is a compiler, programming language, and C library for
+ constructing finite-state automata and transducers for various uses.
+
+Package: libfoma-0
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Foma libraries
+ Runtime libraries for foma
+ 
+Package: libfoma-0-dev
+Architecture: any
+Depends: libfoma-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Foma development files
+ Development headers and libraries for foma
