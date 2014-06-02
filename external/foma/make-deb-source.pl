@@ -47,7 +47,7 @@ my $revision = `svn log -q -l 1 http://foma.googlecode.com/svn/trunk/foma/ | egr
 	local $/ = undef;
 	open FILE, 'Makefile' or die "Could not open Makefile: $!\n";
 	my $data = <FILE>;
-	my ($version) = ($data =~ m@^VERSION.*?([\d.]+)@s);
+	my ($version) = ($data =~ m@VERSION.*?([\d.]+)@s);
 	if ($version =~ m@^(\d+)\.(\d+)$@) {
 		$major = $1;
 		$minor = $2;

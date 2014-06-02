@@ -1,0 +1,13 @@
+Index: foma-0.9.17.226/Makefile
+===================================================================
+--- foma-0.9.17.226.orig/Makefile	2012-11-17 16:45:36.000000000 +0000
++++ foma-0.9.17.226/Makefile	2014-06-02 16:07:26.120925831 +0000
+@@ -1,6 +1,6 @@
+-prefix = /usr/local
++prefix = /usr
+ exec_prefix = $(prefix)
+-libdir = $(exec_prefix)/lib
++libdir = $(exec_prefix)/lib/$(DEB_HOST_MULTIARCH)
+ bindir = $(exec_prefix)/bin
+ includedir = $(prefix)/include
+ 
