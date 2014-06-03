@@ -10,19 +10,24 @@ Homepage: https://code.google.com/p/foma/
 Package: foma
 Architecture: any
 Provides:foma
-Depends: libfoma-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
-Description: Foma helps with constructing various finite-state automata
- Foma is a compiler, programming language, and C library for
+Depends: libfoma0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Tools for constructing various finite-state automata
+ Compiler, programming language, and C library for
  constructing finite-state automata and transducers for various uses.
 
-Package: libfoma-0
+Package: libfoma0
 Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Foma libraries
  Runtime libraries for foma
  
-Package: libfoma-0-dev
+Package: libfoma0-dev
+Section: libdevel
 Architecture: any
-Depends: libfoma-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libfoma0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Description: Foma development files
  Development headers and libraries for foma
