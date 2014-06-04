@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export DEB_BUILD_OPTIONS="nocheck $DEB_BUILD_OPTIONS"
+
 ./make-deb-source.pl -m 'Apertium Automaton <apertium-packaging@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging@lists.sourceforge.net>'
 
 rm -fv /var/cache/pbuilder/result/*
