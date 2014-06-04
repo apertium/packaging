@@ -20,7 +20,7 @@ export DH_OPTIONS
 	dh $@ --with autoreconf
 
 override_dh_auto_configure:
-	./configure --enable-proc --with-foma --enable-lexc --prefix=/usr
+	./configure --enable-proc --with-foma --enable-lexc --enable-tagger --enable-calculate --enable-xfst --prefix=/usr
 
 override_dh_auto_build:
 	./scripts/generate-cc-files.sh 
