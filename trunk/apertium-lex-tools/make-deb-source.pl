@@ -64,7 +64,7 @@ my $version = "$major.$minor.$patch.$revision";
 my $date = `date -u -R`;
 
 print `svn export https://svn.code.sf.net/p/apertium/svn/trunk/apertium-lex-tools/ 'apertium-lex-tools-$version'`;
-`find 'apertium-lex-tools-$version' | LC_ALL=C sort -r > orig.lst`;
+`find 'apertium-lex-tools-$version' ! -type d | LC_ALL=C sort > orig.lst`;
 print `tar -jcvf 'apertium-lex-tools_$version.orig.tar.bz2' -T orig.lst`;
 print `svn export https://svn.code.sf.net/p/apertium/svn/branches/packaging/trunk/apertium-lex-tools/debian/ 'apertium-lex-tools-$version/debian/'`;
 

@@ -64,7 +64,7 @@ my $version = "$major.$minor.$patch.$revision";
 my $date = `date -u -R`;
 
 print `svn export https://svn.code.sf.net/p/apertium/svn/trunk/apertium-eo-en/ 'apertium-eo-en-$version'`;
-`find 'apertium-eo-en-$version' | LC_ALL=C sort -r > orig.lst`;
+`find 'apertium-eo-en-$version' ! -type d | LC_ALL=C sort > orig.lst`;
 print `tar -jcvf 'apertium-eo-en_$version.orig.tar.bz2' -T orig.lst`;
 print `svn export https://svn.code.sf.net/p/apertium/svn/branches/packaging/trunk/apertium-eo-en/debian/ 'apertium-eo-en-$version/debian/'`;
 

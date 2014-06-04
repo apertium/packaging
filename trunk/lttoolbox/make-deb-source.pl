@@ -64,7 +64,7 @@ my $version = "$major.$minor.$patch.$revision";
 my $date = `date -u -R`;
 
 print `svn export https://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox/ 'lttoolbox-$version'`;
-`find 'lttoolbox-$version' | LC_ALL=C sort -r > orig.lst`;
+`find 'lttoolbox-$version' ! -type d | LC_ALL=C sort > orig.lst`;
 print `tar -jcvf 'lttoolbox_$version.orig.tar.bz2' -T orig.lst`;
 print `svn export https://svn.code.sf.net/p/apertium/svn/branches/packaging/trunk/lttoolbox/debian/ 'lttoolbox-$version/debian/'`;
 
