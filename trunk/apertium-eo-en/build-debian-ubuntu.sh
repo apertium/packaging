@@ -13,9 +13,15 @@ cd /tmp/autopkg.*
 for DISTRO in wheezy jessie sid precise saucy trusty utopic
 do
 	echo "Updating $DISTRO for i386"
-	cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/
+	cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/ >/home/apertium/public_html/apt/logs/apertium-eo-en/$DISTRO-i386.log
 	echo "Building $DISTRO for i386"
-	time cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/ 2>&1 | tee /home/apertium/public_html/apt/logs/apertium-eo-en/$DISTRO-i386.log
+	cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-i386.cow/ >>/home/apertium/public_html/apt/logs/apertium-eo-en/$DISTRO-i386.log 2>&1 &
+done
+
+for job in `jobs -p`
+do
+	echo "Waiting for $job"
+	wait $job
 done
 
 rm -f /home/apertium/public_html/apt/logs/apertium-eo-en/reprepro.log
