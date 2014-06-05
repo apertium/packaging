@@ -18,3 +18,10 @@ export DH_OPTIONS
 
 %:
 	dh $@ --with autoreconf
+
+override_dh_auto_build:
+	mkdir -p debian/tmp/locale/
+	localedef -f UTF-8 -i en_US ./debian/tmp/locale/en_US.UTF-8/
+	export LOCPATH=$(CURDIR)/debian/tmp/locale/ && \
+	export LC_ALL=en_US.UTF-8 && \
+	dh_auto_build
