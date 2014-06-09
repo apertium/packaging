@@ -25,3 +25,6 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	./scripts/generate-cc-files.sh 
 	make
+
+override_dh_auto_test:
+	# Skip, as it breaks in various unpredictable ways
