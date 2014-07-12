@@ -13,6 +13,7 @@ use open qw( :encoding(UTF-8) :std );
 use Getopt::Long;
 my %opts = (
    'u' => 'http://svn.code.sf.net/p/apertium/svn/trunk/apertium',
+   'r' => '',
    'p' => 'trunk/apertium',
    'v' => '0.0.0.0',
    'd' => '0001-01-01 00:00:00 +0000',
@@ -23,6 +24,7 @@ my %opts = (
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
+	'r=s' => \$opts{'r'},
 	'p=s' => \$opts{'p'},
 	'v=s' => \$opts{'v'},
 	'd=s' => \$opts{'d'},
@@ -31,6 +33,10 @@ GetOptions(
 	'distv=i' => \$opts{'dv'},
 	'flavv=i' => \$opts{'fv'},
 );
+
+if ($opts{r} eq '') {
+   $opts{r} = 'http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.$opts{p};
+}
 
 my %distros = (
 	'wheezy' => 'debian',
@@ -54,7 +60,7 @@ print `svn export $opts{u}/ '$pkname-$opts{v}'`;
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$opts{v}.orig.tar' -T orig.lst`;
 `bzip2 -9c '$pkname\_$opts{v}.orig.tar' > '$pkname\_$opts{v}.orig.tar.bz2'`;
-print `svn export https://svn.code.sf.net/p/apertium/svn/branches/packaging/$opts{p}/debian/ '$pkname-$opts{v}/debian/'`;
+print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';
