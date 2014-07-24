@@ -1,18 +1,19 @@
 [
    # Dependencies first
-   ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk",                "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
-   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",                       "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide"],
-   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",                      "Makefile"],
-   ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3",                 "configure.ac"],
-   ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",                   "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
-   ["trunk/lttoolbox",          "http://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox",          "configure.ac"],
-   ["trunk/apertium",           "http://svn.code.sf.net/p/apertium/svn/trunk/apertium",           "configure.ac"],
-   ["trunk/apertium-lex-tools", "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-lex-tools", "configure.ac"],
+   ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
+   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide"],
+   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
+   ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3"],
+   ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
+   ["trunk/lttoolbox",          "http://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox"],
+   ["trunk/apertium",           "http://svn.code.sf.net/p/apertium/svn/trunk/apertium"],
+   ["trunk/apertium-lex-tools", "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-lex-tools"],
    # Then languages
-   ["languages/apertium-kaz",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz",   "configure.ac"],
-   ["languages/apertium-tat",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-tat",   "configure.ac"],
+   ["languages/apertium-arg",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-arg"],
+   ["languages/apertium-kaz",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz"],
+   ["languages/apertium-tat",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-tat"],
    # Finally, language pairs
-   ["trunk/apertium-br-fr",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr",     "configure.ac"],
-   ["trunk/apertium-eo-en",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-eo-en",     "configure.ac"],
-   ["trunk/apertium-kaz-tat",   "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-kaz-tat",   "configure.ac"],
+   ["trunk/apertium-br-fr",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr"],
+   ["trunk/apertium-eo-en",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-eo-en"],
+   ["trunk/apertium-kaz-tat",   "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-kaz-tat"],
 ]

@@ -38,6 +38,10 @@ foreach my $pkg (@$pkgs) {
       next;
    }
 
+   if (!@$pkg[2]) {
+      @$pkg[2] = 'configure.ac';
+   }
+
    print "Package: @$pkg[0]\n";
    my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);
@@ -45,7 +49,10 @@ foreach my $pkg (@$pkgs) {
    print "\tlatest: $version\n";
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
    my $first = substr($pkname, 0, 1);
-   my $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*-0ubuntu*~precise*_a*.deb | grep 'Version:' | head -n 1 | egrep -o '[0-9].*\$'`;
+   my $oldversion = 0;
+   if (-e "/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname") {
+      $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*-0ubuntu*~precise*_a*.deb | grep 'Version:' | head -n 1 | egrep -o '[0-9].*\$'`;
+   }
    chomp($oldversion);
    print "\texisting: $oldversion\n";
    my $gt = `dpkg --compare-versions '$version' gt '$oldversion' && echo 1 || echo 0` + 0;
@@ -84,7 +91,12 @@ foreach my $pkg (@$pkgs) {
       }
       print "\tlaunching: $cli\n";
       `$cli >&2`;
-      `./build-debian-ubuntu.sh '$pkname' >&2`;
+      my $is_data = '';
+      if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}@) {
+         print "\tdata only\n";
+         $is_data = 'data';
+      }
+      `./build-debian-ubuntu.sh '$pkname' '$is_data' >&2`;
 
       my $ls = `ls -1 ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
       foreach my $pk (split(/\s+/, $ls)) {
