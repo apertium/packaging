@@ -3,13 +3,13 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, lttoolbox (>= 3.3), apertium (>= 3.3), libapertium3-3.3-dev, libxml2-utils (>= 2.6.26), xsltproc (>= 1.1.20), pkg-config (>= 0.21), cg3 (>= 0.9.8.9941), hfst, apertium-lex-tools, apertium-kaz, apertium-tat
+Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), cg3, hfst, apertium-lex-tools, apertium-kaz, apertium-tat
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-kaz-tat
 Architecture: all
-Depends: apertium (>= 3.3), apertium-lex-tools, cg3 (>= 0.9.8.9941), hfst, ${shlibs:Depends}, ${misc:Depends}
+Depends: apertium (>= 3.3), apertium-lex-tools, cg3, hfst, ${shlibs:Depends}, ${misc:Depends}
 Description: Apertium translation data for the Kazakh-Tatar pair
  Data package providing Apertium language resources for translating
  between the Kazakh and Tatar languages.
