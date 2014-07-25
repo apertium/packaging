@@ -16,7 +16,12 @@ my %build = ();
 my %deps = ();
 
 while (<>) {
-   if (/\bhfst\b/) {
+   if (/\bPKG_CHECK_MODULES.*?hfst\b/) {
+      $build{'libhfst36-dev'} = 1;
+      $build{'hfst'} = 1;
+      $deps{'hfst'} = 1;
+   }
+   elsif (/\bhfst\b/) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
