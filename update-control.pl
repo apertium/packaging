@@ -30,9 +30,6 @@ sub replace_in_file {
 if (!$ARGV[0]) {
    die "Must provide a package path!\n";
 }
-if (!$ARGV[1]) {
-   die "Must provide a language name (not code)!\n";
-}
 
 use File::Basename;
 my $dir = dirname(__FILE__);
@@ -49,7 +46,12 @@ my ($pkname) = ($pkg =~ m@([-\w]+)$@);
 
 `find $pkg -type f -exec sed -r -i 's/apertium-[a-z]{2,3}(-[a-z]{2,3})?/$pkname/g' '{}' \\;`;
 `find $pkg -type f -exec sed -i 's/$pkname\@dlsi.ua.es/apertium-pmc\@dlsi.ua.es/g' '{}' \\;`;
-`find $pkg -type f -exec replace 'Aragonese' '$ARGV[1]' -- '{}' \\;`;
+if ($ARGV[1]) {
+   `find $pkg -type f -exec replace 'Kazakh' '$ARGV[1]' -- '{}' \\;`;
+}
+if ($ARGV[2]) {
+   `find $pkg -type f -exec replace 'Tatar' '$ARGV[2]' -- '{}' \\;`;
+}
 
 my $url = 'http://svn.code.sf.net/p/apertium/svn/'.$pkg;
 my $deps = `svn cat $url/configure.ac | ./depends.pl`;

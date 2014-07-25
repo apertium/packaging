@@ -156,7 +156,7 @@ foreach my $pkg (@$pkgs) {
          $cc .= " '$blame\@users.sourceforge.net'";
       }
 
-      my $subject = "[TEST] @$pkg[0] failed nightly build";
+      my $subject = "@$pkg[0] failed nightly build";
       if (!$ARGV[0]) {
          `cat /tmp/rebuild-$pkname.$$.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
