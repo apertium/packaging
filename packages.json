@@ -17,7 +17,7 @@
    ["trunk/apertium-lex-tools"],
 
    # Then languages
-#   ["languages/apertium-arg"], # Build failure
+   ["languages/apertium-arg"],
    ["languages/apertium-ava"],
    ["languages/apertium-bak"],
    ["languages/apertium-ben"],
