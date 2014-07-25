@@ -1,0 +1,14 @@
+Source: apertium-sqi
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), cg3
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: apertium-sqi
+Architecture: all
+Depends: apertium (>= 3.3), cg3, ${shlibs:Depends}, ${misc:Depends}
+Description: Apertium single language data for Albanian
+ Data package providing Apertium language resources for Albanian

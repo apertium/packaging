@@ -15,11 +15,56 @@
    ["trunk/lttoolbox"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
+
    # Then languages
-   ["languages/apertium-arg"],
+#   ["languages/apertium-arg"], # Build failure
    ["languages/apertium-ava"],
+   ["languages/apertium-bak"],
+   ["languages/apertium-ben"],
+   ["languages/apertium-bre"],
+   ["languages/apertium-bul"],
+   ["languages/apertium-ces"],
+   ["languages/apertium-chv"],
+#   ["languages/apertium-cym"], # Not buildable
+   ["languages/apertium-dan"],
+#   ["languages/apertium-deu"], # Not buildable
+   ["languages/apertium-ell"],
+#   ["languages/apertium-eng"], # Not buildable
+   ["languages/apertium-eus"],
+   ["languages/apertium-fao"],
+   ["languages/apertium-fin"],
+#   ["languages/apertium-gla"], # Not buildable
+   ["languages/apertium-glv"],
+   ["languages/apertium-hbs"],
+   ["languages/apertium-hin"],
+   ["languages/apertium-hye"],
+   ["languages/apertium-isl"],
+   ["languages/apertium-ita"],
+   ["languages/apertium-kaa"],
    ["languages/apertium-kaz"],
+   ["languages/apertium-kir"],
+   ["languages/apertium-kum"],
+   ["languages/apertium-lvs"],
+   ["languages/apertium-mkd"],
+   ["languages/apertium-mlt"],
+   ["languages/apertium-nld"],
+   ["languages/apertium-nno"],
+   ["languages/apertium-nob"],
+   ["languages/apertium-nog"],
+#   ["languages/apertium-pol"], # Not buildable
+   ["languages/apertium-rus"],
+   ["languages/apertium-san"],
+   ["languages/apertium-spa"],
+   ["languages/apertium-sqi"],
+   ["languages/apertium-swe"],
    ["languages/apertium-tat"],
+   ["languages/apertium-tuk"],
+   ["languages/apertium-tur"],
+   ["languages/apertium-ukr"],
+   ["languages/apertium-urd"],
+   ["languages/apertium-uzb"],
+#   ["languages/apertium-zho"], # Not buildable
+
    # Finally, language pairs
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-eo-en"],
