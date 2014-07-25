@@ -187,7 +187,7 @@ close $log;
 
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
-   my $subject = '[TEST] Nightly';
+   my $subject = 'Nightly';
    if (%blames) {
       $subject .= ': Failures (att:';
       foreach my $blame (sort(keys(%blames))) {
