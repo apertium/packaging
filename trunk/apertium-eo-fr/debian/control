@@ -1,0 +1,15 @@
+Source: apertium-eo-fr
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21)
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: apertium-eo-fr
+Architecture: all
+Depends: apertium (>= 3.3), ${shlibs:Depends}, ${misc:Depends}
+Description: Apertium translation data for the Esperanto-French pair
+ Data package providing Apertium language resources for translating
+ between the Esperanto and French languages.
