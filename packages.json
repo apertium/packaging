@@ -1,19 +1,27 @@
 [
+   # Format:
+   #  Package path, relative to /branches/packaging and /
+   #  Repository root, defaults to http://svn.code.sf.net/p/apertium/svn/
+   #  Versioning file, defaults to configure.ac
+   #  Control folder, defaults to http://svn.code.sf.net/p/apertium/svn/branches/packaging/$PKG_PATH
+   # Meaning that for Apertium packages, we only need the first field
+
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
    ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide"],
    ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
-   ["trunk/lttoolbox",          "http://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox"],
-   ["trunk/apertium",           "http://svn.code.sf.net/p/apertium/svn/trunk/apertium"],
-   ["trunk/apertium-lex-tools", "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-lex-tools"],
+   ["trunk/lttoolbox"],
+   ["trunk/apertium"],
+   ["trunk/apertium-lex-tools"],
    # Then languages
-   ["languages/apertium-arg",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-arg"],
-   ["languages/apertium-kaz",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-kaz"],
-   ["languages/apertium-tat",   "http://svn.code.sf.net/p/apertium/svn/languages/apertium-tat"],
+   ["languages/apertium-arg"],
+   ["languages/apertium-ava"],
+   ["languages/apertium-kaz"],
+   ["languages/apertium-tat"],
    # Finally, language pairs
-   ["trunk/apertium-br-fr",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-br-fr"],
-   ["trunk/apertium-eo-en",     "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-eo-en"],
-   ["trunk/apertium-kaz-tat",   "http://svn.code.sf.net/p/apertium/svn/trunk/apertium-kaz-tat"],
+   ["trunk/apertium-br-fr"],
+   ["trunk/apertium-eo-en"],
+   ["trunk/apertium-kaz-tat"],
 ]

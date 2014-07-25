@@ -55,6 +55,13 @@ foreach my $pkg (@$pkgs) {
       next;
    }
 
+   if (!@$pkg[1]) {
+      @$pkg[1] = 'http://svn.code.sf.net/p/apertium/svn/'.@$pkg[0];
+   }
+   if (!@$pkg[2]) {
+      @$pkg[2] = 'configure.ac';
+   }
+
    print "Making deb source for @$pkg[0]\n";
    my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);

@@ -50,6 +50,9 @@ foreach my $pkg (@$pkgs) {
    open my $pkglog, ">/tmp/rebuild-$pkname.$$.log" or die "Failed to open rebuild-pkg.log: $!\n";
    my $out = IO::Tee->new($out2, $pkglog);
 
+   if (!@$pkg[1]) {
+      @$pkg[1] = 'http://svn.code.sf.net/p/apertium/svn/'.@$pkg[0];
+   }
    if (!@$pkg[2]) {
       @$pkg[2] = 'configure.ac';
    }
