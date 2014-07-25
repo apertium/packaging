@@ -25,6 +25,9 @@ while (<>) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
+   elsif (/\bPKG_CHECK_MODULES.*?lttoolbox\b/) {
+      $build{'liblttoolbox3-3.3-dev'} = 1;
+   }
    elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislc3g\b/ || /\bcg3-autobin\b/) {
       $build{'cg3'} = 1;
       $deps{'cg3'} = 1;
