@@ -16,7 +16,7 @@ my %build = ();
 my %deps = ();
 
 while (<>) {
-   if (/\bhfst-lecx\b/ || /\bhfst-twolc\b/) {
+   if (/\bhfst\b/) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
