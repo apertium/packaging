@@ -25,7 +25,7 @@ GetOptions(
 print STDERR "Getting version quad from $opts{url}/$opts{file}\n";
 
 chdir('/tmp');
-`svn export $opts{url}/$opts{file} version.$$.tmp >/dev/null 2>&1`;
+`svn export $opts{url}/$opts{file} version.$$.tmp >&2`;
 if (!(-s "version.$$.tmp")) {
    die "Failed to svn export $opts{file} from $opts{url}!\n";
 }

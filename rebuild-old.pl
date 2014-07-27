@@ -47,7 +47,9 @@ foreach my $pkg (@$pkgs) {
    }
 
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
-   open my $pkglog, ">/tmp/rebuild-$pkname.$$.log" or die "Failed to open rebuild-pkg.log: $!\n";
+   my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
+   `mkdir -p $logpath/`;
+   open my $pkglog, ">$logpath/rebuild.log" or die "Failed to open $logpath/rebuild.log: $!\n";
    my $out = IO::Tee->new($out2, $pkglog);
 
    if (!@$pkg[1]) {
@@ -62,7 +64,7 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tstarted: ".`date -u`;
 
    # Determine latest version and date stamp from the repository
-   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
+   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>$logpath/stderr.log`;
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
    print {$out} "\tlatest: $version\n";
@@ -118,7 +120,7 @@ foreach my $pkg (@$pkgs) {
       $cli .= " -r '@$pkg[3]'";
    }
    print {$out} "\tlaunching rebuild\n";
-   `$cli >&2`;
+   `$cli 2>>$logpath/stderr.log >&2`;
    my $is_data = '';
    if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@) {
       # If this is a data-only package, only build it for one arch per distro
@@ -126,7 +128,7 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'data';
    }
    # Build the packages
-   `./build-debian-ubuntu.sh '$pkname' '$is_data' >&2`;
+   `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
    print {$out} "\tstopped: ".`date -u`;
 
    my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
@@ -141,8 +143,12 @@ foreach my $pkg (@$pkgs) {
       }
 
       # Determine who was most likely responsible for breaking the build
-      my ($oldrev) = ($oldversion =~ m@\.(\d+)$@);
+      my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\.(\d+)@);
       ++$oldrev;
+      # Check that $oldrev is greater than 1, since 1 is almost certainly an error
+      if (!$oldrev || $oldrev <= 1) {
+         goto CLEANUP;
+      }
       my ($newrev) = ($version =~ m@\.(\d+)$@);
       my $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
       chomp($blames);
@@ -159,14 +165,14 @@ foreach my $pkg (@$pkgs) {
       my $subject = "@$pkg[0] failed nightly build";
       # Don't send individual emails if this is a single package build, or if the package isn't from Apertium proper.
       if (!$ARGV[0] && @$pkg[1] =~ m@^http://svn.code.sf.net/p/apertium/svn/@) {
-         `cat /tmp/rebuild-$pkname.$$.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
+         `cat $logpath/rebuild.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
       goto CLEANUP;
    }
 
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
-   `./reprepro.sh '$pkname' >&2`;
+   `./reprepro.sh '$pkname' 2>>$logpath/stderr.log >&2`;
 
    # Get a list of resulting packages and mark them all as rebuilt
    my $ls = `ls -1 ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
@@ -178,7 +184,6 @@ foreach my $pkg (@$pkgs) {
 
    CLEANUP:
    close $pkglog;
-   unlink("/tmp/rebuild-$pkname.$$.log");
 }
 
 print {$out2} "\n";

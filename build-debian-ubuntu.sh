@@ -6,8 +6,6 @@ export DEB_BUILD_OPTIONS="nocheck $DEB_BUILD_OPTIONS"
 
 rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
-rm -rf /home/apertium/public_html/apt/logs/$1
-mkdir -p /home/apertium/public_html/apt/logs/$1/
 
 cd /tmp/autopkg.*
 for DISTRO in wheezy jessie sid precise saucy trusty utopic
@@ -15,9 +13,9 @@ do
 	for ARCH in i386 amd64
 	do
 		echo "Updating $DISTRO for $ARCH"
-		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
+		/usr/sbin/cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
 		echo "Building $DISTRO for $ARCH"
-		cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1 &
+		/usr/sbin/cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1 &
 		if [[ -n "$2" ]]; then
 			break
 		fi
