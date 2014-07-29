@@ -12,6 +12,8 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+$ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
+
 use File::Basename;
 my $dir = dirname(__FILE__);
 chdir($dir) or die $!;
@@ -145,11 +147,11 @@ foreach my $pkg (@$pkgs) {
       # Determine who was most likely responsible for breaking the build
       my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\.(\d+)@);
       ++$oldrev;
-      # Check that $oldrev is greater than 1, since 1 is almost certainly an error
-      if (!$oldrev || $oldrev <= 1) {
+      my ($newrev) = ($version =~ m@\.(\d+)$@);
+      # Check that $oldrev is less than newrev, but greater than 1
+      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev) {
          goto CLEANUP;
       }
-      my ($newrev) = ($version =~ m@\.(\d+)$@);
       my $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
       chomp($blames);
       print {$out} "\tblames in revisions $oldrev:$newrev :\n";
