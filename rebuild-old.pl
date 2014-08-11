@@ -195,6 +195,8 @@ close $log;
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
    my $subject = 'Nightly';
+   # ToDo: %blames alone isn't enough to say success/fail, since packages rebuild due to dep changes may not have anyone to blame;
+   # Alternatively, blame dependency %blames
    if (%blames) {
       $subject .= ': Failures (att:';
       foreach my $blame (sort(keys(%blames))) {
