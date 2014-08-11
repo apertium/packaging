@@ -18,6 +18,7 @@
    ["trunk/apertium-lex-tools"],
 
    # Then languages
+   ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
    ["languages/apertium-bak"],
