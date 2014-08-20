@@ -16,6 +16,5 @@
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
-
 %:
 	dh $@ --with autoreconf
