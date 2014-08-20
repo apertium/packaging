@@ -16,16 +16,25 @@ use Getopt::Long;
 my %opts = (
 	'url' => 'http://svn.code.sf.net/p/apertium/svn/trunk/apertium',
 	'file' => 'configure.ac',
+	'rev' => '',
 );
 GetOptions(
 	'u|url=s' => \$opts{'url'},
 	'f|file=s' => \$opts{'file'},
+	'rev=i' => \$opts{'rev'},
 );
+
+if ($opts{rev} > 0) {
+   $opts{rev} = '-r'.$opts{rev};
+}
+else {
+   $opts{rev} = '';
+}
 
 print STDERR "Getting version quad from $opts{url}/$opts{file}\n";
 
 chdir('/tmp');
-`svn export $opts{url}/$opts{file} version.$$.tmp >&2`;
+`svn export $opts{rev} $opts{url}/$opts{file} version.$$.tmp >&2`;
 if (!(-s "version.$$.tmp")) {
    die "Failed to svn export $opts{file} from $opts{url}!\n";
 }
@@ -33,7 +42,7 @@ if (!(-s "version.$$.tmp")) {
 my $major = 0;
 my $minor = 0;
 my $patch = 0;
-my $logline = `svn log -q -l 1 $opts{url} | grep '^r'`;
+my $logline = `svn log $opts{rev} -q -l 1 $opts{url} | grep '^r'`;
 my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 {
 	local $/ = undef;

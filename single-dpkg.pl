@@ -22,13 +22,24 @@ my %opts = (
 	'e' => 'Tino Didriksen <mail@tinodidriksen.com>',
 	'dv' => 1,
 	'fv' => 1,
+	'rev' => '',
+	'auto' => 1,
 );
 GetOptions(
 	'm=s' => \$opts{'m'},
 	'e=s' => \$opts{'e'},
 	'distv=i' => \$opts{'dv'},
 	'flavv=i' => \$opts{'fv'},
+	'rev=i' => \$opts{'rev'},
+	'auto=i' => \$opts{'auto'},
 );
+
+if ($opts{rev} > 0) {
+   $opts{rev} = '--rev '.$opts{rev};
+}
+else {
+   $opts{rev} = '';
+}
 
 use File::Basename;
 my $dir = dirname(__FILE__);
@@ -63,10 +74,10 @@ foreach my $pkg (@$pkgs) {
    }
 
    print "Making deb source for @$pkg[0]\n";
-   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
+   my $gv = `./get-version.pl $opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
-   my $cli = "./make-deb-source.pl -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
+   my $cli = "./make-deb-source.pl $opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
    if (@$pkg[3]) {
       $cli .= " -r '@$pkg[3]'";
    }

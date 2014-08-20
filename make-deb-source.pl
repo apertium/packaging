@@ -23,6 +23,8 @@ my %opts = (
 	'e' => 'Tino Didriksen <mail@tinodidriksen.com>',
 	'dv' => 1,
 	'fv' => 1,
+	'rev' => '',
+	'auto' => 1,
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -34,10 +36,18 @@ GetOptions(
 	'e=s' => \$opts{'e'},
 	'distv=i' => \$opts{'dv'},
 	'flavv=i' => \$opts{'fv'},
+	'rev=i' => \$opts{'rev'},
+	'auto=i' => \$opts{'auto'},
 );
 
 if ($opts{r} eq '') {
    $opts{r} = 'http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.$opts{p};
+}
+if ($opts{rev} > 0) {
+   $opts{rev} = '-r'.$opts{rev};
+}
+else {
+   $opts{rev} = '';
 }
 
 my %distros = (
@@ -57,7 +67,7 @@ chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`;
 
-print `svn export $opts{u}/ '$pkname-$opts{v}'`;
+print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$opts{v}.orig.tar' -T orig.lst`;
@@ -66,11 +76,12 @@ print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';
-	if ($distros{$distro} eq 'ubuntu') {
-		$chver .= "0ubuntu";
-	}
-	$chver .= $opts{'dv'}."~".$distro.$opts{'fv'};
-	my $chlog = <<CHLOG;
+   if ($opts{auto}) {
+      if ($distros{$distro} eq 'ubuntu') {
+         $chver .= "0ubuntu";
+      }
+      $chver .= $opts{'dv'}."~".$distro.$opts{'fv'};
+      my $chlog = <<CHLOG;
 $pkname ($chver) $distro; urgency=low
 
   * Automatic build - see changelog via: svn log $opts{u}/
@@ -78,14 +89,23 @@ $pkname ($chver) $distro; urgency=low
  -- $opts{e}  $date
 CHLOG
 
-	`cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
-	unlink "$pkname-$chver/debian/changelog";
-	open FILE, ">$pkname-$chver/debian/changelog" or die "Could not write to debian/changelog: $!\n";
-	print FILE $chlog;
-	close FILE;
+      `cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
+      unlink "$pkname-$chver/debian/changelog";
+      open FILE, ">$pkname-$chver/debian/changelog" or die "Could not write to debian/changelog: $!\n";
+      print FILE $chlog;
+      close FILE;
+   }
+   else {
+      $chver .= $opts{'dv'};
+      `cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
+   }
 	print `dpkg-source '-DMaintainer=$opts{m}' '-DUploaders=$opts{e}' -b '$pkname-$chver'`;
 	chdir "$pkname-$chver";
 	print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../$pkname\_$chver\_source.changes'`;
 	chdir '..';
 	print `debsign '$pkname\_$chver\_source.changes'`;
+
+   if (!$opts{auto}) {
+      last;
+   }
 }
