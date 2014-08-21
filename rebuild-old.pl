@@ -36,6 +36,7 @@ my $pkgs = ();
 
 my %rebuilt = ();
 my %blames = ();
+my @failed = ();
 
 use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
@@ -136,6 +137,7 @@ foreach my $pkg (@$pkgs) {
    my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
    chomp($failed);
    if ($failed) {
+      push(@failed, $pkname);
       # Gather up URLs for the logs of the failed builds
       print {$out} "\tFAILED:\n";
       foreach my $fail (split(/\n/, $failed)) {
@@ -194,18 +196,19 @@ close $log;
 
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
-   my $subject = 'Nightly';
-   # ToDo: %blames alone isn't enough to say success/fail, since packages rebuild due to dep changes may not have anyone to blame;
-   # Alternatively, blame dependency %blames
+   my $subject = 'Nightly: ';
    if (%blames) {
-      $subject .= ': Failures (att:';
+      $subject .= 'Failures (att:';
       foreach my $blame (sort(keys(%blames))) {
          $subject .= " $blame";
       }
       $subject .= ')';
    }
+   elsif (@failed) {
+      $subject .= 'Failures';
+   }
    else {
-      $subject .= ': Success';
+      $subject .= 'Success';
    }
    `cat /tmp/rebuild.$$.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }

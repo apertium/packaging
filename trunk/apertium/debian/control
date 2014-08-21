@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <mail@tinodidriksen.com>
 Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), dh-autoreconf, autotools-dev, autoconf, libxml2-dev, pkg-config (>= 0.20), liblttoolbox3-3.3-dev (>= 3.3), libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16), flex (>= 2.5.33), libpcre3-dev
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
+Vcs-Svn: https://svn.code.sf.net/p/apertium/svn/trunk/apertium/
 
 Package: apertium
 Architecture: any
