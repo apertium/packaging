@@ -6,7 +6,8 @@ Uploaders: Tino Didriksen <mail@tinodidriksen.com>
 Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), autotools-dev, libxml2-dev, pkg-config (>= 0.20 ), zlib1g-dev (>= 1.2.3 ), libxml2-utils, gawk, xsltproc, flex, automake, libpcre3-dev, libtool, devscripts, dh-autoreconf
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
-Vcs-Svn: https://svn.code.sf.net/p/apertium/svn/trunk/lttoolbox/
+Vcs-Git: git://git.debian.org/git/debian-science/packages/lttoolbox.git
+Vcs-Browser: http://git.debian.org/?p=debian-science/packages/lttoolbox.git
 
 Package: lttoolbox
 Architecture: any
