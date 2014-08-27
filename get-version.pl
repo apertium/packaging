@@ -24,7 +24,7 @@ GetOptions(
 	'rev=i' => \$opts{'rev'},
 );
 
-if ($opts{rev} > 0) {
+if ($opts{rev} && $opts{rev} > 0) {
    $opts{rev} = '-r'.$opts{rev};
 }
 else {

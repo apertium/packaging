@@ -34,7 +34,7 @@ GetOptions(
 	'auto=i' => \$opts{'auto'},
 );
 
-if ($opts{rev} > 0) {
+if ($opts{rev} && $opts{rev} > 0) {
    $opts{rev} = '--rev '.$opts{rev};
 }
 else {

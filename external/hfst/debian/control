@@ -19,12 +19,16 @@ Description: Helsinki Finite-State Transducer Technology
 Package: libhfst36
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: libhfst3
+Conflicts: libhfst3
 Description: Helsinki Finite-State Transducer Technology Libraries
  Runtime libraries for HFST
- 
+
 Package: libhfst36-dev
 Architecture: any
 Section: libdevel
 Depends: libhfst36 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Provides: libhfst3-dev
+Conflicts: libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files
  Development headers and libraries for HFST

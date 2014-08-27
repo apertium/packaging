@@ -43,7 +43,7 @@ GetOptions(
 if ($opts{r} eq '') {
    $opts{r} = 'http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.$opts{p};
 }
-if ($opts{rev} > 0) {
+if ($opts{rev} && $opts{rev} > 0) {
    $opts{rev} = '-r'.$opts{rev};
 }
 else {
