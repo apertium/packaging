@@ -167,8 +167,8 @@ foreach my $pkg (@$pkgs) {
       }
 
       my $subject = "@$pkg[0] failed nightly build";
-      # Don't send individual emails if this is a single package build, or if the package isn't from Apertium proper.
-      if (!$ARGV[0] && @$pkg[1] =~ m@^http://svn.code.sf.net/p/apertium/svn/@) {
+      # Don't send individual emails if this is a single package build, or if the package isn't from SourceForge.
+      if (!$ARGV[0] && @$pkg[1] =~ m@^http://svn.code.sf.net/@) {
          `cat $logpath/rebuild.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
       goto CLEANUP;
