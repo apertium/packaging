@@ -65,7 +65,7 @@ print `mkdir -pv /tmp/autopkg.$$`;
 chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
-my $date = `date -u -R`;
+my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
 print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;

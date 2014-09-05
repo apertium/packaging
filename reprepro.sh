@@ -9,4 +9,4 @@ do
 	reprepro -b /home/apertium/public_html/apt/nightly/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
 done
 
-chown -R apertium:apertium /home/apertium/public_html/apt
+chown -R apertium:apertium /home/apertium

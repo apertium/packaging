@@ -118,12 +118,13 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tdistv: $distv\n";
 
    # Create the source packages
-   my $cli = "./make-deb-source.pl -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
+   my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
    if (@$pkg[3]) {
       $cli .= " -r '@$pkg[3]'";
    }
    print {$out} "\tlaunching rebuild\n";
-   `$cli 2>>$logpath/stderr.log >&2`;
+   `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
+   `su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
    my $is_data = '';
    if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@) {
       # If this is a data-only package, only build it for one arch per distro
@@ -131,7 +132,10 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'data';
    }
    # Build the packages
-   `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
+   #`./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
+   if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
+      `su apertium -c "./build-fedora-centos.sh '$pkname' '$is_data'" 2>>$logpath/stderr.log >&2`;
+   }
    print {$out} "\tstopped: ".`date -u`;
 
    my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
@@ -174,6 +178,7 @@ foreach my $pkg (@$pkgs) {
       goto CLEANUP;
    }
 
+   last;
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `./reprepro.sh '$pkname' 2>>$logpath/stderr.log >&2`;
