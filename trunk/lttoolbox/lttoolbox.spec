@@ -19,7 +19,6 @@ BuildRequires: libxslt
 BuildRequires: flex
 BuildRequires: pcre-devel
 BuildRequires: libtool
-BuildRequires: flex
 
 %description
 The lttoolbox contains the augmented letter transducer tools for natural
@@ -58,6 +57,7 @@ make
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
+ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
 
 %files
 %doc AUTHORS NEWS README

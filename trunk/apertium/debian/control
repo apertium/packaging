@@ -29,7 +29,6 @@ Description: Shallow-transfer machine translation engine
  It will be possible to use Apertium to build machine translation
  systems for a variety of related-language pairs simply providing
  the linguistic data needed in the right format.
- .
 
 Package: libapertium3-3.3-0
 Architecture: any
