@@ -57,7 +57,7 @@ make
 
 %install
 make DESTDIR=%{buildroot} install
-rm -f %{_libdir}/*.la
+rm -f %{buildroot}/%{_libdir}/*.la
 
 %files
 %doc AUTHORS NEWS README
