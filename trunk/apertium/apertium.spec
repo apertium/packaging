@@ -8,7 +8,9 @@ URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
 Requires: lttoolbox >= 3.3
+# Require xmllint from:
 Requires: libxml2
+# Require xsltproc from:
 Requires: libxslt
 
 BuildRequires: pkgconfig
@@ -89,6 +91,7 @@ ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.a*
 %{_libdir}/*.so
+%{_datadir}/aclocal/*
 
 %post -n libapertium3-3_3-0 -p /sbin/ldconfig
 
