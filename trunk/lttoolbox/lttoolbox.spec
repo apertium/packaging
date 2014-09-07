@@ -7,11 +7,7 @@ License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-%if 0%{?suse_version}
-BuildRequires: pkg-config
-%else
 BuildRequires: pkgconfig
-%endif
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: gcc-c++
@@ -61,6 +57,7 @@ make
 
 %install
 make DESTDIR=%{buildroot} install
+rm -f %{_libdir}/*.la
 
 %files
 %doc AUTHORS NEWS README
