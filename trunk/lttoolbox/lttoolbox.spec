@@ -7,10 +7,14 @@ License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
+%if 0%{?suse_version}
+BuildRequires: pkg-config
+%else
+BuildRequires: pkgconfig
+%endif
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: gcc-c++
-BuildRequires: pkg-config
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
 BuildRequires: zlib-devel
