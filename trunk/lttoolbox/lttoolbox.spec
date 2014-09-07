@@ -28,21 +28,21 @@ and hybrid machine translation systems. The software is also useful
 for making morphological analysers and generators for natural language
 processing applications.
 
-%package shared
+%package -n liblttoolbox3-3.3-0
 Summary: Shared library for lttoolbox
 Group: Development/Libraries
 Provides: liblttoolbox3 = %{version}-%{release}
 
-%description shared
+%description -n liblttoolbox3-3.3-0
 Contains shared library for lttoolbox
 
-%package devel
+%package -n liblttoolbox3-3.3-devel
 Summary: Development library for lttoolbox
 Group: Development/Libraries
-Requires: %{name}-shared = %{version}-%{release}
+Requires: liblttoolbox3-3.3-0 = %{version}-%{release}
 Provides: liblttoolbox3-devel = %{version}-%{release}
 
-%description devel
+%description -n liblttoolbox3-3.3-devel
 Contains development library for lttoolbox.
 
 %prep
@@ -65,18 +65,18 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_datadir}/%{name}
 %{_datadir}/man/man1/*
 
-%files shared
+%files -n liblttoolbox3-3.3-0
 %{_libdir}/*.so.*
 
-%files devel
+%files -n liblttoolbox3-3.3-devel
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.a*
 %{_libdir}/*.so
 
-%post shared -p /sbin/ldconfig
+%post -n liblttoolbox3-3.3-0 -p /sbin/ldconfig
 
-%postun shared -p /sbin/ldconfig
+%postun -n liblttoolbox3-3.3-0 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 3.3.0
