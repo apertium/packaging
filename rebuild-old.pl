@@ -198,7 +198,9 @@ foreach my $pkg (@$pkgs) {
       chomp($rpms);
       foreach my $rpm (split(/\n/, $rpms)) {
          chomp($rpm);
-         my ($distro,$arch) = $rpm =~ m@\.([^.]+)\.([^.]+)\.rpm$@;
+         my $nc = $rpm;
+         $nc =~ s@\.centos@@g;
+         my ($distro,$arch) = $nc =~ m@\.([^.]+)\.([^.]+)\.rpm$@;
          $distros{$distro} = 1;
          `mkdir -p /home/apertium/public_html/yum/nightly/$distro/$first/$pkname`;
          `su apertium -c "/home/apertium/bin/rpmsign.exp '$rpm'"`;
@@ -208,6 +210,7 @@ foreach my $pkg (@$pkgs) {
       foreach my $distro (keys(%distros)) {
          print {$yumlog} "Recreating $distro yum repo\n";
          print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/nightly/$distro/'"`;
+         unlink("/home/apertium/public_html/yum/nightly/$distro/repodata/repomd.xml.asc");
          `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/nightly/$distro/repodata/repomd.xml'"`;
       }
       close $yumlog;
