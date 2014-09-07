@@ -21,6 +21,7 @@ BuildRequires: libxslt
 BuildRequires: flex
 BuildRequires: pcre-devel
 BuildRequires: libtool
+BuildRequires: liblttoolbox3-3_3-devel
 
 %description
 An open-source shallow-transfer machine translation
