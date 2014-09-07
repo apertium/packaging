@@ -51,8 +51,6 @@ Contains development library for lttoolbox.
 autoreconf -fi
 %configure
 make %{?_smp_mflags}
-make %{?_smp_mflags}
-make
 
 %install
 make DESTDIR=%{buildroot} install

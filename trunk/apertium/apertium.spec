@@ -66,8 +66,8 @@ machine translation engine.
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
-make %{?_smp_mflags}
+make %{?_smp_mflags} || /bin/true
+make %{?_smp_mflags} || /bin/true
 make
 
 %install
