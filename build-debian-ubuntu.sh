@@ -8,7 +8,7 @@ rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
-for DISTRO in wheezy jessie sid precise saucy trusty utopic
+for DISTRO in wheezy jessie sid precise trusty utopic
 do
 	for ARCH in i386 amd64
 	do

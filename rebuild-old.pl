@@ -124,22 +124,29 @@ foreach my $pkg (@$pkgs) {
    }
    print {$out} "\tlaunching rebuild\n";
    `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
-   `su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
    my $is_data = '';
    if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@) {
       # If this is a data-only package, only build it for one arch per distro
       print {$out} "\tdata only\n";
       $is_data = 'data';
    }
-   # Build the packages
-   #`./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
+
+   # Build the packages for Debian/Ubuntu
+   `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
+   my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
+   chomp($failed);
+
+   # If debs did not fail building, try RPMs
+   if (!$failed) {
+      `su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
+   }
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
       `su apertium -c "./build-fedora-centos.sh '$pkname' '$is_data'" 2>>$logpath/stderr.log >&2`;
+      $failed .= `grep -L 'DEBUG: Wrote: /builddir/build/RPMS/' \$(grep -l 'INFO: mock.py version' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
+      chomp($failed);
    }
    print {$out} "\tstopped: ".`date -u`;
 
-   my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
-   chomp($failed);
    if ($failed) {
       push(@failed, $pkname);
       # Gather up URLs for the logs of the failed builds
@@ -178,10 +185,33 @@ foreach my $pkg (@$pkgs) {
       goto CLEANUP;
    }
 
-   last;
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `./reprepro.sh '$pkname' 2>>$logpath/stderr.log >&2`;
+
+   # Add the resulting .rpms to the Yum repositories
+   if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
+      open my $yumlog, ">$logpath/createrepo.log" or die "Failed to open $logpath/createrepo.log: $!\n";
+      my %distros;
+      `rm -rf /home/apertium/public_html/yum/nightly/*/$first/$pkname`;
+      my $rpms = `find /home/apertium/mock/ -type f -name '*.rpm'`;
+      chomp($rpms);
+      foreach my $rpm (split(/\n/, $rpms)) {
+         chomp($rpm);
+         my ($distro,$arch) = $rpm =~ m@\.([^.]+)\.([^.]+)\.rpm$@;
+         $distros{$distro} = 1;
+         `mkdir -p /home/apertium/public_html/yum/nightly/$distro/$first/$pkname`;
+         `su apertium -c "/home/apertium/bin/rpmsign.exp '$rpm'"`;
+         print {$yumlog} `mv -fv '$rpm' /home/apertium/public_html/yum/nightly/$distro/$first/$pkname/`;
+      }
+      `chown -R apertium:apertium /home/apertium/public_html/yum`;
+      foreach my $distro (keys(%distros)) {
+         print {$yumlog} "Recreating $distro yum repo\n";
+         print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/nightly/$distro/'"`;
+         `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/nightly/$distro/repodata/repomd.xml'"`;
+      }
+      close $yumlog;
+   }
 
    # Get a list of resulting packages and mark them all as rebuilt
    my $ls = `ls -1 ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;

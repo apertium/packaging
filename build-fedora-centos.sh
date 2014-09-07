@@ -5,10 +5,14 @@
 rm -rf /home/apertium/mock/*
 
 cd /tmp/
-for DISTRO in epel-6 fedora-19 fedora-20
+for DISTRO in epel-6 epel-7 fedora-19 fedora-20
 do
 	for ARCH in i386 x86_64
 	do
+		if [ ! -f /etc/mock/$DISTRO-$ARCH.cfg ]; then
+			echo "Skipping $DISTRO for $ARCH"
+			continue
+		fi
 		mkdir -p /home/apertium/mock/$DISTRO/$ARCH/
 		rm -rf /var/lib/mock/$DISTRO-$ARCH/root/builddir/build
 		echo "Updating $DISTRO for $ARCH"
@@ -29,15 +33,17 @@ do
 	wait $job
 done
 
-for DISTRO in epel-6 fedora-19 fedora-20
+for DISTRO in epel-6 epel-7 fedora-19 fedora-20
 do
 	for ARCH in i386 x86_64
 	do
 		if ls /home/apertium/mock/$DISTRO/$ARCH/$1-*.rpm &>/dev/null; then
-			break
+			continue
+		fi
+		if [ ! -f /etc/mock/$DISTRO-$ARCH.cfg ]; then
+			continue
 		fi
 		echo "Failed build of $DISTRO for $ARCH - retrying"
-		break
 		rm -rf /home/apertium/mock/$DISTRO/$ARCH/
 		mkdir -p /home/apertium/mock/$DISTRO/$ARCH/
 		rm -rf /var/lib/mock/$DISTRO-$ARCH/root/builddir/build
@@ -51,4 +57,10 @@ do
 			break
 		fi
 	done
+done
+
+for job in `jobs -p`
+do
+	echo "Waiting for $job"
+	wait $job
 done

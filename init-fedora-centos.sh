@@ -5,10 +5,14 @@
 rm -rf /home/apertium/mock/*
 
 cd /tmp/
-for DISTRO in epel-6 fedora-19 fedora-20
+for DISTRO in epel-6 epel-7 fedora-19 fedora-20
 do
 	for ARCH in i386 x86_64
 	do
+		if [ ! -f /etc/mock/$DISTRO-$ARCH.cfg ]; then
+			echo "Skipping $DISTRO for $ARCH"
+			continue
+		fi
 		echo "Initializing $DISTRO for $ARCH"
 		mkdir -p /home/apertium/mock/$DISTRO/$ARCH/
 		mock -r $DISTRO-$ARCH --clean --resultdir=/home/apertium/mock/$DISTRO/$ARCH/ -v >/home/apertium/public_html/apt/logs/$DISTRO-$ARCH-init.log 2>&1
