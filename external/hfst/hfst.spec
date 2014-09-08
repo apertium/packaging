@@ -63,7 +63,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_datadir}/man/man1/*
 
 %files -n libhfst36
-%{%python_sitelib}/*
+%{python_sitelib}/*
 %{_libdir}/*.so.*
 
 %files -n libhfst36-devel
