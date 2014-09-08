@@ -10,6 +10,7 @@ Source0: %{name}_%{version}.orig.tar.bz2
 BuildRequires: pkgconfig
 BuildRequires: autoconf
 BuildRequires: automake
+BuildRequires: python
 BuildRequires: gcc-c++
 BuildRequires: libicu-devel
 BuildRequires: zlib-devel
@@ -26,6 +27,7 @@ based on weighted and unweighted finite-state transducer technology.
 %package -n libhfst36
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
+Provides: libhfst3 = %{version}-%{release}
 
 %description -n libhfst36
 Runtime libraries for HFST
@@ -34,6 +36,7 @@ Runtime libraries for HFST
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
 Requires: libhfst36 = %{version}-%{release}
+Provides: libhfst3-devel = %{version}-%{release}
 
 %description -n libhfst36-devel
 Development headers and libraries for HFST
@@ -59,6 +62,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_datadir}/man/man1/*
 
 %files -n libhfst36
+%{_libdir}/python*/site-packages/*
 %{_libdir}/*.so.*
 
 %files -n libhfst36-devel
