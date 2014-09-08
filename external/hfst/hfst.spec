@@ -11,6 +11,7 @@ BuildRequires: pkgconfig
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: python
+BuildRequires: python-devel
 BuildRequires: gcc-c++
 BuildRequires: libicu-devel
 BuildRequires: zlib-devel
@@ -62,7 +63,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_datadir}/man/man1/*
 
 %files -n libhfst36
-%{_libdir}/python*/site-packages/*
+%{%python_sitelib}/*
 %{_libdir}/*.so.*
 
 %files -n libhfst36-devel
