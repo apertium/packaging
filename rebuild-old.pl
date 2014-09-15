@@ -138,7 +138,7 @@ foreach my $pkg (@$pkgs) {
 
    # If debs did not fail building, try RPMs
    if (!$failed) {
-      `su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
+      #`su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
    }
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
       `su apertium -c "./build-fedora-centos.sh '$pkname' '$is_data'" 2>>$logpath/stderr.log >&2`;
