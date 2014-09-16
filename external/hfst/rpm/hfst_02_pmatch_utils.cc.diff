@@ -1,0 +1,15 @@
+Index: libhfst/src/parsers/pmatch_utils.cc
+===================================================================
+--- libhfst/src/parsers/pmatch_utils.cc	(revision 4004)
++++ libhfst/src/parsers/pmatch_utils.cc	(working copy)
+@@ -920,9 +920,9 @@
+         } else {
+             std::string errstring = "Symbol " + std::string(symbol) + " not found";
+             pmatcherror(errstring.c_str());
+-            return new HfstTransducer(); // For some compilers and linters
+         }
+     }
++    return new HfstTransducer(); // For some compilers and linters
+ }
+ 
+ 

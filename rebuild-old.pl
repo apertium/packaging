@@ -134,16 +134,12 @@ foreach my $pkg (@$pkgs) {
    # Build the packages for Debian/Ubuntu
    `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
    my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
+   #my $failed = '';
    chomp($failed);
 
    # If debs did not fail building, try RPMs
    if (!$failed) {
-      #`su apertium -c "./make-rpm-source.pl $cli" 2>>$logpath/stderr.log >&2`;
-   }
-   if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
-      `su apertium -c "./build-fedora-centos.sh '$pkname' '$is_data'" 2>>$logpath/stderr.log >&2`;
-      $failed .= `grep -L 'DEBUG: Wrote: /builddir/build/RPMS/' \$(grep -l 'INFO: mock.py version' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
-      chomp($failed);
+      #`./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
    }
    print {$out} "\tstopped: ".`date -u`;
 

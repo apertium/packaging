@@ -48,14 +48,18 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-my $spec = `svn cat $opts{r}/$pkname.spec`;
-if (!$spec) {
-   die "No such file $opts{r}/$pkname.spec !\n";
+chdir(glob('/tmp/autopkg.*')) or die "Could not change folder: $!\n";
+`svn export $opts{r}/rpm >/dev/null 2>&1`;
+if (!(-s "rpm/$pkname.spec")) {
+   die "No such file $opts{r}/rpm/$pkname.spec !\n";
 }
+my $spec = `cat rpm/$pkname.spec`;
 
-print `rm -rfv /home/apertium/rpmbuild`;
-print `mkdir -pv /home/apertium/rpmbuild/SOURCES /home/apertium/rpmbuild/SPECS /home/apertium/rpmbuild/SRPMS`;
-print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /home/apertium/rpmbuild/SOURCES/`;
+chdir "/root/osc/$pkname/" or die "Could not change folder: $!\n";
+`osc up`;
+`osc rm *`;
+print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /root/osc/$pkname/`;
+print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$pkname/`;
 
 $spec =~ s/^Version:[^\n]+$/Version: $opts{'v'}/m;
 $spec =~ s/^Release: \d+/Release: $opts{'dv'}/m;
@@ -68,8 +72,9 @@ if ($opts{auto}) {
 
 CHLOG
 }
-open FILE, ">/home/apertium/rpmbuild/SPECS/$pkname.spec" or die "Could not write /home/apertium/rpmbuild/SPECS/$pkname.spec: $!\n";;
+open FILE, ">/root/osc/$pkname/$pkname.spec" or die "Could not write /root/osc/$pkname/$pkname.spec: $!\n";;
 print FILE $spec;
 close FILE;
 
-print `rpmbuild -bs '/home/apertium/rpmbuild/SPECS/$pkname.spec'`;
+`osc add *`;
+`osc ci -m "Automatic update to version $opts{'v'}"`;
