@@ -7,7 +7,6 @@ License: GPL-3.0+
 URL: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst_01_configure.ac.diff
-Patch1: hfst_02_pmatch_utils.cc.diff
 
 BuildRequires: pkgconfig
 BuildRequires: autoconf
@@ -47,7 +46,6 @@ Development headers and libraries for HFST
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p0
-%patch1 -p0
 
 %build
 autoreconf -fi
