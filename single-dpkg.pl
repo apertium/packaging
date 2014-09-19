@@ -24,6 +24,7 @@ my %opts = (
 	'fv' => 1,
 	'rev' => '',
 	'auto' => 1,
+	'rpm' => 0,
 );
 GetOptions(
 	'm=s' => \$opts{'m'},
@@ -32,6 +33,7 @@ GetOptions(
 	'flavv=i' => \$opts{'fv'},
 	'rev=i' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
+	'rpm' => \$opts{'rpm'},
 );
 
 if ($opts{rev} && $opts{rev} > 0) {
@@ -77,10 +79,13 @@ foreach my $pkg (@$pkgs) {
    my $gv = `./get-version.pl $opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
-   my $cli = "./make-deb-source.pl $opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
+   my $cli = "$opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
    if (@$pkg[3]) {
       $cli .= " -r '@$pkg[3]'";
    }
    print "$cli\n";
-   print `$cli 2>&1`;
+   print `./make-deb-source.pl $cli 2>&1`;
+   if ($opts{'rpm'}) {
+      print `./make-rpm-source.pl $cli 2>&1`;
+   }
 }

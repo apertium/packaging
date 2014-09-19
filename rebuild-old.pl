@@ -42,6 +42,7 @@ use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
 my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build started ".`date -u`;
+`rm -f /var/cache/pbuilder/aptcache/*.deb`;
 
 foreach my $pkg (@$pkgs) {
    # If a package path is given, only rebuild that package, but force a rebuild of it
@@ -133,13 +134,13 @@ foreach my $pkg (@$pkgs) {
 
    # Build the packages for Debian/Ubuntu
    `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
-   my $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
-   #my $failed = '';
+   my $failed = '';
+   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
    chomp($failed);
 
    # If debs did not fail building, try RPMs
    if (!$failed) {
-      #`./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
+      `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
    }
    print {$out} "\tstopped: ".`date -u`;
 

@@ -22,6 +22,7 @@ my %opts = (
 	'dv' => 1,
 	'rev' => '',
 	'auto' => 1,
+	'oscp' => 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -32,6 +33,7 @@ GetOptions(
 	'distv=i' => \$opts{'dv'},
 	'rev=i' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
+	'oscp=s' => \$opts{'oscp'},
 );
 
 if ($opts{r} eq '') {
@@ -55,11 +57,18 @@ if (!(-s "rpm/$pkname.spec")) {
 }
 my $spec = `cat rpm/$pkname.spec`;
 
-chdir "/root/osc/$pkname/" or die "Could not change folder: $!\n";
-`osc up`;
-`osc rm *`;
-print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /root/osc/$pkname/`;
-print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$pkname/`;
+chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
+print `osc up 2>&1`;
+if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
+   print `osc mkpac $pkname 2>&1`;
+   print `osc ci -m "Create package $pkname" 2>&1`;
+}
+
+chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
+print `osc up 2>&1`;
+print `osc rm * 2>&1`;
+print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
 
 $spec =~ s/^Version:[^\n]+$/Version: $opts{'v'}/m;
 $spec =~ s/^Release: \d+/Release: $opts{'dv'}/m;
@@ -72,9 +81,9 @@ if ($opts{auto}) {
 
 CHLOG
 }
-open FILE, ">/root/osc/$pkname/$pkname.spec" or die "Could not write /root/osc/$pkname/$pkname.spec: $!\n";;
+open FILE, ">/root/osc/$opts{'oscp'}/$pkname/$pkname.spec" or die "Could not write /root/osc/$opts{'oscp'}/$pkname/$pkname.spec: $!\n";;
 print FILE $spec;
 close FILE;
 
-`osc add *`;
-`osc ci -m "Automatic update to version $opts{'v'}"`;
+print `osc add * 2>&1`;
+print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
