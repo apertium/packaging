@@ -10,6 +10,8 @@ Homepage: http://apertium.org/
 Package: apertium-mt-ar
 Architecture: all
 Depends: apertium (>= 3.3), cg3, ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-ar-mt
+Conflicts: apertium-ar-mt
 Description: Apertium translation data for the Maltese-Arabic pair
  Data package providing Apertium language resources for translating
  between the Maltese and Arabic languages.
