@@ -10,6 +10,8 @@ Homepage: http://apertium.org/
 Package: apertium-fr-es
 Architecture: all
 Depends: apertium (>= 3.3), apertium-lex-tools, ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-es-fr
+Conflicts: apertium-es-fr
 Description: Apertium translation data for the French-Spanish pair
  Data package providing Apertium language resources for translating
  between the French and Spanish languages.

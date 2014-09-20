@@ -58,8 +58,29 @@ my $deps = `svn cat $url/configure.ac | ./depends.pl`;
 chomp($deps);
 my @deps = split(/\n/, $deps);
 
-replace_in_file("$pkg/debian/control", '^Build-Depends:', $deps[0]);
-replace_in_file("$pkg/debian/control", '^Depends:', $deps[1]);
+my $control = '';
+{
+	local $/ = undef;
+   open my $crt, "<$pkg/debian/control" or die $!;
+   $control = <$crt>;
+   close $crt;
+}
+
+$control =~ s@^Build-Depends:[^\n]+@$deps[0]@mg;
+$control =~ s@^Depends:[^\n]+@$deps[1]@mg;
+if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
+   my ($a,$b) = ($1,$2);
+   if ($control =~ m@(\nDepends:[^\n]+\n)Provides:[^\n]+\nConflicts:[^\n]+\n@) {
+      $control =~ s@(\nDepends:[^\n]+\n)Provides:[^\n]+\nConflicts:[^\n]+\n@$1Provides: apertium-$b-$a\nConflicts: apertium-$b-$a\n@g;
+   }
+   else {
+      $control =~ s@(\nDepends:[^\n]+\n)@$1Provides: apertium-$b-$a\nConflicts: apertium-$b-$a\n@g;
+   }
+}
+
+open my $crt, ">$pkg/debian/control" or die $!;
+print {$crt} $control;
+close $crt;
 
 my $gv = `./get-version.pl --url '$url' 2>/dev/null`;
 ($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);

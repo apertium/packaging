@@ -10,6 +10,8 @@ Homepage: http://apertium.org/
 Package: apertium-is-sv
 Architecture: all
 Depends: apertium (>= 3.3), cg3, ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-sv-is
+Conflicts: apertium-sv-is
 Description: Apertium translation data for the Icelandic-Swedish pair
  Data package providing Apertium language resources for translating
  between the Icelandic and Swedish languages.

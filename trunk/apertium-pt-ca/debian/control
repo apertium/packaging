@@ -3,13 +3,15 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21)
+Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), gawk
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-pt-ca
 Architecture: all
 Depends: apertium (>= 3.3), ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-ca-pt
+Conflicts: apertium-ca-pt
 Description: Apertium translation data for the Portuguese-Catalan pair
  Data package providing Apertium language resources for translating
  between the Portuguese and Catalan languages.

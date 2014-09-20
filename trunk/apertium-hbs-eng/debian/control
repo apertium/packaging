@@ -10,6 +10,8 @@ Homepage: http://apertium.org/
 Package: apertium-hbs-eng
 Architecture: all
 Depends: apertium (>= 3.3), apertium-lex-tools, cg3, ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-eng-hbs
+Conflicts: apertium-eng-hbs
 Description: Apertium translation data for the Serbo-Croatian - English pair
  Data package providing Apertium language resources for translating
  between the Serbo-Croatian and English languages.
