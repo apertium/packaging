@@ -3,7 +3,7 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 9.0), dh-autoreconf, autotools-dev, autoconf, automake, libtool, flex, bison, libreadline-dev, zlib1g-dev, libfoma0-dev, libicu-dev
+Build-Depends: debhelper (>= 9.0), dh-autoreconf, autotools-dev, autoconf, automake, libtool, flex, bison, libreadline-dev, zlib1g-dev, python, python-dev, libicu-dev
 Standards-Version: 3.9.5
 Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 
