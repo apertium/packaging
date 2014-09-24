@@ -107,6 +107,7 @@
    ["trunk/apertium-pt-gl"],
 #   ["trunk/apertium-sme-nob"], # Requires giella-sme
    ["trunk/apertium-sv-da"],
+   ["trunk/apertium-urd-hin"],
 
    ["staging/apertium-mt-ar"],
 ]

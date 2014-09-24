@@ -1,0 +1,17 @@
+Source: apertium-urd-hin
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), apertium-hin, apertium-lex-tools, apertium-urd, cg3, gawk
+Standards-Version: 3.9.5
+Homepage: http://apertium.org/
+
+Package: apertium-urd-hin
+Architecture: all
+Depends: apertium (>= 3.3), apertium-lex-tools, cg3, ${shlibs:Depends}, ${misc:Depends}
+Provides: apertium-hin-urd
+Conflicts: apertium-hin-urd
+Description: Apertium translation data for the Urdu-Hindi pair
+ Data package providing Apertium language resources for translating
+ between the Urdu and Hindi languages.
