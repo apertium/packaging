@@ -1,10 +1,8 @@
-Index: b/apertium/interchunk.cc
-===================================================================
---- a/apertium/interchunk.cc	(revision 57368)
-+++ b/apertium/interchunk.cc	(working copy)
+--- a/apertium/interchunk.cc
++++ b/apertium/interchunk.cc
 @@ -108,10 +108,15 @@
    me = new MatchExe(t, finals);
-
+  
    // attr_items
 +  bool recompile_attrs = Compression::string_read(in) != string(pcre_version());
    for(int i = 0, limit = Compression::multibyte_read(in); i != limit; i++)
@@ -16,15 +14,13 @@ Index: b/apertium/interchunk.cc
 +      attr_items[cad_k].compile(UtfConverter::toUtf8(fallback));
 +    }
    }
-
+ 
    // variables
-Index: b/apertium/postchunk.cc
-===================================================================
---- a/apertium/postchunk.cc	(revision 57368)
-+++ b/apertium/postchunk.cc	(working copy)
+--- a/apertium/postchunk.cc
++++ b/apertium/postchunk.cc
 @@ -107,10 +107,15 @@
    me = new MatchExe(t, finals);
-
+  
    // attr_items
 +  bool recompile_attrs = Compression::string_read(in) != string(pcre_version());
    for(int i = 0, limit = Compression::multibyte_read(in); i != limit; i++)
@@ -36,23 +32,21 @@ Index: b/apertium/postchunk.cc
 +      attr_items[cad_k].compile(UtfConverter::toUtf8(fallback));
 +    }
    }
-
+ 
    // variables
-Index: b/apertium/transfer.cc
-===================================================================
---- a/apertium/transfer.cc	(revision 57368)
-+++ b/apertium/transfer.cc	(working copy)
+--- a/apertium/transfer.cc
++++ b/apertium/transfer.cc
 @@ -22,6 +22,7 @@
  #include <apertium/string_utils.h>
  #include <lttoolbox/compression.h>
  #include <lttoolbox/xml_parse_util.h>
 +#include <pcre.h>
-
+ 
  #include <cctype>
  #include <iostream>
 @@ -110,10 +111,15 @@
    me = new MatchExe(t, finals);
-
+  
    // attr_items
 +  bool recompile_attrs = Compression::string_read(in) != string(pcre_version());
    for(int i = 0, limit = Compression::multibyte_read(in); i != limit; i++)
@@ -64,19 +58,17 @@ Index: b/apertium/transfer.cc
 +      attr_items[cad_k].compile(UtfConverter::toUtf8(fallback));
 +    }
    }
-
+ 
    // variables
-Index: b/apertium/transfer_data.cc
-===================================================================
---- a/apertium/transfer_data.cc	(revision 57368)
-+++ b/apertium/transfer_data.cc	(working copy)
+--- a/apertium/transfer_data.cc
++++ b/apertium/transfer_data.cc
 @@ -180,6 +180,7 @@
  void
  TransferData::writeRegexps(FILE *output)
  {
 +  Compression::string_write(string(pcre_version()), output);
    Compression::multibyte_write(attr_items.size(), output);
-
+   
    map<wstring, wstring, Ltstr>::iterator it, limit;
 @@ -187,8 +188,8 @@
    {
@@ -86,15 +78,13 @@ Index: b/apertium/transfer_data.cc
      my_re.compile(UtfConverter::toUtf8(it->second));
      my_re.write(output);
 +    Compression::wstring_write(it->second, output);
-   }
+   }   
  }
-Index: b/apertium/transfer_mult.cc
-===================================================================
---- a/apertium/transfer_mult.cc	(revision 57368)
-+++ b/apertium/transfer_mult.cc	(working copy)
+--- a/apertium/transfer_mult.cc
++++ b/apertium/transfer_mult.cc
 @@ -107,10 +107,15 @@
    me = new MatchExe(t, finals);
-
+  
    // attr_items
 +  bool recompile_attrs = Compression::string_read(in) != string(pcre_version());
    for(int i = 0, limit = Compression::multibyte_read(in); i != limit; i++)
@@ -106,6 +96,5 @@ Index: b/apertium/transfer_mult.cc
 +      attr_items[cad_k].compile(UtfConverter::toUtf8(fallback));
 +    }
    }
-
+ 
    // variables
-
