@@ -3,13 +3,26 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), cg3, gawk
+Build-Depends:
+	apertium (>= 3.3),
+	autotools-dev,
+	cg3,
+	debhelper (>= 8.0),
+	dh-autoreconf,
+	gawk,
+	libapertium3-3.3-dev,
+	locales,
+	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-mk-bg
 Architecture: all
-Depends: apertium (>= 3.3), cg3, ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	apertium (>= 3.3),
+	cg3,
+	${misc:Depends},
+	${shlibs:Depends}
 Provides: apertium-bg-mk
 Conflicts: apertium-bg-mk
 Description: Apertium translation data for the Macedonian-Bulgarian pair

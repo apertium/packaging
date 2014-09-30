@@ -3,13 +3,24 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), gawk
+Build-Depends:
+	apertium (>= 3.3),
+	autotools-dev,
+	debhelper (>= 8.0),
+	dh-autoreconf,
+	gawk,
+	libapertium3-3.3-dev,
+	locales,
+	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-eo-fr
 Architecture: all
-Depends: apertium (>= 3.3), ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	apertium (>= 3.3),
+	${misc:Depends},
+	${shlibs:Depends}
 Provides: apertium-fr-eo
 Conflicts: apertium-fr-eo
 Description: Apertium translation data for the Esperanto-French pair

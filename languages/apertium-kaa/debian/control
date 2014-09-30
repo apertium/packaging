@@ -3,12 +3,28 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21), cg3, hfst
+Build-Depends:
+	apertium (>= 3.3),
+	autotools-dev,
+	cg3,
+	debhelper (>= 8.0),
+	dh-autoreconf,
+	gawk,
+	hfst,
+	libapertium3-3.3-dev,
+	libhfst36-dev,
+	locales,
+	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-kaa
 Architecture: all
-Depends: apertium (>= 3.3), cg3, hfst, ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	apertium (>= 3.3),
+	cg3,
+	hfst,
+	${misc:Depends},
+	${shlibs:Depends}
 Description: Apertium single language data for Kara-Kalpak
  Data package providing Apertium language resources for Kara-Kalpak

@@ -83,7 +83,7 @@ foreach my $depend (@depends) {
    $copy =~ s@\s+$@@sg;
    $copy =~ s@,\s+@,@sg;
    $control =~ s@\Q$depend\E(\n\S)@ $copy$1@g;
-   print "$depend -> $copy\n";
+   #print "$depend -> $copy\n";
 }
 
 $control =~ s@^Build-Depends:[^\n]+@$deps[0]@mg;
@@ -104,7 +104,7 @@ foreach my $depend (@depends) {
    @deps = sort dollar_sort @deps;
    my $sorted = join(",\n\t", @deps);
    $control =~ s@\s*\Q$depend\E(\n\S)@\n\t$sorted$1@g;
-   print "$depend -> $sorted\n";
+   #print "$depend -> $sorted\n";
 }
 
 open my $crt, ">$pkg/debian/control" or die $!;
