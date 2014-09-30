@@ -3,12 +3,29 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 9.0), dh-autoreconf, autotools-dev, autoconf, libxml2-dev, pkg-config (>= 0.20), liblttoolbox3-3.3-dev, libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16), flex (>= 2.5.33), libpcre3-dev, zlib1g-dev, gawk, libxml2-utils, libapertium3-3.3-dev
+Build-Depends:
+	autoconf,
+	autotools-dev,
+	debhelper (>= 9.0),
+	dh-autoreconf,
+	flex (>= 2.5.33),
+	gawk,
+	libapertium3-3.3-dev,
+	liblttoolbox3-3.3-dev,
+	libpcre3-dev,
+	libxml2-dev,
+	libxml2-utils,
+	libxml2-utils (>= 2.6.24),
+	pkg-config (>= 0.20),
+	xsltproc (>= 1.1.16),
+	zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 
 Package: apertium-lex-tools
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	${misc:Depends},
+	${shlibs:Depends}
 Description: Constraint-based lexical selection module
  Constraint-based lexical selection module used by Apertium

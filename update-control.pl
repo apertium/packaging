@@ -76,7 +76,8 @@ my $control = '';
    close $crt;
 }
 
-my @depends = ($control =~ m@Depends:(\s*.*?)\n\S@gs);
+my @depends = ($control =~ m@D?epends:(\s*.*?)\n\S@gs);
+@depends = sort { length($b) <=> length($a) } @depends;
 foreach my $depend (@depends) {
    my $copy = $depend;
    $copy =~ s@^\s+@@sg;
@@ -98,7 +99,8 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
    }
 }
 
-@depends = ($control =~ m@Depends:\s*(.*?)\n\S@gs);
+@depends = ($control =~ m@D?epends:\s*(.*?)\n\S@gs);
+@depends = sort { length($b) <=> length($a) } @depends;
 foreach my $depend (@depends) {
    my @deps = split(/,\s+/s, $depend);
    @deps = sort dollar_sort @deps;

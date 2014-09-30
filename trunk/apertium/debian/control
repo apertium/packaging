@@ -3,7 +3,19 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), dh-autoreconf, autotools-dev, autoconf, libxml2-dev, pkg-config (>= 0.20), liblttoolbox3-3.3-dev (>= 3.3), libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16), flex (>= 2.5.33), libpcre3-dev
+Build-Depends:
+	autoconf,
+	autotools-dev,
+	debhelper (>= 9.0),
+	dh-autoreconf,
+	dh-exec (>= 0.3),
+	flex (>= 2.5.33),
+	liblttoolbox3-3.3-dev (>= 3.3),
+	libpcre3-dev,
+	libxml2-dev,
+	libxml2-utils (>= 2.6.24),
+	pkg-config (>= 0.20),
+	xsltproc (>= 1.1.16)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://git.debian.org/git/debian-science/packages/apertium.git
@@ -11,7 +23,12 @@ Vcs-Browser: http://git.debian.org/?p=debian-science/packages/apertium.git
 
 Package: apertium
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, lttoolbox (>= 3.3), libxml2-utils (>= 2.6.24), xsltproc (>= 1.1.16)
+Depends:
+	libxml2-utils (>= 2.6.24),
+	lttoolbox (>= 3.3),
+	xsltproc (>= 1.1.16),
+	${misc:Depends},
+	${shlibs:Depends}
 Description: Shallow-transfer machine translation engine
  An open-source shallow-transfer machine translation
  engine, Apertium is initially aimed at related-language pairs.
@@ -33,8 +50,11 @@ Description: Shallow-transfer machine translation engine
 Package: libapertium3-3.3-0
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends:
+	${misc:Pre-Depends}
+Depends:
+	${misc:Depends},
+	${shlibs:Depends}
 Provides: libapertium3
 Conflicts: libapertium3
 Description: Shared library for Apertium
@@ -45,8 +65,12 @@ Package: libapertium3-3.3-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Depends: libapertium3-3.3-0 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends:
+	${misc:Pre-Depends}
+Depends:
+	libapertium3-3.3-0 (= ${binary:Version}),
+	${misc:Depends},
+	${shlibs:Depends}
 Provides: libapertium3-dev
 Conflicts: libapertium3-dev
 Description: Development library for Apertium
