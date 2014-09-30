@@ -66,6 +66,16 @@ my $control = '';
    close $crt;
 }
 
+my @depends = ($control =~ m@Depends:(\s*.*?)\n\S@gs);
+foreach my $depend (@depends) {
+   my $copy = $depend;
+   $copy =~ s@^\s+@@sg;
+   $copy =~ s@\s+$@@sg;
+   $copy =~ s@,\s+@,@sg;
+   $control =~ s@\Q$depend\E(\n\S)@ $copy$1@g;
+   print "$depend -> $copy\n";
+}
+
 $control =~ s@^Build-Depends:[^\n]+@$deps[0]@mg;
 $control =~ s@^Depends:[^\n]+@$deps[1]@mg;
 if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
@@ -76,6 +86,15 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
    else {
       $control =~ s@(\nDepends:[^\n]+\n)@$1Provides: apertium-$b-$a\nConflicts: apertium-$b-$a\n@g;
    }
+}
+
+@depends = ($control =~ m@Depends:\s*(.*?)\n\S@gs);
+foreach my $depend (@depends) {
+   my @deps = split(/,\s+/s, $depend);
+   @deps = sort @deps;
+   my $sorted = join(",\n\t", @deps);
+   $control =~ s@\s*\Q$depend\E(\n\S)@\n\t$sorted$1@g;
+   print "$depend -> $sorted\n";
 }
 
 open my $crt, ">$pkg/debian/control" or die $!;
