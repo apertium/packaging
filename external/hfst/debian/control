@@ -2,7 +2,8 @@ Source: hfst
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends:
 	autoconf,
 	automake,
@@ -25,10 +26,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 Package: hfst
 Architecture: any
 Provides:hfst
-Depends:
-	libhfst36 (= ${binary:Version}),
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: libhfst36 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are
@@ -36,9 +34,7 @@ Description: Helsinki Finite-State Transducer Technology
 
 Package: libhfst36
 Architecture: any
-Depends:
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst3
 Conflicts: libhfst3
 Description: Helsinki Finite-State Transducer Technology Libraries
@@ -47,10 +43,7 @@ Description: Helsinki Finite-State Transducer Technology Libraries
 Package: libhfst36-dev
 Architecture: any
 Section: libdevel
-Depends:
-	libhfst36 (= ${binary:Version}),
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: libhfst36 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst3-dev
 Conflicts: libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files

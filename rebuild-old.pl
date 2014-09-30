@@ -44,6 +44,10 @@ my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build started ".`date -u`;
 `rm -f /var/cache/pbuilder/aptcache/*.deb`;
 
+if ($ARGV[0]) {
+   $ARGV[0] =~ s@/$@@g;
+}
+
 foreach my $pkg (@$pkgs) {
    # If a package path is given, only rebuild that package, but force a rebuild of it
    if ($ARGV[0] && $ARGV[0] ne @$pkg[0]) {

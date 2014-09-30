@@ -2,7 +2,8 @@ Source: apertium-lex-tools
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends:
 	autoconf,
 	autotools-dev,
@@ -26,8 +27,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-le
 
 Package: apertium-lex-tools
 Architecture: any
-Depends:
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Constraint-based lexical selection module
  Constraint-based lexical selection module used by Apertium

@@ -2,7 +2,8 @@ Source: apertium-pt-ca
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends:
 	apertium (>= 3.3),
 	autotools-dev,
@@ -19,10 +20,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pt
 
 Package: apertium-pt-ca
 Architecture: all
-Depends:
-	apertium (>= 3.3),
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: apertium (>= 3.3), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ca-pt
 Conflicts: apertium-ca-pt
 Description: Apertium translation data for the Portuguese-Catalan pair

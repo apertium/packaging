@@ -104,8 +104,17 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
 foreach my $depend (@depends) {
    my @deps = split(/,\s+/s, $depend);
    @deps = sort dollar_sort @deps;
-   my $sorted = join(",\n\t", @deps);
-   $control =~ s@\s*\Q$depend\E(\n\S)@\n\t$sorted$1@g;
+   my $sorted = "\n\t".join(",\n\t", @deps);
+   my $nond = 0;
+   for my $dep (@deps) {
+      if ($dep !~ m@^\$@) {
+         ++$nond;
+      }
+   }
+   if ($nond <= 1) {
+      $sorted = ' '.join(', ', @deps);
+   }
+   $control =~ s@\s*\Q$depend\E(\n\S)@$sorted$1@g;
    #print "$depend -> $sorted\n";
 }
 

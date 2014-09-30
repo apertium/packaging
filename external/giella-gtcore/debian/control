@@ -2,7 +2,8 @@ Source: giella-gtcore
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <mail@tinodidriksen.com>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends:
 	autoconf,
 	autotools-dev,
@@ -16,8 +17,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-gtco
 
 Package: giella-gtcore-dev
 Architecture: any
-Depends:
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: GTCORE files for Giellatekno language packages
  All Giellatekno language packages depend on the files in this package
