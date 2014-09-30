@@ -18,9 +18,9 @@ Homepage: http://apertium.org/
 Package: apertium-es-ca
 Architecture: all
 Depends:
+	apertium (>= 3.3),
 	${misc:Depends},
-	${shlibs:Depends},
-	apertium (>= 3.3)
+	${shlibs:Depends}
 Provides: apertium-ca-es
 Conflicts: apertium-ca-es
 Description: Apertium translation data for the Spanish-Catalan pair

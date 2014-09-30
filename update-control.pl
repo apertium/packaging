@@ -27,6 +27,16 @@ sub replace_in_file {
    rename $file.".$$.new", $file;
 }
 
+sub dollar_sort {
+   if (($a =~ m@^\$@ && $b =~ m@^\$@) || ($a !~ m@^\$@ && $b !~ m@^\$@)) {
+      return $a cmp $b;
+   }
+   if ($a =~ m@^\$@) {
+      return 1;
+   }
+   return -1;
+}
+
 if (!$ARGV[0]) {
    die "Must provide a package path!\n";
 }
@@ -91,7 +101,7 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
 @depends = ($control =~ m@Depends:\s*(.*?)\n\S@gs);
 foreach my $depend (@depends) {
    my @deps = split(/,\s+/s, $depend);
-   @deps = sort @deps;
+   @deps = sort dollar_sort @deps;
    my $sorted = join(",\n\t", @deps);
    $control =~ s@\s*\Q$depend\E(\n\S)@\n\t$sorted$1@g;
    print "$depend -> $sorted\n";
