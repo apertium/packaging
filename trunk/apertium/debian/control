@@ -18,8 +18,8 @@ Build-Depends:
 	xsltproc (>= 1.1.16)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
-Vcs-Git: git://git.debian.org/git/debian-science/packages/apertium.git
-Vcs-Browser: http://git.debian.org/?p=debian-science/packages/apertium.git
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
 
 Package: apertium
 Architecture: any

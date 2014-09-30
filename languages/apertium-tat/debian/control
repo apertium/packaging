@@ -17,6 +17,8 @@ Build-Depends:
 	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-tat.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-tat.git
 
 Package: apertium-tat
 Architecture: all

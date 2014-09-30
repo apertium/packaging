@@ -21,8 +21,8 @@ Build-Depends:
 	zlib1g-dev (>= 1.2.3 )
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
-Vcs-Git: git://git.debian.org/git/debian-science/packages/lttoolbox.git
-Vcs-Browser: http://git.debian.org/?p=debian-science/packages/lttoolbox.git
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/lttoolbox.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
 
 Package: lttoolbox
 Architecture: any

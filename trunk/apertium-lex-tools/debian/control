@@ -21,6 +21,8 @@ Build-Depends:
 	zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-lex-tools.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-lex-tools.git
 
 Package: apertium-lex-tools
 Architecture: any

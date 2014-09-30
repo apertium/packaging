@@ -3,12 +3,21 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>
-Build-Depends: debhelper (>= 9.0), dh-exec (>= 0.3), dh-autoreconf, autotools-dev, autoconf
+Build-Depends:
+	autoconf,
+	autotools-dev,
+	debhelper (>= 9.0),
+	dh-autoreconf,
+	dh-exec (>= 0.3)
 Standards-Version: 3.9.5
 Homepage: http://giellatekno.uit.no/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/giella-gtcore.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-gtcore.git
 
 Package: giella-gtcore-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	${misc:Depends},
+	${shlibs:Depends}
 Description: GTCORE files for Giellatekno language packages
  All Giellatekno language packages depend on the files in this package

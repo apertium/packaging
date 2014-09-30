@@ -18,6 +18,8 @@ Build-Depends:
 	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-urd-hin.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-urd-hin.git
 
 Package: apertium-urd-hin
 Architecture: all
