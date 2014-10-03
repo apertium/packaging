@@ -58,15 +58,18 @@ rm -f %{buildroot}/%{_libdir}/*.la
 ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
 
 %files
+%defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/man/man1/*
 
 %files -n liblttoolbox3-3_3-0
+%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files -n liblttoolbox3-3_3-devel
+%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.a*

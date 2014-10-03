@@ -94,6 +94,7 @@ foreach my $pkg (@$pkgs) {
       # Current version is not newer, so check if any dependencies were rebuilt
       # ToDo: This should really check the actual .deb dependencies and files
       # Counter-ToDo: Since .deb packages have no clue about Build-Depends, we'd need to check both anyway, so this is fine for now
+      # ToDo: Make this aware of line-split depends
       my $deps = (@$pkg[3]) || ('http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.@$pkg[0]);
       $deps = `svn cat $deps/debian/control | egrep '^Build-Depends:' | sort | uniq`;
       $deps =~ s@(Build-)?Depends:\s*@@g;
