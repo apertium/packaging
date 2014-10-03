@@ -13,18 +13,23 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+NUMJOBS = 1
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+endif
+
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
 %:
-	dh $@ --with autoreconf
+	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
-	./configure --enable-proc --with-foma --enable-lexc --enable-tagger --enable-calculate --enable-xfst --with-unicode-handler=ICU --enable-all-tools --prefix=/usr
+	./configure --with-unicode-handler=ICU --enable-all-tools --prefix=/usr
 
 override_dh_auto_build:
 	./scripts/generate-cc-files.sh
-	make
+	make -j$(NUMJOBS) || make -j$(NUMJOBS) || make
 
 override_dh_auto_test:
 	# Skip, as it breaks in various unpredictable ways

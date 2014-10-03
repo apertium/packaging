@@ -27,10 +27,8 @@ Package: hfst
 Architecture: any
 Provides:hfst
 Depends:
-	grep,
 	libhfst38 (= ${binary:Version}),
 	python,
-	sed,
 	${misc:Depends},
 	${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology
