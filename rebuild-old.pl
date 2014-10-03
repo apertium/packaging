@@ -79,9 +79,9 @@ foreach my $pkg (@$pkgs) {
 
    # Determine existing package version, if any
    my $first = substr($pkname, 0, 1);
-   my $oldversion = '0.0.0.0';
+   my $oldversion = '0.0.0~r0';
    if (-e "/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname") {
-      $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*~sid*_a*.deb | grep 'Version:' | egrep -o '[-.0-9]+' | head -n 1`;
+      $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*~sid*_a*.deb | grep 'Version:' | egrep -o '[-.0-9]+~r[0-9]+' | head -n 1`;
       chomp($oldversion);
    }
    print {$out} "\texisting: $oldversion\n";
@@ -160,9 +160,9 @@ foreach my $pkg (@$pkgs) {
       }
 
       # Determine who was most likely responsible for breaking the build
-      my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\.(\d+)@);
+      my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+~r(\d+)@);
       ++$oldrev;
-      my ($newrev) = ($version =~ m@\.(\d+)$@);
+      my ($newrev) = ($version =~ m@~r(\d+)$@);
       # Check that $oldrev is less than newrev, but greater than 1
       if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev) {
          goto CLEANUP;

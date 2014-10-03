@@ -78,4 +78,4 @@ my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 
 unlink("version.$$.tmp");
 
-print "$major.$minor.$patch.$revision\t$srcdate\n";
+print "$major.$minor.$patch~r$revision\t$srcdate\n";
