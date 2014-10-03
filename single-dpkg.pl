@@ -63,6 +63,10 @@ my $pkgs = ();
    close FILE;
 }
 
+if ($ARGV[0]) {
+   $ARGV[0] =~ s@/$@@g;
+}
+
 foreach my $pkg (@$pkgs) {
    if ($ARGV[0] ne @$pkg[0]) {
       next;
