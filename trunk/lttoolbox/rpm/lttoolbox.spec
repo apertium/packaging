@@ -7,18 +7,18 @@ License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-BuildRequires: pkgconfig
 BuildRequires: autoconf
 BuildRequires: automake
+BuildRequires: flex
+BuildRequires: gawk
 BuildRequires: gcc-c++
+BuildRequires: libtool
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
-BuildRequires: zlib-devel
-BuildRequires: gawk
 BuildRequires: libxslt
-BuildRequires: flex
 BuildRequires: pcre-devel
-BuildRequires: libtool
+BuildRequires: pkgconfig
+BuildRequires: zlib-devel
 
 %description
 The lttoolbox contains the augmented letter transducer tools for natural

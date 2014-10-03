@@ -29,6 +29,7 @@ Provides:hfst
 Depends:
 	grep,
 	libhfst38 (= ${binary:Version}),
+	python,
 	sed,
 	${misc:Depends},
 	${shlibs:Depends}

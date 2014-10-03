@@ -13,17 +13,17 @@ Requires: libxml2
 # Require xsltproc from:
 Requires: libxslt
 
-BuildRequires: pkgconfig
 BuildRequires: autoconf
 BuildRequires: automake
+BuildRequires: flex
 BuildRequires: gcc-c++
+BuildRequires: liblttoolbox3-3_3-devel
+BuildRequires: libtool
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
 BuildRequires: libxslt
-BuildRequires: flex
 BuildRequires: pcre-devel
-BuildRequires: libtool
-BuildRequires: liblttoolbox3-3_3-devel
+BuildRequires: pkgconfig
 
 %description
 An open-source shallow-transfer machine translation
@@ -68,9 +68,7 @@ machine translation engine.
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags} || /bin/true
-make %{?_smp_mflags} || /bin/true
-make
+make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
 make DESTDIR=%{buildroot} install

@@ -7,19 +7,25 @@ License: GPL-3.0+
 URL: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst_01_configure.ac.diff
+Patch1: hfst_02_notimestamp.diff
 
-BuildRequires: pkgconfig
 BuildRequires: autoconf
 BuildRequires: automake
-BuildRequires: python
-BuildRequires: python-devel
+BuildRequires: bison
+BuildRequires: flex
 BuildRequires: gcc-c++
 BuildRequires: libicu-devel
-BuildRequires: zlib-devel
-BuildRequires: flex
-BuildRequires: bison
 BuildRequires: libtool
+BuildRequires: libxml2
+BuildRequires: libxml2-devel
+BuildRequires: pkgconfig
+BuildRequires: python
+BuildRequires: python-devel
 BuildRequires: readline-devel
+BuildRequires: zlib-devel
+Requires: grep
+Requires: python
+Requires: sed
 
 %description
 The Helsinki Finite-State Transducer software is intended for the
@@ -45,15 +51,14 @@ Development headers and libraries for HFST
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p0
+%patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf -fi
 %configure --with-unicode-handler=ICU --enable-all-tools
 ./scripts/generate-cc-files.sh
-make %{?_smp_mflags} || /bin/true
-make %{?_smp_mflags} || /bin/true
-make
+make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
 make DESTDIR=%{buildroot} install

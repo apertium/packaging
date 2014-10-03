@@ -1,0 +1,24 @@
+Index: b/tools/src/hfst-optimized-lookup.cc
+===================================================================
+--- a/tools/src/hfst-optimized-lookup.cc	(revision 4029)
++++ b/tools/src/hfst-optimized-lookup.cc	(working copy)
+@@ -63,7 +63,6 @@
+   std::cout <<
+     "\n" <<
+     PACKAGE_STRING << std::endl <<
+-    __DATE__ << " " __TIME__ << std::endl <<
+     "copyright (C) 2009 University of Helsinki\n";
+   return true;
+ }
+Index: b/tools/src/hfst-proc/hfst-proc.cc
+===================================================================
+--- a/tools/src/hfst-proc/hfst-proc.cc	(revision 4029)
++++ b/tools/src/hfst-proc/hfst-proc.cc	(working copy)
+@@ -140,7 +140,6 @@
+     "\n" <<
+     "hfst-proc 0.0 (" <<
+     PACKAGE_STRING << ")" << std::endl <<
+-    __DATE__ << " " __TIME__ << std::endl <<
+     "copyright (C) 2009-2011 University of Helsinki\n";
+   return true;
+ }

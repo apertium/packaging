@@ -1,14 +1,14 @@
-Index: configure.ac
+Index: b/configure.ac
 ===================================================================
---- configure.ac	(revision 3996)
-+++ configure.ac	(working copy)
+--- a/configure.ac	(revision 3996)
++++ b/configure.ac	(working copy)
 @@ -681,9 +681,6 @@
               ],
-              [AC_CHECK_HEADERS([glib.h], [], 
+              [AC_CHECK_HEADERS([glib.h], [],
                          [AC_MSG_ERROR([glib headers not found; set CPPFLAGS to -I glib install directiories or use other unicode handler instead])])])])
 -# remove if not needed
 -AS_IF([test "x$with_unicode_handler" != "xglib"],
 -      [AC_SUBST([GLIB_CFLAGS])])
- 
+
  ### Add here your library ###
  #AS_IF([test "x$with_my_transducer_library" != "xno"],
