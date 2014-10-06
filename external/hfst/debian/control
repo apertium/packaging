@@ -4,20 +4,19 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends:
-	autoconf,
-	automake,
-	autotools-dev,
-	bison,
-	debhelper (>= 9.0),
-	dh-autoreconf,
-	flex,
-	libicu-dev,
-	libreadline-dev,
-	libtool,
-	python,
-	python-dev,
-	zlib1g-dev
+Build-Depends: autoconf,
+               automake,
+               autotools-dev,
+               bison,
+               debhelper (>= 9.0),
+               dh-autoreconf,
+               flex,
+               libicu-dev,
+               libreadline-dev,
+               libtool,
+               python,
+               python-dev,
+               zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/hfst.git
@@ -25,12 +24,11 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 
 Package: hfst
 Architecture: any
-Provides:hfst
-Depends:
-	libhfst38 (= ${binary:Version}),
-	python,
-	${misc:Depends},
-	${shlibs:Depends}
+Provides: hfst
+Depends: libhfst38 (= ${binary:Version}),
+         python,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are

@@ -99,25 +99,6 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
    }
 }
 
-@depends = ($control =~ m@D?epends:\s*(.*?)\n\S@gs);
-@depends = sort { length($b) <=> length($a) } @depends;
-foreach my $depend (@depends) {
-   my @deps = split(/,\s+/s, $depend);
-   @deps = sort dollar_sort @deps;
-   my $sorted = "\n\t".join(",\n\t", @deps);
-   my $nond = 0;
-   for my $dep (@deps) {
-      if ($dep !~ m@^\$@) {
-         ++$nond;
-      }
-   }
-   if ($nond <= 1) {
-      $sorted = ' '.join(', ', @deps);
-   }
-   $control =~ s@\s*\Q$depend\E(\n\S)@$sorted$1@g;
-   #print "$depend -> $sorted\n";
-}
-
 open my $crt, ">$pkg/debian/control" or die $!;
 print {$crt} $control;
 close $crt;
@@ -126,3 +107,6 @@ my $gv = `./get-version.pl --url '$url' 2>/dev/null`;
 ($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);
 $gv .= '-1';
 replace_in_file("$pkg/debian/changelog", "^$pkname.*urgency=low", "$pkname ($gv) unstable; urgency=low");
+
+chdir $pkg or die "$!";
+`wrap-and-sort`;

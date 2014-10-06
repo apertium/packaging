@@ -4,19 +4,18 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends:
-	apertium (>= 3.3),
-	apertium-hin,
-	apertium-lex-tools,
-	apertium-urd,
-	autotools-dev,
-	cg3,
-	debhelper (>= 8.0),
-	dh-autoreconf,
-	gawk,
-	libapertium3-3.3-dev,
-	locales,
-	pkg-config (>= 0.21)
+Build-Depends: apertium (>= 3.3),
+               apertium-hin,
+               apertium-lex-tools,
+               apertium-urd,
+               autotools-dev,
+               cg3,
+               debhelper (>= 8.0),
+               dh-autoreconf,
+               gawk,
+               libapertium3-3.3-dev,
+               locales,
+               pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-urd-hin.git
@@ -24,12 +23,11 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ur
 
 Package: apertium-urd-hin
 Architecture: all
-Depends:
-	apertium (>= 3.3),
-	apertium-lex-tools,
-	cg3,
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: apertium (>= 3.3),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-hin-urd
 Conflicts: apertium-hin-urd
 Description: Apertium translation data for the Urdu-Hindi pair

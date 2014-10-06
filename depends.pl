@@ -17,7 +17,7 @@ my %deps = ();
 
 while (<>) {
    if (/\bPKG_CHECK_MODULES.*?hfst\b/) {
-      $build{'libhfst3-dev'} = 1;
+      $build{'libhfst38-dev'} = 1;
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
@@ -26,7 +26,7 @@ while (<>) {
       $deps{'hfst'} = 1;
    }
    elsif (/\bPKG_CHECK_MODULES.*?lttoolbox\b/) {
-      $build{'liblttoolbox3-dev'} = 1;
+      $build{'liblttoolbox3-3.3-dev'} = 1;
    }
    elsif (/\bAC_PROG_AWK\b/) {
       $build{'gawk'} = 1;
@@ -44,7 +44,7 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-dev, pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21)";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }

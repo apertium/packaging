@@ -4,16 +4,15 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends:
-	apertium (>= 3.3),
-	apertium-lex-tools,
-	autotools-dev,
-	debhelper (>= 8.0),
-	dh-autoreconf,
-	gawk,
-	libapertium3-3.3-dev,
-	locales,
-	pkg-config (>= 0.21)
+Build-Depends: apertium (>= 3.3),
+               apertium-lex-tools,
+               autotools-dev,
+               debhelper (>= 8.0),
+               dh-autoreconf,
+               gawk,
+               libapertium3-3.3-dev,
+               locales,
+               pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-fr-es.git
@@ -21,11 +20,10 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fr
 
 Package: apertium-fr-es
 Architecture: all
-Depends:
-	apertium (>= 3.3),
-	apertium-lex-tools,
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: apertium (>= 3.3),
+         apertium-lex-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-es-fr
 Conflicts: apertium-es-fr
 Description: Apertium translation data for the French-Spanish pair

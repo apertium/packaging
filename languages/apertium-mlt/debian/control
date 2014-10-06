@@ -4,18 +4,17 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends:
-	apertium (>= 3.3),
-	autotools-dev,
-	cg3,
-	debhelper (>= 8.0),
-	dh-autoreconf,
-	gawk,
-	hfst,
-	libapertium3-3.3-dev,
-	libhfst38-dev,
-	locales,
-	pkg-config (>= 0.21)
+Build-Depends: apertium (>= 3.3),
+               autotools-dev,
+               cg3,
+               debhelper (>= 8.0),
+               dh-autoreconf,
+               gawk,
+               hfst,
+               libapertium3-3.3-dev,
+               libhfst38-dev,
+               locales,
+               pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-mlt.git
@@ -23,11 +22,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ml
 
 Package: apertium-mlt
 Architecture: all
-Depends:
-	apertium (>= 3.3),
-	cg3,
-	hfst,
-	${misc:Depends},
-	${shlibs:Depends}
+Depends: apertium (>= 3.3), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Maltese
  Data package providing Apertium language resources for Maltese
