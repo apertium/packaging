@@ -46,7 +46,7 @@ else {
    $opts{rev} = '';
 }
 
-$opts{'v'} =~ s@~@-@g;
+$opts{'v'} =~ s@~@.@g;
 
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
