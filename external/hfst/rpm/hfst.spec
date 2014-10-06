@@ -56,7 +56,7 @@ Development headers and libraries for HFST
 
 %build
 autoreconf -fi
-%configure --with-unicode-handler=ICU --enable-all-tools
+%configure --without-foma --with-unicode-handler=ICU --enable-all-tools
 ./scripts/generate-cc-files.sh
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 

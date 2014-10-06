@@ -36,6 +36,7 @@ License: GPL-2+
 Files: back-ends/foma/*
 Copyright: 2008-2013 Mans Hulden
 License: GPL-2
+Comment: The code is not built or linked, due to incompatible license.
 
 Files: back-ends/openfst/*
  back-ends/openfstwin/*
