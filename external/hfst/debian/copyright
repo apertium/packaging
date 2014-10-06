@@ -42,3 +42,8 @@ Files: back-ends/openfst/*
  back-ends/openfstwin/*
 Copyright: 2005-2010 Google, Inc.
 License: Apache-2.0
+
+Files: back-ends/sfst/*
+Copyright: 2012 Helmut Schmid <schmid@cis.uni-muenchen.de>
+License: GPL-3
+Comment: https://code.google.com/p/cistern/
