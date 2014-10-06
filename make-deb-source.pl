@@ -67,6 +67,18 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
 print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+
+# RPM tar.bz2
+my $rv = $opts{v};
+$rv =~ s@~@.@g;
+`cp -al '$pkname-$opts{v}' '$pkname-$rv'`;
+`find '$pkname-$rv' ! -type d | LC_ALL=C sort > orig.lst`;
+`find '$pkname-$rv' -type d -empty | LC_ALL=C sort >> orig.lst`;
+print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$rv.orig.tar' -T orig.lst`;
+`bzip2 -9c '$pkname\_$rv.orig.tar' > '$pkname\_$rv.orig.tar.bz2'`;
+`rm -rf '$pkname-$rv'`;
+
+# Debian tar.bz2
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$opts{v}.orig.tar' -T orig.lst`;

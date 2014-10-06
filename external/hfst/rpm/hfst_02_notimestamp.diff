@@ -16,7 +16,7 @@ Index: b/tools/src/hfst-proc/hfst-proc.cc
 +++ b/tools/src/hfst-proc/hfst-proc.cc	(working copy)
 @@ -140,7 +140,6 @@
      "\n" <<
-     "hfst-proc 0.0 (" <<
+     "hfst-proc 0.0 (" << 
      PACKAGE_STRING << ")" << std::endl <<
 -    __DATE__ << " " __TIME__ << std::endl <<
      "copyright (C) 2009-2011 University of Helsinki\n";
