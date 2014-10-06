@@ -69,7 +69,7 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
 print `osc rm * 2>&1`;
-print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av /tmp/autopkg.*/*.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/$pkname\_$opts{'v'}.orig.tar.bz2`;
 print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
 
 $spec =~ s/^Version:[^\n]+$/Version: $opts{'v'}/m;
