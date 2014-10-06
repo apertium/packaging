@@ -10,9 +10,8 @@ Build-Depends: apertium (>= 3.3),
                debhelper (>= 8.0),
                dh-autoreconf,
                gawk,
-               hfst,
                libapertium3-3.3-dev,
-               libhfst38-dev,
+               liblttoolbox3-3.3-dev,
                locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.5
@@ -22,6 +21,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-no
 
 Package: apertium-nob
 Architecture: all
-Depends: apertium (>= 3.3), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.3), cg3, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Norwegian Bokmål
  Data package providing Apertium language resources for Norwegian Bokmål
