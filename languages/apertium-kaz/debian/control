@@ -12,8 +12,8 @@ Build-Depends:
 	dh-autoreconf,
 	gawk,
 	hfst,
-	libapertium3-3.3-dev,
-	libhfst38-dev,
+	libapertium3-dev,
+	libhfst3-dev,
 	locales,
 	pkg-config (>= 0.21)
 Standards-Version: 3.9.5
