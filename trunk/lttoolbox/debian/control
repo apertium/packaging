@@ -16,9 +16,9 @@ Build-Depends: automake,
                libtool,
                libxml2-dev,
                libxml2-utils,
-               pkg-config (>= 0.20 ),
+               pkg-config (>= 0.20),
                xsltproc,
-               zlib1g-dev (>= 1.2.3 )
+               zlib1g-dev (>= 1.2.3)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/lttoolbox.git

@@ -28,6 +28,13 @@ while (<>) {
    elsif (/\bPKG_CHECK_MODULES.*?lttoolbox\b/) {
       $build{'liblttoolbox3-3.3-dev'} = 1;
    }
+   elsif (/\bPKG_CHECK_MODULES.*?libxml-2.0\b/) {
+      $build{'libxml2-dev'} = 1;
+      $build{'libxml2-utils'} = 1;
+   }
+   elsif (/\bLIBS\b.*?\blz\b/) {
+      $build{'zlib1g-dev'} = 1;
+   }
    elsif (/\bAC_PROG_AWK\b/) {
       $build{'gawk'} = 1;
    }

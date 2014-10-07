@@ -10,8 +10,11 @@ Build-Depends: apertium (>= 3.3),
                dh-autoreconf,
                libapertium3-3.3-dev,
                liblttoolbox3-3.3-dev,
+               libxml2-dev,
+               libxml2-utils,
                locales,
-               pkg-config (>= 0.21)
+               pkg-config (>= 0.21),
+               zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-lex-tools.git
