@@ -63,6 +63,8 @@ Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: libapertium3-3.3-0 (= ${binary:Version}),
+         libpcre3-dev,
+         libxml2-dev,
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: libapertium3-dev
