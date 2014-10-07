@@ -27,19 +27,10 @@ sub replace_in_file {
    rename $file.".$$.new", $file;
 }
 
-sub dollar_sort {
-   if (($a =~ m@^\$@ && $b =~ m@^\$@) || ($a !~ m@^\$@ && $b !~ m@^\$@)) {
-      return $a cmp $b;
-   }
-   if ($a =~ m@^\$@) {
-      return 1;
-   }
-   return -1;
-}
-
 if (!$ARGV[0]) {
    die "Must provide a package path!\n";
 }
+$ARGV[0] =~ s@/$@@g;
 
 use File::Basename;
 my $dir = dirname(__FILE__);
@@ -54,13 +45,15 @@ if (!(-e $pkg)) {
 }
 my ($pkname) = ($pkg =~ m@([-\w]+)$@);
 
-`find $pkg -type f -exec sed -r -i 's/apertium-[a-z]{2,3}(-[a-z]{2,3})?/$pkname/g' '{}' \\;`;
-`find $pkg -type f -exec sed -i 's/$pkname\@dlsi.ua.es/apertium-pmc\@dlsi.ua.es/g' '{}' \\;`;
-if ($ARGV[1]) {
-   `find $pkg -type f -exec replace 'Kazakh' '$ARGV[1]' -- '{}' \\;`;
-}
-if ($ARGV[2]) {
-   `find $pkg -type f -exec replace 'Tatar' '$ARGV[2]' -- '{}' \\;`;
+if ($pkname =~ m@^apertium-([a-z]{2,3})$@ || $pkname =~ m@^apertium-([a-z]{2,3})-([a-z]{2,3})$@) {
+   `find $pkg -type f -exec sed -r -i 's/apertium-[a-z]{2,3}(-[a-z]{2,3})?/$pkname/g' '{}' \\;`;
+   `find $pkg -type f -exec sed -i 's/$pkname\@dlsi.ua.es/apertium-pmc\@dlsi.ua.es/g' '{}' \\;`;
+   if ($ARGV[1]) {
+      `find $pkg -type f -exec replace 'Kazakh' '$ARGV[1]' -- '{}' \\;`;
+   }
+   if ($ARGV[2]) {
+      `find $pkg -type f -exec replace 'Tatar' '$ARGV[2]' -- '{}' \\;`;
+   }
 }
 
 my $url = 'http://svn.code.sf.net/p/apertium/svn/'.$pkg;
