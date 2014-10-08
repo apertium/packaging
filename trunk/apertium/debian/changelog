@@ -1,7 +1,7 @@
 apertium (3.3.0.56825-1) unstable; urgency=low
 
   * New upstream release
-  * Standards-Version updated to version 3.9.5
+  * Standards-Version updated to version 3.9.6
   * Using upstream release from svn, to avoid pre-generated automake files
   * Re-done packaging to take advantage of debhelper 9
   * Added multiarch support

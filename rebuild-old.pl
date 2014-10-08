@@ -94,15 +94,14 @@ foreach my $pkg (@$pkgs) {
       # Current version is not newer, so check if any dependencies were rebuilt
       # ToDo: This should really check the actual .deb dependencies and files
       # Counter-ToDo: Since .deb packages have no clue about Build-Depends, we'd need to check both anyway, so this is fine for now
-      # ToDo: Make this aware of line-split depends
       my $deps = (@$pkg[3]) || ('http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.@$pkg[0]);
-      $deps = `svn cat $deps/debian/control | egrep '^Build-Depends:' | sort | uniq`;
-      $deps =~ s@(Build-)?Depends:\s*@@g;
+      $deps = `svn cat $deps/debian/control`;
+      $deps = join("\n", ($deps =~ m@D?epends:(\s*.*?)\n\S@gs));
       foreach my $dep (split(/[,|\n]/, $deps)) {
          $dep =~ s@\([^)]+\)@@g;
-         $dep =~ s@\s$@@g;
-         $dep =~ s@^\s@@g;
-         if (defined $rebuilt{$dep}) {
+         $dep =~ s@\s+$@@gs;
+         $dep =~ s@^\s+@@gs;
+         if ($dep && defined $rebuilt{$dep}) {
             $rebuild = 1;
             print {$out} "\tdependency $dep was rebuilt\n";
             last;

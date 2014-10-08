@@ -16,7 +16,7 @@ Build-Depends: autoconf,
                libxml2-utils (>= 2.6.24),
                pkg-config (>= 0.20),
                xsltproc (>= 1.1.16)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git

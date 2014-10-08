@@ -1,7 +1,7 @@
 lttoolbox (3.3.0.56152-1) unstable; urgency=low
 
   * New upstream release
-  * Standards-Version updated to version 3.9.5
+  * Standards-Version updated to version 3.9.6
   * Using upstream release from svn, to avoid pre-generated automake files
     (Closes: #733185)
   * Re-done packaging to take advantage of debhelper 9

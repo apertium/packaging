@@ -16,7 +16,7 @@ Build-Depends: apertium (>= 3.3),
                liblttoolbox3-3.3-dev,
                locales,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-nno-nob.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-nno-nob.git
