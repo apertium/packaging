@@ -46,7 +46,7 @@ Files: apertium/tmx_*
 Copyright: 2004, Media Research Centre at the
  Sociology and Communications Department of the
  Budapest University of Technology and Economics
-License: LGPL-2.1
+License: LGPL-2.1+
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
  License as published by the Free Software Foundation; either
