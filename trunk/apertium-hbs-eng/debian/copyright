@@ -2,7 +2,11 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2014, Barbara Dujmic (http://sf.net/u/spiegelian)
+Copyright: 2013-2014, Francis M. Tyers <ftyers@prompsit.com>
+           2013-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2013, Pekka Kauppinen <kapexi@users.sourceforge.net>
+                2014, Barbara Dujmic <spiegelian@users.sourceforge.net>
+                2014, Krvoje <krvoje@users.sourceforge.net>
 License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

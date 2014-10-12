@@ -2,7 +2,10 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2012, Raymond HS (http://sf.net/u/raymondhs)
+Copyright: 2012-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2012, Francis M. Tyers <ftyers@prompsit.com>
+                2012, Raymond HS <raymondhs@users.sourceforge.net>
+                2012, Septina Dian Larasati <slarasati@users.sourceforge.net>
 License: GPL-2
 
 Files: autogen.sh
