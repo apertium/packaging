@@ -2,10 +2,15 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2012, Laurens Teirlynck < laurens . teirlynck AT gmail . com >
-           2010-2012, Pim Otte <otte . pim AT gmail . com>
-           2008-2012, Francis Tyers <spectre . ivixor AT net>
-           2008, Frank Naudé <naudefj AT users . sourceforge . net>
+Copyright: 2007-2008, Frank Naudé <naudefj@users.sourceforge.net>
+           2008-2011, Jim O'Regan <joregan@gmail.com>
+           2008-2013, Francis M. Tyers <ftyers@prompsit.com>
+           2010-2012, Pim Otte <otte.pim@gmail.com>
+           2011-2013, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2011, Keegan Crankshaw <kcranky@users.sourceforge.net>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
+                2012, Laurens Teirlynck <laurens.teirlynck@gmail.com>
+                2013, Trond Trosterud <trond.trosterud@hum.uit.no>
 License: GPL-2
 
 Files: autogen.sh

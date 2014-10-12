@@ -2,7 +2,21 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2005, Universitat d'Alacant / Universidad de Alicante (Grup Transducens)
+Copyright: 2007-2013, Universitat d'Alacant (Grup Transducens)
+           2007-2013, Francis M. Tyers <ftyers@prompsit.com>
+           2007-2013, Mikel L. Forcada <mlforcada@users.sourceforge.net>
+           2007-2013, Sergio Ortiz <sortiz@users.sourceforge.net>
+           2007-2014, Gema Ramírez Sánchez <g-ramirez@users.sourceforge.net>
+                2007, Oscar Senra Gómez <oscarsenra@users.sourceforge.net>
+           2008-2011, Jim O'Regan <joregan@gmail.com>
+                2008, Mireia Ginestí Rosell <mireia.ginesti@gmail.com>
+                2009, Pminervini <pminervini@users.sourceforge.net>
+                2010, Carlos Ramisch <ceramisch@users.sourceforge.net>
+           2012-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
+           2013-2014, Miriam Antunes Gonçalves <m-scalco@users.sourceforge.net>
+                2013, Filip Petkovski <fpetkovski@users.sourceforge.net>
+                2014, Alicia Nieva <anieva@users.sourceforge.net>
 License: GPL-2
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

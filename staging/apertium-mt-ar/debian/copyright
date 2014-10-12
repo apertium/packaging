@@ -2,9 +2,9 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2012, Maria Fronczak
-           2012, Kevin Brubeck Unhammer
-           2012, Francis M. Tyers
+Copyright: 2012-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2012, Francis M. Tyers <ftyers@prompsit.com>
+                2012, Maria Fronczak <mariafronczak@users.sourceforge.net>
 License: GPL-2
 
 Files: lexchoicebil.xsl

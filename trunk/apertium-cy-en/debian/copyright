@@ -2,7 +2,14 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2013, Jonas Fromseier Mortensen <jonas@fromseier.dk>
+Copyright: 2005-2009, Kevin Donnelly <donnek@users.sourceforge.net>
+           2007-2008, Generalitat de Catalunya (dades anglés)
+           2007-2010, Jim O'Regan <joregan@gmail.com>
+           2007-2014, Francis M. Tyers <ftyers@prompsit.com>
+                2007, Liamtomkins <liamtomkins@users.sourceforge.net>
+                2009, Pminervini <pminervini@users.sourceforge.net>
+           2010-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
 License: GPL-2
 
 Files: alt.xsl

@@ -2,7 +2,13 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2010, Francis Tyers <ftyers@prompsit.com>
+Copyright: 2010-2012, Francis M. Tyers <ftyers@prompsit.com>
+                2010, Jim O'Regan <joregan@gmail.com>
+                2010, Trond Trosterud <trond.trosterud@hum.uit.no>
+           2012-2013, Filip Petkovski <fpetkovski@users.sourceforge.net>
+           2012-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
+                2013, Lord_of_Life <lordoflife@users.sourceforge.net>
 License: GPL-2
 
 Files: lexchoicebil.xsl
