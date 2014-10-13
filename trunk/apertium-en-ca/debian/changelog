@@ -1,4 +1,4 @@
-apertium-en-ca (0.9.3~r34561-1) unstable; urgency=low
+apertium-en-ca (0.9.3~r34560-1) unstable; urgency=low
 
   * New upstream release
   * Significant changes in svn since tarball, so mixing new build scripts with

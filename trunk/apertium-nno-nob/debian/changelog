@@ -1,4 +1,4 @@
-apertium-nno-nob (1.0.0~r25754-1) experimental; urgency=low
+apertium-nno-nob (1.0.0~r25736-1) unstable; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with

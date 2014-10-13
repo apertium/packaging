@@ -82,6 +82,7 @@ foreach my $pkg (@$pkgs) {
    print "Making deb source for @$pkg[0]\n";
    my $gv = `./get-version.pl $opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);
+   print "$gv\n";
    my ($version,$srcdate) = split(/\t/, $gv);
    my $cli = "$opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
    if (@$pkg[3]) {

@@ -1,4 +1,4 @@
-apertium-sv-da (0.5.1~r44850-1) experimental; urgency=low
+apertium-sv-da (0.5.1~r44849-1) unstable; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with
