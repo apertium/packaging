@@ -1,5 +1,22 @@
-apertium-fr-es (0.9.2-1) unstable; urgency=low
+apertium-fr-es (0.9.2~r27055-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * New upstream release
+  * Significant changes in svn since tarball, so mixing new build scripts with
+    old data files
+  * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+
+apertium-fr-es (0.9.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Added dependency to apertium-pcre2
+
+ -- Francis Tyers <ftyers@prompsit.com>  Tue, 03 Mar 2009 21:21:52 +0000
+
+apertium-fr-es (0.8.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #465770)
+
+
+ -- Francis Tyers <ftyers@prompsit.com>  Thu, 14 Feb 2008 16:34:15 +0100

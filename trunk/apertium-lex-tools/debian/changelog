@@ -1,5 +1,6 @@
-apertium-lex-tools (0.1.0-1) unstable; urgency=low
+apertium-lex-tools (0.1.0+svn~57414-1) experimental; urgency=low
 
-  * Initial release (Closes: #475452)
+  [ Tino Didriksen ]
+  * Initial release based on SVN
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Kartik Mistry <kartik@debian.org>  Wed, 01 Oct 2014 16:50:33 +0530

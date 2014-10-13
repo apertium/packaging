@@ -1,5 +1,20 @@
-apertium-pt-ca (0.8.2-1) unstable; urgency=low
+apertium-pt-ca (0.8.2~r51165-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * New upstream release
+  * No significant changes in svn since tarball, so taking directly from svn
+  * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+
+apertium-pt-ca (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Added dependency on apertium-pcre2
+
+ -- Francis Tyers <ftyers@prompsit.com>  Wed, 04 Mar 2009 21:53:12 +0000
+
+apertium-pt-ca (0.8.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #486796)
+
+ -- Francis Tyers <ftyers@prompsit.com>  Wed, 18 Jun 2008 10:24:41 +0100

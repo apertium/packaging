@@ -1,5 +1,6 @@
-apertium-hbs-eng (0.1.0-1) unstable; urgency=low
+apertium-hbs-eng (0.1.0~r57554-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * Initial release
+  * No tarball release, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000

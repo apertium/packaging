@@ -1,5 +1,41 @@
-apertium-es-ca (1.2.1-1) unstable; urgency=low
+apertium-es-ca (1.2.1~r30656-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * New upstream release
+  * Significant changes in svn since tarball, so mixing new build scripts with
+    old data files
+  * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+
+apertium-es-ca (1.1.0-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rebuild package to fix "Unknown error matching regexp" (Closes: #726590)
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 07 Jul 2014 21:45:09 +0000
+
+apertium-es-ca (1.1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Added depends with apertium-pcre2
+
+ -- Francis Tyers <ftyers@prompsit.com>  Sun, 01 Mar 2009 21:12:33 +0000
+
+apertium-es-ca (1.0.5-2) unstable; urgency=low
+
+  * Fixed build-depends (Closes: #447462)
+
+ -- Francis Tyers <ftyers@prompsit.com>  Mon, 22 Oct 2007 16:25:09 +0100
+
+apertium-es-ca (1.0.5-1) unstable; urgency=low
+
+  * Licence changed to GPL
+  * Depends on apertium-3.0
+
+ -- Francis Tyers <ftyers@prompsit.com>  Mon, 08 Oct 2007 08:51:46 +0100
+
+apertium-es-ca (1.0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #320934)
+
+ -- Francis Tyers <f.tyers@uea.ac.uk>  Mon, 18 Sep 2006 21:42:00 +0100

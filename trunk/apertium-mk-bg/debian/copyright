@@ -2,8 +2,13 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2010, Tihomir Rangelov <tihomir.rangelov@gmail.com>
-           2010, Francis Tyers <ftyers@prompsit.com>
+Copyright: 2010-2013, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+           2010-2014, Francis M. Tyers <ftyers@prompsit.com>
+                2010, Jim O'Regan <joregan@gmail.com>
+                2010, Tihomir Rangelov <tihomir.rangelov@gmail.com>
+                2011, Pminervini <pminervini@users.sourceforge.net>
+                2011, Trond Trosterud <trond.trosterud@hum.uit.no>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
 License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

@@ -1,5 +1,6 @@
-apertium-mk-bg (0.2.0-1) unstable; urgency=low
+apertium-mk-bg (0.2.0~r49489-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * Initial release
+  * No significant changes in svn since tarball, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000

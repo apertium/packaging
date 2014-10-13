@@ -1,5 +1,13 @@
-apertium-eu-es (0.3.3-1) unstable; urgency=low
+apertium-eu-es (0.3.3~r56159-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * New upstream release
+  * No significant changes in svn since tarball, so taking directly from svn
+  * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+
+apertium-eu-es (0.3.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #505524)
+
+ -- Francis Tyers <ftyers@prompsit.com>  Fri, 24 Apr 2009 09:11:25 +0100

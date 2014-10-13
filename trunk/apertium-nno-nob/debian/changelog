@@ -1,5 +1,7 @@
-apertium-nno-nob (1.0.0-1) unstable; urgency=low
+apertium-nno-nob (1.0.0~r25754-1) unstable; urgency=low
 
-  * Initial release (Closes: #475452)
+  * Initial release
+  * Significant changes in svn since tarball, so mixing new build scripts with
+    old data files
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
