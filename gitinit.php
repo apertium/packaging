@@ -9,6 +9,7 @@ while ($line = fgets(STDIN)) {
 	if (!preg_match('@^([^/]+)/([^/]+)$@u', $line, $m)) {
 		continue;
 	}
+	chdir(__DIR__);
 
 	$path = $m[1];
 	$pkname = $m[2];
@@ -32,7 +33,6 @@ while ($line = fgets(STDIN)) {
 
 	echo "$path/$pkname $ver $rev\n";
 
-	chdir(__DIR__);
 	echo shell_exec('./single-dpkg.pl '.$path.'/'.$pkname.' --auto 0 -m "Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>" --rev '.$rev);
 	$glob = glob('/tmp/autopkg.*/'.$pkname.'_*.dsc');
 	if (empty($glob)) {

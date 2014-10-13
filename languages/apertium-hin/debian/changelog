@@ -1,5 +1,6 @@
-apertium-hin (0.1.0-1) experimental; urgency=low
+apertium-hin (0.1.0~r57344-1) experimental; urgency=low
 
   * Initial release
+  * No tarball release, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
