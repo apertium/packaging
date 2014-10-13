@@ -1,11 +1,15 @@
 apertium-en-es (0.8.0~r32463-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream release (Closes: #761087)
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
   * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Added debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 13 Oct 2014 21:55:05 +0530
 
 apertium-en-es (0.6.0-1.1) unstable; urgency=low
 
