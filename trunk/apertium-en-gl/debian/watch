@@ -1,0 +1,4 @@
+version=3
+opts=filenamemangle=s/\S*download=//g \
+https://qa.debian.org/cgi-bin/fakeupstream.cgi?upstream=sf/apertium/apertium-en-gl \
+.*=apertium-en-gl(?:[_\-]v?|)(\d[^\s/]*)\.(?:tar\.xz|txz|tar\.bz2|tbz2|tar\.gz|tgz)
