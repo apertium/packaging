@@ -1,4 +1,4 @@
-apertium-isl-eng (0.1.0~r20606-1) unstable; urgency=low
+apertium-isl-eng (0.1.0~r20606-1) experimental; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with

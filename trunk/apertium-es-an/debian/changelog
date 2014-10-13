@@ -1,4 +1,4 @@
-apertium-es-an (0.3.0~r42188-1) unstable; urgency=low
+apertium-es-an (0.3.0~r42188-1) experimental; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with

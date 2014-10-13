@@ -1,4 +1,4 @@
-apertium-en-gl (0.5.2~r57551-1) unstable; urgency=low
+apertium-en-gl (0.5.2~r57551-1) experimental; urgency=low
 
   * Initial release
   * No significant changes in svn since tarball, so taking directly from svn

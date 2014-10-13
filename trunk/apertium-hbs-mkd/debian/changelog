@@ -1,4 +1,4 @@
-apertium-hbs-mkd (0.1.0~r57554-1) unstable; urgency=low
+apertium-hbs-mkd (0.1.0~r57554-1) experimental; urgency=low
 
   * Initial release
   * No tarball release, so taking directly from svn

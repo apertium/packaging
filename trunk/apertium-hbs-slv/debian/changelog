@@ -1,4 +1,4 @@
-apertium-hbs-slv (0.1.0~r43892-1) unstable; urgency=low
+apertium-hbs-slv (0.1.0~r43892-1) experimental; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with

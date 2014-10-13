@@ -1,4 +1,4 @@
-apertium-dan-nor (1.0.0~r48173-1) unstable; urgency=low
+apertium-dan-nor (1.0.0~r48173-1) experimental; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with

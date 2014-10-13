@@ -1,4 +1,4 @@
-apertium-es-it (0.1.0~r51165-1) unstable; urgency=low
+apertium-es-it (0.1.0~r51165-1) experimental; urgency=low
 
   * Initial release
   * No tarball release, so taking directly from svn

@@ -1,4 +1,4 @@
-apertium-is-sv (0.1.0~r56030-1) unstable; urgency=low
+apertium-is-sv (0.1.0~r56030-1) experimental; urgency=low
 
   * Initial release
   * No significant changes in svn since tarball, so taking directly from svn

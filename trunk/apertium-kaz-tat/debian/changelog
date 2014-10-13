@@ -1,4 +1,4 @@
-apertium-kaz-tat (0.2.1~r57554-1) unstable; urgency=low
+apertium-kaz-tat (0.2.1~r57554-1) experimental; urgency=low
 
   * Initial release
   * No significant changes in svn since tarball, so taking directly from svn

@@ -1,4 +1,4 @@
-apertium-eu-en (0.3.1~r56205-1) unstable; urgency=low
+apertium-eu-en (0.3.1~r56205-1) experimental; urgency=low
 
   * Initial release
   * No significant changes in svn since tarball, so taking directly from svn
