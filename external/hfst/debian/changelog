@@ -1,3 +1,9 @@
+hfst (3.8.1~r4088-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 4 Nov 2014 09:30:00 +0000
+
 hfst (3.8.0~r4029-1) experimental; urgency=low
 
   * Initial release

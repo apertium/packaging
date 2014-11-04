@@ -1,5 +1,5 @@
 Name: hfst
-Version: 3.8.0
+Version: 3.8.1
 Release: 1%{?dist}
 Summary: Helsinki Finite-State Transducer Technology
 Group: Development/Tools
@@ -89,5 +89,8 @@ rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 %postun -n libhfst38 -p /sbin/ldconfig
 
 %changelog
+* Tue Nov 04 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.1
+- New upstream release
+
 * Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.0
 - Initial version of the package

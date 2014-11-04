@@ -17,12 +17,14 @@ Build-Depends: automake,
                libxml2-dev,
                libxml2-utils,
                pkg-config (>= 0.20),
+               python-minimal,
+               python-testtools,
                xsltproc,
                zlib1g-dev (>= 1.2.3)
 Standards-Version: 3.9.6
 Homepage: http://apertium.org/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/lttoolbox.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
+Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
 
 Package: lttoolbox
 Architecture: any
