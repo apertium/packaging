@@ -12,7 +12,7 @@ Build-Depends: apertium (>= 3.3),
                gawk,
                hfst,
                libapertium3-3.3-dev,
-               libhfst38-dev,
+               libhfst39-dev,
                locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.6
