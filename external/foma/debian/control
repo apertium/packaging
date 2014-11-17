@@ -18,11 +18,18 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/foma.git
 
 Package: foma
 Architecture: any
-Provides: foma
 Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Tools for constructing various finite-state automata
  Compiler, programming language, and C library for
  constructing finite-state automata and transducers for various uses.
+
+Package: libfoma0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Foma runtime libraries
+ Runtime libraries for foma
 
 Package: libfoma0-dev
 Architecture: any
