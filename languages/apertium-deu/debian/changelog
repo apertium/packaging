@@ -1,0 +1,6 @@
+apertium-deu (0.1.0-1) unstable; urgency=low
+
+  * Initial release
+  * No tarball release, so taking directly from svn
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 16 Dec 2014 08:41:28 +0000

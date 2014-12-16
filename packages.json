@@ -29,7 +29,7 @@
    ["languages/apertium-chv"],
 #   ["languages/apertium-cym"], # Not buildable
    ["languages/apertium-dan"],
-#   ["languages/apertium-deu"], # Not buildable
+   ["languages/apertium-deu"],
    ["languages/apertium-ell"],
 #   ["languages/apertium-eng"], # Not buildable
    ["languages/apertium-eus"],
