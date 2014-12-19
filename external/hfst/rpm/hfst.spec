@@ -32,21 +32,21 @@ The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analysers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
-%package -n libhfst39
+%package -n libhfst40
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
 Provides: libhfst3 = %{version}-%{release}
 
-%description -n libhfst39
+%description -n libhfst40
 Runtime libraries for HFST
 
-%package -n libhfst39-devel
+%package -n libhfst40-devel
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
-Requires: libhfst39 = %{version}-%{release}
+Requires: libhfst40 = %{version}-%{release}
 Provides: libhfst3-devel = %{version}-%{release}
 
-%description -n libhfst39-devel
+%description -n libhfst40-devel
 Development headers and libraries for HFST
 
 %prep
@@ -71,12 +71,12 @@ rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
-%files -n libhfst39
+%files -n libhfst40
 %defattr(-,root,root)
 %{python_sitelib}/*
 %{_libdir}/*.so.*
 
-%files -n libhfst39-devel
+%files -n libhfst40-devel
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
@@ -84,11 +84,14 @@ rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
 
-%post -n libhfst39 -p /sbin/ldconfig
+%post -n libhfst40 -p /sbin/ldconfig
 
-%postun -n libhfst39 -p /sbin/ldconfig
+%postun -n libhfst40 -p /sbin/ldconfig
 
 %changelog
+* Fri Dec 19 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.2
+- New upstream release
+
 * Tue Nov 04 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.1
 - New upstream release
 
