@@ -37,8 +37,8 @@ Package: libhfst40
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst
-Conflicts: libhfst
-Replaces: libhfst
+Conflicts: libhfst, libhfst3
+Replaces: libhfst, libhfst3
 Description: Helsinki Finite-State Transducer Technology Libraries
  Runtime libraries for HFST
 
@@ -47,7 +47,7 @@ Architecture: any
 Section: libdevel
 Depends: libhfst40 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst-dev
-Conflicts: libhfst-dev
-Replaces: libhfst-dev
+Conflicts: libhfst-dev, libhfst3-dev
+Replaces: libhfst-dev, libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files
  Development headers and libraries for HFST
