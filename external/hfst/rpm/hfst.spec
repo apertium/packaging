@@ -1,5 +1,5 @@
 Name: hfst
-Version: 3.8.1
+Version: 3.8.2
 Release: 1%{?dist}
 Summary: Helsinki Finite-State Transducer Technology
 Group: Development/Tools
@@ -16,8 +16,6 @@ BuildRequires: flex
 BuildRequires: gcc-c++
 BuildRequires: libicu-devel
 BuildRequires: libtool
-BuildRequires: libxml2
-BuildRequires: libxml2-devel
 BuildRequires: pkgconfig
 BuildRequires: python
 BuildRequires: python-devel
@@ -35,7 +33,9 @@ based on weighted and unweighted finite-state transducer technology.
 %package -n libhfst40
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
-Provides: libhfst3 = %{version}-%{release}
+Provides: libhfst = %{version}-%{release}
+Obsoletes: libhfst < %{version}-%{release}
+Obsoletes: libhfst3 < %{version}-%{release}
 
 %description -n libhfst40
 Runtime libraries for HFST
@@ -44,7 +44,9 @@ Runtime libraries for HFST
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
 Requires: libhfst40 = %{version}-%{release}
-Provides: libhfst3-devel = %{version}-%{release}
+Provides: libhfst-devel = %{version}-%{release}
+Obsoletes: libhfst-devel < %{version}-%{release}
+Obsoletes: libhfst3-devel < %{version}-%{release}
 
 %description -n libhfst40-devel
 Development headers and libraries for HFST
