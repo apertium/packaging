@@ -99,7 +99,7 @@ close $crt;
 my $gv = `./get-version.pl --url '$url' 2>/dev/null`;
 ($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);
 $gv .= '-1';
-replace_in_file("$pkg/debian/changelog", "^$pkname.*urgency=low", "$pkname ($gv) unstable; urgency=low");
+replace_in_file("$pkg/debian/changelog", "^$pkname.*urgency=low", "$pkname ($gv) experimental; urgency=low");
 
 chdir $pkg or die "$!";
 `wrap-and-sort`;
