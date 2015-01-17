@@ -27,7 +27,6 @@ debian/tmp/usr/share/man/man1/apertium-preprocess-transfer.*
 debian/tmp/usr/share/man/man1/apertium-pretransfer.*
 debian/tmp/usr/share/man/man1/apertium-re*
 debian/tmp/usr/share/man/man1/apertium-tagger.*
-debian/tmp/usr/share/man/man1/apertium-tmxbuild.*
 debian/tmp/usr/share/man/man1/apertium-transfer.*
 debian/tmp/usr/share/man/man1/apertium-unformat.*
 debian/tmp/usr/share/man/man1/apertium-utils-fixlatex.*
