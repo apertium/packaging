@@ -51,8 +51,9 @@ Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Provides: libapertium3
-Conflicts: libapertium3
+Provides: libapertium
+Conflicts: libapertium, libapertium3
+Replaces: libapertium, libapertium3
 Description: Shared library for Apertium
  Contains shared library for the Apertium shallow-transfer
  machine translation engine.
@@ -67,8 +68,9 @@ Depends: libapertium3-3.3-0 (= ${binary:Version}),
          libxml2-dev,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: libapertium3-dev
-Conflicts: libapertium3-dev
+Provides: libapertium-dev
+Conflicts: libapertium-dev, libapertium3-dev
+Replaces: libapertium-dev, libapertium3-dev
 Description: Development library for Apertium
  Contains development files for the Apertium shallow-transfer
  machine translation engine.

@@ -30,7 +30,9 @@ processing applications.
 %package -n liblttoolbox3-3_3-0
 Summary: Shared library for lttoolbox
 Group: Development/Libraries
-Provides: liblttoolbox3 = %{version}-%{release}
+Provides: liblttoolbox = %{version}-%{release}
+Obsoletes: liblttoolbox < %{version}-%{release}
+Obsoletes: liblttoolbox3 < %{version}-%{release}
 
 %description -n liblttoolbox3-3_3-0
 Contains shared library for lttoolbox
@@ -39,7 +41,9 @@ Contains shared library for lttoolbox
 Summary: Development library for lttoolbox
 Group: Development/Libraries
 Requires: liblttoolbox3-3_3-0 = %{version}-%{release}
-Provides: liblttoolbox3-devel = %{version}-%{release}
+Provides: liblttoolbox-devel = %{version}-%{release}
+Obsoletes: liblttoolbox-devel < %{version}-%{release}
+Obsoletes: liblttoolbox3-devel < %{version}-%{release}
 
 %description -n liblttoolbox3-3_3-devel
 Contains development library for lttoolbox.

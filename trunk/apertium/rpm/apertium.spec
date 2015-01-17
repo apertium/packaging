@@ -46,7 +46,9 @@ the linguistic data needed in the right format.
 %package -n libapertium3-3_3-0
 Summary: Shared library for apertium
 Group: Development/Libraries
-Provides: libapertium3 = %{version}-%{release}
+Provides: libapertium = %{version}-%{release}
+Obsoletes: libapertium < %{version}-%{release}
+Obsoletes: libapertium3 < %{version}-%{release}
 
 %description -n libapertium3-3_3-0
 Contains shared library for the Apertium shallow-transfer
@@ -56,7 +58,9 @@ machine translation engine.
 Summary: Development library for apertium
 Group: Development/Libraries
 Requires: libapertium3-3_3-0 = %{version}-%{release}
-Provides: libapertium3-devel = %{version}-%{release}
+Provides: libapertium-devel = %{version}-%{release}
+Obsoletes: libapertium-devel < %{version}-%{release}
+Obsoletes: libapertium3-devel < %{version}-%{release}
 
 %description -n libapertium3-3_3-devel
 Contains development files for the Apertium shallow-transfer
