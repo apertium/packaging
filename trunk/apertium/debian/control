@@ -10,10 +10,10 @@ Build-Depends: autoconf,
                dh-autoreconf,
                dh-exec (>= 0.3),
                flex (>= 2.5.33),
-               liblttoolbox3-3.3-dev (>= 3.3),
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils (>= 2.6.24),
+               lttoolbox-dev (>= 3.3),
                pkg-config (>= 0.20),
                xsltproc (>= 1.1.16)
 Standards-Version: 3.9.6
