@@ -1,0 +1,13 @@
+debian/tmp/usr/bin/lt-comp
+debian/tmp/usr/bin/lt-expand
+debian/tmp/usr/bin/lt-print
+debian/tmp/usr/bin/lt-trim
+debian/tmp/usr/include
+debian/tmp/usr/lib/*/*.a
+debian/tmp/usr/lib/*/*.so
+debian/tmp/usr/lib/*/pkgconfig
+debian/tmp/usr/share/lttoolbox
+debian/tmp/usr/share/man/man1/lt-comp.*
+debian/tmp/usr/share/man/man1/lt-expand.*
+debian/tmp/usr/share/man/man1/lt-print.*
+debian/tmp/usr/share/man/man1/lt-trim.*

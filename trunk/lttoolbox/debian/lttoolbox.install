@@ -1,2 +1,6 @@
-debian/tmp/usr/bin
-debian/tmp/usr/share
+debian/tmp/usr/bin/lt-proc
+debian/tmp/usr/bin/lt-tmxcomp
+debian/tmp/usr/bin/lt-tmxproc
+debian/tmp/usr/share/man/man1/lt-proc.*
+debian/tmp/usr/share/man/man1/lt-tmxcomp.*
+debian/tmp/usr/share/man/man1/lt-tmxproc.*

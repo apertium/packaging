@@ -60,15 +60,14 @@ Description: Shared library for Apertium
 
 Package: apertium-dev
 Architecture: any
-Pre-Depends: ${misc:Pre-Depends}
-Depends: libapertium3-3.3-0 (= ${binary:Version}),
+Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
+         lttoolbox-dev (>= 3.3),
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-dev
-Conflicts: apertium-dev, libapertium3-dev
-Replaces: apertium-dev, libapertium3-dev
+Conflicts: libapertium3-dev
+Replaces: libapertium3-dev
 Description: Development tools and library for Apertium
  Contains development files for the Apertium shallow-transfer
  machine translation engine.
