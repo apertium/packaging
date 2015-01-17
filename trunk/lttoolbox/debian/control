@@ -56,5 +56,5 @@ Depends: lttoolbox (= ${binary:Version}),
          ${shlibs:Depends}
 Conflicts: liblttoolbox3-dev
 Replaces: liblttoolbox3-dev
-Description: Development library for lttoolbox
+Description: Development tools and library for lttoolbox
  Contains development files for lttoolbox.

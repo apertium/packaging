@@ -25,9 +25,6 @@ while (<>) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
-   elsif (/\bPKG_CHECK_MODULES.*?lttoolbox\b/) {
-      $build{'liblttoolbox3-3.3-dev'} = 1;
-   }
    elsif (/\bPKG_CHECK_MODULES.*?libxml-2.0\b/) {
       $build{'libxml2-dev'} = 1;
       $build{'libxml2-utils'} = 1;
@@ -51,7 +48,7 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium (>= 3.3), libapertium3-3.3-dev, pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium-dev, pkg-config (>= 0.21)";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
