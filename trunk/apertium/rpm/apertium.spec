@@ -66,7 +66,7 @@ Contains development files for the Apertium shallow-transfer
 machine translation engine.
 
 %package -n apertium-all-devel
-Summary: Meta-package for all tools required for Apertium development
+Summary: Metapackage for all tools required for Apertium development
 Group: Development/Tools
 Requires: apertium-devel
 Requires: apertium-lex-tools
@@ -74,7 +74,7 @@ Requires: cg3
 Requires: hfst
 
 %description -n apertium-all-devel
-Meta-package to get all tools required for development of Apertium
+Metapackage to get all tools required for development of Apertium
 languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
 cg3, and hfst.
 

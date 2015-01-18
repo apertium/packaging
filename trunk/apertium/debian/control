@@ -76,8 +76,8 @@ Package: apertium-all-dev
 Version: 1.0
 Architecture: all
 Depends: apertium-dev, apertium-lex-tools, cg3, hfst
-Description: Meta-package for all tools required for Apertium development
- Meta-package to get all tools required for development of Apertium
+Description: Metapackage for all tools required for Apertium development
+ Metapackage to get all tools required for development of Apertium
  languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
  cg3, and hfst.
 
@@ -85,8 +85,8 @@ Package: apertium-all-languages
 Version: 1.0
 Architecture: all
 Depends: apertium-hbs, apertium-hin, apertium-kaz, apertium-tat, apertium-urd
-Description: Meta-package for all Apertium single languages
- Meta-package to get all Apertium single language analyzers and generators
+Description: Metapackage for all Apertium single languages
+ Metapackage to get all Apertium single language analyzers and generators
 
 Package: apertium-all-pairs
 Version: 1.0
@@ -129,5 +129,5 @@ Depends: apertium-af-nl,
          apertium-pt-gl,
          apertium-sv-da,
          apertium-urd-hin
-Description: Meta-package for all Apertium translation pairs
- Meta-package to get all Apertium translation pairs
+Description: Metapackage for all Apertium translation pairs
+ Metapackage to get all Apertium translation pairs
