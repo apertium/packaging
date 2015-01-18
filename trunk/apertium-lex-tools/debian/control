@@ -20,6 +20,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-le
 
 Package: apertium-lex-tools
 Architecture: any
-Depends: apertium (>= 3.3), ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Constraint-based lexical selection module
  Constraint-based lexical selection module used by Apertium
