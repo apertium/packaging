@@ -37,16 +37,14 @@ Obsoletes: liblttoolbox3 < %{version}-%{release}
 %description -n liblttoolbox3-3_3-0
 Contains shared library for lttoolbox
 
-%package -n liblttoolbox3-3_3-devel
-Summary: Development library for lttoolbox
-Group: Development/Libraries
-Requires: liblttoolbox3-3_3-0 = %{version}-%{release}
-Provides: liblttoolbox-devel = %{version}-%{release}
-Obsoletes: liblttoolbox-devel < %{version}-%{release}
+%package -n lttoolbox-devel
+Summary: Development tools and library for lttoolbox
+Group: Development/Tools
+Requires: lttoolbox = %{version}-%{release}
 Obsoletes: liblttoolbox3-devel < %{version}-%{release}
 
-%description -n liblttoolbox3-3_3-devel
-Contains development library for lttoolbox.
+%description -n lttoolbox-devel
+Contains development tools and library for lttoolbox.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -64,20 +62,32 @@ ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
-%{_bindir}/*
-%{_datadir}/%{name}
-%{_datadir}/man/man1/*
+%{_bindir}/lt-proc
+%{_bindir}/lt-tmxcomp
+%{_bindir}/lt-tmxproc
+%{_datadir}/man/man1/lt-proc.*
+%{_datadir}/man/man1/lt-tmxcomp.*
+%{_datadir}/man/man1/lt-tmxproc.*
 
 %files -n liblttoolbox3-3_3-0
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n liblttoolbox3-3_3-devel
+%files -n lttoolbox-devel
 %defattr(-,root,root)
+%{_bindir}/lt-comp
+%{_bindir}/lt-expand
+%{_bindir}/lt-print
+%{_bindir}/lt-trim
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.a*
 %{_libdir}/*.so
+%{_datadir}/%{name}
+%{_datadir}/man/man1/lt-comp.*
+%{_datadir}/man/man1/lt-expand.*
+%{_datadir}/man/man1/lt-print.*
+%{_datadir}/man/man1/lt-trim.*
 
 %post -n liblttoolbox3-3_3-0 -p /sbin/ldconfig
 

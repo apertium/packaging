@@ -17,7 +17,7 @@ BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: flex
 BuildRequires: gcc-c++
-BuildRequires: liblttoolbox3-3_3-devel
+BuildRequires: lttoolbox-devel
 BuildRequires: libtool
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
@@ -54,15 +54,14 @@ Obsoletes: libapertium3 < %{version}-%{release}
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
-%package -n libapertium3-3_3-devel
-Summary: Development library for apertium
-Group: Development/Libraries
-Requires: libapertium3-3_3-0 = %{version}-%{release}
-Provides: libapertium-devel = %{version}-%{release}
-Obsoletes: libapertium-devel < %{version}-%{release}
+%package -n apertium-devel
+Summary: Development tools and library for apertium
+Group: Development/Tools
+Requires: apertium = %{version}-%{release}
+Requires: lttoolbox-devel = %{version}-%{release}
 Obsoletes: libapertium3-devel < %{version}-%{release}
 
-%description -n libapertium3-3_3-devel
+%description -n apertium-devel
 Contains development files for the Apertium shallow-transfer
 machine translation engine.
 
@@ -77,26 +76,73 @@ make %{?_smp_mflags} || make %{?_smp_mflags} || make
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
+rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
 ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README README-MODES
-%{_bindir}/*
+%{_bindir}/apertium
+%{_bindir}/apertium-des*
+%{_bindir}/apertium-interchunk
+%{_bindir}/apertium-multiple-translations
+%{_bindir}/apertium-postchunk
+%{_bindir}/apertium-postlatex
+%{_bindir}/apertium-postlatex-raw
+%{_bindir}/apertium-prelatex
+%{_bindir}/apertium-preprocess-transfer
+%{_bindir}/apertium-pretransfer
+%{_bindir}/apertium-re*
+%{_bindir}/apertium-tagger
+%{_bindir}/apertium-tmxbuild
+%{_bindir}/apertium-transfer
+%{_bindir}/apertium-unformat
+%{_bindir}/apertium-utils-fixlatex
 %{_datadir}/%{name}
-%{_datadir}/man/man1/*
+%{_datadir}/man/man1/apertium.*
+%{_datadir}/man/man1/apertium-des*
+%{_datadir}/man/man1/apertium-interchunk.*
+%{_datadir}/man/man1/apertium-multiple-translations.*
+%{_datadir}/man/man1/apertium-postchunk.*
+%{_datadir}/man/man1/apertium-postlatex.*
+%{_datadir}/man/man1/apertium-postlatex-raw.*
+%{_datadir}/man/man1/apertium-prelatex.*
+%{_datadir}/man/man1/apertium-preprocess-transfer.*
+%{_datadir}/man/man1/apertium-pretransfer.*
+%{_datadir}/man/man1/apertium-re*
+%{_datadir}/man/man1/apertium-tagger.*
+%{_datadir}/man/man1/apertium-transfer.*
+%{_datadir}/man/man1/apertium-unformat.*
+%{_datadir}/man/man1/apertium-utils-fixlatex.*
 
 %files -n libapertium3-3_3-0
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n libapertium3-3_3-devel
+%files -n apertium-devel
 %defattr(-,root,root)
+%{_bindir}/apertium-filter-ambiguity
+%{_bindir}/apertium-gen-deformat
+%{_bindir}/apertium-gen-modes
+%{_bindir}/apertium-gen-reformat
+%{_bindir}/apertium-tagger-apply-new-rules
+%{_bindir}/apertium-tagger-readwords
+%{_bindir}/apertium-validate-acx
+%{_bindir}/apertium-validate-dictionary
+%{_bindir}/apertium-validate-interchunk
+%{_bindir}/apertium-validate-modes
+%{_bindir}/apertium-validate-postchunk
+%{_bindir}/apertium-validate-tagger
+%{_bindir}/apertium-validate-transfer
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.a*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
+%{_datadir}/man/man1/apertium-filter-ambiguity.*
+%{_datadir}/man/man1/apertium-gen-*
+%{_datadir}/man/man1/apertium-tagger-apply-new-rules.*
+%{_datadir}/man/man1/apertium-validate-*
 
 %post -n libapertium3-3_3-0 -p /sbin/ldconfig
 
