@@ -65,6 +65,19 @@ Obsoletes: libapertium3-devel < %{version}-%{release}
 Contains development files for the Apertium shallow-transfer
 machine translation engine.
 
+%package -n apertium-all-devel
+Summary: Meta-package for all tools required for Apertium development
+Group: Development/Tools
+Requires: apertium-devel
+Requires: apertium-lex-tools
+Requires: cg3
+Requires: hfst
+
+%description -n apertium-all-devel
+Meta-package to get all tools required for development of Apertium
+languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
+cg3, and hfst.
+
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -143,6 +156,8 @@ ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
 %{_datadir}/man/man1/apertium-gen-*
 %{_datadir}/man/man1/apertium-tagger-apply-new-rules.*
 %{_datadir}/man/man1/apertium-validate-*
+
+%files -n apertium-all-devel
 
 %post -n libapertium3-3_3-0 -p /sbin/ldconfig
 

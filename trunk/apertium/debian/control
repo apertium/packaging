@@ -71,3 +71,63 @@ Replaces: libapertium3-dev
 Description: Development tools and library for Apertium
  Contains development files for the Apertium shallow-transfer
  machine translation engine.
+
+Package: apertium-all-dev
+Version: 1.0
+Architecture: all
+Depends: apertium-dev, apertium-lex-tools, cg3, hfst
+Description: Meta-package for all tools required for Apertium development
+ Meta-package to get all tools required for development of Apertium
+ languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
+ cg3, and hfst.
+
+Package: apertium-all-languages
+Version: 1.0
+Architecture: all
+Depends: apertium-hbs, apertium-hin, apertium-kaz, apertium-tat, apertium-urd
+Description: Meta-package for all Apertium single languages
+ Meta-package to get all Apertium single language analyzers and generators
+
+Package: apertium-all-pairs
+Version: 1.0
+Architecture: all
+Depends: apertium-af-nl,
+         apertium-br-fr,
+         apertium-ca-it,
+         apertium-cy-en,
+         apertium-dan-nor,
+         apertium-en-ca,
+         apertium-en-es,
+         apertium-en-gl,
+         apertium-eo-ca,
+         apertium-eo-en,
+         apertium-eo-es,
+         apertium-es-an,
+         apertium-es-ast,
+         apertium-es-ca,
+         apertium-es-gl,
+         apertium-es-it,
+         apertium-es-pt,
+         apertium-es-ro,
+         apertium-eu-en,
+         apertium-eu-es,
+         apertium-fr-ca,
+         apertium-fr-es,
+         apertium-hbs-eng,
+         apertium-hbs-mkd,
+         apertium-hbs-slv,
+         apertium-id-ms,
+         apertium-is-sv,
+         apertium-isl-eng,
+         apertium-kaz-tat,
+         apertium-mk-bg,
+         apertium-mk-en,
+         apertium-mt-ar,
+         apertium-oc-ca,
+         apertium-oc-es,
+         apertium-pt-ca,
+         apertium-pt-gl,
+         apertium-sv-da,
+         apertium-urd-hin
+Description: Meta-package for all Apertium translation pairs
+ Meta-package to get all Apertium translation pairs

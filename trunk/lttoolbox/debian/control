@@ -51,9 +51,7 @@ Description: Shared library for lttoolbox
 
 Package: lttoolbox-dev
 Architecture: any
-Depends: lttoolbox (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: lttoolbox (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Conflicts: liblttoolbox3-dev
 Replaces: liblttoolbox3-dev
 Description: Development tools and library for lttoolbox

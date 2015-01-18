@@ -15,13 +15,12 @@ debian/tmp/usr/bin/apertium-transfer
 debian/tmp/usr/bin/apertium-unformat
 debian/tmp/usr/bin/apertium-utils-fixlatex
 debian/tmp/usr/share/apertium
-debian/tmp/usr/share/man/man1/apertium.*
 debian/tmp/usr/share/man/man1/apertium-des*
 debian/tmp/usr/share/man/man1/apertium-interchunk.*
 debian/tmp/usr/share/man/man1/apertium-multiple-translations.*
 debian/tmp/usr/share/man/man1/apertium-postchunk.*
-debian/tmp/usr/share/man/man1/apertium-postlatex.*
 debian/tmp/usr/share/man/man1/apertium-postlatex-raw.*
+debian/tmp/usr/share/man/man1/apertium-postlatex.*
 debian/tmp/usr/share/man/man1/apertium-prelatex.*
 debian/tmp/usr/share/man/man1/apertium-preprocess-transfer.*
 debian/tmp/usr/share/man/man1/apertium-pretransfer.*
@@ -30,3 +29,4 @@ debian/tmp/usr/share/man/man1/apertium-tagger.*
 debian/tmp/usr/share/man/man1/apertium-transfer.*
 debian/tmp/usr/share/man/man1/apertium-unformat.*
 debian/tmp/usr/share/man/man1/apertium-utils-fixlatex.*
+debian/tmp/usr/share/man/man1/apertium.*
