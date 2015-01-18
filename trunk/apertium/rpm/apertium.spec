@@ -58,7 +58,7 @@ machine translation engine.
 Summary: Development tools and library for apertium
 Group: Development/Tools
 Requires: apertium = %{version}-%{release}
-Requires: lttoolbox-devel = %{version}-%{release}
+Requires: lttoolbox-devel >= 3.3.0
 Obsoletes: libapertium3-devel < %{version}-%{release}
 
 %description -n apertium-devel

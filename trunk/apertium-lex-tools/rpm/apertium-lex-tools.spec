@@ -15,6 +15,7 @@ BuildRequires: libtool
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
 BuildRequires: pkgconfig
+BuildRequires: pcre-devel
 BuildRequires: zlib-devel
 
 %description
