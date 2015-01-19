@@ -27,7 +27,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	mkdir -p $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore
-	cp -a [a-c]* [e-z]* $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore/
+	cp -a [A-Ca-c]* [E-Ze-z]* $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore/
 	cd $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore/ && \
 	./configure --prefix=/usr && \
 	$(MAKE) && \

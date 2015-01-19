@@ -130,7 +130,7 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tlaunching rebuild\n";
    `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
    my $is_data = '';
-   if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@) {
+   if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || @$pkg[0] =~ m@/giella-@) {
       # If this is a data-only package, only build it for one arch per distro
       print {$out} "\tdata only\n";
       $is_data = 'data';
