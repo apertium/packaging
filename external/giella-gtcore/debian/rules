@@ -32,7 +32,7 @@ override_dh_auto_install:
 	./configure --prefix=/usr && \
 	$(MAKE) && \
 	$(MAKE) DESTDIR=$$(pwd)/../../.. install
-	echo -e '#!/bin/bash\necho "/usr/share/giella-gtcore"' > $$(pwd)/debian/giella-gtcore/usr/bin/gt-core.sh
+	echo '#!/bin/bash\necho "/usr/share/giella-gtcore"' > $$(pwd)/debian/giella-gtcore/usr/bin/gt-core.sh
 	chmod +x $$(pwd)/debian/giella-gtcore/usr/bin/gt-core.sh
 	find . -type d -name autom4te.cache -print0 | xargs -0 rm -rf
 	find . -type d -name build-aux -print0 | xargs -0 rm -rf
