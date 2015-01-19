@@ -16,6 +16,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-gtco
 
 Package: giella-gtcore
 Architecture: all
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: python, ${misc:Depends}, ${shlibs:Depends}
 Description: GTCORE files for Giellatekno language packages
  All Giellatekno language packages depend on the files in this package
