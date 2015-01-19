@@ -74,7 +74,7 @@ Description: Development tools and library for Apertium
 
 Package: apertium-all-dev
 Architecture: all
-Depends: apertium-dev, apertium-lex-tools, cg3, hfst
+Depends: apertium-dev, apertium-lex-tools, cg3, hfst, libhfst-dev
 Description: Metapackage for all tools required for Apertium development
  A metapackage to get all tools required for development of Apertium
  languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
