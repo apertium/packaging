@@ -16,6 +16,31 @@
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
-
 %:
 	dh $@ --with autoreconf
+
+override_dh_auto_configure:
+	# Skip
+
+override_dh_auto_build:
+	# Skip
+
+override_dh_auto_install:
+	mkdir -p $$(pwd)/debian/usr/share/giella-gtcore
+	cp -a [a-c]* [e-z]* $$(pwd)/debian/usr/share/giella-gtcore/
+	cd $$(pwd)/debian/usr/share/giella-gtcore/
+	./configure --prefix=/usr
+	$(MAKE)
+	$(MAKE) DESTDIR=$$(pwd)/debian/giella-gtcore install
+	find . -type d -name autom4te.cache -exec rm -rf '{}' \;
+	find . -type d -name build-aux -exec rm -rf '{}' \;
+	find . -type f -name 'autogen.sh' -exec rm -rf '{}' \;
+	find . -type f -name 'configure*' -exec rm -rf '{}' \;
+	find . -type f -name 'config.*' -exec rm -rf '{}' \;
+	find . -type f -name 'Makefile*' -exec rm -rf '{}' \;
+	find . -type f -name '*.ac' -exec rm -rf '{}' \;
+	find . -type f -name '*.am' -exec rm -rf '{}' \;
+	find . -type f -name '*.in' -exec rm -rf '{}' \;
+
+override_dh_auto_test:
+	# Skip

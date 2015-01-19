@@ -14,8 +14,8 @@ Homepage: http://giellatekno.uit.no/
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/giella-gtcore.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-gtcore.git
 
-Package: giella-gtcore-dev
-Architecture: any
+Package: giella-gtcore
+Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: GTCORE files for Giellatekno language packages
  All Giellatekno language packages depend on the files in this package
