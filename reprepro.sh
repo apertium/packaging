@@ -6,7 +6,12 @@ rm -f /home/apertium/public_html/apt/logs/$1/reprepro.log
 for DISTRO in wheezy jessie sid precise trusty utopic vivid
 do
 	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/$1/reprepro.log
-	reprepro -b /home/apertium/public_html/apt/nightly/ includedeb $DISTRO /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
+	DISTRO_TRG=$DISTRO
+	if [[ -n "$2" && "$3" == *",$DISTRO,"* ]]; then
+		DISTRO=sid
+		echo "True data-only, using $DISTRO pkg for $DISTRO_TRG" >> /home/apertium/public_html/apt/logs/$1/reprepro.log
+	fi
+	reprepro -b /home/apertium/public_html/apt/nightly/ includedeb $DISTRO_TRG /var/cache/pbuilder/result/*$DISTRO*.deb 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
 done
 
 rm -rf /home/apertium/public_html/apt/nightly/source/$1

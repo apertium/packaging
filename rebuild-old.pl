@@ -56,7 +56,7 @@ foreach my $pkg (@$pkgs) {
 
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
    my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
-   `mkdir -p $logpath/`;
+   `mkdir -p $logpath/ && rm -f $logpath/*-*`;
    open my $pkglog, ">$logpath/rebuild.log" or die "Failed to open $logpath/rebuild.log: $!\n";
    my $out = IO::Tee->new($out2, $pkglog);
 
@@ -191,7 +191,7 @@ foreach my $pkg (@$pkgs) {
 
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
-   `./reprepro.sh '$pkname' 2>>$logpath/stderr.log >&2`;
+   `./reprepro.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
 
    # Add the resulting .rpms to the Yum repositories
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {

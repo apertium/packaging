@@ -8,6 +8,7 @@ rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
+# When rotating out sid, remember version check in rebuild-old.pl
 for DISTRO in wheezy jessie sid precise trusty utopic vivid
 do
 	if [[ "$3" == *",$DISTRO,"* ]]; then
