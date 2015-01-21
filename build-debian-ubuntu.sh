@@ -10,6 +10,11 @@ rm -rf /var/cache/pbuilder/build/cow.*
 cd /tmp/autopkg.*
 for DISTRO in wheezy jessie sid precise trusty utopic vivid
 do
+	if [[ "$3" == *",$DISTRO,"* ]]; then
+		echo "Skipping $DISTRO"
+		continue
+	fi
+
 	for ARCH in i386 amd64
 	do
 		echo "Updating $DISTRO for $ARCH"

@@ -66,6 +66,9 @@ foreach my $pkg (@$pkgs) {
    if (!@$pkg[2]) {
       @$pkg[2] = 'configure.ac';
    }
+   if (!@$pkg[4]) {
+      @$pkg[4] = '';
+   }
 
    print {$out} "\n";
    print {$out} "Package: @$pkg[0]\n";
@@ -137,7 +140,7 @@ foreach my $pkg (@$pkgs) {
    }
 
    # Build the packages for Debian/Ubuntu
-   `./build-debian-ubuntu.sh '$pkname' '$is_data' 2>>$logpath/stderr.log >&2`;
+   `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
    my $failed = '';
    $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
    chomp($failed);
