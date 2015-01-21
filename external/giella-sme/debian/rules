@@ -17,7 +17,7 @@
 export DH_OPTIONS
 
 %:
-	dh $@ --with autoreconf
+	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
 	dh_auto_configure -- --disable-L2 --disable-phonetic --disable-hfstspeller --disable-voikko --disable-analysers --disable-generators --disable-transcriptors --disable-syntax --enable-apertium --prefix=/usr
