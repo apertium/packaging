@@ -64,7 +64,10 @@ my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 	else {
 	   die "No version found!\n";
 	}
-	if ($version =~ m@^(\d+)\.(\d+)$@) {
+	if ($version =~ m@^(\d+)$@) {
+		$patch = $1;
+	}
+	elsif ($version =~ m@^(\d+)\.(\d+)$@) {
 		$major = $1;
 		$minor = $2;
 	}
