@@ -20,7 +20,7 @@ export DH_OPTIONS
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --with-hfst --without-xfst --enable-spellers --enable-hyperminimisation --enable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --enable-apertium --prefix=/usr
+	dh_auto_configure -- --with-hfst --without-xfst --enable-spellers --enable-hyperminimisation --enable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --prefix=/usr
 
 override_dh_auto_build:
 	mkdir -p debian/tmp/locale/
