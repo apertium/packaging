@@ -1,0 +1,25 @@
+Source: giella-kal
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: autotools-dev,
+               cg3,
+               debhelper (>= 8.0),
+               dh-autoreconf,
+               giella-gtcore,
+               hfst,
+               libhfst40-dev,
+               locales,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.6
+Homepage: http://apertium.org/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/giella-kal.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-kal.git
+
+Package: giella-kal
+Architecture: all
+Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Description: Giellatekno single language data for Greenlandic
+ Data package providing Giellatekno language resources for Greenlandic

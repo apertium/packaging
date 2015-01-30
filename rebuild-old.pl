@@ -99,7 +99,7 @@ foreach my $pkg (@$pkgs) {
       # Counter-ToDo: Since .deb packages have no clue about Build-Depends, we'd need to check both anyway, so this is fine for now
       my $deps = (@$pkg[3]) || ('http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.@$pkg[0]);
       $deps = `svn cat $deps/debian/control`;
-      $deps = join("\n", ($deps =~ m@D?epends:(\s*.*?)\n\S@gs));
+      $deps = join("\n", ($deps =~ m@Build-Depends:(\s*.*?)\n\S@gs));
       foreach my $dep (split(/[,|\n]/, $deps)) {
          $dep =~ s@\([^)]+\)@@g;
          $dep =~ s@\s+$@@gs;
