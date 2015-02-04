@@ -37,7 +37,7 @@
 #   ["languages/apertium-eng"], # Not buildable
    ["languages/apertium-eus"],
    ["languages/apertium-fao"],
-#   ["languages/apertium-fin"], # omorfi import broke lttoolbox's mind
+   ["languages/apertium-fin"],
 #   ["languages/apertium-gla"], # Not buildable
    ["languages/apertium-glv"],
    ["languages/apertium-hbs"],
