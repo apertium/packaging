@@ -16,7 +16,7 @@ do
 		continue
 	fi
 
-	for ARCH in i386 amd64
+	for ARCH in amd64 i386
 	do
 		echo "Updating $DISTRO for $ARCH"
 		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
