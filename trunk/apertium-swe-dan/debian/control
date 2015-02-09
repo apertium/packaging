@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dan,
                apertium-dev (>= 3.3),
+               apertium-lex-tools,
                apertium-swe,
                autotools-dev,
                cg3,
@@ -22,9 +23,9 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-sw
 Package: apertium-swe-dan
 Architecture: all
 Depends: apertium (>= 3.3), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-sv-da, apertium-da-sv, apertium-dan-swe
-Conflicts: apertium-sv-da, apertium-da-sv, apertium-dan-swe
-Replaces: apertium-sv-da, apertium-da-sv
+Provides: apertium-da-sv, apertium-dan-swe, apertium-sv-da
+Conflicts: apertium-da-sv, apertium-dan-swe, apertium-sv-da
+Replaces: apertium-da-sv, apertium-sv-da
 Description: Apertium translation data for the Swedish-Danish pair
  Data package providing Apertium language resources for translating
  between the Swedish and Danish languages.
