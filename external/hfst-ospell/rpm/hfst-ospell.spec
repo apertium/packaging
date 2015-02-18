@@ -13,13 +13,8 @@ BuildRequires: gcc-c++
 BuildRequires: libtool
 BuildRequires: pkgconfig
 BuildRequires: hfst
-%if 0%{?suse_version}
-BuildRequires: libarchive
-BuildRequires: libxml++
-%else
 BuildRequires: libarchive-devel
 BuildRequires: libxml++-devel
-%endif
 
 %description
 Minimal HFST optimized lookup format based spell checker library and
