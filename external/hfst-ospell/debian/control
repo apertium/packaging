@@ -1,0 +1,34 @@
+Source: hfst-ospell
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: autoconf,
+               automake,
+               autotools-dev,
+               debhelper (>= 9.0),
+               dh-autoreconf,
+               hfst,
+               libarchive-dev,
+               libtool,
+               libxml++2.6-dev,
+               pkg-config
+Standards-Version: 3.9.6
+Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/hfst.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
+
+Package: hfst-ospell
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Spell checker library and tool based on HFST
+ Minimal HFST optimized lookup format based spell checker library and
+ a demonstrational implementation of command line based spell checker.
+
+Package: hfst-ospell-dev
+Architecture: any
+Section: devel
+Depends: hfst-ospell (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: HFST spell checker Development files
+ Development headers and libraries for hfst-ospell
