@@ -13,6 +13,7 @@
    ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/giella-gtcore",   "https://victorio.uit.no/langtech/trunk/gtcore",    null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3"],
+   ["external/hfst-ospell",     "http://svn.code.sf.net/p/hfst/code/trunk/hfst-ospell"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
    ["trunk/lttoolbox"],
    ["trunk/apertium"],

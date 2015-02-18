@@ -20,4 +20,4 @@ export DH_OPTIONS
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-zhfst --prefix=/usr
+	dh_auto_configure -- --enable-zhfst
