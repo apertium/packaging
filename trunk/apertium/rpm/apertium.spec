@@ -6,6 +6,7 @@ Group: Development/Tools
 License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
+Patch0: apertium_01_pcre_version.diff
 
 Requires: lttoolbox >= 3.3
 # Require xmllint from:
