@@ -1,10 +1,12 @@
 function patch_all {
-	if [[ -e "$PKG_PATH/debian/patches" ]]; then
-		for DIFF in $PKG_PATH/debian/patches/*.diff
-		do
-			patch -p1 < "$DIFF"
-		done
-	fi
+	for DIFF in $PKG_PATH/debian/patches/*.diff
+	do
+		patch -p1 < "$DIFF"
+	done
+	for DIFF in $PKG_PATH/win32/*.diff
+	do
+		patch -p1 < "$DIFF"
+	done
 }
 
 function install_dep {
