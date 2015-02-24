@@ -154,7 +154,7 @@ foreach my $pkg (@$pkgs) {
    }
    if (-s "@$pkg[0]/win32/$pkname.sh") {
       print {$out} "\tbuilding win32\n";
-      `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' 2>$logpath/win32.log >&2`;
+      `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
    }
    print {$out} "\tstopped: ".`date -u`;
 
