@@ -17,6 +17,8 @@ $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$
 use File::Basename;
 my $dir = dirname(__FILE__);
 chdir($dir) or die $!;
+use Cwd;
+$dir = getcwd();
 if (!(-x 'get-version.pl')) {
    die "get-version.pl not found in $dir!\n";
 }
@@ -78,6 +80,7 @@ foreach my $pkg (@$pkgs) {
    my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>$logpath/stderr.log`;
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
+   my ($newrev) = ($version =~ m@~r(\d+)$@);
    print {$out} "\tlatest: $version\n";
 
    # Determine existing package version, if any
@@ -149,6 +152,10 @@ foreach my $pkg (@$pkgs) {
    if (!$failed) {
       `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
    }
+   if (-s "@$pkg[0]/win32/$pkname.sh") {
+      print {$out} "\tbuilding win32\n";
+      `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' 2>$logpath/win32.log >&2`;
+   }
    print {$out} "\tstopped: ".`date -u`;
 
    if ($failed) {
@@ -164,7 +171,6 @@ foreach my $pkg (@$pkgs) {
       # Determine who was most likely responsible for breaking the build
       my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+~r(\d+)@);
       ++$oldrev;
-      my ($newrev) = ($version =~ m@~r(\d+)$@);
       # Check that $oldrev is less than newrev, but greater than 1
       if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev) {
          goto CLEANUP;
