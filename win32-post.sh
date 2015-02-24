@@ -1,12 +1,17 @@
 make clean
 make -j8 || make -j8 || make -j8 || make -j8 || make
-rm -rf /opt/win32-pkg/$PKG_NAME
 make install DESTDIR=/opt/win32-pkg/$PKG_NAME
+for INST in $EXTRA_INST
+do
+	install $INST /opt/win32-pkg/$PKG_NAME/opt/win32/bin
+done
+
 cd /opt/win32-pkg/$PKG_NAME/opt
 for DEP in $EXTRA_DEPS
 do
-	cp -av /opt/mxe/usr/i686-w64-mingw32.shared/bin/$DEP win32/bin/
+	rsync -av /opt/mxe/usr/i686-w64-mingw32.shared/bin/$DEP win32/bin/
 done
+
 find . -type f -name '*.exe' -or -name '*.dll' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip
 find . -type f -name '*.a' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip --strip-debug
 mv win32 $PKG_NAME
