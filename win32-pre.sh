@@ -1,8 +1,10 @@
 function patch_all {
-	for DIFF in $PKG_PATH/debian/patches/*.diff
-	do
-		patch -p1 < "$DIFF"
-	done
+	if [[ -s "$PKG_PATH/debian/patches" ]]; then
+		for DIFF in $PKG_PATH/debian/patches/*.diff
+		do
+			patch -p1 < "$DIFF"
+		done
+	fi
 	for DIFF in $PKG_PATH/win32/*.diff
 	do
 		patch -p1 < "$DIFF"
@@ -18,6 +20,8 @@ function install_dep {
 	rm -rf $1
 	popd
 }
+
+set -e
 
 export PATH="/opt/mxe/usr/bin:$PATH"
 export PKG_CONFIG="/opt/mxe/usr/i686-w64-mingw32.shared/bin/pkgconf"

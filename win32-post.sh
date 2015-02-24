@@ -13,7 +13,7 @@ mv win32 $PKG_NAME
 #zip -9r $PKG_NAME-$PKG_VER.zip $PKG_NAME
 7za a $PKG_NAME-$PKG_VER.7z $PKG_NAME
 rm -fv ~apertium/public_html/win32/nightly/$PKG_NAME-[0-9]*.zip ~apertium/public_html/win32/nightly/$PKG_NAME-[0-9]*.7z
-mv -v *.zip *.7z ~apertium/public_html/win32/nightly/
+mv -v *.7z ~apertium/public_html/win32/nightly/
 cd ~apertium/public_html/win32/nightly/
 #ln -sfv $PKG_NAME-$PKG_VER.zip $PKG_NAME-latest.zip
 ln -sfv $PKG_NAME-$PKG_VER.7z $PKG_NAME-latest.7z
