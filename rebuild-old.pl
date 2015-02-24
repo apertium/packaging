@@ -39,6 +39,7 @@ my $pkgs = ();
 my %rebuilt = ();
 my %blames = ();
 my @failed = ();
+my $win32 = 0;
 
 use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
@@ -155,6 +156,7 @@ foreach my $pkg (@$pkgs) {
    if (-s "@$pkg[0]/win32/$pkname.sh") {
       print {$out} "\tbuilding win32\n";
       `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
+      $win32 = 1;
    }
    print {$out} "\tstopped: ".`date -u`;
 
@@ -259,6 +261,10 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
       $subject .= 'Success';
    }
    `cat /tmp/rebuild.$$.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+}
+
+if ($win32) {
+   `./win32-combine.sh`;
 }
 
 unlink("/tmp/rebuild.$$.log");

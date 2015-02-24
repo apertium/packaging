@@ -9,7 +9,7 @@ done
 cd /opt/win32-pkg/$PKG_NAME/opt
 for DEP in $EXTRA_DEPS
 do
-	rsync -av /opt/mxe/usr/i686-w64-mingw32.shared/bin/$DEP win32/bin/
+	cp -avf /opt/mxe/usr/i686-w64-mingw32.shared/bin/$DEP win32/bin/
 done
 
 find . -type f -name '*.exe' -or -name '*.dll' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip
