@@ -146,17 +146,26 @@ foreach my $pkg (@$pkgs) {
    # Build the packages for Debian/Ubuntu
    `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
    my $failed = '';
-   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -newermt \$(date '+\%Y-\%m-\%d' -d '1 day ago') -type f))`;
+   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($failed);
 
-   # If debs did not fail building, try RPMs
+   my $hashfail = '';
+   $hashfail = `grep -l 'Hash Sum mismatch' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   chomp($hashfail);
+
+   if ($hashfail) {
+      print {$out} "\tsoft fail: hash sum mismatch\n";
+   }
+
+   # If debs did not fail building, try RPMs and win32
    if (!$failed) {
       `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
-   }
-   if (-s "@$pkg[0]/win32/$pkname.sh") {
-      print {$out} "\tbuilding win32\n";
-      `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
-      $win32 = 1;
+
+      if (-s "@$pkg[0]/win32/$pkname.sh") {
+         print {$out} "\tbuilding win32\n";
+         `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
+         $win32 = 1;
+      }
    }
    print {$out} "\tstopped: ".`date -u`;
 
@@ -174,7 +183,7 @@ foreach my $pkg (@$pkgs) {
       my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+~r(\d+)@);
       ++$oldrev;
       # Check that $oldrev is less than newrev, but greater than 1
-      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev) {
+      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev || $hashfail) {
          goto CLEANUP;
       }
       my $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
