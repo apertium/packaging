@@ -1,12 +1,11 @@
 Name: apertium
-Version: 3.3.0
+Version: 3.4.0
 Release: 1%{?dist}
 Summary: Shallow-transfer machine translation engine
 Group: Development/Tools
 License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
-Patch0: apertium_01_pcre_version.diff
 
 Requires: lttoolbox >= 3.3
 # Require xmllint from:
@@ -44,14 +43,14 @@ It will be possible to use Apertium to build machine translation
 systems for a variety of related-language pairs simply providing
 the linguistic data needed in the right format.
 
-%package -n libapertium3-3_3-0
+%package -n libapertium3-3_4-0
 Summary: Shared library for apertium
 Group: Development/Libraries
 Provides: libapertium = %{version}-%{release}
 Obsoletes: libapertium < %{version}-%{release}
 Obsoletes: libapertium3 < %{version}-%{release}
 
-%description -n libapertium3-3_3-0
+%description -n libapertium3-3_4-0
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
@@ -130,7 +129,7 @@ ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
 %{_datadir}/man/man1/apertium-unformat.*
 %{_datadir}/man/man1/apertium-utils-fixlatex.*
 
-%files -n libapertium3-3_3-0
+%files -n libapertium3-3_4-0
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -161,9 +160,9 @@ ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
 
 %files -n apertium-all-devel
 
-%post -n libapertium3-3_3-0 -p /sbin/ldconfig
+%post -n libapertium3-3_4-0 -p /sbin/ldconfig
 
-%postun -n libapertium3-3_3-0 -p /sbin/ldconfig
+%postun -n libapertium3-3_4-0 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 3.3.0
