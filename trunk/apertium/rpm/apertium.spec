@@ -91,7 +91,7 @@ make %{?_smp_mflags} || make %{?_smp_mflags} || make
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
-ln -s libapertium3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.3.so
+ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
 
 %files
 %defattr(-,root,root)
