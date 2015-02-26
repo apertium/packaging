@@ -20,8 +20,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ml
 Package: apertium-mlt-ara
 Architecture: all
 Depends: apertium (>= 3.3), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-mt-ar apertium-ar-mt apertium-ara-mlt
-Conflicts: apertium-mt-ar apertium-ar-mt apertium-ara-mlt
+Provides: apertium-mt-ar, apertium-ar-mt, apertium-ara-mlt
+Conflicts: apertium-mt-ar, apertium-ar-mt, apertium-ara-mlt
 Replaces: apertium-mt-ar
 Description: Apertium translation data for the Maltese-Arabic pair
  Data package providing Apertium language resources for translating
