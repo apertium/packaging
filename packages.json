@@ -102,6 +102,7 @@
    ["trunk/apertium-is-sv"],
    ["trunk/apertium-isl-eng"],
    ["trunk/apertium-kaz-tat"],
+   ["trunk/apertium-mlt-ara"],
    ["trunk/apertium-mk-bg"],
    ["trunk/apertium-mk-en"],
    ["trunk/apertium-nno-nob"],
@@ -112,6 +113,4 @@
    ["trunk/apertium-sme-nob"],
    ["trunk/apertium-swe-dan"],
    ["trunk/apertium-urd-hin"],
-
-   ["staging/apertium-mt-ar"],
 ]
