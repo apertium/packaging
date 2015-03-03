@@ -10,7 +10,6 @@
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
    ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide", "wheezy"],
-   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/giella-gtcore",   "https://victorio.uit.no/langtech/trunk/gtcore",    null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3"],
    ["external/hfst-ospell",     "http://svn.code.sf.net/p/hfst/code/trunk/hfst-ospell"],
