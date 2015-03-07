@@ -19,8 +19,8 @@
    ["trunk/apertium-lex-tools"],
 
    # Then languages
-   ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
+   ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
@@ -71,6 +71,7 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
+   ["nursery/apertium-tat-rus"],
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
