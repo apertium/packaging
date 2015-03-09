@@ -1,16 +1,6 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-#
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
-#
-# Modified to make a template file for a multi-binary package with separated
-# build-arch and build-indep targets  by Bill Allombert 2001
 
-# Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
 NUMJOBS = 1
@@ -25,11 +15,16 @@ export DH_OPTIONS
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
-	./configure --without-foma --with-unicode-handler=ICU --enable-all-tools --prefix=/usr
+	dh_auto_configure -- --without-foma --with-unicode-handler=ICU --enable-all-tools
 
 override_dh_auto_build:
 	./scripts/generate-cc-files.sh
-	make -j$(NUMJOBS) || make -j$(NUMJOBS) || make
+	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
+	cd $(CURDIR)/swig && python setup.py build_ext && strip --strip-unneeded build/*/*.so
 
 override_dh_auto_test:
 	# Skip, as it breaks in various unpredictable ways
+
+override_dh_auto_install:
+	dh_auto_install
+	cd $(CURDIR)/swig && python setup.py install --root $(DESTDIR) --no-compile
