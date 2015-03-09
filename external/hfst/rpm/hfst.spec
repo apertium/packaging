@@ -16,11 +16,16 @@ BuildRequires: flex
 BuildRequires: gcc-c++
 BuildRequires: libicu-devel
 BuildRequires: libtool
+BuildRequires: swig
 BuildRequires: pkgconfig
 BuildRequires: python
 BuildRequires: python-devel
 BuildRequires: readline-devel
 BuildRequires: zlib-devel
+%if ! ( 0%{?el6} || 0%{?el7} )
+BuildRequires: python3
+BuildRequires: python3-devel
+%endif
 Requires: grep
 Requires: python
 Requires: sed
@@ -51,6 +56,22 @@ Obsoletes: libhfst3-devel < %{version}-%{release}
 %description -n libhfst40-devel
 Development headers and libraries for HFST
 
+%package -n python-libhfst
+Summary: Python modules for Helsinki Finite-State Transducer Technology
+Requires: libhfst40 = %{version}-%{release}
+
+%description -n python-libhfst
+Python modules for libhfst
+
+%if ! ( 0%{?el6} || 0%{?el7} )
+%package -n python3-libhfst
+Summary: Python3 modules for Helsinki Finite-State Transducer Technology
+Requires: libhfst40 = %{version}-%{release}
+
+%description -n python3-libhfst
+Python3 modules for libhfst
+%endif
+
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
@@ -61,11 +82,24 @@ autoreconf -fi
 %configure --without-foma --with-unicode-handler=ICU --enable-all-tools
 ./scripts/generate-cc-files.sh
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
+cd swig
+python setup.py build_ext
+%if ! ( 0%{?el6} || 0%{?el7} )
+python3 setup.py build_ext
+%endif
+strip --strip-unneeded build/*/*.so
+cd ..
 
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{python_sitelib}/*.py[co]
+cd swig
+python setup.py install --no-compile --prefix /usr --root %{buildroot}
+%if ! ( 0%{?el6} || 0%{?el7} )
+python3 setup.py install --no-compile --prefix /usr --root %{buildroot}
+%endif
+cd ..
 
 %files
 %defattr(-,root,root)
@@ -75,7 +109,6 @@ rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 
 %files -n libhfst40
 %defattr(-,root,root)
-%{python_sitelib}/*
 %{_libdir}/*.so.*
 
 %files -n libhfst40-devel
@@ -85,6 +118,16 @@ rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 %{_libdir}/*.a*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
+
+%files -n python-libhfst
+%defattr(-,root,root)
+%{python_sitelib}/*
+
+%if ! ( 0%{?el6} || 0%{?el7} )
+%files -n python3-libhfst
+%defattr(-,root,root)
+%{python3_sitelib}/*
+%endif
 
 %post -n libhfst40 -p /sbin/ldconfig
 
