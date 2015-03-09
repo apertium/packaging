@@ -9,14 +9,14 @@ rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
 # When rotating out sid, remember version check in rebuild-old.pl
-for DISTRO in sid #wheezy jessie sid precise trusty utopic vivid
+for DISTRO in wheezy jessie sid precise trusty utopic vivid
 do
 	if [[ "$3" == *",$DISTRO,"* ]]; then
 		echo "Skipping $DISTRO"
 		continue
 	fi
 
-	for ARCH in amd64 #i386
+	for ARCH in amd64 i386
 	do
 		echo "Updating $DISTRO for $ARCH"
 		cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
