@@ -27,4 +27,4 @@ override_dh_auto_test:
 
 override_dh_auto_install:
 	dh_auto_install
-	cd $(CURDIR)/swig && python setup.py install --no-compile --prefix /usr --root $(CURDIR)/debian/tmp && python3 setup.py install --no-compile --prefix /usr --root $(CURDIR)/debian/tmp
+	cd $(CURDIR)/swig && python setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp && python3 setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp

@@ -14,11 +14,11 @@ Build-Depends: autoconf,
                libicu-dev,
                libreadline-dev,
                libtool,
-               swig,
                python,
                python-dev,
                python3,
                python3-dev,
+               swig,
                zlib1g-dev
 Standards-Version: 3.9.6
 Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
@@ -27,9 +27,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 
 Package: hfst
 Architecture: any
-Depends: libhfst40 (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: libhfst40 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are
