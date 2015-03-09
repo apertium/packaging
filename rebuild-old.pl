@@ -145,6 +145,7 @@ foreach my $pkg (@$pkgs) {
 
    # Build the packages for Debian/Ubuntu
    `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
+   last;
    my $failed = '';
    $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($failed);
