@@ -122,11 +122,12 @@ cd ..
 %files -n python-libhfst
 %defattr(-,root,root)
 %{python_sitelib}/*
+%{python_sitearch}/*
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %files -n python3-libhfst
 %defattr(-,root,root)
-%{python3_sitelib}/*
+%{python3_sitearch}/*
 %endif
 
 %post -n libhfst40 -p /sbin/ldconfig
