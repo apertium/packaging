@@ -1,5 +1,5 @@
-apertium-nno (0.1.0-1) experimental; urgency=low
+apertium-nno (0.2.0~r59753-1) experimental; urgency=low
 
   * Initial release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Apr 2015 16:32:19 +0000

@@ -1,3 +1,10 @@
+apertium-nno-nob (1.0.0~r59753-1) experimental; urgency=low
+
+  * New upstream release
+  * Now build-depends on apertium-nno and apertium-nob
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Apr 2015 16:32:19 +0000
+
 apertium-nno-nob (1.0.0~r25736-1) unstable; urgency=low
 
   * Initial release
