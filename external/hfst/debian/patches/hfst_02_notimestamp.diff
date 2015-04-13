@@ -1,3 +1,4 @@
+Description: Do not timestamp in output.
 Index: b/tools/src/hfst-optimized-lookup.cc
 ===================================================================
 --- a/tools/src/hfst-optimized-lookup.cc	(revision 4029)

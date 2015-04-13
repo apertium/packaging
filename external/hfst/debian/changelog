@@ -1,17 +1,10 @@
 hfst (3.8.2~r4145-1) experimental; urgency=low
 
-  * New upstream release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #781759).
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Fri, 19 Dec 2014 15:38:00 +0000
+  [ Kartik Mistry ]
+  * Added hardening support.
+  * Added patch description.
 
-hfst (3.8.1~r4088-1) experimental; urgency=low
-
-  * New upstream release
-
- -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 4 Nov 2014 09:30:00 +0000
-
-hfst (3.8.0~r4029-1) experimental; urgency=low
-
-  * Initial release
-
- -- Tino Didriksen <mail@tinodidriksen.com>  Fri, 3 Oct 2014 13:13:49 +0000
+ -- Kartik Mistry <kartik@debian.org>  Thu, 02 Apr 2015 21:22:58 +0530
