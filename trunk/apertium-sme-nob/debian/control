@@ -12,6 +12,7 @@ Build-Depends: apertium-dev (>= 3.3),
                dh-autoreconf,
                gawk,
                giella-sme,
+               giella-sme-dev,
                hfst,
                locales,
                pkg-config (>= 0.21)
