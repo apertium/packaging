@@ -1,2 +1,2 @@
 #!/usr/bin/dh-exec
-src/syntax/disambiguation.cg3 => /usr/share/giella-sme/disambiguation-mt-gt.cg3
+src/syntax/disambiguation.cg3 => /usr/share/giella/sme/disambiguation-mt-gt.cg3
