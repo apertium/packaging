@@ -16,7 +16,7 @@ function install_dep {
 	pushd /tmp
 	rm -rf $1
 	7za x -y ~apertium/public_html/win32/nightly/$1-latest.7z
-	rsync -av $1/* /opt/win32/
+	rsync -avu $1/* /opt/win32/
 	rm -rf $1
 	popd
 }
