@@ -40,6 +40,7 @@ my %rebuilt = ();
 my %blames = ();
 my @failed = ();
 my $win32 = 0;
+my $osx = 0;
 
 use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
@@ -165,6 +166,12 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\tbuilding win32\n";
          `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
          $win32 = 1;
+      }
+
+      if (-s "@$pkg[0]/osx/$pkname.sh") {
+         print {$out} "\tbuilding osx\n";
+         `bash -c '. $dir/osx-pre.sh; . $dir/@$pkg[0]/osx/$pkname.sh; . $dir/osx-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/osx.log >&2`;
+         $osx = 1;
       }
    }
    print {$out} "\tstopped: ".`date -u`;

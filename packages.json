@@ -71,7 +71,6 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
-   ["nursery/apertium-tat-rus"],
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
@@ -110,7 +109,7 @@
    ["trunk/apertium-oc-es"],
    ["trunk/apertium-pt-ca"],
    ["trunk/apertium-pt-gl"],
-   ["trunk/apertium-sme-nob"],
+#   ["trunk/apertium-sme-nob"], # Disabled during instability
    ["trunk/apertium-swe-dan"],
    ["trunk/apertium-urd-hin"],
 ]
