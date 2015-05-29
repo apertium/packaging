@@ -24,8 +24,20 @@ for (my $i=0 ; $i<1000 && $did ; $i++) {
       }
       print STDERR "Handling '$f':\n";
 
+      my @ldeps = split("\n", `otool -L '$f' | grep /opt/osx/lib`);
+      foreach my $d (@ldeps) {
+         ($d) = ($d =~ m@/opt/osx/lib/(\S+)@);
+         if ($f =~ m@\Q$d\E$@) {
+            print STDERR "\tskipping self $d\n";
+            next;
+         }
+         print STDERR "\tadjusting dependency '$d'\n";
+         print STDERR `install_name_tool -change '/opt/osx/lib/$d' '\@rpath/$d' '$f'`;
+         $did = 1;
+      }
+
       my @deps = split("\n", `otool -L '$f' | grep /opt/local/lib`);
-      if (!@deps) {
+      if (!@deps && !@ldeps) {
          next;
       }
 
