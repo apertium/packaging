@@ -13,7 +13,7 @@ BEGIN {
 use open qw( :encoding(UTF-8) :std );
 
 my $did = 1;
-while ($did) {
+for (my $i=0 ; $i<1000 && $did ; $i++) {
    $did = 0;
 
    my @files = split("\n", `find bin/ lib/ -type f`);

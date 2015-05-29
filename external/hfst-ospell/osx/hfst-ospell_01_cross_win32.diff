@@ -1,0 +1,12 @@
+Index: configure.ac
+===================================================================
+--- a/configure.ac	(revision 4205)
++++ b/configure.ac	(working copy)
+@@ -124,7 +124,6 @@
+ # Checks for compiler characteristics
+ 
+ # Checks for library functions
+-AC_FUNC_MALLOC
+ AC_CHECK_FUNCS([strndup error])
+ # Checks for system services
+ 

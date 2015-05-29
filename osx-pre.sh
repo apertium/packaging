@@ -3,7 +3,12 @@ set -e
 . osx-funcs.sh
 
 export PATH="/opt/osxcross/target/bin:$PATH"
+export CC="x86_64-apple-darwin12-clang"
+export CXX="x86_64-apple-darwin12-clang++"
+export PKG_CONFIG=/opt/osxcross/target/bin/x86_64-apple-darwin12-pkg-config
+export PKG_CONFIG_PATH=/opt/osx/lib/pkgconfig/
 export OSXCROSS_TARGET=darwin12
+export OSXCROSS_MP_INC=1
 export MACOSX_DEPLOYMENT_TARGET=10.7
 export SDK_VERSION=10.8
 export PKG_NAME=$1

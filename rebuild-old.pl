@@ -282,5 +282,8 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
 if ($win32) {
    `./win32-combine.sh`;
 }
+if ($osx) {
+   `./osx-combine.sh`;
+}
 
 unlink("/tmp/rebuild.$$.log");

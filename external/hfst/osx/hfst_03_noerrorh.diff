@@ -1,0 +1,22 @@
+Index: configure.ac
+===================================================================
+--- a/configure.ac	(revision 4380)
++++ b/configure.ac	(working copy)
+@@ -645,7 +645,7 @@
+ #                [AC_MSG_FAILURE([my transducer library test failed (--without-my-transducer-library to disable)])])])
+ 
+ # Checks for header files
+-AC_CHECK_HEADERS([limits.h stdlib.h string.h error.h glob.h locale.h langinfo.h])
++AC_CHECK_HEADERS([limits.h stdlib.h string.h glob.h locale.h langinfo.h])
+ #AC_CHECK_HEADERS([libxml/tree.h libxml/mem.h])
+ AC_LANG_PUSH([C++])
+ 
+@@ -725,7 +725,7 @@
+ # Checks for structures
+ AC_CHECK_DECLS([program_name, program_invocation_name, program_invocation_short_name])
+ AC_CHECK_DECLS([rl_completion_suppress_append, rl_completion_matches])
+-AC_CHECK_FUNCS([floor strchr strdup strerror strncasecmp strcspn strtol strtoul error error_at_line strndup getline getdelim getopt_long strtod xstrdup set_program_name setprogname setlocale nl_langinfo])
++AC_CHECK_FUNCS([floor strchr strdup strerror strncasecmp strcspn strtol strtoul strndup getline getdelim getopt_long strtod xstrdup set_program_name setprogname setlocale nl_langinfo])
+ 
+ AM_CONDITIONAL([WINDOWS], [test x$version_type = xwindows])
+ 
