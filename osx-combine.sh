@@ -18,5 +18,7 @@ cd /opt
 rm -rf apertium-all-dev
 mv osx apertium-all-dev
 7za a apertium-all-dev.7z apertium-all-dev
+tar -jcvf apertium-all-dev.tar.bz2 apertium-all-dev
 mv -fv apertium-all-dev.7z ~apertium/public_html/osx/nightly/
+mv -fv apertium-all-dev.tar.bz2 ~apertium/public_html/osx/nightly/
 chown -R apertium:apertium ~apertium/public_html/osx

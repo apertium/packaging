@@ -54,6 +54,7 @@ my %distros = (
 	'wheezy' => 'debian',
 	'jessie' => 'debian',
 	'sid' => 'debian',
+	'stretch' => 'debian',
 	'precise' => 'ubuntu',
 	'trusty' => 'ubuntu',
 	'utopic' => 'ubuntu',
