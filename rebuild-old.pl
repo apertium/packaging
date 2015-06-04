@@ -160,7 +160,10 @@ foreach my $pkg (@$pkgs) {
 
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
-      `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
+      if (-s "@$pkg[0]/rpm/$pkname.spec") {
+         print {$out} "\tupdating rpm sources\n";
+         `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
+      }
 
       if (-s "@$pkg[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
@@ -257,8 +260,6 @@ foreach my $pkg (@$pkgs) {
 }
 
 print {$out2} "\n";
-print {$out2} "Build stopped at ".`date -u`;
-close $log;
 
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
@@ -280,10 +281,14 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
 }
 
 if ($win32) {
+   print {$out2} "Combining Win32 builds\n";
    `./win32-combine.sh`;
 }
 if ($osx) {
+   print {$out2} "Combining OS X builds\n";
    `./osx-combine.sh`;
 }
 
+print {$out2} "Build stopped at ".`date -u`;
+close $log;
 unlink("/tmp/rebuild.$$.log");
