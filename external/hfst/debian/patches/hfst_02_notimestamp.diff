@@ -3,7 +3,7 @@ Index: b/tools/src/hfst-optimized-lookup.cc
 ===================================================================
 --- a/tools/src/hfst-optimized-lookup.cc	(revision 4029)
 +++ b/tools/src/hfst-optimized-lookup.cc	(working copy)
-@@ -91,7 +91,6 @@
+@@ -92,7 +92,6 @@
    std::cout <<
      "\n" <<
      PACKAGE_STRING << std::endl <<
