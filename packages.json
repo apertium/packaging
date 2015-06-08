@@ -19,6 +19,7 @@
    ["trunk/apertium-lex-tools"],
 
    # Then languages
+   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
    ["languages/apertium-ara"],
