@@ -11,6 +11,7 @@ Package: apertium-simpleton
 Architecture: any
 Depends: apertium (>= 3.4),
          apertium-lex-tools,
+         binutils,
          cg3 (>= 0.9.9),
          hfst (>= 3.8.2),
          lttoolbox (>= 3.3),

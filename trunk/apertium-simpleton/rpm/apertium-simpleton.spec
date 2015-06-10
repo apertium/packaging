@@ -15,6 +15,7 @@ BuildRequires: libqt5-qtbase-devel
 BuildRequires: qt5-qtbase-devel
 %endif
 Requires: apertium
+Requires: binutils
 Requires: cg3
 Requires: lttoolbox
 Requires: hfst
