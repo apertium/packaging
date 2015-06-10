@@ -1,0 +1,20 @@
+Source: apertium-simpleton
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: debhelper (>= 9.0), qt5-default, qt5-qmake, qtbase5-dev
+Standards-Version: 3.9.6
+
+Package: apertium-simpleton
+Architecture: any
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3 (>= 0.9.9),
+         hfst (>= 3.8.2),
+         lttoolbox (>= 3.3),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Minimal GUI for Apertium
+ Minimal GUI for Apertium translations.

@@ -17,6 +17,7 @@
    ["trunk/lttoolbox"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
+   ["trunk/apertium-simpleton", null, "src/version.hpp"],
 
    # Then languages
    ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,precise,trusty,utopic,vivid"],
@@ -72,6 +73,8 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
+   ["nursery/apertium-tat-rus"],
+
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
