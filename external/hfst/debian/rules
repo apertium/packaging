@@ -22,9 +22,6 @@ override_dh_auto_build:
 	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
 	cd $(CURDIR)/swig && python setup.py build_ext && python3 setup.py build_ext && strip --strip-unneeded build/*/*.so
 
-override_dh_auto_test:
-	# Skip, as it breaks in various unpredictable ways
-
 override_dh_auto_install:
 	dh_auto_install
 	cd $(CURDIR)/swig && python setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp && python3 setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp
