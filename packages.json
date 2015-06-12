@@ -75,6 +75,8 @@
    # Finally, language pairs
    ["nursery/apertium-tat-rus"],
 
+   ["staging/apertium-pl-cs"],
+
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
