@@ -1,3 +1,9 @@
+apertium-lex-tools (0.1.1~60994-1) experimental; urgency=low
+
+  * Update to latest from svn
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Sun, 21 Jun 2015 18:59:50 +0200
+
 apertium-lex-tools (0.1.0+svn~57414-1) experimental; urgency=low
 
   [ Tino Didriksen ]
