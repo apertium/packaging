@@ -1,5 +1,25 @@
-apertium (3.3.0.56825-1) unstable; urgency=low
+apertium (3.4.0~r60657-1) unstable; urgency=medium
 
+  * Cleaner release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Sun, 21 Jun 2015 18:59:50 +0200
+
+apertium (3.4.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 21 Jun 2015 13:58:30 +0530
+
+apertium (3.3.0.56825-2) experimental; urgency=low
+
+  * Add PCRE workaround patch (Closes: #757539) (Closes: #767069)
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 28 Oct 2014 09:30:00 +0100
+
+apertium (3.3.0.56825-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
   * New upstream release
   * Standards-Version updated to version 3.9.6
   * Using upstream release from svn, to avoid pre-generated automake files
@@ -8,7 +28,13 @@ apertium (3.3.0.56825-1) unstable; urgency=low
   * Builds with clang (Closes: #748976)
   * 3.3 includes all of 3.2 (Closes: #753459)
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Wed, 20 Aug 2014 11:41:34 +0000
+  [ Kartik Mistry ]
+  * Added myself as uploader.
+  * wrap-and-sort control and install files.
+  * Updated VCS-* fields.
+  * Added debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 24 Sep 2014 10:23:13 +0530
 
 apertium (3.1.0-2) unstable; urgency=low
 

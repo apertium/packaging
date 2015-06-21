@@ -1,5 +1,35 @@
-lttoolbox (3.3.0.56152-1) unstable; urgency=low
+lttoolbox (3.3.1~r59199-1) unstable; urgency=low
 
+  * Cleaner release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Sun, 21 Jun 2015 18:59:50 +0200
+
+lttoolbox (3.3.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules:
+    + Disabled tests as of now.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 21 Jun 2015 21:10:42 +0530
+
+lttoolbox (3.3.0.56152-3) unstable; urgency=low
+
+  * Upload to unstable
+  * debian/control:
+    + Updated Standards-Version to 3.9.6
+  * Added patch description.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 21 Jun 2015 13:22:02 +0530
+
+lttoolbox (3.3.0.56152-2) experimental; urgency=low
+
+  * Added PCRE workaround helper patch (See: #757539)
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 28 Oct 2014 09:30:00 +0100
+
+lttoolbox (3.3.0.56152-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
   * New upstream release
   * Standards-Version updated to version 3.9.6
   * Using upstream release from svn, to avoid pre-generated automake files
@@ -8,7 +38,11 @@ lttoolbox (3.3.0.56152-1) unstable; urgency=low
   * Added multiarch support
   * 3.3 includes all of 3.2 (Closes: #758518)
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Wed, 20 Aug 2014 11:41:34 +0000
+  [ Kartik Mistry ]
+  * wrap-and-sort control, install files.
+  * Added myself as Uploaders.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 22 Sep 2014 19:14:55 +0530
 
 lttoolbox (3.1.0-1.1) unstable; urgency=low
 
