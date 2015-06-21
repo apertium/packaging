@@ -16,6 +16,9 @@ my %build = ();
 my %deps = ();
 
 while (<>) {
+   if (/^\s*#/) {
+      next;
+   }
    if (/\bPKG_CHECK_MODULES.*?hfst\b/) {
       $build{'libhfst40-dev'} = 1;
       $build{'hfst'} = 1;
@@ -48,13 +51,13 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium-dev (>= 3.3), pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium-dev (>= 3.4), pkg-config (>= 0.21)";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
 print "\n";
 
-print "Depends: apertium (>= 3.3)";
+print "Depends: apertium (>= 3.4)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

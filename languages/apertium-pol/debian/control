@@ -1,4 +1,4 @@
-Source: apertium-nob
+Source: apertium-pol
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
@@ -10,15 +10,17 @@ Build-Depends: apertium-dev (=> 3.4),
                debhelper (>= 8.0),
                dh-autoreconf,
                gawk,
+               hfst,
+               libhfst40-dev,
                locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.6
 Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-nob.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-nob.git
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-pol.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pol.git
 
-Package: apertium-nob
+Package: apertium-pol
 Architecture: all
-Depends: apertium (=> 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Description: Apertium single language data for Norwegian Bokmål
- Data package providing Apertium language resources for Norwegian Bokmål
+Depends: apertium (=> 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for Polish
+ Data package providing Apertium language resources for Polish

@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dan,
-               apertium-dev (>= 3.3),
+               apertium-dev (=> 3.4),
                apertium-lex-tools,
                apertium-swe,
                autotools-dev,
@@ -22,7 +22,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-sw
 
 Package: apertium-swe-dan
 Architecture: all
-Depends: apertium (>= 3.3), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (=> 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-da-sv, apertium-dan-swe, apertium-sv-da
 Conflicts: apertium-da-sv, apertium-dan-swe, apertium-sv-da
 Replaces: apertium-da-sv, apertium-sv-da

@@ -20,7 +20,7 @@
    ["trunk/apertium-simpleton", null, "src/version.hpp", null, "wheezy"],
 
    # Then languages
-   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
+#   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
    ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
    ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
    ["languages/apertium-ara"],

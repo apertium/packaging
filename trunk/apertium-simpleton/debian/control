@@ -14,7 +14,7 @@ Depends: apertium (>= 3.4),
          binutils,
          cg3 (>= 0.9.9),
          hfst (>= 3.8.2),
-         lttoolbox (>= 3.3),
+         lttoolbox (=> 3.3.1),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Minimal GUI for Apertium

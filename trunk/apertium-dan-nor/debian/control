@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dan,
-               apertium-dev (>= 3.3),
+               apertium-dev (=> 3.4),
                apertium-lex-tools,
                apertium-nno,
                apertium-nob,
@@ -23,7 +23,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-da
 
 Package: apertium-dan-nor
 Architecture: all
-Depends: apertium (>= 3.3),
+Depends: apertium (=> 3.4),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

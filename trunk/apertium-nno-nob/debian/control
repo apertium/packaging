@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.3),
+Build-Depends: apertium-dev (=> 3.4),
                apertium-nno,
                apertium-nob,
                autotools-dev,
@@ -21,7 +21,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-nn
 
 Package: apertium-nno-nob
 Architecture: all
-Depends: apertium (>= 3.3), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (=> 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-nob-nno
 Conflicts: apertium-nob-nno
 Description: Apertium translation data for the Norwegian Nynorsk-Norwegian Bokmål pair

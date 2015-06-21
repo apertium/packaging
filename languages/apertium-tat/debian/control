@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.3),
+Build-Depends: apertium-dev (=> 3.4),
                autotools-dev,
                cg3,
                debhelper (>= 8.0),
@@ -21,6 +21,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ta
 
 Package: apertium-tat
 Architecture: all
-Depends: apertium (>= 3.3), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (=> 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Tatar
  Data package providing Apertium language resources for Tatar
