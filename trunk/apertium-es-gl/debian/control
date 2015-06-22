@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (=> 3.4),
+Build-Depends: apertium-dev (>= 3.4),
                autotools-dev,
                debhelper (>= 8.0),
                dh-autoreconf,
@@ -18,7 +18,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es
 
 Package: apertium-es-gl
 Architecture: all
-Depends: apertium (=> 3.4), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-gl-es
 Conflicts: apertium-gl-es
 Description: Apertium translation data for the Spanish-Galician pair
