@@ -1,8 +1,17 @@
+lttoolbox (3.3.2~r61000-1) unstable; urgency=low
+
+  * New upstream snapshop release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 22 Jun 2015 10:40:01 09:30:00 +0200
+
 lttoolbox (3.3.1~r59199-1) unstable; urgency=low
 
-  * Cleaner release.
+  [ Tino Didriksen ]
+  * New upstream snapshop release.
+  * debian/control:
+    + Renamed liblttoolbox3-3.3-dev package to lttoolbox-dev
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Sun, 21 Jun 2015 18:59:50 +0200
+ -- Kartik Mistry <kartik@debian.org>  Mon, 22 Jun 2015 11:52:30 +0530
 
 lttoolbox (3.3.1-1) unstable; urgency=low
 

@@ -7,7 +7,7 @@ License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-Requires: lttoolbox >= 3.3
+Requires: lttoolbox >= 3.3.1
 # Require xmllint from:
 Requires: libxml2
 # Require xsltproc from:
@@ -58,7 +58,7 @@ machine translation engine.
 Summary: Development tools and library for apertium
 Group: Development/Tools
 Requires: apertium = %{version}-%{release}
-Requires: lttoolbox-devel >= 3.3.0
+Requires: lttoolbox-devel >= 3.3.1
 Obsoletes: libapertium3-devel < %{version}-%{release}
 
 %description -n apertium-devel
