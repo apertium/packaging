@@ -28,7 +28,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 
 Package: hfst
 Architecture: any
-Depends: libhfst40 (= ${binary:Version}),
+Depends: libhfst41 (= ${binary:Version}),
          python,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -37,7 +37,7 @@ Description: Helsinki Finite-State Transducer Technology
  implementation of morphological analysers and other tools which are
  based on weighted and unweighted finite-state transducer technology.
 
-Package: libhfst40
+Package: libhfst41
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst
@@ -50,10 +50,10 @@ Description: Helsinki Finite-State Transducer Technology Libraries
  .
  This package provides runtime libraries for HFST.
 
-Package: libhfst40-dev
+Package: libhfst41-dev
 Architecture: any
 Section: libdevel
-Depends: libhfst40 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libhfst41 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst-dev
 Conflicts: libhfst-dev, libhfst3-dev
 Replaces: libhfst-dev, libhfst3-dev
@@ -67,7 +67,7 @@ Description: Helsinki Finite-State Transducer Technology Development files
 Package: python-libhfst
 Architecture: any
 Section: python
-Depends: libhfst40 (= ${binary:Version}),
+Depends: libhfst41 (= ${binary:Version}),
          python,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -81,7 +81,7 @@ Description: Helsinki Finite-State Transducer Technology (Python2 module)
 Package: python3-libhfst
 Architecture: any
 Section: python
-Depends: libhfst40 (= ${binary:Version}),
+Depends: libhfst41 (= ${binary:Version}),
          python3,
          ${misc:Depends},
          ${shlibs:Depends}

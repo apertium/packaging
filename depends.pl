@@ -20,7 +20,7 @@ while (<>) {
       next;
    }
    if (/\bPKG_CHECK_MODULES.*?hfst\b/) {
-      $build{'libhfst40-dev'} = 1;
+      $build{'libhfst41-dev'} = 1;
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
