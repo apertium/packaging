@@ -1,17 +1,12 @@
-hfst (3.8.2~r4145-2) experimental; urgency=low
-
-  * Add Python and Python3 modules
-  * Fix some Lintian errors
-
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 01 Jun 2015 18:08:08 +0200
-
-hfst (3.8.2~r4145-1) experimental; urgency=low
+hfst (3.8.2~r4145-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * Initial release (Closes: #781759).
+  * Add Python and Python3 modules.
+  * Fix some Lintian errors.
 
   [ Kartik Mistry ]
   * Added hardening support.
   * Added patch description.
 
- -- Kartik Mistry <kartik@debian.org>  Thu, 02 Apr 2015 21:22:58 +0530
+ -- Kartik Mistry <kartik@debian.org>  Sat, 20 Jun 2015 22:10:39 +0530

@@ -44,7 +44,11 @@ Provides: libhfst
 Conflicts: libhfst, libhfst3
 Replaces: libhfst, libhfst3
 Description: Helsinki Finite-State Transducer Technology Libraries
- Runtime libraries for HFST
+ The Helsinki Finite-State Transducer software is intended for the
+ implementation of morphological analysers and other tools which are
+ based on weighted and unweighted finite-state transducer technology.
+ .
+ This package provides runtime libraries for HFST.
 
 Package: libhfst40-dev
 Architecture: any
@@ -54,22 +58,36 @@ Provides: libhfst-dev
 Conflicts: libhfst-dev, libhfst3-dev
 Replaces: libhfst-dev, libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files
- Development headers and libraries for HFST
+ The Helsinki Finite-State Transducer software is intended for the
+ implementation of morphological analysers and other tools which are
+ based on weighted and unweighted finite-state transducer technology.
+ .
+ This package provides development headers and libraries for HFST
 
 Package: python-libhfst
 Architecture: any
+Section: python
 Depends: libhfst40 (= ${binary:Version}),
          python,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Helsinki Finite-State Transducer Technology
- Python module for libhfst
+Description: Helsinki Finite-State Transducer Technology (Python2 module)
+ The Helsinki Finite-State Transducer software is intended for the
+ implementation of morphological analysers and other tools which are
+ based on weighted and unweighted finite-state transducer technology.
+ .
+ This package provides Python2 module for libhfst.
 
 Package: python3-libhfst
 Architecture: any
+Section: python
 Depends: libhfst40 (= ${binary:Version}),
          python3,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Helsinki Finite-State Transducer Technology
- Python3 module for libhfst
+Description: Helsinki Finite-State Transducer Technology (Python3 module)
+ The Helsinki Finite-State Transducer software is intended for the
+ implementation of morphological analysers and other tools which are
+ based on weighted and unweighted finite-state transducer technology.
+ .
+ This package provides Python3 module for libhfst.
