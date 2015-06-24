@@ -12,6 +12,11 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+if (-s '/tmp/rebuild.lock') {
+   die "Another instance of builder is running - bailing out!\n";
+}
+`date -u > /tmp/rebuild.lock`;
+
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
 
 use File::Basename;
@@ -292,3 +297,4 @@ if ($osx) {
 print {$out2} "Build stopped at ".`date -u`;
 close $log;
 unlink("/tmp/rebuild.$$.log");
+unlink('/tmp/rebuild.lock');
