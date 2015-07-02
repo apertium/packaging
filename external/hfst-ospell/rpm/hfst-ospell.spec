@@ -33,7 +33,7 @@ Development headers and libraries for hfst-ospell
 
 %build
 autoreconf -fi
-%configure --enable-zhfst
+%configure --disable-static --enable-zhfst
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
@@ -51,7 +51,6 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/*.a*
 %{_libdir}/*.so
 
 %post -p /sbin/ldconfig

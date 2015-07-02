@@ -51,7 +51,7 @@ Contains development tools and library for lttoolbox.
 
 %build
 autoreconf -fi
-%configure
+%configure --disable-static
 make %{?_smp_mflags}
 
 %install
@@ -81,7 +81,6 @@ ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
 %{_bindir}/lt-trim
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/*.a*
 %{_libdir}/*.so
 %{_datadir}/%{name}
 %{_datadir}/man/man1/lt-comp.*

@@ -79,7 +79,7 @@ Python3 modules for libhfst
 
 %build
 autoreconf -fi
-%configure --without-foma --with-unicode-handler=ICU --enable-all-tools
+%configure --disable-static --without-foma --with-unicode-handler=ICU --enable-all-tools
 ./scripts/generate-cc-files.sh
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 cd swig
@@ -115,7 +115,6 @@ cd ..
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/*.a*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
 

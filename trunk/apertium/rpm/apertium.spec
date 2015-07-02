@@ -84,7 +84,7 @@ cg3, and hfst.
 
 %build
 autoreconf -fi
-%configure
+%configure --disable-static
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
@@ -150,7 +150,6 @@ ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
 %{_bindir}/apertium-validate-transfer
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
-%{_libdir}/*.a*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
 %{_datadir}/man/man1/apertium-filter-ambiguity.*
