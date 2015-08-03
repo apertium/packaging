@@ -1,3 +1,9 @@
+apertium-tat (0.1.0~r60887-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 03 Aug 2015 06:53:49 +0000
+
 apertium-tat (0.1.0~r57462-1) experimental; urgency=low
 
   * Initial release
