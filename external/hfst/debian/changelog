@@ -1,12 +1,19 @@
+hfst (3.8.3~r4409-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 03 Aug 2015 06:53:49 +0000
+
 hfst (3.8.2~r4145-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * Initial release (Closes: #781759).
   * Add Python and Python3 modules.
   * Fix some Lintian errors.
+  * Disable static libraries.
 
   [ Kartik Mistry ]
   * Added hardening support.
   * Added patch description.
 
- -- Kartik Mistry <kartik@debian.org>  Sat, 20 Jun 2015 22:10:39 +0530
+ -- Kartik Mistry <kartik@debian.org>  Wed, 22 Jul 2015 17:46:52 -0500

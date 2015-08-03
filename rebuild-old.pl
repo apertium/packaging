@@ -225,6 +225,7 @@ foreach my $pkg (@$pkgs) {
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `./reprepro.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
 
+=pod
    # Add the resulting .rpms to the Yum repositories
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
       open my $yumlog, ">$logpath/createrepo.log" or die "Failed to open $logpath/createrepo.log: $!\n";
@@ -251,6 +252,7 @@ foreach my $pkg (@$pkgs) {
       }
       close $yumlog;
    }
+=cut
 
    # Get a list of resulting packages and mark them all as rebuilt
    my $ls = `ls -1 ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
