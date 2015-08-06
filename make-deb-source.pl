@@ -69,6 +69,19 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
 print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+my $excludes = `svn export $opts{r}/exclude.txt`;
+chomp($excludes);
+if ($excludes && $excludes !~ m@^\s*$@) {
+   foreach my $exclude (split(/\n+/, $excludes)) {
+      $exclude =~ s@\s+$@@g;
+      $exclude =~ s@^\s+@@g;
+      if ($exclude !~ m@^[./]@) {
+         foreach my $f (glob($exclude)) {
+            print `rm -rfv -- '$f'`;
+         }
+      }
+   }
+}
 
 # RPM tar.bz2
 my $rv = $opts{v};
