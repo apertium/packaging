@@ -1,6 +1,7 @@
-apertium-af-nl (0.2.0~r57554-1) experimental; urgency=low
+apertium-af-nl (0.2.0~r57554-1) unstable; urgency=low
 
-  * Initial release
-  * No significant changes in svn since tarball, so taking directly from svn
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #794302)
+  * No significant changes in svn since tarball, so taking directly from svn.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Sat, 08 Aug 2015 18:05:37 +0530

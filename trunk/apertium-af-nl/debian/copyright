@@ -16,6 +16,8 @@ License: GPL-2
 Files: autogen.sh
 Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
 License: GPL-2
+
+License: GPL-2
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, version 2 of the License
@@ -32,7 +34,9 @@ License: GPL-2
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 Files: debian/*
-Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2014-2015, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-2+
+
 License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

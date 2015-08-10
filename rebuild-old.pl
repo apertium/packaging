@@ -158,9 +158,15 @@ foreach my $pkg (@$pkgs) {
    my $hashfail = '';
    $hashfail = `grep -l 'Hash Sum mismatch' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($hashfail);
-
    if ($hashfail) {
       print {$out} "\tsoft fail: hash sum mismatch\n";
+   }
+
+   my $depfail = '';
+   $depfail = `grep -l 'packages have unmet dependencies' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   chomp($depfail);
+   if ($depfail) {
+      print {$out} "\tsoft fail: unmet dependencies\n";
    }
 
    # If debs did not fail building, try RPMs and win32
@@ -198,7 +204,7 @@ foreach my $pkg (@$pkgs) {
       my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+~r(\d+)@);
       ++$oldrev;
       # Check that $oldrev is less than newrev, but greater than 1
-      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev || $hashfail) {
+      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev || $hashfail || $depfail) {
          goto CLEANUP;
       }
       my $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;

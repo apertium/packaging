@@ -69,9 +69,10 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
 print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
-my $excludes = `svn export $opts{r}/exclude.txt`;
+my $excludes = `svn cat $opts{r}/exclude.txt 2>/dev/null`;
 chomp($excludes);
 if ($excludes && $excludes !~ m@^\s*$@) {
+   chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
    foreach my $exclude (split(/\n+/, $excludes)) {
       $exclude =~ s@\s+$@@g;
       $exclude =~ s@^\s+@@g;
@@ -81,6 +82,7 @@ if ($excludes && $excludes !~ m@^\s*$@) {
          }
       }
    }
+   chdir ".." or die "Could not change folder: $!\n";
 }
 
 # RPM tar.bz2
