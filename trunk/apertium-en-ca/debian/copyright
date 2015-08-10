@@ -4,7 +4,7 @@ Source: http://apertium.org/
 Files: *
 Copyright: 2005-2007, Universitat d'Alacant (Transducens group)
                       Universitat Pompeu Fabra
-                2009, Paul "greenbreen" Breen
+           2009, Paul "greenbreen" Breen
            2009-2010, Jimmy O'Regan
 License: GPL-2
 
@@ -17,6 +17,8 @@ License: GPL-2
 
 Files: autogen.sh
 Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
+License: GPL-2
+
 License: GPL-2
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
