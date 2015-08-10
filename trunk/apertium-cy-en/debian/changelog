@@ -1,6 +1,16 @@
+apertium-cy-en (0.1.1~r57554-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/docs:
+    + Added ACKNOWLEDGEMENTS.
+    + Removed duplicate changelog file NEWS.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 09 Aug 2015 23:45:27 +0530
+
 apertium-cy-en (0.1.1~r57554-1) experimental; urgency=low
 
-  * Initial release
-  * No significant changes in svn since tarball, so taking directly from svn
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #493260)
+  * No significant changes in svn since tarball, so taking directly from svn.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Mon, 03 Aug 2015 09:59:34 +0530
