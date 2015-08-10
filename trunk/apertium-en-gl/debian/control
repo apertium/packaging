@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.4),
                autotools-dev,
-               debhelper (>= 8.0),
+               debhelper (>= 9),
                dh-autoreconf,
                gawk,
                locales,
