@@ -1,11 +1,17 @@
-apertium-fr-es (0.9.2~r27040-1) unstable; urgency=low
+apertium-fr-es (0.9.2~r58461-1) unstable; urgency=low
 
-  * New upstream release
+  [ Tino Didriksen ]
+  * New upstream release.
   * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
-  * Re-done packaging to take advantage of debhelper 9
+    old data files.
+  * Re-done packaging to take advantage of debhelper 9.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Fixed debian/copyright.
+  * Set debian/compat to 9. Bumped debhelper dependency to > 9.
+  * Disable tests until it is fixed upstream.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 11:29:36 +0530
 
 apertium-fr-es (0.9.0-1) unstable; urgency=low
 

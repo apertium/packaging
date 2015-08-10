@@ -25,3 +25,6 @@ override_dh_auto_build:
 	export LOCPATH=$(CURDIR)/debian/tmp/locale/ && \
 	export LC_ALL=en_US.UTF-8 && \
 	dh_auto_build
+
+override_dh_auto_test:
+	# Disabled until fixed at upstream.
