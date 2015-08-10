@@ -1,11 +1,15 @@
-apertium-eo-ca (0.9.0~r12214-1) unstable; urgency=low
+apertium-eo-ca (0.9.1~r60655-1) unstable; urgency=low
 
-  * New upstream release
+  [ Tino Didriksen ]
+  * New upstream release.
   * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
-  * Re-done packaging to take advantage of debhelper 9
+    old data files.
+  * Re-done packaging to take advantage of debhelper 9.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 29 Jul 2015 21:21:22 +0530
 
 apertium-eo-ca (0.9.0-1.1) unstable; urgency=low
 
