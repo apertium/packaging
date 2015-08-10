@@ -1,11 +1,16 @@
-apertium-fr-ca (1.0.3~r44847-1) unstable; urgency=low
+apertium-fr-ca (1.0.3~r61329-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream release
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
   * Re-done packaging to take advantage of debhelper 9
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Set debian/compat to 9. Bumped dh dependency.
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 09:28:37 +0530
 
 apertium-fr-ca (1.0.2-1) unstable; urgency=low
 
