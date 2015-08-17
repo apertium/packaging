@@ -15,7 +15,7 @@ export DH_OPTIONS
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --disable-static --without-foma --with-unicode-handler=ICU --enable-all-tools
+	dh_auto_configure -- --disable-static --with-unicode-handler=ICU --enable-all-tools
 
 override_dh_auto_build:
 	./scripts/generate-cc-files.sh

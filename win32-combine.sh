@@ -3,6 +3,7 @@ set -e
 
 . win32-funcs.sh
 
+# Apertium all-dev
 rm -rf /opt/win32
 
 install_dep lttoolbox
@@ -19,4 +20,16 @@ rm -rf apertium-all-dev
 mv win32 apertium-all-dev
 7za a apertium-all-dev.7z apertium-all-dev
 mv -fv apertium-all-dev.7z ~apertium/public_html/win32/nightly/
+
+# CG-3 IDE
+rm -rf /opt/win32
+
+install_dep cg3ide
+install_dep cg3
+
+cd /opt
+rm -rf cg3ide
+mv win32 cg3ide
+7za a cg3ide.7z cg3ide
+mv -fv cg3ide.7z ~apertium/public_html/win32/nightly/cg3ide-[0-9]*
 chown -R apertium:apertium ~apertium/public_html/win32
