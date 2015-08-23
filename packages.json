@@ -115,7 +115,7 @@
    ["trunk/apertium-oc-es"],
    ["trunk/apertium-pt-ca"],
    ["trunk/apertium-pt-gl"],
-#   ["trunk/apertium-sme-nob"], # Disabled during instability
+   ["trunk/apertium-sme-nob"],
    ["trunk/apertium-swe-dan"],
    ["trunk/apertium-urd-hin"],
 ]
