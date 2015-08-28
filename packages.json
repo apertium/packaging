@@ -10,7 +10,7 @@
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
    ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide", "wheezy"],
-   ["external/giella-gtcore",   "https://victorio.uit.no/langtech/trunk/gtcore",    null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
+   ["external/giella-gtcore",   "https://victorio.uit.no/langtech/trunk/gtcore",    null, null],
    ["external/hfst",            "http://svn.code.sf.net/p/hfst/code/trunk/hfst3"],
    ["external/hfst-ospell",     "http://svn.code.sf.net/p/hfst/code/trunk/hfst-ospell"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
@@ -20,9 +20,9 @@
    ["trunk/apertium-simpleton", null, "src/version.hpp", null, "wheezy"],
 
    # Then languages
-#   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
-   ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
-   ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null, "wheezy,jessie,stretch,precise,trusty,utopic,vivid"],
+#   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/fao", null, null],
+   ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null],
+   ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null],
    ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],

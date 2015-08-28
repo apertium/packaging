@@ -55,10 +55,37 @@ chomp($date);
 print `rm -rf '/tmp/autorpm.$$' 2>&1`;
 mkdir("/tmp/autorpm.$$");
 chdir(glob('/tmp/autorpm.*')) or die "Could not change folder: $!\n";
-print `ar x /var/cache/pbuilder/result/$pkname*stretch*_all.deb data.tar.xz 2>&1`;
-print `tar -Jxf data.tar.xz 2>&1`;
-rename('usr', $pkname.'-'.$opts{'v'});
-print `tar -jcf '$pkname\_$opts{'v'}.orig.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
+print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.xz 2>&1`;
+print `tar -Jxvf data.tar.xz 2>&1`;
+my $files = '';
+if (-e 'usr/bin') {
+   $files .= "\%{_bindir}/*\n";
+}
+if (-e 'usr/lib/x86_64-linux-gnu/voikko') {
+   print `mv -v 'usr/lib/x86_64-linux-gnu/voikko' 'usr/share/' 2>&1`;
+   $files .= "\%{_datadir}/voikko\n";
+}
+if (-e 'usr/lib/x86_64-linux-gnu/pkgconfig') {
+   print `mv -v 'usr/lib/x86_64-linux-gnu/pkgconfig' 'usr/share/' 2>&1`;
+}
+if (-e 'usr/share/apertium') {
+   $files .= "\%{_datadir}/apertium\n";
+}
+if (-e 'usr/share/doc') {
+   $files .= "\%{_datadir}/doc/*\n";
+}
+if (-e 'usr/share/giella') {
+   $files .= "\%{_datadir}/giella\n";
+}
+if (-e 'usr/share/giella-gtcore') {
+   $files .= "\%{_datadir}/giella-gtcore\n";
+}
+if (-e 'usr/share/pkgconfig') {
+   $files .= "\%{_datadir}/pkgconfig\n";
+}
+mkdir($pkname.'-'.$opts{'v'});
+print `mv -v 'usr' '$pkname-$opts{'v'}/' 2>&1`;
+print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
@@ -69,7 +96,7 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
 print `osc rm * 2>&1`;
-print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
 my $spec = <<SPEC;
 Name: $pkname
@@ -79,7 +106,7 @@ Summary: Autopkg of $pkname
 Group: Development/Tools
 License: GPL-3.0+
 URL: http://apertium.org/
-Source0: \%{name}_\%{version}.orig.tar.bz2
+Source0: \%{name}_\%{version}.tar.bz2
 BuildArch: noarch
 
 BuildRequires: binutils
@@ -98,13 +125,11 @@ Nightly autopkg of $pkname
 \%build
 
 \%install
-install -d \%{buildroot}\%{_datadir}
-cp -a share/* \%{buildroot}\%{_datadir}/
+cp -av * \%{buildroot}/
 
 \%files
 \%defattr(-,root,root)
-\%{_datadir}/apertium
-\%{_datadir}/[b-z]*/*
+$files
 
 SPEC
 
