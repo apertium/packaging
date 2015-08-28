@@ -52,15 +52,15 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-chdir(glob('/tmp/autopkg.*')) or die "Could not change folder: $!\n";
-`svn export $opts{r}/rpm >/dev/null 2>&1`;
-if (!(-s "rpm/$pkname.spec")) {
-   die "No such file $opts{r}/rpm/$pkname.spec !\n";
-}
-my $spec = `cat rpm/$pkname.spec`;
+print `rm -rf '/tmp/autorpm.$$' 2>&1`;
+mkdir("/tmp/autorpm.$$");
+chdir(glob('/tmp/autorpm.*')) or die "Could not change folder: $!\n";
+print `ar x /var/cache/pbuilder/result/$pkname*stretch*_all.deb data.tar.xz 2>&1`;
+print `tar -Jxf data.tar.xz 2>&1`;
+rename('usr', $pkname.'-'.$opts{'v'});
+print `tar -jcf '$pkname\_$opts{'v'}.orig.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
-#print `osc up 2>&1`;
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
    print `osc mkpac $pkname 2>&1`;
    print `osc ci -m "Create package $pkname" 2>&1`;
@@ -69,11 +69,45 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
 print `osc rm * 2>&1`;
-print `cp -av /tmp/autopkg.*/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
-print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
-$spec =~ s/^Version:[^\n]+$/Version: $opts{'v'}/m;
-$spec =~ s/^Release: \d+/Release: $opts{'dv'}/m;
+my $spec = <<SPEC;
+Name: $pkname
+Version: $opts{'v'}
+Release: $opts{'dv'}\%{?dist}
+Summary: Autopkg of $pkname
+Group: Development/Tools
+License: GPL-3.0+
+URL: http://apertium.org/
+Source0: \%{name}_\%{version}.orig.tar.bz2
+BuildArch: noarch
+
+BuildRequires: binutils
+BuildRequires: xz
+Requires: apertium
+Requires: apertium-lex-tools
+Requires: cg3
+Requires: hfst
+
+\%description
+Nightly autopkg of $pkname
+
+\%prep
+\%setup -q -n \%{name}-\%{version}
+
+\%build
+
+\%install
+install -d \%{buildroot}\%{_datadir}
+cp -a share/* \%{buildroot}\%{_datadir}/
+
+\%files
+\%defattr(-,root,root)
+\%{_datadir}/apertium
+\%{_datadir}/[b-z]*/*
+
+SPEC
+
 if ($opts{auto}) {
    $spec =~ s/\%changelog.*//sg;
    $spec .= <<CHLOG;
@@ -89,3 +123,4 @@ close FILE;
 
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
+print `rm -rf '/tmp/autorpm.$$' 2>&1`;

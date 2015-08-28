@@ -175,6 +175,10 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\tupdating rpm sources\n";
          `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
       }
+      elsif ($is_data) {
+         print {$out} "\tupdating rpm from data\n";
+         `./make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
+      }
 
       if (-s "@$pkg[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
