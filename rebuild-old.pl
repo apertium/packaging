@@ -147,7 +147,7 @@ foreach my $pkg (@$pkgs) {
       # If this is a data-only package, only build it for one arch per distro
       print {$out} "\tdata only\n";
       $is_data = 'data';
-      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,utopic,vivid";
+      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,utopic,vivid,wily";
    }
 
    # Build the packages for Debian/Ubuntu

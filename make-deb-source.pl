@@ -59,6 +59,7 @@ my %distros = (
 	'trusty' => 'ubuntu',
 	'utopic' => 'ubuntu',
 	'vivid' => 'ubuntu',
+	'wily' => 'ubuntu',
 );
 
 print `rm -rf /tmp/autopkg.*`;
