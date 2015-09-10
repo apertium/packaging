@@ -52,6 +52,7 @@ open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
 my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build started ".`date -u`;
 `rm -f /var/cache/pbuilder/aptcache/*.deb`;
+`rm -f /tmp/update-*.log`;
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;

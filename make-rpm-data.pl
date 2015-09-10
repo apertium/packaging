@@ -146,6 +146,20 @@ open FILE, ">/root/osc/$opts{'oscp'}/$pkname/$pkname.spec" or die "Could not wri
 print FILE $spec;
 close FILE;
 
+my $meta = <<META;
+<package name="$pkname" project="home:TinoDidriksen:nightly">
+  <title></title>
+  <description></description>
+  <build>
+    <disable arch="i586"/>
+  </build>
+</package>
+META
+open FILE, ">/tmp/$pkname.xml" or die "Could not write /tmp/$pkname.xml: $!\n";;
+print FILE $meta;
+close FILE;
+print `osc meta pkg -F /tmp/$pkname.xml`;
+
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
 print `rm -rf '/tmp/autorpm.$$' 2>&1`;

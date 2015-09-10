@@ -1,6 +1,5 @@
 #!/usr/bin/env php
 <?php
-# -*- mode: cperl; indent-tabs-mode: nil; tab-width: 3; cperl-indent-level: 3; -*-
 # Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 # Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
 
