@@ -10,11 +10,14 @@ $map = json_decode($map, true);
 
 $authors = [];
 
+$count = 0;
 while ($line = fgets(STDIN)) {
 	if (!preg_match('@^(\S+)\s(\d+)@u', $line, $m)) {
 		continue;
 	}
+	++$count;
 
+	$m[1] = mb_strtolower($m[1]);
 	if (empty($map[$m[1]])) {
 		echo "UNKNOWN: {$m[1]}\n";
 		continue;
@@ -27,6 +30,7 @@ while ($line = fgets(STDIN)) {
 		$authors[$user] = [
 			'lo' => $year,
 			'hi' => $year,
+			'cnt' => 1,
 			];
 		continue;
 	}
@@ -38,6 +42,8 @@ while ($line = fgets(STDIN)) {
 	if ($year > $authors[$user]['hi']) {
 		$authors[$user]['hi'] = $year;
 	}
+
+	++$authors[$user]['cnt'];
 }
 
 foreach ($authors as $user => $hilo) {
@@ -46,5 +52,6 @@ foreach ($authors as $user => $hilo) {
 		echo '-', $hilo['hi'];
 	}
 	echo ', ', $user;
+	//echo ' (', round($hilo['cnt']*100.0/$count), '%)';
 	echo "\n";
 }
