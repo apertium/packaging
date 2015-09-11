@@ -21,6 +21,9 @@ do
 		if [[ ! -s "/tmp/update-$DISTRO-$ARCH.log" ]]; then
 			echo "Updating $DISTRO for $ARCH"
 			cowbuilder --update --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ 2>&1 | tee "/tmp/update-$DISTRO-$ARCH.log" >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log
+		else
+			echo "Updating package list $DISTRO for $ARCH"
+			echo 'apt-get -q -y update' | cowbuilder --save --login --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ 2>&1 | tee -a "/tmp/update-$DISTRO-$ARCH.log" >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log
 		fi
 		echo "Building $DISTRO for $ARCH"
 		cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1 &
