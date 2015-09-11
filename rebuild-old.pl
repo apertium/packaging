@@ -236,6 +236,7 @@ foreach my $pkg (@$pkgs) {
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `./reprepro.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
+   `rm -f /tmp/update-*.log`;
 
 =pod
    # Add the resulting .rpms to the Yum repositories

@@ -151,7 +151,8 @@ my $meta = <<META;
   <title></title>
   <description></description>
   <build>
-    <disable arch="i586"/>
+    <disable/>
+    <enable arch="x86_64"/>
   </build>
 </package>
 META
