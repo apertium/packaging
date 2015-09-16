@@ -77,8 +77,8 @@ if (-e 'usr/share/doc') {
 if (-e 'usr/share/giella') {
    $files .= "\%{_datadir}/giella\n";
 }
-if (-e 'usr/share/giella-gtcore') {
-   $files .= "\%{_datadir}/giella-gtcore\n";
+if (-e 'usr/share/giella-core') {
+   $files .= "\%{_datadir}/giella-core\n";
 }
 if (-e 'usr/share/pkgconfig') {
    $files .= "\%{_datadir}/pkgconfig\n";

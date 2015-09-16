@@ -14,14 +14,14 @@ override_dh_auto_build:
 	# Skip
 
 override_dh_auto_install:
-	mkdir -p $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore
-	cp -a [A-Ca-c]* [E-Ze-z]* $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore/
-	cd $$(pwd)/debian/giella-gtcore/usr/share/giella-gtcore/ && \
+	mkdir -p $$(pwd)/debian/giella-core/usr/share/giella-core
+	cp -a [A-Ca-c]* [E-Ze-z]* $$(pwd)/debian/giella-core/usr/share/giella-core/
+	cd $$(pwd)/debian/giella-core/usr/share/giella-core/ && \
 	./configure --prefix=/usr && \
 	$(MAKE) && \
 	$(MAKE) DESTDIR=$$(pwd)/../../.. install
-	echo '#!/bin/bash\necho "/usr/share/giella-gtcore"' > $$(pwd)/debian/giella-gtcore/usr/bin/gt-core.sh
-	chmod +x $$(pwd)/debian/giella-gtcore/usr/bin/gt-core.sh
+	echo '#!/bin/bash\necho "/usr/share/giella-core"' > $$(pwd)/debian/giella-core/usr/bin/gt-core.sh
+	chmod +x $$(pwd)/debian/giella-core/usr/bin/gt-core.sh
 	find . -type d -name autom4te.cache -print0 | xargs -0 rm -rf
 	find . -type d -name build-aux -print0 | xargs -0 rm -rf
 	find . -type f -name 'autogen.sh' -print0 | xargs -0 rm -rf
