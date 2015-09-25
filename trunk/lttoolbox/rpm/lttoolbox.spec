@@ -59,6 +59,9 @@ make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
 
+%check
+make test
+
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
