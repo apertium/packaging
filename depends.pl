@@ -51,7 +51,7 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 8.0), locales, dh-autoreconf, autotools-dev, apertium-dev (>= 3.4), pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 9), locales, dh-autoreconf, autotools-dev, apertium-dev (>= 3.4), pkg-config (>= 0.21)";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
