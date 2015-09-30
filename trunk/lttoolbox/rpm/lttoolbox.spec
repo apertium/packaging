@@ -18,6 +18,7 @@ BuildRequires: libxml2-devel
 BuildRequires: libxslt
 BuildRequires: pcre-devel
 BuildRequires: pkgconfig
+BuildRequires: python
 BuildRequires: zlib-devel
 
 %description
