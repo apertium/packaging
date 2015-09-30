@@ -5,7 +5,6 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
-               autoconf-archive,
                automake,
                autotools-dev,
                debhelper (>= 9.0),
