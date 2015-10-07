@@ -6,6 +6,9 @@ do
 	install $INST /opt/win32-pkg/$PKG_NAME/opt/win32/bin
 done
 
+cd /opt/win32-pkg/$PKG_NAME/opt/win32/bin
+/misc/branches/packaging/win32-copy-deps.pl
+
 cd /opt/win32-pkg/$PKG_NAME/opt
 for DEP in $EXTRA_DEPS
 do

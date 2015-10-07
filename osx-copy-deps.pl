@@ -13,8 +13,10 @@ BEGIN {
 use open qw( :encoding(UTF-8) :std );
 
 my $did = 1;
-for (my $i=0 ; $i<1000 && $did ; $i++) {
+for (my $i=1 ; $i<1000 && $did ; $i++) {
    $did = 0;
+
+   print "Round $i\n";
 
    my @files = split("\n", `find bin/ lib/ -type f`);
    foreach my $f (@files) {
