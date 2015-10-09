@@ -4,6 +4,7 @@ function pkg_spellers {
 	pushd /misc/spellers
 	svn up
 	./make_msi.pl $1
+	./make_xpi.pl $1
 	mkdir -pv ~apertium/public_html/spellers/
 	rm -fv ~apertium/public_html/spellers/$1*
 	cp -av build/$1/*.msi build/mozilla/$1*.xpi ~apertium/public_html/spellers/
