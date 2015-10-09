@@ -237,6 +237,10 @@ foreach my $pkg (@$pkgs) {
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `./reprepro.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
 
+   if (-s "@$pkg[0]/hook.post" && -x "@$pkg[0]/hook.post") {
+      `./@$pkg[0]/hook.post >$logpath/hook.post.log 2>&1`;
+   }
+
 =pod
    # Add the resulting .rpms to the Yum repositories
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
