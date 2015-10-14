@@ -24,5 +24,5 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ty
 Package: apertium-tyv
 Architecture: all
 Depends: apertium (>= 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
-Description: Apertium single language data for Tuvinian
- Data package providing Apertium language resources for Tuvinian
+Description: Apertium single language data for Tuvan
+ Data package providing Apertium language resources for Tuvan
