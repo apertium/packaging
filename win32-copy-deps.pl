@@ -15,6 +15,7 @@ use open qw( :encoding(UTF-8) :std );
 my @locs = (
    "/opt/mxe/usr/i686-w64-mingw32.shared/bin",
    "/opt/mxe/usr/i686-w64-mingw32.shared/qt5/bin",
+   "/opt/icudata",
    );
 
 my $did = 1;

@@ -56,6 +56,9 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          }
          print STDERR "\tcopying dependency '$d'\n";
          `rsync -avu -L '/opt/osxcross/target/macports/pkgs/opt/local/lib/$d' 'lib/$d'`;
+         if (-e "/opt/icudata/$d") {
+            `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+         }
          print STDERR "\tadjusting dependency '$d'\n";
          print STDERR `install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
          $did = 1;
