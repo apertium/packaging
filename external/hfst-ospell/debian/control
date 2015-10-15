@@ -11,6 +11,7 @@ Build-Depends: autoconf,
                dh-autoreconf,
                hfst,
                libarchive-dev,
+               libicu-dev,
                libtool,
                libxml++2.6-dev,
                pkg-config

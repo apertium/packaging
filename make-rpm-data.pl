@@ -96,7 +96,7 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
-print `osc rm * 2>&1`;
+print `osc rm --force * 2>&1`;
 print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
 my $spec = <<SPEC;
