@@ -22,20 +22,23 @@ my $did = 1;
 for (my $i=1 ; $i<1000 && $did ; $i++) {
    $did = 0;
 
-   print "Round $i\n";
+   print STDERR "Round $i\n";
 
-   my @deps = split("\n", `strings *.exe *.dll | grep '\\.dll\$' | sort | uniq`);
+   my @deps = split("\n", `strings *.exe *.dll | tr ' ' '\\n' | grep '\\.dll\$' | sort | uniq`);
    foreach my $d (@deps) {
-      if (-s $d) {
+      my @ds = ($d, lc($d), uc($d));
+      if (-s $ds[0] || -s $ds[1] || -s $ds[2]) {
          next;
       }
 
       my $s = 0;
       foreach my $loc (@locs) {
-         if (-s "$loc/$d") {
-            `rsync -avu -L '$loc/$d' './$d'`;
-            $did = 1;
-            $s = 1;
+         foreach my $d (@ds) {
+            if (-s "$loc/$d") {
+               `rsync -avu -L '$loc/$d' './$d'`;
+               $did = 1;
+               $s = 1;
+            }
          }
       }
 
