@@ -16,7 +16,7 @@ do
 done
 
 set +e
-find . -type f -name '*.exe' -or -name '*.dll' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip
+find . -type f -name '*.exe' -or -name '*.dll' | grep -v 7z | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip
 find . -type f -name '*.a' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip --strip-debug
 set -e
 mv win32 $PKG_NAME
