@@ -4,7 +4,6 @@ set -e
 . osx-funcs.sh
 
 rm -rf /opt/osx
-
 install_dep lttoolbox
 install_dep apertium
 install_dep apertium-lex-tools
@@ -21,4 +20,6 @@ mv osx apertium-all-dev
 tar -jcvf apertium-all-dev.tar.bz2 apertium-all-dev
 mv -fv apertium-all-dev.7z ~apertium/public_html/osx/nightly/
 mv -fv apertium-all-dev.tar.bz2 ~apertium/public_html/osx/nightly/
+rm -rf apertium-all-dev
+
 chown -R apertium:apertium ~apertium/public_html/osx
