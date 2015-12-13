@@ -82,24 +82,22 @@ autoreconf -fi
 %configure --disable-static --with-unicode-handler=ICU --enable-all-tools
 ./scripts/generate-cc-files.sh
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
-cd python
-python setup.py build_ext
 %if ! ( 0%{?el6} || 0%{?el7} )
+cd python
 python3 setup.py build_ext
-%endif
 strip --strip-unneeded build/*/*.so
 cd ..
+%endif
 
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{python_sitelib}/*.py[co]
-cd python
-python setup.py install --no-compile --prefix /usr --root %{buildroot}
 %if ! ( 0%{?el6} || 0%{?el7} )
+cd python
 python3 setup.py install --no-compile --prefix /usr --root %{buildroot}
-%endif
 cd ..
+%endif
 
 %files
 %defattr(-,root,root)
@@ -121,7 +119,6 @@ cd ..
 %files -n python-libhfst
 %defattr(-,root,root)
 %{python_sitelib}/*
-%{python_sitearch}/*
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %files -n python3-libhfst
