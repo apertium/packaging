@@ -78,6 +78,9 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
+   ["nursery/apertium-sme-fin"],
+   ["nursery/apertium-sme-sma"],
+   ["nursery/apertium-sme-smj"],
    ["nursery/apertium-tat-rus"],
 
    ["staging/apertium-pl-cs"],
