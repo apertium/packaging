@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.4),
                dh-autoreconf,
                gawk,
                hfst,
-               libhfst41-dev,
+               libhfst42-dev,
                locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.6
