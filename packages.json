@@ -34,6 +34,7 @@
    ["languages/apertium-ben"],
    ["languages/apertium-bre"],
    ["languages/apertium-bul"],
+   ["languages/apertium-cat"],
    ["languages/apertium-ces"],
    ["languages/apertium-chv"],
 #   ["languages/apertium-cym"], # Not buildable
@@ -45,6 +46,7 @@
    ["languages/apertium-fao"],
    ["languages/apertium-fin"],
 #   ["languages/apertium-gla"], # Not buildable
+   ["languages/apertium-glg"],
    ["languages/apertium-glv"],
    ["languages/apertium-hbs"],
    ["languages/apertium-hin"],
@@ -83,6 +85,7 @@
    ["nursery/apertium-sme-smj"],
    ["nursery/apertium-tat-rus"],
 
+   ["staging/apertium-cat-glg"],
    ["staging/apertium-pl-cs"],
 
    ["trunk/apertium-af-nl"],

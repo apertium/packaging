@@ -1,0 +1,34 @@
+Source: apertium-cat-glg
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-cat,
+               apertium-dev (>= 3.4),
+               apertium-glg,
+               apertium-lex-tools,
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               locales,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.6
+Homepage: http://apertium.org/
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-cat-glg.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cat-glg.git
+
+Package: apertium-cat-glg
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-glg-cat
+Conflicts: apertium-glg-cat
+Description: Apertium translation data for the Catalan-Galician pair
+ Data package providing Apertium language resources for translating
+ between the Catalan and Galician languages.
