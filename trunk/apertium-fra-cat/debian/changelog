@@ -1,4 +1,10 @@
-apertium-fra-cat (0.2.0-1) experimental; urgency=low
+apertium-fra-cat (1.1.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Wed, 23 Dec 2015 23:59:37 +0200
+
+apertium-fr-ca (1.0.3~r61329-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * New upstream release
@@ -12,27 +18,27 @@ apertium-fra-cat (0.2.0-1) experimental; urgency=low
 
  -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 09:28:37 +0530
 
-apertium-fra-cat (0.2.0-1) experimental; urgency=low
+apertium-fr-ca (1.0.2-1) unstable; urgency=low
 
   * New upstream release
-  * Added dependency on apertium-fra-cate2
+  * Added dependency on apertium-pcre2
 
  -- Francis Tyers <ftyers@prompsit.com>  Thu, 12 Mar 2009 20:31:32 +0000
 
-apertium-fra-cat (0.2.0-1) experimental; urgency=low
+apertium-fr-ca (1.0.0-2) unstable; urgency=low
 
   * Fixed Build-Depends (Closes: #446595)
   * Upgrade to Apertium 3.0 (Closes: #445830)
 
  -- Francis Tyers <ftyers@prompsit.com>  Mon, 22 Oct 2007 16:30:23 +0100
 
-apertium-fra-cat (0.2.0-1) experimental; urgency=low
+apertium-fr-ca (1.0.0-1) unstable; urgency=low
 
   * Release requires Apertium 3
 
  -- Francis Tyers <ftyers@prompsit.com>  Fri,  5 Oct 2007 16:03:00 +0100
 
-apertium-fra-cat (0.2.0-1) experimental; urgency=low
+apertium-fr-ca (0.7-1) unstable; urgency=low
 
   * Initial release (Closes: #389229)
 
