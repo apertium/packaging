@@ -45,6 +45,7 @@
    ["languages/apertium-eus"],
    ["languages/apertium-fao"],
    ["languages/apertium-fin"],
+   ["languages/apertium-fra"],
 #   ["languages/apertium-gla"], # Not buildable
    ["languages/apertium-glg"],
    ["languages/apertium-glv"],
@@ -109,7 +110,7 @@
    ["trunk/apertium-es-ro"],
    ["trunk/apertium-eu-en"],
    ["trunk/apertium-eu-es"],
-   ["trunk/apertium-fr-ca"],
+   ["trunk/apertium-fra-cat"],
    ["trunk/apertium-fr-es"],
    ["trunk/apertium-hbs-eng"],
    ["trunk/apertium-hbs-mkd"],
