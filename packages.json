@@ -27,6 +27,7 @@
    ["external/giella-sma",      "https://victorio.uit.no/langtech/trunk/langs/sma", null, null],
    ["external/giella-sme",      "https://victorio.uit.no/langtech/trunk/langs/sme", null, null],
    ["external/giella-smj",      "https://victorio.uit.no/langtech/trunk/langs/smj", null, null],
+   ["external/giella-smn",      "https://victorio.uit.no/langtech/trunk/langs/smn", null, null],
    ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
@@ -84,6 +85,7 @@
    ["nursery/apertium-sme-fin"],
    ["nursery/apertium-sme-sma"],
    ["nursery/apertium-sme-smj"],
+   ["nursery/apertium-sme-smn"],
    ["nursery/apertium-tat-rus"],
 
    ["staging/apertium-cat-glg"],

@@ -1,0 +1,6 @@
+apertium-sme-smn (0.1.0-1) experimental; urgency=low
+
+  * Initial release
+  * No significant changes in svn since tarball, so taking directly from svn
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
