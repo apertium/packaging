@@ -21,6 +21,7 @@
    ["external/giella-core",     "https://victorio.uit.no/langtech/trunk/gtcore",    null, null],
 
    # Then languages
+   ["external/giella-est",      "https://victorio.uit.no/langtech/trunk/langs/est", null, null],
 #   ["external/giella-fao",      "https://victorio.uit.no/langtech/trunk/langs/fao", null, null],
    ["external/giella-fin",      "https://victorio.uit.no/langtech/trunk/langs/fin", null, null],
    ["external/giella-kal",      "https://victorio.uit.no/langtech/trunk/langs/kal", null, null],
