@@ -28,8 +28,8 @@ Depends: apertium (>= 3.4),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-cat-fra
-Replaces: apertium-fr-ca (<< 1.1.0)
-Breaks: apertium-fr-ca (<< 1.1.0)
+Replaces: apertium-fr-ca (<< 1.1.0~)
+Breaks: apertium-fr-ca (<< 1.1.0~)
 Description: Apertium translation data for the French-Catalan pair
  Data package providing Apertium language resources for translating
  between the French and Catalan languages.
