@@ -27,9 +27,18 @@ Depends: apertium (>= 3.4),
          cg3,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-cat-fra, apertium-fr-ca, apertium-ca-fr
-Conflicts: apertium-cat-fra, apertium-fr-ca, apertium-ca-fr
-Replaces: apertium-fr-ca, apertium-ca-fr
+Provides: apertium-cat-fra
+Replaces: apertium-fr-ca (<< 1.1.0)
+Breaks: apertium-fr-ca (<< 1.1.0)
 Description: Apertium translation data for the French-Catalan pair
  Data package providing Apertium language resources for translating
  between the French and Catalan languages.
+
+Package: apertium-fr-ca
+Architecture: all
+Depends: apertium-fra-cat, ${misc:Depends}
+Priority: extra
+Section: oldlibs
+Provides: apertium-ca-fr
+Description: Transitional dummy package for apertium-fra-cat
+ This is a transitional dummy package. It can safely be removed.

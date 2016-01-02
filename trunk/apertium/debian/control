@@ -13,7 +13,7 @@ Build-Depends: autoconf,
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils (>= 2.6.24),
-               lttoolbox-dev (>= 3.3.1),
+               lttoolbox-dev (>= 3.3.2~r63423),
                pkg-config (>= 0.20),
                xsltproc (>= 1.1.16)
 Standards-Version: 3.9.6
@@ -24,7 +24,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.gi
 Package: apertium
 Architecture: any
 Depends: libxml2-utils (>= 2.6.24),
-         lttoolbox (>= 3.3.1),
+         lttoolbox (>= 3.3.2~r63423),
          xsltproc (>= 1.1.16),
          ${misc:Depends},
          ${shlibs:Depends}
@@ -63,7 +63,7 @@ Architecture: any
 Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
-         lttoolbox-dev (>= 3.3.1),
+         lttoolbox-dev (>= 3.3.2~r63423),
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libapertium3-dev
@@ -74,68 +74,13 @@ Description: Development tools and library for Apertium
 
 Package: apertium-all-dev
 Architecture: all
-Depends: apertium-dev,
-         apertium-lex-tools,
-         cg3,
-         hfst,
+Depends: apertium-dev (= ${binary:Version}),
+         apertium-lex-tools (=> 0.1.1~r60994),
+         cg3 (=> 0.9.9~r10827),
+         hfst (=> 3.9.0~r4595),
          libhfst-dev,
          ${misc:Depends}
 Description: Metapackage for all tools required for Apertium development
  A metapackage to get all tools required for development of Apertium
  languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
  cg3, and hfst.
-
-Package: apertium-all-languages
-Architecture: all
-Depends: apertium-hbs,
-         apertium-hin,
-         apertium-kaz,
-         apertium-tat,
-         apertium-urd,
-         ${misc:Depends}
-Description: Metapackage for all Apertium single languages
- A metapackage to get all Apertium single language analyzers and generators
-
-Package: apertium-all-pairs
-Architecture: all
-Depends: apertium-af-nl,
-         apertium-br-fr,
-         apertium-ca-it,
-         apertium-cy-en,
-         apertium-dan-nor,
-         apertium-en-ca,
-         apertium-en-es,
-         apertium-en-gl,
-         apertium-eo-ca,
-         apertium-eo-en,
-         apertium-eo-es,
-         apertium-es-an,
-         apertium-es-ast,
-         apertium-es-ca,
-         apertium-es-gl,
-         apertium-es-it,
-         apertium-es-pt,
-         apertium-es-ro,
-         apertium-eu-en,
-         apertium-eu-es,
-         apertium-fr-ca,
-         apertium-fr-es,
-         apertium-hbs-eng,
-         apertium-hbs-mkd,
-         apertium-hbs-slv,
-         apertium-id-ms,
-         apertium-is-sv,
-         apertium-isl-eng,
-         apertium-kaz-tat,
-         apertium-mk-bg,
-         apertium-mk-en,
-         apertium-mt-ar,
-         apertium-oc-ca,
-         apertium-oc-es,
-         apertium-pt-ca,
-         apertium-pt-gl,
-         apertium-sv-da,
-         apertium-urd-hin,
-         ${misc:Depends}
-Description: Metapackage for all Apertium translation pairs
- A metapackage to get all Apertium translation pairs.
