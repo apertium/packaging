@@ -36,7 +36,7 @@ Description: Apertium translation data for the French-Catalan pair
 
 Package: apertium-fr-ca
 Architecture: all
-Depends: apertium-fra-cat, ${misc:Depends}
+Depends: apertium-fra-cat (= ${binary:Version}), ${misc:Depends}
 Priority: extra
 Section: oldlibs
 Provides: apertium-ca-fr
