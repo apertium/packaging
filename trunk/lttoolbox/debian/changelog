@@ -21,6 +21,12 @@ lttoolbox (3.3.2~r61000-2) unstable; urgency=low
 
  -- Kartik Mistry <kartik@debian.org>  Mon, 06 Jul 2015 19:28:04 +0530
 
+lttoolbox (3.3.2~r61000-1) unstable; urgency=low
+
+  * New upstream snapshop release.
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 22 Jun 2015 10:40:01 +0200
+
 lttoolbox (3.3.1~r59199-1) unstable; urgency=low
 
   [ Tino Didriksen ]
