@@ -45,7 +45,8 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: liblttoolbox
 Conflicts: liblttoolbox, liblttoolbox3
-Replaces: liblttoolbox, liblttoolbox3
+Replaces: liblttoolbox, liblttoolbox3, liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
+Breaks: liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
 Description: Shared library for lttoolbox
  The lttoolbox contains the augmented letter transducer tools for natural
  language processing used by Apertium, a platform for building rule-based
@@ -60,7 +61,7 @@ Architecture: all
 Depends: liblttoolbox3-3.3-0 (= ${binary:Version}), ${misc:Depends}
 Priority: extra
 Section: oldlibs
-Description: Transitional package to undo accidental gcc-5 renaming
+Description: Transitional package to undo accidental g++-5 renaming
  This is a transitional dummy package. It can safely be removed.
 
 Package: lttoolbox-dev

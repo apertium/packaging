@@ -4,6 +4,13 @@ lttoolbox (3.3.2~r63423-1) unstable; urgency=low
 
  -- Tino Didriksen <mail@tinodidriksen.com>  Sat, 01 Jan 2016 14:54:01 +0200
 
+lttoolbox (3.3.2~r61000-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rename library packages for g++5 ABI transition (closes: 791195).
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 16 Aug 2015 17:46:35 +0200
+
 lttoolbox (3.3.2~r61000-3) unstable; urgency=low
 
   * Removed troublesome symbols file.

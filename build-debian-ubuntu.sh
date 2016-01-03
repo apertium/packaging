@@ -2,7 +2,7 @@
 # Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 # Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
 
-export DEB_BUILD_OPTIONS="nocheck parallel=5"
+export DEB_BUILD_OPTIONS="nocheck parallel=5 noddebs"
 
 rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
