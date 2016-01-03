@@ -75,9 +75,9 @@ Description: Development tools and library for Apertium
 Package: apertium-all-dev
 Architecture: all
 Depends: apertium-dev (= ${binary:Version}),
-         apertium-lex-tools (=> 0.1.1~r60994),
-         cg3 (=> 0.9.9~r10827),
-         hfst (=> 3.9.0~r4595),
+         apertium-lex-tools (>= 0.1.1~r60994),
+         cg3 (>= 0.9.9~r10827),
+         hfst (>= 3.9.0~r4595),
          libhfst-dev,
          ${misc:Depends}
 Description: Metapackage for all tools required for Apertium development
