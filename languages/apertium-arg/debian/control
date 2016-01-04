@@ -10,8 +10,6 @@ Build-Depends: apertium-dev (>= 3.4),
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               hfst,
-               libhfst42-dev,
                locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.6
@@ -21,6 +19,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ar
 
 Package: apertium-arg
 Architecture: all
-Depends: apertium (>= 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Aragonese
  Data package providing Apertium language resources for Aragonese
