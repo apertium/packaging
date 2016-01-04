@@ -104,7 +104,6 @@
    ["trunk/apertium-eo-en"],
    ["trunk/apertium-eo-es"],
    ["trunk/apertium-eo-fr"],
-   ["trunk/apertium-es-an"],
    ["trunk/apertium-es-ast"],
    ["trunk/apertium-es-ca"],
    ["trunk/apertium-es-gl"],
@@ -131,6 +130,7 @@
    ["trunk/apertium-pt-ca"],
    ["trunk/apertium-pt-gl"],
    ["trunk/apertium-sme-nob"],
+   ["trunk/apertium-spa-arg"],
    ["trunk/apertium-swe-dan"],
    ["trunk/apertium-urd-hin"],
 ]

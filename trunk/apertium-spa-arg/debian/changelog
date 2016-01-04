@@ -1,3 +1,9 @@
+apertium-spa-arg (0.4.0~r64399-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 04 Jan 2016 17:12:39 +0200
+
 apertium-es-an (0.3.0~r42182-1) unstable; urgency=low
 
   * Initial release

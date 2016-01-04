@@ -3,18 +3,10 @@ Source: http://apertium.org/
 
 Files: *
 Copyright: 2009-2010, Jimmy O'Regan
-           2009-2010, Juan Pablo Martínez
+           2009-2016, Juan Pablo Martínez Cortés
                 2005, Universitat d'Alacant (Transducens group)
 License: GPL-2
 
-Files: alt.xsl
- filter.xsl
- translate-to-default-equivalent.xsl
-Copyright: 2005, Universitat d'Alacant / Universidad de Alicante
-License: GPL-2
-
-Files: autogen.sh
-Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
 License: GPL-2
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -33,6 +25,8 @@ License: GPL-2
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-2+
+
 License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
