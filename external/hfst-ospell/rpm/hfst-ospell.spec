@@ -36,7 +36,7 @@ Development headers and libraries for hfst-ospell
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-zhfst --enable-xml --enable-zip
+%configure --disable-static --enable-zhfst
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
