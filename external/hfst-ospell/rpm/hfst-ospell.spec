@@ -16,6 +16,8 @@ BuildRequires: hfst
 BuildRequires: libarchive-devel
 BuildRequires: libicu-devel
 BuildRequires: libxml++-devel
+BuildRequires: zip
+Requires: zip
 
 %description
 Minimal HFST optimized lookup format based spell checker library and
@@ -34,7 +36,7 @@ Development headers and libraries for hfst-ospell
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-zhfst
+%configure --disable-static --enable-zhfst --enable-xml --enable-zip
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
