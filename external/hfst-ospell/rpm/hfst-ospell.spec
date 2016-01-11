@@ -42,6 +42,7 @@ Development headers and libraries for hfst-ospell
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
 
 %build
 autoreconf -fi
