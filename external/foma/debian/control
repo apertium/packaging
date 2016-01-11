@@ -33,9 +33,9 @@ Description: Foma runtime libraries
 
 Package: libfoma0-dev
 Architecture: any
+Section: libdevel
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Foma development files
  Development headers and libraries for foma
-Section: libdevel

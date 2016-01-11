@@ -23,14 +23,23 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell
 
 Package: hfst-ospell
 Architecture: any
-Depends: zip, ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Spell checker library and tool based on HFST
  Minimal HFST optimized lookup format based spell checker library and
  a demonstrational implementation of command line based spell checker.
+
+Package: libhfstospell4
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: libhfstospell
+Conflicts: libhfstospell
+Replaces: libhfstospell
+Description: HFST spell checker runtime libraries
+ Runtime libraries for hfst-ospell
 
 Package: hfst-ospell-dev
 Architecture: any
 Section: devel
 Depends: hfst-ospell (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
-Description: HFST spell checker Development files
+Description: HFST spell checker development files
  Development headers and libraries for hfst-ospell
