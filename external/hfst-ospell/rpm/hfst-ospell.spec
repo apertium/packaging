@@ -17,14 +17,22 @@ BuildRequires: libarchive-devel
 BuildRequires: libicu-devel
 BuildRequires: libxml++-devel
 BuildRequires: zip
-Requires: zip
 
 %description
 Minimal HFST optimized lookup format based spell checker library and
 a demonstrational implementation of command line based spell checker.
 
+%package -n libhfstospell4
+Summary: HFST spell checker runtime libraries
+Group: Development/Libraries
+Provides: libhfstospell = %{version}-%{release}
+Obsoletes: libhfstospell < %{version}-%{release}
+
+%description -n libhfstospell4
+Runtime libraries for hfst-ospell
+
 %package -n hfst-ospell-devel
-Summary: HFST spell checker Development files
+Summary: HFST spell checker development files
 Group: Development/Libraries
 Requires: hfst-ospell = %{version}-%{release}
 
@@ -48,6 +56,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %doc AUTHORS NEWS README
 %{_bindir}/*
 %{_datadir}/man/man1/*
+
+%files -n libhfstospell4
+%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files -n hfst-ospell-devel
@@ -56,9 +67,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 
-%post -p /sbin/ldconfig
+%post -n libhfstospell4 -p /sbin/ldconfig
 
-%postun -p /sbin/ldconfig
+%postun -n libhfstospell4 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 0.3.1
