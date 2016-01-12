@@ -16,7 +16,7 @@ Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox-ja
 
 Package: lttoolbox-java
 Architecture: all
-Depends: default-jre, ${misc:Depends}
+Depends: default-jre-headless, ${misc:Depends}
 Description: Apertium lexical processing modules and tools (Java port)
  The lttoolbox-java contains the augmented letter transducer tools for natural
  language processing used by Apertium, a platform for building rule-based
