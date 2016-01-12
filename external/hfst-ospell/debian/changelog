@@ -1,5 +1,5 @@
-hfst-ospell (0.3.1~r4561-1) experimental; urgency=low
+hfst-ospell (0.3.1~r4598-1) experimental; urgency=low
 
   * Initial release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 11 Jan 2016 09:27:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jan 2016 11:28:01 +0100
