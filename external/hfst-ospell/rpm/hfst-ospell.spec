@@ -74,5 +74,5 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %postun -n libhfstospell4 -p /sbin/ldconfig
 
 %changelog
-* Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 0.3.1
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 0.3.1
 - Initial version of the package

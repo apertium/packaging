@@ -131,11 +131,11 @@ cd ..
 %postun -n libhfst42 -p /sbin/ldconfig
 
 %changelog
-* Fri Dec 19 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.2
+* Fri Dec 19 2014 Tino Didriksen <tino@didriksen.cc> 3.8.2
 - New upstream release
 
-* Tue Nov 04 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.1
+* Tue Nov 04 2014 Tino Didriksen <tino@didriksen.cc> 3.8.1
 - New upstream release
 
-* Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 3.8.0
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.8.0
 - Initial version of the package

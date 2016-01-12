@@ -39,5 +39,5 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/*
 
 %changelog
-* Sun Jan 18 2015 Tino Didriksen <mail@tinodidriksen.com> 0.1.0
+* Sun Jan 18 2015 Tino Didriksen <tino@didriksen.cc> 0.1.0
 - Initial version of the package

@@ -1,9 +1,9 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: apertium-simpleton
-Upstream-Contact: Tino Didriksen <mail@tinodidriksen.com>
+Upstream-Contact: Tino Didriksen <tino@didriksen.cc>
 
 Files: *
-Copyright: 2015 Tino Didriksen <mail@tinodidriksen.com>
+Copyright: 2015 Tino Didriksen <tino@didriksen.cc>
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

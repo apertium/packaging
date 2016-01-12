@@ -49,5 +49,5 @@ cp apertium-simpleton %{buildroot}%{_bindir}/
 %{_bindir}/*
 
 %changelog
-* Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 0.1.0-1
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 0.1.0-1
 - Initial version of the package

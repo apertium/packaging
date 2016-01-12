@@ -164,5 +164,5 @@ ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
 %postun -n libapertium3-3_4-0 -p /sbin/ldconfig
 
 %changelog
-* Fri Sep 05 2014 Tino Didriksen <mail@tinodidriksen.com> 3.3.0
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0
 - Initial version of the package
