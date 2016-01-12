@@ -15,6 +15,7 @@
    ["external/hfst-ospell",     "http://svn.code.sf.net/p/hfst/code/trunk/hfst-ospell"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],
    ["trunk/lttoolbox"],
+   ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp", null, "wheezy"],

@@ -61,6 +61,10 @@ my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 	   print STDERR "Found VERSION version\n";
 	   $version = $1;
 	}
+	elsif ($data =~ m@PACKAGE_VERSION\s*=\s*"([\d.]+)@s) {
+	   print STDERR "Found PACKAGE_VERSION version\n";
+	   $version = $1;
+	}
 	else {
 	   die "No version found!\n";
 	}
