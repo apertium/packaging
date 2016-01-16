@@ -2,7 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 
 Files: *
-Copyright: 2009-2014, Department of Modern Languages, University of Helsinki
+Copyright: 2009-2016, Department of Modern Languages, University of Helsinki
  See AUTHORS for more copyrights.
 License: Apache-2.0
 

@@ -28,7 +28,7 @@ Description: Spell checker library and tool based on HFST
  Minimal HFST optimized lookup format based spell checker library and
  a demonstrational implementation of command line based spell checker.
 
-Package: libhfstospell4
+Package: libhfstospell5
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfstospell

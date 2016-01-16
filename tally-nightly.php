@@ -24,7 +24,7 @@ foreach ($logs as $log) {
 
 	while ($line = fgets($fh)) {
 		// 213.37.1.67 - - [11/Jan/2016:13:05:37 +0000] "GET /osx/apertium-simpleton-osx64.zip HTTP/1.1" 200 10203680 "http://apertium.projectjj.com/osx/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36"
-		if (strpos($line, '/stats/') !== false || strpos($line, 'robot') !== false || strpos($line, '/bot ') !== false || strpos($line, '/bot.') !== false || strpos($line, 'Googlebot') !== false || strpos($line, '192.99.34.59') !== false || strpos($line, '2607:5300:60:493b:') !== false) {
+		if (strpos($line, '/stats/') !== false || strpos($line, '/trac/') !== false || strpos($line, '/svn/') !== false || strpos($line, 'robot') !== false || strpos($line, '/bot ') !== false || strpos($line, '/bot.') !== false || strpos($line, 'Googlebot') !== false || strpos($line, '192.99.34.59') !== false || strpos($line, '2607:5300:60:493b:') !== false) {
 			continue;
 		}
 
