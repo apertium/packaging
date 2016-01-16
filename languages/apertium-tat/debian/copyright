@@ -11,6 +11,8 @@ Copyright:      2011, Röstäm Battal
                 2014, Beknazar Abdikamalov <abdik@users.sourceforge.net>
                 2014, Trond Trosterud <trond.trosterud@hum.uit.no>
 License: GPL-3
+
+License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, version 3 of the License
@@ -28,6 +30,8 @@ License: GPL-3
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-3+
+
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
