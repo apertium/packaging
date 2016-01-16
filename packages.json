@@ -94,6 +94,7 @@
    ["staging/apertium-pl-cs"],
 
    ["trunk/apertium-af-nl"],
+   ["trunk/apertium-arg-cat"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
    ["trunk/apertium-cy-en"],
