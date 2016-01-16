@@ -2,8 +2,7 @@ Source: hfst-ospell
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <tino@didriksen.cc>,
-           Kartik Mistry <kartik@debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
                automake,
                autotools-dev,
@@ -23,7 +22,9 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell
 
 Package: hfst-ospell
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: libhfstospell5 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Spell checker library and tool based on HFST
  Minimal HFST optimized lookup format based spell checker library and
  a demonstrational implementation of command line based spell checker.
