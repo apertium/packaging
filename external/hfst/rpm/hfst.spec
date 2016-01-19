@@ -80,7 +80,6 @@ Python3 modules for libhfst
 %build
 autoreconf -fi
 %configure --disable-static --with-unicode-handler=ICU --enable-all-tools
-./scripts/generate-cc-files.sh
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 %if ! ( 0%{?el6} || 0%{?el7} )
 cd python

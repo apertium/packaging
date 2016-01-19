@@ -18,7 +18,6 @@ override_dh_auto_configure:
 	dh_auto_configure -- --disable-static --with-unicode-handler=ICU --enable-all-tools
 
 override_dh_auto_build:
-	./scripts/generate-cc-files.sh
 	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
 	cd $(CURDIR)/python && python3 setup.py build_ext && strip --strip-unneeded build/*/*.so
 
