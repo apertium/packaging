@@ -1,8 +1,8 @@
-apertium-dan-nor (1.1.0~r64266-1) experimental; urgency=low
+apertium-dan-nor (1.2.2~r65301-1) experimental; urgency=low
 
   * New upstream release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Thu, 31 Dec 2015 16:51:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 01 Feb 2016 10:27:05 +0000
 
 apertium-dan-nor (1.0.0~r48173-1) experimental; urgency=low
 

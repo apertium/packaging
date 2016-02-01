@@ -1,8 +1,8 @@
-apertium-nno (0.4.0~r64266-1) experimental; urgency=low
+apertium-nno (0.5.0~r65282-1) experimental; urgency=low
 
   * New upstream release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Thu, 31 Dec 2015 16:51:49 +0200
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 01 Feb 2016 10:27:05 +0000
 
 apertium-nno (0.2.0~r59753-1) experimental; urgency=low
 
