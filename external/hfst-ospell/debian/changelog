@@ -1,5 +1,6 @@
-hfst-ospell (0.4.0~r4620-1) experimental; urgency=low
+hfst-ospell (0.4.0~r4643-1) experimental; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (closes: #813488)
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jan 2016 11:28:01 +0100
+ -- Kartik Mistry <kartik@debian.org>  Tue, 02 Feb 2016 19:14:36 +0530
