@@ -1,0 +1,2 @@
+# Symbols file only gets in the way for C++
+no-symbols-control-file
