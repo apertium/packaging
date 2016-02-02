@@ -17,8 +17,8 @@ Build-Depends: autoconf,
                pkg-config,
                zip
 Standards-Version: 3.9.6
-Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/hfst-ospell.git
+Homepage: https://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/hfst-ospell.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 
 Package: hfst-ospell
@@ -37,11 +37,17 @@ Provides: libhfstospell
 Conflicts: libhfstospell
 Replaces: libhfstospell
 Description: HFST spell checker runtime libraries
- Runtime libraries for hfst-ospell
+ Minimal HFST optimized lookup format based spell checker library and
+ a demonstrational implementation of command line based spell checker.
+ .
+ This package provides runtime libraries for hfst-ospell.
 
 Package: hfst-ospell-dev
 Architecture: any
 Section: devel
 Depends: hfst-ospell (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: HFST spell checker development files
- Development headers and libraries for hfst-ospell
+ Minimal HFST optimized lookup format based spell checker library and
+ a demonstrational implementation of command line based spell checker.
+ .
+ This package provides development headers and libraries for hfst-ospell.
