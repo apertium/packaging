@@ -26,7 +26,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
 
    my @deps = split("\n", `strings *.exe *.dll | tr ' ' '\\n' | grep '\\.dll\$' | sort | uniq`);
    foreach my $d (@deps) {
-      $d =~ s@^.*?([-_+\w\d]+\.dll)$@$1@i;
+      $d =~ s@^.*?([-_+.\w\d]+\.dll)$@$1@i;
       my @ds = ($d, lc($d), uc($d));
       if (-s $ds[0] || -s $ds[1] || -s $ds[2]) {
          next;

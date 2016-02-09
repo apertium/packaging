@@ -17,8 +17,10 @@ done
 
 set +e
 find . -type f -name '*.exe' -or -name '*.dll' | grep -v 7z | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip
+find . -type f -name '*.exe' -or -name '*.dll' | grep -v 7z | xargs -rn1 chmod uga+x
 find . -type f -name '*.a' | xargs -rn1 /opt/mxe/usr/bin/i686-w64-mingw32.shared-strip --strip-debug
 set -e
+chmod -R uga+r win32
 mv win32 $PKG_NAME
 zip -9r $PKG_NAME-$PKG_VER.zip $PKG_NAME
 7za a -l $PKG_NAME-$PKG_VER.7z $PKG_NAME

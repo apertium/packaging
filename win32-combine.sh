@@ -17,6 +17,7 @@ install_dep trie-tools
 cd /opt
 rm -rf apertium-all-dev
 mv win32 apertium-all-dev
+chmod -R uga+r apertium-all-dev
 zip -9r apertium-all-dev.zip apertium-all-dev
 7za a -l apertium-all-dev.7z apertium-all-dev
 mv -fv apertium-all-dev.zip ~apertium/public_html/win32/nightly/

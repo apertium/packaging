@@ -16,6 +16,7 @@ find . -type f | grep /bin/ | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
 find . -type f | grep /lib/ | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
 find . -type f -name '*.a' | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
 set -e
+chmod -R uga+r osx
 mv osx $PKG_NAME
 zip -9r $PKG_NAME-$PKG_VER.zip $PKG_NAME
 7za a $PKG_NAME-$PKG_VER.7z $PKG_NAME
