@@ -11,14 +11,11 @@ Build-Depends: autoconf,
                dh-exec (>= 0.3)
 Standards-Version: 3.9.6
 Homepage: http://giellatekno.uit.no/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/giella-core.git
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/giella-core.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-core.git
 
 Package: giella-core
 Architecture: all
 Depends: python, python3 (>= 3.1), ${misc:Depends}, ${shlibs:Depends}
-Provides: giella-gtcore
-Conflicts: giella-gtcore
-Replaces: giella-gtcore
-Description: GTCORE files for Giellatekno language packages
- All Giellatekno language packages depend on the files in this package
+Description: GTCORE files for building Giellatekno language packages
+ All Giellatekno language packages build-depends on this package.

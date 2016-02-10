@@ -2,7 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://giellatekno.uit.no/
 
 Files: *
-Copyright: 2005-2014, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
 License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
