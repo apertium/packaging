@@ -1,7 +1,5 @@
-apertium-sme-nob (0.5.1~r52391-1) unstable; urgency=low
+apertium-sme-nob (0.6.0~r65146-1) unstable; urgency=low
 
   * Initial release
-  * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 10 Feb 2016 15:34:26 +0000
