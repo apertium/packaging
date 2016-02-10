@@ -20,8 +20,8 @@ Build-Depends: autotools-dev,
                python3 (>= 3.1),
                zip
 Standards-Version: 3.9.6
-Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/giella-sme.git
+Homepage: http://giellatekno.uit.no/
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/giella-sme.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-sme.git
 
 Package: giella-sme
