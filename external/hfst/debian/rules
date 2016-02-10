@@ -8,24 +8,30 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
 
+build3vers := $(shell py3versions -sv)
+
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
 
 %:
-	dh $@ --parallel --with autoreconf
+	dh $@ --parallel --with autoreconf,python2,python3
 
 override_dh_auto_configure:
 	dh_auto_configure -- --disable-static --with-unicode-handler=ICU --enable-all-tools
 
 override_dh_auto_build:
 	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
-	cd $(CURDIR)/python && python3 setup.py build_ext && strip --strip-unneeded build/*/*.so
+	set -e && for i in $(build3vers); do \
+		cd $(CURDIR)/python && python$$i setup.py build_ext && strip --strip-unneeded build/*/*.so \
+	done
 
 override_dh_auto_test:
 	# Skip, as it breaks in various unpredictable ways
 
 override_dh_auto_install:
 	dh_auto_install
-	cd $(CURDIR)/python && python3 setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp
+	set -e && for i in $(build3vers); do \
+		cd $(CURDIR)/python && python$$i setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp; \
+	done
 	find $(CURDIR) -type f -name '*.pyc' -exec rm -f '{}' \;
 	find $(CURDIR) -type f -name '*.pyo' -exec rm -f '{}' \;
