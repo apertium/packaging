@@ -22,7 +22,7 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
 	set -e && for i in $(build3vers); do \
-		cd $(CURDIR)/python && python$$i setup.py build_ext && strip --strip-unneeded build/*/*.so \
+		cd $(CURDIR)/python && python$$i setup.py build_ext && strip --strip-unneeded build/*/*.so; \
 	done
 
 override_dh_auto_test:
