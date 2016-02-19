@@ -1,0 +1,432 @@
+libvoikko (4.0.1-3) unstable; urgency=medium
+
+  * Rename python-voikko to python3-voikko since it's for Python 3
+    since libvoikko 4.0.1 release.
+  * Add Replaces/Conflicts/Provides and a transitional package.
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 15 Feb 2016 10:19:37 +0200
+
+libvoikko (4.0.1-2) unstable; urgency=medium
+
+  * Fix python install location.
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 10 Feb 2016 17:39:20 +0200
+
+libvoikko (4.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Now requires Python 3.
+  * Use VFST backend only, HFST currently not in Debian.
+  * Disable tests because it'd mean circular dependency regarding voikko-fi.
+  * Breaks voikko-fi <= 2.0
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 09 Feb 2016 09:10:36 +0200
+
+libvoikko (3.8-1) unstable; urgency=medium
+
+  * Imported Upstream version 3.8
+  * Bump Standards-Version
+  * Remove Pre-Depends: multiarch-support
+  * Build-dep on dh-python
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 28 Sep 2015 17:33:36 +0300
+
+libvoikko (3.7.1-1) unstable; urgency=medium
+
+  * Imported Upstream version 3.7.1
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 29 Sep 2014 14:07:05 +0300
+
+libvoikko (3.7-3) unstable; urgency=medium
+
+  [ Erwan Prioul ]
+  * Build-depend on pkg-config. Build using dh-autoreconf. (Closes: #749053)
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 03 Jun 2014 19:29:21 +0300
+
+libvoikko (3.7-2) unstable; urgency=medium
+
+  * Update description to reflect current upstream status
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 07 Dec 2013 19:27:41 +0200
+
+libvoikko (3.7-1) unstable; urgency=low
+
+  * New upstream version
+  * 0001-Internally-standard-and-unspecified-variants-are-not.patch:
+    - Drop, included in the new upstream version
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 26 Nov 2013 08:56:39 +0200
+
+libvoikko (3.6.1-2) unstable; urgency=low
+
+  * Add Vcs urls
+  * 0001-Internally-standard-and-unspecified-variants-are-not.patch:
+    - Cherry-pick to allow passing of automatic tests
+  * Remove disabling of tests from debian/rules
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 04 Sep 2013 07:39:50 +0300
+
+libvoikko (3.6.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Use mostly default debhelper
+  * Update to new upstream location
+  * 0001-Disable-voikkovfstc-by-default-since-VFST-is-still-e.patch:
+    - Drop, included in the new upstream version
+    - Drop also the autoreconf.patch
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 31 Aug 2013 11:03:45 +0300
+
+libvoikko (3.6-2) unstable; urgency=low
+
+  * Add 0001-Disable-voikkovfstc-by-default-since-VFST-is-still-e.patch
+    - Disable building experimental voikkovfstc reported by 
+      Mayhem (Closes: #716445).
+    - Add also autoreconf.patch for autoreconf run changes
+
+ -- Timo Jyrinki <timo@debian.org>  Sun, 14 Jul 2013 21:43:27 +0300
+
+libvoikko (3.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Update debian/compat to 9
+  * Update Standards-Version
+  * Add hardening compile flags via hardening-wrapper build dep
+  * Migrate to multi-arch
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 13 May 2013 17:40:59 +0300
+
+libvoikko (3.5-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/copyright:
+    - Add copyright information for UTF8-CPP library (Closes: #690392).
+
+ -- Luca Falavigna <dktrkranz@debian.org>  Sun, 21 Oct 2012 15:46:18 +0200
+
+libvoikko (3.5-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Standards-Version
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 25 Jun 2012 22:36:42 +0300
+
+libvoikko (3.4.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix indep/arch binary targets
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 04 Feb 2012 12:56:04 +0200
+
+libvoikko (3.4-2) unstable; urgency=low
+
+  [ Timo Jyrinki ]
+  * Merge with Ubuntu 3.3-3ubuntu1 packaging
+
+  [ Matthias Klose ]
+  * Build using dh_python2
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 19 Dec 2011 09:44:10 +0200
+
+libvoikko (3.4-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix debian-rules-missing-recommended-target
+  * Drop patches, issues fixed in this upstream release
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 17 Dec 2011 11:23:28 +0200
+
+libvoikko (3.3-3) unstable; urgency=low
+
+  * Add patch from upstream to increase heap size
+  - See http://sourceforge.net/apps/trac/voikko/changeset/4051
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 14 Nov 2011 16:05:02 +0200
+
+libvoikko (3.3-2) unstable; urgency=low
+
+  * Add patch from upstream to fix a mozvoikko crasher (Closes: #642525)
+  - See http://lists.puimula.org/pipermail/voikko/2011-September/001624.html
+
+ -- Timo Jyrinki <timo@debian.org>  Fri, 23 Sep 2011 18:00:41 +0300
+
+libvoikko (3.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Standards-Version
+  * Remove duplicate Section from control file
+
+ -- Timo Jyrinki <timo@debian.org>  Fri, 23 Sep 2011 09:20:21 +0300
+
+libvoikko (3.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 05 Apr 2011 17:13:56 +0300
+
+libvoikko (3.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Update Standards-Version
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 13 Dec 2010 19:19:03 +0200
+
+libvoikko (3.0-1) unstable; urgency=low
+
+  * New upstream release
+  - Drop dependency on libglib
+  - New thread safe API
+  * Switch to 3.0 (quilt) source format
+  * Update Standards-Version to 3.8.4
+  * Drop patch to add #!, instead do not set libvoikko.py as executable
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 29 May 2010 15:31:27 +0300
+
+libvoikko (2.2.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix lintian warnings: relation symbol, add misc:Depends
+  * Link specifically to GPL2, mention Bjoern in debian/copyright 
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 27 Jan 2010 17:27:23 +0200
+
+libvoikko (2.2.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Change libmalaga dependency to libglib dependency
+  - Upstream has implemented minimal malaga functionality inside libvoikko
+  * Breaks suomi-malaga < 1.4 
+  * Update Standards-Version to 3.8.3 
+  * Add python-libvoikko package 
+  * Add patch to add #! sequence to the .py file (Lintian) 
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 14 Oct 2009 17:45:15 +0300
+
+libvoikko (2.1-4) unstable; urgency=low
+
+  * Correct minimum version of libvoikko (Closes: #530344)
+  * Copy config.guess/sub on configure, remove on clean
+
+ -- Timo Jyrinki <timo@debian.org>  Fri, 29 May 2009 15:47:06 +0300
+
+libvoikko (2.1-3) unstable; urgency=low
+
+  * Add Breaks to voikko-fi <= 1.3-1 (Closes: #527091)
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 05 May 2009 20:46:34 +0300
+
+libvoikko (2.1-2) unstable; urgency=low
+
+  * Fix FTBFS by build-depending on python (Closes: #526433)
+
+ -- Timo Jyrinki <timo@debian.org>  Sat, 02 May 2009 17:31:56 +0300
+
+libvoikko (2.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Update man page locations
+  * Update Standards-Version (no changes) 
+  * Bump debhelper dependency to 5
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 29 Apr 2009 10:57:09 +0300
+
+libvoikko (2.0-2) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Timo Jyrinki <timo@debian.org>  Mon, 16 Feb 2009 17:01:32 +0200
+
+libvoikko (2.0-1) experimental; urgency=low
+
+  * New upstream release
+  * Update maintainer address
+  * Change voikko-fi Suggests to >= 1.0
+  * Update description
+  * Add voikkogc.1 man page
+
+ -- Timo Jyrinki <timo@debian.org>  Tue, 13 Jan 2009 15:32:46 +0200
+
+libvoikko (1.7-2) unstable; urgency=low
+
+  * Change voikko-fi dependency into a suggestion
+    - Enchant now depends on libvoikko
+    - We don't want voikko-fi in every desktop installation
+    - Tasksel will be updated to include voikko-fi in the finnish task
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 08 Jul 2008 15:14:37 +0300
+
+libvoikko (1.7-1) unstable; urgency=low
+
+  * New upstream release
+  * Standards-Version 3.8.0 (no changes needed)
+  * Add ${shlibs:Depends} to libvoikko-dev since it include binaries
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 17 Jun 2008 10:05:07 +0300
+
+libvoikko (1.6-1) unstable; urgency=low
+
+  * New upstream version
+  * Fix Lintian warning debian-rules-ignores-make-clean-error
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 04 Dec 2007 20:02:37 +0200
+
+libvoikko (1.5-1) unstable; urgency=low
+
+  * New upstream version
+  * Add -V for libvoikko's dh_makeshlibs
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Thu, 30 Aug 2007 18:20:00 +0300
+
+libvoikko (1.4.1-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 15 May 2007 22:36:34 +0300
+
+libvoikko (1.4-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Sat, 05 May 2007 04:43:47 +0300
+
+libvoikko (1.3.1-1) unstable; urgency=low
+
+  * New upstream version
+  * Update homepage, dependencies, watch file
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Sat, 31 Mar 2007 17:05:09 +0300
+
+libvoikko (1.2-1) unstable; urgency=low
+
+  * New upstream version
+  * Removing man page fix from the diff (corrected upstream)
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Wed, 15 Nov 2006 18:07:02 +0200
+
+libvoikko (1.1-3) unstable; urgency=low
+
+  * Add libmalaga-dev dependency to libvoikko-dev
+  * Remove libglib2.0-dev from build-deps
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 26 Sep 2006 12:10:47 +0300
+
+libvoikko (1.1-2) unstable; urgency=low
+
+  * Complete ITP (Closes: #388293)
+  * Indent homepage by two spaces in debian/control
+  * Switch to ${binary:Version} in debian/control
+  * Clean debian/rules, remove dh_shlibdeps extra parameters
+  * Fix hyphen-used-as-minus-sign in the man page
+  * Update debian/copyright
+  * Add dependency to autotools-dev (config.sub/guess)
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Mon, 25 Sep 2006 19:14:02 +0300
+
+libvoikko (1.1-1) unstable; urgency=low
+
+  * Build for Debian.
+
+ -- Timo Jyrinki <timo.jyrinki@iki.fi>  Tue, 19 Sep 2006 18:18:00 +0300
+
+libvoikko (1.1-0hf1) unstable; urgency=low
+
+  * New upstream release
+  * Use >> instead of > in Depends
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Sat,  9 Sep 2006 15:05:15 +0300
+
+libvoikko (1.0+svn20060901-0hf2) unstable; urgency=low
+
+  * libvoikko requires voikko-fi > 0.7.1+svn20060823
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Fri,  1 Sep 2006 12:07:35 +0300
+
+libvoikko (1.0+svn20060901-0hf1) unstable; urgency=low
+
+  * Snapshot from SVN (r427)
+  * Standards-Version: 3.7.2
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Fri,  1 Sep 2006 11:49:29 +0300
+
+libvoikko (1.0-0hf2) unstable; urgency=low
+
+  * Snapshot from SVN (r392)
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Wed, 23 Aug 2006 18:23:39 +0300
+
+libvoikko (1.0-0hf1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Tue, 25 Jul 2006 15:01:49 +0300
+
+libvoikko (0.9-0hf5) unstable; urgency=low
+
+  * Update from SVN (r200)
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Mon,  3 Jul 2006 18:49:31 +0300
+
+libvoikko (0.9-0hf4) unstable; urgency=low
+
+  * Update from SVN
+    - fixes a bug with character insertion suggestions
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Mon, 26 Jun 2006 13:49:15 +0300
+
+libvoikko (0.9-0hf3) unstable; urgency=low
+
+  * Update from SVN
+    - small fixes in hyphenation and suggestions, mostly style issues
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Sat, 17 Jun 2006 17:10:37 +0300
+
+libvoikko (0.9-0hf2) unstable; urgency=low
+
+  * Improve character insertion suggestions
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Tue,  6 Jun 2006 16:11:01 +0300
+
+libvoikko (0.9-0hf1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Thu,  1 Jun 2006 20:24:29 +0300
+
+libvoikko (0.3-0hf2) unstable; urgency=low
+
+  * Update from SVN
+    - manpages are now distributed in upstream source
+    - fix serious bug in case-sensitive checking
+    - beginnings of working suggestion code
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Tue, 23 May 2006 17:57:09 +0300
+
+libvoikko (0.3-0hf1) unstable; urgency=low
+
+  * New upstream release
+  * Update manual page
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Sat, 20 May 2006 17:40:02 +0300
+
+libvoikko (0.2-0hf3) unstable; urgency=low
+
+  * Update from CVS
+    - add README
+    - use AM_MAINTAINER_MODE
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Thu, 20 Apr 2006 18:37:24 +0300
+
+libvoikko (0.2-0hf2) unstable; urgency=low
+
+  * Update from CVS
+  * Improve manual pages
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Wed, 19 Apr 2006 16:32:05 +0300
+
+libvoikko (0.2-0hf1) unstable; urgency=low
+
+  * Initial release
+
+ -- Harri Pitkänen <hatapitk@iki.fi>  Sat, 15 Apr 2006 14:23:04 +0300
+

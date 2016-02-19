@@ -1,0 +1,75 @@
+Source: libvoikko
+Priority: optional
+Maintainer: Timo Jyrinki <timo@debian.org>
+Build-Depends: debhelper (>= 9.0.0), dpkg-dev (>= 1.13.19), autotools-dev, python3, hardening-wrapper, dh-autoreconf, pkg-config, dh-python
+Standards-Version: 3.9.6
+Section: libs
+Homepage: http://voikko.puimula.org/
+Vcs-Git: git://anonscm.debian.org/collab-maint/libvoikko.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/libvoikko.git;a=summary
+
+Package: libvoikko-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: foreign 
+Depends: ${shlibs:Depends}, libvoikko1 (= ${binary:Version}), ${misc:Depends}
+Description: Development files for libvoikko
+ Libvoikko is a library of free natural language processing tools. It 
+ aims to provide support for languages that are not well served by 
+ other existing free linguistic tools.
+ .
+ This package contains the files needed to build or develop applications 
+ that use Voikko.
+
+Package: libvoikko1
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: voikko-fi
+Breaks: voikko-fi (<< 2.0-1)
+Description: Library of free natural language processing tools
+ Libvoikko is a library of free natural language processing tools. It 
+ aims to provide support for languages that are not well served by 
+ other existing free linguistic tools.
+ .
+ The library supports multiple backends, currently of which only Malaga 
+ is enabled in this packaging:
+ .
+  - Malaga: Left associative grammar for describing the morphology of
+    Finnish language.
+  - HFST (Helsinki Finite-State Transducer Technology): Supports ZHFST 
+    speller archives for various languages.
+  - Experimental backends: Lttoolbox, VFST and vislcg3.
+ .
+ Libvoikko provides spell checking, hyphenation, grammar checking and
+ morphological analysis for Finnish language. Spell checking is
+ supported for other languages through the HFST backend.
+ .
+ This package contains the shared library.
+
+Package: python-libvoikko
+Priority: extra
+Section: oldlibs
+Architecture: all
+Depends: python3-libvoikko, ${misc:Depends}
+Description: transitional dummy package for Python bindings for libvoikko
+ Libvoikko is a library of free natural language processing tools. It 
+ aims to provide support for languages that are not well served by 
+ other existing free linguistic tools.
+ .
+ This package is a transitional dummy package which can be safely removed.
+
+Package: python3-libvoikko
+Section: python
+Architecture: all
+Depends: python3, libvoikko1 (>= ${source:Version}), ${python3:Depends}, ${misc:Depends}
+Conflicts: python-libvoikko (<< 4.0.1-3)
+Replaces: python-libvoikko
+Provides: python-libvoikko
+Description: Python bindings for libvoikko
+ Libvoikko is a library of free natural language processing tools. It 
+ aims to provide support for languages that are not well served by 
+ other existing free linguistic tools.
+ .
+ This package contains the Python bindings.
+
