@@ -16,4 +16,5 @@ override_dh_auto_install:
 	dh_auto_install
 	grep -v '^libdir=' $(TPATH)/share/pkgconfig/giella-kal.pc > $(TPATH)/share/pkgconfig/giella-kal.pc.new
 	mv -v $(TPATH)/share/pkgconfig/giella-kal.pc.new $(TPATH)/share/pkgconfig/giella-kal.pc
-	cp -av $(TPATH)/lib/*/voikko $(TPATH)/share/ && rm -rfv $(TPATH)/lib/*/voikko
+	cp -av $(TPATH)/lib/*/voikko $(TPATH)/share/
+	rm -rfv $(TPATH)/lib
