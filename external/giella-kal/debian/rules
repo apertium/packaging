@@ -16,3 +16,9 @@ override_dh_auto_build:
 	export LOCPATH=$(CURDIR)/debian/tmp/locale/ && \
 	export LC_ALL=en_US.UTF-8 && \
 	dh_auto_build
+
+override_dh_auto_install:
+	dh_auto_install
+	grep -v '^libdir=' debian/tmp/usr/share/pkgconfig/giella-kal.pc > debian/tmp/usr/share/pkgconfig/giella-kal.pc.new
+	mv -v debian/tmp/usr/share/pkgconfig/giella-kal.pc.new debian/tmp/usr/share/pkgconfig/giella-kal.pc
+	cp -av debian/tmp/usr/lib/*/voikko debian/usr/share/ && rm -rfv debian/tmp/usr/lib/*/voikko

@@ -3,8 +3,9 @@ set -e
 . osx-funcs.sh
 
 export PATH="/opt/osxcross/target/bin:$PATH"
-export CC="x86_64-apple-darwin12-clang"
-export CXX="x86_64-apple-darwin12-clang++"
+export CXX="x86_64-apple-darwin12-clang++-libc++"
+export CXXFLAGS="-std=gnu++11 -stdlib=libc++"
+export LDFLAGS="-stdlib=libc++"
 export PKG_CONFIG=/opt/osxcross/target/bin/x86_64-apple-darwin12-pkg-config
 export PKG_CONFIG_PATH=/opt/osx/lib/pkgconfig/
 export OSXCROSS_TARGET=darwin12
