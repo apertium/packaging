@@ -98,8 +98,11 @@ foreach my $pkg (@$pkgs) {
    }
    my $oldversion = '0.0.0~r0';
    if (-e "/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname") {
-      $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*~sid*_a*.deb | grep 'Version:' | egrep -o '[-.0-9]+~r[-.0-9]+' | head -n 1`;
+      $dir = getcwd();
+      chdir("/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname/");
+      $oldversion = `dpkg -I \$(ls -1 *~sid*.deb | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+~r[-.0-9]+' | head -n 1`;
       chomp($oldversion);
+      chdir($dir);
    }
    print {$out} "\texisting: $oldversion\n";
 
