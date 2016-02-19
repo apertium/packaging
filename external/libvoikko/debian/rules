@@ -7,7 +7,7 @@
 	dh $@ --fail-missing --with python3,autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- '--with-dictionary-path=/usr/lib/voikko:/usr/share/voikko'
+	dh_auto_configure -- --with-dictionary-path=/usr/lib/voikko:/usr/share/voikko
 
 override_dh_auto_install:
 	dh_auto_install
