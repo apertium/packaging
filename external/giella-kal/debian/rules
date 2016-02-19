@@ -4,17 +4,9 @@
 #export DH_VERBOSE=1
 export DH_OPTIONS
 export LC_ALL=C.UTF-8
-TPATH=debian/giella-kal/usr
 
 %:
 	dh $@ --parallel --with autoreconf
 
 override_dh_auto_configure:
 	dh_auto_configure -- --with-hfst --without-xfst --enable-spellers --enable-hyperminimisation --enable-alignment --enable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --enable-apertium
-
-override_dh_auto_install:
-	dh_auto_install
-	grep -v '^libdir=' $(TPATH)/share/pkgconfig/giella-kal.pc > $(TPATH)/share/pkgconfig/giella-kal.pc.new
-	mv -v $(TPATH)/share/pkgconfig/giella-kal.pc.new $(TPATH)/share/pkgconfig/giella-kal.pc
-	cp -av $(TPATH)/lib/*/voikko $(TPATH)/share/
-	rm -rfv $(TPATH)/lib

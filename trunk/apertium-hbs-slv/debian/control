@@ -12,7 +12,6 @@ Build-Depends: apertium-dev (>= 3.4),
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               locales,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.5
 Homepage: http://apertium.org/
