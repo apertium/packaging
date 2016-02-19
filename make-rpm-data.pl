@@ -63,7 +63,6 @@ if (-e 'usr/bin') {
 }
 if (-e 'usr/lib/x86_64-linux-gnu/voikko') {
    print `mv -v 'usr/lib/x86_64-linux-gnu/voikko' 'usr/share/' 2>&1`;
-   $files .= "\%{_datadir}/voikko\n";
 }
 if (-e 'usr/lib/x86_64-linux-gnu/pkgconfig') {
    print `mv -v 'usr/lib/x86_64-linux-gnu/pkgconfig' 'usr/share/' 2>&1`;
@@ -82,6 +81,9 @@ if (-e 'usr/share/giella-core') {
 }
 if (-e 'usr/share/pkgconfig') {
    $files .= "\%{_datadir}/pkgconfig\n";
+}
+if (-e 'usr/share/voikko') {
+   $files .= "\%{_datadir}/voikko\n";
 }
 mkdir($pkname.'-'.$opts{'v'});
 print `mv -v 'usr' '$pkname-$opts{'v'}/' 2>&1`;

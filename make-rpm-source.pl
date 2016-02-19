@@ -73,7 +73,7 @@ print `cp -av /tmp/autopkg.*/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'o
 print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
 
 $spec =~ s/^Version:[^\n]+$/Version: $opts{'v'}/m;
-$spec =~ s/^Release: \d+/Release: $opts{'dv'}/m;
+$spec =~ s/^Release:(\s+)\d+/Release:$1$opts{'dv'}/m;
 if ($opts{auto}) {
    $spec =~ s/\%changelog.*//sg;
    $spec .= <<CHLOG;
