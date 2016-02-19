@@ -20,7 +20,7 @@
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp", null, "wheezy"],
    ["external/giella-core",     "https://victorio.uit.no/langtech/trunk/gtcore"],
-   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, null, "wheezy,precise"],
+   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,precise"],
 
    # Then languages
    ["external/giella-est",      "https://victorio.uit.no/langtech/trunk/langs/est"],
