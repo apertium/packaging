@@ -93,6 +93,9 @@ foreach my $pkg (@$pkgs) {
 
    # Determine existing package version, if any
    my $first = substr($pkname, 0, 1);
+   if ($pkname =~ m@^lib@) {
+      $first = substr($pkname, 0, 4);
+   }
    my $oldversion = '0.0.0~r0';
    if (-e "/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname") {
       $oldversion = `dpkg -I ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/$pkname\_*~sid*_a*.deb | grep 'Version:' | egrep -o '[-.0-9]+~r[-.0-9]+' | head -n 1`;
