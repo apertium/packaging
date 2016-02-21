@@ -1,6 +1,5 @@
 usr/bin/*
 usr/include/*
-usr/lib/*/*.la
 usr/lib/*/lib*.a
 usr/lib/*/lib*.so
 usr/lib/*/pkgconfig/*
