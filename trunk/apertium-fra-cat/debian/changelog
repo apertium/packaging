@@ -1,8 +1,8 @@
-apertium-fra-cat (1.1.0-1) unstable; urgency=low
+apertium-fra-cat (1.1.0~r64309-1) unstable; urgency=low
 
   * New upstream release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Wed, 23 Dec 2015 23:59:37 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 23 Feb 2016 12:42:39 +0000
 
 apertium-fr-ca (1.0.3~r61329-1) unstable; urgency=low
 

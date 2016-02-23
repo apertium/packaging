@@ -6,7 +6,8 @@ Copyright: 2005, Universitat d'Alacant, (Transducens group)
            2007, Eleka Ingenieritza Linguistikoa S.L.
                  Prompsit Language Engineering S.L.
            2009, Jimmy O'Regan
-License: GPL-2
+           2015, Francis M. Tyers <ftyers@prompsit.com>
+License: GPL-2+
 
 Files: filter.xsl
 Copyright: 2005, Universitat d'Alacant / Universidad de Alicante
@@ -34,6 +35,8 @@ License: GPL-2
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-2+
+
 License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

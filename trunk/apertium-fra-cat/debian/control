@@ -16,7 +16,7 @@ Build-Depends: apertium-cat,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.6
 Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-fra-cat.git
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-fra-cat.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fra-cat.git
 
 Package: apertium-fra-cat
