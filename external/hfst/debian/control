@@ -2,8 +2,7 @@ Source: hfst
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <tino@didriksen.cc>,
-           Kartik Mistry <kartik@debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
                automake,
                autotools-dev,
@@ -53,7 +52,10 @@ Description: Helsinki Finite-State Transducer Technology Libraries
 Package: libhfst43-dev
 Architecture: any
 Section: libdevel
-Depends: libhfst43 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: hfst (= ${binary:Version}),
+         libhfst43 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: libhfst-dev
 Conflicts: libhfst-dev, libhfst3-dev
 Replaces: libhfst-dev, libhfst3-dev
