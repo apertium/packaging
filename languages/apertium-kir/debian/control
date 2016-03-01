@@ -17,7 +17,7 @@ Build-Depends: apertium-dev (>= 3.4),
                zip
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-kir.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git
 
 Package: apertium-kir

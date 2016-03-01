@@ -16,7 +16,7 @@ Build-Depends: apertium-cat,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-cat-glg.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cat-glg.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cat-glg.git
 
 Package: apertium-cat-glg

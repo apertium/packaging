@@ -18,7 +18,7 @@ Build-Depends: autoconf,
                zip
 Standards-Version: 3.9.7
 Homepage: https://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/hfst-ospell.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 
 Package: hfst-ospell

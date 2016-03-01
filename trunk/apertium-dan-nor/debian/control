@@ -17,7 +17,7 @@ Build-Depends: apertium-dan (>= 0.3.0~r65282),
                pkg-config (>= 0.21)
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-dan-nor.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-dan-nor.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-dan-nor.git
 
 Package: apertium-dan-nor

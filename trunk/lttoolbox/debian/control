@@ -23,7 +23,7 @@ Build-Depends: automake,
                zlib1g-dev (>= 1.2.3)
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/lttoolbox.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
 Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
 
 Package: lttoolbox

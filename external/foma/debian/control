@@ -13,7 +13,7 @@ Build-Depends: bison,
                zlib1g-dev
 Standards-Version: 3.9.7
 Homepage: https://code.google.com/p/foma/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/foma.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/foma.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/foma.git
 
 Package: foma

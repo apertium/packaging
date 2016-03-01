@@ -16,7 +16,7 @@ Build-Depends: apertium-arg,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-spa-arg.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-arg.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-arg.git
 
 Package: apertium-spa-arg

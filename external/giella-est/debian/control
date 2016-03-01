@@ -20,7 +20,7 @@ Build-Depends: autotools-dev,
                zip
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/debian-science/packages/giella-est.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/giella-est.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-est.git
 
 Package: giella-est
