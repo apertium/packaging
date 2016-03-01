@@ -10,9 +10,9 @@ Build-Depends: apertium-dev (>= 3.4),
                dh-autoreconf,
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-en-ca.git
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-en-ca.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-en-ca.git
 
 Package: apertium-en-ca

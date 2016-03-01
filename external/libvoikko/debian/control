@@ -8,10 +8,10 @@ Build-Depends: autotools-dev,
                hfst-ospell-dev,
                pkg-config,
                python3
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Section: libs
 Homepage: http://voikko.puimula.org/
-Vcs-Git: git://anonscm.debian.org/collab-maint/libvoikko.git
+Vcs-Git: https://anonscm.debian.org/collab-maint/libvoikko.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/libvoikko.git;a=summary
 
 Package: libvoikko-dev

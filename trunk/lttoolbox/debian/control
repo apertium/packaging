@@ -21,9 +21,9 @@ Build-Depends: automake,
                python-testtools,
                xsltproc,
                zlib1g-dev (>= 1.2.3)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/lttoolbox.git
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/lttoolbox.git
 Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.git
 
 Package: lttoolbox

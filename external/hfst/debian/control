@@ -20,7 +20,7 @@ Build-Depends: autoconf,
                python3-dev,
                swig,
                zlib1g-dev
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Vcs-Git: https://anonscm.debian.org/debian-science/packages/hfst.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git

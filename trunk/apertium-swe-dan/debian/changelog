@@ -1,7 +1,6 @@
-apertium-swe-dan (0.5.2~r44849-1) experimental; urgency=low
+apertium-swe-dan (0.7.0~r66063-1) unstable; urgency=low
 
-  * Initial release
-  * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
+  [ Tino Didriksen ]
+  * Initial release (Closes: #816105)
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 01 Mar 2016 12:24:40 +0000

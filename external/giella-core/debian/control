@@ -9,7 +9,7 @@ Build-Depends: autoconf,
                debhelper (>= 9.0),
                dh-autoreconf,
                dh-exec (>= 0.3)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://giellatekno.uit.no/
 Vcs-Git: https://anonscm.debian.org/debian-science/packages/giella-core.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-core.git

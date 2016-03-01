@@ -13,9 +13,9 @@ Build-Depends: apertium-dev (>= 3.4),
                hfst,
                libhfst43-dev,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: http://apertium.org/
-Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-urd.git
+Vcs-Git: https://anonscm.debian.org/debian-science/packages/apertium-urd.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-urd.git
 
 Package: apertium-urd

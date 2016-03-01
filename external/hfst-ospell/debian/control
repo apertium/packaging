@@ -16,7 +16,7 @@ Build-Depends: autoconf,
                libxml++2.6-dev,
                pkg-config,
                zip
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Homepage: https://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Vcs-Git: https://anonscm.debian.org/debian-science/packages/hfst-ospell.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
