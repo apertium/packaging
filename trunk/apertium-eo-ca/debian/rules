@@ -6,4 +6,4 @@ export DH_OPTIONS
 export LC_ALL=C.UTF-8
 
 %:
-	dh $@ --with autoreconf
+	dh $@ --fail-missing --with autoreconf

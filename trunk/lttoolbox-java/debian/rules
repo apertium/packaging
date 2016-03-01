@@ -17,7 +17,7 @@
 export DH_OPTIONS
 
 %:
-	dh $@
+	dh $@ --fail-missing
 
 override_dh_auto_configure:
 	echo '/usr' > prefix
