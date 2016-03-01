@@ -1,11 +1,12 @@
-apertium-nob (0.5.1~r65328-1) experimental; urgency=low
+apertium-nob (0.6.0~r66076-1) unstable; urgency=low
 
   * New upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 01 Feb 2016 10:27:05 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 01 Mar 2016 12:24:40 +0000
 
-apertium-nob (0.2.0~r59753-1) experimental; urgency=low
+apertium-nob (0.5.1~r65328-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #814229)
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Apr 2015 16:32:19 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 09 Feb 2016 18:02:57 +0530

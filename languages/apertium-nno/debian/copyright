@@ -4,7 +4,7 @@ Source: http://apertium.org/
 Files: *
 Copyright: 2008-2010 Francis Tyers <ftyers@prompsit.com>
            2009-2016 Kevin Brubeck Unhammer <unhammer@fsfe.org>
-           2008-2010 Trond Trosterud <trond.trosterud@hum.uit.no>
+           2008-2016 Trond Trosterud <trond.trosterud@hum.uit.no>
 License: GPL-2+
 
 Files: debian/*
