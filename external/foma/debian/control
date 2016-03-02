@@ -2,8 +2,7 @@ Source: foma
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <tino@didriksen.cc>,
-           Kartik Mistry <kartik@debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
 Build-Depends: bison,
                debhelper (>= 9.0),
                flex,
@@ -25,6 +24,17 @@ Replaces: foma-bin
 Description: Tools for constructing various finite-state automata
  Compiler, programming language, and C library for
  constructing finite-state automata and transducers for various uses.
+
+Package: foma-bin
+Architecture: any
+Depends: foma (= ${binary:Version}),
+         libfoma0 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Priority: extra
+Section: oldlibs
+Description: Transitional dummy package for foma
+ This is a transitional dummy package. It can safely be removed.
 
 Package: libfoma0
 Architecture: any
