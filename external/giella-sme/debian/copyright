@@ -5,6 +5,10 @@ Files: *
 Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
 License: GPL-3+
 
+Files: m4/giella-macros.m4 m4/hfst.m4
+Copyright: 2011 Divvun/Samediggi/UiT <bugs@divvun.no>
+License: GPL-3+
+
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -21,3 +25,34 @@ License: GPL-3+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+Files: doc/*.jspwiki
+Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+License: GFDL
+
+License: GFDL
+ On Debian systems, the complete text of the GNU Free Documentation License
+ can be found in "/usr/share/common-licenses/GFDL".
+
+Files: doc/*.xml
+Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+License: Apache-2.0
+
+License: Apache-2.0
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+ .
+ http://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License version 2.0
+ can be found in "/usr/share/common-licenses/Apache-2.0".
