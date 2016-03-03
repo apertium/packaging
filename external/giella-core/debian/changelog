@@ -1,8 +1,8 @@
-giella-core (0.1.1~r130258-1) unstable; urgency=low
+giella-core (0.1~r121148-1) unstable; urgency=low
 
-  * New upstream release
+  * Old upstream release - downgrading to the version giella-sme needs
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 02 Mar 2016 13:13:16 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Mar 2016 08:45:22 +0000
 
 giella-core (0.1.1~r129227-1) unstable; urgency=low
 

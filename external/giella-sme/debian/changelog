@@ -1,6 +1,6 @@
-giella-sme (0.0.20150917~r130297-1) unstable; urgency=low
+giella-sme (0.0.20150917~r121176-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * Initial release (Closes: #814400)
 
- -- Kartik Mistry <kartik@debian.org>  Wed, 02 Mar 2016 13:13:16 +0000
+ -- Kartik Mistry <kartik@debian.org>  Thu, 03 Mar 2016 08:45:22 +0000
