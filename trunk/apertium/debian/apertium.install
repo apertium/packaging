@@ -29,4 +29,5 @@ debian/tmp/usr/share/man/man1/apertium-tagger.*
 debian/tmp/usr/share/man/man1/apertium-transfer.*
 debian/tmp/usr/share/man/man1/apertium-unformat.*
 debian/tmp/usr/share/man/man1/apertium-utils-fixlatex.*
+debian/tmp/usr/share/man/man1/apertium-*lextor*
 debian/tmp/usr/share/man/man1/apertium.*
