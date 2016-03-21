@@ -3,6 +3,7 @@ set -e
 . osx-funcs.sh
 
 export PATH="/opt/osxcross/target/bin:$PATH"
+export CC="x86_64-apple-darwin12-clang"
 export CXX="x86_64-apple-darwin12-clang++-libc++"
 export CXXFLAGS="-std=gnu++11 -stdlib=libc++"
 export LDFLAGS="-stdlib=libc++"
