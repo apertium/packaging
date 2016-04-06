@@ -154,7 +154,7 @@ foreach my $pkg (@$pkgs) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
-      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,wily";
+      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,wily,xenial";
    }
 
    # Build the packages for Debian/Ubuntu
