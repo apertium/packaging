@@ -1,3 +1,34 @@
+hfst-ospell (0.4.0~r4643-4) unstable; urgency=medium
+
+  [ Tino Didriksen ]
+  * debian/rules:
+    + Skipped breaking tests.
+  * debian/control:
+    + Fixed Vcs-* URL.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Apr 2016 14:45:15 +0530
+
+hfst-ospell (0.4.0~r4643-3) unstable; urgency=low
+
+  [ Kartik Mistry ]
+  * Upload to unstable.
+
+  [ Tino Didriksen ]
+  * debian/rules:
+    + Removed parallel build option to re-enable tests.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 26 Feb 2016 21:07:01 +0530
+
+hfst-ospell (0.4.0~r4643-2) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * Disable broken tests (closes: #815157)
+
+  [ Kartik Mistry ]
+  * Update Standards-Version to 3.9.7
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 24 Feb 2016 22:20:53 +0530
+
 hfst-ospell (0.4.0~r4643-1) experimental; urgency=low
 
   [ Tino Didriksen ]
