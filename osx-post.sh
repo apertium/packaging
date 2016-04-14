@@ -12,9 +12,9 @@ cd /opt/osx-pkg/$PKG_NAME/opt/osx
 cd /opt/osx-pkg/$PKG_NAME/opt
 
 set +e
-find . -type f | grep /bin/ | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
-find . -type f | grep /lib/ | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
-find . -type f -name '*.a' | xargs -rn1 x86_64-apple-darwin12-strip 2>/dev/null
+find . -type f | grep /bin/ | xargs -rn1 x86_64-apple-darwin13-strip 2>/dev/null
+find . -type f | grep /lib/ | xargs -rn1 x86_64-apple-darwin13-strip 2>/dev/null
+find . -type f -name '*.a' | xargs -rn1 x86_64-apple-darwin13-strip 2>/dev/null
 find . -type f -name '*.la' | xargs -rn1 rm -f 2>/dev/null
 set -e
 chmod -R uga+r osx

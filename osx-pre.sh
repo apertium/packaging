@@ -3,16 +3,16 @@ set -e
 . osx-funcs.sh
 
 export PATH="/opt/osxcross/target/bin:$PATH"
-export CC="x86_64-apple-darwin12-clang"
-export CXX="x86_64-apple-darwin12-clang++-libc++"
+export CC="x86_64-apple-darwin13-clang"
+export CXX="x86_64-apple-darwin13-clang++-libc++"
 export CXXFLAGS="-std=gnu++11 -stdlib=libc++"
 export LDFLAGS="-stdlib=libc++"
-export PKG_CONFIG=/opt/osxcross/target/bin/x86_64-apple-darwin12-pkg-config
+export PKG_CONFIG=/opt/osxcross/target/bin/x86_64-apple-darwin13-pkg-config
 export PKG_CONFIG_PATH=/opt/osx/lib/pkgconfig/
-export OSXCROSS_TARGET=darwin12
+export OSXCROSS_TARGET=darwin13
 export OSXCROSS_MP_INC=1
-export MACOSX_DEPLOYMENT_TARGET=10.7
-export SDK_VERSION=10.8
+export MACOSX_DEPLOYMENT_TARGET=10.9
+export SDK_VERSION=10.9
 export PKG_NAME=$1
 export PKG_REV=$2
 export PKG_VER=$3
