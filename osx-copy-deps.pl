@@ -26,7 +26,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
       }
       print STDERR "Handling '$f':\n";
 
-      my @ldeps = split("\n", `otool -L '$f' | grep /opt/osx/lib`);
+      my @ldeps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | grep /opt/osx/lib`);
       foreach my $d (@ldeps) {
          ($d) = ($d =~ m@/opt/osx/lib/(\S+)@);
          if ($f =~ m@\Q$d\E$@) {
@@ -34,19 +34,19 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             next;
          }
          print STDERR "\tadjusting dependency '$d'\n";
-         print STDERR `install_name_tool -change '/opt/osx/lib/$d' '\@rpath/$d' '$f'`;
+         print STDERR `x86_64-apple-darwin13-install_name_tool -change '/opt/osx/lib/$d' '\@rpath/$d' '$f'`;
          $did = 1;
       }
 
-      my @deps = split("\n", `otool -L '$f' | grep /opt/local/lib`);
+      my @deps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | grep /opt/local/lib`);
       if (!@deps && !@ldeps) {
          next;
       }
 
       print STDERR "\tadding RPATH\n";
-      `install_name_tool -add_rpath \@executable_path/ '$f' 2>/dev/null`;
-      `install_name_tool -add_rpath \@executable_path/../lib '$f' 2>/dev/null`;
-      `install_name_tool -add_rpath \@loader_path/../lib '$f' 2>/dev/null`;
+      `x86_64-apple-darwin13-install_name_tool -add_rpath \@executable_path/ '$f' 2>/dev/null`;
+      `x86_64-apple-darwin13-install_name_tool -add_rpath \@executable_path/../lib '$f' 2>/dev/null`;
+      `x86_64-apple-darwin13-install_name_tool -add_rpath \@loader_path/../lib '$f' 2>/dev/null`;
 
       foreach my $d (@deps) {
          ($d) = ($d =~ m@/opt/local/lib/(\S+)@);
@@ -60,7 +60,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
          }
          print STDERR "\tadjusting dependency '$d'\n";
-         print STDERR `install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
+         print STDERR `x86_64-apple-darwin13-install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
          $did = 1;
       }
    }
