@@ -23,13 +23,13 @@ BuildRequires: zip
 Minimal HFST optimized lookup format based spell checker library and
 a demonstrational implementation of command line based spell checker.
 
-%package -n libhfstospell5
+%package -n libhfstospell6
 Summary: HFST spell checker runtime libraries
 Group: Development/Libraries
 Provides: libhfstospell = %{version}-%{release}
 Obsoletes: libhfstospell < %{version}-%{release}
 
-%description -n libhfstospell5
+%description -n libhfstospell6
 Runtime libraries for hfst-ospell
 
 %package -n hfst-ospell-devel
@@ -59,7 +59,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
-%files -n libhfstospell5
+%files -n libhfstospell6
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -69,9 +69,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 
-%post -n libhfstospell5 -p /sbin/ldconfig
+%post -n libhfstospell6 -p /sbin/ldconfig
 
-%postun -n libhfstospell5 -p /sbin/ldconfig
+%postun -n libhfstospell6 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 0.4.0
