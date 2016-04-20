@@ -1,0 +1,32 @@
+Source: apertium-srd-ita
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               apertium-ita,
+               apertium-lex-tools,
+               apertium-srd,
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.7
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-srd-ita.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-srd-ita.git
+
+Package: apertium-srd-ita
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-ita-srd
+Conflicts: apertium-ita-srd
+Description: Apertium translation data for the Sardinian-Italian pair
+ Data package providing Apertium language resources for translating
+ between the Sardinian and Italian languages.

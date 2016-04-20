@@ -1,0 +1,22 @@
+Source: apertium-srd
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.7
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-srd.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-srd.git
+
+Package: apertium-srd
+Architecture: all
+Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for Sardinian
+ Data package providing Apertium language resources for Sardinian
