@@ -46,6 +46,7 @@ my %blames = ();
 my @failed = ();
 my $win32 = 0;
 my $osx = 0;
+my $aptget = 0;
 
 use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
@@ -199,6 +200,10 @@ foreach my $pkg (@$pkgs) {
          `bash -c '. $dir/osx-pre.sh; . $dir/@$pkg[0]/osx/$pkname.sh; . $dir/osx-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/osx.log >&2`;
          $osx = 1;
       }
+
+      if ($is_data) {
+         $aptget = 1;
+      }
    }
    print {$out} "\tstopped: ".`date -u`;
 
@@ -316,6 +321,10 @@ if ($win32) {
 if ($osx) {
    print {$out2} "Combining OS X builds\n";
    `./osx-combine.sh`;
+}
+if ($aptget) {
+   print {$out2} "Installing new data packages\n";
+   `./apt-get-upgrade.sh`;
 }
 
 print {$out2} "Build stopped at ".`date -u`;
