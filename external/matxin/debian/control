@@ -1,0 +1,33 @@
+Source: matxin
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: autoconf,
+               autotools-dev,
+               debhelper (>= 9.0),
+               dh-autoreconf,
+               dh-exec (>= 0.3),
+               flex (>= 2.5.33),
+               foma,
+               libboost-program-options-dev,
+               libboost-system-dev,
+               libfoma0-dev,
+               libpcre3-dev,
+               libxml2-dev,
+               libxml2-utils (>= 2.6.24),
+               lttoolbox-dev (>= 3.3.2~r63423),
+               perl,
+               pkg-config (>= 0.20),
+               xsltproc (>= 1.1.16)
+Standards-Version: 3.9.7
+Homepage: https://github.com/matxin/matxin
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/matxin.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/matxin.git
+
+Package: matxin
+Architecture: any
+Depends: xsltproc (>= 1.1.16), ${misc:Depends}, ${shlibs:Depends}
+Description: Short description
+ ToDo: long description
