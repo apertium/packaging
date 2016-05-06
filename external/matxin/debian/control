@@ -20,7 +20,8 @@ Build-Depends: autoconf,
                lttoolbox-dev (>= 3.3.2~r63423),
                perl,
                pkg-config (>= 0.20),
-               xsltproc (>= 1.1.16)
+               xsltproc (>= 1.1.16),
+               zlib1g-dev (>= 1.2.3)
 Standards-Version: 3.9.7
 Homepage: https://github.com/matxin/matxin
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/matxin.git
