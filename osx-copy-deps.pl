@@ -38,6 +38,18 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          $did = 1;
       }
 
+      my @ndeps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | egrep '^\\s+lib'`);
+      foreach my $d (@ndeps) {
+         ($d) = ($d =~ m@^\s+(\S+)@);
+         if ($f =~ m@\Q$d\E$@) {
+            print STDERR "\tskipping self $d\n";
+            next;
+         }
+         print STDERR "\tadjusting dependency '$d'\n";
+         print STDERR `x86_64-apple-darwin13-install_name_tool -change '$d' '\@rpath/$d' '$f'`;
+         $did = 1;
+      }
+
       my @deps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | grep /opt/local/lib`);
       if (!@deps && !@ldeps) {
          next;
