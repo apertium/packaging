@@ -33,6 +33,9 @@ make %{?_smp_mflags} || make %{?_smp_mflags} || make
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 
+%check
+make check
+
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README

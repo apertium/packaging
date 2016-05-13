@@ -98,6 +98,9 @@ python3 setup.py install --no-compile --prefix /usr --root %{buildroot}
 cd ..
 %endif
 
+%check
+make check
+
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README THANKS
