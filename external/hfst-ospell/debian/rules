@@ -26,5 +26,5 @@ override_dh_auto_install:
 	dh_auto_install
 	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
 
-#override_dh_auto_test:
-	# Skip, as it breaks in various unpredictable ways
+override_dh_auto_test:
+	make -j1 check
