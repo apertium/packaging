@@ -21,7 +21,7 @@ override_dh_auto_build:
 	$(MAKE) -j$(NUMJOBS) || $(MAKE) -j$(NUMJOBS) || $(MAKE)
 	cd $(CURDIR)/python && python3 setup.py build_ext && strip --strip-unneeded build/*/*.so
 
-override_dh_auto_test:
+#override_dh_auto_test:
 	# Skip, as it breaks in various unpredictable ways
 
 override_dh_auto_install:
