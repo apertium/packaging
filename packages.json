@@ -9,7 +9,7 @@
 
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
-   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide"],
+   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide", "precise"],
    ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
@@ -18,7 +18,7 @@
    ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
-   ["trunk/apertium-simpleton", null, "src/version.hpp"],
+   ["trunk/apertium-simpleton", null, "src/version.hpp", null, "precise"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/gtcore"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,precise,trusty"],
    ["external/matxin",     "https://github.com/matxin/matxin/trunk", null, null, "precise"],
