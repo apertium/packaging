@@ -15,6 +15,7 @@ Build-Depends: autoconf,
                libxml2-utils (>= 2.6.24),
                lttoolbox-dev (>= 3.3.2~r63423),
                pkg-config (>= 0.20),
+               python3,
                xsltproc (>= 1.1.16)
 Standards-Version: 3.9.7
 Homepage: http://apertium.org/
