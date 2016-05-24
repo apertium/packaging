@@ -20,7 +20,7 @@ export DH_OPTIONS
 	dh $@ --fail-missing --parallel --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --disable-static --enable-zhfst
+	dh_auto_configure -- --disable-static --enable-zhfst --without-libxmlpp --with-tinyxml2
 
 override_dh_auto_install:
 	dh_auto_install
