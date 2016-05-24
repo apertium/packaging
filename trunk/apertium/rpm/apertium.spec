@@ -24,6 +24,10 @@ BuildRequires: libxml2-devel
 BuildRequires: libxslt
 BuildRequires: pcre-devel
 BuildRequires: pkgconfig
+%if ! ( 0%{?el6} || 0%{?el7} )
+BuildRequires: python3
+BuildRequires: python3-devel
+%endif
 
 %description
 An open-source shallow-transfer machine translation
@@ -93,8 +97,10 @@ rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
 ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
 
+%if ! ( 0%{?el6} || 0%{?el7} )
 %check
-make check
+make test
+%endif
 
 %files
 %defattr(-,root,root)
