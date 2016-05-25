@@ -16,7 +16,7 @@ BuildRequires: pkgconfig
 BuildRequires: hfst
 BuildRequires: libarchive-devel
 BuildRequires: libicu-devel
-BuildRequires: tinyxml2-devel
+BuildRequires: libxml++-devel
 BuildRequires: zip
 
 %description
@@ -46,7 +46,7 @@ Development headers and libraries for hfst-ospell
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-zhfst --without-libxmlpp --with-tinyxml2
+%configure --disable-static --enable-zhfst
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
 %install
