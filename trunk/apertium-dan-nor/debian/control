@@ -4,11 +4,11 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dan (>= 0.3.0~r65282),
+Build-Depends: apertium-dan (>= 0.5.0~r67099),
                apertium-dev (>= 3.4),
                apertium-lex-tools,
-               apertium-nno (>= 0.5.0~r65282),
-               apertium-nob (>= 0.5.1~r65301),
+               apertium-nno (>= 0.7.0~r67099),
+               apertium-nob (>= 0.7.0~r67099),
                autotools-dev,
                cg3,
                debhelper (>= 9),
