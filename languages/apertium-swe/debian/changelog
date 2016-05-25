@@ -1,5 +1,12 @@
+apertium-swe (0.6.0~r68541-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+
 apertium-swe (0.5.0~r66062-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #816400)
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 01 Mar 2016 12:24:40 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 01 Mar 2016 21:34:10 +0530

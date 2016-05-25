@@ -1,3 +1,9 @@
+apertium-nob (0.8.0~r68541-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+
 apertium-nob (0.7.0~r67099-1) unstable; urgency=low
 
   * New upstream release

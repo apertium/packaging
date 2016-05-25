@@ -1,0 +1,34 @@
+Source: apertium-swe-nor
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4.2~r68466),
+               apertium-lex-tools,
+               apertium-nno (>= 0.8.0~r68541),
+               apertium-nob (>= 0.8.0~r68541),
+               apertium-swe (>= 0.6.0~r68541),
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.7
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-swe-nor.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-swe-nor.git
+
+Package: apertium-swe-nor
+Architecture: all
+Depends: apertium (>= 3.4.2~r68466),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-nor-swe
+Conflicts: apertium-nor-swe
+Description: Apertium translation data for the Swedish-Norwegian pair
+ Data package providing Apertium language resources for translating
+ between the Swedish and Norwegian languages.
