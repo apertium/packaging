@@ -1,10 +1,52 @@
+apertium (3.4.2~r68466-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+
+apertium (3.4.0~r61013-5) unstable; urgency=medium
+
+  * Rebuild for lttoolbox, again.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 06 Feb 2016 17:41:55 +0530
+
+apertium (3.4.0~r61013-4) unstable; urgency=low
+
+  * Rebuild for new lttoolbox (>= 3.3.2~).
+  * debian/control:
+    + Updated lttoolbox dependency.
+    + Updated Vcs-* URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 03 Feb 2016 09:57:51 +0530
+
+apertium (3.4.0~r61013-3) unstable; urgency=low
+
+  * Removed symbols file. It is causing build failures as of now.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 26 Jul 2015 09:30:49 -0500
+
+apertium (3.4.0~r61013-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Disable static libraries.
+
+  [ Kartik Mistry ]
+  * debian/libapertium3-3.4-0.symbols:
+    + Added symbols control file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 07 Jul 2015 14:13:22 +0530
+
 apertium (3.4.0~r61013-1) unstable; urgency=medium
 
   [ Tino Didriksen ]
   * New upstream snapshot.
   * Upload to unstable.
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 22 Jun 2015 19:48:36 +0530
+  [ Kartik Mistry ]
+  * Do not add apertium-all-dev, apertium-all-languages and apertium-all-pairs
+    metapackage until we package all dependencies.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 30 Jun 2015 19:59:07 +0530
 
 apertium (3.3.0.56825-2) experimental; urgency=low
 

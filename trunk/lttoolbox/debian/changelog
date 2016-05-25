@@ -1,8 +1,37 @@
+lttoolbox (3.3.3~r68466-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+
+lttoolbox (3.3.2~r63423-3) unstable; urgency=low
+
+  * Revert, reverted g++5 ABI transition.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 08 Feb 2016 09:22:19 +0530
+
+lttoolbox (3.3.2~r63423-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Split overrides.
+  * Override hardening-no-fortify-functions and no-symbols-control-file.
+  * Remove pre-dh9-style hardening
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 02 Feb 2016 17:12:24 +0530
+
 lttoolbox (3.3.2~r63423-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream snapshop release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 01 Jan 2016 14:54:01 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Fixed Vcs-* URLs.
+    + Removed dummy library package used for g++5 ABI transition.
+  * debian/patches:
+    + Added patch to fix hyphen used as minus.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 02 Feb 2016 10:26:06 +0530
 
 lttoolbox (3.3.2~r61000-3.1) unstable; urgency=medium
 
