@@ -100,7 +100,10 @@ print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$rv.orig.tar' 
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$opts{v}.orig.tar' -T orig.lst`;
 `bzip2 -9c '$pkname\_$opts{v}.orig.tar' > '$pkname\_$opts{v}.orig.tar.bz2'`;
-print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
+my $path = `find /misc/branches/packaging/ -type d -name '$pkname'`;
+chomp($path);
+print `cp -av '$path/debian' '$pkname-$opts{v}/'`;
+#print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';

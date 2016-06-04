@@ -10,7 +10,7 @@
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
    ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide", "precise"],
-   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
+#   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp", "http://visl.sdu.dk/svn/visl/opensource/packaging/trie-tools"],

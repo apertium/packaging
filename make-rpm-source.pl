@@ -53,10 +53,13 @@ my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
 chdir(glob('/tmp/autopkg.*')) or die "Could not change folder: $!\n";
-`svn export $opts{r}/rpm >/dev/null 2>&1`;
-if (!(-s "rpm/$pkname.spec")) {
-   die "No such file $opts{r}/rpm/$pkname.spec !\n";
+my $path = `find /misc/branches/packaging/ -type d -name '$pkname'`;
+chomp($path);
+#`svn export $opts{r}/rpm >/dev/null 2>&1`;
+if (!(-s "$path/rpm/$pkname.spec")) {
+   die "No such file $path/rpm/$pkname.spec !\n";
 }
+print `cp -av '$path/rpm' '$pkname-$opts{v}/'`;
 my $spec = `cat rpm/$pkname.spec`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
