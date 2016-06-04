@@ -1,8 +1,22 @@
-apertium-lex-tools (0.1.1~r60994-1) experimental; urgency=low
+apertium-lex-tools (0.1.1~r60994-2) unstable; urgency=low
 
-  * Update to latest from svn
+  * Rebuild for new lttoolbox.
+  * debian/control:
+    + Updated Vcs-* URLs.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Sun, 21 Jun 2015 18:59:50 +0200
+ -- Kartik Mistry <kartik@debian.org>  Wed, 03 Feb 2016 11:16:34 +0530
+
+apertium-lex-tools (0.1.1~r60994-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest from svn.
+  * debian/control:
+    + Updated Standards-Version to 3.9.6
+
+  [ Kartik Mistry ]
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 30 Jun 2015 19:38:26 +0530
 
 apertium-lex-tools (0.1.0+svn~57414-1) experimental; urgency=low
 
