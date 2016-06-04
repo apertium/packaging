@@ -42,7 +42,7 @@ License: LGPL-3+
 
 Files: back-ends/sfst/*
 Copyright: 2012 Helmut Schmid <schmid@cis.uni-muenchen.de>
-Comment: https://code.google.com/p/cistern/
+Comment: http://www.cis.uni-muenchen.de/~schmid/tools/SFST/
 License: GPL-3
 
 License: GPL-3
@@ -111,7 +111,7 @@ Files: back-ends/foma/*
 Copyright: 2008-2015 Mans Hulden
 License: Apache-2.0
 Comment: The source files still say GPL-2.0, but author and
- https://code.google.com/p/foma/ explicitly states "License change to Apache 2.0"
+ https://bitbucket.org/mhulden/foma/downloads explicitly states "License change to Apache 2.0"
 
 Files: back-ends/openfst/*
        back-ends/openfstwin/*
