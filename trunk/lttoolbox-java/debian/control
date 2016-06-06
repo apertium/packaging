@@ -9,7 +9,7 @@ Build-Depends: ant,
                debhelper (>= 9.0),
                devscripts,
                default-jdk
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox-java.git
 Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox-java.git

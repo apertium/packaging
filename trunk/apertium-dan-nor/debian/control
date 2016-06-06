@@ -15,7 +15,7 @@ Build-Depends: apertium-dan (>= 0.5.0~r67099),
                dh-autoreconf,
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-dan-nor.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-dan-nor.git

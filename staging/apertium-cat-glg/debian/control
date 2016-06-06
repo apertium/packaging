@@ -14,7 +14,7 @@ Build-Depends: apertium-cat,
                dh-autoreconf,
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cat-glg.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cat-glg.git
