@@ -21,4 +21,5 @@ Package: apertium-lex-tools
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Constraint-based lexical selection module
- Constraint-based lexical selection module used by Apertium
+ This package provides a module for compiling lexical selection rules and
+ processing them in the pipeline.
