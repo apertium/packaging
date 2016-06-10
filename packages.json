@@ -19,7 +19,7 @@
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp", null, "precise"],
-   ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py"],
+   ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py", null, "wheezy,precise"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/gtcore"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,precise,trusty"],
    ["external/matxin",     "https://github.com/matxin/matxin/trunk", null, null, "precise"],
