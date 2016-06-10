@@ -1,3 +1,9 @@
+apertium-apy (0.9.1~r343-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 10 Jun 2016 10:59:01 +0200
+
 apertium-apy (0.1.0~r61425-1) unstable; urgency=low
 
   * New upstream snapshot.
