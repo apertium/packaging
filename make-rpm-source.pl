@@ -59,7 +59,7 @@ chomp($path);
 if (!(-s "$path/rpm/$pkname.spec")) {
    die "No such file $path/rpm/$pkname.spec !\n";
 }
-print `cp -av '$path/rpm' '$pkname-$opts{v}/'`;
+print `cp -av '$path/rpm' ./`;
 my $spec = `cat rpm/$pkname.spec`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";

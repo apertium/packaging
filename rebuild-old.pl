@@ -188,7 +188,7 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\tupdating rpm sources\n";
          `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
       }
-      elsif ($is_data) {
+      elsif ($is_data eq 'data') {
          print {$out} "\tupdating rpm from data\n";
          `./make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
