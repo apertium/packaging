@@ -16,8 +16,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ap
 Package: apertium-apy
 Architecture: all
 Depends: adduser,
-         apertium (>= 3.4),
-         apertium-lex-tools,
          logrotate,
          python3 (>= 3.2),
          python3-lxml,
