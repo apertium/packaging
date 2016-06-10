@@ -1,0 +1,5 @@
+*.py usr/share/apertium-apy
+Makefile usr/share/apertium-apy
+serverlist-example usr/share/doc/apertium-apy
+tools/*.py usr/share/apertium-apy
+tools/*.sql usr/share/apertium-apy

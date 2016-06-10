@@ -1,0 +1,19 @@
+[Unit]
+Description=Apertium APY service
+Documentation=http://wiki.apertium.org/wiki/Apertium-apy
+After=network.target
+
+[Service]
+# Change this to your username and edit to how you start apy:
+User=apertium
+WorkingDirectory=/usr/share/apertium-apy
+ExecStart=/usr/bin/python3 servlet.py /usr/share/apertium/modes
+
+# By default, if it restarts >10 times within 5 secs, it marks it as failed and gives up:
+Restart=always
+
+# No reason to have access to shared tmp files:
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
