@@ -157,6 +157,10 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'data';
       @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,wily,xenial";
    }
+   if (@$pkg[0] =~ m@/apertium-apy$@) {
+      print {$out} "\tarch-all\n";
+      $is_data = 'arch-all';
+   }
 
    # Build the packages for Debian/Ubuntu
    `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
