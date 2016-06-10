@@ -23,7 +23,7 @@ DAEMON="/usr/bin/python3 $SCRIPT_PATH /usr/share/apertium/modes"
 DAEMON_ARGS=""
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
-LC_ALL=en_US.utf-8
+LC_ALL=C.UTF-8
 
 # Exit if the package is not installed
 [ -e "$SCRIPT_PATH" ] || exit 0
