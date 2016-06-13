@@ -1,5 +1,5 @@
 [Unit]
-Description=Apertium APY service
+Description=Translation server and API for Apertium
 Documentation=http://wiki.apertium.org/wiki/Apertium-apy
 After=network.target
 
@@ -11,6 +11,9 @@ ExecStart=/usr/bin/python3 servlet.py /usr/share/apertium/modes
 
 # By default, if it restarts >10 times within 5 secs, it marks it as failed and gives up:
 Restart=always
+
+# Restart the service if it doesn't do a watchdog ping within 10 seconds:
+WatchdogSec=10s
 
 # No reason to have access to shared tmp files:
 PrivateTmp=yes
