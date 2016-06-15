@@ -1,6 +1,6 @@
 apertium-eo-en (1.0.0~r63833-1) unstable; urgency=low
 
-  * REPLACE ME
+  * Update to latest from svn, to get compatible build files
 
  -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
 
