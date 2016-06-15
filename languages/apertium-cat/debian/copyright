@@ -3,9 +3,10 @@ Source: http://apertium.org/
 
 Files: *
 Copyright: 2015-2016, Francis M. Tyers <ftyers@prompsit.com>
+                2016, Frankie Robertson <frankie@robertson.name>
                 2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
                 2016, Juan Pablo Martínez Cortés <juanpabl@users.sourceforge.net>
-                2015, Xavivars <xavivars@users.sourceforge.net>
+           2015-2016, Xavivars <xavivars@users.sourceforge.net>
 License: GPL-3+
 
 Files: debian/*

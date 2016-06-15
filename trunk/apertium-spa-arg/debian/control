@@ -28,17 +28,6 @@ Depends: apertium (>= 3.4),
          ${shlibs:Depends}
 Provides: apertium-arg-spa
 Conflicts: apertium-arg-spa
-Replaces: apertium-es-an (<< 0.4.0~)
-Breaks: apertium-es-an (<< 0.4.0~)
 Description: Apertium translation data for the Spanish-Aragonese pair
  Data package providing Apertium language resources for translating
  between the Spanish and Aragonese languages.
-
-Package: apertium-es-an
-Architecture: all
-Depends: apertium-spa-arg (= ${binary:Version}), ${misc:Depends}
-Priority: extra
-Section: oldlibs
-Provides: apertium-an-es
-Description: Transitional dummy package for apertium-spa-arg
- This is a transitional dummy package. It can safely be removed.
