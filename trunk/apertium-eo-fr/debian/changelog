@@ -1,13 +1,7 @@
-apertium-eo-fr (0.9.0~r57551-1) unstable; urgency=low
-
-  * REPLACE ME
-
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
-
-apertium-eo-fr (0.9.0~r28336-1) unstable; urgency=low
+apertium-eo-fr (0.9.0~r57551-1) experimental; urgency=low
 
   * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
