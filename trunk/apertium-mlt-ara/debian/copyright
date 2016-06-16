@@ -3,12 +3,14 @@ Source: http://apertium.org/
 
 Files: *
 Copyright: 2012-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-                2012, Francis M. Tyers <ftyers@prompsit.com>
+           2012-2015, Francis M. Tyers <ftyers@prompsit.com>
                 2012, Maria Fronczak <mariafronczak@users.sourceforge.net>
-License: GPL-2
+License: GPL-2+
 
 Files: lexchoicebil.xsl
 Copyright: 2005, Universitat d'Alacant / Universidad de Alicante
+License: GPL-2
+
 License: GPL-2
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -27,6 +29,8 @@ License: GPL-2
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-2+
+
 License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

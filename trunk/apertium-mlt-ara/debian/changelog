@@ -3,4 +3,4 @@ apertium-mlt-ara (0.1.0~r57554-1) experimental; urgency=low
   * Initial release
   * No significant changes in svn since tarball, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 15 Jun 2016 13:35:39 +0200
