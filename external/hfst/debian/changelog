@@ -1,8 +1,27 @@
-hfst (3.10.0~r2798-1) unstable; urgency=low
+hfst (3.11.0~r2977-1) unstable; urgency=low
 
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 17 Jun 2016 19:19:01 +0200
+
+hfst (3.10.0~r2798-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * debian/patches/hfst_03_char2int.diff:
+    + Fix FTBFS: twolc test fails or times out (Closes: #826659)
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 13 Jun 2016 10:17:56 +0530
+
+hfst (3.10.0~r2798-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 06 Jun 2016 18:33:47 +0530
 
 hfst (3.9.0~r4595-3) unstable; urgency=medium
 

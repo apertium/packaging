@@ -21,3 +21,6 @@ export DH_OPTIONS
 
 override_dh_auto_configure:
 	echo '/usr' > prefix
+
+override_dh_auto_test:
+	# Disable test for now
