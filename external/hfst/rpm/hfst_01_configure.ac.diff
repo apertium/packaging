@@ -1,10 +1,10 @@
-Index: b/configure.ac
-===================================================================
---- a/configure.ac	(revision 3996)
-+++ b/configure.ac	(working copy)
-@@ -681,9 +681,6 @@
+diff --git a/configure.ac b/configure.ac
+index 9d6338e..6d80569 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -698,9 +698,6 @@ AS_IF([test "x$with_unicode_handler" = "xglib"],
               ],
-              [AC_CHECK_HEADERS([glib.h], [], 
+              [AC_CHECK_HEADERS([glib.h], [],
                          [AC_MSG_ERROR([glib headers not found; set CPPFLAGS to -I glib install directiories or use other unicode handler instead])])])])
 -# remove if not needed
 -AS_IF([test "x$with_unicode_handler" != "xglib"],

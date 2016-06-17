@@ -1,9 +1,8 @@
-Description: Do not timestamp in output.
-Index: b/tools/src/hfst-optimized-lookup.cc
-===================================================================
---- a/tools/src/hfst-optimized-lookup.cc	(revision 4029)
-+++ b/tools/src/hfst-optimized-lookup.cc	(working copy)
-@@ -92,7 +92,6 @@
+diff --git a/tools/src/hfst-optimized-lookup.cc b/tools/src/hfst-optimized-lookup.cc
+index a31e8a4..3d56389 100644
+--- a/tools/src/hfst-optimized-lookup.cc
++++ b/tools/src/hfst-optimized-lookup.cc
+@@ -97,7 +97,6 @@ bool print_version(void)
    std::cout <<
      "\n" <<
      PACKAGE_STRING << std::endl <<
@@ -11,11 +10,11 @@ Index: b/tools/src/hfst-optimized-lookup.cc
      "copyright (C) 2009 University of Helsinki\n";
    return true;
  }
-Index: b/tools/src/hfst-proc/hfst-proc.cc
-===================================================================
---- a/tools/src/hfst-proc/hfst-proc.cc	(revision 4029)
-+++ b/tools/src/hfst-proc/hfst-proc.cc	(working copy)
-@@ -153,7 +153,6 @@
+diff --git a/tools/src/hfst-proc/hfst-proc.cc b/tools/src/hfst-proc/hfst-proc.cc
+index c0d293a..bd4d930 100644
+--- a/tools/src/hfst-proc/hfst-proc.cc
++++ b/tools/src/hfst-proc/hfst-proc.cc
+@@ -154,7 +154,6 @@ bool print_version(void)
      " (" << PACKAGE_STRING << ")" <<
  #endif
      std::endl <<
