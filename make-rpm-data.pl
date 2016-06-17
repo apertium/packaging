@@ -22,7 +22,7 @@ my %opts = (
 	'dv' => 1,
 	'rev' => '',
 	'auto' => 1,
-	'oscp' => 'nightly',
+	'oscp' => $ENV{'BUILDTYPE'} || 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -150,7 +150,7 @@ print FILE $spec;
 close FILE;
 
 my $meta = <<META;
-<package name="$pkname" project="home:TinoDidriksen:nightly">
+<package name="$pkname" project="home:TinoDidriksen:$ENV{BUILDTYPE}">
   <title></title>
   <description></description>
   <build>

@@ -22,7 +22,7 @@ my %opts = (
 	'dv' => 1,
 	'rev' => '',
 	'auto' => 1,
-	'oscp' => 'nightly',
+	'oscp' => $ENV{'BUILDTYPE'} || 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},

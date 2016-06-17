@@ -17,7 +17,14 @@ if (-s '/tmp/rebuild.lock') {
 }
 `date -u > /tmp/rebuild.lock`;
 
+use Getopt::Long;
+my $release = 0;
+my $rop = GetOptions(
+   "release|r!" => \$release,
+   );
+
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
+$ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
 use File::Basename;
 my $dir = dirname(__FILE__);
@@ -51,7 +58,7 @@ my $aptget = 0;
 use IO::Tee;
 open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
 my $out2 = IO::Tee->new($log, \*STDOUT);
-print {$out2} "Build started ".`date -u`;
+print {$out2} "Build $ENV{BUILDTYPE} started ".`date -u`;
 `rm -f /var/cache/pbuilder/aptcache/*.deb`;
 `rm -f /tmp/update-*.log`;
 
@@ -85,8 +92,14 @@ foreach my $pkg (@$pkgs) {
    print {$out} "Package: @$pkg[0]\n";
    print {$out} "\tstarted: ".`date -u`;
 
+   my $rev = '';
+   if ($release) {
+      $rev = `head -n1 @$pkg[0]/debian/changelog | egrep -o '~r[0-9]+' | egrep -o '[0-9]+'`;
+      chomp($rev);
+      $rev = "--rev '$rev'";
+   }
    # Determine latest version and date stamp from the repository
-   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' 2>$logpath/stderr.log`;
+   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' $rev 2>$logpath/stderr.log`;
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
    my ($newrev) = ($version =~ m@~r(\d+)$@);
@@ -98,9 +111,9 @@ foreach my $pkg (@$pkgs) {
       $first = substr($pkname, 0, 4);
    }
    my $oldversion = '0.0.0~r0';
-   if (-e "/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname") {
+   if (-e "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname") {
       $dir = getcwd();
-      chdir("/home/apertium/public_html/apt/nightly/pool/main/$first/$pkname/");
+      chdir("/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/");
       $oldversion = `dpkg -I \$(ls -1 *~sid*.deb | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+~r[-.0-9]+' | head -n 1`;
       chomp($oldversion);
       chdir($dir);
@@ -240,7 +253,7 @@ foreach my $pkg (@$pkgs) {
          $cc .= " '$blame\@users.sourceforge.net'";
       }
 
-      my $subject = "@$pkg[0] failed nightly build";
+      my $subject = "@$pkg[0] failed $ENV{BUILDTYPE} build";
       # Don't send individual emails if this is a single package build, or if the package isn't from SourceForge.
       if (!$ARGV[0] && @$pkg[1] =~ m@^http://svn.code.sf.net/@) {
          `cat $logpath/rebuild.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
@@ -261,7 +274,7 @@ foreach my $pkg (@$pkgs) {
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
       open my $yumlog, ">$logpath/createrepo.log" or die "Failed to open $logpath/createrepo.log: $!\n";
       my %distros;
-      `rm -rf /home/apertium/public_html/yum/nightly/*/$first/$pkname`;
+      `rm -rf /home/apertium/public_html/yum/$ENV{BUILDTYPE}/*/$first/$pkname`;
       my $rpms = `find /home/apertium/mock/ -type f -name '*.rpm'`;
       chomp($rpms);
       foreach my $rpm (split(/\n/, $rpms)) {
@@ -270,23 +283,23 @@ foreach my $pkg (@$pkgs) {
          $nc =~ s@\.centos@@g;
          my ($distro,$arch) = $nc =~ m@\.([^.]+)\.([^.]+)\.rpm$@;
          $distros{$distro} = 1;
-         `mkdir -p /home/apertium/public_html/yum/nightly/$distro/$first/$pkname`;
+         `mkdir -p /home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/$first/$pkname`;
          `su apertium -c "/home/apertium/bin/rpmsign.exp '$rpm'"`;
-         print {$yumlog} `mv -fv '$rpm' /home/apertium/public_html/yum/nightly/$distro/$first/$pkname/`;
+         print {$yumlog} `mv -fv '$rpm' /home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/$first/$pkname/`;
       }
       `chown -R apertium:apertium /home/apertium/public_html/yum`;
       foreach my $distro (keys(%distros)) {
          print {$yumlog} "Recreating $distro yum repo\n";
-         print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/nightly/$distro/'"`;
-         unlink("/home/apertium/public_html/yum/nightly/$distro/repodata/repomd.xml.asc");
-         `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/nightly/$distro/repodata/repomd.xml'"`;
+         print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/'"`;
+         unlink("/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/repodata/repomd.xml.asc");
+         `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/repodata/repomd.xml'"`;
       }
       close $yumlog;
    }
 =cut
 
    # Get a list of resulting packages and mark them all as rebuilt
-   my $ls = `ls -1 ~apertium/public_html/apt/nightly/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
+   my $ls = `ls -1 ~apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
    foreach my $pk (split(/\s+/, $ls)) {
       chomp($pk);
       $rebuilt{$pk} = 1;
@@ -326,12 +339,12 @@ if ($osx) {
    print {$out2} "Combining OS X builds\n";
    `./osx-combine.sh`;
 }
-if ($aptget) {
+if ($aptget && !$release) {
    print {$out2} "Installing new data packages\n";
    `./apt-get-upgrade.sh`;
 }
 
-print {$out2} "Build stopped at ".`date -u`;
+print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;
 close $log;
 unlink("/tmp/rebuild.$$.log");
 unlink('/tmp/rebuild.lock');

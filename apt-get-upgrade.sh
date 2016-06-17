@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+export DEBIAN_FRONTEND=noninteractive
+export DEBCONF_NONINTERACTIVE_SEEN=true
 
 apt-get -qy update -o Dir::Etc::sourcelist="sources.list.d/apertium-nightly.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"
 apt-get -qfy install $(aptitude search '~O apertium' | egrep -o 'apertium-\w+-\w+' | grep -v lex-tools | grep -v all-dev | sort | uniq)

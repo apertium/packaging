@@ -25,11 +25,11 @@ chmod -R uga+r win32
 mv win32 $PKG_NAME
 zip -9r $PKG_NAME-$PKG_VER.zip $PKG_NAME
 7za a -l $PKG_NAME-$PKG_VER.7z $PKG_NAME
-rm -fv ~apertium/public_html/win32/nightly/$PKG_NAME-[0-9]*.zip
-rm -fv ~apertium/public_html/win32/nightly/$PKG_NAME-[0-9]*.7z
-mv -v *.zip ~apertium/public_html/win32/nightly/
-mv -v *.7z ~apertium/public_html/win32/nightly/
-cd ~apertium/public_html/win32/nightly/
+rm -fv ~apertium/public_html/win32/$BUILDTYPE/$PKG_NAME-[0-9]*.zip
+rm -fv ~apertium/public_html/win32/$BUILDTYPE/$PKG_NAME-[0-9]*.7z
+mv -v *.zip ~apertium/public_html/win32/$BUILDTYPE/
+mv -v *.7z ~apertium/public_html/win32/$BUILDTYPE/
+cd ~apertium/public_html/win32/$BUILDTYPE/
 ln -sfv $PKG_NAME-$PKG_VER.zip $PKG_NAME-latest.zip
 ln -sfv $PKG_NAME-$PKG_VER.7z $PKG_NAME-latest.7z
 chown -R apertium:apertium ~apertium/public_html/win32
