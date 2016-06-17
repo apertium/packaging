@@ -18,7 +18,8 @@ do
 
 	for ARCH in amd64 i386
 	do
-		echo "Reloading repo for $DISTRO for $ARCH"
+		echo "Reloading $BUILDTYPE for $DISTRO for $ARCH"
+		echo "deb http://apertium.projectjj.com/apt/$BUILDTYPE $DISTRO main" > /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/etc/apt/sources.list.d/apertium.list
 		echo 'apt-get -q -y update -o Dir::Etc::sourcelist="sources.list.d/apertium.list" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"' | cowbuilder --save --login --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
 
 		if [[ ! -s "/tmp/update-$DISTRO-$ARCH.log" ]]; then

@@ -24,6 +24,8 @@ my $rop = GetOptions(
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
+$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
+$ENV{'DEBCONF_NONINTERACTIVE_SEEN'} = 'true';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
 use File::Basename;
