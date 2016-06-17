@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.4),
                dh-autoreconf,
                gawk,
                hfst,
-               libhfst45-dev,
+               libhfst46-dev,
                pkg-config (>= 0.21)
 Standards-Version: 3.9.8
 Homepage: http://apertium.org/
