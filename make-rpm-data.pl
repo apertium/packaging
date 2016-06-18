@@ -86,7 +86,7 @@ if (-e 'usr/share/voikko') {
    $files .= "\%{_datadir}/voikko\n";
 }
 mkdir($pkname.'-'.$opts{'v'});
-print `mv -v 'usr' '$pkname-$opts{'v'}/' 2>&1`;
+print `cp -av 'usr' '$pkname-$opts{'v'}/' 2>&1`;
 print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
