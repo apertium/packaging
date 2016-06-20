@@ -2,8 +2,39 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
- See AUTHORS for more copyrights.
+Copyright: 2009-2010, Jim O'Regan <joregan@gmail.com>
+           2009-2011, Hlynur Sigurþórsson <hlynurs06@ru.is>, Háskólinn í Reykjavík
+           2009-2011, Hrafn Loftsson <hrafn@ru.is>, Háskólinn í Reykjavík
+           2009-2011, Martha Dís Brandt <marthab08@ru.is>, Háskólinn í Reykjavík
+           2009-2014, Francis M. Tyers <ftyers@prompsit.com>
+           2009-2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2009, Jacob Nordfalk <jacob.nordfalk@gmail.com>
+                2009, Pminervini <pminervini@users.sourceforge.net>
+           2010-2011, Trond Trosterud <trond.trosterud@hum.uit.no>
+                2011, Ólafur Waage <olafurw@users.sourceforge.net>
+                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
+License: GPL-3
+
+License: GPL-3
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, version 3 of the License
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+Files: debian/*
+Copyright: 2016, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-3+
+
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
