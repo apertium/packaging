@@ -52,9 +52,10 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-print `rm -rf '/tmp/autorpm.$$' 2>&1`;
-mkdir("/tmp/autorpm.$$");
-chdir(glob('/tmp/autorpm.*')) or die "Could not change folder: $!\n";
+print `rm -rf /tmp/autorpm.* 2>&1`;
+print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
+chdir "/tmp/autorpm.$$" or die "Could not change folder: $!\n";
+
 print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.xz 2>&1`;
 print `tar -Jxvf data.tar.xz 2>&1`;
 my $files = '';

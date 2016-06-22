@@ -61,8 +61,8 @@ my %distros = (
 	'xenial' => 'ubuntu',
 );
 
-print `rm -rf /tmp/autopkg.*`;
-print `mkdir -pv /tmp/autopkg.$$`;
+print `rm -rf /tmp/autopkg.* 2>&1`;
+print `mkdir -pv /tmp/autopkg.$$ 2>&1`;
 chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
