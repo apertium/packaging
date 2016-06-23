@@ -70,7 +70,7 @@ if ($ARGV[0]) {
 
 foreach my $pkg (@$pkgs) {
    # If a package path is given, only rebuild that package, but force a rebuild of it
-   if ($ARGV[0] && $ARGV[0] ne @$pkg[0]) {
+   if ($ARGV[0] && @$pkg[0] !~ m@/\Q$ARGV[0]\E$@) {
       next;
    }
 
