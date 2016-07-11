@@ -98,6 +98,11 @@ foreach my $pkg (@$pkgs) {
    if ($release) {
       $rev = `head -n1 @$pkg[0]/debian/changelog | egrep -o '~r[0-9]+' | egrep -o '[0-9]+'`;
       chomp($rev);
+      if (!$rev || $rev eq '' || $rev+0 < 1) {
+         print {$out} "\tmissing release revision: $rev\n";
+         next;
+      }
+      print {$out} "\trelease rev: $rev\n";
       $rev = "--rev '$rev'";
    }
    # Determine latest version and date stamp from the repository
@@ -159,7 +164,7 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tdistv: $distv\n";
 
    # Create the source packages
-   my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
+   my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' $rev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
    if (@$pkg[3]) {
       $cli .= " -r '@$pkg[3]'";
    }

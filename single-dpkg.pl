@@ -12,6 +12,9 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+if (-s '/tmp/rebuild.lock') {
+   die "Another instance of builder is running - bailing out!\n";
+}
 if (!$ARGV[0]) {
    die "Must provide a package path!\n";
 }
