@@ -102,6 +102,8 @@ print `osc up 2>&1`;
 print `osc rm --force * 2>&1`;
 print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
+my $btype = "\u$ENV{BUILDTYPE}";
+
 my $spec = <<SPEC;
 Name: $pkname
 Version: $opts{'v'}
@@ -119,9 +121,10 @@ Requires: apertium
 Requires: apertium-lex-tools
 Requires: cg3
 Requires: hfst
+Requires: hfst-ospell
 
 \%description
-Nightly autopkg of $pkname
+$btype autopkg of $pkname
 
 \%prep
 \%setup -q -n \%{name}-\%{version}

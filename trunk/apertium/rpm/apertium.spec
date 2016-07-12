@@ -99,7 +99,7 @@ ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %check
-make test
+make check
 %endif
 
 %files

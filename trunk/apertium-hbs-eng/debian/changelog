@@ -1,6 +1,6 @@
-apertium-hbs-eng (0.1.0~r57554-1) experimental; urgency=low
+apertium-hbs-eng (0.1.0~r57598-1) experimental; urgency=low
 
   * Initial release
   * No tarball release, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 13 Oct 2014 07:17:28 +0000

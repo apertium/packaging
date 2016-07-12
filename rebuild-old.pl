@@ -110,6 +110,10 @@ foreach my $pkg (@$pkgs) {
    chomp($gv);
    my ($version,$srcdate) = split(/\t/, $gv);
    my ($newrev) = ($version =~ m@~r(\d+)$@);
+   if (!$newrev) {
+      print {$out} "\tmissing revision: $newrev\n";
+      next;
+   }
    print {$out} "\tlatest: $version\n";
 
    # Determine existing package version, if any
