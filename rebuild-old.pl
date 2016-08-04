@@ -19,8 +19,10 @@ if (-s '/tmp/rebuild.lock') {
 
 use Getopt::Long;
 my $release = 0;
+my $dry = 0;
 my $rop = GetOptions(
    "release|r!" => \$release,
+   "dry|n!" => \$dry,
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
@@ -179,11 +181,13 @@ foreach my $pkg (@$pkgs) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
-      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,xenial";
    }
    if (@$pkg[0] =~ m@/apertium-apy$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
+   }
+   if ($dry || $is_data eq 'data') {
+      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,xenial";
    }
 
    # Build the packages for Debian/Ubuntu
@@ -204,6 +208,11 @@ foreach my $pkg (@$pkgs) {
    chomp($depfail);
    if ($depfail) {
       print {$out} "\tsoft fail: unmet dependencies\n";
+   }
+
+   if ($dry) {
+      print {$out} "\tparched\n";
+      last;
    }
 
    # If debs did not fail building, try RPMs and win32

@@ -1,0 +1,3 @@
+bin/apertium-gp usr/bin
+apertium.ico /usr/share/pixmaps
+Apertium-GP.desktop usr/share/applications

@@ -1,0 +1,13 @@
+Source: apertium-gp
+Section: translators
+Priority: optional
+Maintainer: Denys Senkin <denisx9.0c@gmail.com>
+Build-Depends: debhelper (>= 9), qtbase5-dev, qtbase5-dev-tools, qt5-qmake
+Standards-Version: 3.9.6
+Homepage: https://www.apertium.org/
+
+Package: apertium-gp
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium-GP is a GUI for Apertium translator.
+ It is test build
