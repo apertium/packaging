@@ -23,7 +23,7 @@
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/gtcore"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,precise,trusty"],
    ["external/matxin",     "https://github.com/matxin/matxin/trunk", null, null, "precise"],
-   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro", null, "precise"],
+#   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro", null, "precise"],
 
    # Then languages
    ["external/giella-est",      "https://gtsvn.uit.no/langtech/trunk/langs/est"],

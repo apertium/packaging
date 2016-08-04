@@ -61,7 +61,7 @@ my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 	   print STDERR "Found AC_INIT version\n";
 	   $version = $1;
 	}
-	elsif ($data =~ m@VERSION.*?([\d.]+)@s) {
+	elsif ($data =~ m@\n\s*VERSION.*?([\d.]+)@s || $data =~ m@VERSION.*?([\d.]+)@s) {
 	   print STDERR "Found VERSION version\n";
 	   $version = $1;
 	}
