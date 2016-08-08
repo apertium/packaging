@@ -48,7 +48,7 @@
    ["languages/apertium-dan"],
    ["languages/apertium-deu"],
    ["languages/apertium-ell"],
-#   ["languages/apertium-eng"], # Not buildable
+   ["languages/apertium-eng"],
    ["languages/apertium-eus"],
    ["languages/apertium-fao"],
    ["languages/apertium-fin"],
