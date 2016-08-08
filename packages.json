@@ -89,8 +89,11 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
+   ["incubator/apertium-en-fr"],
+   ["incubator/apertium-eng-ita"],
    ["incubator/apertium-srd-ita"],
 
+   ["nursery/apertium-eng-deu"],
    ["nursery/apertium-sme-fin"],
    ["nursery/apertium-sme-sma"],
    ["nursery/apertium-sme-smj"],
