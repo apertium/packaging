@@ -6,9 +6,9 @@ use utf8;
 use strict;
 use warnings;
 BEGIN {
-	$| = 1;
-	binmode(STDIN, ':encoding(UTF-8)');
-	binmode(STDOUT, ':encoding(UTF-8)');
+   $| = 1;
+   binmode(STDIN, ':encoding(UTF-8)');
+   binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
 
@@ -41,14 +41,26 @@ if (!(-x 'get-version.pl')) {
 if (!(-s 'packages.json')) {
    die "packages.json not found in $dir!\n";
 }
+if (!(-s 'authors.json')) {
+   die "authors.json not found in $dir!\n";
+}
 
 use JSON;
 my $pkgs = ();
 {
-	local $/ = undef;
-	open FILE, 'packages.json' or die "Could not open packages.json: $!\n";
-	my $data = <FILE>;
-   $pkgs = JSON->new->utf8->relaxed->decode($data);
+   local $/ = undef;
+   open FILE, 'packages.json' or die "Could not open packages.json: $!\n";
+   my $data = <FILE>;
+   $pkgs = JSON->new->relaxed->decode($data);
+   close FILE;
+}
+
+my $authors = ();
+{
+   local $/ = undef;
+   open FILE, 'authors.json' or die "Could not open authors.json: $!\n";
+   my $data = <FILE>;
+   $authors = JSON->new->relaxed->decode($data);
    close FILE;
 }
 
@@ -250,7 +262,7 @@ foreach my $pkg (@$pkgs) {
       print {$out} "\tFAILED:\n";
       foreach my $fail (split(/\n/, $failed)) {
          chomp($fail);
-         $fail =~ s@^/home/apertium/public_html@http://apertium.projectjj.com@;
+         $fail =~ s@^/home/apertium/public_html@https://apertium.projectjj.com@;
          print {$out} "\t\t$fail\n";
       }
 
@@ -270,7 +282,8 @@ foreach my $pkg (@$pkgs) {
          $blames{$blame} = 1;
          print {$out} "\t\t$blame\n";
          # Add the suspect to CC so they are directly notified
-         $cc .= " '$blame\@users.sourceforge.net'";
+         my $who = $authors->{$blame} || "$blame\@users.sourceforge.net";
+         $cc .= " '$who'";
       }
 
       my $subject = "@$pkg[0] failed $ENV{BUILDTYPE} build";
