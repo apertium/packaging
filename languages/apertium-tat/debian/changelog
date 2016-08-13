@@ -1,12 +1,7 @@
 apertium-tat (0.1.0~r60887-1) unstable; urgency=low
 
-  * Update to latest upstream release.
-
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 03 Aug 2015 06:53:49 +0000
-
-apertium-tat (0.1.0~r57462-1) experimental; urgency=low
-
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #828100)
   * No tarball release, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 28 Jun 2016 09:22:12 +0530
