@@ -1,0 +1,27 @@
+Source: giella-common
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: autoconf,
+               autotools-dev,
+               debhelper (>= 9.0),
+               dh-autoreconf,
+               dh-exec (>= 0.3)
+Standards-Version: 3.9.8
+Homepage: http://giellatekno.uit.no/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/giella-common.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-common.git
+
+Package: giella-common
+Architecture: all
+Depends: python, python3 (>= 3.1), ${misc:Depends}, ${shlibs:Depends}
+Description: Shared files for building Giellatekno language packages
+ All Giellatekno language packages build-depends on this package.
+
+Package: giella-shared
+Architecture: all
+Depends: giella-common, ${misc:Depends}, ${shlibs:Depends}
+Description: Alias for the Giellatekno common build files
+ Alias that's more familar to existing users of Giellatekno build system.

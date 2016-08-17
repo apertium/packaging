@@ -80,6 +80,9 @@ if (-e 'usr/share/giella') {
 if (-e 'usr/share/giella-core') {
    $files .= "\%{_datadir}/giella-core\n";
 }
+if (-e 'usr/share/giella-common') {
+   $files .= "\%{_datadir}/giella-common\n";
+}
 if (-e 'usr/share/pkgconfig') {
    $files .= "\%{_datadir}/pkgconfig\n";
 }
