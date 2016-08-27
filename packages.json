@@ -92,7 +92,6 @@
    # Finally, language pairs
    ["incubator/apertium-en-fr"],
    ["incubator/apertium-eng-ita"],
-   ["incubator/apertium-srd-ita"],
 
    ["nursery/apertium-eng-deu"],
    ["nursery/apertium-sme-fin"],
@@ -144,6 +143,7 @@
    ["trunk/apertium-pt-gl"],
    ["trunk/apertium-sme-nob"],
    ["trunk/apertium-spa-arg"],
+   ["trunk/apertium-srd-ita"],
    ["trunk/apertium-swe-dan"],
    ["trunk/apertium-swe-nor"],
    ["trunk/apertium-urd-hin"],
