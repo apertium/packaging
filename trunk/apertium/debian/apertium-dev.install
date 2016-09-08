@@ -11,6 +11,7 @@ debian/tmp/usr/bin/apertium-validate-modes
 debian/tmp/usr/bin/apertium-validate-postchunk
 debian/tmp/usr/bin/apertium-validate-tagger
 debian/tmp/usr/bin/apertium-validate-transfer
+debian/tmp/usr/bin/apertium-perceptron-trace
 debian/tmp/usr/include
 debian/tmp/usr/lib/*/*.so
 debian/tmp/usr/lib/*/pkgconfig
