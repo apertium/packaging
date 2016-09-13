@@ -9,7 +9,7 @@
 
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3"],
-   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide", "precise"],
+   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp",      "http://visl.sdu.dk/svn/visl/opensource/packaging/cg3ide"],
 #   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
@@ -18,13 +18,13 @@
    ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
-   ["trunk/apertium-simpleton", null, "src/version.hpp", null, "precise"],
-   ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py", null, "wheezy,precise"],
+   ["trunk/apertium-simpleton", null, "src/version.hpp"],
+   ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py", null, "wheezy"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/giella-core"],
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
-   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,precise,trusty"],
-   ["external/matxin",     "https://github.com/matxin/matxin/trunk", null, null, "precise"],
-   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro", null, "precise"],
+   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,trusty"],
+   ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
+   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
 
    # Then languages
    ["external/giella-est",      "https://gtsvn.uit.no/langtech/trunk/langs/est"],

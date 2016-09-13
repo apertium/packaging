@@ -199,7 +199,7 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'arch-all';
    }
    if ($dry || $is_data eq 'data') {
-      @$pkg[4] = "wheezy,jessie,stretch,precise,trusty,xenial,yakkety";
+      @$pkg[4] = "wheezy,jessie,stretch,trusty,xenial,yakkety";
    }
 
    # Build the packages for Debian/Ubuntu
