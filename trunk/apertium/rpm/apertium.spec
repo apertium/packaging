@@ -157,6 +157,7 @@ make check
 %{_bindir}/apertium-validate-postchunk
 %{_bindir}/apertium-validate-tagger
 %{_bindir}/apertium-validate-transfer
+%{_bindir}/apertium-perceptron-trace
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
