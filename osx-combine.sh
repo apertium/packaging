@@ -11,6 +11,7 @@ install_dep hfst
 install_dep hfst-ospell
 #install_dep cg3ide
 install_dep cg3
+install_dep icu
 #install_dep trie-tools
 
 cd /opt
