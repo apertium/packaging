@@ -35,6 +35,7 @@
    ["external/giella-sme",      "https://gtsvn.uit.no/langtech/trunk/langs/sme"],
    ["external/giella-smj",      "https://gtsvn.uit.no/langtech/trunk/langs/smj"],
    ["external/giella-smn",      "https://gtsvn.uit.no/langtech/trunk/langs/smn"],
+   ["external/giella-sms",      "https://gtsvn.uit.no/langtech/trunk/langs/sms"],
    ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
