@@ -1,0 +1,18 @@
+Source: cg3ide
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: cmake (>= 2.8.3),
+               debhelper (>= 9.0),
+               qt5-default,
+               qt5-qmake,
+               qtbase5-dev
+Standards-Version: 3.9.8
+
+Package: cg3ide
+Architecture: any
+Depends: cg3, ${misc:Depends}, ${shlibs:Depends}
+Description: IDE for CG-3
+ IDE for developing and debugging CG-3 grammars.
