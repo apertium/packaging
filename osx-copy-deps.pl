@@ -33,7 +33,14 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             print STDERR "\tskipping self $d\n";
             next;
          }
-         print STDERR "\tadjusting dependency '$d'\n";
+         if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
+            print STDERR "\tcopying l-dependency '$d'\n";
+            `rsync -avu -L '/opt/osx/lib/$d' 'lib/$d'`;
+            if (-e "/opt/icudata/$d") {
+               `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+            }
+         }
+         print STDERR "\tadjusting l-dependency '$d'\n";
          print STDERR `x86_64-apple-darwin13-install_name_tool -change '/opt/osx/lib/$d' '\@rpath/$d' '$f'`;
          $did = 1;
       }
@@ -45,12 +52,19 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             print STDERR "\tskipping self $d\n";
             next;
          }
-         print STDERR "\tadjusting dependency '$d'\n";
+         if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
+            print STDERR "\tcopying n-dependency '$d'\n";
+            `rsync -avu -L '/opt/osx/lib/$d' 'lib/$d'`;
+            if (-e "/opt/icudata/$d") {
+               `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+            }
+         }
+         print STDERR "\tadjusting n dependency '$d'\n";
          print STDERR `x86_64-apple-darwin13-install_name_tool -change '$d' '\@rpath/$d' '$f'`;
          $did = 1;
       }
 
-      my @deps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | grep /opt/local/lib`);
+      my @deps = split("\n", `x86_64-apple-darwin13-otool -L '$f' | egrep '/opt/local/lib'`);
       if (!@deps && !@ldeps) {
          next;
       }
@@ -71,7 +85,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          if (-e "/opt/icudata/$d") {
             `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
          }
-         print STDERR "\tadjusting dependency '$d'\n";
+         print STDERR "\tadjusting g-dependency '$d'\n";
          print STDERR `x86_64-apple-darwin13-install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
          $did = 1;
       }
