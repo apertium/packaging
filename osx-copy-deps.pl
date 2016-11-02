@@ -18,6 +18,18 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
 
    print STDERR "Round $i\n";
 
+   my @syms = split("\n", `find bin/ lib/ -type l`);
+   foreach my $s (@syms) {
+      my $d = readlink($s);
+      if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
+         print STDERR "\tcopying real file '$d'\n";
+         `rsync -avu '/opt/osx/lib/$d' 'lib/$d'`;
+         if (-e "/opt/icudata/$d") {
+            `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
+         }
+      }
+   }
+
    my @files = split("\n", `find bin/ lib/ -type f`);
    foreach my $f (@files) {
       chomp($f);
@@ -35,9 +47,9 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          }
          if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
             print STDERR "\tcopying l-dependency '$d'\n";
-            `rsync -avu -L '/opt/osx/lib/$d' 'lib/$d'`;
+            `rsync -avu '/opt/osx/lib/$d' 'lib/$d'`;
             if (-e "/opt/icudata/$d") {
-               `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+               `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
             }
          }
          print STDERR "\tadjusting l-dependency '$d'\n";
@@ -52,11 +64,15 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             print STDERR "\tskipping self $d\n";
             next;
          }
+         if (-l "lib/$d" && "lib/".readlink("lib/$d") eq $f) {
+            print STDERR "\tskipping sym-self $d\n";
+            next;
+         }
          if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
             print STDERR "\tcopying n-dependency '$d'\n";
-            `rsync -avu -L '/opt/osx/lib/$d' 'lib/$d'`;
+            `rsync -avu '/opt/osx/lib/$d' 'lib/$d'`;
             if (-e "/opt/icudata/$d") {
-               `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+               `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
             }
          }
          print STDERR "\tadjusting n dependency '$d'\n";
@@ -81,9 +97,9 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             next;
          }
          print STDERR "\tcopying dependency '$d'\n";
-         `rsync -avu -L '/opt/osxcross/target/macports/pkgs/opt/local/lib/$d' 'lib/$d'`;
+         `rsync -avu '/opt/osxcross/target/macports/pkgs/opt/local/lib/$d' 'lib/$d'`;
          if (-e "/opt/icudata/$d") {
-            `rsync -avu -L '/opt/icudata/$d' 'lib/$d'`;
+            `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
          }
          print STDERR "\tadjusting g-dependency '$d'\n";
          print STDERR `x86_64-apple-darwin13-install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
