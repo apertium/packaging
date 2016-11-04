@@ -16,10 +16,6 @@ install_dep cg3
 
 cd /opt
 rm -rf apertium-all-dev
-for DEP in "7z.exe 7z.dll 7z-License.txt"
-do
-	cp -avf /opt/mxe/usr/i686-w64-mingw32.shared/bin/$DEP win32/bin/
-done
 mv win32 apertium-all-dev
 chmod -R uga+r apertium-all-dev
 zip -9r apertium-all-dev.zip apertium-all-dev

@@ -18,7 +18,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
 
    print STDERR "Round $i\n";
 
-   my @syms = split("\n", `find bin/ lib/ -type l`);
+   my @syms = split("\n", `find lib/ -type l`);
    foreach my $s (@syms) {
       my $d = readlink($s);
       if (!-e "lib/$d" && -e "/opt/osx/lib/$d") {
@@ -27,6 +27,15 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          if (-e "/opt/icudata/$d") {
             `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
          }
+         $did = 1;
+      }
+      if (!-e "lib/$d" && -e "/opt/osxcross/target/macports/pkgs/opt/local/lib/$d") {
+         print STDERR "\tcopying real file '$d'\n";
+         `rsync -avu '/opt/osxcross/target/macports/pkgs/opt/local/lib/$d' 'lib/$d'`;
+         if (-e "/opt/icudata/$d") {
+            `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
+         }
+         $did = 1;
       }
    }
 
@@ -94,6 +103,10 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
          ($d) = ($d =~ m@/opt/local/lib/(\S+)@);
          if ($f =~ m@\Q$d\E$@) {
             print STDERR "\tskipping self $d\n";
+            next;
+         }
+         if (-l "lib/$d" && "lib/".readlink("lib/$d") eq $f) {
+            print STDERR "\tskipping sym-self $d\n";
             next;
          }
          print STDERR "\tcopying dependency '$d'\n";
