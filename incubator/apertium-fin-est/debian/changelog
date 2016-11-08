@@ -1,0 +1,7 @@
+apertium-fin-est (0.1.0-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #832498))
+  * No significant changes in svn since tarball, so taking directly from svn.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 26 Jul 2016 10:58:33 +0530

@@ -1,0 +1,35 @@
+Source: apertium-fin-est
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               apertium-lex-tools,
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               giella-est,
+               giella-fin,
+               hfst,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.8
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fin-est.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fin-est.git
+
+Package: apertium-fin-est
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-est-fin
+Conflicts: apertium-est-fin
+Description: Apertium translation data for the Finnish-Estonian pair
+ Data package providing Apertium language resources for translating
+ between the Finnish and Estonian languages.

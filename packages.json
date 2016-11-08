@@ -93,6 +93,7 @@
    # Finally, language pairs
    ["incubator/apertium-en-fr"],
    ["incubator/apertium-eng-ita"],
+   ["incubator/apertium-fin-est"],
 
    ["nursery/apertium-eng-deu"],
    ["nursery/apertium-sme-fin"],
