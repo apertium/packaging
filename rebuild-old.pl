@@ -240,7 +240,15 @@ foreach my $pkg (@$pkgs) {
 
       if (-s "@$pkg[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
+         $ENV{'BITWIDTH'} = 'i686';
+         $ENV{'WINX'} = 'win32';
          `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
+
+         print {$out} "\tbuilding win64\n";
+         $ENV{'BITWIDTH'} = 'x86_64';
+         $ENV{'WINX'} = 'win64';
+         `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
+
          $win32 = 1;
       }
 
@@ -282,13 +290,15 @@ foreach my $pkg (@$pkgs) {
          $blames{$blame} = 1;
          print {$out} "\t\t$blame\n";
          # Add the suspect to CC so they are directly notified
-         my $who = $authors->{$blame} || "$blame\@users.sourceforge.net";
-         $cc .= " '$who'";
+         if (defined $authors->{$blame}) {
+            my $who = $authors->{$blame};
+            $cc .= " '$who'";
+         }
       }
 
       my $subject = "@$pkg[0] failed $ENV{BUILDTYPE} build";
-      # Don't send individual emails if this is a single package build, or if the package isn't from SourceForge.
-      if (!$ARGV[0] && @$pkg[1] =~ m@^http://svn.code.sf.net/@) {
+      # Don't send individual emails if this is a single package build
+      if (!$ARGV[0] && $cc ne '') {
          `cat $logpath/rebuild.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
       goto CLEANUP;
@@ -366,6 +376,13 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
 
 if ($win32) {
    print {$out2} "Combining Win32 builds\n";
+   $ENV{'BITWIDTH'} = 'i686';
+   $ENV{'WINX'} = 'win32';
+   `./win32-combine.sh`;
+
+   print {$out2} "Combining Win64 builds\n";
+   $ENV{'BITWIDTH'} = 'x86_64';
+   $ENV{'WINX'} = 'win64';
    `./win32-combine.sh`;
 }
 if ($osx) {

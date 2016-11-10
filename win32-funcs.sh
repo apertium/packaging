@@ -16,7 +16,7 @@ function install_dep {
 	pushd /tmp
 	rm -rf $1
 	echo "Installing $1"
-	7za x -y ~apertium/public_html/win32/$BUILDTYPE/$1-latest.7z
+	7za x -y ~apertium/public_html/$WINX/$BUILDTYPE/$1-latest.7z
 	rsync -avu $1/* /opt/win32/
 	rm -rf $1
 	popd
