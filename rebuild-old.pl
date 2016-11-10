@@ -247,7 +247,7 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\tbuilding win64\n";
          $ENV{'BITWIDTH'} = 'x86_64';
          $ENV{'WINX'} = 'win64';
-         `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win32.log >&2`;
+         `bash -c '. $dir/win32-pre.sh; . $dir/@$pkg[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/win64.log >&2`;
 
          $win32 = 1;
       }
