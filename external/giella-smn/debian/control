@@ -15,7 +15,7 @@ Build-Depends: autotools-dev,
                giella-common,
                giella-core,
                hfst,
-               libhfst46-dev,
+               libhfst47-dev,
                pkg-config (>= 0.21),
                python3 (>= 3.1),
                zip
