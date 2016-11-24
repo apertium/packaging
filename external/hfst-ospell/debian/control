@@ -13,7 +13,6 @@ Build-Depends: autoconf,
                libarchive-dev,
                libicu-dev,
                libtool,
-               libxml++2.6-dev,
                pkg-config,
                zip
 Standards-Version: 3.9.8
