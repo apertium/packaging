@@ -7,6 +7,7 @@ License: Apache-2.0
 URL: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst-ospell_01_notimestamp.diff
+Patch1: hfst-ospell_02_xfail.diff
 
 BuildRequires: autoconf
 BuildRequires: automake
