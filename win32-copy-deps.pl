@@ -15,6 +15,7 @@ use open qw( :encoding(UTF-8) :std );
 my $bitwidth = $ENV{'BITWIDTH'} || 'i686';
 
 my @locs = (
+   "/opt/win32/bin",
    "/opt/mxe/usr/$bitwidth-w64-mingw32.shared/bin",
    "/opt/mxe/usr/$bitwidth-w64-mingw32.shared/qt5/bin",
    "/opt/icudata",
