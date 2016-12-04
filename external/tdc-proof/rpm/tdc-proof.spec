@@ -8,11 +8,12 @@ URL: https://github.com/TinoDidriksen/spellers
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: gcc-c++
-%if 0%{?el6}
-BuildRequires: cmake28 >= 2.8.9
+%if 0%{?el7}
+BuildRequires: cmake3 >= 3.0
 %else
-BuildRequires: cmake >= 2.8.9
+BuildRequires: cmake >= 3.0
 %endif
+BuildRequires: pkgconfig
 BuildRequires: hfst-ospell-devel
 
 %description
@@ -25,7 +26,7 @@ and grammar checkers
 
 %build
 %if 0%{?el6}
-%cmake28 .
+%cmake3 .
 %else
 %if 0%{?suse_version}
 %cmake

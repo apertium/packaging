@@ -6,7 +6,8 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake (>= 2.8.0),
                debhelper (>= 9.0),
-               hfst-ospell-dev
+               hfst-ospell-dev,
+               pkg-config
 Standards-Version: 3.9.8
 
 Package: tdc-proof
