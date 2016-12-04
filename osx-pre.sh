@@ -28,3 +28,4 @@ find . -type f -name 'Makefile*' -or -name '*.so' -or -name '*.dylib' -or -name 
 svn revert -R .
 svn stat --no-ignore | grep '^[?I]' | xargs -n1 rm -rfv --
 svn up -r$PKG_REV
+svn cleanup

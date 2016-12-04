@@ -1,0 +1,53 @@
+Name: tdc-proof
+Version: 1.0.0.r106
+Release: 1%{?dist}
+Summary: Wrappers to integrate HFST-based proofing tools with frontends
+Group: Development/Tools
+License: GPL-3.0+
+URL: https://github.com/TinoDidriksen/spellers
+Source0: %{name}_%{version}.orig.tar.bz2
+
+BuildRequires: gcc-c++
+%if 0%{?el6}
+BuildRequires: cmake28 >= 2.8.9
+%else
+BuildRequires: cmake >= 2.8.9
+%endif
+BuildRequires: hfst-ospell-devel
+
+%description
+Proofing tool wrappers for HFST-based spellers, hyphenators,
+and grammar checkers
+
+
+%prep
+%setup -q -n %{name}-%{version}
+
+%build
+%if 0%{?el6}
+%cmake28 .
+%else
+%if 0%{?suse_version}
+%cmake
+%else
+%cmake .
+%endif
+%endif
+make %{?_smp_mflags}
+
+%install
+%if 0%{?suse_version}
+%cmake_install
+%else
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT
+%endif
+
+%files
+%defattr(-,root,root)
+%doc COPYING README.md
+%{_bindir}/*
+
+%changelog
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 1.0.0.r106
+- Initial version of the package
