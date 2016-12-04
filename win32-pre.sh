@@ -4,7 +4,6 @@ set -e
 
 export PATH="/opt/mxe/usr/bin:$PATH"
 export PKG_CONFIG="/opt/mxe/usr/bin/$BITWIDTH-w64-mingw32.shared-pkg-config"
-export PKG_CONFIG_PATH="/opt/win32/lib/pkgconfig"
 export PKG_CONFIG_PATH_${BITWIDTH}_w64_mingw32_shared="/opt/win32/lib/pkgconfig"
 export PKG_NAME=$1
 export PKG_REV=$2
