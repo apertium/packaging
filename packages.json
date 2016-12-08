@@ -28,6 +28,7 @@
    ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
 
    # Then languages
+   ["external/giella-crk",      "https://gtsvn.uit.no/langtech/trunk/langs/crk"],
    ["external/giella-est",      "https://gtsvn.uit.no/langtech/trunk/langs/est"],
    ["external/giella-fao",      "https://gtsvn.uit.no/langtech/trunk/langs/fao"],
    ["external/giella-fin",      "https://gtsvn.uit.no/langtech/trunk/langs/fin"],
