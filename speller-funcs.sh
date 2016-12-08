@@ -2,7 +2,7 @@
 
 function pkg_msi {
 	pushd /misc/spellers
-	WINX=$2
+	export WINX=$2
 	./make_msi.pl $1
 	mkdir -pv ~apertium/public_html/spellers/${BUILDTYPE}/
 	rm -fv ~apertium/public_html/spellers/${BUILDTYPE}/$1*-$2*
