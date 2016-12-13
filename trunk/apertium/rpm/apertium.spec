@@ -148,6 +148,7 @@ make check
 %{_bindir}/apertium-gen-deformat
 %{_bindir}/apertium-gen-modes
 %{_bindir}/apertium-gen-reformat
+%{_bindir}/apertium-get
 %{_bindir}/apertium-tagger-apply-new-rules
 %{_bindir}/apertium-tagger-readwords
 %{_bindir}/apertium-validate-acx

@@ -2,6 +2,7 @@ debian/tmp/usr/bin/apertium-filter-ambiguity
 debian/tmp/usr/bin/apertium-gen-deformat
 debian/tmp/usr/bin/apertium-gen-modes
 debian/tmp/usr/bin/apertium-gen-reformat
+debian/tmp/usr/bin/apertium-get
 debian/tmp/usr/bin/apertium-tagger-apply-new-rules
 debian/tmp/usr/bin/apertium-tagger-readwords
 debian/tmp/usr/bin/apertium-validate-acx
