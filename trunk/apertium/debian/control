@@ -85,7 +85,7 @@ Depends: apertium-dev (= ${binary:Version}),
          apertium-lex-tools (>= 0.1.1~r60994),
          cg3 (>= 0.9.9~r11621),
          hfst (>= 3.10.0~r2798),
-         libhfst47-dev (>= 3.10.0~r2798),
+         libhfst48-dev (>= 3.10.0~r2798),
          ${misc:Depends}
 Description: Metapackage for all tools required for Apertium development
  A metapackage to get all tools required for development of Apertium

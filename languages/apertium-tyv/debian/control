@@ -12,7 +12,7 @@ Build-Depends: apertium-dev (>= 3.4),
                gawk,
                hfst,
                hfst-ospell-dev,
-               libhfst47-dev,
+               libhfst48-dev,
                pkg-config (>= 0.21),
                zip
 Standards-Version: 3.9.8

@@ -35,30 +35,30 @@ The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analysers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
-%package -n libhfst47
+%package -n libhfst48
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
 Provides: libhfst = %{version}-%{release}
 Obsoletes: libhfst < %{version}-%{release}
 Obsoletes: libhfst3 < %{version}-%{release}
 
-%description -n libhfst47
+%description -n libhfst48
 Runtime libraries for HFST
 
-%package -n libhfst47-devel
+%package -n libhfst48-devel
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
-Requires: libhfst47 = %{version}-%{release}
+Requires: libhfst48 = %{version}-%{release}
 Provides: libhfst-devel = %{version}-%{release}
 Obsoletes: libhfst-devel < %{version}-%{release}
 Obsoletes: libhfst3-devel < %{version}-%{release}
 
-%description -n libhfst47-devel
+%description -n libhfst48-devel
 Development headers and libraries for HFST
 
 %package -n python-libhfst
 Summary: Python modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst47 = %{version}-%{release}
+Requires: libhfst48 = %{version}-%{release}
 
 %description -n python-libhfst
 Python modules for libhfst
@@ -66,7 +66,7 @@ Python modules for libhfst
 %if ! ( 0%{?el6} || 0%{?el7} )
 %package -n python3-libhfst
 Summary: Python3 modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst47 = %{version}-%{release}
+Requires: libhfst48 = %{version}-%{release}
 
 %description -n python3-libhfst
 Python3 modules for libhfst
@@ -107,11 +107,11 @@ make check
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
-%files -n libhfst47
+%files -n libhfst48
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n libhfst47-devel
+%files -n libhfst48-devel
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
@@ -128,9 +128,9 @@ make check
 %{python3_sitearch}/*
 %endif
 
-%post -n libhfst47 -p /sbin/ldconfig
+%post -n libhfst48 -p /sbin/ldconfig
 
-%postun -n libhfst47 -p /sbin/ldconfig
+%postun -n libhfst48 -p /sbin/ldconfig
 
 %changelog
 * Fri Dec 19 2014 Tino Didriksen <tino@didriksen.cc> 3.8.2
