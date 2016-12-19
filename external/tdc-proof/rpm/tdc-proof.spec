@@ -47,7 +47,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc COPYING README.md
-%{_bindir}/*
+%{_libdir}/*
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 1.0.0.r106
