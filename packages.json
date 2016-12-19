@@ -93,7 +93,6 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
-   ["incubator/apertium-en-fr"],
    ["incubator/apertium-eng-ita"],
    ["incubator/apertium-fin-est"],
 
