@@ -1,5 +1,5 @@
 Name: tdc-proof
-Version: 1.0.0.r106
+Version: 1.0.0.r97
 Release: 1%{?dist}
 Summary: Wrappers to integrate HFST-based proofing tools with frontends
 Group: Development/Tools
@@ -50,5 +50,5 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %{_libdir}/*
 
 %changelog
-* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 1.0.0.r106
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 1.0.0.r97
 - Initial version of the package
