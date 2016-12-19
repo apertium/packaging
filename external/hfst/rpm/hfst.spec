@@ -1,5 +1,5 @@
 Name: hfst
-Version: 3.8.2
+Version: 3.12.1
 Release: 1%{?dist}
 Summary: Helsinki Finite-State Transducer Technology
 Group: Development/Tools

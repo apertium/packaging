@@ -1,5 +1,5 @@
 Name: hfst-ospell
-Version: 0.4.0
+Version: 0.4.3
 Release: 1%{?dist}
 Summary: Spell checker library and tool based on HFST
 Group: Development/Tools
@@ -78,5 +78,5 @@ make check
 %postun -n libhfstospell8 -p /sbin/ldconfig
 
 %changelog
-* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 0.4.0
+* Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 0.4.3
 - Initial version of the package

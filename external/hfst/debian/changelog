@@ -1,3 +1,9 @@
+hfst (3.12.1~r3138-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 19 Dec 2016 11:37:01 +0100
+
 hfst (3.11.0~r2977-1) unstable; urgency=low
 
   * Update to latest upstream release.
