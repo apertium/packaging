@@ -33,6 +33,8 @@
    ["external/giella-fao",      "https://gtsvn.uit.no/langtech/trunk/langs/fao"],
    ["external/giella-fin",      "https://gtsvn.uit.no/langtech/trunk/langs/fin"],
    ["external/giella-kal",      "https://gtsvn.uit.no/langtech/trunk/langs/kal"],
+   ["external/giella-mhr",      "https://gtsvn.uit.no/langtech/trunk/langs/mhr"],
+   ["external/giella-mrj",      "https://gtsvn.uit.no/langtech/trunk/langs/mrj"],
    ["external/giella-sma",      "https://gtsvn.uit.no/langtech/trunk/langs/sma"],
    ["external/giella-sme",      "https://gtsvn.uit.no/langtech/trunk/langs/sme"],
    ["external/giella-smj",      "https://gtsvn.uit.no/langtech/trunk/langs/smj"],
