@@ -1,14 +1,10 @@
-hfst-ospell (0.4.3~r331-1) unstable; urgency=medium
+hfst-ospell (0.4.3~r338-1) unstable; urgency=medium
 
   * Update to latest upstream release.
+  * Decoupled from HFST and now assumes zhfst files are little-endian
+  * Runs and passes tests again (closes: #824119)
 
  -- Tino Didriksen <tino@didriksen.cc>  Mon, 19 Dec 2016 11:37:01 +0100
-
-hfst-ospell (0.4.2~r314-1) unstable; urgency=medium
-
-  * Update to latest upstream release.
-
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 17 Jun 2016 19:19:01 +0200
 
 hfst-ospell (0.4.0~r4643-4) unstable; urgency=medium
 

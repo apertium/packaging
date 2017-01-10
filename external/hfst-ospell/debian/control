@@ -9,14 +9,13 @@ Build-Depends: autoconf,
                autotools-dev,
                debhelper (>= 9.0),
                dh-autoreconf,
-               hfst,
                libarchive-dev,
                libicu-dev,
                libtool,
                pkg-config,
                zip
 Standards-Version: 3.9.8
-Homepage: https://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+Homepage: https://github.com/hfst/hfst-ospell
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 
