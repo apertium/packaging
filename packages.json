@@ -10,7 +10,7 @@
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp"],
    ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp"],
-#   ["external/foma",            "http://foma.googlecode.com/svn/trunk/foma",       "Makefile"],
+   ["external/foma",            "https://github.com/TinoDidriksen/foma/trunk",     "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
    ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
@@ -99,7 +99,7 @@
    ["incubator/apertium-fin-est"],
 
    ["nursery/apertium-eng-deu"],
-   ["nursery/apertium-sme-fin"],
+#   ["nursery/apertium-sme-fin"],
    ["nursery/apertium-sme-sma"],
    ["nursery/apertium-sme-smj"],
    ["nursery/apertium-sme-smn"],

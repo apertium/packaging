@@ -1,13 +1,13 @@
 diff --git a/Makefile.am b/Makefile.am
-index bed7dfa..68f908a 100644
+index 9423c5c..f097d43 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -132,7 +132,7 @@ TESTS=basic-zhfst.sh basic-edit1.sh \
- 	  empty-descriptions.sh empty-titles.sh empty-locale.sh \
- 	  trailing-spaces.sh bad-errormodel.sh empty-zhfst.sh \
- 	  analyse-spell.sh no-errormodel.sh
--XFAIL_TESTS=empty-descriptions.sh empty-titles.sh empty-locale.sh empty-zhfst.sh
-+XFAIL_TESTS=empty-zhfst.sh
- EXTRA_DIST=$(TXTS) $(TESTS) $(man1_MANS)\
- 			basic_test.xml empty_descriptions.xml empty_titles.xml \
- 			empty_locale.xml trailing_spaces.xml no_errmodel.xml \
+@@ -122,7 +122,7 @@ TESTS=tests/basic-zhfst.sh tests/basic-edit1.sh \
+ 	  tests/empty-descriptions.sh tests/empty-titles.sh tests/empty-locale.sh \
+ 	  tests/trailing-spaces.sh tests/bad-errormodel.sh tests/empty-zhfst.sh \
+ 	  tests/analyse-spell.sh tests/no-errormodel.sh
+-XFAIL_TESTS=tests/empty-descriptions.sh tests/empty-titles.sh tests/empty-locale.sh tests/empty-zhfst.sh
++XFAIL_TESTS=tests/empty-zhfst.sh
+ 
+ if CAN_DOXYGEN
+ doxygen:
