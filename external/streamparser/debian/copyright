@@ -4,14 +4,12 @@ Upstream-Contact: Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
 Source: https://github.com/goavki/streamparser
 
 Files *
-Copyright:
- 2016-2017, Sushain K. Cherivirala
- 2016-2017, Kevin Brubeck Unhammer
+Copyright: 2016-2017 Sushain K. Cherivirala <sushain@skc.name>
+	   2016-2017 Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
 License: GPL-3+
 
 Files: debian/*
-Copyright:
- 2017, Joonas Kylmälä <j.kylmala@gmail.com>
+Copyright: 2017 Joonas Kylmälä <joonas.kylmala@iki.fi>
 License: GPL-3+
 
 License: GPL-3+
