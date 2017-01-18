@@ -1,4 +1,4 @@
-Source: streamparser
+Source: python3-streamparser
 Section: science
 Priority: optional
 Maintainer: Joonas Kylmälä <joonas.kylmala@iki.fi>
