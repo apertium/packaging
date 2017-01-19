@@ -15,4 +15,5 @@ Vcs-Svn: https://svn.code.sf.net/p/apertium/svn/branches/packaging/external/stre
 Package: python3-streamparser
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
-Description: python library to parse Apertium stream format
+Description: Python library to parse Apertium stream format
+ This package contains streamparser for Python 3.
