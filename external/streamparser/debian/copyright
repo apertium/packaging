@@ -3,7 +3,7 @@ Upstream-Name: streamparser
 Upstream-Contact: Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
 Source: https://github.com/goavki/streamparser
 
-Files *
+Files: *
 Copyright: 2016-2017 Sushain K. Cherivirala <sushain@skc.name>
 	   2016-2017 Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
 License: GPL-3+
