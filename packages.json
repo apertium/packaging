@@ -25,7 +25,8 @@
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,trusty"],
    ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
-   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
+   ["external/streamparser",    "https://github.com/goavki/streamparser/trunk"],
+#   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
 
    # Then languages
    ["external/giella-crk",      "https://gtsvn.uit.no/langtech/trunk/langs/crk"],

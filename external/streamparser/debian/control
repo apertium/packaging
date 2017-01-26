@@ -1,19 +1,16 @@
-Source: python3-streamparser
+Source: streamparser
 Section: science
 Priority: optional
 Maintainer: Joonas Kylmälä <joonas.kylmala@iki.fi>
-Build-Depends:
- debhelper (>= 9),
- dh-python,
- python3-all
+Build-Depends: debhelper (>= 9), dh-python, python3-all
 Standards-Version: 3.9.8
 X-Python3-Version: >= 3.2
 Homepage: https://github.com/goavki/streamparser
-Vcs-Browser: https://svn.code.sf.net/p/apertium/svn/branches/packaging/external/streamparser/debian/
-Vcs-Svn: https://svn.code.sf.net/p/apertium/svn/branches/packaging/external/streamparser/debian/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/streamparser.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/streamparser.git
 
 Package: python3-streamparser
 Architecture: all
-Depends: ${python3:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${python3:Depends}
 Description: Python library to parse Apertium stream format
  This package contains streamparser for Python 3.
