@@ -25,7 +25,7 @@
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "wheezy,jessie,trusty"],
    ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
-   ["external/streamparser",    "https://github.com/goavki/streamparser/trunk"],
+   ["external/streamparser",    "https://github.com/goavki/streamparser/trunk", "streamparser.py"],
 #   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
 
    # Then languages
