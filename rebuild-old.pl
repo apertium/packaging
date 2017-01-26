@@ -194,7 +194,7 @@ foreach my $pkg (@$pkgs) {
       print {$out} "\tdata only\n";
       $is_data = 'data';
    }
-   if (@$pkg[0] =~ m@/apertium-apy$@) {
+   if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/streamparser$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
    }
