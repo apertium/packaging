@@ -9,7 +9,7 @@
 
    # Dependencies first
    ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp"],
-   ["external/cg3ide",          "http://visl.sdu.dk/svn/visl/tools/cg3ide",        "src/version.hpp"],
+   ["external/cg3ide",          "https://github.com/GrammarSoft/cg3ide/trunk",        "src/version.hpp"],
    ["external/foma",            "https://github.com/TinoDidriksen/foma/trunk",     "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],

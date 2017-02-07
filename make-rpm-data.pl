@@ -173,4 +173,5 @@ print `osc meta pkg -F /tmp/$pkname.xml`;
 
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
+print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
 print `rm -rf /tmp/autorpm.* 2>&1`;

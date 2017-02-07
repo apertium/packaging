@@ -89,7 +89,7 @@
 	"jam0522": "jam0522 <jam0522@users.sourceforge.net>",
 	"japerez": "Juan Antonio Pérez Ortiz <japerez@dlsi.ua.es>",
 	"jernejvicic": "Jernej Vicic <jernejvicic@users.sourceforge.net>",
-	"jezral": "Tino Didriksen <tino@didriksen.cc>",
+	"jezral": "Tino Didriksen <mail@tinodidriksen.com>",
 	"jimregan": "Jim O'Regan <joregan@gmail.com>",
 	"jonasfromseier": "Jonas Fromseier Mortensen <jonas@fromseier.dk>",
 	"jonorthwash": "Jonathan N. Washington <jonorthwash@users.sourceforge.net>",
@@ -235,6 +235,7 @@
 	"zhenisbek": "Zhenisbek Assylbekov <zhenisbek@users.sourceforge.net>",
 	"zzhake": "zzhake <zzhake@users.sourceforge.net>",
 
+	"tino.didriksen": "Tino Didriksen <mail@tinodidriksen.com>",
 	"francis.tyers": "Francis M. Tyers <ftyers@prompsit.com>",
 	"matthew": "Matthew <matthew.marting@earthlink.net>",
 
@@ -245,6 +246,15 @@
 	"sjur": "Moshagen Sjur Nørstebø <sjur.n.moshagen@uit.no>",
 	"tiina": "Tiina Puolakainen <tiina.puolakainen@uit.no>",
 	"trond": "Trond Trosterud <trond.trosterud@uit.no>",
+	"ciprian": "ciprian.gerstenberger@uit.no",
+	"fran": "francis.tyers@uit.no",
+	"boerre": "borre.gaup@uit.no",
+	"linda": "linda.wiechetek@uit.no",
+	"maja": "maja.l.kappfjell@uit.no",
+	"sandra": "sandra.rahka@gmail.com",
+	"thomas": "thomas.omma@uit.no",
+	"tomi": "tomi.k.pieski@uit.no",
+	"jaska": "rueter.jack@gmail.com",
 
 	"zzz DUMMY": "JSON can't handle trailing commas"
 }

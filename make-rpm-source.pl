@@ -92,3 +92,4 @@ close FILE;
 
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
+print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
