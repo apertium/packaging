@@ -60,6 +60,27 @@ my %distros = (
 	'yakkety' => 'ubuntu',
 );
 
+my @includes = ();
+my @excludes = ();
+if (-s $opts{p}.'/exclude.txt') {
+   open FILE, $opts{p}.'/exclude.txt' or die "Could not open exclude.txt: $!\n";
+   while (<FILE>) {
+      chomp;
+      if (m@^\+ (.+)$@) {
+         push(@includes, $1);
+      }
+      elsif (m@^\- (.+)$@) {
+         push(@excludes, $1);
+      }
+      else {
+         s@\*@.*@g;
+         s@\?@.@g;
+         push(@excludes, "$_.*");
+      }
+   }
+   close FILE;
+}
+
 print `rm -rf /tmp/autopkg.* 2>&1`;
 print `mkdir -pv /tmp/autopkg.$$ 2>&1`;
 chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
@@ -68,18 +89,30 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
 print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
-my $excludes = `svn cat $opts{r}/exclude.txt 2>/dev/null`;
-chomp($excludes);
-if ($excludes && $excludes !~ m@^\s*$@) {
+if (@excludes) {
    chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
-   foreach my $exclude (split(/\n+/, $excludes)) {
-      $exclude =~ s@\s+$@@g;
-      $exclude =~ s@^\s+@@g;
-      if ($exclude !~ m@^[./]@) {
-         foreach my $f (glob($exclude)) {
-            print `rm -rfv -- '$f'`;
+   my @files = split(/\n/, `find . ! -type d`);
+   foreach my $f (@files) {
+      $f =~ s@^\./@@;
+      my $keep = 0;
+      foreach my $p (@includes) {
+         if ($f =~ m@^$p$@) {
+            print "keeping '$f'\n";
+            $keep = 1;
+            last;
          }
       }
+      if ($keep) {
+         next;
+      }
+      foreach my $p (@excludes) {
+         if ($f =~ m@^$p$@) {
+            print `rm -rfv '$f'`;
+         }
+      }
+   }
+   while (my $o = `find . -type d -empty | LC_ALL=C sort -r | xargs -rn1 rm -rfv 2>&1`) {
+      print $o;
    }
    chdir ".." or die "Could not change folder: $!\n";
 }
