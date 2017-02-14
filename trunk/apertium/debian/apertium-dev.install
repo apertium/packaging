@@ -3,6 +3,7 @@ debian/tmp/usr/bin/apertium-gen-deformat
 debian/tmp/usr/bin/apertium-gen-modes
 debian/tmp/usr/bin/apertium-gen-reformat
 debian/tmp/usr/bin/apertium-get
+debian/tmp/usr/bin/apertium-perceptron-trace
 debian/tmp/usr/bin/apertium-tagger-apply-new-rules
 debian/tmp/usr/bin/apertium-tagger-readwords
 debian/tmp/usr/bin/apertium-validate-acx
@@ -12,7 +13,6 @@ debian/tmp/usr/bin/apertium-validate-modes
 debian/tmp/usr/bin/apertium-validate-postchunk
 debian/tmp/usr/bin/apertium-validate-tagger
 debian/tmp/usr/bin/apertium-validate-transfer
-debian/tmp/usr/bin/apertium-perceptron-trace
 debian/tmp/usr/include
 debian/tmp/usr/lib/*/*.so
 debian/tmp/usr/lib/*/pkgconfig
