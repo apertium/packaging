@@ -58,7 +58,7 @@
    ["languages/apertium-eng"],
    ["languages/apertium-eus"],
    ["languages/apertium-fao"],
-   ["languages/apertium-fin"],
+   ["languages/apertium-fin", "https://github.com/flammie/apertium-fin/trunk"],
    ["languages/apertium-fra"],
 #   ["languages/apertium-gla"], # Not buildable
    ["languages/apertium-glg"],
