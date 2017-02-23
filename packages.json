@@ -8,12 +8,12 @@
    # Meaning that for Apertium packages, we only need the first field
 
    # Dependencies first
-   ["external/cg3",             "http://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp"],
+   ["external/cg3",             "https://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp"],
    ["external/cg3ide",          "https://github.com/GrammarSoft/cg3ide/trunk",        "src/version.hpp"],
    ["external/foma",            "https://github.com/TinoDidriksen/foma/trunk",     "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
-   ["external/trie-tools",      "http://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
+   ["external/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
    ["external/tdc-proof",       "https://github.com/TinoDidriksen/spellers/trunk", "include/shared.hpp", null, "wheezy,trusty"],
    ["trunk/lttoolbox"],
    ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
