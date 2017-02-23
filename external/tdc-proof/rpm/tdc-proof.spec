@@ -13,6 +13,7 @@ BuildRequires: cmake3 >= 3.0
 %else
 BuildRequires: cmake >= 3.0
 %endif
+BuildRequires: glibc-devel
 BuildRequires: pkgconfig
 BuildRequires: hfst-ospell-devel
 
