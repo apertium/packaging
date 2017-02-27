@@ -27,7 +27,7 @@ override_dh_auto_build:
 	done
 
 override_dh_auto_test:
-	make -j1 check
+	$(MAKE) -j1 check
 
 override_dh_auto_install:
 	dh_auto_install

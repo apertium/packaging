@@ -122,8 +122,8 @@ make check
 
 %files -n python-libhfst
 %defattr(-,root,root)
-%{python2_sitelib}/*
-%{python2_sitearch}/*
+%{python_sitelib}/*
+%{python_sitearch}/*
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %files -n python3-libhfst
