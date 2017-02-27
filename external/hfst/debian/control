@@ -14,7 +14,7 @@ Build-Depends: autoconf,
                libicu-dev,
                libreadline-dev,
                libtool,
-               python-dev,
+               python-all-dev,
                python3-all-dev,
                swig,
                zlib1g-dev

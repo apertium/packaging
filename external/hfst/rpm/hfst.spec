@@ -83,6 +83,7 @@ autoreconf -fi
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 %if ! ( 0%{?el6} || 0%{?el7} )
 cd python
+python setup.py build_ext
 python3 setup.py build_ext
 strip --strip-unneeded build/*/*.so
 cd ..
@@ -92,11 +93,12 @@ cd ..
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{python_sitelib}/*.py[co]
-%if ! ( 0%{?el6} || 0%{?el7} )
 cd python
+python setup.py install --no-compile --prefix /usr --root %{buildroot}
+%if ! ( 0%{?el6} || 0%{?el7} )
 python3 setup.py install --no-compile --prefix /usr --root %{buildroot}
-cd ..
 %endif
+cd ..
 
 %check
 make check
@@ -120,7 +122,8 @@ make check
 
 %files -n python-libhfst
 %defattr(-,root,root)
-%{python_sitelib}/*
+%{python2_sitelib}/*
+%{python2_sitearch}/*
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %files -n python3-libhfst
