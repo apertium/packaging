@@ -228,6 +228,9 @@ foreach my $pkg (@$pkgs) {
       last;
    }
 
+   print {$out} "\trunning lintian\n";
+   `find /var/cache/pbuilder/result/ -type f -name '*.deb' -print0 | xargs -0rn1 '-I{}' sh -c "echo '{}'; lintian -IEv --pedantic --color auto '{}'; echo '';" >$logpath/lintian.log 2>&1`;
+
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
       if (-s "@$pkg[0]/rpm/$pkname.spec") {
