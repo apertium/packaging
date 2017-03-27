@@ -1,5 +1,12 @@
-apertium-cat (1.0.0~r65787-1) experimental; urgency=low
+apertium-cat (2.0.0~r77282-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 23 Feb 2016 12:42:39 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 27 Mar 2017 11:29:29 +0200
+
+apertium-cat (1.0.0~r65787-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #815855)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 25 Feb 2016 09:27:40 +0530
