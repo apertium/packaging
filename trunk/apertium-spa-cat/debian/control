@@ -1,0 +1,38 @@
+Source: apertium-spa-cat
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               apertium-cat (>= 2.0.0~r77286),
+               apertium-spa (>= 1.0.0~r77286),
+               autotools-dev,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.8
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-cat.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-cat.git
+
+Package: apertium-spa-cat
+Architecture: all
+Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-cat-spa
+Conflicts: apertium-cat-spa
+Replaces: apertium-es-ca (<< 2.0.0~)
+Breaks: apertium-es-ca (<< 2.0.0~)
+Description: Apertium translation data for the Spanish-Catalan pair
+ Data package providing Apertium language resources for translating
+ between the Spanish and Catalan languages.
+
+Package: apertium-es-ca
+Architecture: all
+Depends: apertium-spa-cat (= ${binary:Version}), ${misc:Depends}
+Priority: extra
+Section: oldlibs
+Provides: apertium-ca-es
+Description: Transitional dummy package for apertium-spa-cat
+ This is a transitional dummy package. It can safely be removed.
