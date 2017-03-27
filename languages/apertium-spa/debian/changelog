@@ -1,5 +1,12 @@
-apertium-spa (0.1.0~r65494-1) experimental; urgency=low
+apertium-spa (1.0.0~r77284-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 15 Jun 2016 13:35:39 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 27 Mar 2017 11:29:29 +0200
+
+apertium-spa (0.1.0~r65494-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #827387)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 15 Jun 2016 22:17:02 +0530
