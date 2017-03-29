@@ -4,14 +4,15 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
-               apertium-cat (>= 2.0.0~r77286),
+Build-Depends: apertium-cat (>= 2.0.0~r77286),
+               apertium-dev (>= 3.4),
                apertium-spa (>= 1.0.0~r77286),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               pkg-config (>= 0.21)
+               pkg-config (>= 0.21),
+               python
 Standards-Version: 3.9.8
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-cat.git
