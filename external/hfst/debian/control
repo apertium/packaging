@@ -27,7 +27,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 Package: hfst
 Architecture: any
 Depends: libhfst48 (= ${binary:Version}),
-         python,
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -70,7 +69,6 @@ Package: python-libhfst
 Architecture: any
 Section: python
 Depends: libhfst48 (= ${binary:Version}),
-         python,
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -85,7 +83,6 @@ Package: python3-libhfst
 Architecture: any
 Section: python
 Depends: libhfst48 (= ${binary:Version}),
-         python3,
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
