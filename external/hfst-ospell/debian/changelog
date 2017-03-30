@@ -1,10 +1,19 @@
-hfst-ospell (0.4.3~r338-1) unstable; urgency=medium
+hfst-ospell (0.4.5~r343-1) unstable; urgency=low
 
   * Update to latest upstream release.
-  * Decoupled from HFST and now assumes zhfst files are little-endian
-  * Runs and passes tests again (closes: #824119)
+  * Refresh copyright listing in AUTHORS, and check debian/copyright (Closes: #859032)
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 19 Dec 2016 11:37:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 30 Mar 2017 08:55:34 +0200
+
+hfst-ospell (0.4.3~r338-1) unstable; urgency=medium
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+  * Decoupled from HFST and now assumes zhfst files are little-endian.
+  * debian/patches/hfst-ospell_02_xfail.diff:
+    + Runs and passes tests again (closes: #824119)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 23 Mar 2017 18:39:27 +0530
 
 hfst-ospell (0.4.0~r4643-4) unstable; urgency=medium
 
