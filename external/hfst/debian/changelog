@@ -1,14 +1,17 @@
-hfst (3.12.1~r3138-1) unstable; urgency=low
+hfst (3.12.2~r3258-1) unstable; urgency=low
 
   * Update to latest upstream release.
+  * Now also builds Python modules for Python 2.x
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 19 Dec 2016 11:37:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 30 Mar 2017 08:55:34 +0200
 
-hfst (3.11.0~r2977-1) unstable; urgency=low
+hfst (3.10.0~r2798-3) unstable; urgency=medium
 
-  * Update to latest upstream release.
+  [ Tino Didriksen ]
+  * Workaround tests failing on big-endian (Closes: #827199)
+    + Not solved, but not needed because hfst-ospell fixed the end-user case
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 17 Jun 2016 19:19:01 +0200
+ -- Kartik Mistry <kartik@debian.org>  Thu, 23 Mar 2017 18:48:47 +0530
 
 hfst (3.10.0~r2798-2) unstable; urgency=low
 
