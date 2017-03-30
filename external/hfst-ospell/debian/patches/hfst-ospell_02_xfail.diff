@@ -1,3 +1,4 @@
+Description: Remove failing tests
 diff --git a/Makefile.am b/Makefile.am
 index 9423c5c..f097d43 100644
 --- a/Makefile.am
