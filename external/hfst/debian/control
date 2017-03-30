@@ -2,7 +2,8 @@ Source: hfst
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
                automake,
                autotools-dev,
@@ -28,6 +29,7 @@ Architecture: any
 Depends: libhfst48 (= ${binary:Version}),
          python,
          ${misc:Depends},
+         ${python:Depends},
          ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology
  The Helsinki Finite-State Transducer software is intended for the
@@ -70,6 +72,7 @@ Section: python
 Depends: libhfst48 (= ${binary:Version}),
          python,
          ${misc:Depends},
+         ${python:Depends},
          ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology (Python2 module)
  The Helsinki Finite-State Transducer software is intended for the
@@ -84,6 +87,7 @@ Section: python
 Depends: libhfst48 (= ${binary:Version}),
          python3,
          ${misc:Depends},
+         ${python3:Depends},
          ${shlibs:Depends}
 Description: Helsinki Finite-State Transducer Technology (Python3 module)
  The Helsinki Finite-State Transducer software is intended for the
