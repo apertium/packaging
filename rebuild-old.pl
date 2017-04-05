@@ -28,7 +28,7 @@ my $rop = GetOptions(
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 $ENV{'DEBCONF_NONINTERACTIVE_SEEN'} = 'true';
-$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
+#$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
 use File::Basename;
@@ -201,7 +201,7 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'arch-all';
    }
    if ($dry || $is_data eq 'data') {
-      @$pkg[4] = "wheezy,jessie,stretch,trusty,xenial,yakkety";
+      @$pkg[4] = "jessie,stretch,trusty,xenial,yakkety";
    }
 
    # Build the packages for Debian/Ubuntu

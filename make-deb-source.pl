@@ -51,7 +51,6 @@ else {
 }
 
 my %distros = (
-	'wheezy' => 'debian',
 	'jessie' => 'debian',
 	'sid' => 'debian',
 	'stretch' => 'debian',
