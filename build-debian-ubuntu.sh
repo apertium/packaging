@@ -8,8 +8,7 @@ rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
-# When rotating out sid, remember version check in rebuild-old.pl
-for DISTRO in jessie sid stretch trusty xenial yakkety
+for DISTRO in jessie sid stretch trusty xenial yakkety zesty
 do
 	if [[ "$3" == *",$DISTRO,"* ]]; then
 		echo "Skipping $DISTRO"
