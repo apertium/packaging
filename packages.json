@@ -100,6 +100,7 @@
 
    # Finally, language pairs
    ["incubator/apertium-eng-ita"],
+   ["incubator/apertium-fao-nor"],
    ["incubator/apertium-fin-est"],
 
    ["nursery/apertium-eng-deu"],

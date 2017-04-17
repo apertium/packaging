@@ -1,0 +1,36 @@
+Source: apertium-fao-nor
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               apertium-lex-tools,
+               apertium-nno,
+               apertium-nob,
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               giella-fao,
+               hfst,
+               pkg-config (>= 0.21)
+Standards-Version: 3.9.8
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fao-nor.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-fao-nor.git
+
+Package: apertium-fao-nor
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-nor-fao
+Conflicts: apertium-nor-fao
+Description: Apertium translation data for the Faroese-Norwegian pair
+ Data package providing Apertium language resources for translating
+ between the Faroese and Norwegian languages.
