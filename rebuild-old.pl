@@ -28,6 +28,7 @@ my $rop = GetOptions(
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 $ENV{'DEBCONF_NONINTERACTIVE_SEEN'} = 'true';
+$ENV{'DEB_BUILD_OPTIONS'} = 'parallel=2 noddebs';
 #$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 

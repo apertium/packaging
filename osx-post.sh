@@ -1,5 +1,5 @@
 make clean
-make -j8 || make -j8 || make
+make -j4 || make -j4 || make
 make install DESTDIR=/opt/osx-pkg/$PKG_NAME
 for INST in $EXTRA_INST
 do
