@@ -15,6 +15,7 @@
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
+export LC_ALL=C.UTF-8
 
 %:
 	dh $@ --fail-missing --parallel --with autoreconf
