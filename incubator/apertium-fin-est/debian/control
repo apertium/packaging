@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.4),
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               giella-est,
+               giella-est-experimental,
                giella-fin,
                hfst,
                pkg-config (>= 0.21)

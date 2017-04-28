@@ -1,4 +1,4 @@
-Source: giella-est
+Source: giella-est-experimental
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
@@ -24,7 +24,7 @@ Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/giella-est.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/giella-est.git
 
-Package: giella-est
+Package: giella-est-experimental
 Architecture: all
 Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Provides: giella-est
