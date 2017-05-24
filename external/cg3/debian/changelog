@@ -1,16 +1,21 @@
-cg3 (0.9.9~r11656-1) unstable; urgency=low
+cg3 (1.0.0~r12203-1) unstable; urgency=low
 
-  * Updated to latest from svn.
+  * Updated to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 24 May 2017 14:26:26 +0200
 
-cg3 (0.9.9~r10827-1) unstable; urgency=low
+cg3 (0.9.9~r11624-1) unstable; urgency=low
 
-  * Updated to latest from svn.
-  * Fixes assert failure and segfault.
+  [ Tino Didriksen ]
+  * Updated to latest upstream from svn:
+    + Fixes assert failure and segfault.
   * Disabled static libraries.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Thu, 02 Jul 2015 11:41:02 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 07 Jun 2016 09:02:35 +0530
 
 cg3 (0.9.9~r10793-1) unstable; urgency=low
 
