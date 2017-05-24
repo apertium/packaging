@@ -1,5 +1,12 @@
-apertium-fra (1.0.0~r65786-1) experimental; urgency=low
+apertium-fra (1.1.0~r78695-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 23 Feb 2016 12:42:39 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 24 May 2017 14:26:26 +0200
+
+apertium-fra (1.0.0~r65786-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #815856)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 25 Feb 2016 09:28:09 +0530

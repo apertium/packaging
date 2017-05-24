@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-cat,
+Build-Depends: apertium-cat (>= 2.1.0~r78615),
                apertium-dev (>= 3.4),
-               apertium-fra,
+               apertium-fra (>= 1.1.0~r78695),
                apertium-lex-tools,
                autotools-dev,
                cg3,

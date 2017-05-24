@@ -1,8 +1,22 @@
+apertium-fra-cat (1.2.0~r78602-1) unstable; urgency=low
+
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 24 May 2017 14:26:26 +0200
+
 apertium-fra-cat (1.1.0~r64309-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream release
+  * Binary and source packages are renamed as per upstream naming scheme.
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 23 Feb 2016 12:42:39 +0000
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 3.9.7 (no changes)
+  * debian/rules:
+    + Skip tests.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 27 Feb 2016 12:34:18 +0530
 
 apertium-fr-ca (1.0.3~r61329-1) unstable; urgency=low
 
