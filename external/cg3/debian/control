@@ -6,16 +6,16 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake (>= 2.8.9),
                debhelper (>= 9.0),
-               libboost1.48-dev | libboost-dev (>= 1.49.0),
+               libboost-dev (>= 1.49.0),
                libicu-dev (>= 4.8)
 Standards-Version: 3.9.8
-Homepage: http://visl.sdu.dk/cg3.html
+Homepage: https://visl.sdu.dk/cg3.html
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/cg3.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/cg3.git
 
 Package: cg3
 Architecture: any
-Depends: libcg3-0 (= ${binary:Version}),
+Depends: libcg3-1 (= ${binary:Version}),
          ${misc:Depends},
          ${perl:Depends},
          ${shlibs:Depends}
@@ -32,9 +32,9 @@ Description: Tools for using the 3rd edition of Constraint Grammar (CG-3)
  much more. The core idea is that you choose what to do based on the whole
  available context, as opposed to n-grams.
  .
- See http://visl.sdu.dk/cg3.html for more documentation
+ See https://visl.sdu.dk/cg3.html for more documentation
 
-Package: libcg3-0
+Package: libcg3-1
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
@@ -47,17 +47,17 @@ Description: Runtime for CG-3
  .
  It is recommended to instrument the CLI tools instead of using this API.
  .
- See http://visl.sdu.dk/cg3.html for more documentation
+ See https://visl.sdu.dk/cg3.html for more documentation
 
 Package: libcg3-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
 Pre-Depends: ${misc:Pre-Depends}
-Depends: libcg3-0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libcg3-1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Headers and shared files to develop using the CG-3 library
  Development files to use the CG-3 API.
  .
  It is recommended to instrument the CLI tools instead of using this API.
  .
- See http://visl.sdu.dk/cg3.html for more documentation
+ See https://visl.sdu.dk/cg3.html for more documentation
