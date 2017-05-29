@@ -1,3 +1,9 @@
+apertium-spa (1.0.0~r78827-1) unstable; urgency=low
+
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 29 May 2017 13:34:34 +0200
+
 apertium-spa (1.0.0~r77293-1) unstable; urgency=low
 
   * Update to latest upstream release

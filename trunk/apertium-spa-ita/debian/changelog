@@ -1,0 +1,13 @@
+apertium-spa-ita (0.2.0~r78826-1) experimental; urgency=low
+
+  * Update to latest upstream release
+  * Renamed from apertium-es-it to apertium-spa-ita
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 29 May 2017 13:34:34 +0200
+
+apertium-es-it (0.1.0~r51165-1) experimental; urgency=low
+
+  * Initial release
+  * No tarball release, so taking directly from svn
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000

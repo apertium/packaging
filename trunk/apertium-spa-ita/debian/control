@@ -1,10 +1,12 @@
-Source: apertium-es-it
+Source: apertium-spa-ita
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.4),
+               apertium-ita (>= 0.9.0~r78828),
+               apertium-spa (>= 1.0.0~r78827),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -12,14 +14,23 @@ Build-Depends: apertium-dev (>= 3.4),
                pkg-config (>= 0.21)
 Standards-Version: 3.9.8
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es-it.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es-it.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-ita.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-ita.git
 
-Package: apertium-es-it
+Package: apertium-spa-ita
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-it-es
-Conflicts: apertium-it-es
+Provides: apertium-ita-spa
+Conflicts: apertium-ita-spa
 Description: Apertium translation data for the Spanish-Italian pair
  Data package providing Apertium language resources for translating
  between the Spanish and Italian languages.
+
+Package: apertium-es-it
+Architecture: all
+Depends: apertium-spa-ita (= ${binary:Version}), ${misc:Depends}
+Priority: extra
+Section: oldlibs
+Provides: apertium-it-es
+Description: Transitional dummy package for apertium-spa-ita
+ This is a transitional dummy package. It can safely be removed.
