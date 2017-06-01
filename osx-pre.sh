@@ -8,10 +8,11 @@ export CC="$TARGET-clang"
 export CXX="$TARGET-clang++-libc++"
 export CPPFLAGS="-D__APPLE__"
 export CFLAGS="-m32 -m64 -D__APPLE__"
-export CXXFLAGS="-m32 -m64 -std=gnu++11 -stdlib=libc++ -D__APPLE__"
+export CXXFLAGS="-m32 -m64 -std=gnu++11 -stdlib=libc++ -D__APPLE__ -I/opt/osx/include"
 export LDFLAGS="-m32 -m64 -stdlib=libc++ -L/opt/osx/lib"
 export PKG_CONFIG="/opt/osxcross/target/bin/$TARGET-pkg-config"
 export OSXCROSS_PKG_CONFIG_PATH="/opt/osx/lib/pkgconfig"
+export PKG_CONFIG_PATH=$OSXCROSS_PKG_CONFIG_PATH
 export OSXCROSS_TARGET=darwin13
 export OSXCROSS_MP_INC=1
 export MACOSX_DEPLOYMENT_TARGET=10.9
