@@ -6,9 +6,10 @@ apertium-spa (1.0.0~r78827-1) unstable; urgency=low
 
 apertium-spa (1.0.0~r77293-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 27 Mar 2017 11:29:29 +0200
+ -- Kartik Mistry <kartik@debian.org>  Wed, 29 Mar 2017 17:05:22 +0530
 
 apertium-spa (0.1.0~r65494-1) unstable; urgency=low
 
