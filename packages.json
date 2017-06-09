@@ -83,7 +83,7 @@
    ["languages/apertium-nno"],
    ["languages/apertium-nob"],
    ["languages/apertium-nog"],
-#   ["languages/apertium-pol"], # Not buildable
+   ["languages/apertium-pol"],
    ["languages/apertium-rus"],
    ["languages/apertium-san"],
    ["languages/apertium-spa"],
