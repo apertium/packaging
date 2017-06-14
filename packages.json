@@ -40,6 +40,7 @@
    ["external/giella-mhr",      "https://gtsvn.uit.no/langtech/trunk/langs/mhr"],
    ["external/giella-mrj",      "https://gtsvn.uit.no/langtech/trunk/langs/mrj"],
    ["external/giella-myv",      "https://gtsvn.uit.no/langtech/trunk/langs/myv"],
+   ["external/giella-nob",      "https://gtsvn.uit.no/langtech/trunk/langs/nob"],
    ["external/giella-sma",      "https://gtsvn.uit.no/langtech/trunk/langs/sma"],
    ["external/giella-sme",      "https://gtsvn.uit.no/langtech/trunk/langs/sme"],
    ["external/giella-smj",      "https://gtsvn.uit.no/langtech/trunk/langs/smj"],
