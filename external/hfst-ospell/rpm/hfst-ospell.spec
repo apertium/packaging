@@ -17,6 +17,7 @@ BuildRequires: hfst
 BuildRequires: libarchive-devel
 BuildRequires: libicu-devel
 BuildRequires: zip
+Requires: libhfstospell9 = %{version}-%{release}
 
 %description
 Minimal HFST optimized lookup format based spell checker library and

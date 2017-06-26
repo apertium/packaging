@@ -26,6 +26,7 @@ BuildRequires: zlib-devel
 BuildRequires: python3
 BuildRequires: python3-devel
 %endif
+Requires: libhfst49 = %{version}-%{release}
 Requires: grep
 Requires: python
 Requires: sed
@@ -48,7 +49,7 @@ Runtime libraries for HFST
 %package -n libhfst49-devel
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
-Requires: libhfst49 = %{version}-%{release}
+Requires: hfst = %{version}-%{release}
 Provides: libhfst-devel = %{version}-%{release}
 Obsoletes: libhfst-devel < %{version}-%{release}
 Obsoletes: libhfst3-devel < %{version}-%{release}

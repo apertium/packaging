@@ -20,6 +20,7 @@ BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 BuildRequires: python
 BuildRequires: zlib-devel
+Requires: liblttoolbox3-3_3-0 = %{version}-%{release}
 
 %description
 The lttoolbox contains the augmented letter transducer tools for natural

@@ -28,6 +28,7 @@ BuildRequires: pkgconfig
 BuildRequires: python3
 BuildRequires: python3-devel
 %endif
+Requires: libapertium3-3_4-0 = %{version}-%{release}
 
 %description
 An open-source shallow-transfer machine translation
