@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-cat (>= 2.0.0~r77286),
+Build-Depends: apertium-cat (>= 2.2.0~r79715),
                apertium-dev (>= 3.4),
-               apertium-spa (>= 1.0.0~r77286),
+               apertium-spa (>= 1.1.0~r79716),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
