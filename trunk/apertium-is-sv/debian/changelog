@@ -1,6 +1,6 @@
 apertium-is-sv (0.1.0~r76450-1) experimental; urgency=low
 
-  * Update to latest upstream release. Only minor fixes.
+  * Update to latest upstream release. Only minor fixes. (Closes: #868597)
 
  -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 18 Jul 2017 14:41:31 +0200
 
