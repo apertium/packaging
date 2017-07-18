@@ -13,7 +13,7 @@ Build-Depends: apertium-cat (>= 2.2.0~r79715),
                gawk,
                pkg-config (>= 0.21),
                python
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-cat.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-spa-cat.git

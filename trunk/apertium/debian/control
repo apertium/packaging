@@ -17,7 +17,7 @@ Build-Depends: autoconf,
                pkg-config (>= 0.20),
                python3,
                xsltproc (>= 1.1.16)
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git

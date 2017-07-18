@@ -10,7 +10,7 @@ Build-Depends: apertium-dev (>= 3.4),
                dh-autoreconf,
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-oc-es.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-oc-es.git

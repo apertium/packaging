@@ -15,7 +15,7 @@ Build-Depends: apertium-dev (>= 3.4),
                libhfst49-dev,
                pkg-config (>= 0.21),
                zip
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git

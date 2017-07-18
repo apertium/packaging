@@ -8,7 +8,7 @@ Build-Depends: cmake (>= 2.8.9),
                debhelper (>= 9.0),
                libboost-dev (>= 1.49.0),
                libicu-dev (>= 4.8)
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: https://visl.sdu.dk/cg3.html
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/cg3.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/cg3.git

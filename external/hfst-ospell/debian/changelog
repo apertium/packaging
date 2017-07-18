@@ -1,9 +1,11 @@
-hfst-ospell (0.4.5~r343-1) unstable; urgency=low
+hfst-ospell (0.4.5~r343-1) unstable; urgency=medium
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
-  * Refresh copyright listing in AUTHORS, and check debian/copyright (Closes: #859032)
+  * Refresh copyright listing in AUTHORS, and check debian/copyright
+    (Closes: #859032)
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 30 Mar 2017 08:55:34 +0200
+ -- Kartik Mistry <kartik@debian.org>  Mon, 03 Apr 2017 09:10:42 +0530
 
 hfst-ospell (0.4.3~r338-1) unstable; urgency=medium
 
