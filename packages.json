@@ -104,6 +104,7 @@
    ["incubator/apertium-eng-ita"],
    ["incubator/apertium-fao-nor"],
    ["incubator/apertium-fin-est"],
+   ["incubator/apertium-tat-eng"],
 
    ["nursery/apertium-eng-deu"],
 #   ["nursery/apertium-sme-fin"],
