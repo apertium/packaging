@@ -50,6 +50,7 @@
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
    ["languages/apertium-bak"],
+   ["languages/apertium-bel"],
    ["languages/apertium-ben"],
    ["languages/apertium-bre"],
    ["languages/apertium-bul"],
@@ -118,6 +119,7 @@
 
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-arg-cat"],
+   ["trunk/apertium-bel-rus"],
    ["trunk/apertium-br-fr"],
    ["trunk/apertium-ca-it"],
    ["trunk/apertium-cy-en"],

@@ -1,0 +1,23 @@
+Source: apertium-bel
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 4.0.0
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-bel.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-bel.git
+
+Package: apertium-bel
+Architecture: all
+Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for Belarusian
+ Data package providing Apertium language resources for Belarusian
