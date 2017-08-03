@@ -2,39 +2,11 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright:      2011, Nathan Maxson
-           2011-2014, Francis M. Tyers <ftyers@prompsit.com>
-           2011-2014, Jonathan N. Washington <jonorthwash@users.sourceforge.net>
-           2012-2014, Ilnar Salimzyan <selimcan@users.sourceforge.net>
-                2012, Aizhan Aitkulova <aizhan@users.sourceforge.net>
-                2012, Trond Trosterud <trond.trosterud@hum.uit.no>
-           2013-2014, Aida <aida27@users.sourceforge.net>
-           2013-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-           2013-2014, Mikel L. Forcada <mlforcada@users.sourceforge.net>
-                2013, Kantoro Erkulov <kantoro@users.sourceforge.net>
-                2014, Aidana <aidana1@users.sourceforge.net>
-                2014, Assem <assem250586@users.sourceforge.net>
-                2014, Beknazar Abdikamalov <abdik@users.sourceforge.net>
-                2014, Inari Listenmaa <inariksit@users.sourceforge.net>
-                2014, Sjurum <moshagen@users.sourceforge.net>
-                2014, Zhenisbek Assylbekov <zhenisbek@users.sourceforge.net>
-License: GPL-3
-
-License: GPL-3
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 3 of the License
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>.
- .
- On Debian systems, the complete text of the GNU General
- Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+Copyright:      2017, John Lyell <jjlyell@gmail.com>
+                2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+           2013-2016, Francis M. Tyers <ftyers@prompsit.com>
+                2016, Vladislav Kiryukhin <kiryukhinv@gmail.com>
+License: GPL-3+
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>

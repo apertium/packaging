@@ -1,5 +1,5 @@
-apertium-rus (0.1.0-1) experimental; urgency=low
+apertium-rus (0.1.0~r81184-1) experimental; urgency=low
 
   * Initial release
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Aug 2017 12:49:39 +0200

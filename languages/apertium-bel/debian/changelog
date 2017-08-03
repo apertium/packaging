@@ -1,7 +1,5 @@
-apertium-bel (0.1.0-1) experimental; urgency=low
+apertium-bel (0.1.0~r81182-1) experimental; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release (Closes: #828101)
-  * No tarball release, so taking directly from svn
+  * Initial release
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 27 Jun 2016 19:19:17 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Aug 2017 12:49:39 +0200
