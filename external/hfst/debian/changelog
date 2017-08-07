@@ -1,15 +1,9 @@
 hfst (3.12.2~r3289-1) unstable; urgency=low
 
-  * Update to latest upstream release.
-
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 11 Apr 2017 22:54:44 +0200
-
-hfst (3.12.2~r3258-1) unstable; urgency=low
-
-  * Update to latest upstream release.
+  * Update to latest upstream release (Closes: #871145)
   * Now also builds Python modules for Python 2.x
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 30 Mar 2017 08:55:34 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 11 Apr 2017 22:54:44 +0200
 
 hfst (3.10.0~r2798-3) unstable; urgency=medium
 
