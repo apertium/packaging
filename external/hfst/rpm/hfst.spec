@@ -8,7 +8,6 @@ URL: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst_01_configure.ac.diff
 Patch1: hfst_02_notimestamp.diff
-Patch2: hfst_03_notemplate.diff
 
 BuildRequires: autoconf
 BuildRequires: automake
@@ -78,7 +77,6 @@ Python3 modules for libhfst
 %setup -q -n %{name}-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 autoreconf -fi
