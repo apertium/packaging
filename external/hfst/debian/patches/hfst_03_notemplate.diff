@@ -1,0 +1,13 @@
+diff --git a/back-ends/openfst/src/include/fst/replace.h b/back-ends/openfst/src/include/fst/replace.h
+index 5cf4759..791a6ff 100644
+--- a/back-ends/openfst/src/include/fst/replace.h
++++ b/back-ends/openfst/src/include/fst/replace.h
+@@ -1050,7 +1050,7 @@ class ArcIterator< ReplaceFst<A, T> > {
+ 
+     // If state is already cached, use cached arcs array.
+     if (fst_.GetImpl()->HasArcs(state_)) {
+-      (fst_.GetImpl())->template CacheImpl<A>::InitArcIterator(state_,
++      (fst_.GetImpl())->CacheImpl<A>::InitArcIterator(state_,
+                                                                &cache_data_);
+       num_arcs_ = cache_data_.narcs;
+       arcs_ = cache_data_.arcs;      // 'arcs_' is a ptr to the cached arcs.
