@@ -10,7 +10,8 @@ Build-Depends: apertium-dev (>= 3.4),
                dh-autoreconf,
                libxml2-dev,
                lttoolbox-dev,
-               pkg-config (>= 0.21)
+               pkg-config (>= 0.21),
+               zlib1g-dev
 Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
