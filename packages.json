@@ -21,6 +21,7 @@
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp"],
    ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py"],
+   ["branches/apertium-separable"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/giella-core"],
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
    ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "jessie,trusty"],

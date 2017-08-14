@@ -1,0 +1,23 @@
+Source: apertium-separable
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               autotools-dev,
+               debhelper (>= 9),
+               dh-autoreconf,
+               libxml2-dev,
+               lttoolbox-dev,
+               pkg-config (>= 0.21)
+Standards-Version: 4.0.0
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
+
+Package: apertium-separable
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Reordering separable/discontiguous multiwords
+ Apertium module for reordering separable/discontiguous multiwords
