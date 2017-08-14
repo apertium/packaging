@@ -46,6 +46,10 @@ while (<>) {
       $build{'apertium-lex-tools'} = 1;
       $deps{'apertium-lex-tools'} = 1;
    }
+   elsif (/\blsx-comp\b/ || /\blsx-proc\b/) {
+      $build{'apertium-separable'} = 1;
+      $deps{'apertium-separable'} = 1;
+   }
    elsif (/\bAP_CHECK_LING.*?(apertium-\w+)/ || /\bAP_CHECK_LING.*?(giella-\w+)/) {
       $build{$1} = 1;
    }
