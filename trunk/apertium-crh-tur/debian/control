@@ -1,0 +1,35 @@
+Source: apertium-crh-tur
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-crh,
+               apertium-dev (>= 3.4),
+               apertium-lex-tools,
+               apertium-tur,
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               hfst,
+               pkg-config (>= 0.21)
+Standards-Version: 4.0.0
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-crh-tur.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-crh-tur.git
+
+Package: apertium-crh-tur
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-tur-crh
+Conflicts: apertium-tur-crh
+Description: Apertium translation data for the Crimean Tatar-Turkish pair
+ Data package providing Apertium language resources for translating
+ between the Crimean Tatar and Turkish languages.

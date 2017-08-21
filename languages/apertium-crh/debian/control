@@ -1,0 +1,24 @@
+Source: apertium-crh
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               hfst,
+               pkg-config (>= 0.21)
+Standards-Version: 4.0.0
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-crh.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-crh.git
+
+Package: apertium-crh
+Architecture: all
+Depends: apertium (>= 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for Crimean Tatar
+ Data package providing Apertium language resources for Crimean Tatar

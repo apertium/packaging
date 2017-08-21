@@ -24,6 +24,9 @@ while (<>) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
+   elsif (/\bPKG_CHECK_MODULES.*?hfstospell\b/) {
+      $build{'hfst-ospell-dev'} = 1;
+   }
    elsif (/\bhfst\b/) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
@@ -38,7 +41,7 @@ while (<>) {
    elsif (/\bAC_PROG_AWK\b/) {
       $build{'gawk'} = 1;
    }
-   elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislc3g\b/ || /\bcg3-autobin\b/) {
+   elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislc3g\b/ || /\bc3g\b/ || /\bcg3-autobin\b/) {
       $build{'cg3'} = 1;
       $deps{'cg3'} = 1;
    }
