@@ -1,7 +1,5 @@
-apertium-crh (0.1.0-1) experimental; urgency=low
+apertium-crh (0.1.0~r81872-1) experimental; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release (Closes: #828101)
-  * No tarball release, so taking directly from svn
+  * Initial release
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 27 Jun 2016 19:19:17 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 22 Aug 2017 19:41:31 +0200

@@ -1,7 +1,5 @@
-apertium-crh-tur (0.2.0-1) experimental; urgency=low
+apertium-crh-tur (0.2.0~r81866-1) experimental; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release. (Closes: #832498))
-  * No significant changes in svn since tarball, so taking directly from svn.
+  * Initial release
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 26 Jul 2016 10:58:33 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 22 Aug 2017 19:41:31 +0200
