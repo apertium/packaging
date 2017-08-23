@@ -136,6 +136,10 @@ chomp($path);
 print `cp -av '$path/debian' '$pkname-$opts{v}/'`;
 #print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
+if (!$opts{auto}) {
+   print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* | xargs -rn1 rm -fv`;
+}
+
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';
    if ($opts{auto}) {
