@@ -1,5 +1,12 @@
-apertium-srd-ita (0.9.0~r72554-1) experimental; urgency=low
+apertium-srd-ita (0.9.5~r82237-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 29 Aug 2016 08:56:49 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Sep 2017 23:16:26 +0200
+
+apertium-srd-ita (0.9.0~r72554-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #836357)
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 06 Sep 2016 08:53:09 +0530

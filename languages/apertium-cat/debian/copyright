@@ -2,18 +2,22 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2015-2017, Xavi Ivars <xavi.ivars@gmail.com>
-                2017, Hèctor Alòs i Font <hectoralos@gmail.com>
+Copyright:      2017, Hèctor Alòs i Font <hectoralos@gmail.com>
+           2016-2017, Juan Pablo Martínez Cortés <jpmart@unizar.es>
+                2017, Jaume Ortolà i Font <jaumeortola@gmail.com>
+                2017, Marc Riera Irigoyen <marc.riera.irigoyen@gmail.com>
+           2015-2017, Francis M. Tyers <ftyers@prompsit.com>
+                2017, Gema Ramírez Sánchez <gramirez@prompsit.com>
+           2015-2017, Xavi Ivars <xavi.ivars@gmail.com>
                 2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-           2015-2016, Francis M. Tyers <ftyers@prompsit.com>
                 2016, Frankie Robertson <frankie@robertson.name>
-                2016, Juan Pablo Martínez Cortés <jpmart@unizar.es>
-License: GPL-2
+License: GPL-2+
 
-License: GPL-2
+License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 2 of the License
+ the Free Software Foundation, version 2 of the License, or
+ (at your option) any later version.
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
