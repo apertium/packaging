@@ -12,7 +12,8 @@ Build-Depends: apertium-arg,
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               pkg-config (>= 0.21)
+               pkg-config (>= 0.21),
+               python
 Standards-Version: 4.0.0
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-arg-cat.git
