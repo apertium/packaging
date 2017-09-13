@@ -10,6 +10,7 @@ Build-Depends: autoconf,
                bison,
                debhelper (>= 9.0),
                dh-autoreconf,
+               dh-python,
                dpkg-dev (>= 1.16.1~),
                flex,
                libicu-dev,
@@ -48,16 +49,15 @@ Description: Helsinki Finite-State Transducer Technology Libraries
  .
  This package provides runtime libraries for HFST.
 
-Package: libhfst49-dev
+Package: libhfst-dev
 Architecture: any
 Section: libdevel
 Depends: hfst (= ${binary:Version}),
          libhfst49 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: libhfst-dev
-Conflicts: libhfst-dev, libhfst3-dev
-Replaces: libhfst-dev, libhfst3-dev
+Conflicts: libhfst3-dev
+Replaces: libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are

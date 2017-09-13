@@ -76,8 +76,9 @@ Group: Development/Tools
 Requires: apertium-devel
 Requires: apertium-lex-tools
 Requires: cg3
+Requires: libcg3-devel
 Requires: hfst
-Requires: libhfst49-devel
+Requires: libhfst-devel
 
 %description -n apertium-all-devel
 Metapackage to get all tools required for development of Apertium

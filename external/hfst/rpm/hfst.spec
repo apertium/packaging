@@ -46,15 +46,13 @@ Obsoletes: libhfst3 < %{version}-%{release}
 %description -n libhfst49
 Runtime libraries for HFST
 
-%package -n libhfst49-devel
+%package -n libhfst-devel
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
 Requires: hfst = %{version}-%{release}
-Provides: libhfst-devel = %{version}-%{release}
-Obsoletes: libhfst-devel < %{version}-%{release}
 Obsoletes: libhfst3-devel < %{version}-%{release}
 
-%description -n libhfst49-devel
+%description -n libhfst-devel
 Development headers and libraries for HFST
 
 %package -n python-libhfst
@@ -114,7 +112,7 @@ make check
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n libhfst49-devel
+%files -n libhfst-devel
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/pkgconfig/*

@@ -1,9 +1,29 @@
+hfst (3.12.2~r3289-3) unstable; urgency=low
+
+  * debian/docs change README to README.rst (Closes: #874761)
+  * New style watch file
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 11 Sep 2017 14:34:24 +0200
+
+hfst (3.12.2~r3289-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Re-disable tests to work around big-endian building (Closes: #873008)
+
+  [ Kartik Mistry ]
+  * Added dh-python to Build-Depends.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Sep 2017 10:00:41 +0530
+
 hfst (3.12.2~r3289-1) unstable; urgency=low
 
-  * Update to latest upstream release (Closes: #871145)
+  [ Tino Didriksen ]
+  * New upstream release:
+  * debian/patches/hfst_03_notemplate.diff:
+    + Added patch to Fix FTBFS (Closes: #871145)
   * Now also builds Python modules for Python 2.x
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 11 Apr 2017 22:54:44 +0200
+ -- Kartik Mistry <kartik@debian.org>  Tue, 08 Aug 2017 18:16:08 +0530
 
 hfst (3.10.0~r2798-3) unstable; urgency=medium
 
