@@ -1,0 +1,33 @@
+Source: apertium-rus-ukr
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.4),
+               apertium-lex-tools,
+               apertium-rus (>= 0.2.0~r82706),
+               apertium-ukr (>= 0.1.0~r82563),
+               autotools-dev,
+               cg3,
+               debhelper (>= 9),
+               dh-autoreconf,
+               gawk,
+               pkg-config (>= 0.21)
+Standards-Version: 4.0.0
+Homepage: http://apertium.org/
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-rus-ukr.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-rus-ukr.git
+
+Package: apertium-rus-ukr
+Architecture: all
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-ukr-rus
+Conflicts: apertium-ukr-rus
+Description: Apertium translation data for the Russian-Ukrainian pair
+ Data package providing Apertium language resources for translating
+ between the Russian and Ukrainian languages.

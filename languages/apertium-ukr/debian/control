@@ -10,8 +10,6 @@ Build-Depends: apertium-dev (>= 3.4),
                debhelper (>= 9),
                dh-autoreconf,
                gawk,
-               hfst,
-               libhfst-dev,
                pkg-config (>= 0.21)
 Standards-Version: 4.0.0
 Homepage: http://apertium.org/
@@ -20,6 +18,6 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-uk
 
 Package: apertium-ukr
 Architecture: all
-Depends: apertium (>= 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Ukrainian
  Data package providing Apertium language resources for Ukrainian
