@@ -140,6 +140,9 @@ if (!$opts{auto}) {
    print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* | xargs -rn1 rm -fv`;
 }
 
+# dpkg tools are not happy if PERL_UNICODE is on
+$ENV{'PERL_UNICODE'} = '';
+
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';
    if ($opts{auto}) {
