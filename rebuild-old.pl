@@ -33,6 +33,7 @@ $ENV{'DEB_BUILD_OPTIONS'} = 'parallel=2 noddebs';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
 use File::Basename;
+use File::Copy;
 my $dir = dirname(__FILE__);
 chdir($dir) or die $!;
 use Cwd;
@@ -189,23 +190,27 @@ foreach my $pkg (@$pkgs) {
       $cli .= " -r '@$pkg[3]'";
    }
    print {$out} "\tlaunching rebuild\n";
-   `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
 
    my $is_data = '';
+   copy("@$pkg[0]/debian/rules", "/tmp/rules.$$");
    if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || @$pkg[0] =~ m@/giella-@ || @$pkg[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
+      `cat data-gzip.Makefile >> "@$pkg[0]/debian/rules"`;
    }
    if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/streamparser$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
    }
    if ($dry || $is_data eq 'data') {
-      @$pkg[4] = "jessie,stretch,trusty,xenial,zesty";
+      @$pkg[4] = 'jessie,stretch,trusty,xenial,zesty';
    }
 
    # Build the packages for Debian/Ubuntu
+   `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
+   copy("/tmp/rules.$$", "@$pkg[0]/debian/rules");
+
    `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
    my $failed = '';
    $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;

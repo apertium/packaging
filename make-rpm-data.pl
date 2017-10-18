@@ -57,7 +57,9 @@ print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
 chdir "/tmp/autorpm.$$" or die "Could not change folder: $!\n";
 
 print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.xz 2>&1`;
+print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.gz 2>&1`;
 print `tar -Jxvf data.tar.xz 2>&1`;
+print `tar -zxvf data.tar.gz 2>&1`;
 my $files = '';
 if (-e 'usr/bin') {
    $files .= "\%{_bindir}/*\n";
@@ -118,8 +120,6 @@ URL: http://apertium.org/
 Source0: \%{name}_\%{version}.tar.bz2
 BuildArch: noarch
 
-BuildRequires: binutils
-BuildRequires: xz
 Requires: apertium
 Requires: apertium-lex-tools
 Requires: cg3
