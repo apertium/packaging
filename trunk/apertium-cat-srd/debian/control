@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-cat (>= 2.3.0~r82237),
+Build-Depends: apertium-cat (>= 2.3.1~r82994),
                apertium-dev (>= 3.4),
                apertium-lex-tools,
-               apertium-srd (>= 0.10.0~r82237),
+               apertium-srd (>= 1.2.0~r82994),
                autotools-dev,
                cg3,
                debhelper (>= 9),
