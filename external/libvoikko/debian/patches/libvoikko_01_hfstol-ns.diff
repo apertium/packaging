@@ -1,25 +1,9 @@
-From c516a6e6a3d0cea878d114dab867bc426b7ecafe Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?B=C3=B8rre=20Gaup?= <albbas@gmail.com>
-Date: Wed, 1 Nov 2017 12:05:36 +0100
-Subject: [PATCH] Adapt to the namespace changes in hfst-ospell
+Adapt to the namespace changes in hfst-ospell
 
----
- libvoikko/src/grammar/HfstAnalysis.cpp        | 2 +-
- libvoikko/src/morphology/HfstAnalyzer.cpp     | 6 +++---
- libvoikko/src/morphology/HfstAnalyzer.hpp     | 2 +-
- libvoikko/src/setup/V3DictionaryLoader.cpp    | 6 +++---
- libvoikko/src/setup/V4DictionaryLoader.cpp    | 6 +++---
- libvoikko/src/setup/setup.hpp                 | 4 ++--
- libvoikko/src/spellchecker/HfstSpeller.cpp    | 4 ++--
- libvoikko/src/spellchecker/HfstSpeller.hpp    | 2 +-
- libvoikko/src/spellchecker/HfstSuggestion.cpp | 6 +++---
- libvoikko/src/spellchecker/HfstSuggestion.hpp | 4 ++--
- 10 files changed, 21 insertions(+), 21 deletions(-)
-
-diff --git a/libvoikko/src/grammar/HfstAnalysis.cpp b/libvoikko/src/grammar/HfstAnalysis.cpp
+diff --git a/src/grammar/HfstAnalysis.cpp b/src/grammar/HfstAnalysis.cpp
 index 9fd1e84d..229668ab 100644
---- a/libvoikko/src/grammar/HfstAnalysis.cpp
-+++ b/libvoikko/src/grammar/HfstAnalysis.cpp
+--- a/src/grammar/HfstAnalysis.cpp
++++ b/src/grammar/HfstAnalysis.cpp
 @@ -44,7 +44,7 @@
  #include <vector>
  
@@ -29,10 +13,10 @@ index 9fd1e84d..229668ab 100644
  //using namespace hfst;
  
  namespace libvoikko {
-diff --git a/libvoikko/src/morphology/HfstAnalyzer.cpp b/libvoikko/src/morphology/HfstAnalyzer.cpp
+diff --git a/src/morphology/HfstAnalyzer.cpp b/src/morphology/HfstAnalyzer.cpp
 index e55f1216..e842bc5f 100644
---- a/libvoikko/src/morphology/HfstAnalyzer.cpp
-+++ b/libvoikko/src/morphology/HfstAnalyzer.cpp
+--- a/src/morphology/HfstAnalyzer.cpp
++++ b/src/morphology/HfstAnalyzer.cpp
 @@ -45,7 +45,7 @@ HfstAnalyzer::HfstAnalyzer(const string& s) {
  		return;
  	}
@@ -55,10 +39,10 @@ index e55f1216..e842bc5f 100644
  		string analysis = pair.first;
  		string tags = analysis.substr(analysis.find("+"),analysis.length()-1);
  		Analysis * a = new Analysis();
-diff --git a/libvoikko/src/morphology/HfstAnalyzer.hpp b/libvoikko/src/morphology/HfstAnalyzer.hpp
+diff --git a/src/morphology/HfstAnalyzer.hpp b/src/morphology/HfstAnalyzer.hpp
 index f228b449..17709c82 100644
---- a/libvoikko/src/morphology/HfstAnalyzer.hpp
-+++ b/libvoikko/src/morphology/HfstAnalyzer.hpp
+--- a/src/morphology/HfstAnalyzer.hpp
++++ b/src/morphology/HfstAnalyzer.hpp
 @@ -49,7 +49,7 @@ class HfstAnalyzer : public Analyzer {
  
  		HfstAnalyzer & operator = (const HfstAnalyzer & other);
@@ -68,10 +52,10 @@ index f228b449..17709c82 100644
  
  		HfstAnalyzer(HfstAnalyzer const & other);
  
-diff --git a/libvoikko/src/setup/V3DictionaryLoader.cpp b/libvoikko/src/setup/V3DictionaryLoader.cpp
+diff --git a/src/setup/V3DictionaryLoader.cpp b/src/setup/V3DictionaryLoader.cpp
 index 93b17fa8..9d65c156 100644
---- a/libvoikko/src/setup/V3DictionaryLoader.cpp
-+++ b/libvoikko/src/setup/V3DictionaryLoader.cpp
+--- a/src/setup/V3DictionaryLoader.cpp
++++ b/src/setup/V3DictionaryLoader.cpp
 @@ -58,15 +58,15 @@ void V3DictionaryLoader::findDictionaries(const string & path) {
  			// TODO implement null hyphenator
  			BackendProperties hyphenatorBackend("AnalyzerToFinnishHyphenatorAdapter(currentAnalyzer)", false);
@@ -91,10 +75,10 @@ index 93b17fa8..9d65c156 100644
  			
  			LanguageTag language;
  			language.setBcp47(spellerMetadata.info_.locale_);
-diff --git a/libvoikko/src/setup/V4DictionaryLoader.cpp b/libvoikko/src/setup/V4DictionaryLoader.cpp
+diff --git a/src/setup/V4DictionaryLoader.cpp b/src/setup/V4DictionaryLoader.cpp
 index 8735e11b..58a79a99 100644
---- a/libvoikko/src/setup/V4DictionaryLoader.cpp
-+++ b/libvoikko/src/setup/V4DictionaryLoader.cpp
+--- a/src/setup/V4DictionaryLoader.cpp
++++ b/src/setup/V4DictionaryLoader.cpp
 @@ -82,16 +82,16 @@ void V4DictionaryLoader::findDictionaries(const string & path) {
  				// TODO implement null hyphenator
  				//cerr << "   +found: " << fileName << endl;
@@ -115,10 +99,10 @@ index 8735e11b..58a79a99 100644
  			
  				LanguageTag language;
  				language.setBcp47(spellerMetadata.info_.locale_);
-diff --git a/libvoikko/src/setup/setup.hpp b/libvoikko/src/setup/setup.hpp
+diff --git a/src/setup/setup.hpp b/src/setup/setup.hpp
 index 6f29dab9..b680470b 100644
---- a/libvoikko/src/setup/setup.hpp
-+++ b/libvoikko/src/setup/setup.hpp
+--- a/src/setup/setup.hpp
++++ b/src/setup/setup.hpp
 @@ -42,7 +42,7 @@
  #include "setup/Dictionary.hpp"
  
@@ -137,10 +121,10 @@ index 6f29dab9..b680470b 100644
  } voikko_options_t;
  
  }
-diff --git a/libvoikko/src/spellchecker/HfstSpeller.cpp b/libvoikko/src/spellchecker/HfstSpeller.cpp
+diff --git a/src/spellchecker/HfstSpeller.cpp b/src/spellchecker/HfstSpeller.cpp
 index 35d23495..422685e0 100644
---- a/libvoikko/src/spellchecker/HfstSpeller.cpp
-+++ b/libvoikko/src/spellchecker/HfstSpeller.cpp
+--- a/src/spellchecker/HfstSpeller.cpp
++++ b/src/spellchecker/HfstSpeller.cpp
 @@ -39,7 +39,7 @@ using namespace std;
  using namespace libvoikko::character;
  using namespace libvoikko::utils;
@@ -159,10 +143,10 @@ index 35d23495..422685e0 100644
  		throw setup::DictionaryException("Error reading ZHFST speller");
  	}
  }
-diff --git a/libvoikko/src/spellchecker/HfstSpeller.hpp b/libvoikko/src/spellchecker/HfstSpeller.hpp
+diff --git a/src/spellchecker/HfstSpeller.hpp b/src/spellchecker/HfstSpeller.hpp
 index fd079a8e..be94459e 100644
---- a/libvoikko/src/spellchecker/HfstSpeller.hpp
-+++ b/libvoikko/src/spellchecker/HfstSpeller.hpp
+--- a/src/spellchecker/HfstSpeller.hpp
++++ b/src/spellchecker/HfstSpeller.hpp
 @@ -49,7 +49,7 @@ class HfstSpeller : public Speller {
  		void terminate();
  		
@@ -172,10 +156,10 @@ index fd079a8e..be94459e 100644
  	private:
  		/** Return SPELL_FAILED or SPELL_OK depending on whether given word is correct as is. */
  		spellresult doSpell(const wchar_t * word, size_t wlen);
-diff --git a/libvoikko/src/spellchecker/HfstSuggestion.cpp b/libvoikko/src/spellchecker/HfstSuggestion.cpp
+diff --git a/src/spellchecker/HfstSuggestion.cpp b/src/spellchecker/HfstSuggestion.cpp
 index bf65bc74..30fa466f 100644
---- a/libvoikko/src/spellchecker/HfstSuggestion.cpp
-+++ b/libvoikko/src/spellchecker/HfstSuggestion.cpp
+--- a/src/spellchecker/HfstSuggestion.cpp
++++ b/src/spellchecker/HfstSuggestion.cpp
 @@ -41,11 +41,11 @@
  using namespace std;
  using namespace libvoikko::utils;
@@ -199,10 +183,10 @@ index bf65bc74..30fa466f 100644
  	while (corrections.size() > 0 && !s->shouldAbort()) {
  		const char * sugUtf8 = corrections.top().first.c_str();
  		wchar_t * sugU4 = StringUtils::ucs4FromUtf8(sugUtf8, strlen(sugUtf8));
-diff --git a/libvoikko/src/spellchecker/HfstSuggestion.hpp b/libvoikko/src/spellchecker/HfstSuggestion.hpp
+diff --git a/src/spellchecker/HfstSuggestion.hpp b/src/spellchecker/HfstSuggestion.hpp
 index f3e29b77..1217fb45 100644
---- a/libvoikko/src/spellchecker/HfstSuggestion.hpp
-+++ b/libvoikko/src/spellchecker/HfstSuggestion.hpp
+--- a/src/spellchecker/HfstSuggestion.hpp
++++ b/src/spellchecker/HfstSuggestion.hpp
 @@ -45,11 +45,11 @@ namespace libvoikko { namespace spellchecker { namespace suggestion {
   */
  class HfstSuggestion : public SuggestionGenerator {
