@@ -1,3 +1,10 @@
+hfst (3.13.0~r3461-1) unstable; urgency=low
+
+  * Update to latest upstream release
+  * Rename libhfstNN-dev to plain libhfst-dev
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 03 Nov 2017 14:25:34 +0100
+
 hfst (3.12.2~r3289-3) unstable; urgency=low
 
   * debian/docs change README to README.rst (Closes: #874761)
