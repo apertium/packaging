@@ -26,7 +26,7 @@ BuildRequires: zlib-devel
 BuildRequires: python3
 BuildRequires: python3-devel
 %endif
-Requires: libhfst49 = %{version}-%{release}
+Requires: libhfst50 = %{version}-%{release}
 Requires: grep
 Requires: python
 Requires: sed
@@ -36,14 +36,14 @@ The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analysers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
-%package -n libhfst49
+%package -n libhfst50
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
 Provides: libhfst = %{version}-%{release}
 Obsoletes: libhfst < %{version}-%{release}
 Obsoletes: libhfst3 < %{version}-%{release}
 
-%description -n libhfst49
+%description -n libhfst50
 Runtime libraries for HFST
 
 %package -n libhfst-devel
@@ -57,7 +57,7 @@ Development headers and libraries for HFST
 
 %package -n python-libhfst
 Summary: Python modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst49 = %{version}-%{release}
+Requires: libhfst50 = %{version}-%{release}
 
 %description -n python-libhfst
 Python modules for libhfst
@@ -65,7 +65,7 @@ Python modules for libhfst
 %if ! ( 0%{?el6} || 0%{?el7} )
 %package -n python3-libhfst
 Summary: Python3 modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst49 = %{version}-%{release}
+Requires: libhfst50 = %{version}-%{release}
 
 %description -n python3-libhfst
 Python3 modules for libhfst
@@ -108,7 +108,7 @@ make check
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
-%files -n libhfst49
+%files -n libhfst50
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -129,9 +129,9 @@ make check
 %{python3_sitearch}/*
 %endif
 
-%post -n libhfst49 -p /sbin/ldconfig
+%post -n libhfst50 -p /sbin/ldconfig
 
-%postun -n libhfst49 -p /sbin/ldconfig
+%postun -n libhfst50 -p /sbin/ldconfig
 
 %changelog
 * Fri Dec 19 2014 Tino Didriksen <tino@didriksen.cc> 3.8.2
