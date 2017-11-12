@@ -58,6 +58,7 @@ my %distros = (
 	'xenial' => 'ubuntu',
 	'zesty' => 'ubuntu',
 	'artful' => 'ubuntu',
+	'bionic' => 'ubuntu',
 );
 
 my @includes = ();
