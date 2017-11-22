@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-crh (>= 0.2.0~r83159),
+Build-Depends: apertium-crh (>= 0.2.0~r83160),
                apertium-dev (>= 3.4),
                apertium-lex-tools,
-               apertium-tur (>= 0.2.0~r83159),
+               apertium-tur (>= 0.2.0~r83160),
                autotools-dev,
                cg3,
                debhelper (>= 9),
