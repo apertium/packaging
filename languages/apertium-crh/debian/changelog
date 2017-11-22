@@ -1,5 +1,12 @@
-apertium-crh (0.1.0~r81872-1) experimental; urgency=low
+apertium-crh (0.2.0~r83159-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 22 Aug 2017 19:41:31 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 22 Nov 2017 13:51:21 +0100
+
+apertium-crh (0.1.0~r81872-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #874681)
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 11 Sep 2017 16:31:57 +0530

@@ -1,3 +1,9 @@
+apertium-crh-tur (0.3.0~r83159-1) unstable; urgency=low
+
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 22 Nov 2017 13:51:21 +0100
+
 apertium-crh-tur (0.2.0~r81866-1) experimental; urgency=low
 
   * Initial release
