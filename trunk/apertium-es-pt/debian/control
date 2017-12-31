@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es
 Package: apertium-es-pt
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-pt-es
-Conflicts: apertium-pt-es
+Provides: apertium-pt-es apertium-por-spa apertium-spa-por
+Conflicts: apertium-pt-es apertium-por-spa apertium-spa-por
 Description: Apertium translation data for the Spanish-Portuguese pair
  Data package providing Apertium language resources for translating
  between the Spanish and Portuguese languages.

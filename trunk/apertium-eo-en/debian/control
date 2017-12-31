@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-eo
 Package: apertium-eo-en
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-en-eo
-Conflicts: apertium-en-eo
+Provides: apertium-en-eo apertium-eng-epo apertium-epo-eng
+Conflicts: apertium-en-eo apertium-eng-epo apertium-epo-eng
 Description: Apertium linguistic data to translate between Esperanto and English
  This is a linguistic package for the Apertium shallow-transfer
  machine translation system. The package can be used to translate

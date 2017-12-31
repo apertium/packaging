@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-ca
 Package: apertium-ca-it
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-it-ca
-Conflicts: apertium-it-ca
+Provides: apertium-it-ca apertium-ita-cat apertium-cat-ita
+Conflicts: apertium-it-ca apertium-ita-cat apertium-cat-ita
 Description: Apertium translation data for the Catalan-Italian pair
  Data package providing Apertium language resources for translating
  between the Catalan and Italian languages.

@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-br
 Package: apertium-br-fr
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-fr-br
-Conflicts: apertium-fr-br
+Provides: apertium-fr-br apertium-fra-bre apertium-bre-fra
+Conflicts: apertium-fr-br apertium-fra-bre apertium-bre-fra
 Description: Apertium linguistic data to translate between Breton and French
  This is a linguistic package for the Apertium shallow-transfer
  machine translation system. The package can be used to translate

@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es
 Package: apertium-es-ast
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ast-es
-Conflicts: apertium-ast-es
+Provides: apertium-ast-es apertium-ast-spa apertium-spa-ast
+Conflicts: apertium-ast-es apertium-ast-spa apertium-spa-ast
 Description: Apertium translation data for the Spanish-Asturian pair
  Data package providing Apertium language resources for translating
  between the Spanish and Asturian languages.

@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-eu
 Package: apertium-eu-es
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-es-eu
-Conflicts: apertium-es-eu
+Provides: apertium-es-eu apertium-spa-eus apertium-eus-spa
+Conflicts: apertium-es-eu apertium-spa-eus apertium-eus-spa
 Description: Apertium translation data for the Basque-Spanish pair
  Data package providing Apertium language resources for translating
  between the Basque and Spanish languages.

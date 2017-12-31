@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-cy
 Package: apertium-cy-en
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-en-cy
-Conflicts: apertium-en-cy
+Provides: apertium-en-cy apertium-eng-cym apertium-cym-eng
+Conflicts: apertium-en-cy apertium-eng-cym apertium-cym-eng
 Description: Apertium translation data for the Welsh-English pair
  Data package providing Apertium language resources for translating
  between the Welsh and English languages.

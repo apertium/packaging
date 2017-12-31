@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-id
 Package: apertium-id-ms
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ms-id
-Conflicts: apertium-ms-id
+Provides: apertium-ms-id apertium-msa-ind apertium-ind-msa
+Conflicts: apertium-ms-id apertium-msa-ind apertium-ind-msa
 Description: Apertium translation data for the Indonesian-Malay pair
  Data package providing Apertium language resources for translating
  between the Indonesian and Malay languages.

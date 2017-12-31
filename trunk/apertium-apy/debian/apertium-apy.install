@@ -2,4 +2,5 @@
 *.db usr/share/apertium-apy
 serverlist-example usr/share/doc/apertium-apy
 tools/*.py usr/share/apertium-apy
-tools/*.sql usr/share/apertium-apy
+language-names/*.py usr/share/apertium-apy
+language-names/*.sql usr/share/apertium-apy
