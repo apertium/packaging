@@ -1,8 +1,27 @@
-lttoolbox (3.3.3~r68466-1) unstable; urgency=low
+lttoolbox (3.4.0~r83591-1) unstable; urgency=low
 
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 07 Jan 2018 15:00:01 +0100
+
+lttoolbox (3.3.3~r68466-2) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 07 Jun 2016 16:34:53 +0530
+
+lttoolbox (3.3.3~r68466-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
   * New upstream release.
+  * debian/control:
+    + Fix Vcs-Git URL
+    + Updated Standards-Version to 3.9.8
+  * debian/rules:
+    + Disable static libraries.
+  * Use debian/<package>.triggers to replace ldconfig call by dpkg triggers.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 May 2016 11:27:01 +0200
+ -- Kartik Mistry <kartik@debian.org>  Tue, 07 Jun 2016 11:06:36 +0530
 
 lttoolbox (3.3.2~r63423-3) unstable; urgency=low
 

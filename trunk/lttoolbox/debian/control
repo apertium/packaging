@@ -28,7 +28,7 @@ Vcs-Browser: http://anonscm.debian.org/cgit/debian-science/packages/lttoolbox.gi
 
 Package: lttoolbox
 Architecture: any
-Depends: liblttoolbox3-3.3-0 (= ${binary:Version}),
+Depends: liblttoolbox3-3.4-1 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Apertium lexical processing modules and tools
@@ -38,7 +38,7 @@ Description: Apertium lexical processing modules and tools
  for making morphological analysers and generators for natural language
  processing applications.
 
-Package: liblttoolbox3-3.3-0
+Package: liblttoolbox3-3.4-1
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
@@ -58,10 +58,10 @@ Description: Shared library for lttoolbox
 
 Package: liblttoolbox3-3.3-0v5
 Architecture: all
-Depends: liblttoolbox3-3.3-0 (= ${binary:Version}), ${misc:Depends}
+Depends: liblttoolbox3-3.4-1 (= ${binary:Version}), ${misc:Depends}
 Priority: extra
 Section: oldlibs
-Description: Transitional package to undo accidental g++-5 renaming
+Description: Transitional package to undo g++-5 renaming
  This is a transitional dummy package. It can safely be removed.
 
 Package: lttoolbox-dev

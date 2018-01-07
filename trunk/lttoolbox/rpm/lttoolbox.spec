@@ -1,5 +1,5 @@
 Name: lttoolbox
-Version: 3.3.0
+Version: 3.4.0
 Release: 1%{?dist}
 Summary: Apertium lexical processing modules and tools
 Group: Development/Tools
@@ -20,7 +20,7 @@ BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 BuildRequires: python
 BuildRequires: zlib-devel
-Requires: liblttoolbox3-3_3-0 = %{version}-%{release}
+Requires: liblttoolbox3-3_4-1 = %{version}-%{release}
 
 %description
 The lttoolbox contains the augmented letter transducer tools for natural
@@ -29,14 +29,14 @@ and hybrid machine translation systems. The software is also useful
 for making morphological analysers and generators for natural language
 processing applications.
 
-%package -n liblttoolbox3-3_3-0
+%package -n liblttoolbox3-3_4-1
 Summary: Shared library for lttoolbox
 Group: Development/Libraries
 Provides: liblttoolbox = %{version}-%{release}
 Obsoletes: liblttoolbox < %{version}-%{release}
 Obsoletes: liblttoolbox3 < %{version}-%{release}
 
-%description -n liblttoolbox3-3_3-0
+%description -n liblttoolbox3-3_4-1
 Contains shared library for lttoolbox
 
 %package -n lttoolbox-devel
@@ -59,7 +59,7 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
-ln -s liblttoolbox3-3.3.so.0.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.3.so
+ln -s liblttoolbox3-3.4.so.1.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.4.so
 
 %check
 make test
@@ -74,7 +74,7 @@ make test
 %{_datadir}/man/man1/lt-tmxcomp.*
 %{_datadir}/man/man1/lt-tmxproc.*
 
-%files -n liblttoolbox3-3_3-0
+%files -n liblttoolbox3-3_4-1
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -93,9 +93,9 @@ make test
 %{_datadir}/man/man1/lt-print.*
 %{_datadir}/man/man1/lt-trim.*
 
-%post -n liblttoolbox3-3_3-0 -p /sbin/ldconfig
+%post -n liblttoolbox3-3_4-1 -p /sbin/ldconfig
 
-%postun -n liblttoolbox3-3_3-0 -p /sbin/ldconfig
+%postun -n liblttoolbox3-3_4-1 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0
