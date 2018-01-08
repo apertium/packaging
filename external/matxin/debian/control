@@ -23,7 +23,7 @@ Build-Depends: autoconf,
                pkg-config (>= 0.20),
                xsltproc (>= 1.1.16),
                zlib1g-dev (>= 1.2.3)
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: https://github.com/matxin/matxin
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/matxin.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/matxin.git

@@ -13,7 +13,7 @@ Build-Depends: apertium-dev (>= 3.4),
                hfst,
                libhfst-dev,
                pkg-config (>= 0.21)
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-mkd.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-mkd.git

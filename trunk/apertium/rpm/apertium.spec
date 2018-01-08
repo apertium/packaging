@@ -1,5 +1,5 @@
 Name: apertium
-Version: 3.4.0
+Version: 3.5.0
 Release: 1%{?dist}
 Summary: Shallow-transfer machine translation engine
 Group: Development/Tools
@@ -7,7 +7,7 @@ License: GPL-2.0+
 URL: http://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-Requires: lttoolbox >= 3.3.1
+Requires: lttoolbox >= 3.4.0
 # Require xmllint from:
 Requires: libxml2
 # Require xsltproc from:
@@ -28,7 +28,7 @@ BuildRequires: pkgconfig
 BuildRequires: python3
 BuildRequires: python3-devel
 %endif
-Requires: libapertium3-3_4-0 = %{version}-%{release}
+Requires: libapertium3-3_5-1 = %{version}-%{release}
 
 %description
 An open-source shallow-transfer machine translation
@@ -48,14 +48,14 @@ It will be possible to use Apertium to build machine translation
 systems for a variety of related-language pairs simply providing
 the linguistic data needed in the right format.
 
-%package -n libapertium3-3_4-0
+%package -n libapertium3-3_5-1
 Summary: Shared library for apertium
 Group: Development/Libraries
 Provides: libapertium = %{version}-%{release}
 Obsoletes: libapertium < %{version}-%{release}
 Obsoletes: libapertium3 < %{version}-%{release}
 
-%description -n libapertium3-3_4-0
+%description -n libapertium3-3_5-1
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
@@ -97,7 +97,7 @@ make %{?_smp_mflags} || make %{?_smp_mflags} || make
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
-ln -s libapertium3-3.4.so.0.0.0 %{buildroot}/%{_libdir}/libapertium3-3.4.so
+ln -s libapertium3-3.5.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.5.so
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %check
@@ -140,7 +140,7 @@ make check
 %{_datadir}/man/man1/apertium-unformat.*
 %{_datadir}/man/man1/apertium-utils-fixlatex.*
 
-%files -n libapertium3-3_4-0
+%files -n libapertium3-3_5-1
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -172,9 +172,9 @@ make check
 
 %files -n apertium-all-devel
 
-%post -n libapertium3-3_4-0 -p /sbin/ldconfig
+%post -n libapertium3-3_5-1 -p /sbin/ldconfig
 
-%postun -n libapertium3-3_4-0 -p /sbin/ldconfig
+%postun -n libapertium3-3_5-1 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0

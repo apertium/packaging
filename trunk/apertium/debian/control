@@ -13,11 +13,11 @@ Build-Depends: autoconf,
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils (>= 2.6.24),
-               lttoolbox-dev (>= 3.3.3~r68466),
+               lttoolbox-dev (>= 3.4.0~r83591),
                pkg-config (>= 0.20),
                python3,
                xsltproc (>= 1.1.16)
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.git
@@ -25,7 +25,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.gi
 Package: apertium
 Architecture: any
 Depends: libxml2-utils (>= 2.6.24),
-         lttoolbox (>= 3.3.3~r68466),
+         lttoolbox (>= 3.4.0~r83591),
          xsltproc (>= 1.1.16),
          ${misc:Depends},
          ${shlibs:Depends}
@@ -47,7 +47,7 @@ Description: Shallow-transfer machine translation engine
  systems for a variety of related-language pairs simply providing
  the linguistic data needed in the right format.
 
-Package: libapertium3-3.4-0
+Package: libapertium3-3.5-1
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
@@ -67,7 +67,7 @@ Architecture: any
 Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
-         lttoolbox-dev (>= 3.3.3~r68466),
+         lttoolbox-dev (>= 3.4.0~r83591),
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libapertium3-dev
@@ -85,11 +85,11 @@ Depends: apertium-dev (= ${binary:Version}),
          apertium-lex-tools (>= 0.1.1~r60994),
          automake,
          build-essential,
-         cg3 (>= 1.0.0~r12203),
+         cg3 (>= 1.0.0~r12254),
          gawk,
-         hfst (>= 3.12.2~r3289),
-         libcg3-dev (>= 1.0.0~r12203),
-         libhfst-dev (>= 3.12.2~r3289),
+         hfst (>= 3.13.0~r3461),
+         libcg3-dev (>= 1.0.0~r12254),
+         libhfst-dev (>= 3.13.0~r3461),
          libtool,
          locales,
          pkg-config,

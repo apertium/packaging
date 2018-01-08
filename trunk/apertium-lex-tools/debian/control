@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.0~),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -12,7 +12,7 @@ Build-Depends: apertium-dev (>= 3.4),
                libxml2-utils,
                pkg-config (>= 0.21),
                zlib1g-dev
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: http://apertium.org/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-lex-tools.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-lex-tools.git

@@ -14,7 +14,7 @@ Build-Depends: autoconf,
                libtool,
                pkg-config,
                zip
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: https://github.com/hfst/hfst-ospell
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst-ospell.git

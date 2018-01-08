@@ -10,7 +10,7 @@ Build-Depends: bison,
                libtinfo-dev,
                libtool,
                zlib1g-dev
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: https://code.google.com/p/foma/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/foma.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/foma.git

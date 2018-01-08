@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 9),
                dpkg-dev (>= 1.16.1~),
                python3-dev (>= 3.2),
                sqlite3
-Standards-Version: 4.0.0
+Standards-Version: 4.1.3
 Homepage: http://apertium.org
 Vcs-Git: git://anonscm.debian.org/debian-science/packages/apertium-apy.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-apy.git
