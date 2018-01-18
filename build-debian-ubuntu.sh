@@ -29,7 +29,7 @@ do
 		fi
 
 		echo "Building $DISTRO for $ARCH"
-		timeout 90m cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1 &
+		timeout 90m cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
 		if [[ -n "$2" ]]; then
 			break
 		fi
