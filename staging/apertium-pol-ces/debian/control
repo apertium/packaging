@@ -1,4 +1,4 @@
-Source: apertium-pl-cs
+Source: apertium-pol-ces
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
@@ -13,14 +13,14 @@ Build-Depends: apertium-dev (>= 3.4),
                pkg-config (>= 0.21)
 Standards-Version: 4.1.3
 Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pl-cs.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pl-cs.git
+Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pol-ces.git
+Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pol-ces.git
 
-Package: apertium-pl-cs
+Package: apertium-pol-ces
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-cs-pl
-Conflicts: apertium-cs-pl
+Provides: apertium-pl-cs apertium-cs-pl apertium-ces-pol
+Conflicts: apertium-pl-cs apertium-cs-pl apertium-ces-pol
 Description: Apertium translation data for the Polish-Czech pair
  Data package providing Apertium language resources for translating
  between the Polish and Czech languages.
