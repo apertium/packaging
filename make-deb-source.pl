@@ -56,7 +56,6 @@ my %distros = (
 	'stretch' => 'debian',
 	'trusty' => 'ubuntu',
 	'xenial' => 'ubuntu',
-	'zesty' => 'ubuntu',
 	'artful' => 'ubuntu',
 	'bionic' => 'ubuntu',
 );
