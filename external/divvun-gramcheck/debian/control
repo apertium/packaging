@@ -24,6 +24,26 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.g
 
 Package: divvun-gramcheck
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: libxml2-utils, ${misc:Depends}, ${shlibs:Depends}
 Description: Grammar checker tools for Divvun languages
  Helper tools for grammar checking for Divvun languages
+
+Package: libdivvun0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libdivvun0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Provides: libdivvun
+Conflicts: libdivvun
+Replaces: libdivvun
+Description: Runtime for Divvun grammar checker
+ Runtime library for applications using the Divvun grammar checker API.
+
+Package: libdivvun-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libdivvun0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Headers and shared files to develop using the Divvun grammar checker library
+ Development files to use the Divvun grammar checker API.
