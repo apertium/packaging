@@ -8,13 +8,15 @@ Build-Depends: autotools-dev,
                debhelper (>= 9.0.0),
                dh-autoreconf,
                dh-python,
+               gawk,
                hfst-ospell-dev,
                libarchive-dev,
                libcg3-dev,
                libhfst-dev,
                libpugixml-dev,
                libxml2-utils,
-               pkg-config
+               pkg-config,
+               zip
 Standards-Version: 4.1.3
 Homepage: https://github.com/divvun/divvun-gramcheck
 Vcs-Git: https://anonscm.debian.org/collab-maint/divvun-gramcheck.git
