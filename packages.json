@@ -28,6 +28,7 @@
    ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
    ["external/streamparser",    "https://github.com/goavki/streamparser/trunk", "streamparser.py"],
 #   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
+   ["external/divvun-gramcheck", "https://github.com/divvun/divvun-gramcheck/trunk", null, null, "jessie,trusty"],
 
    # Then languages
    ["external/giella-cor",      "https://gtsvn.uit.no/langtech/trunk/langs/cor"],
@@ -119,7 +120,7 @@
    ["nursery/apertium-tat-rus"],
 
    ["staging/apertium-cat-glg"],
-   ["staging/apertium-pol-ces"],
+   ["staging/apertium-pl-cs"],
 
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-arg-cat"],
