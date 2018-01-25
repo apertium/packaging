@@ -7,7 +7,7 @@ rm -fv /var/cache/pbuilder/result/*
 rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
-for DISTRO in jessie sid stretch trusty xenial artful bionic
+for DISTRO in sid jessie stretch buster trusty xenial zesty artful bionic
 do
 	if [[ "$3" == *",$DISTRO,"* ]]; then
 		echo "Skipping $DISTRO"
@@ -29,7 +29,7 @@ do
 		fi
 
 		echo "Building $DISTRO for $ARCH"
-		timeout 90m cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1
+		timeout 90m cowbuilder --build *$DISTRO*.dsc --basepath /var/cache/pbuilder/base-$DISTRO-$ARCH.cow/ >>/home/apertium/public_html/apt/logs/$1/$DISTRO-$ARCH.log 2>&1 &
 		if [[ -n "$2" ]]; then
 			break
 		fi

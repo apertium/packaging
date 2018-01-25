@@ -51,11 +51,13 @@ else {
 }
 
 my %distros = (
-	'jessie' => 'debian',
 	'sid' => 'debian',
+	'jessie' => 'debian',
 	'stretch' => 'debian',
+	'buster' => 'debian',
 	'trusty' => 'ubuntu',
 	'xenial' => 'ubuntu',
+	'zesty' => 'ubuntu',
 	'artful' => 'ubuntu',
 	'bionic' => 'ubuntu',
 );

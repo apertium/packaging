@@ -13,7 +13,6 @@ Build-Depends: autoconf,
                dh-python,
                dpkg-dev (>= 1.16.1~),
                flex,
-               libicu-dev,
                libreadline-dev,
                libtool,
                python-all-dev,
@@ -21,7 +20,7 @@ Build-Depends: autoconf,
                swig,
                zlib1g-dev
 Standards-Version: 4.1.3
-Homepage: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+Homepage: https://hfst.github.io/
 Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/hfst.git
 

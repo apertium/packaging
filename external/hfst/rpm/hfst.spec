@@ -14,7 +14,6 @@ BuildRequires: automake
 BuildRequires: bison
 BuildRequires: flex
 BuildRequires: gcc-c++
-BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: swig
 BuildRequires: pkgconfig
@@ -78,7 +77,7 @@ Python3 modules for libhfst
 
 %build
 autoreconf -fi
-%configure --disable-static --with-unicode-handler=ICU --enable-all-tools --with-readline
+%configure --disable-static --enable-all-tools --with-readline
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 %if ! ( 0%{?el6} || 0%{?el7} )
 cd python
