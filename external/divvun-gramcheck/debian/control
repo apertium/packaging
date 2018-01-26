@@ -16,6 +16,8 @@ Build-Depends: autotools-dev,
                libpugixml-dev,
                libxml2-utils,
                pkg-config,
+               python3-all-dev,
+               swig,
                zip
 Standards-Version: 4.1.3
 Homepage: https://github.com/divvun/divvun-gramcheck
@@ -47,3 +49,13 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: libdivvun0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Headers and shared files to develop using the Divvun grammar checker library
  Development files to use the Divvun grammar checker API.
+
+Package: python3-libdivvun
+Architecture: any
+Section: python
+Depends: libdivvun0 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Runtime for Divvun grammar checker (Python 3 module)
+ Python 3 module for applications using the Divvun grammar checker API.

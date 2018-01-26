@@ -31,7 +31,7 @@ my $rop = GetOptions(
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 $ENV{'DEBCONF_NONINTERACTIVE_SEEN'} = 'true';
-$ENV{'DEB_BUILD_OPTIONS'} = 'parallel=2 noddebs';
+$ENV{'DEB_BUILD_OPTIONS'} = 'parallel=4 noddebs';
 #$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
@@ -207,9 +207,8 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'arch-all';
    }
    if ($dry || $is_data eq 'data') {
-      print {$out} "\tdry run\n";
       $is_data = 'data';
-      @$pkg[4] = 'jessie,stretch,buster,trusty,xenial,zesty,artful,bionic';
+      @$pkg[4] = 'jessie,stretch,buster,trusty,xenial,artful,bionic';
    }
    if ($distro) {
       @$pkg[4] = $distro;
