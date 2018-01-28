@@ -13,7 +13,7 @@
    ["external/foma",            "https://github.com/TinoDidriksen/foma/trunk",     "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
-   ["external/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
+#   ["external/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
    ["external/tdc-proof",       "https://github.com/TinoDidriksen/spellers/trunk", "include/shared.hpp", null, "trusty"],
    ["trunk/lttoolbox"],
    ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
