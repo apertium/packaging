@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-po
 Package: apertium-pol-ces
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-pl-cs apertium-cs-pl apertium-ces-pol
-Conflicts: apertium-pl-cs apertium-cs-pl apertium-ces-pol
+Provides:, apertium-pl-cs, apertium-cs-pl, apertium-ces-pol
+Conflicts:, apertium-pl-cs, apertium-cs-pl, apertium-ces-pol
 Description: Apertium translation data for the Polish-Czech pair
  Data package providing Apertium language resources for translating
  between the Polish and Czech languages.

@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-mk
 Package: apertium-mk-bg
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-bg-mk apertium-bul-mkd apertium-mkd-bul
-Conflicts: apertium-bg-mk apertium-bul-mkd apertium-mkd-bul
+Provides:, apertium-bg-mk, apertium-bul-mkd, apertium-mkd-bul
+Conflicts:, apertium-bg-mk, apertium-bul-mkd, apertium-mkd-bul
 Description: Apertium translation data for the Macedonian-Bulgarian pair
  Data package providing Apertium language resources for translating
  between the Macedonian and Bulgarian languages.

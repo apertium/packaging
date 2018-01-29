@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-eo
 Package: apertium-eo-fr
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-fr-eo apertium-fra-epo apertium-epo-fra
-Conflicts: apertium-fr-eo apertium-fra-epo apertium-epo-fra
+Provides:, apertium-fr-eo, apertium-fra-epo, apertium-epo-fra
+Conflicts:, apertium-fr-eo, apertium-fra-epo, apertium-epo-fra
 Description: Apertium translation data for the Esperanto-French pair
  Data package providing Apertium language resources for translating
  between the Esperanto and French languages.

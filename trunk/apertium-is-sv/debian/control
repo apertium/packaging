@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-is
 Package: apertium-is-sv
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-sv-is apertium-swe-isl apertium-isl-swe
-Conflicts: apertium-sv-is apertium-swe-isl apertium-isl-swe
+Provides:, apertium-sv-is, apertium-swe-isl, apertium-isl-swe
+Conflicts:, apertium-sv-is, apertium-swe-isl, apertium-isl-swe
 Description: Apertium translation data for the Icelandic-Swedish pair
  Data package providing Apertium language resources for translating
  between the Icelandic and Swedish languages.

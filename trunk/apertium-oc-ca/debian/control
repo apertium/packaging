@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-oc
 Package: apertium-oc-ca
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ca-oc apertium-cat-oci apertium-oci-cat
-Conflicts: apertium-ca-oc apertium-cat-oci apertium-oci-cat
+Provides:, apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
+Conflicts:, apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
 Description: Apertium translation data for the Occitan-Catalan pair
  Data package providing Apertium language resources for translating
  between the Occitan and Catalan languages.

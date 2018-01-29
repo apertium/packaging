@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-en
 Package: apertium-en-ca
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ca-en apertium-cat-eng apertium-eng-cat
-Conflicts: apertium-ca-en apertium-cat-eng apertium-eng-cat
+Provides:, apertium-ca-en, apertium-cat-eng, apertium-eng-cat
+Conflicts:, apertium-ca-en, apertium-cat-eng, apertium-eng-cat
 Description: Apertium translation data for the English-Catalan pair
  Data package providing Apertium language resources for translating
  between the English and Catalan languages.

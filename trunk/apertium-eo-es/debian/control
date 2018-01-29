@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-eo
 Package: apertium-eo-es
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-es-eo apertium-spa-epo apertium-epo-spa
-Conflicts: apertium-es-eo apertium-spa-epo apertium-epo-spa
+Provides:, apertium-es-eo, apertium-spa-epo, apertium-epo-spa
+Conflicts:, apertium-es-eo, apertium-spa-epo, apertium-epo-spa
 Description: Apertium translation data for the Esperanto-Spanish pair
  Data package providing Apertium language resources for translating
  between the Esperanto and Spanish languages.

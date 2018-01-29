@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-eo
 Package: apertium-eo-ca
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ca-eo apertium-cat-epo apertium-epo-cat
-Conflicts: apertium-ca-eo apertium-cat-epo apertium-epo-cat
+Provides:, apertium-ca-eo, apertium-cat-epo, apertium-epo-cat
+Conflicts:, apertium-ca-eo, apertium-cat-epo, apertium-epo-cat
 Description: Apertium translation data for the Esperanto-Catalan pair
  Data package providing Apertium language resources for translating
  between the Esperanto and Catalan languages.

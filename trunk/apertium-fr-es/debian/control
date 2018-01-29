@@ -22,8 +22,8 @@ Depends: apertium (>= 3.4),
          apertium-lex-tools,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-es-fr apertium-spa-fra apertium-fra-spa
-Conflicts: apertium-es-fr apertium-spa-fra apertium-fra-spa
+Provides:, apertium-es-fr, apertium-spa-fra, apertium-fra-spa
+Conflicts:, apertium-es-fr, apertium-spa-fra, apertium-fra-spa
 Description: Apertium translation data for the French-Spanish pair
  Data package providing Apertium language resources for translating
  between the French and Spanish languages.

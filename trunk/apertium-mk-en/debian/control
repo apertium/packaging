@@ -19,8 +19,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-mk
 Package: apertium-mk-en
 Architecture: all
 Depends: apertium (>= 3.4), cg3, ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-en-mk apertium-eng-mkd apertium-mkd-eng
-Conflicts: apertium-en-mk apertium-eng-mkd apertium-mkd-eng
+Provides:, apertium-en-mk, apertium-eng-mkd, apertium-mkd-eng
+Conflicts:, apertium-en-mk, apertium-eng-mkd, apertium-mkd-eng
 Description: Apertium translation data for the Macedonian-English pair
  Data package providing Apertium language resources for translating
  between the Macedonian and English languages.

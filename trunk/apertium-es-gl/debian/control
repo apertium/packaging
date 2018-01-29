@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-es
 Package: apertium-es-gl
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-gl-es apertium-glg-spa apertium-spa-glg
-Conflicts: apertium-gl-es apertium-glg-spa apertium-spa-glg
+Provides:, apertium-gl-es, apertium-glg-spa, apertium-spa-glg
+Conflicts:, apertium-gl-es, apertium-glg-spa, apertium-spa-glg
 Description: Apertium translation data for the Spanish-Galician pair
  Data package providing Apertium language resources for translating
  between the Spanish and Galician languages.

@@ -18,8 +18,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-pt
 Package: apertium-pt-ca
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ca-pt apertium-cat-por apertium-por-cat
-Conflicts: apertium-ca-pt apertium-cat-por apertium-por-cat
+Provides:, apertium-ca-pt, apertium-cat-por, apertium-por-cat
+Conflicts:, apertium-ca-pt, apertium-cat-por, apertium-por-cat
 Description: Apertium translation data for the Portuguese-Catalan pair
  Data package providing Apertium language resources for translating
  between the Portuguese and Catalan languages.
