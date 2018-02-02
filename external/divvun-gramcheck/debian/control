@@ -1,5 +1,5 @@
 Source: divvun-gramcheck
-Section: libs
+Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,

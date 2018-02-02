@@ -73,6 +73,7 @@ make check
 %doc AUTHORS NEWS README README.org
 %{_bindir}/*
 %{_datadir}/man/man1/*
+%{_datadir}/divvun-gramcheck
 
 %files -n libdivvun0
 %defattr(-,root,root)
