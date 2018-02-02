@@ -89,6 +89,7 @@ cd ..
 
 %install
 make DESTDIR=%{buildroot} install
+sed -i 's/@GLIB_CFLAGS@//' %{buildroot}/%{_libdir}/pkgconfig/hfst.pc
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{python_sitelib}/*.py[co]
 cd python
