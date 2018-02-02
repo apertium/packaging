@@ -16,12 +16,12 @@ case $P in
 	*Red*Hat*Enterprise*Linux*7*|*Scientific*Linux*7*|*CentOS*7*)
 		DISTRO="CentOS_7"
 		;;
-	*Fedora*25*)
-		DISTRO="Fedora_25"
-		TOOL=dnf
-		;;
 	*Fedora*26*)
 		DISTRO="Fedora_26"
+		TOOL=dnf
+		;;
+	*Fedora*27*)
+		DISTRO="Fedora_27"
 		TOOL=dnf
 		;;
 	*openSUSE*Leap*42.2*)

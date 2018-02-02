@@ -12,7 +12,6 @@ BuildRequires: automake
 BuildRequires: gcc-c++
 BuildRequires: libtool
 BuildRequires: pkgconfig
-BuildRequires: hfst
 BuildRequires: libarchive-devel
 BuildRequires: libicu-devel
 BuildRequires: zip
