@@ -113,6 +113,7 @@
    ["incubator/apertium-tat-eng"],
 
    ["nursery/apertium-eng-deu"],
+   ["nursery/apertium-kaz-kir"],
 #   ["nursery/apertium-sme-fin"],
    ["nursery/apertium-sme-sma"],
    ["nursery/apertium-sme-smj"],
