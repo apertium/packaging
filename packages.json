@@ -108,7 +108,6 @@
 
    # Finally, language pairs
    ["incubator/apertium-eng-ita"],
-   ["incubator/apertium-fao-nor"],
    ["incubator/apertium-fin-est"],
    ["incubator/apertium-tat-eng"],
 
@@ -121,6 +120,7 @@
    ["nursery/apertium-tat-rus"],
 
    ["staging/apertium-cat-glg"],
+   ["staging/apertium-fao-nor"],
    ["staging/apertium-pl-cs"],
 
    ["trunk/apertium-af-nl"],
