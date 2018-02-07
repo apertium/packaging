@@ -89,7 +89,19 @@ chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
-print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+if ($opts{u} =~ m@^(https://github.com/[^/]+/[^/]+/)@i) {
+   my $ref = `svn pg git-commit --revprop $opts{rev} $opts{u}/`;
+   chomp($ref);
+   print `git clone '$1' '$pkname-$opts{v}' 2>&1`;
+   chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
+   print `git reset --hard '$ref' 2>&1`;
+   print `git submodule update --init --recursive 2>&1`;
+   `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+   chdir '..' or die "Could not change folder: $!\n";
+}
+else {
+   print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+}
 if (@excludes) {
    chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
    my @files = split(/\n/, `find . ! -type d`);
@@ -112,7 +124,7 @@ if (@excludes) {
          }
       }
    }
-   while (my $o = `find . -type d -empty | LC_ALL=C sort -r | xargs -rn1 rm -rfv 2>&1`) {
+   while (my $o = `find . -type d -empty -print0 | LC_ALL=C sort -zr | xargs -0rn1 rm -rfv 2>&1`) {
       print $o;
    }
    chdir ".." or die "Could not change folder: $!\n";
@@ -139,7 +151,7 @@ print `cp -av '$path/debian' '$pkname-$opts{v}/'`;
 #print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
 if (!$opts{auto}) {
-   print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* | xargs -rn1 rm -fv`;
+   print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* -print0 | xargs -0rn1 rm -fv`;
 }
 
 # dpkg tools are not happy if PERL_UNICODE is on

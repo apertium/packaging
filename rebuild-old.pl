@@ -188,7 +188,7 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tdistv: $distv\n";
 
    # Create the source packages
-   my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' $rev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
+   my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' --rev $newrev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
    if (@$pkg[3]) {
       $cli .= " -r '@$pkg[3]'";
    }
