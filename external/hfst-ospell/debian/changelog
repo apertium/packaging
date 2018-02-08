@@ -1,3 +1,9 @@
+hfst-ospell (0.5.0~r357-1) unstable; urgency=low
+
+  * Updated to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 07 Feb 2018 16:10:05 +0000
+
 hfst-ospell (0.4.5~r343-1) unstable; urgency=medium
 
   [ Tino Didriksen ]

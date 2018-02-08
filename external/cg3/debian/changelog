@@ -1,3 +1,9 @@
+cg3 (1.1.2~r12577-1) unstable; urgency=low
+
+  * Updated to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 07 Feb 2018 16:10:05 +0000
+
 cg3 (1.0.0~r12254-1) unstable; urgency=low
 
   * Updated to latest upstream release.

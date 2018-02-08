@@ -1,3 +1,9 @@
+giella-sma (0.1.0~r163306-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 07 Feb 2018 16:10:05 +0000
+
 giella-sma (0.0.20110617~r145304-1) experimental; urgency=low
 
   * Initial release
