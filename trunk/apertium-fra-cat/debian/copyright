@@ -2,11 +2,15 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2005, Universitat d'Alacant, (Transducens group)
-           2007, Eleka Ingenieritza Linguistikoa S.L.
-                 Prompsit Language Engineering S.L.
-           2009, Jimmy O'Regan
-           2015, Francis M. Tyers <ftyers@prompsit.com>
+Copyright:      2005, Universitat d'Alacant, (Transducens group)
+                2007, Eleka Ingenieritza Linguistikoa S.L.
+                      Prompsit Language Engineering S.L.
+                2009, Jimmy O'Regan
+           2017-2018, Hèctor Alòs i Font <hectoralos@gmail.com>
+           2015-2018, Francis M. Tyers <ftyers@prompsit.com>
+           2017-2018, Xavi Ivars <xavi.ivars@gmail.com>
+                2017, Bernard Chardonneau <bechapertium@free.fr>
+                2017, Kevin Brubeck Unhammer <unhammer@fsfe.org>
 License: GPL-2+
 
 Files: filter.xsl

@@ -317,7 +317,7 @@ foreach my $pkg (@$pkgs) {
       my $subject = "@$pkg[0] failed $ENV{BUILDTYPE} build";
       # Don't send individual emails if this is a single package build
       if (!$ARGV[0] && $cc ne '') {
-         `cat $logpath/rebuild.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
+         `cat $logpath/rebuild.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
       goto CLEANUP;
    }
@@ -389,7 +389,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `cat /tmp/rebuild.$$.log | mail -s '$subject' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   `cat /tmp/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {

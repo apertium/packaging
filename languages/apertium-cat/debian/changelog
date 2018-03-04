@@ -1,3 +1,9 @@
+apertium-cat (2.4.0~r84327-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+
 apertium-cat (2.3.1~r82994-1) unstable; urgency=low
 
   * Update to latest upstream release.

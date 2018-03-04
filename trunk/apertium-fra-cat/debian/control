@@ -4,10 +4,11 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-cat (>= 2.1.0~r78615),
+Build-Depends: apertium-cat (>= 2.4.0~),
                apertium-dev (>= 3.4),
-               apertium-fra (>= 1.1.0~r78695),
+               apertium-fra (>= 1.2.0~),
                apertium-lex-tools,
+               apertium-separable,
                autotools-dev,
                cg3,
                debhelper (>= 9),
@@ -24,21 +25,12 @@ Package: apertium-fra-cat
 Architecture: all
 Depends: apertium (>= 3.4),
          apertium-lex-tools,
+         apertium-separable,
          cg3,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-cat-fra
-Replaces: apertium-fr-ca (<< 1.1.0~)
-Breaks: apertium-fr-ca (<< 1.1.0~)
+Provides: apertium-cat-fra, apertium-fr-ca, apertium-ca-fr
+Conflicts: apertium-cat-fra, apertium-fr-ca, apertium-ca-fr
 Description: Apertium translation data for the French-Catalan pair
  Data package providing Apertium language resources for translating
  between the French and Catalan languages.
-
-Package: apertium-fr-ca
-Architecture: all
-Depends: apertium-fra-cat (= ${binary:Version}), ${misc:Depends}
-Priority: extra
-Section: oldlibs
-Provides: apertium-ca-fr
-Description: Transitional dummy package for apertium-fra-cat
- This is a transitional dummy package. It can safely be removed.
