@@ -12,7 +12,7 @@ Standards-Version: 4.1.3
 Section: libs
 Homepage: http://voikko.puimula.org/
 Vcs-Git: https://anonscm.debian.org/collab-maint/libvoikko.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/libvoikko.git;a=summary
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/libvoikko.git;a=summary
 
 Package: libvoikko-dev
 Section: libdevel
