@@ -1,14 +1,24 @@
 apertium-cat (2.4.0~r84327-1) unstable; urgency=low
 
   * Update to latest upstream release.
+  * Undo debhelper 11 in favour of 9.
 
  -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
 
 apertium-cat (2.3.1~r82994-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Oct 2017 13:02:44 +0200
+  [ Kartik Mistry ]
+  * Bumped dh compat to 11.
+  * debian/control:
+    + Updated Standards-Version to 4.1.3.
+    + Removed Build-Deps of autools-dev, dh-autoreeonf.
+  * debian/rules:
+    + Removed obsolete --with autoreconf sequence.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 09 Jan 2018 21:00:00 +0530
 
 apertium-cat (2.3.0~r82237-1) unstable; urgency=low
 

@@ -1,6 +1,7 @@
 apertium (3.5.0~r84331-1) unstable; urgency=low
 
   * Update to latest upstream
+  * Undo debhelper 11 in favour of 9
 
  -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
 
