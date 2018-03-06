@@ -24,7 +24,8 @@ Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium.gi
 
 Package: apertium
 Architecture: any
-Depends: libxml2-utils (>= 2.6.24),
+Depends: libapertium3-3.5-1 (= ${binary:Version}),
+         libxml2-utils (>= 2.6.24),
          lttoolbox (>= 3.4.0~r83591),
          xsltproc (>= 1.1.16),
          ${misc:Depends},

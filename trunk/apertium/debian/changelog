@@ -1,3 +1,9 @@
+apertium (3.5.0~r84331-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+
 apertium (3.4.2~r68466-4) unstable; urgency=medium
 
   * debian/patches/00-parallel-ftbfs.patch:

@@ -1,8 +1,18 @@
-apertium-lex-tools (0.1.1~r66150-1) unstable; urgency=low
+apertium-lex-tools (0.2.0~r84344-1) unstable; urgency=low
 
   * Update to latest from svn.
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2016 15:01:01 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+
+apertium-lex-tools (0.1.1~r66150-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest from svn.
+  * debian/control:
+    + Updated Build-deps.
+    + Updated Standards-Version to 3.9.8
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 09 Jun 2016 19:34:38 +0530
 
 apertium-lex-tools (0.1.1~r60994-2) unstable; urgency=low
 

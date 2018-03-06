@@ -13,10 +13,6 @@ Copyright:      2005, Universitat d'Alacant, (Transducens group)
                 2017, Kevin Brubeck Unhammer <unhammer@fsfe.org>
 License: GPL-2+
 
-Files: filter.xsl
-Copyright: 2005, Universitat d'Alacant / Universidad de Alicante
-License: GPL-2
-
 Files: autogen.sh
 Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
 License: GPL-2

@@ -2,7 +2,17 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://apertium.org/
 
 Files: *
-Copyright: 2010-2011, Francis Tyers <ftyers@dlsi.ua.es>
+Copyright: 2015-2018, Tino Didriksen <mail@tinodidriksen.com>
+           2011-2017, Francis M. Tyers <ftyers@prompsit.com>
+                2017, Tommi Pirinen <flammie@iki.fi>
+           2012-2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2016, Xavi Ivars <xavi.ivars@gmail.com>
+           2012-2013, Filip Petkovski <filpetkovski@gmail.com>
+                2013, Sjur Nørstebø Moshagen <sjur.n.moshagen@uit.no>
+                2012, Trond Trosterud <trond.trosterud@hum.uit.no>
+                2011, Daniel Huang <dtvrij74@gmail.com>
+License: GPL-3
+
 License: GPL-3
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -50,6 +60,8 @@ License: GPL-2+
 
 Files: debian/*
 Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-3+
+
 License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by

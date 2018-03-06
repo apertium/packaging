@@ -4,12 +4,12 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.0~),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
                libxml2-dev,
-               lttoolbox-dev,
+               lttoolbox-dev (>= 3.4.0~),
                pkg-config (>= 0.21),
                zlib1g-dev
 Standards-Version: 4.1.3

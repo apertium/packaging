@@ -1,8 +1,9 @@
-lttoolbox (3.4.0~r83591-1) unstable; urgency=low
+lttoolbox (3.4.0~r84331-1) unstable; urgency=low
 
   * Update to latest upstream
+  * Version bump, so undo the g++-5 renaming
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 07 Jan 2018 15:00:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
 
 lttoolbox (3.3.3~r68466-2) unstable; urgency=low
 
