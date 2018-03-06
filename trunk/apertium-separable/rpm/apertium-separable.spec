@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: Reordering separable/discontiguous multiwords
 Group: Development/Tools
 License: GPL-3.0+
-URL: http://apertium.org/
+URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: autoconf

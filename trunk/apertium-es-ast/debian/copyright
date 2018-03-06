@@ -1,5 +1,5 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: http://apertium.org/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://apertium.org/
 
 Files: *
 Copyright: 2008-2010, Universidá d'Uviéu (Equipu d’Investigación Eslema / Dptos. de Filoloxía Española ya Informática, http://di098.edv.uniovi.es/apertium/comun/nos.php)

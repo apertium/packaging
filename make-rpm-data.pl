@@ -116,7 +116,7 @@ Release: $opts{'dv'}\%{?dist}
 Summary: Autopkg of $pkname
 Group: Development/Tools
 License: GPL-3.0+
-URL: http://apertium.org/
+URL: https://apertium.org/
 Source0: \%{name}_\%{version}.tar.bz2
 BuildArch: noarch
 

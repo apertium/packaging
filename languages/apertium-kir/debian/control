@@ -16,9 +16,9 @@ Build-Depends: apertium-dev (>= 3.4),
                pkg-config (>= 0.21),
                zip
 Standards-Version: 4.1.3
-Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/apertium-kir.git
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-kir.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-kir.git
 
 Package: apertium-kir
 Architecture: all

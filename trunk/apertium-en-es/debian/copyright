@@ -1,5 +1,5 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: http://apertium.org/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://apertium.org/
 
 Files: *
 Copyright: 2008, Universitat d'Alacant (Transducens group)

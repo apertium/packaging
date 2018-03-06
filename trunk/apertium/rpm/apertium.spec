@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: Shallow-transfer machine translation engine
 Group: Development/Tools
 License: GPL-2.0+
-URL: http://apertium.org/
+URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
 Requires: lttoolbox >= 3.4.0

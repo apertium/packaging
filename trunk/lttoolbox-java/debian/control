@@ -10,9 +10,9 @@ Build-Depends: ant,
                devscripts,
                default-jdk
 Standards-Version: 4.1.3
-Homepage: http://apertium.org/
-Vcs-Git: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox-java.git
-Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/lttoolbox-java.git
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/lttoolbox-java.git
+Vcs-Browser: https://salsa.debian.org/science-team/lttoolbox-java.git
 
 Package: lttoolbox-java
 Architecture: all
