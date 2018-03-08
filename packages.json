@@ -28,7 +28,7 @@
    ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
    ["external/streamparser",    "https://github.com/goavki/streamparser/trunk", "streamparser.py"],
 #   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
-   ["external/divvun-gramcheck", "https://github.com/divvun/divvun-gramcheck/trunk", null, null, "jessie,trusty"],
+   ["external/divvun-gramcheck", "https://github.com/divvun/libdivvun/trunk", null, null, "jessie,trusty"],
 
    # Then languages
    ["external/giella-cor",      "https://gtsvn.uit.no/langtech/trunk/langs/cor"],
