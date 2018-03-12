@@ -18,9 +18,12 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-en-es.git
 
 Package: apertium-en-es
 Architecture: all
-Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides:, apertium-es-en, apertium-spa-eng, apertium-eng-spa
-Conflicts:, apertium-es-en, apertium-spa-eng, apertium-eng-spa
+Depends: apertium (>= 3.4),
+         apertium-lex-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-eng-spa, apertium-es-en, apertium-spa-eng
+Conflicts: apertium-eng-spa, apertium-es-en, apertium-spa-eng
 Description: Apertium translation data for the English-Spanish pair
  Data package providing Apertium language resources for translating
  between the English and Spanish languages.
