@@ -12,38 +12,68 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+use File::Copy;
 use Getopt::Long;
 my %opts = (
-	'url' => 'http://svn.code.sf.net/p/apertium/svn/trunk/apertium',
+	'url' => 'https://github.com/apertium/apertium',
 	'file' => 'configure.ac',
-	'rev' => '',
+	'rev' => 'HEAD',
 );
 GetOptions(
 	'u|url=s' => \$opts{'url'},
 	'f|file=s' => \$opts{'file'},
-	'rev=i' => \$opts{'rev'},
+	'rev=s' => \$opts{'rev'},
 );
-
-if ($opts{rev} && $opts{rev} > 0) {
-   $opts{rev} = '-r'.$opts{rev};
-}
-else {
-   $opts{rev} = '';
-}
 
 print STDERR "Getting version quad from $opts{url}/$opts{file}\n";
 
-chdir('/tmp');
-`svn export $opts{rev} $opts{url}/$opts{file} version.$$.tmp >&2`;
+my $rawrev = '';
+my $revision = '';
+my $srcdate = '';
+
+if ($opts{'url'} =~ m@^https://github.com/@) {
+   my ($pkg) = ($opts{'url'} =~ m@/([^/]+)$@);
+   chdir('/home/apertium/public_html/git');
+   if (! -s "${pkg}.git") {
+      print STDERR `git clone --mirror '$opts{url}' 2>&1`;
+      print STDERR `chown -R apertium:apertium '${pkg}.git'`;
+   }
+
+   chdir("${pkg}.git") or die $!;
+   print STDERR `git remote update -p`;
+
+   chdir('/misc/git') or die $!;
+   `rm -rf '${pkg}.git'`;
+   print STDERR `git clone --shallow-submodules /home/apertium/public_html/git/${pkg}.git ${pkg}.git`;
+
+   chdir("${pkg}.git") or die $!;
+   print STDERR `git reset --hard '$opts{rev}'`;
+   my $logline = `git log '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
+   ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
+   $revision = '+g'.(`git rev-list --count --first-parent '$opts{rev}'` + 0).'~'.substr($rawrev, 0, 8);
+   if ($opts{'rev'} ne 'HEAD') {
+      $revision = '';
+   }
+
+   copy($opts{'file'}, "/tmp/version.$$.tmp");
+   chdir('/tmp') or die $!;
+}
+else {
+   chdir('/tmp') or die $!;
+   `svn export -r$opts{rev} $opts{url}/$opts{file} version.$$.tmp >&2`;
+   my $logline = `svn info -r$opts{rev} $opts{url}`;
+   ($rawrev) = ($logline =~ m@Last Changed Rev: (\d+)@);
+   ($srcdate) = ($logline =~ m@Last Changed Date: ([^)]+) \(@);
+   $revision = '+s'.$rawrev;
+}
+
 if (!(-s "version.$$.tmp")) {
-   die "Failed to svn export $opts{file} from $opts{url}!\n";
+   die "Failed to git/svn export $opts{file} from $opts{url}!\n";
 }
 
 my $major = 0;
 my $minor = 0;
 my $patch = 0;
-my $logline = `svn log $opts{rev} -q -l 1 $opts{url} | grep '^r'`;
-my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 {
 	local $/ = undef;
 	open FILE, "version.$$.tmp" or die "Could not open version.$$.tmp: $!\n";
@@ -89,4 +119,4 @@ my ($revision,$srcdate) = ($logline =~ m@^r(\d+) \| [^|]+\| ([^(]+)@);
 
 unlink("version.$$.tmp");
 
-print "$major.$minor.$patch~r$revision\t$srcdate\n";
+print "$rawrev\t$major.$minor.$patch$revision\t$srcdate\n";

@@ -14,39 +14,27 @@ use open qw( :encoding(UTF-8) :std );
 
 use Getopt::Long;
 my %opts = (
-   'u' => 'http://svn.code.sf.net/p/apertium/svn/trunk/apertium',
-   'r' => '',
+   'u' => 'https://github.com/apertium/apertium',
    'p' => 'trunk/apertium',
    'v' => '0.0.0.0',
 	'm' => 'Tino Didriksen <tino@didriksen.cc>',
 	'dv' => 1,
-	'rev' => '',
+	'rev' => 'HEAD',
 	'auto' => 1,
 	'oscp' => $ENV{'BUILDTYPE'} || 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
-	'r=s' => \$opts{'r'},
 	'p=s' => \$opts{'p'},
 	'v=s' => \$opts{'v'},
 	'm=s' => \$opts{'m'},
 	'distv=i' => \$opts{'dv'},
-	'rev=i' => \$opts{'rev'},
+	'rev=s' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
 	'oscp=s' => \$opts{'oscp'},
 );
 
-if ($opts{r} eq '') {
-   $opts{r} = 'http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.$opts{p};
-}
-if ($opts{rev} && $opts{rev} > 0) {
-   $opts{rev} = '-r'.$opts{rev};
-}
-else {
-   $opts{rev} = '';
-}
-
-$opts{'v'} =~ s@~@.@g;
+$opts{'v'} =~ s@[+~]@.@g;
 
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
@@ -148,7 +136,7 @@ if ($opts{auto}) {
    $spec .= <<CHLOG;
 \%changelog
 * $date $opts{'m'} $opts{'v'}-$opts{'dv'}
-- Automatic build - see changelog via: svn log $opts{u}/
+- Automatic build - see changelog at $opts{u}/
 
 CHLOG
 }

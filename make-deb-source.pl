@@ -14,8 +14,7 @@ use open qw( :encoding(UTF-8) :std );
 
 use Getopt::Long;
 my %opts = (
-   'u' => 'http://svn.code.sf.net/p/apertium/svn/trunk/apertium',
-   'r' => '',
+   'u' => 'https://github.com/apertium/apertium',
    'p' => 'trunk/apertium',
    'v' => '0.0.0.0',
    'd' => '0001-01-01 00:00:00 +0000',
@@ -23,12 +22,11 @@ my %opts = (
 	'e' => 'Tino Didriksen <tino@didriksen.cc>',
 	'dv' => 1,
 	'fv' => 1,
-	'rev' => '',
+	'rev' => 'HEAD',
 	'auto' => 1,
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
-	'r=s' => \$opts{'r'},
 	'p=s' => \$opts{'p'},
 	'v=s' => \$opts{'v'},
 	'd=s' => \$opts{'d'},
@@ -36,19 +34,9 @@ GetOptions(
 	'e=s' => \$opts{'e'},
 	'distv=i' => \$opts{'dv'},
 	'flavv=i' => \$opts{'fv'},
-	'rev=i' => \$opts{'rev'},
+	'rev=s' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
 );
-
-if ($opts{r} eq '') {
-   $opts{r} = 'http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.$opts{p};
-}
-if ($opts{rev} && $opts{rev} > 0) {
-   $opts{rev} = '-r'.$opts{rev};
-}
-else {
-   $opts{rev} = '';
-}
 
 my %distros = (
 	'sid' => 'debian',
@@ -89,18 +77,17 @@ chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
-if ($opts{u} =~ m@^(https://github.com/[^/]+/[^/]+/)@i) {
-   my $ref = `svn pg git-commit --revprop $opts{rev} $opts{u}/`;
-   chomp($ref);
-   print `git clone '$1' '$pkname-$opts{v}' 2>&1`;
-   chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
-   print `git reset --hard '$ref' 2>&1`;
-   print `git submodule update --init --recursive 2>&1`;
-   `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
-   chdir '..' or die "Could not change folder: $!\n";
+if ($opts{'u'} =~ m@^https://github.com/@) {
+   my ($pkg) = ($opts{'u'} =~ m@/([^/]+)$@);
+   chdir("/misc/git/${pkg}.git") or die $!;
+   print `git submodule update --init --depth 1 --recursive`;
+   print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+   chdir('..');
+   print `cp -av '${pkg}.git' '/tmp/autopkg.$$/$pkname-$opts{v}'`;
+   chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 }
 else {
-   print `svn export $opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+   print `svn export -r$opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
 }
 if (@excludes) {
    chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
@@ -132,7 +119,7 @@ if (@excludes) {
 
 # RPM tar.bz2
 my $rv = $opts{v};
-$rv =~ s@~@.@g;
+$rv =~ s@[+~]@.@g;
 `cp -al '$pkname-$opts{v}' '$pkname-$rv'`;
 `find '$pkname-$rv' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$rv' -type d -empty | LC_ALL=C sort >> orig.lst`;
@@ -160,9 +147,6 @@ $ENV{'PERL_UNICODE'} = '';
 foreach my $distro (keys %distros) {
 	my $chver = $opts{v}.'-';
    if ($opts{auto}) {
-      if ($distros{$distro} eq 'ubuntu') {
-         $chver .= "0ubuntu";
-      }
       $chver .= $opts{'dv'}."~".$distro.$opts{'fv'};
       my $chlog = <<CHLOG;
 $pkname ($chver) $distro; urgency=low

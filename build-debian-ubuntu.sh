@@ -2,9 +2,9 @@
 # Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 # Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
 
-mount | grep /var/cache/pbuilder/build/cow. | awk '{print $3}' | xargs -rn1 umount
+#mount | grep /var/cache/pbuilder/build/cow. | awk '{print $3}' | xargs -rn1 umount
 rm -fv /var/cache/pbuilder/result/*
-rm -rf /var/cache/pbuilder/build/cow.*
+#rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
 for DISTRO in sid jessie stretch buster trusty xenial artful bionic

@@ -1,34 +1,33 @@
 [
    # Format:
-   #  Package path, relative to /branches/packaging and /
-   #  Repository root, defaults to http://svn.code.sf.net/p/apertium/svn/
+   #  Package path and name
+   #  Repository root, defaults to https://github.com/apertium
    #  Versioning file, defaults to configure.ac
-   #  Control folder, defaults to http://svn.code.sf.net/p/apertium/svn/branches/packaging/$PKG_PATH
    #  Don't build for, defaults to null
-   # Meaning that for Apertium packages, we only need the first field
+   # Meaning that for most Apertium packages, we only need the first field
 
    # Dependencies first
    ["external/cg3",             "https://visl.sdu.dk/svn/visl/tools/vislcg3/trunk", "src/version.hpp"],
-   ["external/cg3ide",          "https://github.com/GrammarSoft/cg3ide/trunk",        "src/version.hpp"],
-   ["external/foma",            "https://github.com/TinoDidriksen/foma/trunk",     "Makefile"],
+   ["external/cg3ide",          "https://github.com/GrammarSoft/cg3ide",        "src/version.hpp"],
+   ["external/foma",            "https://github.com/TinoDidriksen/foma",     "Makefile"],
    ["external/hfst",            "https://github.com/hfst/hfst/trunk"],
    ["external/hfst-ospell",     "https://github.com/hfst/hfst-ospell/trunk"],
 #   ["external/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
-   ["external/tdc-proof",       "https://github.com/TinoDidriksen/spellers/trunk", "include/shared.hpp", null, "trusty"],
+   ["external/tdc-proof",       "https://github.com/TinoDidriksen/spellers", "include/shared.hpp", "trusty"],
    ["trunk/lttoolbox"],
    ["trunk/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp"],
-   ["trunk/apertium-apy",       "https://github.com/goavki/apertium-apy/trunk", "servlet.py"],
+   ["trunk/apertium-apy",       null, "servlet.py"],
    ["trunk/apertium-separable"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/giella-core"],
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
-   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, null, "jessie,trusty"],
-   ["external/matxin",     "https://github.com/matxin/matxin/trunk"],
-   ["external/streamparser",    "https://github.com/goavki/streamparser/trunk", "streamparser.py"],
+   ["external/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, "jessie,trusty"],
+   ["external/matxin",     "https://github.com/matxin/matxin"],
+   ["external/streamparser",    null, "streamparser.py"],
 #   ["external/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
-   ["external/divvun-gramcheck", "https://github.com/divvun/libdivvun/trunk", null, null, "jessie,trusty"],
+   ["external/divvun-gramcheck", "https://github.com/divvun/libdivvun", null, "jessie,trusty"],
 
    # Then languages
    ["external/giella-cor",      "https://gtsvn.uit.no/langtech/trunk/langs/cor"],
@@ -69,7 +68,7 @@
    ["languages/apertium-eng"],
    ["languages/apertium-eus"],
    ["languages/apertium-fao"],
-   ["languages/apertium-fin", "https://github.com/flammie/apertium-fin/trunk"],
+   ["languages/apertium-fin"],
    ["languages/apertium-fra"],
 #   ["languages/apertium-gla"], # Not buildable
    ["languages/apertium-glg"],

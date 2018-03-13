@@ -12,6 +12,15 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+sub file_get_contents($) {
+   my ($fname) = @_;
+   local $/ = undef;
+   open FILE, $fname or die "Could not open ${fname}: $!\n";
+   my $data = <FILE>;
+   close FILE;
+   return $data;
+}
+
 if (-s '/tmp/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
 }
@@ -52,23 +61,8 @@ if (!(-s 'authors.json')) {
 }
 
 use JSON;
-my $pkgs = ();
-{
-   local $/ = undef;
-   open FILE, 'packages.json' or die "Could not open packages.json: $!\n";
-   my $data = <FILE>;
-   $pkgs = JSON->new->relaxed->decode($data);
-   close FILE;
-}
-
-my $authors = ();
-{
-   local $/ = undef;
-   open FILE, 'authors.json' or die "Could not open authors.json: $!\n";
-   my $data = <FILE>;
-   $authors = JSON->new->relaxed->decode($data);
-   close FILE;
-}
+my $pkgs = JSON->new->relaxed->decode(file_get_contents('packages.json'));
+my $authors = JSON->new->relaxed->decode(file_get_contents('authors.json'));
 
 my %rebuilt = ();
 my %blames = ();
@@ -101,13 +95,19 @@ foreach my $pkg (@$pkgs) {
    my $out = IO::Tee->new($out2, $pkglog);
 
    if (!@$pkg[1]) {
-      @$pkg[1] = 'http://svn.code.sf.net/p/apertium/svn/'.@$pkg[0];
+      my ($path) = (@$pkg[0] =~ m@/([^/]+)$@);
+      @$pkg[1] = 'https://github.com/apertium/'.$path;
    }
    if (!@$pkg[2]) {
       @$pkg[2] = 'configure.ac';
    }
-   if (!@$pkg[4]) {
-      @$pkg[4] = '';
+   if (!@$pkg[3]) {
+      @$pkg[3] = '';
+   }
+
+   $ENV{'BUILD_VCS'} = 'svn';
+   if (@$pkg[1] =~ m@^https://github.com/@) {
+      $ENV{'BUILD_VCS'} = 'git';
    }
 
    print {$out} "\n";
@@ -116,9 +116,12 @@ foreach my $pkg (@$pkgs) {
 
    my $rev = '';
    if ($release) {
-      $rev = `head -n1 @$pkg[0]/debian/changelog | egrep -o '~r[0-9]+' | egrep -o '[0-9]+'`;
+      $rev = `head -n1 @$pkg[0]/debian/changelog`;
       chomp($rev);
-      if (!$rev || $rev eq '' || $rev+0 < 1) {
+      if ($rev =~ m@\([\d.]+\+[gs]([^-)]+)@) {
+         $rev = $1;
+      }
+      else {
          print {$out} "\tmissing release revision: $rev\n";
          next;
       }
@@ -128,8 +131,7 @@ foreach my $pkg (@$pkgs) {
    # Determine latest version and date stamp from the repository
    my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' $rev 2>$logpath/stderr.log`;
    chomp($gv);
-   my ($version,$srcdate) = split(/\t/, $gv);
-   my ($newrev) = ($version =~ m@~r(\d+)$@);
+   my ($newrev,$version,$srcdate) = split(/\t/, $gv);
    if (!$newrev) {
       print {$out} "\tmissing revision: $newrev\n";
       next;
@@ -141,11 +143,11 @@ foreach my $pkg (@$pkgs) {
    if ($pkname =~ m@^lib@) {
       $first = substr($pkname, 0, 4);
    }
-   my $oldversion = '0.0.0~r0';
+   my $oldversion = '0.0.0';
    if (-e "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname") {
       $dir = getcwd();
       chdir("/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/");
-      $oldversion = `dpkg -I \$(ls -1 *~sid*.deb | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+~r[-.0-9]+' | head -n 1`;
+      $oldversion = `dpkg -I \$(ls -1 *~sid*.deb | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+([~+][gsr][-.0-9a-f]+)?' | head -n 1`;
       chomp($oldversion);
       chdir($dir);
    }
@@ -159,8 +161,7 @@ foreach my $pkg (@$pkgs) {
       # Current version is not newer, so check if any dependencies were rebuilt
       # ToDo: This should really check the actual .deb dependencies and files
       # Counter-ToDo: Since .deb packages have no clue about Build-Depends, we'd need to check both anyway, so this is fine for now
-      my $deps = (@$pkg[3]) || ('http://svn.code.sf.net/p/apertium/svn/branches/packaging/'.@$pkg[0]);
-      $deps = `svn cat $deps/debian/control`;
+      my $deps = file_get_contents(@$pkg[0].'/debian/control');
       $deps = join("\n", ($deps =~ m@Build-Depends:(\s*.*?)\n\S@gs));
       foreach my $dep (split(/[,|\n]/, $deps)) {
          $dep =~ s@\([^)]+\)@@g;
@@ -189,9 +190,6 @@ foreach my $pkg (@$pkgs) {
 
    # Create the source packages
    my $cli = "-p '@$pkg[0]' -u '@$pkg[1]' -v '$version' --distv '$distv' -d '$srcdate' --rev $newrev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
-   if (@$pkg[3]) {
-      $cli .= " -r '@$pkg[3]'";
-   }
    print {$out} "\tlaunching rebuild\n";
 
    my $is_data = '';
@@ -208,17 +206,17 @@ foreach my $pkg (@$pkgs) {
    }
    if ($dry || $is_data eq 'data') {
       $is_data = 'data';
-      @$pkg[4] = 'jessie,stretch,buster,trusty,xenial,artful,bionic';
+      @$pkg[3] = 'jessie,stretch,buster,trusty,xenial,artful,bionic';
    }
    if ($distro) {
-      @$pkg[4] = $distro;
+      @$pkg[3] = $distro;
    }
 
    # Build the packages for Debian/Ubuntu
    `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
    copy("/tmp/rules.$$", "@$pkg[0]/debian/rules");
 
-   `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
+   `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[3],' 2>>$logpath/stderr.log >&2`;
    my $failed = '';
    $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($failed);
@@ -292,16 +290,35 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\t\t$fail\n";
       }
 
-      # Determine who was most likely responsible for breaking the build
-      my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+~r(\d+)@);
-      ++$oldrev;
-      # Check that $oldrev is less than newrev, but greater than 1
-      if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev || $hashfail || $depfail) {
+      if ($hashfail || $depfail) {
          goto CLEANUP;
       }
-      my $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
-      chomp($blames);
-      print {$out} "\tblames in revisions $oldrev:$newrev :\n";
+
+      # Determine who was most likely responsible for breaking the build
+      my $blames = '';
+      if (@$pkg[1] =~ m@^https://github.com/@) {
+         my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\+g\d+~([0-9a-f]+)@);
+         if (!$oldrev) {
+            goto CLEANUP;
+         }
+         $dir = getcwd();
+         chdir("/home/apertium/public_html/git/$pkname.git") or die $!;
+         $blames = `git log '--format=format:\%aE\%x0a\%cE' $oldrev..$newrev | sort | uniq`;
+         chomp($blames);
+         print {$out} "\tblames in revisions $oldrev..$newrev :\n";
+         chdir($dir);
+      }
+      else {
+         my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\+s(\d+)@);
+         ++$oldrev;
+         # Check that $oldrev is less than newrev, but greater than 1
+         if (!$oldrev || $oldrev <= 1 || $oldrev >= $newrev) {
+            goto CLEANUP;
+         }
+         $blames = `svn log -q -r$oldrev:$newrev '@$pkg[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
+         chomp($blames);
+         print {$out} "\tblames in revisions $oldrev:$newrev :\n";
+      }
       my $cc = '';
       foreach my $blame (split(/\n/, $blames)) {
          chomp($blame);
@@ -311,6 +328,9 @@ foreach my $pkg (@$pkgs) {
          if (defined $authors->{$blame}) {
             my $who = $authors->{$blame};
             $cc .= " '$who'";
+         }
+         elsif ($blame =~ m/^.+@.+?\..+$/) {
+            $cc .= " '$blame'";
          }
       }
 
@@ -324,7 +344,7 @@ foreach my $pkg (@$pkgs) {
 
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
-   `./reprepro.sh '$pkname' '$is_data' ',@$pkg[4],' 2>>$logpath/stderr.log >&2`;
+   `./reprepro.sh '$pkname' '$is_data' ',@$pkg[3],' 2>>$logpath/stderr.log >&2`;
 
    if (-s "@$pkg[0]/hook.post" && -x "@$pkg[0]/hook.post") {
       `./@$pkg[0]/hook.post >$logpath/hook.post.log 2>&1`;
