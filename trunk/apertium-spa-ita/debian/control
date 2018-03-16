@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.0),
                apertium-ita (>= 0.9.0~r78828),
                apertium-spa (>= 1.0.0~r78827),
                autotools-dev,
@@ -19,7 +19,10 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-ita.git
 
 Package: apertium-spa-ita
 Architecture: all
-Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.5.0),
+         apertium-lex-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-ita-spa
 Conflicts: apertium-ita-spa
 Description: Apertium translation data for the Spanish-Italian pair
