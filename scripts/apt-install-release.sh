@@ -6,7 +6,7 @@ then
 	exit -1
 fi
 
-CADENCE=nightly
+CADENCE=release
 
 echo "Cleaning up old install, if any..."
 rm -fv /etc/apt/trusted.gpg.d/apertium* /etc/apt/preferences.d/apertium* /etc/apt/sources.list.d/apertium*
