@@ -106,8 +106,10 @@ foreach my $pkg (@$pkgs) {
    }
 
    $ENV{'BUILD_VCS'} = 'svn';
-   if (@$pkg[1] =~ m@^https://github.com/@) {
+   my $pkpath = '';
+   if (@$pkg[1] =~ m@^https://github.com/[^/]+/([^/]+)$@) {
       $ENV{'BUILD_VCS'} = 'git';
+      $pkpath = $1;
    }
 
    print {$out} "\n";
@@ -296,13 +298,13 @@ foreach my $pkg (@$pkgs) {
 
       # Determine who was most likely responsible for breaking the build
       my $blames = '';
-      if (@$pkg[1] =~ m@^https://github.com/@) {
+      if ($ENV{'BUILD_VCS'} eq 'git') {
          my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\+g\d+~([0-9a-f]+)@);
          if (!$oldrev) {
             goto CLEANUP;
          }
          $dir = getcwd();
-         chdir("/home/apertium/public_html/git/$pkname.git") or die $!;
+         chdir("/home/apertium/public_html/git/$pkpath.git") or die $!;
          $blames = `git log '--format=format:\%aE\%x0a\%cE' $oldrev..$newrev | sort | uniq`;
          chomp($blames);
          print {$out} "\tblames in revisions $oldrev..$newrev :\n";

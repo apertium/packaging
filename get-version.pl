@@ -31,8 +31,8 @@ my $rawrev = '';
 my $revision = '';
 my $srcdate = '';
 
-if ($opts{'url'} =~ m@^https://github.com/@) {
-   my ($pkg) = ($opts{'url'} =~ m@/([^/]+)$@);
+if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
+   my $pkg = $1;
    chdir('/home/apertium/public_html/git');
    if (! -s "${pkg}.git") {
       print STDERR `git clone --mirror '$opts{url}' 2>&1`;

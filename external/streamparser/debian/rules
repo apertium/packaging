@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 
+export DH_OPTIONS
+export LC_ALL=C.UTF-8
+
 export PYBUILD_NAME=streamparser
 %:
 	dh $@ --with python3 --buildsystem=pybuild

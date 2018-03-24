@@ -77,8 +77,8 @@ chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
-if ($opts{'u'} =~ m@^https://github.com/@) {
-   my ($pkg) = ($opts{'u'} =~ m@/([^/]+)$@);
+if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
+   my $pkg = $1;
    chdir("/misc/git/${pkg}.git") or die $!;
    print `git submodule update --init --depth 1 --recursive || git submodule update --init --depth 100 --recursive`;
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
