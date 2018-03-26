@@ -1,9 +1,20 @@
+apertium (3.5.1-1) unstable; urgency=low
+
+  * Update to latest upstream (Closes: #886361)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 26 Mar 2018 16:07:23 +0200
+
 apertium (3.5.0~r84331-1) unstable; urgency=low
 
-  * Update to latest upstream
-  * Undo debhelper 11 in favour of 9
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+  * Undo debhelper 11 in favour of 9.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+  [ Kartik Mistry ]
+  * debian/control, debian/copyright:
+    + Updated URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 16 Mar 2018 10:19:56 +0530
 
 apertium (3.4.2~r68466-4) unstable; urgency=medium
 
