@@ -25,7 +25,7 @@ my %opts = (
 	'e' => 'Tino Didriksen <tino@didriksen.cc>',
 	'dv' => 1,
 	'fv' => 1,
-	'rev' => '',
+	'rev' => 'HEAD',
 	'auto' => 1,
 	'rpm' => 0,
 );
@@ -34,17 +34,10 @@ GetOptions(
 	'e=s' => \$opts{'e'},
 	'distv=i' => \$opts{'dv'},
 	'flavv=i' => \$opts{'fv'},
-	'rev=i' => \$opts{'rev'},
+	'rev=s' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
 	'rpm' => \$opts{'rpm'},
 );
-
-if ($opts{rev} && $opts{rev} > 0) {
-   $opts{rev} = '--rev '.$opts{rev};
-}
-else {
-   $opts{rev} = '';
-}
 
 use File::Basename;
 my $dir = dirname(__FILE__);
@@ -76,21 +69,19 @@ foreach my $pkg (@$pkgs) {
    }
 
    if (!@$pkg[1]) {
-      @$pkg[1] = 'http://svn.code.sf.net/p/apertium/svn/'.@$pkg[0];
+      my ($path) = (@$pkg[0] =~ m@/([^/]+)$@);
+      @$pkg[1] = 'https://github.com/apertium/'.$path;
    }
    if (!@$pkg[2]) {
       @$pkg[2] = 'configure.ac';
    }
 
    print "Making deb source for @$pkg[0]\n";
-   my $gv = `./get-version.pl $opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
+   my $gv = `./get-version.pl --rev=$opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
    chomp($gv);
    print "$gv\n";
-   my ($version,$srcdate) = split(/\t/, $gv);
-   my $cli = "$opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
-   if (@$pkg[3]) {
-      $cli .= " -r '@$pkg[3]'";
-   }
+   my ($rawrev,$version,$srcdate) = split(/\t/, $gv);
+   my $cli = "--rev=$opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
    print "$cli\n";
    print `./make-deb-source.pl $cli 2>&1`;
    if ($opts{'rpm'}) {

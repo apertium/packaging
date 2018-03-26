@@ -51,9 +51,6 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    my $logline = `git log '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
    $revision = '+g'.(`git rev-list --count --first-parent '$opts{rev}'` + 0).'~'.substr($rawrev, 0, 8);
-   if ($opts{'rev'} ne 'HEAD') {
-      $revision = '';
-   }
 
    copy($opts{'file'}, "/tmp/version.$$.tmp");
    chdir('/tmp') or die $!;
@@ -118,5 +115,9 @@ my $patch = 0;
 }
 
 unlink("version.$$.tmp");
+
+if ($opts{'rev'} ne 'HEAD') {
+   $revision = '';
+}
 
 print "$rawrev\t$major.$minor.$patch$revision\t$srcdate\n";

@@ -123,6 +123,9 @@ foreach my $pkg (@$pkgs) {
       if ($rev =~ m@\([\d.]+\+[gs]([^-)]+)@) {
          $rev = $1;
       }
+      elsif ($rev =~ m@\((\d+\.\d+\.\d+)-\d+@) {
+            $rev = "v$1";
+      }
       else {
          print {$out} "\tmissing release revision: $rev\n";
          next;

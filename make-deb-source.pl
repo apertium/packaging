@@ -120,12 +120,16 @@ if (@excludes) {
 # RPM tar.bz2
 my $rv = $opts{v};
 $rv =~ s@[+~]@.@g;
-`cp -al '$pkname-$opts{v}' '$pkname-$rv'`;
+if ($rv ne $opts{v}) {
+   `cp -al '$pkname-$opts{v}' '$pkname-$rv'`;
+}
 `find '$pkname-$rv' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$rv' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$rv.orig.tar' -T orig.lst`;
 `bzip2 -9c '$pkname\_$rv.orig.tar' > '$pkname\_$rv.orig.tar.bz2'`;
-`rm -rf '$pkname-$rv'`;
+if ($rv ne $opts{v}) {
+   `rm -rf '$pkname-$rv'`;
+}
 
 # Debian tar.bz2
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;
