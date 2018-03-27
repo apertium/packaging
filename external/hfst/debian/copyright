@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 
 Files: *
-Copyright: 2009-2016, Department of Modern Languages, University of Helsinki
+Copyright: 2009-2018, Department of Modern Languages, University of Helsinki
            See AUTHORS for more copyrights.
 License: GPL-3+
 
@@ -25,7 +25,7 @@ License: GPL-3+
 
 Files: libhfst/*
        python/*
-Copyright: 2009-2016, Department of Modern Languages, University of Helsinki
+Copyright: 2009-2018, Department of Modern Languages, University of Helsinki
            See AUTHORS for more copyrights.
 License: LGPL-3+
 

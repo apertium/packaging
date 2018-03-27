@@ -56,8 +56,8 @@ if ($pkname =~ m@^apertium-([a-z]{2,3})$@ || $pkname =~ m@^apertium-([a-z]{2,3})
    }
 }
 
-my $url = 'http://svn.code.sf.net/p/apertium/svn/'.$pkg;
-my $deps = `svn cat $url/configure.ac | ./depends.pl`;
+my $url = 'https://github.com/apertium/'.$pkname;
+my $deps = `svn cat $url/trunk/configure.ac | ./depends.pl`;
 chomp($deps);
 my @deps = split(/\n/, $deps);
 

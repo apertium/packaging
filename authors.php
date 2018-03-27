@@ -3,7 +3,8 @@
 # Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 # Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
 
-# Usage: svn log -q ? | awk '{print $3 "\t" $5}' | authors.php
+# Usage: svn log -q | awk '{print $3 "\t" $5}' | authors.php
+# Usage: git log '--date=format:%Y' '--format=format:%ad%x09%aN <%aE>' | authors.php
 
 $map = file_get_contents(__DIR__.'/authors.json');
 $map = json_decode($map, true);
@@ -12,19 +13,26 @@ $authors = [];
 
 $count = 0;
 while ($line = fgets(STDIN)) {
-	if (!preg_match('@^(\S+)\s(\d+)@u', $line, $m)) {
+	$user = null;
+	$year = 0;
+
+	if (preg_match('@^(\S+)\s(\d+)@u', $line, $m)) {
+		$m[1] = mb_strtolower($m[1]);
+		if (empty($map[$m[1]])) {
+			echo "UNKNOWN: {$m[1]}\n";
+			continue;
+		}
+		$user = $map[$m[1]];
+		$year = intval($m[2]);
+	}
+	else if (preg_match('~^(\d+)\t(.+)$~u', $line, $m)) {
+		$user = $m[2];
+		$year = intval($m[1]);
+	}
+	else {
 		continue;
 	}
 	++$count;
-
-	$m[1] = mb_strtolower($m[1]);
-	if (empty($map[$m[1]])) {
-		echo "UNKNOWN: {$m[1]}\n";
-		continue;
-	}
-
-	$user = $map[$m[1]];
-	$year = intval($m[2]);
 
 	if (empty($authors[$user])) {
 		$authors[$user] = [

@@ -1,9 +1,27 @@
-hfst (3.13.0~r3461-1) unstable; urgency=low
+hfst (3.14.0-1) unstable; urgency=low
 
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 27 Mar 2018 11:07:59 +0200
+
+hfst (3.13.0~r3461-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 22 Dec 2017 11:54:55 +0530
+
+hfst (3.13.0~r3461-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
   * Update to latest upstream release
   * Rename libhfstNN-dev to plain libhfst-dev
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 03 Nov 2017 14:25:34 +0100
+  [ Kartik Mistry ]
+  * Upload to experimental as of now.
+  * Update Standards-Version to 4.1.1
+  * Added patch description.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 02 Dec 2017 11:49:38 +0530
 
 hfst (3.12.2~r3289-3) unstable; urgency=low
 
