@@ -5,8 +5,17 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
 Build-Depends: debhelper (>= 9),
-               dpkg-dev (>= 1.16.1~),
-               python3-dev (>= 3.2),
+               dh-python,
+               make,
+               python3 (>= 3.4),
+               python3-all-dev,
+               python3-chardet,
+               python3-coverage,
+               python3-pkg-resources,
+               python3-requests,
+               python3-setuptools,
+               python3-streamparser,
+               python3-tornado,
                sqlite3
 Standards-Version: 4.1.3
 Homepage: http://apertium.org
@@ -17,13 +26,13 @@ Package: apertium-apy
 Architecture: all
 Depends: adduser,
          logrotate,
-         python3 (>= 3.2),
-         python3-lxml,
-         python3-pip,
-         python3-tornado (>= 3.1),
+         python3 (>= 3.4),
+         python3-pkg-resources,
+         python3-tornado (>= 4.2),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
+Recommends: python3-chardet, python3-requests, python3-streamparser
 Description: Apertium APY service
  This package contains Apertium APY which is simple Apertium
  API written in Python 3 meant as a drop-in replacement for

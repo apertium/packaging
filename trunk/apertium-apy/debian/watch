@@ -1,1 +1,3 @@
-# apertium-apy is only available in SVN right now.
+version=3
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-apy-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-apy/tags .*/v?(\d\S+)\.tar\.gz

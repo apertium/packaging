@@ -80,7 +80,7 @@ my $patch = 0;
 	   print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
 	   $version = "$1.$2.$3";
 	}
-	elsif ($data =~ m@__version__ = "([\d.]+)"@s) {
+	elsif ($data =~ m@__version__ = "([\d.]+)"@s || $data =~ m@__version__ = '([\d.]+)'@s) {
 	   print STDERR "Found __version__ version\n";
 	   $version = $1;
 	}

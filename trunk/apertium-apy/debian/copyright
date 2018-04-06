@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: apertium-apy
-Source: https://github.com/goavki/apertium-apy
+Source: https://github.com/apertium/apertium-apy
 
 Files: *
 Copyright: 2005-2007, Universitat d'Alacant / Universidad de Alicante

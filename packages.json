@@ -19,7 +19,7 @@
    ["trunk/apertium"],
    ["trunk/apertium-lex-tools"],
    ["trunk/apertium-simpleton", null, "src/version.hpp"],
-   ["trunk/apertium-apy",       null, "servlet.py"],
+   ["trunk/apertium-apy",       null, "apertium_apy/apy.py", "jessie,trusty"],
    ["trunk/apertium-separable"],
    ["external/giella-core",     "https://gtsvn.uit.no/langtech/trunk/giella-core"],
    ["external/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
@@ -111,6 +111,7 @@
    ["incubator/apertium-tat-eng"],
 
    ["nursery/apertium-eng-deu"],
+   ["nursery/apertium-fin-deu"],
    ["nursery/apertium-kaz-kir"],
 #   ["nursery/apertium-sme-fin"],
    ["nursery/apertium-sme-sma"],
@@ -131,7 +132,7 @@
    ["trunk/apertium-crh-tur"],
    ["trunk/apertium-cy-en"],
    ["trunk/apertium-dan-nor"],
-   ["trunk/apertium-en-ca"],
+#   ["trunk/apertium-en-ca"], # -> eng-cat
    ["trunk/apertium-en-es"],
    ["trunk/apertium-en-gl"],
    ["trunk/apertium-eng-kaz"],

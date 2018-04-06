@@ -18,8 +18,8 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Apertium APY service"
 NAME=apertium-apy
-SCRIPT_PATH=/usr/share/apertium-apy/servlet.py
-DAEMON="/usr/bin/python3 $SCRIPT_PATH /usr/share/apertium/modes"
+SCRIPT_PATH=/usr/bin/apertium-apy
+DAEMON="$SCRIPT_PATH /usr/share/apertium/modes"
 DAEMON_ARGS=""
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
