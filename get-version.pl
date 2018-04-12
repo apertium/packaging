@@ -48,7 +48,7 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 
    chdir("${pkg}.git") or die $!;
    print STDERR `git reset --hard '$opts{rev}'`;
-   my $logline = `git log '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
+   my $logline = `git log --first-parent '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
    $revision = '+g'.(`git rev-list --count --first-parent '$opts{rev}'` + 0).'~'.substr($rawrev, 0, 8);
 
