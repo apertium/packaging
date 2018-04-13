@@ -50,7 +50,7 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    print STDERR `git reset --hard '$opts{rev}'`;
    my $logline = `git log --first-parent '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
-   $revision = '+g'.(`git rev-list --count --first-parent '$opts{rev}'` + 0).'~'.substr($rawrev, 0, 8);
+   $revision = '+g'.(`git log '--format=format:\%H' '$opts{rev}' | sort | uniq | wc -l` + 0).'~'.substr($rawrev, 0, 8);
 
    copy($opts{'file'}, "/tmp/version.$$.tmp");
    chdir('/tmp') or die $!;
