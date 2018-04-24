@@ -27,7 +27,7 @@ case "$1" in
         if [ ! -d $1 ]; then
             mkdir $1
         fi
-        chown -R $2 $1 && chmod $3 $1
+        chown $2 $1 && chmod $3 $1
     }
 
     cd /var/log

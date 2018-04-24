@@ -1,17 +1,11 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: streamparser
-Upstream-Contact: Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
-Source: https://github.com/goavki/streamparser
+Source: https://github.com/apertium/streamparser
 
 Files: *
-Copyright: 2016-2017 Sushain K. Cherivirala <sushain@skc.name>
-	   2016-2017 Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
+Copyright: 2016-2018 Sushain K. Cherivirala <sushain@skc.name>
+	   2016-2018 Kevin Brubeck Unhammer <unhammer+apertium@mm.st>
 	   2017 Joonas Kylmälä <joonas.kylmala@iki.fi>
-License: GPL-3+
-
-Files: debian/*
-Copyright: 2017 Joonas Kylmälä <joonas.kylmala@iki.fi>
-	   2017 Tino Didriksen <tino@didriksen.cc>
 License: GPL-3+
 
 License: GPL-3+

@@ -1,5 +1,5 @@
-python3-streamparser (4.0.2-1) UNRELEASED; urgency=low
+python3-streamparser (5.0.0-1) experimental; urgency=low
 
-  * Initial release. (Closes: #851766)
+  * Initial release.
 
- -- Joonas Kylmälä <joonas.kylmala@iki.fi>  Thu, 26 Jan 2017 09:35:08 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 24 Apr 2018 10:31:32 +0200
