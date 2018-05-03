@@ -205,7 +205,7 @@ foreach my $pkg (@$pkgs) {
       $is_data = 'data';
       `cat data-gzip.Makefile >> "@$pkg[0]/debian/rules"`;
    }
-   if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/streamparser$@) {
+   if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/apertium-streamparser$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
    }
@@ -385,7 +385,7 @@ foreach my $pkg (@$pkgs) {
 =cut
 
    # Get a list of resulting packages and mark them all as rebuilt
-   my $ls = `ls -1 ~apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/ | egrep -o '^[^_]+' | sort | uniq`;
+   my $ls = `find /var/cache/pbuilder/result/ -type f -name '*.deb' | egrep -o '.+?/[^_]+' | sort | uniq | egrep -o '[^/]+\$'`;
    foreach my $pk (split(/\s+/, $ls)) {
       chomp($pk);
       $rebuilt{$pk} = 1;
