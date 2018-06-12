@@ -1,9 +1,21 @@
+lttoolbox (3.4.2-1) unstable; urgency=low
+
+  * Update to latest upstream.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jun 2018 11:25:01 +0200
+
 lttoolbox (3.4.0~r84331-1) unstable; urgency=low
 
-  * Update to latest upstream
-  * Version bump, so undo the g++-5 renaming
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+  * debian/control:
+    + Version bump, so undo the g++-5 renaming.
+    + Updated Standards-Version to 4.1.3.
+  * Updated debian/watch file.
+  * Updated lintian overrides.
+  * URLs: http->https.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+ -- Kartik Mistry <kartik@debian.org>  Tue, 13 Mar 2018 11:00:04 +0530
 
 lttoolbox (3.3.3~r68466-2) unstable; urgency=low
 
