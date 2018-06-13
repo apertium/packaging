@@ -55,6 +55,9 @@ if (-s $opts{p}.'/exclude.txt') {
    open FILE, $opts{p}.'/exclude.txt' or die "Could not open exclude.txt: $!\n";
    while (<FILE>) {
       chomp;
+      if (/^\s*$/) {
+         next;
+      }
       if (m@^\+ (.+)$@) {
          push(@includes, $1);
       }
