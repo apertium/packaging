@@ -96,6 +96,7 @@
    ["languages/apertium-sqi"],
    ["languages/apertium-srd"],
    ["languages/apertium-swe"],
+   ["languages/apertium-szl"],
    ["languages/apertium-tat"],
    ["languages/apertium-tuk"],
    ["languages/apertium-tur"],
@@ -122,6 +123,7 @@
    ["staging/apertium-cat-glg"],
    ["staging/apertium-fao-nor"],
    ["staging/apertium-pol-ces"],
+   ["staging/apertium-pol-szl"],
 
    ["trunk/apertium-af-nl"],
    ["trunk/apertium-arg-cat"],

@@ -1,3 +1,9 @@
+apertium-separable (0.3.1-1) experimental; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jun 2018 11:25:01 +0200
+
 apertium-separable (0.2.0~r84328-1) experimental; urgency=low
 
   * Initial release.

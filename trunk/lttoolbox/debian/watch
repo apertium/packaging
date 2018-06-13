@@ -1,2 +1,2 @@
-version=3
-http://sf.net/apertium/lttoolbox-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/lttoolbox-$1\.tar\.gz/ \
+  https://github.com/apertium/lttoolbox/releases .*/v?(\d\S+)\.tar\.gz

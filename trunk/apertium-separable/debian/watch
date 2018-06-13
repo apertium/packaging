@@ -1,2 +1,2 @@
-version=3
-http://sf.net/apertium/apertium-separable-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-separable-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-separable/releases .*/v?(\d\S+)\.tar\.gz
