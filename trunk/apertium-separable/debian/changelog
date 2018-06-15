@@ -1,11 +1,12 @@
-apertium-separable (0.3.1-1) experimental; urgency=low
+apertium-separable (0.3.1-1) unstable; urgency=low
 
   * Update to latest upstream release.
 
  -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jun 2018 11:25:01 +0200
 
-apertium-separable (0.2.0~r84328-1) experimental; urgency=low
+apertium-separable (0.2.0~r84328-1) unstable; urgency=low
 
-  * Initial release.
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #893772)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+ -- Kartik Mistry <kartik@debian.org>  Fri, 23 Mar 2018 18:16:34 +0530

@@ -21,4 +21,4 @@ Package: apertium-separable
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Reordering separable/discontiguous multiwords
- Apertium module for reordering separable/discontiguous multiwords
+ Apertium module for reordering separable/discontiguous multiwords.
