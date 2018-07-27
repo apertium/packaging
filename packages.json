@@ -89,6 +89,7 @@
    ["languages/apertium-nno"],
    ["languages/apertium-nob"],
    ["languages/apertium-nog"],
+   ["languages/apertium-oci"],
    ["languages/apertium-pol"],
    ["languages/apertium-rus"],
    ["languages/apertium-san"],
@@ -109,6 +110,7 @@
    # Finally, language pairs
    ["incubator/apertium-eng-ita"],
    ["incubator/apertium-fin-est"],
+   ["incubator/apertium-oci-fra"],
    ["incubator/apertium-tat-eng"],
 
    ["nursery/apertium-eng-deu"],
@@ -125,11 +127,11 @@
    ["staging/apertium-pol-ces"],
    ["staging/apertium-pol-szl"],
 
-   ["trunk/apertium-af-nl"],
+#   ["trunk/apertium-afr-nld"],
    ["trunk/apertium-arg-cat"],
    ["trunk/apertium-bel-rus"],
    ["trunk/apertium-br-fr"],
-   ["trunk/apertium-ca-it"],
+   ["trunk/apertium-cat-ita"],
    ["trunk/apertium-cat-srd"],
    ["trunk/apertium-crh-tur"],
    ["trunk/apertium-cy-en"],
@@ -153,7 +155,7 @@
    ["trunk/apertium-hbs-eng"],
    ["trunk/apertium-hbs-mkd"],
    ["trunk/apertium-hbs-slv"],
-   ["trunk/apertium-id-ms"],
+#   ["trunk/apertium-ind-zlm"],
    ["trunk/apertium-is-sv"],
    ["trunk/apertium-isl-eng"],
    ["trunk/apertium-kaz-rus"],

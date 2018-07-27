@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-afr-nld-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-afr-nld/releases .*/v?(\d\S+)\.tar\.gz

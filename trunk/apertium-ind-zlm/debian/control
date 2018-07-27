@@ -1,10 +1,12 @@
-Source: apertium-id-ms
+Source: apertium-ind-zlm
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.4),
+               apertium-ind,
+               apertium-zlm,
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -12,14 +14,22 @@ Build-Depends: apertium-dev (>= 3.4),
                pkg-config (>= 0.21)
 Standards-Version: 4.1.4
 Homepage: https://apertium.org/
-Vcs-Git: https://salsa.debian.org/science-team/apertium-id-ms.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-id-ms.git
+Vcs-Git: https://salsa.debian.org/science-team/apertium-ind-zlm.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-ind-zlm.git
 
-Package: apertium-id-ms
+Package: apertium-ind-zlm
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides:, apertium-ms-id, apertium-msa-ind, apertium-ind-msa
-Conflicts:, apertium-ms-id, apertium-msa-ind, apertium-ind-msa
+Provides:, apertium-ms-id, apertium-zlm-ind, apertium-id-ms
+Conflicts:, apertium-ms-id, apertium-zlm-ind, apertium-ind-ms
 Description: Apertium translation data for the Indonesian-Malay pair
  Data package providing Apertium language resources for translating
  between the Indonesian and Malay languages.
+
+Package: apertium-id-ms
+Architecture: all
+Depends: apertium-ind-zlm (= ${binary:Version}), ${misc:Depends}
+Priority: extra
+Section: oldlibs
+Description: Transitional dummy package for apertium-ind-zlm
+ This is a transitional dummy package. It can safely be removed.

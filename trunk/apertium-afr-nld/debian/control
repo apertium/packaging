@@ -1,10 +1,12 @@
-Source: apertium-af-nl
+Source: apertium-afr-nld
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-afr,
+               apertium-dev (>= 3.4),
+               apertium-nld,
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -12,14 +14,22 @@ Build-Depends: apertium-dev (>= 3.4),
                pkg-config (>= 0.21)
 Standards-Version: 4.1.4
 Homepage: https://apertium.org/
-Vcs-Git: https://salsa.debian.org/science-team/apertium-af-nl.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-af-nl.git
+Vcs-Git: https://salsa.debian.org/science-team/apertium-afr-nld.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-afr-nld.git
 
-Package: apertium-af-nl
+Package: apertium-afr-nld
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides:, apertium-nl-af, apertium-nld-afr, apertium-afr-nld
-Conflicts:, apertium-nl-af, apertium-nld-afr, apertium-afr-nld
+Provides: apertium-af-nl, apertium-nl-af, apertium-nld-afr
+Conflicts: apertium-af-nl, apertium-nl-af, apertium-nld-afr
 Description: Apertium translation data for the Afrikaans-Dutch pair
  Data package providing Apertium language resources for translating
  between the Afrikaans and Dutch languages.
+
+Package: apertium-af-nl
+Architecture: all
+Depends: apertium-afr-nld (= ${binary:Version}), ${misc:Depends}
+Priority: extra
+Section: oldlibs
+Description: Transitional dummy package for apertium-afr-nld
+ This is a transitional dummy package. It can safely be removed.

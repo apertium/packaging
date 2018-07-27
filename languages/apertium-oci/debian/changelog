@@ -1,0 +1,6 @@
+apertium-oci (0.1.0-1) experimental; urgency=low
+
+  * Initial release
+  * No tarball release, so taking directly from svn
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 13 Oct 2014 07:17:28 +0000

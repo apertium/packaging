@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-cat-ita-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-cat-ita/releases .*/v?(\d\S+)\.tar\.gz

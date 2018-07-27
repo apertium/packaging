@@ -39,14 +39,14 @@ GetOptions(
 );
 
 my %distros = (
-	'sid' => 'debian',
-	'jessie' => 'debian',
-	'stretch' => 'debian',
-	'buster' => 'debian',
-	'trusty' => 'ubuntu',
-	'xenial' => 'ubuntu',
-	'artful' => 'ubuntu',
-	'bionic' => 'ubuntu',
+	'sid' => {'variant' => 'debian', 'dh' => 11},
+	'jessie' => {'variant' => 'debian', 'dh' => 9},
+	'stretch' => {'variant' => 'debian', 'dh' => 10},
+	'buster' => {'variant' => 'debian', 'dh' => 11},
+	'trusty' => {'variant' => 'ubuntu', 'dh' => 9},
+	'xenial' => {'variant' => 'ubuntu', 'dh' => 10},
+	'artful' => {'variant' => 'ubuntu', 'dh' => 10},
+	'bionic' => {'variant' => 'ubuntu', 'dh' => 11},
 );
 
 my @includes = ();
@@ -173,6 +173,12 @@ CHLOG
       $chver .= $opts{'dv'};
       `cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
    }
+
+   unlink "$pkname-$chver/debian/compat";
+   open FILE, ">$pkname-$chver/debian/compat" or die "Could not write to debian/compat: $!\n";
+   print FILE $distros{$distro}{'dh'};
+   close FILE;
+
 	print `dpkg-source '-DMaintainer=$opts{m}' '-DUploaders=$opts{e}' -b '$pkname-$chver'`;
 	chdir "$pkname-$chver";
 	print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../$pkname\_$chver\_source.changes'`;

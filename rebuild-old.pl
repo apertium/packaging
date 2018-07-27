@@ -334,7 +334,7 @@ foreach my $pkg (@$pkgs) {
             my $who = $authors->{$blame};
             $cc .= " '$who'";
          }
-         elsif ($blame =~ m/^.+@.+?\..+$/) {
+         elsif ($blame !~ m/github\.com$/ && $blame =~ m/^.+@.+?\..+$/) {
             $cc .= " '$blame'";
          }
       }
