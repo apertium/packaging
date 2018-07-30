@@ -110,7 +110,7 @@
    # Finally, language pairs
    ["incubator/apertium-eng-ita"],
    ["incubator/apertium-fin-est"],
-   ["incubator/apertium-oci-fra"],
+   ["pairs/apertium-oci-fra"],
    ["incubator/apertium-tat-eng"],
 
    ["nursery/apertium-eng-deu"],

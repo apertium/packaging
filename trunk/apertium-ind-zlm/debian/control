@@ -20,8 +20,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-ind-zlm.git
 Package: apertium-ind-zlm
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides:, apertium-ms-id, apertium-zlm-ind, apertium-id-ms
-Conflicts:, apertium-ms-id, apertium-zlm-ind, apertium-ind-ms
+Provides: apertium-zlm-ind
 Description: Apertium translation data for the Indonesian-Malay pair
  Data package providing Apertium language resources for translating
  between the Indonesian and Malay languages.
@@ -29,6 +28,7 @@ Description: Apertium translation data for the Indonesian-Malay pair
 Package: apertium-id-ms
 Architecture: all
 Depends: apertium-ind-zlm (= ${binary:Version}), ${misc:Depends}
+Provides: apertium-ms-id
 Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-ind-zlm

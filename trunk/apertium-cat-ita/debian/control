@@ -21,8 +21,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-ita.git
 Package: apertium-cat-ita
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-ca-it, apertium-it-ca, apertium-ita-cat
-Conflicts: apertium-ca-it, apertium-it-ca, apertium-ita-cat
+Provides: apertium-ita-cat
 Description: Apertium translation data for the Catalan-Italian pair
  Data package providing Apertium language resources for translating
  between the Catalan and Italian languages.
@@ -30,6 +29,7 @@ Description: Apertium translation data for the Catalan-Italian pair
 Package: apertium-ca-it
 Architecture: all
 Depends: apertium-cat-ita (= ${binary:Version}), ${misc:Depends}
+Provides: apertium-it-ca
 Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-cat-ita

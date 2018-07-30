@@ -20,8 +20,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-afr-nld.git
 Package: apertium-afr-nld
 Architecture: all
 Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides: apertium-af-nl, apertium-nl-af, apertium-nld-afr
-Conflicts: apertium-af-nl, apertium-nl-af, apertium-nld-afr
+Provides: apertium-nld-afr
 Description: Apertium translation data for the Afrikaans-Dutch pair
  Data package providing Apertium language resources for translating
  between the Afrikaans and Dutch languages.
@@ -29,6 +28,7 @@ Description: Apertium translation data for the Afrikaans-Dutch pair
 Package: apertium-af-nl
 Architecture: all
 Depends: apertium-afr-nld (= ${binary:Version}), ${misc:Depends}
+Provides: apertium-nl-af
 Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-afr-nld
