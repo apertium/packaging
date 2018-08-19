@@ -1,6 +1,5 @@
-apertium-pol (0.1.0-1) experimental; urgency=low
+apertium-pol (0.1.1-1) experimental; urgency=low
 
   * Initial release
-  * No tarball release, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 19 Aug 2018 22:21:01 +0200
