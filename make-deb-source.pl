@@ -152,6 +152,10 @@ if (!$opts{auto}) {
 $ENV{'PERL_UNICODE'} = '';
 
 foreach my $distro (keys %distros) {
+   if (!$opts{auto}) {
+      $distro = 'sid';
+   }
+
 	my $chver = $opts{v}.'-';
    if ($opts{auto}) {
       $chver .= $opts{'dv'}."~".$distro.$opts{'fv'};

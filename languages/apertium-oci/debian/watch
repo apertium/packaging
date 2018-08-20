@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-oci-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-oci/releases .*/v?(\d\S+)\.tar\.gz

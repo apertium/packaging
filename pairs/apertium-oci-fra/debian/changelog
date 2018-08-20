@@ -1,7 +1,5 @@
-apertium-oci-fra (-1) experimental; urgency=low
+apertium-oci-fra (0.2.0-1) experimental; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release. (Closes: #832498))
-  * No significant changes in svn since tarball, so taking directly from svn.
+  * Initial release
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 26 Jul 2016 10:58:33 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 20 Aug 2018 17:04:05 +0200

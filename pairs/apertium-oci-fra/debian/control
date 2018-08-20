@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5),
                apertium-fra,
                apertium-lex-tools,
                apertium-oci,
@@ -21,7 +21,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-oci-fra.git
 
 Package: apertium-oci-fra
 Architecture: all
-Depends: apertium (>= 3.4),
+Depends: apertium (>= 3.5),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},
