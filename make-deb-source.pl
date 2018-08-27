@@ -120,6 +120,11 @@ if (@excludes) {
    chdir ".." or die "Could not change folder: $!\n";
 }
 
+# OS tools should only try to use OS binaries
+`grep -rl '^#!/usr/bin/env perl' | xargs -rn1 perl -pe 's@^#!/usr/bin/env perl@#!/usr/bin/perl@g;' -i`;
+`grep -rl '^#!/usr/bin/env python' | xargs -rn1 perl -pe 's@^#!/usr/bin/env python@#!/usr/bin/python@g;' -i`;
+`grep -rl '^#!/usr/bin/env bash' | xargs -rn1 perl -pe 's@^#!/usr/bin/env bash@#!/bin/bash@g;' -i`;
+
 # RPM tar.bz2
 my $rv = $opts{v};
 $rv =~ s@[+~]@.@g;
