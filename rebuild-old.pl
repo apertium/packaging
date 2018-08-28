@@ -275,11 +275,13 @@ foreach my $pkg (@$pkgs) {
          $win32 = 1;
       }
 
+=pod
       if (-s "@$pkg[0]/osx/$pkname.sh") {
          print {$out} "\tbuilding osx\n";
          `bash -c '. $dir/osx-pre.sh; . $dir/@$pkg[0]/osx/$pkname.sh; . $dir/osx-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/@$pkg[0]' 2>$logpath/osx.log >&2`;
          $osx = 1;
       }
+=cut
 
       if ($is_data) {
          $aptget = 1;

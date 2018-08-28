@@ -13,7 +13,7 @@
    ["tools/hfst",            "https://github.com/hfst/hfst"],
    ["tools/hfst-ospell",     "https://github.com/hfst/hfst-ospell"],
 #   ["tools/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],
-   ["tools/tdc-proof",       "https://github.com/TinoDidriksen/spellers", "include/shared.hpp", "trusty"],
+#   ["tools/tdc-proof",       "https://github.com/TinoDidriksen/spellers", "include/shared.hpp", "trusty"],
    ["tools/lttoolbox"],
    ["tools/lttoolbox-java",     null, "src/org/apertium/CommandLineInterface.java"],
    ["tools/apertium"],
