@@ -51,7 +51,7 @@ my $pkgs = JSON->new->relaxed->decode(file_get_contents('packages.json'));
 
 for my $pkg (@$pkgs) {
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
-   if (! -s "${Bin}/@$pkg[0]/osx/${pkname}.sh") {
+   if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
       next;
    }
    print "Syncing ${pkname}\n";
@@ -69,7 +69,7 @@ for my $cadence (qw( release nightly )) {
 
    for my $pkg (@$pkgs) {
       my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
-      if (! -s "${Bin}/@$pkg[0]/osx/${pkname}.sh") {
+      if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
          next;
       }
       push(@combo, $pkname);
@@ -132,7 +132,7 @@ for my $cadence (qw( release nightly )) {
       print "\tsetting up build...\n";
       `echo '======== SETUP ========' >>'${logfile}'`;
       `date -u >>'${logfile}'`;
-      my $log = `bash '${Bin}/@$pkg[0]/osx/${pkname}.sh' >>'${logfile}' 2>&1 || echo 'SETUP FAILED'`;
+      my $log = `bash '${Bin}/@$pkg[0]/osx/setup.sh' >>'${logfile}' 2>&1 || echo 'SETUP FAILED'`;
       if ($log =~ /^SETUP FAILED/) {
          print "\tfailed setup\n";
          next;

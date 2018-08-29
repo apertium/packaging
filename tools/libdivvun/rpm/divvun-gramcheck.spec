@@ -1,4 +1,4 @@
-Name: divvun-gramcheck
+Name: libdivvun
 Version: 0.2.0
 Release: 1%{?dist}
 Summary: Grammar checker tools for Divvun languages

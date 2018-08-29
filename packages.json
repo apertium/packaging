@@ -27,7 +27,7 @@
    ["tools/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko", null, "jessie,trusty"],
    ["tools/matxin",     "https://github.com/matxin/matxin"],
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
-   ["tools/divvun-gramcheck", "https://github.com/divvun/libdivvun", null, "jessie,trusty"],
+   ["tools/libdivvun", "https://github.com/divvun/libdivvun", null, "jessie,trusty"],
 
    # Then languages
    ["languages/giella-cor",      "https://gtsvn.uit.no/langtech/trunk/langs/cor"],
