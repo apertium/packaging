@@ -62,6 +62,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             }
          }
          print STDERR "\tadjusting l-dependency '$d'\n";
+         `chmod u+rw '$f'`;
          print STDERR `install_name_tool -change '/usr/local/lib/$d' '\@rpath/$d' '$f'`;
          print STDERR `strip -S -x '$f'`;
          $did = 1;
@@ -86,6 +87,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             }
          }
          print STDERR "\tadjusting n dependency '$d'\n";
+         `chmod u+rw '$f'`;
          print STDERR `install_name_tool -change '$d' '\@rpath/$d' '$f'`;
          print STDERR `strip -S -x '$f'`;
          $did = 1;
@@ -97,6 +99,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
       }
 
       print STDERR "\tadding RPATH\n";
+      `chmod u+rw '$f'`;
       `install_name_tool -add_rpath \@executable_path/ '$f' 2>/dev/null`;
       `install_name_tool -add_rpath \@executable_path/../lib '$f' 2>/dev/null`;
       `install_name_tool -add_rpath \@loader_path/../lib '$f' 2>/dev/null`;
@@ -117,6 +120,7 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
             `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
          }
          print STDERR "\tadjusting g-dependency '$d'\n";
+         `chmod u+rw '$f'`;
          print STDERR `install_name_tool -change '/opt/local/lib/$d' '\@rpath/$d' '$f'`;
          print STDERR `strip -S -x '$f'`;
          $did = 1;
