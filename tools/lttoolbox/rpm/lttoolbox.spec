@@ -59,7 +59,7 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
-ln -s liblttoolbox3-3.4.so.1.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.4.so
+ln -s liblttoolbox3-3.5.so.1.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.5.so
 
 %check
 make test
