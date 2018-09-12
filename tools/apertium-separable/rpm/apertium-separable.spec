@@ -25,6 +25,7 @@ Apertium module for reordering separable/discontiguous multiwords
 %setup -q -n %{name}-%{version}
 
 %build
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
 %configure
 make %{?_smp_mflags} || make %{?_smp_mflags} || make

@@ -7,7 +7,7 @@ License: GPL-2.0+
 URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-Requires: lttoolbox >= 3.4.0
+Requires: lttoolbox >= 3.5.0
 # Require xmllint from:
 Requires: libxml2
 # Require xsltproc from:
@@ -89,6 +89,7 @@ cg3, and hfst.
 %setup -q -n %{name}-%{version}
 
 %build
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
 %configure --disable-static
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
@@ -101,6 +102,7 @@ ln -s libapertium3-3.5.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.5.so
 
 %if ! ( 0%{?el6} || 0%{?el7} )
 %check
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check
 %endif
 

@@ -25,6 +25,7 @@ Constraint-based lexical selection module used by Apertium
 %setup -q -n %{name}-%{version}
 
 %build
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
 %configure
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
@@ -34,6 +35,7 @@ make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 
 %check
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check
 
 %files
