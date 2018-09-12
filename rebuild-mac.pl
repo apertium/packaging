@@ -38,7 +38,7 @@ $ENV{'TERMCAP'} = '';
 $ENV{'CC'} = 'clang';
 $ENV{'CXX'} = 'clang++';
 $ENV{'CFLAGS'} = '-Wall -Wextra -O2';
-$ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1';
+$ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1 -DU_USING_ICU_NAMESPACE=1';
 $ENV{'LDFLAGS'} = '-stdlib=libc++';
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
@@ -128,6 +128,11 @@ for my $cadence (qw( release nightly )) {
       my @vers = glob("${pkname}*");
       my $ver = $vers[0];
       chdir($ver) or die "Could not chdir(${ver}): $!\n";
+
+      # Use binaries in $PATH
+      `grep -rl '^#!/usr/bin/perl' * | xargs -n1 perl -pe 's\@^#!/usr/bin/perl\@#!/usr/bin/env perl\@g;' -i`;
+      `grep -rl '^#!/usr/bin/python' * | xargs -n1 perl -pe 's\@^#!/usr/bin/python\@#!/usr/bin/env python\@g;' -i`;
+      `grep -rl '^#!/bin/bash' * | xargs -n1 perl -pe 's\@^#!/usr/bin/bash\@#!/usr/bin/env bash\@g;' -i`;
 
       print "\tsetting up build...\n";
       `echo '======== SETUP ========' >>'${logfile}'`;
@@ -238,7 +243,9 @@ for my $cadence (qw( release nightly )) {
    print "Uploading ${cadence}...\n";
    chdir("${Bin}/${cadence}/build") or die "Could not chdir(${Bin}/${cadence}/build): $!\n";
    unlink('upload.log');
-   `rsync -avz */*-latest.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
+   for (my $i=0 ; $i<3 ; ++$i) {
+      `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
+   }
    `ssh -l apertium oqaa.projectjj.com "find '/home/apertium/public_html/osx/${cadence}' -name '*-[0-9]*' | xargs -rn1 rm -fv" >>upload.log 2>&1`;
    `rsync -avzc */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
 
