@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.2),
                apertium-lex-tools,
                apertium-rus (>= 0.2.0~r82706),
                apertium-ukr (>= 0.1.0~r82563),
@@ -21,7 +21,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-rus-ukr.git
 
 Package: apertium-rus-ukr
 Architecture: all
-Depends: apertium (>= 3.4),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

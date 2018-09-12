@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-cym-eng-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-cym-eng/tags .*/v?(\d\S+)\.tar\.gz

@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-cat (>= 2.2.0~r79715),
-               apertium-dev (>= 3.4),
+               apertium-dev (>= 3.5.2),
                apertium-spa (>= 1.1.0~r79716),
                autotools-dev,
                debhelper (>= 9),
@@ -21,7 +21,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-cat.git
 
 Package: apertium-spa-cat
 Architecture: all
-Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.5.2), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-cat-spa
 Conflicts: apertium-cat-spa
 Replaces: apertium-es-ca (<< 2.0.0~)

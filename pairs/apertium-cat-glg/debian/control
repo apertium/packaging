@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-cat,
-               apertium-dev (>= 3.4),
+               apertium-dev (>= 3.5.2),
                apertium-glg,
                apertium-lex-tools,
                autotools-dev,
@@ -21,7 +21,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-glg.git
 
 Package: apertium-cat-glg
 Architecture: all
-Depends: apertium (>= 3.4),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

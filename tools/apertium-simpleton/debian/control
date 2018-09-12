@@ -9,12 +9,12 @@ Standards-Version: 4.1.4
 
 Package: apertium-simpleton
 Architecture: any
-Depends: apertium (>= 3.4),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          binutils,
          cg3 (>= 0.9.9),
          hfst (>= 3.8.2),
-         lttoolbox (>= 3.3.1),
+         lttoolbox (>= 3.5.0),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Minimal GUI for Apertium

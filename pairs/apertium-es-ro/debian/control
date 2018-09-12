@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.2),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -17,9 +17,9 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-es-ro.git
 
 Package: apertium-es-ro
 Architecture: all
-Depends: apertium (>= 3.4), ${misc:Depends}, ${shlibs:Depends}
-Provides:, apertium-ro-es, apertium-ron-spa, apertium-spa-ron
-Conflicts:, apertium-ro-es, apertium-ron-spa, apertium-spa-ron
+Depends: apertium (>= 3.5.2), ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-ro-es, apertium-ron-spa, apertium-spa-ron
+Conflicts: apertium-ro-es, apertium-ron-spa, apertium-spa-ron
 Description: Apertium translation data for the Spanish-Romanian pair
  Data package providing Apertium language resources for translating
  between the Spanish and Romanian languages.

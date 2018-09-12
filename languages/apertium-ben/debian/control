@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.2),
                autotools-dev,
                cg3,
                debhelper (>= 9),
@@ -20,6 +20,6 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-ben.git
 
 Package: apertium-ben
 Architecture: all
-Depends: apertium (>= 3.4), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.5.2), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Bengali
  Data package providing Apertium language resources for Bengali

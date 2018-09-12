@@ -61,7 +61,7 @@
    ["languages/apertium-ces"],
    ["languages/apertium-chv"],
    ["languages/apertium-crh"],
-#   ["languages/apertium-cym"], # Not buildable
+   ["languages/apertium-cym"],
    ["languages/apertium-dan"],
    ["languages/apertium-deu"],
    ["languages/apertium-ell"],
@@ -116,7 +116,7 @@
    ["pairs/apertium-cat-ita"],
    ["pairs/apertium-cat-srd"],
    ["pairs/apertium-crh-tur"],
-   ["pairs/apertium-cy-en"],
+   ["pairs/apertium-cym-eng"],
    ["pairs/apertium-dan-nor"],
 #   ["pairs/apertium-en-ca"], # -> eng-cat
    ["pairs/apertium-en-es"],

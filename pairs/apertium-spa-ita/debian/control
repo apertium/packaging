@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.0),
+Build-Depends: apertium-dev (>= 3.5.2),
                apertium-ita (>= 0.9.0~r78828),
                apertium-spa (>= 1.0.0~r78827),
                autotools-dev,
@@ -19,7 +19,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-ita.git
 
 Package: apertium-spa-ita
 Architecture: all
-Depends: apertium (>= 3.5.0),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          ${misc:Depends},
          ${shlibs:Depends}

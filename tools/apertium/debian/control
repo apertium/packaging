@@ -14,7 +14,7 @@ Build-Depends: autoconf,
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils (>= 2.6.24),
-               lttoolbox-dev (>= 3.4.0~r83591),
+               lttoolbox-dev (>= 3.5.0),
                pkg-config (>= 0.20),
                python3,
                xsltproc (>= 1.1.16)
@@ -27,7 +27,7 @@ Package: apertium
 Architecture: any
 Depends: libapertium3-3.5-1 (= ${binary:Version}),
          libxml2-utils (>= 2.6.24),
-         lttoolbox (>= 3.4.0~r83591),
+         lttoolbox (>= 3.5.0),
          xsltproc (>= 1.1.16),
          ${misc:Depends},
          ${shlibs:Depends}
@@ -70,7 +70,7 @@ Architecture: any
 Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
-         lttoolbox-dev (>= 3.4.0~r83591),
+         lttoolbox-dev (>= 3.5.0),
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libapertium3-dev
@@ -85,15 +85,16 @@ Description: Development tools and library for Apertium
 Package: apertium-all-dev
 Architecture: all
 Depends: apertium-dev (>= ${source:Version}),
-         apertium-lex-tools (>= 0.1.1~r60994),
+         apertium-lex-tools (>= 0.2.1),
+         apertium-separable (>= 0.3.2),
          automake,
          build-essential,
-         cg3 (>= 1.0.0~r12254),
+         cg3 (>= 1.1.6),
          gawk,
          git,
-         hfst (>= 3.13.0~r3461),
-         libcg3-dev (>= 1.0.0~r12254),
-         libhfst-dev (>= 3.13.0~r3461),
+         hfst (>= 3.14.0),
+         libcg3-dev (>= 1.1.6),
+         libhfst-dev (>= 3.14.0),
          libtool,
          locales,
          pkg-config,
@@ -102,4 +103,4 @@ Depends: apertium-dev (>= ${source:Version}),
 Description: Metapackage for all tools required for Apertium development
  A metapackage to get all tools required for development of Apertium
  languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
- cg3, and hfst.
+ apertium-separable, cg3, and hfst.

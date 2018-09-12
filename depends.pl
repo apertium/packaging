@@ -58,13 +58,13 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, apertium-dev (>= 3.4), pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, apertium-dev (>= 3.5.2), pkg-config (>= 0.21)";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
 print "\n";
 
-print "Depends: apertium (>= 3.4)";
+print "Depends: apertium (>= 3.5.2)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

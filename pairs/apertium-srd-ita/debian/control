@@ -3,7 +3,7 @@ Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4),
+Build-Depends: apertium-dev (>= 3.5.2),
                apertium-ita (>= 0.10.0~r82237),
                apertium-lex-tools,
                apertium-srd (>= 0.10.0~r82237),
@@ -20,7 +20,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-srd-ita.git
 
 Package: apertium-srd-ita
 Architecture: all
-Depends: apertium (>= 3.4),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

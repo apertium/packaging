@@ -4,11 +4,11 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.4.2~r68466),
+Build-Depends: apertium-dev (>= 3.5.2),
                apertium-lex-tools,
-               apertium-nno (>= 0.9.0~r69513),
-               apertium-nob (>= 0.9.0~r69513),
-               apertium-swe (>= 0.7.0~r69513),
+               apertium-nno (>= 0.9.0~),
+               apertium-nob (>= 0.9.0~),
+               apertium-swe (>= 0.7.0~),
                autotools-dev,
                cg3,
                debhelper (>= 9),
@@ -22,7 +22,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-swe-nor.git
 
 Package: apertium-swe-nor
 Architecture: all
-Depends: apertium (>= 3.4.2~r68466),
+Depends: apertium (>= 3.5.2),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

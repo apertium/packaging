@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.0~),
+Build-Depends: apertium-dev (>= 3.5.2),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
