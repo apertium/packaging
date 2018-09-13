@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: Grammar checker tools for Divvun languages
 Group: Development/Tools
 License: GPL-3.0+
-URL: https://github.com/divvun/divvun-gramcheck
+URL: https://github.com/divvun/libdivvun
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: autoconf
