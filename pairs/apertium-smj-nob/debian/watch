@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-smj-nob-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-smj-nob/tags .*/v?(\d\S+)\.tar\.gz

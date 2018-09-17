@@ -1,0 +1,2 @@
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-smn-fin-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-smn-fin/tags .*/v?(\d\S+)\.tar\.gz
