@@ -187,6 +187,7 @@ for my $cadence (qw( release nightly )) {
       `date -u >>'${logfile}'`;
       unlink("/tmp/${pkname}.tar.bz2");
       chdir('/tmp/install/usr/local') or die "Could not chdir(/tmp/install/usr/local): $!\n";
+      `mkdir -p lib`;
       `echo '======== PACKAGE: DEPS ========' >>'${logfile}'`;
       `${Bin}/macos-copy-deps.pl >>'${logfile}' 2>&1`;
       `echo '======== PACKAGE: TAR ========' >>'${logfile}'`;
