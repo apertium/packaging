@@ -100,9 +100,9 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
 
       print STDERR "\tadding RPATH\n";
       `chmod u+rw '$f'`;
-      `install_name_tool -add_rpath \@executable_path/ '$f' 2>/dev/null`;
-      `install_name_tool -add_rpath \@executable_path/../lib '$f' 2>/dev/null`;
-      `install_name_tool -add_rpath \@loader_path/../lib '$f' 2>/dev/null`;
+      print `install_name_tool -add_rpath \@executable_path/ '$f' 2>&1`;
+      print `install_name_tool -add_rpath \@executable_path/../lib '$f' 2>&1`;
+      print `install_name_tool -add_rpath \@loader_path/../lib '$f' 2>&1`;
 
       foreach my $d (@deps) {
          ($d) = ($d =~ m@/opt/local/lib/(\S+)@);

@@ -39,7 +39,7 @@ $ENV{'CC'} = 'clang';
 $ENV{'CXX'} = 'clang++';
 $ENV{'CFLAGS'} = '-Wall -Wextra -O2';
 $ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1 -DU_USING_ICU_NAMESPACE=1';
-$ENV{'LDFLAGS'} = '-stdlib=libc++';
+$ENV{'LDFLAGS'} = '-stdlib=libc++ -Wl,-headerpad_max_install_names';
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
