@@ -15,7 +15,7 @@ Build-Depends: apertium-dev (>= 3.5.2),
                libhfst-dev,
                pkg-config (>= 0.21),
                zip
-Standards-Version: 4.1.4
+Standards-Version: 4.2.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-kir.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-kir.git

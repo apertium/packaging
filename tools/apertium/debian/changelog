@@ -1,3 +1,18 @@
+apertium (3.5.2-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
+apertium (3.5.1-2) UNRELEASED; urgency=low
+
+  * Updated debian/watch file with version.
+  * debian/control:
+    + Updated for dh 11.
+    + Updated Standards-Version to 4.1.5
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 17 Jul 2018 19:23:51 +0530
+
 apertium (3.5.1-1) unstable; urgency=low
 
   * Update to latest upstream (Closes: #886361)

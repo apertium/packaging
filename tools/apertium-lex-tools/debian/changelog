@@ -1,8 +1,26 @@
+apertium-lex-tools (0.2.1-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
 apertium-lex-tools (0.2.0~r84344-1) unstable; urgency=low
 
-  * Update to latest from svn.
+  [ Tino Didriksen ]
+  * Update to latest upstream from svn.
+  * debian/control:
+    + Updated Standards-Version to 4.1.3
+    + Build-Depends on apertium-dev (>= 3.5.0~)
+  * Updated debian/copyright.
+  * Updated debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+  [ Kartik Mistry ]
+  * Install examples.
+  * URLs: http->https.
+  * Updated Vcs-* URLs.
+  * Added Hardening support.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 22 Mar 2018 10:37:09 +0530
 
 apertium-lex-tools (0.1.1~r66150-1) unstable; urgency=low
 

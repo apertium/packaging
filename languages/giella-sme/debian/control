@@ -20,7 +20,7 @@ Build-Depends: autotools-dev,
                pkg-config (>= 0.21),
                python3 (>= 3.1),
                zip
-Standards-Version: 4.1.4
+Standards-Version: 4.2.1
 Homepage: http://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-sme.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-sme.git

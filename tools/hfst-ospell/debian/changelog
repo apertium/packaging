@@ -1,8 +1,25 @@
-hfst-ospell (0.5.0~r357-1) unstable; urgency=low
+hfst-ospell (0.5.0-1) unstable; urgency=low
 
-  * Updated to latest upstream release.
+  * Update to latest upstream
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 07 Feb 2018 16:10:05 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
+hfst-ospell (0.4.5~r343-2.1) unstable; urgency=medium
+
+  [ Timo Jyrinki ]
+  * NMU to fix warnings as agreed with maintainers
+  * Add Multi-Arch: same for hfst-ospell-dev and libhfstospell9
+  * Remove libhfstospell9.postinst to fix maintscript-calls-ldconfig
+
+ -- Timo Jyrinki <timo@debian.org>  Wed, 23 Aug 2017 08:30:39 +0300
+
+hfst-ospell (0.4.5~r343-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * debian/rules:
+    + Honour DEB_BUILD_OPTIONS=nocheck (closes: #869825).
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 31 Jul 2017 11:27:14 +0530
 
 hfst-ospell (0.4.5~r343-1) unstable; urgency=medium
 
@@ -11,7 +28,11 @@ hfst-ospell (0.4.5~r343-1) unstable; urgency=medium
   * Refresh copyright listing in AUTHORS, and check debian/copyright
     (Closes: #859032)
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 03 Apr 2017 09:10:42 +0530
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 28 Jun 2017 18:37:50 +0530
 
 hfst-ospell (0.4.3~r338-1) unstable; urgency=medium
 

@@ -21,14 +21,14 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.1.4
+Standards-Version: 4.2.1
 Homepage: https://hfst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/hfst.git
-Vcs-Browser: https://salsa.debian.org/science-team/hfst.git
+Vcs-Browser: https://salsa.debian.org/science-team/hfst
 
 Package: hfst
 Architecture: any
-Depends: libhfst51 (= ${binary:Version}),
+Depends: libhfst52 (= ${binary:Version}),
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -37,7 +37,8 @@ Description: Helsinki Finite-State Transducer Technology
  implementation of morphological analysers and other tools which are
  based on weighted and unweighted finite-state transducer technology.
 
-Package: libhfst51
+Package: libhfst52
+Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst
@@ -54,7 +55,7 @@ Package: libhfst-dev
 Architecture: any
 Section: libdevel
 Depends: hfst (= ${binary:Version}),
-         libhfst51 (= ${binary:Version}),
+         libhfst52 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libhfst3-dev
@@ -69,7 +70,7 @@ Description: Helsinki Finite-State Transducer Technology Development files
 Package: python-libhfst
 Architecture: any
 Section: python
-Depends: libhfst51 (= ${binary:Version}),
+Depends: libhfst52 (= ${binary:Version}),
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends}
@@ -83,7 +84,7 @@ Description: Helsinki Finite-State Transducer Technology (Python2 module)
 Package: python3-libhfst
 Architecture: any
 Section: python
-Depends: libhfst51 (= ${binary:Version}),
+Depends: libhfst52 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
+Source: https://github.com/hfst/hfst
 
 Files: *
 Copyright: 2009-2018, Department of Modern Languages, University of Helsinki

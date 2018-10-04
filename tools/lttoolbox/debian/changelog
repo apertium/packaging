@@ -1,8 +1,28 @@
+lttoolbox (3.5.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
+lttoolbox (3.4.2-2) unstable; urgency=medium
+
+  * debian/control:
+    + Regression fix: Drop dummy transitional package. (Closes: #893075)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 28 Jun 2018 11:48:08 +0530
+
 lttoolbox (3.4.2-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Vcs-* URLs.
+  [ Kartik Mistry ]
+  * Updated debian/watch file.
+  * Added Hardening support.
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jun 2018 11:25:01 +0200
+ -- Kartik Mistry <kartik@debian.org>  Sat, 16 Jun 2018 12:03:56 +0530
 
 lttoolbox (3.4.0~r84331-1) unstable; urgency=low
 

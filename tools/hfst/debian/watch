@@ -1,3 +1,3 @@
 version=3
 opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/hfst-$1\.tar\.gz/ \
-  https://github.com/hfst/hfst/tags .*/v?(\d\S+)\.tar\.gz
+  https://github.com/hfst/hfst/releases .*/v?(\d\S+)\.tar\.gz

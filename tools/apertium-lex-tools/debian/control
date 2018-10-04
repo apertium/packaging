@@ -12,10 +12,10 @@ Build-Depends: apertium-dev (>= 3.5.2),
                libxml2-utils,
                pkg-config (>= 0.21),
                zlib1g-dev
-Standards-Version: 4.1.4
+Standards-Version: 4.2.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-lex-tools.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-lex-tools.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-lex-tools
 
 Package: apertium-lex-tools
 Architecture: any

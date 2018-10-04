@@ -1,14 +1,42 @@
-cg3 (1.1.2~r12577-1) unstable; urgency=low
+cg3 (1.1.7-1) unstable; urgency=low
 
-  * Updated to latest upstream release.
+  * Update to latest upstream
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 07 Feb 2018 16:10:05 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
+cg3 (1.0.0~r12254-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Vcs-* URLs.
+    + Updated Standards-Version to 4.2.1.0
+    + Use 'libs' section for libcg3-1
+  * debian/rules:
+    + Removed --parallel argument.
+    + Added hardening support.
+  * Bumped dh to 11.
+  * Updated debian/copyright.
+  * Use triggers instead of postinst.
+  * Added debian/libcg3-1.lintian-overrides - not a duplicate trigger.
+  * Added patch to fix wrong path for interpreter.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 27 Aug 2018 13:41:04 +0530
 
 cg3 (1.0.0~r12254-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Updated to latest upstream release.
+  * debian/control:
+    + Updated dependencies due to library name change.
+    + Updated Homepage.
+    + Suggests: libdigest-sha-perl
+  * Updated debian/copyright.
+  * Updated debian/watch.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 24 May 2017 14:26:26 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 26 Jun 2017 20:59:00 +0530
 
 cg3 (0.9.9~r11624-1) unstable; urgency=low
 

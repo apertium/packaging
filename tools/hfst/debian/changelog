@@ -1,8 +1,24 @@
-hfst (3.14.0-1) unstable; urgency=low
+hfst (3.15.0-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  * Update to latest upstream
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 27 Mar 2018 11:07:59 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
+hfst (3.13.0~r3461-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+  * Updated dh to 11.
+  * debian/copyright:
+    + Wrap text to 80 chars.
+    + Updated source URL.
+  * debian/rules:
+    + Removed --parallel argument.
+    + Added hardening support.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 05 Aug 2018 15:49:03 +0800
 
 hfst (3.13.0~r3461-2) unstable; urgency=low
 

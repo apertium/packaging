@@ -1,8 +1,22 @@
+apertium-separable (0.3.2-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+
 apertium-separable (0.3.1-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jun 2018 11:25:01 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Build-Depends.
+    + Updated Standards-Version to 4.1.4
+  * Updated debian/watch file.
+  * Install examples in the package.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 18 Jun 2018 17:47:56 +0530
 
 apertium-separable (0.2.0~r84328-1) unstable; urgency=low
 

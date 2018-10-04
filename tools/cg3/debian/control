@@ -6,12 +6,12 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake (>= 2.8.9),
                debhelper (>= 9.0),
-               libboost-dev (>= 1.49.0),
-               libicu-dev (>= 4.8)
-Standards-Version: 4.1.4
+               libboost-dev (>= 1.53.0),
+               libicu-dev (>= 50.0)
+Standards-Version: 4.2.1
 Homepage: https://visl.sdu.dk/cg3.html
 Vcs-Git: https://salsa.debian.org/science-team/cg3.git
-Vcs-Browser: https://salsa.debian.org/science-team/cg3.git
+Vcs-Browser: https://salsa.debian.org/science-team/cg3
 
 Package: cg3
 Architecture: any
@@ -35,6 +35,7 @@ Description: Tools for using the 3rd edition of Constraint Grammar (CG-3)
  See https://visl.sdu.dk/cg3.html for more documentation
 
 Package: libcg3-1
+Section: libs
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}

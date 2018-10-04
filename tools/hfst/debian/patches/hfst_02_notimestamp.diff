@@ -1,3 +1,4 @@
+Description: Patch to remove timestamp from the build
 diff --git a/tools/src/hfst-optimized-lookup.cc b/tools/src/hfst-optimized-lookup.cc
 index a31e8a4..3d56389 100644
 --- a/tools/src/hfst-optimized-lookup.cc

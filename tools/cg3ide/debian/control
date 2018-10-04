@@ -9,7 +9,7 @@ Build-Depends: cmake (>= 2.8.3),
                qt5-default,
                qt5-qmake,
                qtbase5-dev
-Standards-Version: 4.1.4
+Standards-Version: 4.2.1
 
 Package: cg3ide
 Architecture: any
