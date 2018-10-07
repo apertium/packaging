@@ -213,7 +213,7 @@ foreach my $pkg (@$pkgs) {
    }
    if ($dry || $is_data eq 'data') {
       $is_data = 'data';
-      @$pkg[3] = 'jessie,stretch,buster,trusty,xenial,artful,bionic';
+      @$pkg[3] = 'jessie,stretch,buster,trusty,xenial,bionic,cosmic';
    }
    if ($distro) {
       @$pkg[3] = $distro;

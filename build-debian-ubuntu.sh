@@ -7,7 +7,7 @@ rm -fv /var/cache/pbuilder/result/*
 #rm -rf /var/cache/pbuilder/build/cow.*
 
 cd /tmp/autopkg.*
-for DISTRO in sid jessie stretch buster trusty xenial artful bionic
+for DISTRO in sid jessie stretch buster trusty xenial bionic cosmic
 do
 	if [[ "$3" == *",$DISTRO,"* ]]; then
 		echo "Skipping $DISTRO"

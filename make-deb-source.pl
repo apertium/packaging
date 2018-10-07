@@ -45,8 +45,8 @@ my %distros = (
 	'buster' => {'variant' => 'debian', 'dh' => 11},
 	'trusty' => {'variant' => 'ubuntu', 'dh' => 9},
 	'xenial' => {'variant' => 'ubuntu', 'dh' => 10},
-	'artful' => {'variant' => 'ubuntu', 'dh' => 10},
 	'bionic' => {'variant' => 'ubuntu', 'dh' => 11},
+	'cosmic' => {'variant' => 'ubuntu', 'dh' => 11},
 );
 
 my @includes = ();
