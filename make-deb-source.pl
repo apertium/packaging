@@ -151,6 +151,8 @@ print `cp -av '$path/debian' '$pkname-$opts{v}/'`;
 
 if (!$opts{auto}) {
    print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* -print0 | xargs -0rn1 rm -fv`;
+   print `replace 'debhelper (>= 9)' 'debhelper (>= 11)' -- '$pkname-$opts{v}/debian/control'`;
+   print `replace ' --parallel' '' -- '$pkname-$opts{v}/debian/rules'`;
 }
 
 # dpkg tools are not happy if PERL_UNICODE is on

@@ -1,9 +1,21 @@
-apertium-cat (2.4.0~r84327-1) unstable; urgency=low
+apertium-cat (2.6.0-1) unstable; urgency=low
 
   * Update to latest upstream release.
-  * Undo debhelper 11 in favour of 9.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 04 Mar 2018 12:23:37 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 12 Oct 2018 13:10:12 +0200
+
+apertium-cat (2.4.0~r84327-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+  * Undo debhelper 11 in favour of 9.
+  * Updated dependency on apertium.
+  * Updated debian/copyright.
+
+  [ Kartik Mistry ]
+  * Updated URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 26 Mar 2018 12:29:37 +0530
 
 apertium-cat (2.3.1~r82994-1) unstable; urgency=low
 

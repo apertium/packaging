@@ -1,8 +1,22 @@
+apertium-fra (1.5.0-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 12 Oct 2018 13:10:12 +0200
+
 apertium-fra (1.4.0-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 20 Aug 2018 17:04:05 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Vcs-Browser URL.
+    + Updated Standards-Version to 4.2.0
+    + Updated Depends.
+  * Bumped dh to 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 24 Aug 2018 13:28:15 +0530
 
 apertium-fra (1.2.0~r84327-1) unstable; urgency=low
 
