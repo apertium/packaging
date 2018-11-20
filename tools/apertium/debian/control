@@ -85,6 +85,7 @@ Description: Development tools and library for Apertium
 Package: apertium-all-dev
 Architecture: all
 Depends: apertium-dev (>= ${source:Version}),
+         apertium-eval-translator,
          apertium-lex-tools (>= 0.2.1),
          apertium-separable (>= 0.3.2),
          automake,

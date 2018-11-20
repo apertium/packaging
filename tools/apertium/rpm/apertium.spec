@@ -74,6 +74,7 @@ machine translation engine.
 Summary: Metapackage for all tools required for Apertium development
 Group: Development/Tools
 Requires: apertium-devel
+Requires: apertium-eval-translator
 Requires: apertium-lex-tools
 Requires: cg3
 Requires: libcg3-devel
