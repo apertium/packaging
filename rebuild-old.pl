@@ -199,13 +199,13 @@ foreach my $pkg (@$pkgs) {
 
    my $is_data = '';
    copy("@$pkg[0]/debian/rules", "/tmp/rules.$$");
-   if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || @$pkg[0] =~ m@/giella-@ || @$pkg[0] =~ m@-java$@ || @$pkg[0] =~ m@/apertium-eval-translator$@) {
+   if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || @$pkg[0] =~ m@/giella-@ || @$pkg[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
       `cat data-gzip.Makefile >> "@$pkg[0]/debian/rules"`;
    }
-   if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/apertium-streamparser$@) {
+   if (@$pkg[0] =~ m@/apertium-apy$@ || @$pkg[0] =~ m@/apertium-streamparser$@ || @$pkg[0] =~ m@/apertium-eval-translator$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
    }
