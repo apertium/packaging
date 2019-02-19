@@ -42,6 +42,9 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    chdir("${pkg}.git") or die $!;
    print STDERR `git fetch --all -f`;
    print STDERR `git remote update -p`;
+   print STDERR `git reflog expire --expire=now --all`;
+   print STDERR `git repack -ad`;
+   print STDERR `git prune`;
 
    chdir('/misc/git') or die $!;
    `rm -rf '${pkg}.git'`;
