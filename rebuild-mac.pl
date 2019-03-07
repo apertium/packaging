@@ -63,9 +63,13 @@ for my $pkg (@$pkgs) {
 # Ordered so that nightly is left installed after the build
 for my $cadence (qw( release nightly )) {
    print "Building ${cadence}...\n";
+   `rm -rf /tmp/build/${cadence}`;
+   `mkdir -p /tmp/build/${cadence}`;
+
    my @combo = ();
    my %rebuilt = ();
    my $did = 0;
+   my $done = 0;
 
    for my $pkg (@$pkgs) {
       my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
@@ -108,9 +112,14 @@ for my $cadence (qw( release nightly )) {
       }
 
       if (!$rebuild) {
-         print "\tno reason to build\n";
-         chdir('/usr/local') or die "Could not chdir(/usr/local): $!\n";
-         `tar -jxvf '${pkpath}/${pkname}-latest.tar.bz2' >/dev/null 2>&1`;
+         print "\tno reason to build - extracting latest\n";
+         `mkdir -p /tmp/$$`;
+         chdir("/tmp/$$") or die "Could not chdir(/tmp/$$): $!\n";
+         `tar -jxf '${pkpath}/${pkname}-latest.tar.bz2'`;
+         `cp -ac '${pkname}/'* /usr/local/`;
+         chdir("/tmp") or die "Could not chdir(/tmp): $!\n";
+         `rm -rf /tmp/$$`;
+         ++$done;
          next;
       }
 
@@ -146,7 +155,7 @@ for my $cadence (qw( release nightly )) {
       print "\tbuilding...\n";
       `echo '======== BUILD ========' >>'${logfile}'`;
       `date -u >>'${logfile}'`;
-      $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}' 2>&1 >>'${logfile}' 2>&1 || echo 'BUILD FAILED'`;
+      $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}' 2>&1 || echo 'BUILD FAILED'`;
       if ($log =~ /^BUILD FAILED/) {
          print "\tfailed build\n";
          next;
@@ -218,9 +227,16 @@ for my $cadence (qw( release nightly )) {
       `cp -a '${logfile}' '${pkpath}/${pkname}.log'`;
 
       $did = 1;
+      ++$done;
    }
 
    if (!$did) {
+      next;
+   }
+
+   my $expect = scalar(@combo);
+   if ($done < $expect) {
+      print "${done} of ${expect} builds succeeded - won't combine!\n";
       next;
    }
 
