@@ -29,6 +29,14 @@ do
         perl -pe "s@/usr/local@$WHERE@g;" -i.orig "$FILE"
 done
 
+echo "Removing /opt/local/bin hardcoded paths"
+FILES=`egrep -l '^#!/' $(grep -rl '/opt/local/bin' bin)`
+for FILE in $FILES
+do
+        echo "Fixing $FILE"
+        perl -pe "s@/opt/local/bin/@@g;" -i.orig "$FILE"
+done
+
 echo "Copying files with sudo, so you may need to provide sudo password here:"
 sudo mkdir -p "$WHERE/"
 sudo cp -af * "$WHERE/"
