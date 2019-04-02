@@ -37,9 +37,10 @@ $ENV{'TERMCAP'} = '';
 
 $ENV{'CC'} = 'clang';
 $ENV{'CXX'} = 'clang++';
+$ENV{'CPATH'} = '/opt/local/include/:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/';
 $ENV{'CFLAGS'} = '-Wall -Wextra -O2';
 $ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1 -DU_USING_ICU_NAMESPACE=1';
-$ENV{'LDFLAGS'} = '-stdlib=libc++ -Wl,-headerpad_max_install_names';
+$ENV{'LDFLAGS'} = '-L/opt/local/lib/ -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/ -stdlib=libc++ -Wl,-headerpad_max_install_names';
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
@@ -61,7 +62,7 @@ for my $pkg (@$pkgs) {
 }
 
 # Ordered so that nightly is left installed after the build
-for my $cadence (qw( release nightly )) {
+for my $cadence (qw(  nightly )) {#release
    print "Building ${cadence}...\n";
    `rm -rf /tmp/build/${cadence}`;
    `mkdir -p /tmp/build/${cadence}`;
@@ -123,16 +124,17 @@ for my $cadence (qw( release nightly )) {
          next;
       }
 
-      my $logfile = "/tmp/build/${cadence}/${pkname}.log";
-      unlink($logfile);
+      my $logfile = "/tmp/build/${cadence}/${pkname}";
+      `rm -fv '${logfile}'-*.log`;
 
       print "\tunpacking source...\n";
-      `echo '======== SOURCE ========' >>'${logfile}'`;
-      `date -u >>'${logfile}'`;
+      `echo '======== SOURCE ========' >>'${logfile}-source.log'`;
+      `date -u >>'${logfile}-source.log'`;
       `rm -rf /tmp/build/${cadence}/${pkname}`;
       `mkdir -p /tmp/build/${cadence}/${pkname}`;
       chdir("/tmp/build/${cadence}/${pkname}") or die "Could not chdir(/tmp/build/${cadence}/${pkname}): $!\n";
-      `tar -jxvf '${Bin}/${cadence}/source/${pkname}.tar.bz2' >>'${logfile}' 2>&1`;
+      `tar -jxvf '${Bin}/${cadence}/source/${pkname}.tar.bz2' >>'${logfile}-source.log' 2>&1`;
+      `cat '${logfile}-source.log' >>'${logfile}.log'`;
 
       my @vers = glob("${pkname}*");
       my $ver = $vers[0];
@@ -144,18 +146,20 @@ for my $cadence (qw( release nightly )) {
       `grep -rl '^#!/bin/bash' * | xargs -n1 perl -pe 's\@^#!/usr/bin/bash\@#!/usr/bin/env bash\@g;' -i`;
 
       print "\tsetting up build...\n";
-      `echo '======== SETUP ========' >>'${logfile}'`;
-      `date -u >>'${logfile}'`;
-      my $log = `bash '${Bin}/@$pkg[0]/osx/setup.sh' >>'${logfile}' 2>&1 || echo 'SETUP FAILED'`;
+      `echo '======== SETUP ========' >>'${logfile}-setup.log'`;
+      `date -u >>'${logfile}-setup.log'`;
+      my $log = `bash '${Bin}/@$pkg[0]/osx/setup.sh' >>'${logfile}-setup.log' 2>&1 || echo 'SETUP FAILED'`;
+      `cat '${logfile}-setup.log' >>'${logfile}.log'`;
       if ($log =~ /^SETUP FAILED/) {
          print "\tfailed setup\n";
          next;
       }
 
       print "\tbuilding...\n";
-      `echo '======== BUILD ========' >>'${logfile}'`;
-      `date -u >>'${logfile}'`;
-      $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}' 2>&1 || echo 'BUILD FAILED'`;
+      `echo '======== BUILD ========' >>'${logfile}-build.log'`;
+      `date -u >>'${logfile}-build.log'`;
+      $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+      `cat '${logfile}-build.log' >>'${logfile}.log'`;
       if ($log =~ /^BUILD FAILED/) {
          print "\tfailed build\n";
          next;
@@ -171,9 +175,10 @@ for my $cadence (qw( release nightly )) {
       }
       if ($test) {
          print "\ttesting...\n";
-         `echo '======== TEST ========' >>'${logfile}'`;
-         `date -u >>'${logfile}'`;
-         $log = `make '${test}' V=1 VERBOSE=1 >>'${logfile}' 2>&1 || echo 'TEST FAILED'`;
+         `echo '======== TEST ========' >>'${logfile}-test.log'`;
+         `date -u >>'${logfile}-test.log'`;
+         $log = `make '${test}' V=1 VERBOSE=1 >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
+         `cat '${logfile}-test.log' >>'${logfile}.log'`;
          if ($log =~ /^TEST FAILED/) {
             print "\tfailed test\n";
             next;
@@ -181,10 +186,11 @@ for my $cadence (qw( release nightly )) {
       }
 
       print "\tinstalling...\n";
-      `echo '======== INSTALL ========' >>'${logfile}'`;
-      `date -u >>'${logfile}'`;
+      `echo '======== INSTALL ========' >>'${logfile}-install.log'`;
+      `date -u >>'${logfile}-install.log'`;
       `rm -rf /tmp/install`;
-      $log = `make -j4 install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}' 2>&1 || echo 'INSTALL FAILED'`;
+      $log = `make -j4 install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+      `cat '${logfile}-install.log' >>'${logfile}.log'`;
       if ($log =~ /^INSTALL FAILED/) {
          print "\tfailed install\n";
          next;
@@ -192,17 +198,18 @@ for my $cadence (qw( release nightly )) {
       `make -j4 install >/dev/null 2>&1`;
 
       print "\tpackaging...\n";
-      `echo '======== PACKAGE ========' >>'${logfile}'`;
-      `date -u >>'${logfile}'`;
+      `echo '======== PACKAGE ========' >>'${logfile}-package.log'`;
+      `date -u >>'${logfile}-package.log'`;
       unlink("/tmp/${pkname}.tar.bz2");
       chdir('/tmp/install/usr/local') or die "Could not chdir(/tmp/install/usr/local): $!\n";
       `mkdir -p lib`;
-      `echo '======== PACKAGE: DEPS ========' >>'${logfile}'`;
-      `${Bin}/macos-copy-deps.pl >>'${logfile}' 2>&1`;
-      `echo '======== PACKAGE: TAR ========' >>'${logfile}'`;
+      `echo '======== PACKAGE: DEPS ========' >>'${logfile}-package.log'`;
+      `${Bin}/macos-copy-deps.pl >>'${logfile}-package.log' 2>&1`;
+      `echo '======== PACKAGE: TAR ========' >>'${logfile}-package.log'`;
       chdir('/tmp/install/usr') or die "Could not chdir(/tmp/install/usr): $!\n";
       rename('local', $pkname);
-      $log = `tar -jcvf '/tmp/${pkname}.tar.bz2' * >>'${logfile}' 2>&1 || echo 'PACKAGE FAILED'`;
+      $log = `tar -jcvf '/tmp/${pkname}.tar.bz2' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
+      `cat '${logfile}-package.log' >>'${logfile}.log'`;
       if ($log =~ /PACKAGE FAILED/) {
          print "\tfailed packaging\n";
          next;
@@ -222,8 +229,8 @@ for my $cadence (qw( release nightly )) {
 
       `rm -rf '${pkpath}'`;
       `mkdir -p '${pkpath}'`;
-      `mv -v '/tmp/${pkname}.tar.bz2' '${pkpath}/${pkname}-latest.tar.bz2' >>'${logfile}' 2>&1`;
-      `ln -sv '${pkname}-latest.tar.bz2' '${pkpath}/${ver}.tar.bz2' >>'${logfile}' 2>&1`;
+      `mv -v '/tmp/${pkname}.tar.bz2' '${pkpath}/${pkname}-latest.tar.bz2' >>'${logfile}.log' 2>&1`;
+      `ln -sv '${pkname}-latest.tar.bz2' '${pkpath}/${ver}.tar.bz2' >>'${logfile}.log' 2>&1`;
       `cp -a '${logfile}' '${pkpath}/${pkname}.log'`;
 
       $did = 1;
