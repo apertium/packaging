@@ -21,17 +21,17 @@ for (my $i=1 ; $i<1000 && $did ; $i++) {
    my @syms = split("\n", `find lib -type l`);
    foreach my $s (@syms) {
       my $d = readlink($s);
-      if (!-e "lib/$d" && -e "/usr/local/lib/$d") {
-         print STDERR "\tcopying real file '$d'\n";
-         `rsync -avu '/usr/local/lib/$d' 'lib/$d'`;
+      if (!-e "lib/$d" && -e "/opt/local/lib/$d") {
+         print STDERR "\tcopying /opt file '$d'\n";
+         `rsync -avu '/opt/local/lib/$d' 'lib/$d'`;
          if (-e "/opt/icudata/$d") {
             `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
          }
          $did = 1;
       }
-      if (!-e "lib/$d" && -e "/opt/local/lib/$d") {
-         print STDERR "\tcopying real file '$d'\n";
-         `rsync -avu '/opt/local/lib/$d' 'lib/$d'`;
+      if (!-e "lib/$d" && -e "/usr/local/lib/$d") {
+         print STDERR "\tcopying /usr file '$d'\n";
+         `rsync -avu '/usr/local/lib/$d' 'lib/$d'`;
          if (-e "/opt/icudata/$d") {
             `rsync -avu '/opt/icudata/$d' 'lib/$d'`;
          }
