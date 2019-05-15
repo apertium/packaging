@@ -18,11 +18,13 @@ my %opts = (
 	'url' => 'https://github.com/apertium/apertium',
 	'file' => 'configure.ac',
 	'rev' => 'HEAD',
+	'pkname' => 'apertium',
 );
 GetOptions(
 	'u|url=s' => \$opts{'url'},
 	'f|file=s' => \$opts{'file'},
 	'rev=s' => \$opts{'rev'},
+	'pkname|p=s' => \$opts{'pkname'},
 );
 
 print STDERR "Getting version quad from $opts{url}/$opts{file}\n";
@@ -31,12 +33,11 @@ my $rawrev = '';
 my $revision = '';
 my $srcdate = '';
 
+my $pkg = $opts{'pkname'};
+chdir('/opt/autopkg/repos') or die $!;
 if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
-   my $pkg = $1;
-   chdir('/home/apertium/public_html/git');
    if (! -s "${pkg}.git") {
       print STDERR `git clone --mirror '$opts{url}' 2>&1`;
-      print STDERR `chown -R apertium:apertium '${pkg}.git'`;
    }
 
    chdir("${pkg}.git") or die $!;
@@ -48,25 +49,51 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 
    chdir('/misc/git') or die $!;
    `rm -rf '${pkg}.git'`;
-   print STDERR `git clone --shallow-submodules /home/apertium/public_html/git/${pkg}.git ${pkg}.git`;
+   print STDERR `git clone --shallow-submodules /opt/autopkg/repos/${pkg}.git ${pkg}.git`;
 
    chdir("${pkg}.git") or die $!;
    print STDERR `git reset --hard '$opts{rev}'`;
    my $logline = `git log --first-parent '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
    $revision = '+g'.(`git log '--format=format:\%H' '$opts{rev}' | sort | uniq | wc -l` + 0).'~'.substr($rawrev, 0, 8);
-
-   copy($opts{'file'}, "/tmp/version.$$.tmp");
-   chdir('/tmp') or die $!;
 }
 else {
-   chdir('/tmp') or die $!;
-   `svn export -r$opts{rev} $opts{url}/$opts{file} version.$$.tmp >&2`;
-   my $logline = `svn info -r$opts{rev} $opts{url}`;
+   my $retried = 0;
+   my $sdir = "${pkg}.svn-$ENV{BUILDTYPE}";
+   RETRY_SVN:
+   if (! -d $sdir) {
+      print STDERR `svn co -r$opts{rev} $opts{url}/ $sdir/ 2>&1`;
+   }
+   chdir($sdir) or die $!;
+   my $e = 0;
+   print STDERR `svn switch --ignore-ancestry --force --accept tf -r$opts{rev} $opts{url}/ 2>&1`;
+   $e += $?;
+   print STDERR `svn cleanup --remove-unversioned 2>&1`;
+   $e += $?;
+   print STDERR `svn revert -R . 2>&1`;
+   $e += $?;
+   print STDERR `svn up --force --accept tf -r$opts{rev} 2>&1`;
+   $e += $?;
+
+   my $logline = `svn info -r$opts{rev}`;
    ($rawrev) = ($logline =~ m@Last Changed Rev: (\d+)@);
    ($srcdate) = ($logline =~ m@Last Changed Date: ([^)]+) \(@);
    $revision = '+s'.$rawrev;
+   $e += $?;
+
+   if ($e && !$retried) {
+      print STDERR "Subversion repo failed somewhere - wiping and retrying...\n";
+      chdir('/opt/autopkg/repos') or die $!;
+      `rm -rf $sdir`;
+      $retried = 1;
+      goto RETRY_SVN;
+   }
+   if ($e) {
+      die "Subversion repo failed somewhere.\n";
+   }
 }
+copy($opts{file}, "/tmp/version.$$.tmp");
+chdir('/tmp') or die $!;
 
 if (!(-s "version.$$.tmp")) {
    die "Failed to git/svn export $opts{file} from $opts{url}!\n";

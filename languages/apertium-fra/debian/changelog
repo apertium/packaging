@@ -1,8 +1,22 @@
-apertium-fra (1.5.0-1) unstable; urgency=low
+apertium-fra (1.6.0-1) unstable; urgency=low
 
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 12 Oct 2018 13:10:12 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Mar 2019 13:00:31 +0100
+
+apertium-fra (1.5.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+  * debian/control:
+    + Updated Standards-Version to 4.2.1
+    + Depends on apertium >= 3.5.2
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Removed unneeded Build-Depends.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 15 Oct 2018 20:56:46 +0530
 
 apertium-fra (1.4.0-1) unstable; urgency=low
 

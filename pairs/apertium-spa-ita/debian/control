@@ -7,12 +7,10 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
 Build-Depends: apertium-dev (>= 3.5.2),
                apertium-ita (>= 0.9.0~r78828),
                apertium-spa (>= 1.0.0~r78827),
-               autotools-dev,
-               debhelper (>= 9),
-               dh-autoreconf,
+               debhelper (>= 11),
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-spa-ita.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-ita.git

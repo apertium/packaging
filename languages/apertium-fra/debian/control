@@ -5,13 +5,11 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.5.2),
-               autotools-dev,
                cg3,
-               debhelper (>= 9),
-               dh-autoreconf,
+               debhelper (>= 11),
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-fra.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-fra

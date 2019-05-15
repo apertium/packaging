@@ -12,7 +12,11 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
-if (-s '/tmp/rebuild.lock') {
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
+
+if (-s '/opt/autopkg/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
 }
 if (!$ARGV[0]) {
@@ -39,25 +43,16 @@ GetOptions(
 	'rpm' => \$opts{'rpm'},
 );
 
-use File::Basename;
-my $dir = dirname(__FILE__);
-chdir($dir) or die $!;
+chdir($Bin) or die $!;
 if (!(-x 'get-version.pl')) {
-   die "get-version.pl not found in $dir!\n";
+   die "get-version.pl not found in $Bin!\n";
 }
 if (!(-s 'packages.json')) {
-   die "packages.json not found in $dir!\n";
+   die "packages.json not found in $Bin!\n";
 }
 
 use JSON;
-my $pkgs = ();
-{
-	local $/ = undef;
-	open FILE, 'packages.json' or die "Could not open packages.json: $!\n";
-	my $data = <FILE>;
-   $pkgs = JSON->new->utf8->relaxed->decode($data);
-   close FILE;
-}
+my $pkgs = JSON->new->utf8->relaxed->decode(file_get_contents('packages.json'));
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;

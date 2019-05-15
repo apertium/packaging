@@ -231,7 +231,7 @@ for my $cadence (qw(  nightly )) {#release
       `mkdir -p '${pkpath}'`;
       `mv -v '/tmp/${pkname}.tar.bz2' '${pkpath}/${pkname}-latest.tar.bz2' >>'${logfile}.log' 2>&1`;
       `ln -sv '${pkname}-latest.tar.bz2' '${pkpath}/${ver}.tar.bz2' >>'${logfile}.log' 2>&1`;
-      `cp -a '${logfile}' '${pkpath}/${pkname}.log'`;
+      `cp -ac '${logfile}' '${pkpath}/${pkname}.log'`;
 
       $did = 1;
       ++$done;
@@ -257,7 +257,7 @@ for my $cadence (qw(  nightly )) {#release
       }
       print "\t${pkname}\n";
       `tar -jxvf '${Bin}/${cadence}/build/${pkname}/${pkname}-latest.tar.bz2' >>apertium-all-dev.log 2>&1`;
-      `cp -a '${pkname}/'* ./apertium-all-dev/`;
+      `cp -ac '${pkname}/'* ./apertium-all-dev/`;
       `rm -rf '${pkname}'`;
    }
    `tar -jcvf apertium-all-dev.tar.bz2 apertium-all-dev >>apertium-all-dev.log 2>&1`;

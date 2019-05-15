@@ -9,13 +9,11 @@ Build-Depends: apertium-dan (>= 0.5.0~r67099),
                apertium-lex-tools,
                apertium-nno (>= 0.7.0~r67099),
                apertium-nob (>= 0.7.0~r67099),
-               autotools-dev,
                cg3,
-               debhelper (>= 9),
-               dh-autoreconf,
+               debhelper (>= 11),
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-dan-nor.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-dan-nor.git

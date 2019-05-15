@@ -4,12 +4,9 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: autotools-dev,
-               bc,
+Build-Depends: bc,
                cg3,
-               debhelper (>= 9),
-               dh-autoreconf,
-               dh-exec,
+               debhelper (>= 11),
                divvun-gramcheck,
                foma,
                gawk,
@@ -20,7 +17,7 @@ Build-Depends: autotools-dev,
                pkg-config (>= 0.21),
                python3 (>= 3.1),
                zip
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/giella-crk.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-crk.git

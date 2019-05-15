@@ -12,6 +12,10 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
+
 use Getopt::Long;
 my %opts = (
    'u' => 'https://github.com/apertium/apertium',
@@ -44,8 +48,9 @@ print `rm -rf /tmp/autorpm.* 2>&1`;
 print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
 chdir "/tmp/autorpm.$$" or die "Could not change folder: $!\n";
 
-print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.xz 2>&1`;
-print `ar x /var/cache/pbuilder/result/$pkname*sid*_all.deb data.tar.gz 2>&1`;
+my $autopath = "/tmp/autopkg.$ENV{BUILDTYPE}/$pkname";
+print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
+print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.gz 2>&1`;
 print `tar -Jxvf data.tar.xz 2>&1`;
 print `tar -zxvf data.tar.gz 2>&1`;
 my $files = '';
@@ -80,7 +85,7 @@ if (-e 'usr/share/voikko') {
    $files .= "\%{_datadir}/voikko\n";
 }
 mkdir($pkname.'-'.$opts{'v'});
-print `cp -av 'usr' '$pkname-$opts{'v'}/' 2>&1`;
+print `cp -av --reflink=auto 'usr' '$pkname-$opts{'v'}/' 2>&1`;
 print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
@@ -93,7 +98,7 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
 print `osc rm --force * 2>&1`;
-print `cp -av /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av --reflink=auto /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
 my $btype = "\u$ENV{BUILDTYPE}";
 
@@ -140,9 +145,7 @@ if ($opts{auto}) {
 
 CHLOG
 }
-open FILE, ">/root/osc/$opts{'oscp'}/$pkname/$pkname.spec" or die "Could not write /root/osc/$opts{'oscp'}/$pkname/$pkname.spec: $!\n";;
-print FILE $spec;
-close FILE;
+file_put_contents("/root/osc/$opts{'oscp'}/$pkname/$pkname.spec", $spec);
 
 my $meta = <<META;
 <package name="$pkname" project="home:TinoDidriksen:$ENV{BUILDTYPE}">
@@ -154,9 +157,7 @@ my $meta = <<META;
   </build>
 </package>
 META
-open FILE, ">/tmp/$pkname.xml" or die "Could not write /tmp/$pkname.xml: $!\n";;
-print FILE $meta;
-close FILE;
+file_put_contents("/tmp/$pkname.xml", $meta);
 print `osc meta pkg -F /tmp/$pkname.xml`;
 
 print `osc add * 2>&1`;

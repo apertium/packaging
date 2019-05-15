@@ -12,31 +12,18 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
-sub replace_in_file {
-   my ($file, $what, $with) = @_;
-   open my $in, '<', $file or die $!;
-   open my $out, '>', $file.".$$.new" or die $!;
-   while (<$in>) {
-      if (/$what/) {
-         $_ = $with."\n";
-      }
-      print $out $_;
-   }
-   close $in;
-   close $out;
-   rename $file.".$$.new", $file;
-}
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
 
 if (!$ARGV[0]) {
    die "Must provide a package path!\n";
 }
 $ARGV[0] =~ s@/$@@g;
 
-use File::Basename;
-my $dir = dirname(__FILE__);
-chdir($dir) or die $!;
+chdir($Bin) or die $!;
 if (!(-x 'get-version.pl')) {
-   die "get-version.pl not found in $dir!\n";
+   die "get-version.pl not found in $Bin!\n";
 }
 
 my ($pkg) = ($ARGV[0] =~ m@^(.+?)/?$@); # Trim final /, if any
@@ -61,13 +48,7 @@ my $deps = `svn cat $url/trunk/configure.ac | ./depends.pl`;
 chomp($deps);
 my @deps = split(/\n/, $deps);
 
-my $control = '';
-{
-	local $/ = undef;
-   open my $crt, "<$pkg/debian/control" or die $!;
-   $control = <$crt>;
-   close $crt;
-}
+my $control = file_get_contents("$pkg/debian/control");
 
 my @depends = ($control =~ m@D?epends:(\s*.*?)\n\S@gs);
 @depends = sort { length($b) <=> length($a) } @depends;
@@ -92,9 +73,7 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
    }
 }
 
-open my $crt, ">$pkg/debian/control" or die $!;
-print {$crt} $control;
-close $crt;
+file_put_contents("$pkg/debian/control", $control);
 
 my $gv = `./get-version.pl --url '$url' 2>/dev/null`;
 ($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);

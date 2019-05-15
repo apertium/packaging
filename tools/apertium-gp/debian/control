@@ -3,7 +3,7 @@ Section: translators
 Priority: optional
 Maintainer: Denys Senkin <denisx9.0c@gmail.com>
 Build-Depends: debhelper (>= 9), qt5-qmake, qtbase5-dev, qtbase5-dev-tools
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://www.apertium.org/
 
 Package: apertium-gp

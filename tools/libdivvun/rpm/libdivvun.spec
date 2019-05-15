@@ -24,13 +24,13 @@ BuildRequires: python3
 BuildRequires: python3-devel
 BuildRequires: zip
 Requires: libdivvun0 = %{version}-%{release}
+Provides: divvun-gramcheck = %{version}-%{release}
 
 %description
 Helper tools for grammar checking for Divvun languages
 
 %package -n libdivvun0
 Summary: Runtime for Divvun grammar checker
-Provides: libdivvun-gramcheck = %{version}-%{release}
 
 %description -n libdivvun0
 Runtime library for applications using the Divvun grammar checker API
@@ -66,6 +66,7 @@ find %{buildroot}/%{_libdir}/ -type f -name '*.la' -exec rm -f '{}' \;
 find %{buildroot}/%{_libdir}/ -type f -name '*.a' -exec rm -f '{}' \;
 
 %check
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check
 
 %files

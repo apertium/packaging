@@ -6,12 +6,10 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.5.2),
                apertium-lex-tools,
-               autotools-dev,
-               debhelper (>= 9),
-               dh-autoreconf,
+               debhelper (>= 11),
                gawk,
                pkg-config (>= 0.21)
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-en-es.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-en-es.git

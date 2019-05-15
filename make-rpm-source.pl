@@ -12,6 +12,10 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
+
 use Getopt::Long;
 my %opts = (
    'u' => 'https://github.com/apertium/apertium',
@@ -40,14 +44,14 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-chdir(glob('/tmp/autopkg.*')) or die "Could not change folder: $!\n";
-my $path = `find /misc/branches/packaging/ -type d -name '$pkname'`;
-chomp($path);
+my $autopath = $ENV{AUTOPATH};
+chdir $autopath or die "Could not change folder: $!\n";
+
 #`svn export $opts{r}/rpm >/dev/null 2>&1`;
-if (!(-s "$path/rpm/$pkname.spec")) {
-   die "No such file $path/rpm/$pkname.spec !\n";
+if (!(-s "$ENV{PKPATH}/rpm/$pkname.spec")) {
+   die "No such file $ENV{PKPATH}/rpm/$pkname.spec !\n";
 }
-print `cp -av '$path/rpm' ./`;
+print `cp -av --reflink=auto '$ENV{PKPATH}/rpm' ./`;
 my $spec = `cat rpm/$pkname.spec`;
 
 chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
@@ -60,8 +64,8 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
 print `osc up 2>&1`;
 print `osc rm * 2>&1`;
-print `cp -av /tmp/autopkg.*/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
-print `cp -av /tmp/autopkg.*/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av --reflink=auto $autopath/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av --reflink=auto $autopath/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
 
 $spec =~ s/^Version:(\s+)[^\n]+$/Version:$1$opts{'v'}/m;
 $spec =~ s/^Release:(\s+)\d+/Release:$1$opts{'dv'}/m;
@@ -74,9 +78,7 @@ if ($opts{auto}) {
 
 CHLOG
 }
-open FILE, ">/root/osc/$opts{'oscp'}/$pkname/$pkname.spec" or die "Could not write /root/osc/$opts{'oscp'}/$pkname/$pkname.spec: $!\n";;
-print FILE $spec;
-close FILE;
+file_put_contents("/root/osc/$opts{'oscp'}/$pkname/$pkname.spec", $spec);
 
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;

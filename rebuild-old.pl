@@ -12,41 +12,35 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
-sub file_get_contents($) {
-   my ($fname) = @_;
-   local $/ = undef;
-   open FILE, $fname or die "Could not open ${fname}: $!\n";
-   my $data = <FILE>;
-   close FILE;
-   return $data;
-}
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
 
-if (-s '/tmp/rebuild.lock') {
+`mkdir -p /opt/autopkg`;
+if (-s '/opt/autopkg/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
 }
-`date -u > /tmp/rebuild.lock`;
+`date -u > /opt/autopkg/rebuild.lock`;
 
 use Getopt::Long;
-Getopt::Long::Configure("no_ignore_case");
+Getopt::Long::Configure('no_ignore_case');
 my $release = 0;
+my $refresh = 0;
 my $dry = 0;
 my $distro = '';
 my $rop = GetOptions(
-   "release|r!" => \$release,
-   "dry|n!" => \$dry,
-   "distro=s" => \$distro,
+   'release|r!' => \$release,
+   'refresh!' => \$refresh,
+   'dry|n!' => \$dry,
+   'distro=s' => \$distro,
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
-$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-$ENV{'DEBCONF_NONINTERACTIVE_SEEN'} = 'true';
-$ENV{'DEB_BUILD_OPTIONS'} = 'parallel=2 noddebs';
 #$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
-use File::Basename;
 use File::Copy;
-my $dir = dirname(__FILE__);
+my $dir = $Bin;
 chdir($dir) or die $!;
 use Cwd;
 $dir = getcwd();
@@ -63,6 +57,7 @@ if (!(-s 'authors.json')) {
 use JSON;
 my $pkgs = JSON->new->relaxed->decode(file_get_contents('packages.json'));
 my $authors = JSON->new->relaxed->decode(file_get_contents('authors.json'));
+my $targets = JSON->new->relaxed->decode(file_get_contents('targets.json'));
 
 my %rebuilt = ();
 my %blames = ();
@@ -72,14 +67,36 @@ my $osx = 0;
 my $aptget = 0;
 
 use IO::Tee;
-open my $log, ">/tmp/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
+open my $log, ">/opt/autopkg/rebuild.$$.log" or die "Failed to open rebuild.log: $!\n";
 my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build $ENV{BUILDTYPE} started ".`date -u`;
-`rm -f /var/cache/pbuilder/aptcache/*.deb`;
-`rm -f /tmp/update-*.log`;
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;
+}
+
+my %our_pkgs = ();
+foreach (split(/\n+/, `./enum-our-packages.sh`)) {
+   $our_pkgs{$_} = 1;
+}
+
+my %dep_order = ();
+my %dep_our = ();
+foreach (split(/\n+/, `./enum-build-deps.sh`)) {
+   s/^\s+//g;
+   s/\s+$//g;
+   my ($n,$p) = split(/\s+/);
+   if (defined $our_pkgs{$p}) {
+      $dep_our{$p} = 0+$n;
+   }
+   $dep_order{$p} = 0+$n;
+}
+
+sub order_deps {
+   if (defined $dep_order{$a} && defined $dep_order{$b}) {
+      return $dep_order{$b} <=> $dep_order{$a};
+   }
+   return 0;
 }
 
 foreach my $pkg (@$pkgs) {
@@ -90,9 +107,13 @@ foreach my $pkg (@$pkgs) {
 
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
    my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
-   `mkdir -p $logpath/ && rm -f $logpath/*-*`;
+   `mkdir -p $logpath/ && rm -f $logpath/*-*.log`;
    open my $pkglog, ">$logpath/rebuild.log" or die "Failed to open $logpath/rebuild.log: $!\n";
    my $out = IO::Tee->new($out2, $pkglog);
+
+   $ENV{'PKNAME'} = $pkname;
+   $ENV{'PKPATH'} = "$Bin/".@$pkg[0];
+   $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
 
    if (!@$pkg[1]) {
       my ($path) = (@$pkg[0] =~ m@/([^/]+)$@);
@@ -134,7 +155,7 @@ foreach my $pkg (@$pkgs) {
       $rev = "--rev '$rev'";
    }
    # Determine latest version and date stamp from the repository
-   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' $rev 2>$logpath/stderr.log`;
+   my $gv = `./get-version.pl --url '@$pkg[1]' --file '@$pkg[2]' --pkname '$pkname' $rev 2>$logpath/stderr.log`;
    chomp($gv);
    my ($newrev,$version,$srcdate) = split(/\t/, $gv);
    if (!$newrev) {
@@ -160,23 +181,26 @@ foreach my $pkg (@$pkgs) {
 
    # Figure out if the latest is newer than existing, which is complicated enough that we just ask dpkg
    my $gt = `dpkg --compare-versions '$version' gt '$oldversion' && echo 1 || echo 0` + 0;
-
    my $rebuild = 0;
-   if (!$gt) {
-      # Current version is not newer, so check if any dependencies were rebuilt
-      # ToDo: This should really check the actual .deb dependencies and files
-      # Counter-ToDo: Since .deb packages have no clue about Build-Depends, we'd need to check both anyway, so this is fine for now
-      my $deps = file_get_contents(@$pkg[0].'/debian/control');
-      $deps = join("\n", ($deps =~ m@Build-Depends:(\s*.*?)\n\S@gs));
-      foreach my $dep (split(/[,|\n]/, $deps)) {
-         $dep =~ s@\([^)]+\)@@g;
-         $dep =~ s@\s+$@@gs;
-         $dep =~ s@^\s+@@gs;
-         if ($dep && defined $rebuilt{$dep}) {
-            $rebuild = 1;
-            print {$out} "\tdependency $dep was rebuilt\n";
-            last;
-         }
+
+   my $control = file_get_contents(@$pkg[0].'/debian/control');
+   $control =~ s@,\s*\n\s*@,@gs;
+   ($_) = ($control =~ m@Build-Depends:\s*([^\n]+)@);
+
+   my @os_deps = ();
+   my @our_deps = ();
+   foreach my $dep (split(/\s*,\s*/)) {
+      $dep =~ s@\([^)]+\)@@g;
+      $dep =~ s@\s+@@gs;
+      if ($dep && defined $rebuilt{$dep}) {
+         $rebuild = 1;
+         print {$out} "\tdependency $dep was rebuilt\n";
+      }
+      if (defined $dep_our{$dep}) {
+         push(@our_deps, $dep);
+      }
+      else {
+         push(@os_deps, $dep);
       }
    }
 
@@ -184,6 +208,9 @@ foreach my $pkg (@$pkgs) {
       # Package doesn't need rebuilding, so skip to cleanup
       goto CLEANUP;
    }
+
+   @os_deps = sort order_deps @os_deps;
+   @our_deps = sort order_deps @our_deps;
 
    my $distv = 1;
    if (!$gt) {
@@ -198,7 +225,7 @@ foreach my $pkg (@$pkgs) {
    print {$out} "\tlaunching rebuild\n";
 
    my $is_data = '';
-   copy("@$pkg[0]/debian/rules", "/tmp/rules.$$");
+   copy("@$pkg[0]/debian/rules", "/opt/autopkg/rules.$$");
    if (@$pkg[0] =~ m@^languages/@ || @$pkg[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || @$pkg[0] =~ m@/giella-@ || @$pkg[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
@@ -211,30 +238,131 @@ foreach my $pkg (@$pkgs) {
    }
    if ($dry || $is_data eq 'data') {
       $is_data = 'data';
-      @$pkg[3] = 'jessie,stretch,buster,trusty,xenial,bionic,cosmic';
+      # For data-only packages, skip all distros except Debian Sid
+      @$pkg[3] = join(',', keys(%{$targets->{'distros'}}));
+      @$pkg[3] =~ s@(^|,)sid(,|$)@,@g;
    }
    if ($distro) {
       @$pkg[3] = $distro;
    }
 
+   @$pkg[3] = ",@$pkg[3],";
+
    # Build the packages for Debian/Ubuntu
-   `./make-deb-source.pl $cli 2>>$logpath/stderr.log >&2`;
-   copy("/tmp/rules.$$", "@$pkg[0]/debian/rules");
+   `./make-deb-source.pl $cli --nobuild '@$pkg[3]' 2>>$logpath/stderr.log >&2`;
+   rename("/opt/autopkg/rules.$$", "@$pkg[0]/debian/rules");
 
-   `./build-debian-ubuntu.sh '$pkname' '$is_data' ',@$pkg[3],' 2>>$logpath/stderr.log >&2`;
-   my $failed = '';
-   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
-   chomp($failed);
+   # Track whether this build resulted in actual data changes, because it's pointless to trigger downstream rebuilds if not
+   my $changed = 0;
 
-   my $hashfail = '';
-   $hashfail = `grep -l 'Hash Sum mismatch' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
-   chomp($hashfail);
-   if ($hashfail) {
-      print {$out} "\tsoft fail: hash sum mismatch\n";
+   foreach my $distro (keys %{$targets->{'distros'}}) {
+      if (@$pkg[3] =~ m@,$distro,@) {
+         next;
+      }
+
+      my $variant = $targets->{'distros'}->{$distro}{'variant'};
+      foreach my $arch (@{$targets->{'archs'}}) {
+         if ($is_data && $arch ne 'amd64') {
+            next;
+         }
+
+         `rm -f '$logpath/$distro-$arch.log'`;
+
+         my $dpath = $ENV{'AUTOPATH'}."/$arch/$distro";
+         my $docker = "FROM $arch/$variant:$distro\n";
+         $docker .= "\n";
+         $docker .= "ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true\n";
+         $docker .= "\n";
+         $docker .= "RUN mkdir /build\n";
+         $docker .= "RUN groupadd -g 1234 builder && useradd -d /build -M -u 1234 -g 1234 builder\n";
+         $docker .= "RUN chown 1234:1234 /build\n";
+         $docker .= "\n";
+         $docker .= "# Use caching proxy\n";
+         $docker .= 'RUN export HOST_IP=$(cat /proc/net/route | awk \'/^[a-z]+[0-9]+\t00000000/ { printf("%d.%d.%d.%d\n", "0x" substr($3, 7, 2), "0x" substr($3, 5, 2), "0x" substr($3, 3, 2), "0x" substr($3, 1, 2)) }\') && \\'."\n";
+         $docker .= "\techo 'Acquire::http::Proxy \"http://'\$HOST_IP':3124\";' > /etc/apt/apt.conf.d/30autoproxy\n";
+         $docker .= "\n";
+         $docker .= "# Upgrade everything and install base builder dependencies\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install fakeroot\n";
+         if (scalar(@os_deps)) {
+            $docker .= "\n";
+            $docker .= "# OS dependencies\n";
+            foreach my $dep (@os_deps) {
+               $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install $dep\n";
+            }
+         }
+         if (scalar(@our_deps)) {
+            $docker .= "\n";
+            $docker .= "# Our dependencies\n";
+            $docker .= "COPY apertium-packaging.public.gpg /etc/apt/trusted.gpg.d/apertium.gpg\n";
+            $docker .= "RUN chmod 0666 /etc/apt/trusted.gpg.d/apertium.gpg\n";
+            $docker .= "RUN echo 'Package: *' > /etc/apt/preferences.d/apertium.pref && \\\n";
+            $docker .= "\techo 'Pin: origin apertium.projectjj.com' >> /etc/apt/preferences.d/apertium.pref && \\\n";
+            $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
+            $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
+            foreach my $dep (@our_deps) {
+               $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install $dep\n";
+            }
+         }
+         file_put_contents("$dpath/Dockerfile", $docker);
+
+         my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
+         my $img = "$ENV{BUILDTYPE}_${arch}_${distro}_${hash}";
+         my $exists = 0+`docker images -q $img | wc -l`;
+         if (!$exists || $refresh) {
+            `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
+            `docker build -f $dpath/Dockerfile -t $img $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
+            if ($?) {
+               print {$out} "\tdocker create fail\n";
+               goto CLEANUP;
+            }
+         }
+
+         `echo 'Updating $distro $arch' >>$logpath/stderr.log 2>&1`;
+         `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
+         `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
+         if ($?) {
+            print {$out} "\tdocker update fail\n";
+            goto CLEANUP;
+         }
+         `docker rmi $img-old >>$logpath/$distro-$arch.log 2>&1`;
+
+         my $script = "#!/bin/bash\n";
+         $script .= "set -e\n";
+         $script .= "export 'VERBOSE=1' 'V=1'\n";
+         $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
+         $script .= "cd /build/${pkname}-*/\n";
+         $script .= "dpkg-buildpackage -us -uc -rfakeroot\n";
+         file_put_contents("$dpath/build.sh", $script);
+         `chmod +x '$dpath/build.sh'`;
+         `chown -R 1234:1234 '$dpath'`;
+
+         `echo 'Building $distro $arch' >>$logpath/stderr.log 2>&1`;
+         `./build-debian-ubuntu.sh '$img' '$dpath' >>$logpath/$distro-$arch.log 2>&1`;
+         if ($?) {
+            print {$out} "\tdocker build fail\n";
+            goto CLEANUP;
+         }
+
+         `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;
+         `docker run --rm -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
+
+         `find $dpath -type f -name '*.deb' | LC_ALL=C sort | xargs -rn1 '-I{}' ar p '{}' data.tar.gz data.tar.xz 2>/dev/null | sha256sum -b | awk '{print \$1}' >$logpath/$distro-$arch.sha256-new`;
+         if (! -s "$logpath/$distro-$arch.sha256" || 0+`diff '$logpath/$distro-$arch.sha256' '$logpath/$distro-$arch.sha256-new' | wc -l`) {
+            $changed = 1;
+         }
+         rename("$logpath/$distro-$arch.sha256-new", "$logpath/$distro-$arch.sha256");
+      }
    }
 
+   my $failed = '';
+   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   chomp($failed);
+
    my $depfail = '';
-   $depfail = `grep -l 'packages have unmet dependencies' \$(grep -l 'Copying COW directory' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   $depfail = `grep -l 'packages have unmet dependencies' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($depfail);
    if ($depfail) {
       print {$out} "\tsoft fail: unmet dependencies\n";
@@ -247,9 +375,6 @@ foreach my $pkg (@$pkgs) {
 
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
-      print {$out} "\trunning lintian\n";
-      `find /var/cache/pbuilder/result/ -type f -name '*.deb' -print0 | xargs -0rn1 '-I{}' sh -c "echo '{}'; lintian -IEv --pedantic --color auto '{}'; echo '';" >$logpath/lintian.log 2>&1`;
-
       if (-s "@$pkg[0]/rpm/$pkname.spec") {
          print {$out} "\tupdating rpm sources\n";
          `./make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
@@ -297,7 +422,7 @@ foreach my $pkg (@$pkgs) {
          print {$out} "\t\t$fail\n";
       }
 
-      if ($hashfail || $depfail) {
+      if ($depfail) {
          goto CLEANUP;
       }
 
@@ -309,7 +434,7 @@ foreach my $pkg (@$pkgs) {
             goto CLEANUP;
          }
          $dir = getcwd();
-         chdir("/home/apertium/public_html/git/$pkpath.git") or die $!;
+         chdir("/opt/autopkg/repos/$pkpath.git") or die $!;
          $blames = `git log '--format=format:\%aE\%x0a\%cE' $oldrev..$newrev | sort | uniq`;
          chomp($blames);
          print {$out} "\tblames in revisions $oldrev..$newrev :\n";
@@ -351,7 +476,7 @@ foreach my $pkg (@$pkgs) {
 
    # Add the resulting .deb to the Apt repository
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
-   `./reprepro.sh '$pkname' '$is_data' ',@$pkg[3],' 2>>$logpath/stderr.log >&2`;
+   `./reprepro.sh '$pkname' '$is_data' '@$pkg[3]' 2>>$logpath/stderr.log >&2`;
 
    if (-s "@$pkg[0]/hook.post" && -x "@$pkg[0]/hook.post") {
       `./@$pkg[0]/hook.post >$logpath/hook.post.log 2>&1`;
@@ -387,8 +512,7 @@ foreach my $pkg (@$pkgs) {
 =cut
 
    # Get a list of resulting packages and mark them all as rebuilt
-   my $ls = `find /var/cache/pbuilder/result/ -type f -name '*.deb' | egrep -o '.+?/[^_]+' | sort | uniq | egrep -o '[^/]+\$'`;
-   foreach my $pk (split(/\s+/, $ls)) {
+   foreach my $pk ($control =~ m@Package:\s*(\S+)@g) {
       chomp($pk);
       $rebuilt{$pk} = 1;
       print {$out} "\trebuilt: $pk\n";
@@ -416,7 +540,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `cat /tmp/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   `cat /opt/autopkg/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {
@@ -441,5 +565,5 @@ if ($aptget && !$release) {
 
 print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;
 close $log;
-unlink("/tmp/rebuild.$$.log");
-unlink('/tmp/rebuild.lock');
+unlink("/opt/autopkg/rebuild.$$.log");
+unlink('/opt/autopkg/rebuild.lock');

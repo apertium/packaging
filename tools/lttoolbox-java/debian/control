@@ -8,8 +8,8 @@ Build-Depends: ant,
                make,
                debhelper (>= 9.0),
                devscripts,
-               default-jdk
-Standards-Version: 4.2.1
+               default-jdk-headless
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/lttoolbox-java.git
 Vcs-Browser: https://salsa.debian.org/science-team/lttoolbox-java.git

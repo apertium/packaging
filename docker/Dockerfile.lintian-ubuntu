@@ -1,0 +1,19 @@
+FROM amd64/ubuntu:rolling
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+
+RUN mkdir /build
+RUN groupadd -g 1234 builder && useradd -d /build -M -u 1234 -g 1234 builder
+RUN chown 1234:1234 /build
+
+# Use caching proxy
+RUN export HOST_IP=$(cat /proc/net/route | awk '/^[a-z]+[0-9]+\t00000000/ { printf("%d.%d.%d.%d\n", "0x" substr($3, 7, 2), "0x" substr($3, 5, 2), "0x" substr($3, 3, 2), "0x" substr($3, 1, 2)) }') && \
+        echo 'Acquire::http::Proxy "http://'$HOST_IP':3124";' > /etc/apt/apt.conf.d/30autoproxy
+
+# Upgrade everything and install base builder dependencies
+RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils
+RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade
+RUN apt-get -qy update && apt-get -qfy --no-install-recommends install lintian
+
+USER 1234:1234
+CMD cd /build && find . -type f -name '*.changes' | grep -v _source | xargs -rn1 lintian -IEv --pedantic --color never

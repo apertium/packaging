@@ -9,14 +9,12 @@ Build-Depends: apertium-deu,
                apertium-fin,
                apertium-lex-tools,
                apertium-separable,
-               autotools-dev,
                cg3,
-               debhelper (>= 9),
-               dh-autoreconf,
+               debhelper (>= 11),
                gawk,
                hfst,
                pkg-config (>= 0.21)
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-fin-deu.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-fin-deu.git

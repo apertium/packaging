@@ -1,8 +1,22 @@
-apertium-cat (2.6.0-1) unstable; urgency=low
+apertium-cat (2.7.0-1) unstable; urgency=low
 
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 12 Oct 2018 13:10:12 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Mar 2019 13:00:31 +0100
+
+apertium-cat (2.6.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+  * debian/control:
+    + Updated Standards-Version to 4.2.1
+    + Depends on apertium >= 3.5.2
+  * Updated to dh 11.
+
+  [ Kartik Mistry ]
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 15 Oct 2018 17:31:00 +0530
 
 apertium-cat (2.4.0~r84327-1) unstable; urgency=low
 

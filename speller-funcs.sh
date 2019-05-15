@@ -35,7 +35,7 @@ function combine_msi {
 	/opt/mxe/usr/bin/i686-w64-mingw32.static-ld -r -b binary -o 64.o 64.msi
 	EXE=`basename ~apertium/public_html/spellers/${BUILDTYPE}/$1-[0-9]*-win32* -win32.msi`
 	/opt/mxe/usr/bin/i686-w64-mingw32.static-g++ -static -O3 -std=c++14 /misc/spellers/windows/setup.cpp 32.o 64.o -o $1.exe
-	osslsigncode -pkcs12 '/root/.keys/2015-11-23 TDC Code Signing.p12' -readpass '/root/.keys/2015-11-23 TDC Code Signing.key' -t http://timestamp.verisign.com/scripts/timstamp.dll -in $1.exe -out "$EXE.exe"
+	osslsigncode -pkcs12 '/root/.keys/2018-12-10 TDC Code Signing.p12' -readpass '/root/.keys/2018-12-10 TDC Code Signing.key' -t http://timestamp.verisign.com/scripts/timstamp.dll -in $1.exe -out "$EXE.exe"
 	mv -v "$EXE.exe" ~apertium/public_html/spellers/${BUILDTYPE}/
 	rm -f *.msi *.o
 	popd

@@ -12,6 +12,10 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
+
 use Getopt::Long;
 my %opts = (
    'u' => 'https://github.com/apertium/apertium',
@@ -24,6 +28,7 @@ my %opts = (
 	'fv' => 1,
 	'rev' => 'HEAD',
 	'auto' => 1,
+	'nobuild' => '',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -36,18 +41,13 @@ GetOptions(
 	'flavv=i' => \$opts{'fv'},
 	'rev=s' => \$opts{'rev'},
 	'auto=i' => \$opts{'auto'},
+	'nobuild=s' => \$opts{'nobuild'},
 );
 
-my %distros = (
-	'sid' => {'variant' => 'debian', 'dh' => 11},
-	'jessie' => {'variant' => 'debian', 'dh' => 9},
-	'stretch' => {'variant' => 'debian', 'dh' => 10},
-	'buster' => {'variant' => 'debian', 'dh' => 11},
-	'trusty' => {'variant' => 'ubuntu', 'dh' => 9},
-	'xenial' => {'variant' => 'ubuntu', 'dh' => 10},
-	'bionic' => {'variant' => 'ubuntu', 'dh' => 11},
-	'cosmic' => {'variant' => 'ubuntu', 'dh' => 11},
-);
+use JSON;
+my $targets = JSON->new->relaxed->decode(file_get_contents('targets.json'));
+my $distros = $targets->{'distros'};
+my $archs = $targets->{'archs'};
 
 my @includes = ();
 my @excludes = ();
@@ -73,12 +73,13 @@ if (-s $opts{p}.'/exclude.txt') {
    close FILE;
 }
 
-print `rm -rf /tmp/autopkg.* 2>&1`;
-print `mkdir -pv /tmp/autopkg.$$ 2>&1`;
-chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
-
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
+
+my $autopath = $ENV{AUTOPATH};
+print `rm -rf '$autopath' 2>&1`;
+print `mkdir -pv '$autopath' 2>&1`;
+chdir $autopath or die "Could not change folder: $!\n";
 
 if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    my $pkg = $1;
@@ -86,11 +87,13 @@ if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    print `git submodule update --init --depth 1 --recursive || git submodule update --init --depth 100 --recursive`;
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
    chdir('..');
-   print `cp -av '${pkg}.git' '/tmp/autopkg.$$/$pkname-$opts{v}'`;
-   chdir "/tmp/autopkg.$$" or die "Could not change folder: $!\n";
+   print `cp -av --reflink=auto '${pkg}.git' '$autopath/$pkname-$opts{v}'`;
+   chdir $autopath or die "Could not change folder: $!\n";
 }
 else {
-   print `svn export -r$opts{rev} $opts{u}/ '$pkname-$opts{v}'`;
+   print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{BUILDTYPE} '$pkname-$opts{v}'`;
+   print `find . -name '.svn*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+   print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 if (@excludes) {
    chdir "$pkname-$opts{v}" or die "Could not change folder: $!\n";
@@ -121,20 +124,20 @@ if (@excludes) {
 }
 
 # OS tools should only try to use OS binaries
-`grep -rl '^#!/usr/bin/env perl' | xargs -rn1 perl -pe 's\@^#!/usr/bin/env perl\@#!/usr/bin/perl\@g;' -i`;
-`grep -rl '^#!/usr/bin/env python' | xargs -rn1 perl -pe 's\@^#!/usr/bin/env python\@#!/usr/bin/python\@g;' -i`;
-`grep -rl '^#!/usr/bin/env bash' | xargs -rn1 perl -pe 's\@^#!/usr/bin/env bash\@#!/bin/bash\@g;' -i`;
+`grep -rl '^\#!/usr/bin/env perl' | xargs -rn1 perl -pe 's\@^\#!/usr/bin/env perl\@\#!/usr/bin/perl\@g;' -i`;
+`grep -rl '^\#!/usr/bin/env python' | xargs -rn1 perl -pe 's\@^\#!/usr/bin/env python\@\#!/usr/bin/python\@g;' -i`;
+`grep -rl '^\#!/usr/bin/env bash' | xargs -rn1 perl -pe 's\@^\#!/usr/bin/env bash\@\#!/bin/bash\@g;' -i`;
 
 # RPM tar.bz2
 my $rv = $opts{v};
 $rv =~ s@[+~]@.@g;
 if ($rv ne $opts{v}) {
-   `cp -al '$pkname-$opts{v}' '$pkname-$rv'`;
+   `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$rv'`;
 }
 `find '$pkname-$rv' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$rv' -type d -empty | LC_ALL=C sort >> orig.lst`;
-print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$rv.orig.tar' -T orig.lst`;
-`bzip2 -9c '$pkname\_$rv.orig.tar' > '$pkname\_$rv.orig.tar.bz2'`;
+print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$rv.orig.tar' -T orig.lst`;
+`bzip2 -9c '${pkname}_$rv.orig.tar' > '${pkname}_$rv.orig.tar.bz2'`;
 if ($rv ne $opts{v}) {
    `rm -rf '$pkname-$rv'`;
 }
@@ -142,25 +145,24 @@ if ($rv ne $opts{v}) {
 # Debian tar.bz2
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
-print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '$pkname\_$opts{v}.orig.tar' -T orig.lst`;
-`bzip2 -9c '$pkname\_$opts{v}.orig.tar' > '$pkname\_$opts{v}.orig.tar.bz2'`;
-my $path = `find /misc/branches/packaging/ -type d -name '$pkname'`;
-chomp($path);
-print `cp -av '$path/debian' '$pkname-$opts{v}/'`;
+print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$opts{v}.orig.tar' -T orig.lst`;
+`bzip2 -9c '${pkname}_$opts{v}.orig.tar' > '${pkname}_$opts{v}.orig.tar.bz2'`;
+print `cp -av --reflink=auto '$ENV{PKPATH}/debian' '$pkname-$opts{v}/'`;
 #print `svn export $opts{r}/debian/ '$pkname-$opts{v}/debian/'`;
 
 if (!$opts{auto}) {
    print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* -print0 | xargs -0rn1 rm -fv`;
-   print `replace 'debhelper (>= 9)' 'debhelper (>= 11)' -- '$pkname-$opts{v}/debian/control'`;
-   print `replace ' --parallel' '' -- '$pkname-$opts{v}/debian/rules'`;
 }
 
 # dpkg tools are not happy if PERL_UNICODE is on
 $ENV{'PERL_UNICODE'} = '';
 
-foreach my $distro (keys %distros) {
+foreach my $distro (keys %$distros) {
    if (!$opts{auto}) {
       $distro = 'sid';
+   }
+   if ($opts{'nobuild'} =~ m@,$distro,@) {
+      next;
    }
 
 	my $chver = $opts{v}.'-';
@@ -174,29 +176,45 @@ $pkname ($chver) $distro; urgency=low
  -- $opts{e}  $date
 CHLOG
 
-      `cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
-      unlink "$pkname-$chver/debian/changelog";
+      `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$chver'`;
       open FILE, ">$pkname-$chver/debian/changelog" or die "Could not write to debian/changelog: $!\n";
       print FILE $chlog;
       close FILE;
    }
    else {
       $chver .= $opts{'dv'};
-      `cp -al '$pkname-$opts{v}' '$pkname-$chver'`;
+      `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$chver'`;
    }
 
-   unlink "$pkname-$chver/debian/compat";
-   open FILE, ">$pkname-$chver/debian/compat" or die "Could not write to debian/compat: $!\n";
-   print FILE $distros{$distro}{'dh'};
-   close FILE;
+   if ($distros->{$distro}{'dh'} >= 10) {
+      file_put_contents("$pkname-$chver/debian/compat", $distros->{$distro}{'dh'});
+
+      my $control = file_get_contents("$pkname-$chver/debian/control");
+      $control =~ s@debhelper \([^)]+\)@debhelper (>= $distros->{$distro}{'dh'})@g;
+      $control =~ s@[ \t]*dh-autoreconf,?\n@@g;
+      $control =~ s@[ \t]*autotools-dev,?\n@@g;
+      file_put_contents("$pkname-$chver/debian/control", $control);
+
+      my $rules = file_get_contents("$pkname-$chver/debian/rules");
+      $rules =~ s@(\tdh.*) --parallel@$1@g;
+      file_put_contents("$pkname-$chver/debian/rules", $rules);
+   }
 
 	print `dpkg-source '-DMaintainer=$opts{m}' '-DUploaders=$opts{e}' -b '$pkname-$chver'`;
 	chdir "$pkname-$chver";
-	print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../$pkname\_$chver\_source.changes'`;
+	`wrap-and-sort`;
+	print `dpkg-genchanges -S -sa '-m$opts{m}' '-e$opts{e}' > '../${pkname}_${chver}_source.changes'`;
 	chdir '..';
-	print `debsign '$pkname\_$chver\_source.changes'`;
+	print `debsign '${pkname}_${chver}_source.changes'`;
 
    if (!$opts{auto}) {
       last;
    }
+
+   foreach my $arch (@$archs) {
+      `mkdir -pv $arch/$distro`;
+      `cp -a --reflink=auto '${pkname}_$opts{v}.orig.tar.bz2' *$chver* $arch/$distro/`;
+   }
 }
+
+`chown -R 1234:1234 '$autopath'`;
