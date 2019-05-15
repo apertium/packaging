@@ -15,17 +15,7 @@ use open qw( :encoding(UTF-8) :std );
 use FindBin qw($Bin);
 chdir("$Bin/docker") or die "Could not chdir($Bin/docker): $!\n";
 
-for my $d (qw(debian ubuntu)) {
-   my $exists = 0+`docker images -q lintian-$d | wc -l`;
-   if (!$exists) {
-      print `cat $Bin/docker/lintian-$d | docker build --pull -t lintian-$d - 2>&1`;
-      if ($?) {
-         print "Docker build lintian-$d failed!";
-         exit $?;
-      }
-   }
-}
-
+# Create or start the .deb caching proxy
 my $exists = 0+`docker ps --filter status=running | grep squid-deb-proxy | wc -l`;
 if (!$exists) {
    `docker container prune -f`;
@@ -35,5 +25,17 @@ if (!$exists) {
    if ($?) {
       print "Docker run tinodidriksen/squid-deb-proxy failed!";
       exit $?;
+   }
+}
+
+# Create the lintian runners
+for my $d (qw(debian ubuntu)) {
+   my $exists = 0+`docker images -q lintian-$d | wc -l`;
+   if (!$exists) {
+      print `cat $Bin/docker/Dockerfile.lintian-$d | docker build --pull -t lintian-$d - 2>&1`;
+      if ($?) {
+         print "Docker build lintian-$d failed!";
+         exit $?;
+      }
    }
 }
