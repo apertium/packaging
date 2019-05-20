@@ -7,7 +7,7 @@ do
 done
 
 cd /opt/$WINX-pkg/$PKG_NAME/opt/win32/bin
-/misc/branches/packaging/win32-copy-deps.pl
+$AUTOPKG_HOME/win32-copy-deps.pl
 
 cd /opt/$WINX-pkg/$PKG_NAME/opt
 for DEP in $EXTRA_DEPS

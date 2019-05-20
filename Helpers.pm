@@ -4,8 +4,9 @@ package Helpers;
 use strict;
 use warnings;
 use utf8;
+use autodie qw(:all);
 use Exporter qw(import);
-our @EXPORT = qw( trim ltrim_lines file_get_contents file_put_contents replace_in_file );
+our @EXPORT = qw( trim ltrim_lines file_get_contents file_put_contents replace_in_file run_fail read_control load_packages );
 
 sub trim {
    my ($s) = @_;
@@ -23,7 +24,7 @@ sub ltrim_lines {
 sub file_get_contents {
    my ($fname) = @_;
    local $/ = undef;
-   open FILE, '<:encoding(UTF-8)', $fname or die "Could not open ${fname}: $!\n";
+   open FILE, '<:encoding(UTF-8)', $fname;
    my $data = <FILE>;
    close FILE;
    return $data;
@@ -31,15 +32,15 @@ sub file_get_contents {
 
 sub file_put_contents {
    my ($fname,$data) = @_;
-   open FILE, '>:encoding(UTF-8)', $fname or die "Could not open ${fname}: $!\n";
+   open FILE, '>:encoding(UTF-8)', $fname;
    print FILE $data;
    close FILE;
 }
 
 sub replace_in_file {
    my ($file, $what, $with) = @_;
-   open my $in, '<', $file or die $!;
-   open my $out, '>', $file.".$$.new" or die $!;
+   open my $in, '<', $file;
+   open my $out, '>', $file.".$$.new";
    while (<$in>) {
       if (/$what/) {
          $_ = $with."\n";
@@ -49,6 +50,38 @@ sub replace_in_file {
    close $in;
    close $out;
    rename $file.".$$.new", $file;
+}
+
+sub run_fail {
+   my ($cmd) = @_;
+   my $out = `$cmd`;
+   if ($?) {
+      print STDERR "Failed to execute: $cmd\n";
+      exit($?);
+   }
+   return $out;
+}
+
+sub read_control {
+   my ($fname) = @_;
+   my $control = file_get_contents($fname);
+   $control =~ s@,\s*\n\s*@, @gs;
+   return $control;
+}
+
+sub load_packages {
+   use FindBin qw($Bin);
+   use JSON;
+   my %ps = ('order' => [], 'packages' => {});
+
+   my $pkgs = JSON->new->relaxed->decode(file_get_contents("$Bin/packages.json"));
+   for my $pkg (@{$pkgs}) {
+      my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
+      push(@{$ps{'order'}}, $pkname);
+      $ps{'packages'}{$pkname} = $pkg;
+   }
+
+   return %ps;
 }
 
 1;

@@ -7,7 +7,7 @@ do
 done
 
 cd /opt/osx-pkg/$PKG_NAME/opt/osx
-/misc/branches/packaging/osx-copy-deps.pl
+$AUTOPKG_HOME/osx-copy-deps.pl
 
 cd /opt/osx-pkg/$PKG_NAME/opt
 

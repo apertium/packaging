@@ -13,7 +13,7 @@ do
 	fi
 	find $AUTOPATH -type f -name '*.deb' | grep "~$DISTRO" | xargs -rn1 reprepro -b /home/apertium/public_html/apt/$BUILDTYPE/ includedeb $DISTRO_TRG 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
 #	find $AUTOPATH -type f -name '*.changes' | grep -v _source.changes | grep "~$DISTRO" | xargs -rn1 reprepro -b /home/apertium/public_html/apt/$BUILDTYPE/ include $DISTRO_TRG 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
-#	find $AUTOPATH -type f -name '*.changes' | grep -v _source.changes | grep "~$DISTRO" | xargs -rn1 docker run --rm -v /home/apertium/public_html/apt/$BUILDTYPE/:/build/ -v /root/.gnupg/:/root/.gnupg/ reprepro reprepro -b /build/ include $DISTRO_TRG" 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
+#	find $AUTOPATH -type f -name '*.changes' | grep -v _source.changes | grep "~$DISTRO" | xargs -rn1 docker run --rm --network none -v /home/apertium/public_html/apt/$BUILDTYPE/:/build/ -v /root/.gnupg/:/root/.gnupg/ reprepro reprepro -b /build/ include $DISTRO_TRG" 2>&1 | tee -a /home/apertium/public_html/apt/logs/$1/reprepro.log
 done
 
 rm -rf /home/apertium/public_html/apt/$BUILDTYPE/source/$1

@@ -11,6 +11,7 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
 use lib "$Bin/";
@@ -45,7 +46,7 @@ my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
 my $autopath = $ENV{AUTOPATH};
-chdir $autopath or die "Could not change folder: $!\n";
+chdir $autopath;
 
 #`svn export $opts{r}/rpm >/dev/null 2>&1`;
 if (!(-s "$ENV{PKPATH}/rpm/$pkname.spec")) {
@@ -54,14 +55,14 @@ if (!(-s "$ENV{PKPATH}/rpm/$pkname.spec")) {
 print `cp -av --reflink=auto '$ENV{PKPATH}/rpm' ./`;
 my $spec = `cat rpm/$pkname.spec`;
 
-chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
+chdir "/root/osc/$opts{'oscp'}/";
 #print `osc up 2>&1`;
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
    print `osc mkpac $pkname 2>&1`;
    print `osc ci -m "Create package $pkname" 2>&1`;
 }
 
-chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
+chdir "/root/osc/$opts{'oscp'}/$pkname/";
 print `osc up 2>&1`;
 print `osc rm * 2>&1`;
 print `cp -av --reflink=auto $autopath/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;

@@ -11,6 +11,11 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
+
+use FindBin qw($Bin);
+use lib "$Bin/";
+use Helpers;
 
 use File::Copy;
 use Getopt::Long;
@@ -34,24 +39,24 @@ my $revision = '';
 my $srcdate = '';
 
 my $pkg = $opts{'pkname'};
-chdir('/opt/autopkg/repos') or die $!;
+chdir('/opt/autopkg/repos');
 if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    if (! -s "${pkg}.git") {
       print STDERR `git clone --mirror '$opts{url}' 2>&1`;
    }
 
-   chdir("${pkg}.git") or die $!;
+   chdir("${pkg}.git");
    print STDERR `git fetch --all -f`;
    print STDERR `git remote update -p`;
    print STDERR `git reflog expire --expire=now --all`;
    print STDERR `git repack -ad`;
    print STDERR `git prune`;
 
-   chdir('/misc/git') or die $!;
+   chdir('/misc/git');
    `rm -rf '${pkg}.git'`;
    print STDERR `git clone --shallow-submodules /opt/autopkg/repos/${pkg}.git ${pkg}.git`;
 
-   chdir("${pkg}.git") or die $!;
+   chdir("${pkg}.git");
    print STDERR `git reset --hard '$opts{rev}'`;
    my $logline = `git log --first-parent '--format=format:\%H\%x09\%ai' '$opts{rev}~..$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
@@ -64,7 +69,7 @@ else {
    if (! -d $sdir) {
       print STDERR `svn co -r$opts{rev} $opts{url}/ $sdir/ 2>&1`;
    }
-   chdir($sdir) or die $!;
+   chdir($sdir);
    my $e = 0;
    print STDERR `svn switch --ignore-ancestry --force --accept tf -r$opts{rev} $opts{url}/ 2>&1`;
    $e += $?;
@@ -83,7 +88,7 @@ else {
 
    if ($e && !$retried) {
       print STDERR "Subversion repo failed somewhere - wiping and retrying...\n";
-      chdir('/opt/autopkg/repos') or die $!;
+      chdir('/opt/autopkg/repos');
       `rm -rf $sdir`;
       $retried = 1;
       goto RETRY_SVN;
@@ -93,59 +98,51 @@ else {
    }
 }
 copy($opts{file}, "/tmp/version.$$.tmp");
-chdir('/tmp') or die $!;
-
-if (!(-s "version.$$.tmp")) {
-   die "Failed to git/svn export $opts{file} from $opts{url}!\n";
-}
 
 my $major = 0;
 my $minor = 0;
 my $patch = 0;
-{
-	local $/ = undef;
-	open FILE, "version.$$.tmp" or die "Could not open version.$$.tmp: $!\n";
-	my $data = <FILE>;
-	my $version = '';
-	if ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_PATCH = (\d+);@s) {
-	   print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
-	   $version = "$1.$2.$3";
-	}
-	elsif ($data =~ m@__version__ = "([\d.]+)"@s || $data =~ m@__version__ = '([\d.]+)'@s) {
-	   print STDERR "Found __version__ version\n";
-	   $version = $1;
-	}
-	elsif ($data =~ m@AC_INIT.*?\[([\d.]+)[^\]]*\]@s) {
-	   print STDERR "Found AC_INIT version\n";
-	   $version = $1;
-	}
-	elsif ($data =~ m@\n\s*VERSION.*?([\d.]+)@s || $data =~ m@VERSION.*?([\d.]+)@s) {
-	   print STDERR "Found VERSION version\n";
-	   $version = $1;
-	}
-	elsif ($data =~ m@PACKAGE_VERSION\s*=\s*"([\d.]+)@s) {
-	   print STDERR "Found PACKAGE_VERSION version\n";
-	   $version = $1;
-	}
-	else {
-	   die "No version found!\n";
-	}
-	if ($version =~ m@^(\d+)$@) {
-		$patch = $1;
-	}
-	elsif ($version =~ m@^(\d+)\.(\d+)$@) {
-		$major = $1;
-		$minor = $2;
-	}
-	elsif ($version =~ m@^(\d+)\.(\d+)\.(\d+)$@) {
-		$major = $1;
-		$minor = $2;
-		$patch = $3;
-	}
-	close FILE;
+
+my $data = file_get_contents("/tmp/version.$$.tmp");
+my $version = '';
+if ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_PATCH = (\d+);@s) {
+   print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
+   $version = "$1.$2.$3";
+}
+elsif ($data =~ m@__version__ = "([\d.]+)"@s || $data =~ m@__version__ = '([\d.]+)'@s) {
+   print STDERR "Found __version__ version\n";
+   $version = $1;
+}
+elsif ($data =~ m@AC_INIT.*?\[([\d.]+)[^\]]*\]@s) {
+   print STDERR "Found AC_INIT version\n";
+   $version = $1;
+}
+elsif ($data =~ m@\n\s*VERSION.*?([\d.]+)@s || $data =~ m@VERSION.*?([\d.]+)@s) {
+   print STDERR "Found VERSION version\n";
+   $version = $1;
+}
+elsif ($data =~ m@PACKAGE_VERSION\s*=\s*"([\d.]+)@s) {
+   print STDERR "Found PACKAGE_VERSION version\n";
+   $version = $1;
+}
+else {
+   die "No version found!\n";
 }
 
-unlink("version.$$.tmp");
+if ($version =~ m@^(\d+)$@) {
+   $patch = $1;
+}
+elsif ($version =~ m@^(\d+)\.(\d+)$@) {
+   $major = $1;
+   $minor = $2;
+}
+elsif ($version =~ m@^(\d+)\.(\d+)\.(\d+)$@) {
+   $major = $1;
+   $minor = $2;
+   $patch = $3;
+}
+
+unlink("/tmp/version.$$.tmp");
 
 if ($opts{'rev'} ne 'HEAD') {
    $revision = '';

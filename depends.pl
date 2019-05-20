@@ -11,6 +11,7 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 my %build = ();
 my %deps = ();

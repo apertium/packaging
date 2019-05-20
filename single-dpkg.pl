@@ -11,6 +11,7 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
 use lib "$Bin/";
@@ -43,43 +44,42 @@ GetOptions(
 	'rpm' => \$opts{'rpm'},
 );
 
-chdir($Bin) or die $!;
-if (!(-x 'get-version.pl')) {
-   die "get-version.pl not found in $Bin!\n";
-}
-if (!(-s 'packages.json')) {
-   die "packages.json not found in $Bin!\n";
-}
+chdir($Bin);
 
-use JSON;
-my $pkgs = JSON->new->utf8->relaxed->decode(file_get_contents('packages.json'));
+my %pkgs = load_packages();
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;
 }
 
-foreach my $pkg (@$pkgs) {
-   if ($ARGV[0] ne @$pkg[0]) {
+$ENV{'BUILDTYPE'} = ($opts{'auto'} == 0) ? 'release' : 'nightly';
+
+foreach my $k (@{$pkgs{'order'}}) {
+   my $pkg = $pkgs{'packages'}->{$k};
+   if ($ARGV[0] ne $pkg->[0]) {
       next;
    }
 
-   if (!@$pkg[1]) {
-      my ($path) = (@$pkg[0] =~ m@/([^/]+)$@);
-      @$pkg[1] = 'https://github.com/apertium/'.$path;
+   if (!$pkg->[1]) {
+      my ($path) = ($pkg->[0] =~ m@/([^/]+)$@);
+      $pkg->[1] = 'https://github.com/apertium/'.$path;
    }
-   if (!@$pkg[2]) {
-      @$pkg[2] = 'configure.ac';
+   if (!$pkg->[2]) {
+      $pkg->[2] = 'configure.ac';
    }
 
-   print "Making deb source for @$pkg[0]\n";
-   my $gv = `./get-version.pl --rev=$opts{rev} --url '@$pkg[1]' --file '@$pkg[2]' 2>/dev/null`;
+   $ENV{'PKPATH'} = "$Bin/".$pkg->[0];
+   $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
+
+   print "Making deb source for $pkg->[0]\n";
+   my $gv = `$Bin/get-version.pl --rev=$opts{rev} --url '$pkg->[1]' --file '$pkg->[2]' 2>/dev/null`;
    chomp($gv);
    print "$gv\n";
    my ($rawrev,$version,$srcdate) = split(/\t/, $gv);
-   my $cli = "--rev=$opts{rev} --auto $opts{auto} -p '@$pkg[0]' -u '@$pkg[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
+   my $cli = "--rev=$opts{rev} --auto $opts{auto} -p '$pkg->[0]' -u '$pkg->[1]' -v '$version' -d '$srcdate' -m '$opts{m}' -e '$opts{e}'";
    print "$cli\n";
-   print `./make-deb-source.pl $cli 2>&1`;
+   print `$Bin/make-deb-source.pl $cli 2>&1`;
    if ($opts{'rpm'}) {
-      print `./make-rpm-source.pl $cli 2>&1`;
+      print `$Bin/make-rpm-source.pl $cli 2>&1`;
    }
 }

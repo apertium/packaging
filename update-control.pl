@@ -11,6 +11,7 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
 use lib "$Bin/";
@@ -21,7 +22,7 @@ if (!$ARGV[0]) {
 }
 $ARGV[0] =~ s@/$@@g;
 
-chdir($Bin) or die $!;
+chdir($Bin);
 if (!(-x 'get-version.pl')) {
    die "get-version.pl not found in $Bin!\n";
 }
@@ -44,7 +45,7 @@ if ($pkname =~ m@^apertium-([a-z]{2,3})$@ || $pkname =~ m@^apertium-([a-z]{2,3})
 }
 
 my $url = 'https://github.com/apertium/'.$pkname;
-my $deps = `svn cat $url/trunk/configure.ac | ./depends.pl`;
+my $deps = `svn cat $url/trunk/configure.ac | $Bin/depends.pl`;
 chomp($deps);
 my @deps = split(/\n/, $deps);
 
@@ -75,10 +76,10 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
 
 file_put_contents("$pkg/debian/control", $control);
 
-my $gv = `./get-version.pl --url '$url' 2>/dev/null`;
+my $gv = `$Bin/get-version.pl --url '$url' 2>/dev/null`;
 ($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);
 $gv .= '-1';
 replace_in_file("$pkg/debian/changelog", "^$pkname.*urgency=low", "$pkname ($gv) experimental; urgency=low");
 
-chdir $pkg or die "$!";
+chdir $pkg;
 `wrap-and-sort`;

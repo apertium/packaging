@@ -11,9 +11,10 @@ BEGIN {
    binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
-chdir("$Bin/docker") or die "Could not chdir($Bin/docker): $!\n";
+chdir("$Bin/docker");
 
 # Create or start the .deb caching proxy
 my $exists = 0+`docker ps --filter status=running | grep squid-deb-proxy | wc -l`;

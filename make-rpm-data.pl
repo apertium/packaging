@@ -11,6 +11,7 @@ BEGIN {
 	binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
 use lib "$Bin/";
@@ -46,7 +47,7 @@ chomp($date);
 
 print `rm -rf /tmp/autorpm.* 2>&1`;
 print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
-chdir "/tmp/autorpm.$$" or die "Could not change folder: $!\n";
+chdir "/tmp/autorpm.$$";
 
 my $autopath = "/tmp/autopkg.$ENV{BUILDTYPE}/$pkname";
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
@@ -88,14 +89,14 @@ mkdir($pkname.'-'.$opts{'v'});
 print `cp -av --reflink=auto 'usr' '$pkname-$opts{'v'}/' 2>&1`;
 print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
-chdir "/root/osc/$opts{'oscp'}/" or die "Could not change folder: $!\n";
+chdir "/root/osc/$opts{'oscp'}/";
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
    print `osc up 2>&1`;
    print `osc mkpac $pkname 2>&1`;
    print `osc ci -m "Create package $pkname" 2>&1`;
 }
 
-chdir "/root/osc/$opts{'oscp'}/$pkname/" or die "Could not change folder: $!\n";
+chdir "/root/osc/$opts{'oscp'}/$pkname/";
 print `osc up 2>&1`;
 print `osc rm --force * 2>&1`;
 print `cp -av --reflink=auto /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;

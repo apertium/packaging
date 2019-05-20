@@ -11,18 +11,12 @@ BEGIN {
    binmode(STDOUT, ':encoding(UTF-8)');
 }
 use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
 
 use FindBin qw($Bin);
-chdir($Bin) or die "Could not chdir($Bin): $!\n";
-
-sub file_get_contents {
-   my ($fname) = @_;
-   local $/ = undef;
-   open FILE, $fname or die "Could not open ${fname}: $!\n";
-   my $data = <FILE>;
-   close FILE;
-   return $data;
-}
+use lib "$Bin/";
+use Helpers;
+chdir($Bin);
 
 if (-s '/tmp/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
@@ -44,8 +38,7 @@ $ENV{'LDFLAGS'} = '-L/opt/local/lib/ -L/Applications/Xcode.app/Contents/Develope
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
-use JSON;
-my $pkgs = JSON->new->relaxed->decode(file_get_contents('packages.json'));
+my %pkgs = load_packages();
 
 `mkdir -p '${Bin}/nightly/source' '${Bin}/nightly/build/apertium-all-dev'`;
 `mkdir -p '${Bin}/release/source' '${Bin}/release/build/apertium-all-dev'`;
@@ -81,7 +74,7 @@ for my $cadence (qw(  nightly )) {#release
 
       print "${pkname}\n";
       my $pkpath = "${Bin}/${cadence}/build/${pkname}";
-      chdir("${Bin}/${cadence}") or die "Could not chdir(${Bin}/${cadence}): $!\n";
+      chdir("${Bin}/${cadence}");
 
       if (! -s "source/${pkname}.tar.bz2") {
          print "\tno such tarball\n";
@@ -115,10 +108,10 @@ for my $cadence (qw(  nightly )) {#release
       if (!$rebuild) {
          print "\tno reason to build - extracting latest\n";
          `mkdir -p /tmp/$$`;
-         chdir("/tmp/$$") or die "Could not chdir(/tmp/$$): $!\n";
+         chdir("/tmp/$$");
          `tar -jxf '${pkpath}/${pkname}-latest.tar.bz2'`;
          `cp -ac '${pkname}/'* /usr/local/`;
-         chdir("/tmp") or die "Could not chdir(/tmp): $!\n";
+         chdir("/tmp");
          `rm -rf /tmp/$$`;
          ++$done;
          next;
@@ -132,18 +125,18 @@ for my $cadence (qw(  nightly )) {#release
       `date -u >>'${logfile}-source.log'`;
       `rm -rf /tmp/build/${cadence}/${pkname}`;
       `mkdir -p /tmp/build/${cadence}/${pkname}`;
-      chdir("/tmp/build/${cadence}/${pkname}") or die "Could not chdir(/tmp/build/${cadence}/${pkname}): $!\n";
+      chdir("/tmp/build/${cadence}/${pkname}");
       `tar -jxvf '${Bin}/${cadence}/source/${pkname}.tar.bz2' >>'${logfile}-source.log' 2>&1`;
       `cat '${logfile}-source.log' >>'${logfile}.log'`;
 
       my @vers = glob("${pkname}*");
       my $ver = $vers[0];
-      chdir($ver) or die "Could not chdir(${ver}): $!\n";
+      chdir($ver);
 
       # Use binaries in $PATH
-      `grep -rl '^#!/usr/bin/perl' * | xargs -n1 perl -pe 's\@^#!/usr/bin/perl\@#!/usr/bin/env perl\@g;' -i`;
-      `grep -rl '^#!/usr/bin/python' * | xargs -n1 perl -pe 's\@^#!/usr/bin/python\@#!/usr/bin/env python\@g;' -i`;
-      `grep -rl '^#!/bin/bash' * | xargs -n1 perl -pe 's\@^#!/usr/bin/bash\@#!/usr/bin/env bash\@g;' -i`;
+      `grep -rl '^\#!/usr/bin/perl' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/perl\@\#!/usr/bin/env perl\@g;' -i`;
+      `grep -rl '^\#!/usr/bin/python' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/python\@\#!/usr/bin/env python\@g;' -i`;
+      `grep -rl '^\#!/bin/bash' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/bash\@\#!/usr/bin/env bash\@g;' -i`;
 
       print "\tsetting up build...\n";
       `echo '======== SETUP ========' >>'${logfile}-setup.log'`;
@@ -201,12 +194,12 @@ for my $cadence (qw(  nightly )) {#release
       `echo '======== PACKAGE ========' >>'${logfile}-package.log'`;
       `date -u >>'${logfile}-package.log'`;
       unlink("/tmp/${pkname}.tar.bz2");
-      chdir('/tmp/install/usr/local') or die "Could not chdir(/tmp/install/usr/local): $!\n";
+      chdir('/tmp/install/usr/local');
       `mkdir -p lib`;
       `echo '======== PACKAGE: DEPS ========' >>'${logfile}-package.log'`;
       `${Bin}/macos-copy-deps.pl >>'${logfile}-package.log' 2>&1`;
       `echo '======== PACKAGE: TAR ========' >>'${logfile}-package.log'`;
-      chdir('/tmp/install/usr') or die "Could not chdir(/tmp/install/usr): $!\n";
+      chdir('/tmp/install/usr');
       rename('local', $pkname);
       $log = `tar -jcvf '/tmp/${pkname}.tar.bz2' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
       `cat '${logfile}-package.log' >>'${logfile}.log'`;
@@ -250,7 +243,7 @@ for my $cadence (qw(  nightly )) {#release
    print "Combining ${cadence}...\n";
    `rm -rf /tmp/combo`;
    `mkdir -p /tmp/combo/apertium-all-dev`;
-   chdir('/tmp/combo') or die "Could not chdir(/tmp/combo): $!\n";
+   chdir('/tmp/combo');
    for my $pkname (@combo) {
       if (! -s "${Bin}/${cadence}/build/${pkname}/${pkname}-latest.tar.bz2") {
          next;
@@ -265,7 +258,7 @@ for my $cadence (qw(  nightly )) {#release
    `mv apertium-all-dev.tar.bz2 apertium-all-dev.7z apertium-all-dev.log '${Bin}/${cadence}/build/apertium-all-dev/'`;
 
    print "Uploading ${cadence}...\n";
-   chdir("${Bin}/${cadence}/build") or die "Could not chdir(${Bin}/${cadence}/build): $!\n";
+   chdir("${Bin}/${cadence}/build");
    unlink('upload.log');
    for (my $i=0 ; $i<3 ; ++$i) {
       `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
