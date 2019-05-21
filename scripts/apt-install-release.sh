@@ -16,7 +16,7 @@ P=`apt-cache policy`
 P="$P "`lsb_release -c`"/dummy"
 P="$P "`grep CODENAME /etc/lsb-release`"/dummy"
 DISTRO=""
-for D in sid jessie stretch buster trusty xenial bionic cosmic
+for D in sid jessie stretch buster xenial bionic cosmic disco
 do
 	if [[ $P == *$D/* ]]
 	then

@@ -4,7 +4,6 @@
 		"jessie": {"variant": "debian", "dh": 9},
 		"stretch": {"variant": "debian", "dh": 10},
 		"buster": {"variant": "debian", "dh": 11},
-		"trusty": {"variant": "ubuntu", "dh": 9},
 		"xenial": {"variant": "ubuntu", "dh": 10},
 		"bionic": {"variant": "ubuntu", "dh": 11},
 		"cosmic": {"variant": "ubuntu", "dh": 11},
