@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.5.2),
                hfst,
                hfst-ospell-dev,
                libhfst-dev,
-               pkg-config (>= 0.21),
+               pkg-config,
                python,
                zip
 Standards-Version: 4.3.0

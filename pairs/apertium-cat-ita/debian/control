@@ -10,7 +10,7 @@ Build-Depends: apertium-cat,
                apertium-lex-tools,
                debhelper (>= 11),
                gawk,
-               pkg-config (>= 0.21),
+               pkg-config,
                python3
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/

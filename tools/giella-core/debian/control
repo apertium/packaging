@@ -12,6 +12,6 @@ Vcs-Browser: https://salsa.debian.org/science-team/giella-core.git
 
 Package: giella-core
 Architecture: all
-Depends: python, python3 (>= 3.1), ${misc:Depends}, ${shlibs:Depends}
+Depends: python, python3, ${misc:Depends}, ${shlibs:Depends}
 Description: GTCORE files for building Giellatekno language packages
  All Giellatekno language packages build-depends on this package.

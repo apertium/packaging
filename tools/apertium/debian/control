@@ -8,15 +8,15 @@ Build-Depends: autoconf,
                autotools-dev,
                debhelper (>= 9.0),
                dh-autoreconf,
-               dh-exec (>= 0.3),
-               flex (>= 2.5.33),
+               dh-exec,
+               flex,
                libpcre3-dev,
                libxml2-dev,
-               libxml2-utils (>= 2.6.24),
+               libxml2-utils,
                lttoolbox-dev (>= 3.5.0),
-               pkg-config (>= 0.20),
+               pkg-config,
                python3,
-               xsltproc (>= 1.1.16)
+               xsltproc
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium.git
@@ -25,9 +25,9 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium
 Package: apertium
 Architecture: any
 Depends: libapertium3-3.5-1 (= ${binary:Version}),
-         libxml2-utils (>= 2.6.24),
+         libxml2-utils,
          lttoolbox (>= 3.5.0),
-         xsltproc (>= 1.1.16),
+         xsltproc,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Shallow-transfer machine translation engine

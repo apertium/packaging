@@ -14,8 +14,8 @@ Build-Depends: bc,
                giella-core,
                hfst,
                libhfst-dev,
-               pkg-config (>= 0.21),
-               python3 (>= 3.1),
+               pkg-config,
+               python3,
                zip
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/

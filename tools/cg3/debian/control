@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake (>= 2.8.9),
+Build-Depends: cmake,
                debhelper (>= 9.0),
-               libboost-dev (>= 1.53.0),
-               libicu-dev (>= 50.0)
+               libboost-dev,
+               libicu-dev
 Standards-Version: 4.3.0
 Homepage: https://visl.sdu.dk/cg3.html
 Vcs-Git: https://salsa.debian.org/science-team/cg3.git

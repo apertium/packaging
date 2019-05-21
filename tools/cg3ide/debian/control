@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake (>= 2.8.3),
+Build-Depends: cmake,
                debhelper (>= 9.0),
                qt5-default,
                qt5-qmake,

@@ -43,7 +43,8 @@ my %pkgs = load_packages();
 `mkdir -p '${Bin}/nightly/source' '${Bin}/nightly/build/apertium-all-dev'`;
 `mkdir -p '${Bin}/release/source' '${Bin}/release/build/apertium-all-dev'`;
 
-for my $pkg (@$pkgs) {
+for my $k (@{$pkgs{'order'}}) {
+   my $pkg = $pkgs{'packages'}->{$k};
    my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
    if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
       next;
@@ -65,7 +66,8 @@ for my $cadence (qw(  nightly )) {#release
    my $did = 0;
    my $done = 0;
 
-   for my $pkg (@$pkgs) {
+   for my $k (@{$pkgs{'order'}}) {
+      my $pkg = $pkgs{'packages'}->{$k};
       my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
       if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
          next;
@@ -193,7 +195,9 @@ for my $cadence (qw(  nightly )) {#release
       print "\tpackaging...\n";
       `echo '======== PACKAGE ========' >>'${logfile}-package.log'`;
       `date -u >>'${logfile}-package.log'`;
-      unlink("/tmp/${pkname}.tar.bz2");
+      if (-s "/tmp/${pkname}.tar.bz2") {
+         unlink("/tmp/${pkname}.tar.bz2");
+      }
       chdir('/tmp/install/usr/local');
       `mkdir -p lib`;
       `echo '======== PACKAGE: DEPS ========' >>'${logfile}-package.log'`;

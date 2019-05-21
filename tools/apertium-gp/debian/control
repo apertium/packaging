@@ -9,7 +9,7 @@ Homepage: https://www.apertium.org/
 Package: apertium-gp
 Architecture: any
 Depends: liblist-moreutils-perl,
-         perl (>= 5.18),
+         perl,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Apertium-GP is a GUI for Apertium translator.

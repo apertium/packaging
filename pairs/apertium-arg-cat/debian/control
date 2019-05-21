@@ -11,7 +11,7 @@ Build-Depends: apertium-arg,
                cg3,
                debhelper (>= 11),
                gawk,
-               pkg-config (>= 0.21),
+               pkg-config,
                python
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/

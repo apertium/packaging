@@ -59,7 +59,7 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, apertium-dev (>= 3.5.2), pkg-config (>= 0.21)";
+print "Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, apertium-dev (>= 3.5.2), pkg-config";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }

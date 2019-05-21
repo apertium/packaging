@@ -9,7 +9,7 @@ Build-Depends: apertium-cat (>= 2.2.0~r79715),
                apertium-spa (>= 1.1.0~r79716),
                debhelper (>= 11),
                gawk,
-               pkg-config (>= 0.21),
+               pkg-config,
                python,
                python3
 Standards-Version: 4.3.0
