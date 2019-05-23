@@ -288,7 +288,7 @@ CHLOG
       last;
    }
 
-   foreach my $arch (@$archs) {
+   foreach my $arch (@{$distros->{$distro}{'archs'}}) {
       `mkdir -pv $arch/$distro`;
       `cp -a --reflink=auto '${pkname}_$opts{v}.orig.tar.bz2' *$chver* $arch/$distro/`;
    }

@@ -240,7 +240,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
 
       my $variant = $targets->{'distros'}->{$distro}{'variant'};
-      foreach my $arch (@{$targets->{'archs'}}) {
+      foreach my $arch (@{$targets->{'distros'}->{$distro}{'archs'}}) {
          if ($is_data && $arch ne 'amd64') {
             next;
          }
