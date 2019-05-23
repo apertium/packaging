@@ -1,0 +1,29 @@
+Source: giella-olo
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: bc,
+               cg3,
+               debhelper (>= 11),
+               divvun-gramcheck,
+               foma,
+               gawk,
+               giella-common,
+               giella-core,
+               hfst,
+               libhfst-dev,
+               pkg-config,
+               python3,
+               zip
+Standards-Version: 4.3.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/giella-olo.git
+Vcs-Browser: https://salsa.debian.org/science-team/giella-olo.git
+
+Package: giella-olo
+Architecture: all
+Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Description: Giellatekno single language data for Livvi
+ Data package providing Giellatekno language resources for Livvi

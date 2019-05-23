@@ -209,7 +209,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'data';
       `cat data-gzip.Makefile >> "$pkg->[0]/debian/rules"`;
    }
-   if ($pkg->[0] =~ m@/apertium-apy$@ || $pkg->[0] =~ m@/apertium-streamparser$@ || $pkg->[0] =~ m@/apertium-eval-translator$@) {
+   elsif ($control =~ m@Architecture: all@ && $control !~ m@Architecture: any@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
    }
@@ -332,7 +332,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          $script .= "export 'VERBOSE=1' 'V=1'\n";
          $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
          $script .= "cd /build/${pkname}-*/\n";
-         $script .= "dpkg-buildpackage -us -uc -rfakeroot\n";
+         $script .= "nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
          file_put_contents("$dpath/build.sh", $script);
          `chmod +x '$dpath/build.sh'`;
          `chown -R 1234:1234 '$dpath'`;

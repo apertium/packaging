@@ -49,7 +49,7 @@ print `rm -rf /tmp/autorpm.* 2>&1`;
 print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
 chdir "/tmp/autorpm.$$";
 
-my $autopath = "/tmp/autopkg.$ENV{BUILDTYPE}/$pkname";
+my $autopath = $ENV{AUTOPATH};
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.gz 2>&1`;
 print `tar -Jxvf data.tar.xz 2>&1`;

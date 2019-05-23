@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+. speller-funcs.sh
+
+pkg_spellers Divvun-olo
