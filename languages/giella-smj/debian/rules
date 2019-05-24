@@ -8,9 +8,5 @@ export LC_ALL=C.UTF-8
 %:
 	dh $@ --fail-missing --parallel --with autoreconf
 
-# Removed --with-backend-format=foma due to segfault with --enable-hfst-mobile-speller
 override_dh_auto_configure:
-	dh_auto_configure -- --with-hfst --enable-tokenisers --without-xfst --enable-reversed-intersect --enable-spellers --enable-hfst-mobile-speller --enable-hyperminimisation --enable-alignment --enable-syntax --enable-analysers --enable-generators --enable-apertium --enable-grammarchecker --enable-dicts --enable-oahpa --enable-morpher
-
-override_dh_auto_test:
-	# Skip for now
+	dh_auto_configure -- --with-hfst --enable-tokenisers --without-xfst --enable-reversed-intersect --enable-spellers --enable-hfst-mobile-speller --enable-alignment --disable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --enable-apertium --enable-grammarchecker --with-backend-format=foma --enable-dicts --enable-oahpa --enable-morpher
