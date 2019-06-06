@@ -272,6 +272,10 @@ CHLOG
 
       my $rules = file_get_contents("$pkname-$chver/debian/rules");
       $rules =~ s@(\tdh.*) --parallel@$1@g;
+      if ($distros->{$distro}{'dh'} >= 12) {
+         $rules =~ s@(\tdh.*) --fail-missing@$1@g;
+         $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
+      }
       file_put_contents("$pkname-$chver/debian/rules", $rules);
    }
 
