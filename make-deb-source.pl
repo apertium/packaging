@@ -132,6 +132,9 @@ if (@excludes) {
 `grep -rl '^\#!/usr/bin/env python' | xargs -rn1 perl -pe 's\@^\#!/usr/bin/env python\@\#!/usr/bin/python\@g;' -i`;
 `grep -rl '^\#!/usr/bin/env bash' | xargs -rn1 perl -pe 's\@^\#!/usr/bin/env bash\@\#!/bin/bash\@g;' -i`;
 
+# Replace @APERTIUM_AUTO_VERSION@ with git/svn revision
+`grep -rl '\@APERTIUM_AUTO_VERSION\@' | xargs -rn1 perl -pe 's/\\\@APERTIUM_AUTO_VERSION\\\@/$opts{rev}/g;' -i`;
+
 # If this is a release, bundle language resources to avoid drift
 my %cnfs = ( 'control' => '', 'rules' => '' );
 if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac") {
