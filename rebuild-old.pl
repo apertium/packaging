@@ -308,12 +308,18 @@ foreach my $k (@{$pkgs{'order'}}) {
 
          my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
          my $img = "autopkg_${hash}";
-         my $exists = 0+`docker images -q $img | wc -l`;
-         if (!$exists || $refresh) {
+         my $exists = 0+`docker images -q $img 2>/dev/null | wc -l`;
+         if (0+`docker history -q $img 2>/dev/null | wc -l` > 75) {
+            print {$out} "\tdocker $distro:$arch refreshing (depth > 75)\n";
+            $exists = 0;
+         }
+         my $force_refresh = 0;
+         FORCE_REFRESH:
+         if (!$exists || $refresh || $force_refresh) {
             `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
             `docker build -f $dpath/Dockerfile -t $img $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
-               print {$out} "\tdocker create fail\n";
+               print {$out} "\tdocker $distro:$arch create fail\n";
                goto CLEANUP;
             }
          }
@@ -322,7 +328,12 @@ foreach my $k (@{$pkgs{'order'}}) {
          `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
          `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
-            print {$out} "\tdocker update fail\n";
+            if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
+               $force_refresh = 1;
+               print {$out} "\tdocker $distro:$arch refreshing (max depth exceeded)\n";
+               goto FORCE_REFRESH;
+            }
+            print {$out} "\tdocker $distro:$arch update fail\n";
             goto CLEANUP;
          }
          `docker rmi $img-old >>$logpath/$distro-$arch.log 2>&1`;
@@ -340,7 +351,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `echo 'Building $distro $arch' >>$logpath/stderr.log 2>&1`;
          `$Bin/build-debian-ubuntu.sh '$img' '$dpath' >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
-            print {$out} "\tdocker build fail\n";
+            print {$out} "\tdocker $distro:$arch build fail\n";
             goto CLEANUP;
          }
 

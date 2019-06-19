@@ -10,6 +10,7 @@ Build-Depends: automake,
                devscripts,
                dh-autoreconf,
                dh-exec,
+               dh-python,
                flex,
                gawk,
                libpcre3-dev,
@@ -17,8 +18,9 @@ Build-Depends: automake,
                libxml2-dev,
                libxml2-utils,
                pkg-config,
-               python-minimal,
-               python-testtools,
+               python3-all-dev,
+               python3-testtools,
+               swig,
                xsltproc,
                zlib1g-dev
 Standards-Version: 4.3.0
@@ -70,3 +72,14 @@ Description: Development tools and library for lttoolbox
  processing applications.
  .
  This package provides development files for lttoolbox.
+
+Package: python3-lttoolbox
+Architecture: any
+Section: python
+Depends: liblttoolbox3-3.5-1 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Apertium lexical processing modules and tools (Python 3 module)
+ Python 3 module for applications using the Apertium lexical processing
+ modules and tools.
