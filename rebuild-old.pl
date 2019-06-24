@@ -270,6 +270,14 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "\n";
          $docker .= "ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true\n";
          $docker .= "\n";
+         if ($arch ne 'i386' && $arch ne 'amd64') {
+            `cp -av --reflink=auto /usr/bin/qemu-$arch-static $Bin/docker/`;
+            if ($arch eq 'ppc64le') {
+               $docker .= "ENV QEMU_CPU=POWER8\n";
+            }
+            $docker .= "COPY qemu-$arch-static /usr/bin/\n";
+            $docker .= "\n";
+         }
          $docker .= "RUN mkdir /build\n";
          $docker .= "RUN groupadd -g 1234 builder && useradd -d /build -M -u 1234 -g 1234 builder\n";
          $docker .= "RUN chown 1234:1234 /build\n";
