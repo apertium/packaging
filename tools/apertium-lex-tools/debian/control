@@ -8,9 +8,13 @@ Build-Depends: apertium-dev (>= 3.5.2),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
+               dh-python,
                libxml2-dev,
                libxml2-utils,
                pkg-config,
+               python3-all-dev,
+               python3-testtools,
+               swig,
                zlib1g-dev
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/
@@ -23,3 +27,13 @@ Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Constraint-based lexical selection module
  This package provides a module for compiling lexical selection rules and
  processing them in the pipeline.
+
+Package: python3-apertium-lex-tools
+Architecture: any
+Section: python
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Apertium lexical selection module (Python 3 module)
+ Python 3 module for applications using the Apertium lexical selection
+ module.
