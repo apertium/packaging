@@ -325,7 +325,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          FORCE_REFRESH:
          if (!$exists || $refresh || $force_refresh) {
             `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
-            `docker build -f $dpath/Dockerfile -t $img $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
+            `docker build --pull -f $dpath/Dockerfile -t $img $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                print {$out} "\tdocker $distro:$arch create fail\n";
                goto CLEANUP;
@@ -339,6 +339,11 @@ foreach my $k (@{$pkgs{'order'}}) {
             if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
                $force_refresh = 1;
                print {$out} "\tdocker $distro:$arch refreshing (max depth exceeded)\n";
+               goto FORCE_REFRESH;
+            }
+            if (!$force_refresh && 0+`egrep -c 'changed its '.+' value from' $logpath/$distro-$arch.log` > 0) {
+               $force_refresh = 1;
+               print {$out} "\tdocker $distro:$arch refreshing (repo fields changed)\n";
                goto FORCE_REFRESH;
             }
             print {$out} "\tdocker $distro:$arch update fail\n";

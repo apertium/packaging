@@ -5,12 +5,25 @@
 export DH_OPTIONS
 export LC_ALL=C.UTF-8
 
-%:
-	dh $@ --fail-missing --parallel --with autoreconf
+build3vers := $(shell py3versions -sv)
 
-override_dh_auto_configure:
-	dh_auto_configure -- --enable-python-bindings
+%:
+	dh $@ --fail-missing --parallel --with autoreconf --with python3
+
+override_dh_auto_build:
+	dh_auto_build
+	set -e && for i in $(build3vers); do \
+		cd $(CURDIR)/python && python$$i setup.py build_ext && strip --strip-unneeded build/*/*.so; \
+	done
 
 override_dh_auto_install:
 	dh_auto_install
+	set -e && for i in $(build3vers); do \
+		cd $(CURDIR)/python && python$$i setup.py install --no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp; \
+	done
+	find $(CURDIR) -type f -name '*.pyc' -exec rm -f '{}' \;
+	find $(CURDIR) -type f -name '*.pyo' -exec rm -f '{}' \;
 	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
+
+override_dh_dwz:
+	# Disable dwz as it fails for the Python module

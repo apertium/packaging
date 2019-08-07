@@ -9,13 +9,16 @@ Build-Depends: autoconf,
                debhelper (>= 9.0),
                dh-autoreconf,
                dh-exec,
+               dh-python,
                flex,
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils,
                lttoolbox-dev (>= 3.5.0),
                pkg-config,
-               python3,
+               python3-all-dev,
+               python3-testtools,
+               swig,
                xsltproc
 Standards-Version: 4.3.0
 Homepage: https://apertium.org/
@@ -63,6 +66,16 @@ Description: Shared library for Apertium
  .
  This package contains shared library for the Apertium
  shallow-transfer machine translation engine.
+
+Package: python3-apertium
+Architecture: any
+Section: python
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Shallow-transfer machine translation engine (Python 3 module)
+ Python 3 module for applications using the Apertium shallow-transfer
+ machine translation engine module.
 
 Package: apertium-dev
 Architecture: any
