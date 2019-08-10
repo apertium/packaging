@@ -22,6 +22,7 @@
    ["tools/apertium-streamparser",    "https://github.com/apertium/streamparser", "streamparser.py"],
    ["tools/apertium-apy",       null, "apertium_apy/apy.py", "jessie"],
    ["tools/apertium-separable"],
+   ["tools/apertium-anaphora",  null, "CMakeLists.txt"],
    ["tools/apertium-eval-translator", null, "CMakeLists.txt"],
    ["tools/giella-core",     "https://gtsvn.uit.no/langtech/trunk/giella-core"],
    ["tools/giella-common",   "https://gtsvn.uit.no/langtech/trunk/giella-shared"],
