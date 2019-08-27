@@ -201,17 +201,20 @@ foreach my $k (@{$pkgs{'order'}}) {
    my $cli = "-p '$pkg->[0]' -u '$pkg->[1]' -v '$version' --distv '$distv' -d '$srcdate' --rev $newrev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
    print {$out} "\tmaking source package\n";
 
+   $ENV{'AUTOPKG_DATA_ONLY'} = '';
    my $is_data = '';
    copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
    if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
+      $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
       `cat data-gzip.Makefile >> "$pkg->[0]/debian/rules"`;
    }
    elsif ($control =~ m@Architecture: all@ && $control !~ m@Architecture: any@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
+      $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
    if ($dry || $is_data eq 'data') {
       $is_data = 'data';

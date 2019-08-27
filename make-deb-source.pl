@@ -137,7 +137,7 @@ if (@excludes) {
 
 # If this is a release, bundle language resources to avoid drift
 my %cnfs = ( 'control' => '', 'rules' => '' );
-if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac") {
+if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data') {
    $cnfs{'rules'} = file_get_contents("$ENV{PKPATH}/debian/rules");
    if ($cnfs{'rules'} =~ m@dh_auto_configure|dh_auto_build@) {
       die "Has dh_auto_configure/dh_auto_build - can't bundle!\n";
