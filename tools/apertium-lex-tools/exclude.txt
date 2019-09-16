@@ -1,3 +1,5 @@
 */
 + m4/.*
 + python/.*
++ testing/.*
++ src/.*

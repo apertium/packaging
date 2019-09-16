@@ -2,17 +2,24 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright:      2004, Universitat Politècnica de Catalunya
-           2004-2008, Universitat d'Alacant
-                2008, Carme Armentano Oller
-License: GPL-2
+Copyright: 2015-2018, Xavi Ivars <xavi.ivars@gmail.com>
+           2017-2018, Hèctor Alòs i Font <hectoralos@gmail.com>
+           2017-2018, Marc Riera Irigoyen <marc.riera.irigoyen@gmail.com>
+           2017-2018, Donís Seguí <donissegui@users.sourceforge.net>
+           2017-2018, Jaume Ortolà i Font <jaumeortola@gmail.com>
+                2017, Gema Ramírez Sánchez <gramirez@prompsit.com>
+                2017, Sergio Ortiz Rojas <sergio.ortiz@gmail.com>
+           2016-2017, Juan Pablo Martínez Cortés <jpmart@unizar.es>
+           2015-2017, Francis M. Tyers <ftyers@prompsit.com>
+                2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2016, Frankie Robertson <frankie@robertson.name>
+License: GPL-2+
 
-Files: autogen.sh
-Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
-License: GPL-2
+License: GPL-2+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 2 of the License
+ the Free Software Foundation, version 2 of the License, or
+ (at your option) any later version.
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,11 +33,13 @@ License: GPL-2
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 Files: debian/*
-Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-License: GPL-2+
+Copyright: 2016, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+License: GPL-3+
+
+License: GPL-3+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 2 of the License, or
+ the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
  .
  This package is distributed in the hope that it will be useful,
@@ -42,4 +51,4 @@ License: GPL-2+
  along with this program. If not, see <http://www.gnu.org/licenses/>.
  .
  On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".

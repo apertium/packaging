@@ -67,12 +67,13 @@ foreach my $k (@{$pkgs{'order'}}) {
    if (!$pkg->[2]) {
       $pkg->[2] = 'configure.ac';
    }
+   my ($pkname) = ($pkg->[0] =~ m@([^/]+)$@);
 
    $ENV{'PKPATH'} = "$Bin/".$pkg->[0];
    $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
 
-   print "Making deb source for $pkg->[0]\n";
-   my $gv = `$Bin/get-version.pl --rev=$opts{rev} --url '$pkg->[1]' --file '$pkg->[2]' 2>/dev/null`;
+   print "Making deb source for $pkname $pkg->[0]\n";
+   my $gv = `$Bin/get-version.pl --rev=$opts{rev} --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$pkname'`;
    chomp($gv);
    print "$gv\n";
    my ($rawrev,$version,$srcdate) = split(/\t/, $gv);

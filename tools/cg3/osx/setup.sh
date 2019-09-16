@@ -1,1 +1,1 @@
-./cmake.sh
+./cmake.sh -DENABLE_PYTHON_BINDINGS=ON

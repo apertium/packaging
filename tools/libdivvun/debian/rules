@@ -4,13 +4,11 @@
 #export DH_VERBOSE=1
 export LC_ALL=C.UTF-8
 
-build3vers := $(shell py3versions -sv)
-
 %:
 	dh $@ --fail-missing --parallel --with autoreconf --with python3
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-checker --enable-cgspell --enable-python-bindings
+	dh_auto_configure -- --enable-checker --enable-cgspell --enable-python-bindings 'PYTHON_INSTALL_PARAMS=--no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp'
 
 override_dh_auto_install:
 	dh_auto_install

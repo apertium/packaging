@@ -37,7 +37,6 @@ my $rop = GetOptions(
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
-#$ENV{'DEB_BUILD_MAINT_OPTIONS'} = 'hardening=+all';
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 
 use File::Copy;
@@ -318,7 +317,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          file_put_contents("$dpath/Dockerfile", $docker);
 
          my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
-         my $img = "autopkg_${hash}";
+         my $img = "autopkg-${distro}-${arch}/${hash}";
          my $exists = 0+`docker images -q $img 2>/dev/null | wc -l`;
          if (0+`docker history -q $img 2>/dev/null | wc -l` > 75) {
             print {$out} "\tdocker $distro:$arch refreshing (depth > 75)\n";
@@ -337,7 +336,8 @@ foreach my $k (@{$pkgs{'order'}}) {
 
          `echo 'Updating $distro $arch' >>$logpath/stderr.log 2>&1`;
          `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
-         `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
+         # apt-get -qfy dist-upgrade --simulate | egrep '^(Conf|Remv|Inst) ' | wc -l
+         `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy autoremove' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
             if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
                $force_refresh = 1;
@@ -368,7 +368,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/build-debian-ubuntu.sh '$img' '$dpath' >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
-            goto CLEANUP;
+            next;
          }
 
          `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;

@@ -1,8 +1,35 @@
-hfst (3.15.0-1) unstable; urgency=low
+hfst (3.15.1-1) unstable; urgency=low
 
   * Update to latest upstream
+  * Now only supports Python 3 (Closes: #936698)
+  * Now uses ICU for Unicode handling
+  * Updated dh to 12
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+    + Updated Build-Depends
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Sep 2019 14:02:07 +0200
+
+hfst (3.15.0-2) unstable; urgency=low
+
+  * Fixed debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 11 Dec 2018 12:34:57 +0530
+
+hfst (3.15.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+  * debian/control:
+    + Updated Standards-Version to 4.2.1
+    + Updated package name as per soname change: libhfst50 -> libhfst52.
+    + Updated Build-Depends.
+
+  [ Kartik Mistry ]
+  * debian/libhfst52.lintian-overrides:
+    + Added override for repeated triggers.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 13 Oct 2018 12:16:11 +0530
 
 hfst (3.13.0~r3461-3) unstable; urgency=low
 

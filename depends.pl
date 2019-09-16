@@ -39,11 +39,8 @@ while (<>) {
    elsif (/\bLIBS\b.*?\blz\b/) {
       $build{'zlib1g-dev'} = 1;
    }
-   elsif (/\bAC_PROG_AWK\b/) {
-      $build{'gawk'} = 1;
-   }
    elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislc3g\b/ || /\bc3g\b/ || /\bcg3-autobin\b/) {
-      $build{'cg3'} = 1;
+      $build{'cg3-dev'} = 1;
       $deps{'cg3'} = 1;
    }
    elsif (/\blrx-comp\b/ || /\blrx-proc\b/) {
@@ -59,13 +56,13 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, apertium-dev (>= 3.5.2), pkg-config";
+print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.6.0), gawk, pkg-config";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
 print "\n";
 
-print "Depends: apertium (>= 3.5.2)";
+print "Depends: apertium (>= 3.6.0)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

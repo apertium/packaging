@@ -7,7 +7,7 @@ License: GPL-3.0
 URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-BuildRequires: cmake
+BuildRequires: cmake >= 3.0.0
 BuildRequires: gcc-c++
 BuildRequires: lttoolbox-devel
 BuildRequires: libtool
@@ -41,6 +41,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %files
 %defattr(-,root,root)
 %{_bindir}/*
+%{_libdir}/pkgconfig/*
 
 %changelog
 * Sun Jan 18 2015 Tino Didriksen <tino@didriksen.cc> 0.0.1

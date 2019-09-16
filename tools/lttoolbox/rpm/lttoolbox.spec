@@ -1,5 +1,5 @@
 Name: lttoolbox
-Version: 3.4.0
+Version: 3.5.0
 Release: 1%{?dist}
 Summary: Apertium lexical processing modules and tools
 Group: Development/Tools
@@ -18,7 +18,9 @@ BuildRequires: libxml2-devel
 BuildRequires: libxslt
 BuildRequires: pcre-devel
 BuildRequires: pkgconfig
-BuildRequires: python
+BuildRequires: python3
+BuildRequires: python3-devel
+BuildRequires: swig
 BuildRequires: zlib-devel
 Requires: liblttoolbox3-3_5-1 = %{version}-%{release}
 
@@ -48,13 +50,20 @@ Obsoletes: liblttoolbox3-devel < %{version}-%{release}
 %description -n lttoolbox-devel
 Contains development tools and library for lttoolbox.
 
+%package -n python3-lttoolbox
+Summary: Python 3 module for the Apertium lexical processing modules and tools
+Requires: liblttoolbox3-3_5-1 = %{version}-%{release}
+
+%description -n python3-lttoolbox
+Python 3 module for the Apertium lexical processing modules and tools
+
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
-%configure --disable-static
+%configure --disable-static --enable-python-bindings
 make %{?_smp_mflags}
 
 %install
@@ -94,6 +103,10 @@ make test
 %{_datadir}/man/man1/lt-expand.*
 %{_datadir}/man/man1/lt-print.*
 %{_datadir}/man/man1/lt-trim.*
+
+%files -n python3-lttoolbox
+%defattr(-,root,root)
+%{python3_sitearch}/*
 
 %post -n liblttoolbox3-3_5-1 -p /sbin/ldconfig
 

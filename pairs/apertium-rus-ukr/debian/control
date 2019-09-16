@@ -4,22 +4,22 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.2),
+Build-Depends: apertium-dev (>= 3.6.0),
                apertium-lex-tools,
                apertium-rus (>= 0.2.0~r82706),
                apertium-ukr (>= 0.1.0~r82563),
-               cg3,
-               debhelper (>= 11),
+               cg3-dev,
+               debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-rus-ukr.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-rus-ukr.git
 
 Package: apertium-rus-ukr
 Architecture: all
-Depends: apertium (>= 3.5.2),
+Depends: apertium (>= 3.6.0),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

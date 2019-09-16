@@ -1,5 +1,5 @@
 Name: cg3
-Version: 0.9.8.10184
+Version: 1.3.0
 Release: 1%{?dist}
 Summary: Tools for using the 3rd edition of Constraint Grammar (CG-3)
 Group: Development/Tools
@@ -9,10 +9,14 @@ Source0: %{name}_%{version}.orig.tar.bz2
 Provides: vislcg3 = %{version}-%{release}
 
 BuildRequires: gcc-c++
-BuildRequires: cmake >= 2.8.9
-BuildRequires: boost-devel >= 1.48.0
-BuildRequires: libicu-devel >= 4.2
+BuildRequires: cmake >= 3.0.0
+BuildRequires: boost-devel
+BuildRequires: libicu-devel
+BuildRequires: swig
 BuildRequires: pkgconfig
+BuildRequires: python3
+BuildRequires: python3-devel
+
 Requires: libcg3-1 = %{version}-%{release}
 # OpenSUSE can't detect Perl dependencies, so list them
 Requires: perl(Digest::SHA1)
@@ -57,14 +61,34 @@ It is recommended to instrument the CLI tools instead of using this API.
 See https://visl.sdu.dk/cg3.html for more documentation
 
 
+%package -n cg3-devel
+Summary: Metapackage providing both CG-3 CLI dev tools and dev library
+Group: Development/Tools
+Requires: cg3 = %{version}-%{release}
+Requires: libcg3-devel = %{version}-%{release}
+
+%description -n cg3-devel
+Development files to use the CG-3 CLI tools and library API.
+
+See https://visl.sdu.dk/cg3.html for more documentation
+
+
+%package -n python3-cg3
+Summary: Python 3 module for CG-3
+Requires: libcg3-1 = %{version}-%{release}
+
+%description -n python3-cg3
+Python 3 module for CG-3
+
+
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
 %if 0%{?suse_version}
-%cmake
+%cmake -DENABLE_PYTHON_BINDINGS=ON
 %else
-%cmake .
+%cmake -DENABLE_PYTHON_BINDINGS=ON .
 %endif
 make %{?_smp_mflags}
 
@@ -75,14 +99,12 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 %endif
+rm -f %{buildroot}/%{python3_sitelib}/*.py[co]
 ln -s vislcg3 %{buildroot}%{_bindir}/cg3
 ln -s vislcg3.1.gz %{buildroot}%{_datadir}/man/man1/cg3.1.gz
 
-# Breaks under CentOS 6's own CMake, for some odd reason
-%if !0%{?el6}
 %check
 make test
-%endif
 
 %files
 %defattr(-,root,root)
@@ -100,6 +122,10 @@ make test
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
+
+%files -n python3-cg3
+%defattr(-,root,root)
+%{python3_sitearch}/*
 
 %post -n libcg3-1 -p /sbin/ldconfig
 

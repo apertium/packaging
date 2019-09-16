@@ -1,9 +1,9 @@
 {
 	"distros": {
 		"sid":     {"variant": "debian", "dh": 12, "archs": ["i386", "amd64"]},
-		"jessie":  {"variant": "debian", "dh":  9, "archs": ["amd64"]},
 		"stretch": {"variant": "debian", "dh": 10, "archs": ["amd64"]},
 		"buster":  {"variant": "debian", "dh": 12, "archs": ["amd64"]},
+		"bullseye":  {"variant": "debian", "dh": 12, "archs": ["amd64"]},
 		"xenial":  {"variant": "ubuntu", "dh": 9, "archs": ["amd64"]},
 		"bionic":  {"variant": "ubuntu", "dh": 11, "archs": ["i386", "amd64"]},
 		"cosmic":  {"variant": "ubuntu", "dh": 11, "archs": ["amd64"]},

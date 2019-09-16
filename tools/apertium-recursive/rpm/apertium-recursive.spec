@@ -42,6 +42,7 @@ make test
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
+%{_libdir}/pkgconfig/*
 
 %changelog
 * Sun Mar 04 2018 Tino Didriksen <tino@didriksen.cc> 0.2.0

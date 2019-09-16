@@ -271,13 +271,18 @@ CHLOG
       $control =~ s@debhelper \([^)]+\)@debhelper (>= $distros->{$distro}{'dh'})@g;
       $control =~ s@[ \t]*dh-autoreconf,?\n@@g;
       $control =~ s@[ \t]*autotools-dev,?\n@@g;
+      $control =~ s@[ \t]*automake,?\n@@g;
+      $control =~ s@[ \t]*libtool,?\n@@g;
       file_put_contents("$pkname-$chver/debian/control", $control);
 
       my $rules = file_get_contents("$pkname-$chver/debian/rules");
       $rules =~ s@(\tdh.*) --parallel@$1@g;
-      if ($distros->{$distro}{'dh'} >= 12) {
+      if ($distros->{$distro}{'dh'} >= 11) {
          $rules =~ s@(\tdh.*) --fail-missing@$1@g;
          $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
+      }
+      if ($ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
+         $rules =~ s@\n%:\n@\nexport DEB_BUILD_MAINT_OPTIONS = hardening=+all\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;
       }
       file_put_contents("$pkname-$chver/debian/rules", $rules);
    }

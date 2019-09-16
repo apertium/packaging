@@ -8,10 +8,10 @@ echo ""
 echo "Building $1 from $2"
 echo ""
 
-timeout 120m docker run --rm --privileged --network none --user '1234:1234' -v "$2/:/build/" --name "$1" "$1" /build/build.sh 2>&1 | tee $2/build.log
+timeout 120m docker run --rm --privileged --network none --user '1234:1234' -v "$2/:/build/" "$1" /build/build.sh 2>&1 | tee $2/build.log
 EC=$?
-if [ $EC -ne 0 ]; then
-	docker stop -t 10 "$1"
-	docker rm -f "$1"
-fi
+#if [ $EC -ne 0 ]; then
+#	docker stop -t 10 "$1"
+#	docker rm -f "$1"
+#fi
 exit $EC

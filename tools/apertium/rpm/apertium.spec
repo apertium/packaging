@@ -1,5 +1,5 @@
 Name: apertium
-Version: 3.5.0
+Version: 3.6.0
 Release: 1%{?dist}
 Summary: Shallow-transfer machine translation engine
 Group: Development/Tools
@@ -7,28 +7,27 @@ License: GPL-2.0+
 URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: flex
+BuildRequires: gcc-c++
+BuildRequires: libtool
+BuildRequires: libxml2
+BuildRequires: libxml2-devel
+BuildRequires: libxslt
+BuildRequires: lttoolbox-devel
+BuildRequires: pcre-devel
+BuildRequires: pkgconfig
+BuildRequires: python3
+BuildRequires: python3-devel
+BuildRequires: swig
+
+Requires: libapertium3-3_6-1 = %{version}-%{release}
 Requires: lttoolbox >= 3.5.0
 # Require xmllint from:
 Requires: libxml2
 # Require xsltproc from:
 Requires: libxslt
-
-BuildRequires: autoconf
-BuildRequires: automake
-BuildRequires: flex
-BuildRequires: gcc-c++
-BuildRequires: lttoolbox-devel
-BuildRequires: libtool
-BuildRequires: libxml2
-BuildRequires: libxml2-devel
-BuildRequires: libxslt
-BuildRequires: pcre-devel
-BuildRequires: pkgconfig
-%if ! ( 0%{?el6} || 0%{?el7} )
-BuildRequires: python3
-BuildRequires: python3-devel
-%endif
-Requires: libapertium3-3_5-1 = %{version}-%{release}
 
 %description
 An open-source shallow-transfer machine translation
@@ -48,14 +47,14 @@ It will be possible to use Apertium to build machine translation
 systems for a variety of related-language pairs simply providing
 the linguistic data needed in the right format.
 
-%package -n libapertium3-3_5-1
+%package -n libapertium3-3_6-1
 Summary: Shared library for apertium
 Group: Development/Libraries
 Provides: libapertium = %{version}-%{release}
 Obsoletes: libapertium < %{version}-%{release}
 Obsoletes: libapertium3 < %{version}-%{release}
 
-%description -n libapertium3-3_5-1
+%description -n libapertium3-3_6-1
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
@@ -63,28 +62,19 @@ machine translation engine.
 Summary: Development tools and library for apertium
 Group: Development/Tools
 Requires: apertium = %{version}-%{release}
-Requires: lttoolbox-devel >= 3.3.1
+Requires: lttoolbox-devel >= 3.5.0
 Obsoletes: libapertium3-devel < %{version}-%{release}
 
 %description -n apertium-devel
 Contains development files for the Apertium shallow-transfer
 machine translation engine.
 
-%package -n apertium-all-devel
-Summary: Metapackage for all tools required for Apertium development
-Group: Development/Tools
-Requires: apertium-devel
-Requires: apertium-eval-translator
-Requires: apertium-lex-tools
-Requires: cg3
-Requires: libcg3-devel
-Requires: hfst
-Requires: libhfst-devel
+%package -n python3-apertium
+Summary: Python 3 module for the Apertium shallow-transfer machine translation engine
+Requires: libapertium3-3_6-1 = %{version}-%{release}
 
-%description -n apertium-all-devel
-Metapackage to get all tools required for development of Apertium
-languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
-cg3, and hfst.
+%description -n python3-apertium
+Python 3 module for the Apertium shallow-transfer machine translation engine
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -92,25 +82,24 @@ cg3, and hfst.
 %build
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
-%configure --disable-static
-make %{?_smp_mflags} || make %{?_smp_mflags} || make
+%configure --disable-static --enable-python-bindings
+make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
-ln -s libapertium3-3.5.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.5.so
+ln -s libapertium3-3.6.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.6.so
 
-%if ! ( 0%{?el6} || 0%{?el7} )
 %check
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check
-%endif
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README README-MODES
 %{_bindir}/apertium
+%{_bindir}/apertium-cleanstream
 %{_bindir}/apertium-des*
 %{_bindir}/apertium-interchunk
 %{_bindir}/apertium-multiple-translations
@@ -143,19 +132,28 @@ make check
 %{_datadir}/man/man1/apertium-unformat.*
 %{_datadir}/man/man1/apertium-utils-fixlatex.*
 
-%files -n libapertium3-3_5-1
+%files -n libapertium3-3_6-1
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files -n apertium-devel
 %defattr(-,root,root)
 %{_bindir}/apertium-filter-ambiguity
+%{_bindir}/apertium-filter-dix
+%{_bindir}/apertium-filter-rules
 %{_bindir}/apertium-gen-deformat
 %{_bindir}/apertium-gen-modes
 %{_bindir}/apertium-gen-reformat
+%{_bindir}/apertium-genvdix
+%{_bindir}/apertium-genvldix
+%{_bindir}/apertium-genvrdix
 %{_bindir}/apertium-get
+%{_bindir}/apertium-metalrx
+%{_bindir}/apertium-metalrx-to-lrx
+%{_bindir}/apertium-perceptron-trace
 %{_bindir}/apertium-tagger-apply-new-rules
 %{_bindir}/apertium-tagger-readwords
+%{_bindir}/apertium-translate-to-default-equivalent
 %{_bindir}/apertium-validate-acx
 %{_bindir}/apertium-validate-dictionary
 %{_bindir}/apertium-validate-interchunk
@@ -163,7 +161,6 @@ make check
 %{_bindir}/apertium-validate-postchunk
 %{_bindir}/apertium-validate-tagger
 %{_bindir}/apertium-validate-transfer
-%{_bindir}/apertium-perceptron-trace
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
@@ -173,11 +170,13 @@ make check
 %{_datadir}/man/man1/apertium-tagger-apply-new-rules.*
 %{_datadir}/man/man1/apertium-validate-*
 
-%files -n apertium-all-devel
+%files -n python3-apertium
+%defattr(-,root,root)
+%{python3_sitearch}/*
 
-%post -n libapertium3-3_5-1 -p /sbin/ldconfig
+%post -n libapertium3-3_6-1 -p /sbin/ldconfig
 
-%postun -n libapertium3-3_5-1 -p /sbin/ldconfig
+%postun -n libapertium3-3_6-1 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0

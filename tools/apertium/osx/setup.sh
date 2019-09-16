@@ -1,2 +1,2 @@
 autoreconf -fvi
-./configure
+./configure --enable-python-bindings

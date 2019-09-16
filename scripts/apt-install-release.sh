@@ -15,8 +15,8 @@ echo "Determining Debian/Ubuntu codename..."
 P=`apt-cache policy`
 P="$P "`lsb_release -c`"/dummy"
 P="$P "`grep CODENAME /etc/lsb-release`"/dummy"
-DISTRO=""
-for D in sid jessie stretch buster xenial bionic cosmic disco
+DISTRO="$1"
+for D in sid stretch buster bullseye xenial bionic cosmic disco
 do
 	if [[ $P == *$D/* ]]
 	then

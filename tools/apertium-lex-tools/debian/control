@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.2),
+Build-Depends: apertium-dev (>= 3.6.0),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
@@ -12,11 +12,11 @@ Build-Depends: apertium-dev (>= 3.5.2),
                libxml2-dev,
                libxml2-utils,
                pkg-config,
-               python3-all-dev,
-               python3-testtools,
+               python3-dev,
+               python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-lex-tools.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-lex-tools
@@ -31,6 +31,8 @@ Description: Constraint-based lexical selection module
 Package: python3-apertium-lex-tools
 Architecture: any
 Section: python
+Provides: ${python3:Provides}
+XB-Python-Version: ${python3:Versions}
 Depends: ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

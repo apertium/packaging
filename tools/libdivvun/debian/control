@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autotools-dev,
-               debhelper (>= 9.0.0),
+               debhelper (>= 9.0),
                dh-autoreconf,
                dh-python,
                gawk,
@@ -16,10 +16,11 @@ Build-Depends: autotools-dev,
                libpugixml-dev,
                libxml2-utils,
                pkg-config,
-               python3-all-dev,
+               python3-dev,
+               python3-setuptools,
                swig,
                zip
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Homepage: https://github.com/divvun/divvun-gramcheck
 Vcs-Git: https://anonscm.debian.org/collab-maint/divvun-gramcheck.git
 Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.git;a=summary
@@ -53,6 +54,8 @@ Description: Headers and shared files to develop using the Divvun grammar checke
 Package: python3-libdivvun
 Architecture: any
 Section: python
+Provides: ${python3:Provides}
+XB-Python-Version: ${python3:Versions}
 Depends: libdivvun0 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},

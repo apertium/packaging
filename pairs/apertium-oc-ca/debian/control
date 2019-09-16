@@ -4,18 +4,18 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.2),
-               debhelper (>= 11),
+Build-Depends: apertium-dev (>= 3.6.0),
+               debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-oc-ca.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-oc-ca.git
 
 Package: apertium-oc-ca
 Architecture: all
-Depends: apertium (>= 3.5.2), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
 Conflicts: apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
 Description: Apertium translation data for the Occitan-Catalan pair

@@ -1,0 +1,39 @@
+Source: apertium-all-dev
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.4.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-all-dev.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-all-dev
+
+Package: apertium-all-dev
+Architecture: all
+Replaces: apertium-all-dev (<= 3.6.0)
+Breaks: apertium-all-dev (<= 3.6.0)
+Depends: apertium-anaphora (>= 0.0.1),
+         apertium-dev (>= 3.6.0),
+         apertium-eval-translator,
+         apertium-lex-tools (>= 0.2.1),
+         apertium-recursive (>= 0.0.1),
+         apertium-separable (>= 0.3.2),
+         autoconf,
+         automake,
+         build-essential,
+         cg3-dev (>= 1.3.0),
+         gawk,
+         git,
+         hfst (>= 3.15.1),
+         libhfst-dev (>= 3.15.1),
+         libtool,
+         lttoolbox-dev (>= 3.5.0),
+         locales,
+         pkg-config,
+         ${misc:Depends}
+Description: Metapackage for all tools required for Apertium development
+ A metapackage to get all tools required for development of Apertium
+ languages and pairs, such as lttoolbox, apertium, apertium-lex-tools,
+ apertium-separable, cg3, and hfst.

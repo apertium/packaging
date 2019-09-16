@@ -4,20 +4,20 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.5.2),
-               cg3,
-               debhelper (>= 11),
+Build-Depends: apertium-dev (>= 3.6.0),
+               cg3-dev,
+               debhelper (>= 12),
                gawk,
                hfst,
                libhfst-dev,
                pkg-config
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-chv.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-chv.git
 
 Package: apertium-chv
 Architecture: all
-Depends: apertium (>= 3.5.2), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Chuvash
  Data package providing Apertium language resources for Chuvash

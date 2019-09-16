@@ -1,5 +1,5 @@
 Name: hfst
-Version: 3.12.1
+Version: 3.15.1
 Release: 1%{?dist}
 Summary: Helsinki Finite-State Transducer Technology
 Group: Development/Tools
@@ -18,17 +18,14 @@ BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: swig
 BuildRequires: pkgconfig
-BuildRequires: python
-BuildRequires: python-devel
 BuildRequires: readline-devel
 BuildRequires: zlib-devel
-%if ! ( 0%{?el6} || 0%{?el7} )
 BuildRequires: python3
 BuildRequires: python3-devel
-%endif
+
 Requires: libhfst52 = %{version}-%{release}
 Requires: grep
-Requires: python
+Requires: python3
 Requires: sed
 
 %description
@@ -55,21 +52,14 @@ Obsoletes: libhfst3-devel < %{version}-%{release}
 %description -n libhfst-devel
 Development headers and libraries for HFST
 
-%package -n python-libhfst
-Summary: Python modules for Helsinki Finite-State Transducer Technology
+%package -n python3-hfst
+Summary: Python 3 modules for Helsinki Finite-State Transducer Technology
 Requires: libhfst52 = %{version}-%{release}
+Provides: python3-libhfst = %{version}-%{release}
+Obsoletes: python3-libhfst < %{version}-%{release}
 
-%description -n python-libhfst
-Python modules for libhfst
-
-%if ! ( 0%{?el6} || 0%{?el7} )
-%package -n python3-libhfst
-Summary: Python3 modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst52 = %{version}-%{release}
-
-%description -n python3-libhfst
-Python3 modules for libhfst
-%endif
+%description -n python3-hfst
+Python 3 modules for libhfst
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -78,27 +68,13 @@ Python3 modules for libhfst
 
 %build
 autoreconf -fi
-%configure --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu
-make %{?_smp_mflags} || make %{?_smp_mflags} || make
-%if ! ( 0%{?el6} || 0%{?el7} )
-cd python
-python setup.py build_ext
-python3 setup.py build_ext
-strip --strip-unneeded build/*/*.so
-cd ..
-%endif
+%configure --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu --enable-python-bindings
+make %{?_smp_mflags}
 
 %install
 make DESTDIR=%{buildroot} install
 sed -i 's/@GLIB_CFLAGS@//' %{buildroot}/%{_libdir}/pkgconfig/hfst.pc
 rm -f %{buildroot}/%{_libdir}/*.la
-rm -f %{buildroot}/%{python_sitelib}/*.py[co]
-cd python
-python setup.py install --no-compile --prefix /usr --root %{buildroot}
-%if ! ( 0%{?el6} || 0%{?el7} )
-python3 setup.py install --no-compile --prefix /usr --root %{buildroot}
-%endif
-cd ..
 
 %check
 make check || /bin/true
@@ -120,15 +96,9 @@ make check || /bin/true
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
 
-%files -n python-libhfst
-%defattr(-,root,root)
-%{python_sitearch}/*
-
-%if ! ( 0%{?el6} || 0%{?el7} )
-%files -n python3-libhfst
+%files -n python3-hfst
 %defattr(-,root,root)
 %{python3_sitearch}/*
-%endif
 
 %post -n libhfst52 -p /sbin/ldconfig
 
