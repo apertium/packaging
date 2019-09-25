@@ -9,13 +9,21 @@ Source0: %{name}_%{version}.orig.tar.bz2
 Provides: vislcg3 = %{version}-%{release}
 
 BuildRequires: gcc-c++
+%if 0%{?el7}
+BuildRequires: cmake3
+# Multiple packages provide libpython27, so picking the one from CentOS main repo
+BuildRequires: python-libs
+%else
 BuildRequires: cmake >= 3.0.0
+%endif
 BuildRequires: boost-devel
 BuildRequires: libicu-devel
 BuildRequires: swig
 BuildRequires: pkgconfig
+%if ! ( 0%{?el7} )
 BuildRequires: python3
 BuildRequires: python3-devel
+%endif
 
 Requires: libcg3-1 = %{version}-%{release}
 # OpenSUSE can't detect Perl dependencies, so list them
@@ -73,12 +81,14 @@ Development files to use the CG-3 CLI tools and library API.
 See https://visl.sdu.dk/cg3.html for more documentation
 
 
+%if ! ( 0%{?el7} )
 %package -n python3-cg3
 Summary: Python 3 module for CG-3
 Requires: libcg3-1 = %{version}-%{release}
 
 %description -n python3-cg3
 Python 3 module for CG-3
+%endif
 
 
 %prep
@@ -88,7 +98,11 @@ Python 3 module for CG-3
 %if 0%{?suse_version}
 %cmake -DENABLE_PYTHON_BINDINGS=ON
 %else
+%if 0%{?el7}
+%cmake3 .
+%else
 %cmake -DENABLE_PYTHON_BINDINGS=ON .
+%endif
 %endif
 make %{?_smp_mflags}
 
@@ -123,9 +137,11 @@ make test
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 
+%if ! ( 0%{?el7} )
 %files -n python3-cg3
 %defattr(-,root,root)
 %{python3_sitearch}/*
+%endif
 
 %post -n libcg3-1 -p /sbin/ldconfig
 

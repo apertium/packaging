@@ -8,12 +8,14 @@ URL: https://github.com/TinoDidriksen/trie-tools
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: gcc-c++
-%if 0%{?el6}
-BuildRequires: cmake28 >= 2.8.9
+%if 0%{?el7}
+BuildRequires: cmake3
+# Multiple packages provide libpython27, so picking the one from CentOS main repo
+BuildRequires: python-libs
 %else
-BuildRequires: cmake >= 2.8.9
+BuildRequires: cmake >= 3.0
 %endif
-BuildRequires: boost-devel >= 1.48.0
+BuildRequires: boost-devel
 
 %description
 Tools for creating, browsing, printing, and working with tries for various
@@ -24,11 +26,11 @@ purposes such as spell checking, title browsing, tokenization, etc.
 %setup -q -n %{name}-%{version}
 
 %build
-%if 0%{?el6}
-%cmake28 .
-%else
 %if 0%{?suse_version}
 %cmake
+%else
+%if 0%{?el7}
+%cmake3 .
 %else
 %cmake .
 %endif

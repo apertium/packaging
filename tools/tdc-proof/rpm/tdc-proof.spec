@@ -9,7 +9,7 @@ Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: gcc-c++
 %if 0%{?el7}
-BuildRequires: cmake3 >= 3.0
+BuildRequires: cmake3
 %else
 BuildRequires: cmake >= 3.0
 %endif
@@ -26,11 +26,11 @@ and grammar checkers
 %setup -q -n %{name}-%{version}
 
 %build
-%if 0%{?el6}
-%cmake3 .
-%else
 %if 0%{?suse_version}
 %cmake
+%else
+%if 0%{?el7}
+%cmake3 .
 %else
 %cmake .
 %endif

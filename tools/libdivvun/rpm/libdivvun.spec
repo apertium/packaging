@@ -20,10 +20,8 @@ BuildRequires: libxml2
 BuildRequires: swig
 BuildRequires: pkgconfig
 BuildRequires: pugixml-devel
-%if ! ( 0%{?el7} )
 BuildRequires: python3
 BuildRequires: python3-devel
-%endif
 BuildRequires: zip
 Requires: libdivvun0 = %{version}-%{release}
 Provides: divvun-gramcheck = %{version}-%{release}
@@ -45,25 +43,19 @@ Requires: divvun-gramcheck = %{version}-%{release}
 %description -n libdivvun-devel
 Development files to use the Divvun grammar checker API
 
-%if ! ( 0%{?el7} )
 %package -n python3-libdivvun
 Summary: Runtime for Divvun grammar checker (Python 3 module)
 Requires: libdivvun0 = %{version}-%{release}
 
 %description -n python3-libdivvun
 Python 3 module for applications using the Divvun grammar checker API
-%endif
 
 %prep
 %setup -q -n %{name}-%{version}
 
 %build
 autoreconf -fvi
-%if ! ( 0%{?el7} )
 %configure --enable-checker --enable-cgspell --enable-python-bindings
-%else
-%configure --enable-checker --enable-cgspell --disable-python-bindings
-%endif
 make %{?_smp_mflags}
 
 %install
@@ -93,11 +85,9 @@ make check
 %{_includedir}/*
 %{_libdir}/*.so
 
-%if ! ( 0%{?el7} )
 %files -n python3-libdivvun
 %defattr(-,root,root)
 %{python3_sitearch}/*
-%endif
 
 %post -n libdivvun0 -p /sbin/ldconfig
 

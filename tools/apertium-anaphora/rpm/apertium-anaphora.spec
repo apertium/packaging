@@ -7,7 +7,11 @@ License: GPL-3.0
 URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
+%if 0%{?el7}
+BuildRequires: cmake3
+%else
 BuildRequires: cmake >= 3.0.0
+%endif
 BuildRequires: gcc-c++
 BuildRequires: lttoolbox-devel
 BuildRequires: libtool
@@ -25,7 +29,11 @@ export LC_ALL=%(locale -a | grep -i utf | head -n1)
 %if 0%{?suse_version}
 %cmake
 %else
+%if 0%{?el7}
+%cmake3 .
+%else
 %cmake .
+%endif
 %endif
 make %{?_smp_mflags}
 

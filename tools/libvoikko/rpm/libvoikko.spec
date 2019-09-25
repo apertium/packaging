@@ -7,7 +7,6 @@ Group:          System Environment/Libraries
 License:        GPL-2.0+
 URL:            http://voikko.puimula.org/
 Source0:        %{name}_%{version}.orig.tar.bz2
-Patch0:         libvoikko_01_hfstol-ns.diff
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -66,7 +65,6 @@ tasks on text.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
 
 
 %build
