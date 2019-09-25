@@ -2,17 +2,8 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2017-2018, Francis M. Tyers <ftyers@prompsit.com>
-           2017-2018, Tino Didriksen <mail@tinodidriksen.com>
-                2017, Himanshu Sekhar Nayak <himanshuwindows8.1@gmail.com>
-                2017, Irene Tang <itang1@swarthmore.edu>
-                2017, Ethan Yang <ethanyisaperson@gmail.com>
-                2017, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-                2017, Jonathan North Washington <jonwashi@indiana.edu>
-License: GPL-3+
-
-Files: debian/*
-Copyright: 2018, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+           2019, Daniel Swanson <awesomeevildudes@gmail.com>
 License: GPL-3+
 
 License: GPL-3+

@@ -1,5 +1,6 @@
 apertium-all-dev (3.6.1-1) unstable; urgency=low
 
-  * Initial release
+  * Split from apertium, to avoid misbehaving dependencies causing
+    apertium to be flagged all the time
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 12 Sep 2019 14:35:22 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200

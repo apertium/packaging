@@ -4,7 +4,7 @@ Upstream-Contact: Tino Didriksen <tino@didriksen.cc>
 Source: https://visl.sdu.dk/cg3.html
 
 Files: *
-Copyright: 2007-2017 GrammarSoft ApS <info@grammarsoft.com>
+Copyright: 2007-2019 GrammarSoft ApS <info@grammarsoft.com>
 License: GPL-3+
 
 License: GPL-3+
@@ -75,7 +75,7 @@ License: Expat
  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Files: include/uoptions.h
+Files: include/uoptions.hpp
        src/icu_uoptions.cpp
 Copyright: 1995-2017 International Business Machines Corporation and others
 License: ICU

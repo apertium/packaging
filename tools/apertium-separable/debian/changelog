@@ -1,8 +1,20 @@
-apertium-separable (0.3.2-1) unstable; urgency=low
+apertium-separable (0.3.3-1) unstable; urgency=low
 
   * Update to latest upstream
+  * Updated dh to 12
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+
+apertium-separable (0.3.2-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+  * Updated dh to 11.
+  * Updated Standards-Version to 4.2.1
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 14 Oct 2018 18:59:54 +0530
 
 apertium-separable (0.3.1-1) unstable; urgency=low
 

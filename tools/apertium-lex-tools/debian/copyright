@@ -29,15 +29,15 @@ License: GPL-3
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
-Files: ldx_proc.cc
- lrx_comp.cc
- lrx_compiler.*
- lrx_proc.cc
- lrx_processor.*
+Files: src/ldx_proc.cc
+ src/lrx_comp.cc
+ src/lrx_compiler.*
+ src/lrx_proc.cc
+ src/lrx_processor.*
 Copyright: 2011-2012, Universitat d'Alacant
 License: GPL-2+
 
-Files: yasmet.cc
+Files: src/yasmet.cc
 Copyright: 2002, Franz Josef Och
 License: GPL-2+
 

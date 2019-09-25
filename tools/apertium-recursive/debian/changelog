@@ -1,5 +1,5 @@
-apertium-recursive (0.3.2-1) unstable; urgency=low
+apertium-recursive (0.0.1-1) unstable; urgency=low
 
   * Initial release
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200

@@ -1,8 +1,39 @@
-lttoolbox (3.5.0-1) unstable; urgency=low
+lttoolbox (3.5.1-1) unstable; urgency=low
 
   * Update to latest upstream
+    + Added Python module
+  * Now only supports Python 3 (Closes: #936970)
+  * Updated dh to 12
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+  * Removed debian/patches
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 04 Oct 2018 11:34:22 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+
+lttoolbox (3.5.0-3) unstable; urgency=medium
+
+  * debian/patches:
+    + Added a patch fix FTBFS on several architectures (Closes: #911226)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 01 Nov 2018 08:53:13 +0530
+
+lttoolbox (3.5.0-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 12 Oct 2018 20:36:26 +0530
+
+lttoolbox (3.5.0-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.2.1
+  * Updated to dh 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 10 Oct 2018 11:42:23 +0530
 
 lttoolbox (3.4.2-2) unstable; urgency=medium
 

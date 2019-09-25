@@ -40,8 +40,8 @@ Description: Tools for using the 3rd edition of Constraint Grammar (CG-3)
 
 Package: cg3-dev
 Architecture: all
-Depends: cg3 (= ${binary:Version}),
-         libcg3-dev (= ${binary:Version}),
+Depends: cg3 (>= ${binary:Version}),
+         libcg3-dev (>= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Metapackage providing both CG-3 CLI dev tools and dev library
