@@ -1,3 +1,4 @@
 version=4
-opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-eval-translator-$1\.tar\.gz/ \
-  https://github.com/apertium/apertium-eval-translator/releases .*/v?(\d\S+)\.tar\.gz
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-eval-translator-$1.tar.gz%" \
+    https://github.com/apertium/apertium-eval-translator/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
