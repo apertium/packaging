@@ -28,11 +28,13 @@ Getopt::Long::Configure('no_ignore_case');
 my $release = 0;
 my $refresh = 0;
 my $dry = 0;
+my $staccato = 0;
 my $distro = '';
 my $rop = GetOptions(
    'release|r!' => \$release,
    'refresh!' => \$refresh,
    'dry|n!' => \$dry,
+   'staccato!' => \$staccato,
    'distro=s' => \$distro,
    );
 
@@ -172,14 +174,17 @@ foreach my $k (@{$pkgs{'order'}}) {
    my $rebuild = 0;
 
    my $control = read_control($pkg->[0].'/debian/control');
-   my ($bdeps) = ($control =~ m@Build-Depends:\s*([^\n]+)@);
-   $bdeps =~ s@\([^)]+\)@@g;
-   $bdeps =~ s@\s+@@gs;
 
-   foreach my $dep (split(/,/, $bdeps)) {
-      if (defined $rebuilt{$dep}) {
-         $rebuild = 1;
-         print {$out} "\tdependency $dep was rebuilt\n";
+   if (!$staccato) {
+      my ($bdeps) = ($control =~ m@Build-Depends:\s*([^\n]+)@);
+      $bdeps =~ s@\([^)]+\)@@g;
+      $bdeps =~ s@\s+@@gs;
+
+      foreach my $dep (split(/,/, $bdeps)) {
+         if (defined $rebuilt{$dep}) {
+            $rebuild = 1;
+            print {$out} "\tdependency $dep was rebuilt\n";
+         }
       }
    }
 
@@ -234,6 +239,7 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    # Track whether this build resulted in actual data changes, because it's pointless to trigger downstream rebuilds if not
    my $changed = 0;
+   my $failed = '';
 
    print {$out} "\tlaunching build\n";
    foreach my $distro (keys %{$targets->{'distros'}}) {
@@ -368,6 +374,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/build-debian-ubuntu.sh '$img' '$dpath' >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
+            $failed .= "$distro:$arch\t";
             next;
          }
 
@@ -382,8 +389,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
    }
 
-   my $failed = '';
-   $failed = `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   $failed .= `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($failed);
 
    my $depfail = '';
