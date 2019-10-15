@@ -69,11 +69,11 @@ Obsoletes: libapertium3-devel < %{version}-%{release}
 Contains development files for the Apertium shallow-transfer
 machine translation engine.
 
-%package -n python3-apertium
+%package -n python3-apertium-core
 Summary: Python 3 module for the Apertium shallow-transfer machine translation engine
 Requires: libapertium3-3_6-1 = %{version}-%{release}
 
-%description -n python3-apertium
+%description -n python3-apertium-core
 Python 3 module for the Apertium shallow-transfer machine translation engine
 
 %prep
@@ -170,7 +170,7 @@ make check
 %{_datadir}/man/man1/apertium-tagger-apply-new-rules.*
 %{_datadir}/man/man1/apertium-validate-*
 
-%files -n python3-apertium
+%files -n python3-apertium-core
 %defattr(-,root,root)
 %{python3_sitearch}/*
 

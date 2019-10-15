@@ -20,7 +20,7 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                xsltproc
-Standards-Version: 4.4.0
+Standards-Version: 4.4.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium
@@ -67,7 +67,7 @@ Description: Shared library for Apertium
  This package contains shared library for the Apertium
  shallow-transfer machine translation engine.
 
-Package: python3-apertium
+Package: python3-apertium-core
 Architecture: any
 Section: python
 Provides: ${python3:Provides}

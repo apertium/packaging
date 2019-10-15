@@ -1,5 +1,6 @@
-apertium-eval-translator (1.2.0-1) unstable; urgency=low
+apertium-eval-translator (1.2.1-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #941797)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 05 Oct 2019 15:27:20 +0200
+ -- Kartik Mistry <kartik@debian.org>  Sat, 05 Oct 2019 19:57:59 +0530
