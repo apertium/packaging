@@ -12,6 +12,7 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 use autodie qw(:all);
+use List::MoreUtils qw(uniq);
 
 use FindBin qw($Bin);
 use lib "$Bin/";
@@ -374,7 +375,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/build-debian-ubuntu.sh '$img' '$dpath' >>$logpath/$distro-$arch.log 2>&1`;
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
-            $failed .= "$distro:$arch\t";
+            $failed .= "$logpath/$distro-$arch.log\n";
             next;
          }
 
@@ -447,7 +448,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       push(@failed, $pkname);
       # Gather up URLs for the logs of the failed builds
       print {$out} "\tFAILED:\n";
-      foreach my $fail (split(/\n/, $failed)) {
+      foreach my $fail (uniq(sort(split(/\n/, $failed)))) {
          chomp($fail);
          $fail =~ s@^/home/apertium/public_html@https://apertium.projectjj.com@;
          print {$out} "\t\t$fail\n";
