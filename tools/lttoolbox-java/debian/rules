@@ -15,6 +15,7 @@
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 %:
 	dh $@ --fail-missing
