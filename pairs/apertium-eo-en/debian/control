@@ -5,6 +5,8 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-lex-tools,
+               cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -15,7 +17,11 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-eo-en.git
 
 Package: apertium-eo-en
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-en-eo, apertium-eng-epo, apertium-epo-eng
 Conflicts: apertium-en-eo, apertium-eng-epo, apertium-epo-eng
 Description: Apertium linguistic data to translate between Esperanto and English
