@@ -73,7 +73,7 @@ else {
    my $e = 0;
    print STDERR `svn switch --ignore-ancestry --force --accept tf -r$opts{rev} $opts{url}/ 2>&1`;
    $e += $?;
-   print STDERR `svn cleanup --remove-unversioned 2>&1`;
+   print STDERR `svn cleanup --remove-unversioned --remove-ignored 2>&1`;
    $e += $?;
    print STDERR `svn revert -R . 2>&1`;
    $e += $?;

@@ -1,12 +1,17 @@
-apertium-lex-tools (0.2.2-1) unstable; urgency=low
+apertium-lex-tools (0.2.3-1) unstable; urgency=low
 
-  * Update to latest upstream
+  [ Tino Didriksen ]
+  * Update to latest upstream:
     + Added Python module
   * Updated dh to 12
   * debian/control:
-    + Updated Standards-Version to 4.4.0
+    + Updated Standards-Version to 4.4.1
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+  [ Kartik Mistry ]
+  * Added debian/gitlab-ci.yml
+  * Updated package descriptions.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 29 Oct 2019 12:10:17 +0530
 
 apertium-lex-tools (0.2.1-1) unstable; urgency=low
 

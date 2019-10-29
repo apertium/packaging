@@ -25,8 +25,8 @@ Package: apertium-lex-tools
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Constraint-based lexical selection module
- This package provides a module for compiling lexical selection rules and
- processing them in the pipeline.
+ Module for compiling lexical selection rules and processing them in the
+ pipeline.
 
 Package: python3-apertium-lex-tools
 Architecture: any
@@ -37,5 +37,7 @@ Depends: ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
 Description: Apertium lexical selection module (Python 3 module)
- Python 3 module for applications using the Apertium lexical selection
- module.
+ Module for compiling lexical selection rules and processing them in the
+ pipeline.
+ .
+ This package provides Python 3 module for apertium-lex-tools.

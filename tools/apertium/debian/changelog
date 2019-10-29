@@ -1,14 +1,16 @@
-apertium (3.6.0-1) unstable; urgency=low
+apertium (3.6.1-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream
     + Added Python module
   * Updated dh to 12
   * debian/control:
-    + Updated Standards-Version to 4.4.0
+    + Updated Standards-Version to 4.4.1
     + Split apertium-all-dev to its own package
   * Prefer duplicate README-MODES in the modes folder
+  * Lintian ignore modes/README and man .Lk syntax warnings
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+ -- Kartik Mistry <kartik@debian.org>  Sun, 13 Oct 2019 18:03:31 +0530
 
 apertium (3.5.2-2) unstable; urgency=low
 

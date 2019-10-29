@@ -21,6 +21,9 @@ BuildRequires: pkgconfig
 BuildRequires: python3
 BuildRequires: python3-devel
 BuildRequires: swig
+BuildRequires: libzip-tools
+BuildRequires: unzip
+BuildRequires: zip
 
 Requires: libapertium3-3_6-1 = %{version}-%{release}
 Requires: lttoolbox >= 3.5.0
