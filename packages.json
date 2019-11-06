@@ -97,6 +97,7 @@
    ["languages/apertium-oci"],
    ["languages/apertium-pol"],
    ["languages/apertium-por"],
+   ["languages/apertium-ron"],
    ["languages/apertium-rus"],
    ["languages/apertium-san"],
    ["languages/apertium-spa"],
