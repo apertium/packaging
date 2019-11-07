@@ -2,18 +2,24 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2016-2017, Xavi Ivars <xavi.ivars@gmail.com>
-                2017, Hèctor Alòs i Font <hectoralos@gmail.com>
+Copyright: 2018-2019, Jaume Ortolà <jaumeortola@gmail.com>
+           2017-2019, Hèctor Alòs i Font <hectoralos@gmail.com>
+           2017-2019, Marc Riera Irigoyen <marc.riera.irigoyen@gmail.com>
+           2014-2019, Francis Tyers <ftyers@prompsit.com>
+           2017-2019, Donís Seguí <donissegui@gmail.com>
+           2016-2018, Xavi Ivars <xavi.ivars@gmail.com>
+           2016-2019, Gema Ramírez Sánchez <gramirez@prompsit.com>
+           2017-2018, Jaume Ortolà i Font <jaumeortola@gmail.com>
+           2015-2018, Juan Pablo Martínez Cortés <jpmart@unizar.es>
                 2016, sabertooth-cat@users.sourceforge.net
-           2014-2016, Francis M. Tyers <ftyers@prompsit.com>
-           2014-2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-                2016, Gema Ramírez Sánchez <gramirez@prompsit.com>
            2014-2016, Iza Kusicielek <iza.kusicielek@gmail.com>
+                2019, Tany Gómez <egomez@prompsit.com>
+                2018, Alberto Navalon <alberto.navalonlillo@gmail.com>
                 2016, Marina Loffredo <loffredomarina@gmail.com>
                 2016, Ульяна Сенцова <uliana.sentsova@gmail.com>
                 2016, Frankie Robertson <frankie@robertson.name>
                 2016, Trond Trosterud <trond.trosterud@hum.uit.no>
-           2015-2016, Mikel L. Forcada <mlf@dlsi.ua.es>
+           2015-2018, Mikel L. Forcada <mlf@dlsi.ua.es>
            2015-2016, Juan Pablo Martínez Cortés <jpmart@unizar.es>
                 2015, Benedikt Freisen <b.freisen@gmx.net>
                 2015, Tommi Pirinen <flammie@iki.fi>

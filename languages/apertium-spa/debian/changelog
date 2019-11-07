@@ -1,8 +1,32 @@
+apertium-spa (1.2.0-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 07 Nov 2019 09:42:09 +0100
+
+apertium-spa (1.1.0~r79716-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Updated dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 30 Jul 2018 15:17:53 +0800
+
 apertium-spa (1.1.0~r79716-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 26 Jun 2017 11:31:31 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 26 Jun 2017 19:30:35 +0530
 
 apertium-spa (1.0.0~r78827-1) unstable; urgency=low
 
