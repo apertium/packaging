@@ -2,42 +2,37 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright:      2011, Nathan Maxson
-           2011-2014, Francis M. Tyers <ftyers@prompsit.com>
-           2011-2014, Jonathan N. Washington <jonorthwash@users.sourceforge.net>
-           2012-2014, Ilnar Salimzyan <selimcan@users.sourceforge.net>
-                2012, Aizhan Aitkulova <aizhan@users.sourceforge.net>
-                2012, Trond Trosterud <trond.trosterud@hum.uit.no>
-           2013-2014, Aida <aida27@users.sourceforge.net>
-           2013-2014, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-           2013-2014, Mikel L. Forcada <mlforcada@users.sourceforge.net>
-                2013, Kantoro Erkulov <kantoro@users.sourceforge.net>
-                2014, Aidana <aidana1@users.sourceforge.net>
-                2014, Assem <assem250586@users.sourceforge.net>
-                2014, Beknazar Abdikamalov <abdik@users.sourceforge.net>
-                2014, Inari Listenmaa <inariksit@users.sourceforge.net>
-                2014, Sjurum <moshagen@users.sourceforge.net>
-                2014, Zhenisbek Assylbekov <zhenisbek@users.sourceforge.net>
-License: GPL-3
-
-License: GPL-3
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 3 of the License
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>.
- .
- On Debian systems, the complete text of the GNU General
- Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+Copyright: 2017-2019, Marc Riera Irigoyen <marc.riera.irigoyen@gmail.com>
+           2018-2019, Jonathan North Washington <jonathan.n.washington@gmail.com>
+                2019, Daniel Swanson <popcorn.tomato.dude@gmail.com>
+           2015-2019, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2019, Okonkwo Ifeanyichukwu <ifeanyijasper11@gmail.com>
+                2019, Sandy <luckysandy99@gmail.com>
+                2018, Nathan Chi <nathanchi@nathanchisimac.attlocal.net>
+                2018, Pranava Dhar <pranavadhar135@gmail.com>
+                2018, Andi Qu <andi@andiqu.com>
+           2007-2018, Francis M. Tyers <ftyers@prompsit.com>
+           2017-2018, Xavi Ivars <xavi.ivars@gmail.com>
+                2018, Kurt Roeckx <kurt@roeckx.be>
+           2015-2018, Wolfgang Thauer <wolfgangwth@web.de>
+                2018, Sushain Cherivirala <sushain@skc.name>
+           2016-2017, Ryan Chi <ryan.andrew.chi@gmail.com>
+                2017, Shardul Chiplunkar <shardul.chiplunkar@gmail.com>
+           2016-2017, Trond Trosterud <trond.trosterud@hum.uit.no>
+           2013-2017, Ilnar Salimzyan <ilnar.salimzyan@gmail.com>
+                2017, sabertooth-cat@users.sourceforge.net
+                2017, Gema Ramírez Sánchez <gramirez@prompsit.com>
+           2016-2017, Nikolai Krot <talpus@gmail.com>
+                2016, Toyama Tokanawa <cordawyn@tut.by>
+                2016, Memduh Gökırmak <memduhg@gmail.com>
+                2015, Inari Listenmaa <inari@chalmers.se>
+                2014, Ng Wei En <weien1292@gmail.com>
+           2013-2014, Mikel L. Forcada <mlf@dlsi.ua.es>
+                2007, Jim O'Regan <joregan@gmail.com>
+License: GPL-3+
 
 Files: debian/*
-Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 License: GPL-3+
 
 License: GPL-3+

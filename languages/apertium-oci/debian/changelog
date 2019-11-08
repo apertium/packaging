@@ -1,5 +1,12 @@
-apertium-oci (0.1.0-1) experimental; urgency=low
+apertium-oci (0.2.0-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 20 Aug 2018 17:04:05 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 08 Nov 2019 10:31:19 +0100
+
+apertium-oci (0.1.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #907127)
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 24 Aug 2018 13:40:22 +0530

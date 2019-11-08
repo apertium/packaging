@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
-# Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-# Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
+# Copyright (C) 2014-2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+# Licensed under the GNU GPL version 3 or later; see http://www.gnu.org/licenses/
 
 # Usage: svn log -q | awk '{print $3 "\t" $5}' | authors.php
 # Usage: git log '--date=format:%Y' '--format=format:%ad%x09%aN <%aE>' | authors.php
@@ -25,8 +25,20 @@ while ($line = fgets(STDIN)) {
 		$user = $map[$m[1]];
 		$year = intval($m[2]);
 	}
+	else if (preg_match('~^(\d+)\t(.+?)\s+<(.+?@.+?\..+?)>$~u', $line, $m)) {
+		$user = "{$m[2]} <{$m[3]}>";
+		$m[3] = mb_strtolower($m[3]);
+		if (!empty($map[$m[3]])) {
+			$user = $map[$m[3]];
+		}
+		$year = intval($m[1]);
+	}
 	else if (preg_match('~^(\d+)\t(.+)$~u', $line, $m)) {
 		$user = $m[2];
+		$m[2] = mb_strtolower($m[2]);
+		if (!empty($map[$m[2]])) {
+			$user = $map[$m[2]];
+		}
 		$year = intval($m[1]);
 	}
 	else {

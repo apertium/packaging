@@ -18,4 +18,4 @@ Package: apertium-oci
 Architecture: all
 Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Occitan
- Data package providing Apertium language resources for Occitan
+ Data package providing Apertium language resources for Occitan.

@@ -1,2 +1,4 @@
-opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-oci-$1\.tar\.gz/ \
-  https://github.com/apertium/apertium-oci/releases .*/v?(\d\S+)\.tar\.gz
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-oci-$1.tar.gz%" \
+    https://github.com/apertium/apertium-oci/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
