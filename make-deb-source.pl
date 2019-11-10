@@ -136,11 +136,17 @@ if (@excludes) {
 `grep -rl '\@APERTIUM_AUTO_VERSION\@' | xargs -rn1 perl -pe 's/\\\@APERTIUM_AUTO_VERSION\\\@/$opts{rev}/g;' -i`;
 
 # If this is a release, bundle language resources to avoid drift
-my %cnfs = ( 'control' => '', 'rules' => '' );
+my %cnfs = ( 'control' => '', 'copyright' => '', 'rules' => '' );
 if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data') {
    $cnfs{'rules'} = file_get_contents("$ENV{PKPATH}/debian/rules");
    if ($cnfs{'rules'} =~ m@dh_auto_configure|dh_auto_build@) {
       die "Has dh_auto_configure/dh_auto_build - can't bundle!\n";
+   }
+
+   my %copyright = ();
+   for my $f (split(/\n\n+/, file_get_contents("$ENV{PKPATH}/debian/copyright"))) {
+      my ($a,$b) = ($f =~ m@^([^\n]+)\n(.+)$@s);
+      $copyright{$a} = $b;
    }
 
    $cnfs{'rules'} =~ s@(\n\%:)@\nNUMJOBS = 1\nifneq (,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\n\tNUMJOBS = \$(patsubst parallel=\%,\%,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\nendif\n$1@gs;
@@ -193,7 +199,28 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV
       print `cp -av --reflink=auto /opt/autopkg/$ENV{BUILDTYPE}/$p/$p-$version '$pkname-$opts{v}/'`;
       my ($bds) = (read_control("$pkname-$opts{v}/$p-$version/debian/control") =~ m@Build-Depends:\s*([^\n]+)@);
       $bdeps .= ", $bds";
+
+      for my $f (split(/\n\n+/, file_get_contents("$pkname-$opts{v}/$p-$version/debian/copyright"))) {
+         my ($a,$b) = ($f =~ m@^([^\n]+)\n(.+)$@s);
+         if ($a =~ m@^Format@ || $a =~ m@^Files.*debian/@) {
+            next;
+         }
+         if ($a =~ m@^Files@) {
+            $a =~ s@^Files: @Files: $p-$version/@g;
+         }
+         $copyright{$a} = $b;
+      }
+
       `rm -rfv '$pkname-$opts{v}/$p-$version/debian'`;
+   }
+
+   for my $k (sort(keys(%copyright))) {
+      my $v = $copyright{$k};
+      if ($k =~ m@^Format@) {
+         $cnfs{'copyright'} = "$k\n$v\n\n".$cnfs{'copyright'};
+         next;
+      }
+      $cnfs{'copyright'} .= "$k\n$v\n\n";
    }
 
    $cnfs{'control'} =~ s@Build-Depends:\s*[^\n]+@$bdeps@;
@@ -223,11 +250,11 @@ if ($rv ne $opts{v}) {
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$opts{v}.orig.tar' -T orig.lst`;
 `bzip2 -9c '${pkname}_$opts{v}.orig.tar' > '${pkname}_$opts{v}.orig.tar.bz2'`;
 print `cp -av --reflink=auto '$ENV{PKPATH}/debian' '$pkname-$opts{v}/'`;
-if ($cnfs{'control'}) {
-   file_put_contents("$pkname-$opts{v}/debian/control", $cnfs{'control'});
-}
-if ($cnfs{'rules'}) {
-   file_put_contents("$pkname-$opts{v}/debian/rules", $cnfs{'rules'});
+
+while (my ($k,$v) = each(%cnfs)) {
+   if ($v) {
+      file_put_contents("$pkname-$opts{v}/debian/$k", $v);
+   }
 }
 
 if (!$opts{auto}) {

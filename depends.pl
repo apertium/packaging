@@ -25,14 +25,14 @@ while (<>) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
-   elsif (/\bPKG_CHECK_MODULES.*?hfstospell\b/) {
+   elsif (/\bhfstospell\b/ || /\bhfst-ospell\b/) {
       $build{'hfst-ospell-dev'} = 1;
    }
    elsif (/\bhfst\b/) {
       $build{'hfst'} = 1;
       $deps{'hfst'} = 1;
    }
-   elsif (/\bPKG_CHECK_MODULES.*?libxml-2.0\b/) {
+   elsif (/\blibxml-2.0\b/) {
       $build{'libxml2-dev'} = 1;
       $build{'libxml2-utils'} = 1;
    }
@@ -43,13 +43,17 @@ while (<>) {
       $build{'cg3-dev'} = 1;
       $deps{'cg3'} = 1;
    }
-   elsif (/\blrx-comp\b/ || /\blrx-proc\b/) {
+   elsif (/\blrx-comp\b/ || /\blrx-proc\b/ || /\bapertium-lex-tools\b/) {
       $build{'apertium-lex-tools'} = 1;
       $deps{'apertium-lex-tools'} = 1;
    }
-   elsif (/\blsx-comp\b/ || /\blsx-proc\b/) {
+   elsif (/\blsx-comp\b/ || /\blsx-proc\b/ || /\bapertium-separable\b/) {
       $build{'apertium-separable'} = 1;
       $deps{'apertium-separable'} = 1;
+   }
+   elsif (/\bapertium-anaphora\b/) {
+      $build{'apertium-anaphora'} = 1;
+      $deps{'apertium-anaphora'} = 1;
    }
    elsif (/\bAP_CHECK_LING.*?(apertium-\w+)/ || /\bAP_CHECK_LING.*?(giella-\w+)/) {
       $build{$1} = 1;

@@ -1,0 +1,6 @@
+apertium-ron-cat (1.0.0-1) unstable; urgency=low
+
+  * Initial release
+  * Bundles apertium-ron 1.0.0 and apertium-cat 2.8.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 10 Nov 2019 17:39:29 +0100
