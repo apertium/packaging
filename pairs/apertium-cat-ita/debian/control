@@ -29,7 +29,6 @@ Package: apertium-ca-it
 Architecture: all
 Depends: apertium-cat-ita (= ${binary:Version}), ${misc:Depends}
 Provides: apertium-it-ca
-Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-cat-ita
  This is a transitional dummy package. It can safely be removed.

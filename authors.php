@@ -25,7 +25,7 @@ while ($line = fgets(STDIN)) {
 		$user = $map[$m[1]];
 		$year = intval($m[2]);
 	}
-	else if (preg_match('~^(\d+)\t(.+?)\s+<(.+?@.+?\..+?)>$~u', $line, $m)) {
+	else if (preg_match('~^(\d+)\t(.+?)\s+<(.+?@.+?)>$~u', $line, $m)) {
 		$user = "{$m[2]} <{$m[3]}>";
 		$m[3] = mb_strtolower($m[3]);
 		if (!empty($map[$m[3]])) {

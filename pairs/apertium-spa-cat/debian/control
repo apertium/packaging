@@ -4,13 +4,13 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-cat (>= 2.2.0~r79715),
+Build-Depends: apertium-cat (>= 2.8.0),
                apertium-dev (>= 3.6.0),
-               apertium-spa (>= 1.1.0~r79716),
+               apertium-spa (>= 1.2.0),
+               cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config,
-               python,
                python3
 Standards-Version: 4.4.1
 Homepage: https://apertium.org/
@@ -31,7 +31,6 @@ Description: Apertium translation data for the Spanish-Catalan pair
 Package: apertium-es-ca
 Architecture: all
 Depends: apertium-spa-cat (= ${binary:Version}), ${misc:Depends}
-Priority: extra
 Section: oldlibs
 Provides: apertium-ca-es
 Description: Transitional dummy package for apertium-spa-cat

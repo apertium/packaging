@@ -3,10 +3,10 @@ Source: https://apertium.org/
 
 Files: *
 Copyright: 2005, Universitat d'Alacant (Transducens group)
-License: GPL-2
+           See AUTHORS for more copyrights.
+License: GPL-2+
 
 Files: alt.xsl
- translate-to-default-equivalent.xsl
 Copyright: 2005, Universitat d'Alacant / Universidad de Alicante
 License: GPL-2
 

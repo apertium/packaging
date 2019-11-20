@@ -38,7 +38,6 @@ Description: Apertium translation data for the English-Catalan pair
 Package: apertium-en-ca
 Architecture: all
 Depends: apertium-eng-cat (= ${binary:Version}), ${misc:Depends}
-Priority: extra
 Section: oldlibs
 Provides: apertium-ca-en
 Description: Transitional dummy package for apertium-eng-cat

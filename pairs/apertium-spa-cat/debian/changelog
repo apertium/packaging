@@ -1,8 +1,37 @@
+apertium-spa-cat (2.2.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles apertium-spa 1.2.0 and apertium-cat 2.8.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+
+apertium-spa-cat (2.1.0~r79717-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Depends.
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Set priority to optional for apertium-es-ca.
+  * Updated debian/watch.
+  * Updated debian/copyright.
+  * Updated dh to 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 03 Aug 2018 11:49:42 +0800
+
 apertium-spa-cat (2.1.0~r79717-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  [ Tino Didriksen ]
+  * Update to latest upstream release (Closes: #865029)
+  * debian/control:
+    + Build-Depends on python now.
+    + Updated apertium-cat/apertium-spa versioned dependencies.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 26 Jun 2017 11:31:31 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 26 Jun 2017 19:20:32 +0530
 
 apertium-spa-cat (2.0.0~r77288-1) unstable; urgency=low
 

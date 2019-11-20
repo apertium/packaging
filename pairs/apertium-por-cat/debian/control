@@ -34,7 +34,6 @@ Package: apertium-pt-ca
 Architecture: all
 Depends: apertium-por-cat (= ${binary:Version}), ${misc:Depends}
 Provides: apertium-ca-pt
-Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-por-cat
  This is a transitional dummy package. It can safely be removed.
