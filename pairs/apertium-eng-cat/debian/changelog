@@ -1,4 +1,36 @@
+apertium-eng-cat (1.0.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Renamed from apertium-en-ca
+  * Bundles apertium-eng 0.1.0 and apertium-cat 2.8.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+
+apertium-en-ca (0.9.3~r61328-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Updated Depends.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 27 Jun 2018 11:33:34 +0530
+
 apertium-en-ca (0.9.3~r61328-1) unstable; urgency=low
+
+  * New upstream svn snapshot.
+  * debian/control:
+    + Do not depends on locales
+    + Updated Standards-Version to 3.9.8
+    + Fixed Vcs-Git URL
+  * debian/rules:
+    + Simplified rules file after removing locales dependency.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 14 Jun 2016 20:54:38 +0530
+
+apertium-en-ca (0.9.3~r61232-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * New upstream release

@@ -125,9 +125,9 @@
    ["pairs/apertium-crh-tur"],
    ["pairs/apertium-cym-eng"],
    ["pairs/apertium-dan-nor"],
-#   ["pairs/apertium-en-ca"], # -> eng-cat
    ["pairs/apertium-en-es"],
    ["pairs/apertium-en-gl"],
+   ["pairs/apertium-eng-cat"],
    ["pairs/apertium-eng-deu"],
    ["pairs/apertium-eng-ita"],
    ["pairs/apertium-eng-kaz"],
