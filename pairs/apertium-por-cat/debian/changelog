@@ -1,16 +1,51 @@
 apertium-por-cat (0.9.0-1) unstable; urgency=low
 
   * New upstream release
+  * Renamed from apertium-pt-ca
+  * Bundles apertium-por 0.2.0 and apertium-cat 2.8.0
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
 
-apertium-pt-ca (0.8.2~r51165-1) unstable; urgency=low
+apertium-pt-ca (0.8.2+svn~57507-4) unstable; urgency=low
 
-  * New upstream release
-  * No significant changes in svn since tarball, so taking directly from svn
-  * Re-done packaging to take advantage of debhelper 9
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Depends.
+    + Updated Vcs-* fields.
+  * Bumped dh to 11.
+  * Updated debian/watch.
+  * Updated debian/copyright.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Sun, 29 Jul 2018 12:17:03 +0800
+
+apertium-pt-ca (0.8.2+svn~57507-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+    + Removed Build-Depends on locales.
+    + Bumped to debhelper 9.
+    + Updated Vcs-* fields.
+  * Simplify debian/rules file.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 10 Jul 2016 09:20:37 +0530
+
+apertium-pt-ca (0.8.2+svn~57507-2) unstable; urgency=low
+
+  * Uploaded to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 30 Jul 2015 11:44:44 +0530
+
+apertium-pt-ca (0.8.2+svn~57507-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release based on SVN snapshot.
+
+  [ Kartik Mistry ]
+  * Added debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 08 Oct 2014 17:31:11 +0530
 
 apertium-pt-ca (0.8.1-1) unstable; urgency=low
 

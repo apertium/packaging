@@ -100,6 +100,7 @@ else {
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 print `find . -name '.travis*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+print `find . -name 'autogen.sh' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 
 if (@excludes) {
    chdir "$pkname-$opts{v}";
