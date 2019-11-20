@@ -1,5 +1,13 @@
-apertium-oci-fra (0.2.0-1) experimental; urgency=low
+apertium-oci-fra (0.3.0-1) unstable; urgency=low
 
-  * Initial release
+  * New upstream release
+  * Bundles apertium-oci 0.2.0 and apertium-fra 1.7.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 20 Aug 2018 17:04:05 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+
+apertium-oci-fra (0.2.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #907128)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 02 Oct 2019 09:23:17 +0530

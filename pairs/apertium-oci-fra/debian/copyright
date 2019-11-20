@@ -2,12 +2,12 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright:      2018, Hèctor Alòs i Font <hectoralos@gmail.com>
+Copyright: 2018-2019, Hèctor Alòs i Font <hectoralos@gmail.com>
+                2019, unuaiga-congres <webmaster@locongres.org>
                 2018, Claudi Balaguer <ratapenada@yahoo.com>
-                2018, Sushain Cherivirala <sushain@skc.name>
-                2018, Xavi Ivars <xavi.ivars@gmail.com>
            2016-2018, Francis M. Tyers <ftyers@prompsit.com>
-                2016, unuaiga
+                2018, Xavi Ivars <xavi.ivars@gmail.com>
+                2016, Aurelie Seguier <unuaiga@users.sourceforge.net>
 License: GPL-3+
 
 Files: debian/*
