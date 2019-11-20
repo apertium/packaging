@@ -1,6 +1,30 @@
-apertium-ca-it (0.1.1~r57554-1) experimental; urgency=low
+apertium-cat-ita (0.2.1-1) unstable; urgency=low
 
-  * Initial release
+  * New upstream release
+  * Renamed from apertium-ca-it
+  * Bundles apertium-cat 2.8.0 and apertium-ita 0.10.5
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+
+apertium-ca-it (0.1.1~r57554-2) unstable; urgency=low
+
+  * debian/rules:
+    + Do not install Changelog twice.
+  * debian/control:
+    + Updated Standards-Version to 4.1.4.
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Removed Depends on ${shlibs:Depends}.
+  * debian/copyright:
+    + Use https in URLs.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Jun 2018 13:57:53 +0530
+
+apertium-ca-it (0.1.1~r57554-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #609873)
   * No significant changes in svn since tarball, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Mon, 13 Jun 2016 21:40:17 +0530

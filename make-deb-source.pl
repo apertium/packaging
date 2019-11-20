@@ -99,6 +99,8 @@ else {
    print `find . -name '.svn*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
+print `find . -name '.travis*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+
 if (@excludes) {
    chdir "$pkname-$opts{v}";
    my @files = split(/\n/, `find . ! -type d`);
