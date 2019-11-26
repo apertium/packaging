@@ -1,11 +1,18 @@
-apertium-anaphora (0.0.3-1) unstable; urgency=low
+apertium-anaphora (0.0.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 26 Nov 2019 17:42:07 +0100
+
+apertium-anaphora (0.0.3-1) unstable; urgency=medium
 
   * Minor pkg-config @VERSION@ fix
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 12 Oct 2019 12:05:06 +0200
+ -- Kartik Mistry <kartik@debian.org>  Tue, 26 Nov 2019 12:08:43 +0100
 
 apertium-anaphora (0.0.2-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #941789).
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+ -- Kartik Mistry <kartik@debian.org>  Sat, 05 Oct 2019 18:24:11 +0530

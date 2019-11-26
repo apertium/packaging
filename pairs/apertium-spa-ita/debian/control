@@ -30,7 +30,6 @@ Description: Apertium translation data for the Spanish-Italian pair
 Package: apertium-es-it
 Architecture: all
 Depends: apertium-spa-ita (= ${binary:Version}), ${misc:Depends}
-Priority: extra
 Section: oldlibs
 Provides: apertium-it-es
 Description: Transitional dummy package for apertium-spa-ita

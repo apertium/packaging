@@ -73,9 +73,7 @@ Depends: libhfst52 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
-Provides: python3-libhfst, ${python3:Provides}
-Replaces: python3-libhfst (<< 3.15.1)
-Breaks: python3-libhfst (<< 3.15.1)
+Provides: ${python3:Provides}
 XB-Python-Version: ${python3:Versions}
 Description: Helsinki Finite-State Transducer Technology (Python3 module)
  The Helsinki Finite-State Transducer software is intended for the
@@ -83,3 +81,10 @@ Description: Helsinki Finite-State Transducer Technology (Python3 module)
  based on weighted and unweighted finite-state transducer technology.
  .
  This package provides Python3 module for libhfst.
+
+Package: python3-libhfst
+Architecture: all
+Section: oldlibs
+Depends: python3-hfst (= ${binary:Version}), ${misc:Depends}
+Description: Transitional dummy package for python3-hfst
+ This is a transitional dummy package. It can safely be removed.
