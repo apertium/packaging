@@ -1,10 +1,11 @@
-apertium-eng-cat (1.0.0-1) unstable; urgency=low
+apertium-eng-cat (1.0.1-1) unstable; urgency=low
 
-  * New upstream release
-  * Renamed from apertium-en-ca
-  * Bundles apertium-eng 0.1.0 and apertium-cat 2.8.0
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Renamed apertium-en-ca to apertium-eng-cat.
+  * Bundles apertium-eng 0.1.0 and apertium-cat 2.8.0 in package.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+ -- Kartik Mistry <kartik@debian.org>  Tue, 26 Nov 2019 16:40:40 +0100
 
 apertium-en-ca (0.9.3~r61328-2) unstable; urgency=low
 

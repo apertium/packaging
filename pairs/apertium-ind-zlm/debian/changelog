@@ -1,7 +1,28 @@
+apertium-ind-zlm (0.1.2-1) unstable; urgency=low
+
+  * New upstream release
+  * Renamed to apertium-ind-zlm
+  * Bundles apertium-ind 0.2.0 and apertium-zlm 0.2.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+
+apertium-id-ms (0.1.1~r57551-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 11 Jul 2018 11:47:52 +0530
+
 apertium-id-ms (0.1.1~r57551-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * Initial release. (Closes: #830798)
   * No significant changes in svn since tarball, so taking directly from svn.
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 11 Jul 2016 22:48:34 +0530
+ -- Kartik Mistry <kartik@debian.org>  Fri, 15 Jul 2016 09:59:43 +0530

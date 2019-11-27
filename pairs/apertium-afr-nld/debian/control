@@ -8,6 +8,7 @@ Build-Depends: apertium-afr (>= 0.2.0),
                apertium-dev (>= 3.6.0),
                apertium-lex-tools (>= 0.2.2),
                apertium-nld (>= 0.2.0),
+               cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -20,6 +21,7 @@ Package: apertium-afr-nld
 Architecture: all
 Depends: apertium (>= 3.6.0),
          apertium-lex-tools,
+         cg3,
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-nld-afr

@@ -3,4 +3,4 @@ set -e
 
 . speller-funcs.sh
 
-pkg_spellers Divvun-kpv
+pkg_spellers Divvun-mns
