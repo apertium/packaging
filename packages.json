@@ -45,6 +45,7 @@
    ["languages/giella-kpv",      "https://gtsvn.uit.no/langtech/trunk/langs/kpv"],
    ["languages/giella-mdf",      "https://gtsvn.uit.no/langtech/trunk/langs/mdf"],
    ["languages/giella-mhr",      "https://gtsvn.uit.no/langtech/trunk/langs/mhr"],
+   ["languages/giella-mns",      "https://gtsvn.uit.no/langtech/trunk/langs/mns"],
    ["languages/giella-mrj",      "https://gtsvn.uit.no/langtech/trunk/langs/mrj"],
    ["languages/giella-myv",      "https://gtsvn.uit.no/langtech/trunk/langs/myv"],
    ["languages/giella-nob",      "https://gtsvn.uit.no/langtech/trunk/langs/nob"],
