@@ -2,39 +2,21 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2007-2008, Frank Naudé <naudefj@users.sourceforge.net>
-           2008-2011, Jim O'Regan <joregan@gmail.com>
-           2008-2013, Francis M. Tyers <ftyers@prompsit.com>
+Copyright: 2008-2018, Francis M. Tyers <ftyers@prompsit.com>
+                2018, Marc Riera Irigoyen <marc.riera.irigoyen@gmail.com>
+                2016, Wolfgang Thauer <wolfgangwth@web.de>
+           2011-2015, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+                2013, Trond Trosterud <trond.trosterud@uit.no>
+                2012, Anthony J. Bentley <anthony@anjbe.name>
            2010-2012, Pim Otte <otte.pim@gmail.com>
-           2011-2013, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-                2011, Keegan Crankshaw <kcranky@users.sourceforge.net>
-                2012, Anthony J. Bentley <anthonyjbentley@users.sourceforge.net>
                 2012, Laurens Teirlynck <laurens.teirlynck@gmail.com>
-                2013, Trond Trosterud <trond.trosterud@hum.uit.no>
-License: GPL-2
-
-Files: autogen.sh
-Copyright: 2002, Daniel Elstner  <daniel.elstner@gmx.net>
-License: GPL-2
-
-License: GPL-2
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 2 of the License
- .
- This package is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>.
- .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+                2011, Keegan Crankshaw <kcranky@users.sourceforge.net>
+           2008-2011, Jim O'Regan <joregan@gmail.com>
+           2007-2008, Frank Naudé <naudefj@telkomsa.net>
+License: GPL-2+
 
 Files: debian/*
-Copyright: 2014-2015, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2014-2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 License: GPL-2+
 
 License: GPL-2+

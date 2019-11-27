@@ -4,9 +4,10 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-afr,
+Build-Depends: apertium-afr (>= 0.2.0),
                apertium-dev (>= 3.6.0),
-               apertium-nld,
+               apertium-lex-tools (>= 0.2.2),
+               apertium-nld (>= 0.2.0),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -17,7 +18,10 @@ Vcs-Browser: https://salsa.debian.org/science-team/apertium-afr-nld.git
 
 Package: apertium-afr-nld
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-nld-afr
 Description: Apertium translation data for the Afrikaans-Dutch pair
  Data package providing Apertium language resources for translating
@@ -27,7 +31,6 @@ Package: apertium-af-nl
 Architecture: all
 Depends: apertium-afr-nld (= ${binary:Version}), ${misc:Depends}
 Provides: apertium-nl-af
-Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for apertium-afr-nld
  This is a transitional dummy package. It can safely be removed.

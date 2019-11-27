@@ -55,6 +55,7 @@
    ["languages/giella-smj",      "https://gtsvn.uit.no/langtech/trunk/langs/smj"],
    ["languages/giella-smn",      "https://gtsvn.uit.no/langtech/trunk/langs/smn"],
    ["languages/giella-sms",      "https://gtsvn.uit.no/langtech/trunk/langs/sms"],
+   ["languages/apertium-afr"],
    ["languages/apertium-ara"],
    ["languages/apertium-arg"],
    ["languages/apertium-ava"],
@@ -116,7 +117,7 @@
 #   ["languages/apertium-zho"], # Not buildable
 
    # Finally, language pairs
-#   ["pairs/apertium-afr-nld"],
+   ["pairs/apertium-afr-nld"],
    ["pairs/apertium-arg-cat"],
    ["pairs/apertium-bel-rus"],
    ["pairs/apertium-br-fr"],
