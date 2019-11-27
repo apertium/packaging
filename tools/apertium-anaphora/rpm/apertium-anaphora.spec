@@ -27,12 +27,12 @@ Anaphora resolution module used by Apertium
 %build
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 %if 0%{?suse_version}
-%cmake
+%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON
 %else
 %if 0%{?el7}
-%cmake3 .
+%cmake3 -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON .
 %else
-%cmake .
+%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON .
 %endif
 %endif
 make %{?_smp_mflags}

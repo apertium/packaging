@@ -96,12 +96,12 @@ Python 3 module for CG-3
 
 %build
 %if 0%{?suse_version}
-%cmake -DENABLE_PYTHON_BINDINGS=ON
+%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON
 %else
 %if 0%{?el7}
 %cmake3 .
 %else
-%cmake -DENABLE_PYTHON_BINDINGS=ON .
+%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON .
 %endif
 %endif
 make %{?_smp_mflags}
