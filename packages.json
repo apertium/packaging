@@ -172,7 +172,7 @@
    ["pairs/apertium-pt-gl"],
    ["pairs/apertium-ron-cat"],
    ["pairs/apertium-rus-ukr"],
-#   ["pairs/apertium-sme-fin"],
+   ["pairs/apertium-sme-fin"],
    ["pairs/apertium-sme-nob"],
    ["pairs/apertium-sme-sma"],
    ["pairs/apertium-sme-smj"],
