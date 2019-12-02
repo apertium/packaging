@@ -1,5 +1,7 @@
-apertium-pol-szl (0.2.0-1) experimental; urgency=low
+apertium-pol-szl (0.2.1-1) experimental; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #906739).
+  * Bundles apertium-pol 0.1.2 and apertium-szl 0.1.1
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 19 Aug 2018 22:21:01 +0200
+ -- Kartik Mistry <kartik@debian.org>  Mon, 02 Dec 2019 09:35:38 +0100
