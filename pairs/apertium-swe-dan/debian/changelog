@@ -1,3 +1,41 @@
+apertium-swe-dan (0.8.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles apertium-swe 0.8.1 and apertium-dan 0.6.1
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Dec 2019 09:39:19 +0100
+
+apertium-swe-dan (0.8.0-2) unstable; urgency=low
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 21 Sep 2019 18:48:21 +0530
+
+apertium-swe-dan (0.8.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+    + Updated Depends.
+  * Updated dh to 12.
+  * Added debian/gitlab-ci.yml.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 Sep 2019 19:12:07 +0530
+
+apertium-swe-dan (0.7.0~r66063-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.2.0
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Updated Depends.
+  * Updated dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 13 Aug 2018 17:39:45 +0530
+
 apertium-swe-dan (0.7.0~r66063-1) unstable; urgency=low
 
   [ Tino Didriksen ]

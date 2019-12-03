@@ -1,2 +1,3 @@
-version=3
-http://sf.net/apertium/apertium-swe-dan-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/apertium-swe-dan-$1\.tar\.gz/ \
+  https://github.com/apertium/apertium-swe-dan/releases .*/v?(\d\S+)\.tar\.gz

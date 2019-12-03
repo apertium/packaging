@@ -1,5 +1,44 @@
+apertium-nno-nob (1.3.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles apertium-nno 1.1.0 and apertium-nob 1.1.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Dec 2019 09:39:19 +0100
+
+apertium-nno-nob (1.2.0-2) unstable; urgency=low
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 21 Sep 2019 18:07:32 +0530
+
+apertium-nno-nob (1.2.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Updated Depends.
+    + Updated Standards-Version to 4.4.0
+  * Updated dh to 12.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 Sep 2019 09:45:06 +0530
+
+apertium-nno-nob (1.1.0~r66076-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Updated dh to 11.
+  * debian/copyright:
+    + Updated for https URLs.
+    + Removed unused license block.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 28 Jul 2018 11:27:14 +0800
+
 apertium-nno-nob (1.1.0~r66076-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #816404)
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 01 Mar 2016 12:24:40 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 01 Mar 2016 22:33:44 +0530

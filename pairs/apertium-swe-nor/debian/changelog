@@ -1,5 +1,41 @@
-apertium-swe-nor (0.2.0~r69544-1) experimental; urgency=low
+apertium-swe-nor (0.3.1-1) unstable; urgency=low
 
-  * Initial release
+  * New upstream release
+  * Bundles apertium-swe 0.8.1, apertium-nno 1.1.0, and apertium-nob 1.1.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 08 Jun 2016 09:10:01 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Dec 2019 09:39:19 +0100
+
+apertium-swe-nor (0.3.0-2) unstable; urgency=low
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 21 Sep 2019 19:53:21 +0530
+
+apertium-swe-nor (0.3.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+    + Updated Build-Depends and Depends.
+  * Updated dh to 12.
+  * Added debian/gitlab-ci.yml.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 Sep 2019 21:09:43 +0530
+
+apertium-swe-nor (0.2.0~r69544-2) unstable; urgency=medium
+
+  * debian/rules:
+    + Disable failing tests to fix FTBFS (Closes: #895506)
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Vcs-* URLs.
+  * Update debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 03 May 2018 11:33:48 +0530
+
+apertium-swe-nor (0.2.0~r69544-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #826706)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 08 Jun 2016 17:27:48 +0530

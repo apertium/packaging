@@ -1,3 +1,50 @@
+apertium-nno (1.1.0-1) unstable; urgency=low
+
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Dec 2019 09:39:19 +0100
+
+apertium-nno (1.0.0-2) unstable; urgency=low
+
+  * Added debian/gitlab-ci.yml.
+  * Updated dh to 12.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 11 Sep 2019 10:41:31 +0530
+
+apertium-nno (1.0.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added debian/gitlab-ci.yml
+  * debian/control:
+    + Bumped Standards-Version to 4.4.0
+  * Dropped debian/patches/001-cg3-temp-fix.diff - merged upstream.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 09 Sep 2019 20:29:20 +0530
+
+apertium-nno (0.9.0~r69513-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Updated dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 26 Jul 2018 11:42:17 +0530
+
+apertium-nno (0.9.0~r69513-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Added patch to fix CG-3 parse error (Closes: #868604, #868607, #868717)
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 24 Jul 2017 18:50:19 +0530
+
 apertium-nno (0.9.0~r69513-1) unstable; urgency=low
 
   * New upstream release
