@@ -133,6 +133,7 @@
    ["pairs/apertium-en-gl"],
    ["pairs/apertium-eng-cat"],
    ["pairs/apertium-eng-deu"],
+   ["pairs/apertium-eng-hin"],
    ["pairs/apertium-eng-ita"],
    ["pairs/apertium-eng-kaz"],
    ["pairs/apertium-eo-ca"],
