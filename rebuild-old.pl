@@ -238,6 +238,13 @@ foreach my $k (@{$pkgs{'order'}}) {
    copy("/opt/autopkg/rules.$$", "$pkg->[0]/debian/rules");
    unlink("/opt/autopkg/rules.$$");
 
+   my $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   my $newhash = `ls -1 --color=no /opt/autopkg/$ENV{BUILDTYPE}/$pkname/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   if (!$ARGV[0] && !$rebuild && ($oldhash eq $newhash)) {
+      print {$out} "\tno change in tarball - skipping\n";
+      goto CLEANUP;
+   }
+
    # Track whether this build resulted in actual data changes, because it's pointless to trigger downstream rebuilds if not
    my $changed = 0;
    my $failed = '';
@@ -341,25 +348,28 @@ foreach my $k (@{$pkgs{'order'}}) {
             }
          }
 
-         `echo 'Updating $distro $arch' >>$logpath/stderr.log 2>&1`;
-         `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
-         # apt-get -qfy dist-upgrade --simulate | egrep '^(Conf|Remv|Inst) ' | wc -l
-         `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy autoremove' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
-         if ($?) {
-            if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
-               $force_refresh = 1;
-               print {$out} "\tdocker $distro:$arch refreshing (max depth exceeded)\n";
-               goto FORCE_REFRESH;
+         `echo 'Checking available updates for $distro $arch' >>$logpath/stderr.log 2>&1`;
+         my $avail = 0+`docker run --rm -it $img /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`;
+         if ($avail || $?) {
+            `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
+            `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
+            `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy autoremove' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
+            if ($?) {
+               if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
+                  $force_refresh = 1;
+                  print {$out} "\tdocker $distro:$arch refreshing (max depth exceeded)\n";
+                  goto FORCE_REFRESH;
+               }
+               if (!$force_refresh && 0+`egrep -c 'changed its '.+' value from' $logpath/$distro-$arch.log` > 0) {
+                  $force_refresh = 1;
+                  print {$out} "\tdocker $distro:$arch refreshing (repo fields changed)\n";
+                  goto FORCE_REFRESH;
+               }
+               print {$out} "\tdocker $distro:$arch update fail\n";
+               goto CLEANUP;
             }
-            if (!$force_refresh && 0+`egrep -c 'changed its '.+' value from' $logpath/$distro-$arch.log` > 0) {
-               $force_refresh = 1;
-               print {$out} "\tdocker $distro:$arch refreshing (repo fields changed)\n";
-               goto FORCE_REFRESH;
-            }
-            print {$out} "\tdocker $distro:$arch update fail\n";
-            goto CLEANUP;
+            `docker rmi $img-old >>$logpath/$distro-$arch.log 2>&1`;
          }
-         `docker rmi $img-old >>$logpath/$distro-$arch.log 2>&1`;
 
          my $script = "#!/bin/bash\n";
          $script .= "set -e\n";
