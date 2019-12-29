@@ -9,7 +9,7 @@
    # Core tools and shared dependencies first
    ["tools/cg3",             "https://github.com/TinoDidriksen/cg3", "src/version.hpp"],
    ["tools/cg3ide",          "https://github.com/GrammarSoft/cg3ide",        "src/version.hpp"],
-   ["tools/foma",            "https://github.com/TinoDidriksen/foma",     "Makefile"],
+   ["tools/foma",            "https://github.com/mhulden/foma/trunk/foma",     "Makefile"],
    ["tools/hfst",            "https://github.com/hfst/hfst"],
    ["tools/hfst-ospell",     "https://github.com/hfst/hfst-ospell"],
 #   ["tools/trie-tools",      "https://visl.sdu.dk/svn/visl/tools/trie-tools",    "include/tdc_trie.hpp"],

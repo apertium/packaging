@@ -1,3 +1,9 @@
+giella-core (0.3.7+s186347-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Dec 2019 12:20:07 +0100
+
 giella-core (0.3.1~r163221-1) unstable; urgency=low
 
   * New upstream release

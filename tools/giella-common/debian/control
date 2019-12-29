@@ -12,7 +12,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/giella-common.git
 
 Package: giella-common
 Architecture: all
-Depends: python, python3, ${misc:Depends}, ${shlibs:Depends}
+Depends: python3, ${misc:Depends}, ${shlibs:Depends}
 Description: Shared files for building Giellatekno language packages
  All Giellatekno language packages build-depends on this package.
 

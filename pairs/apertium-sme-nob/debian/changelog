@@ -1,5 +1,25 @@
+apertium-sme-nob (0.6.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles giella-core 0.3.7 (r186347), giella-common 0.1.7 (r186320),
+    giella-sme 0.1.0 (r186483), and apertium-nob 1.1.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Dec 2019 12:20:07 +0100
+
+apertium-sme-nob (0.6.0~r61921-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Updated to Standards-Version 4.2.1
+  * Updated debian/copyright URLs.
+  * Bumped to dh 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 30 Nov 2018 19:57:38 +0530
+
 apertium-sme-nob (0.6.0~r61921-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #814402)
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 10 Feb 2016 15:34:26 +0000
+ -- Kartik Mistry <kartik@debian.org>  Thu, 09 Jun 2016 21:57:45 +0530

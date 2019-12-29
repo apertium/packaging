@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://giellatekno.uit.no/
 
 Files: *
-Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+Copyright: 2005-2019, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
 License: GPL-3+
 
 Files: m4/giella-macros.m4 m4/hfst.m4
@@ -27,7 +27,7 @@ License: GPL-3+
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 Files: doc/*.jspwiki
-Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+Copyright: 2005-2019, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
 License: GFDL
 
 License: GFDL
@@ -35,7 +35,7 @@ License: GFDL
  can be found in "/usr/share/common-licenses/GFDL".
 
 Files: doc/*.xml
-Copyright: 2005-2016, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
+Copyright: 2005-2019, Giellatekno at The University of Tromsø <giellatekno@hum.uit.no>
 License: Apache-2.0
 
 License: Apache-2.0

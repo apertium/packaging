@@ -65,6 +65,16 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 else {
    my $retried = 0;
    my $sdir = "${pkg}.svn-$ENV{BUILDTYPE}";
+
+   if ($opts{'rev'} ne 'HEAD' && $opts{'rev'} =~ m@^v(.+)$@) {
+      my $v = $1;
+      my $clog = file_get_contents("$ENV{PKPATH}/debian/changelog");
+      if ($clog =~ m@\Q($v+s\E(\d+)-@ || $clog =~ m@\Q($v.0+s\E(\d+)-@) {
+         print STDERR "Version $opts{rev} => revision $1\n";
+         $opts{'rev'} = int($1);
+      }
+   }
+
    RETRY_SVN:
    if (! -d $sdir) {
       print STDERR `svn co -r$opts{rev} $opts{url}/ $sdir/ 2>&1`;
@@ -72,6 +82,8 @@ else {
    chdir($sdir);
    my $e = 0;
    print STDERR `svn switch --ignore-ancestry --force --accept tf -r$opts{rev} $opts{url}/ 2>&1`;
+   $e += $?;
+   print STDERR `svn cleanup 2>&1`;
    $e += $?;
    print STDERR `svn cleanup --remove-unversioned --remove-ignored 2>&1`;
    $e += $?;

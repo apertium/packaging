@@ -96,11 +96,10 @@ if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 }
 else {
    print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{BUILDTYPE} '$pkname-$opts{v}'`;
-   print `find . -name '.svn*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
-   print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
-print `find . -name '.travis*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
-print `find . -name 'autogen.sh' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+for my $p (qw(.svn* .git* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL)) {
+   print `find . -name '$p' -print0 | xargs -0rn1 rm -rfv 2>&1`;
+}
 
 if (@excludes) {
    chdir "$pkname-$opts{v}";
@@ -140,11 +139,10 @@ if (@excludes) {
 
 # If this is a release, bundle language resources to avoid drift
 my %cnfs = ( 'control' => '', 'copyright' => '', 'rules' => '' );
-if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data') {
-   $cnfs{'rules'} = file_get_contents("$ENV{PKPATH}/debian/rules");
-   if ($cnfs{'rules'} =~ m@dh_auto_configure|dh_auto_build@) {
-      die "Has dh_auto_configure/dh_auto_build - can't bundle!\n";
-   }
+my $config = '';
+my $rules = file_get_contents("$ENV{PKPATH}/debian/rules");
+if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && ($config = file_get_contents("$pkname-$opts{v}/configure.ac")) && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data' && $config =~ m@AP_CHECK_LING@ && $rules !~ m@dh_auto_configure|dh_auto_build@) {
+   $cnfs{'rules'} = $rules;
 
    my %copyright = ();
    for my $f (split(/\n\n+/, file_get_contents("$ENV{PKPATH}/debian/copyright"))) {
@@ -155,15 +153,13 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV
    $cnfs{'rules'} =~ s@(\n\%:)@\nNUMJOBS = 1\nifneq (,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\n\tNUMJOBS = \$(patsubst parallel=\%,\%,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\nendif\n$1@gs;
    $cnfs{'control'} = read_control("$ENV{PKPATH}/debian/control");
    my ($bdeps) = ($cnfs{'control'} =~ m@(Build-Depends:\s*[^\n]+)@);
-   my $config = file_get_contents("$pkname-$opts{v}/configure.ac");
    my @ss = ('override_dh_auto_configure:', 'override_dh_auto_build:');
    my $withlang = '';
 
-   for my $dep ($config =~ m@AP_CHECK_LING\((.+?)\)@g) {
-      my ($n,$p,$v) = ($dep =~ m@\[(.+?)\], \[(.+?)\](?:, \[(.+?)\])@);
-      if ($p !~ m@^apertium@) {
-         # Skip bundling giella languages for now, as they need recursive bundling of giella-core and -common
-         next;
+   my $bundle = sub {
+      my ($n,$p,$v) = ($_[0] =~ m@\[(.+?)\], \[(.+?)\](?:, \[(.+?)\])@);
+      if ($p !~ m@^(apertium|giella)-@) {
+         return;
       }
       if ($bdeps =~ m@\Q$p\E \(.*?([\d.]+)\)@) {
          `dpkg --compare-versions '$v' gt '$1'`;
@@ -171,7 +167,9 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV
             $v = $1;
          }
       }
-      $bdeps =~ s@\s+\Q$p\E[^,\n]+,?@ @g;
+      $bdeps =~ s@\s+\Q$p\E [^,\n]+,?@ @g;
+      $bdeps =~ s@\s+\Q$p\E,@ @g;
+      $bdeps =~ s@\s+,\s+\Q$p\E\s+@ @g;
 
       my $pkg = $pkgs{'packages'}->{$p};
       if (!$pkg->[1]) {
@@ -181,7 +179,7 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV
       if (!$pkg->[2]) {
          $pkg->[2] = 'configure.ac';
       }
-      my $gv = `$Bin/get-version.pl --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$p' --rev v$v`;
+      my $gv = `export 'PKPATH=$Bin/$pkg->[0]' && $Bin/get-version.pl --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$p' --rev v$v`;
       chomp($gv);
       my ($newrev,$version,$srcdate) = split(/\t/, $gv);
       if (!$newrev) {
@@ -192,29 +190,58 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && $ENV
       my $cli = "--nobuild '$opts{nobuild}' -p '$pkg->[0]' -u '$pkg->[1]' -v '$version' --distv '0' -d '$srcdate' --rev $newrev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
       `export 'PKPATH=$Bin/$pkg->[0]' 'AUTOPATH=/opt/autopkg/$ENV{BUILDTYPE}/$p' && $Bin/make-deb-source.pl $cli >&2`;
 
-      $ss[0] .= "\n\tcd \$(CURDIR)/$p-$version && autoreconf -fi && ./configure";
-      if ($p =~ m@^giella-@) {
-         $ss[0] .= " --with-hfst --without-xfst --enable-alignment --enable-reversed-intersect --enable-apertium --with-backend-format=foma --disable-analysers --disable-generators";
-      }
-      $ss[1] .= "\n\tcd \$(CURDIR)/$p-$version && \$(MAKE) -j\$(NUMJOBS)";
-      $withlang .= " --with-lang$n=\$(CURDIR)/$p-$version";
-
       print `cp -av --reflink=auto /opt/autopkg/$ENV{BUILDTYPE}/$p/$p-$version '$pkname-$opts{v}/'`;
       my ($bds) = (read_control("$pkname-$opts{v}/$p-$version/debian/control") =~ m@Build-Depends:\s*([^\n]+)@);
-      $bdeps .= ", $bds";
+      $bdeps .= ", $bds ";
+
+      if ($p =~ m@^giella-(core|common)$@) {
+         if ($p eq 'giella-core') {
+            $cnfs{'rules'} =~ s@(\n\%:)@\nexport GIELLA_CORE=\$(CURDIR)/$p-$version\n$1@gs;
+         }
+         elsif ($p eq 'giella-common') {
+            $cnfs{'rules'} =~ s@(\n\%:)@\nexport GIELLA_SHARED=\$(CURDIR)/$p-$version\n$1@gs;
+         }
+         $ss[0] =~ s@(:\n)@$1\tcd \$(CURDIR)/$p-$version && autoreconf -fi && ./configure && \$(MAKE) -j\$(NUMJOBS)\n@gs;
+      }
+      else {
+         $ss[0] .= "\n\tcd \$(CURDIR)/$p-$version && autoreconf -fi && ./configure";
+         $ss[1] .= "\n\tcd \$(CURDIR)/$p-$version && \$(MAKE) -j\$(NUMJOBS)";
+         if ($p =~ m@^giella-@) {
+            # Delete data files that won't be used for this bundled build, but leave the infrastructure for autoreconf and configure
+            `cd '$pkname-$opts{v}/$p-$version/' && find devtools/ tools/analysers/ tools/tokenisers/ tools/freq_test/ tools/shellscripts/ tools/grammarcheckers/ tools/spellcheckers/ tools/hyphenators/ test/tools/grammarcheckers/ test/tools/hyphenators/ test/tools/spellcheckers/ test/tools/tokeniser/ -type f | grep -vF Makefile.am | grep -vF .in | xargs -r rm -fv >&2`;
+
+            $ss[0] .= " --with-hfst --without-xfst --enable-alignment --enable-reversed-intersect --enable-apertium --with-backend-format=foma --disable-analysers --disable-generators";
+            $bdeps =~ s@\s+divvun-gramcheck,?@ @g;
+            $withlang .= " --with-lang$n=\$(CURDIR)/$p-$version/tools/mt/apertium";
+         }
+         else {
+            $withlang .= " --with-lang$n=\$(CURDIR)/$p-$version";
+         }
+      }
 
       for my $f (split(/\n\n+/, file_get_contents("$pkname-$opts{v}/$p-$version/debian/copyright"))) {
          my ($a,$b) = ($f =~ m@^([^\n]+)\n(.+)$@s);
          if ($a =~ m@^Format@ || $a =~ m@^Files.*debian/@) {
             next;
          }
-         if ($a =~ m@^Files@) {
-            $a =~ s@^Files: @Files: $p-$version/@g;
+         if ($f =~ m@^(Files:.+?)\n(Copyright:.+)$@s) {
+            ($a,$b) = ($1,$2);
+            $a =~ s@(\s)(\S)@$1$p-$version/$2@gs;
          }
          $copyright{$a} = $b;
       }
 
       `rm -rfv '$pkname-$opts{v}/$p-$version/debian'`;
+   };
+
+   for my $dep ($config =~ m@AP_CHECK_LING\((.+?)\)@g) {
+      $bundle->($dep);
+   }
+   if ($bdeps =~ m@(giella-core) \((.+?)\)@) {
+      $bundle->("[0], [$1], [$2]");
+   }
+   if ($bdeps =~ m@(giella-common) \((.+?)\)@) {
+      $bundle->("[0], [$1], [$2]");
    }
 
    for my $k (sort(keys(%copyright))) {
@@ -292,6 +319,11 @@ CHLOG
    else {
       $chver .= $opts{'dv'};
       `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$chver'`;
+
+      # Remove +sREV in version numbers, as they're only used for the build system
+      my $chlog = file_get_contents("$pkname-$chver/debian/changelog");
+      $chlog =~ s@(\d+)\+s\d+-@$1-@g;
+      file_put_contents("$pkname-$chver/debian/changelog", $chlog);
    }
 
    if ($distros->{$distro}{'dh'} >= 10) {

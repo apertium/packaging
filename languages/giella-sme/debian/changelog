@@ -1,3 +1,10 @@
+giella-sme (0.1.0+s186483-1) unstable; urgency=low
+
+  * New upstream release
+  * Remove sub-package giella-sme-dev
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Dec 2019 12:20:07 +0100
+
 giella-sme (0.1.0~r163313-1) unstable; urgency=low
 
   * New upstream release

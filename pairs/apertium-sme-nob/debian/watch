@@ -1,2 +1,4 @@
-version=3
-http://sf.net/apertium/apertium-sme-nob-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-sme-nob-$1.tar.gz%" \
+  https://github.com/apertium/apertium-sme-nob/tags \
+  (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

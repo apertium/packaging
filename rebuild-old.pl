@@ -270,7 +270,8 @@ foreach my $k (@{$pkgs{'order'}}) {
 
          my @os_deps = ();
          my @our_deps = ();
-         foreach my $dep (split(/,/, $bdeps)) {
+         my @deps = split(/,/, $bdeps);
+         foreach my $dep (@deps) {
             if (defined $dep_our{$dep}) {
                push(@our_deps, $dep);
             }
@@ -279,6 +280,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             }
          }
 
+         push(@deps, 'apt-utils', 'build-essential', 'fakeroot');
          @os_deps = sort order_deps @os_deps;
          @our_deps = sort order_deps @our_deps;
 
@@ -353,7 +355,8 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($avail || $?) {
             `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
             `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
-            `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy autoremove' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
+            my $deps = join(' ', @deps);
+            `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy install --no-install-recommends $deps && apt-get -qfy autoremove --purge' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
                   $force_refresh = 1;
