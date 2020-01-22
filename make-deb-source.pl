@@ -87,7 +87,7 @@ chdir $autopath;
 
 if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    my $pkg = $1;
-   chdir("/misc/git/${pkg}.git");
+   chdir("/opt/autopkg/tmp/git/${pkg}.git");
    print `git submodule update --init --depth 1 --recursive || git submodule update --init --depth 100 --recursive`;
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
    chdir('..');

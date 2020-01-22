@@ -18,7 +18,7 @@ use FindBin qw($Bin);
 use lib "$Bin/";
 use Helpers;
 
-`mkdir -p /opt/autopkg`;
+`mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;
 if (-s '/opt/autopkg/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
 }
@@ -573,6 +573,9 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    CLEANUP:
    close $pkglog;
+
+   # Wipe temporary clone
+   `rm -rf /opt/autopkg/tmp/git/$pkname.git`;
 }
 
 print {$out2} "\n";

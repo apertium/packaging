@@ -52,7 +52,7 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    print STDERR `git repack -ad`;
    print STDERR `git prune`;
 
-   chdir('/misc/git');
+   chdir('/opt/autopkg/tmp/git');
    `rm -rf '${pkg}.git'`;
    print STDERR `git clone --shallow-submodules /opt/autopkg/repos/${pkg}.git ${pkg}.git`;
 
