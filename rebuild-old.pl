@@ -238,8 +238,14 @@ foreach my $k (@{$pkgs{'order'}}) {
    copy("/opt/autopkg/rules.$$", "$pkg->[0]/debian/rules");
    unlink("/opt/autopkg/rules.$$");
 
-   my $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   my $oldhash = '';
    my $newhash = `ls -1 --color=no /opt/autopkg/$ENV{BUILDTYPE}/$pkname/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   if (-d "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname") {
+      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   }
+   if (-d "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed") {
+      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed/*.tar.bz2 | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   }
    if (!$ARGV[0] && !$rebuild && ($oldhash eq $newhash)) {
       print {$out} "\tno change in tarball - skipping\n";
       goto CLEANUP;
@@ -458,6 +464,8 @@ foreach my $k (@{$pkgs{'order'}}) {
    print {$out} "\tstopped: ".`date -u`;
 
    if ($failed) {
+      `$Bin/failed.sh '$pkname' 2>>$logpath/stderr.log >&2`;
+
       push(@failed, $pkname);
       # Gather up URLs for the logs of the failed builds
       print {$out} "\tFAILED:\n";
