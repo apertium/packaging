@@ -45,9 +45,8 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-print `rm -rf /tmp/autorpm.* 2>&1`;
-print `mkdir -pv /tmp/autorpm.$$ 2>&1`;
-chdir "/tmp/autorpm.$$";
+print `mkdir -pv /opt/autopkg/tmp/autorpm.$$ 2>&1`;
+chdir "/opt/autopkg/tmp/autorpm.$$";
 
 my $autopath = $ENV{AUTOPATH};
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
@@ -99,7 +98,7 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 chdir "/root/osc/$opts{'oscp'}/$pkname/";
 print `osc up 2>&1`;
 print `osc rm --force * 2>&1`;
-print `cp -av --reflink=auto /tmp/autorpm.*/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
+print `cp -av --reflink=auto /opt/autopkg/tmp/autorpm.$$/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
 my $btype = "\u$ENV{BUILDTYPE}";
 
@@ -116,6 +115,9 @@ BuildArch: noarch
 
 Requires: apertium
 Requires: apertium-lex-tools
+Requires: apertium-separable
+Requires: apertium-recursive
+Requires: apertium-anaphora
 Requires: cg3
 Requires: hfst
 Requires: hfst-ospell
@@ -158,10 +160,10 @@ my $meta = <<META;
   </build>
 </package>
 META
-file_put_contents("/tmp/$pkname.xml", $meta);
-print `osc meta pkg -F /tmp/$pkname.xml`;
+file_put_contents("/opt/autopkg/tmp/autorpm.$$/$pkname.xml", $meta);
+print `osc meta pkg -F /opt/autopkg/tmp/autorpm.$$/$pkname.xml`;
 
 print `osc add * 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
 print `osc ci -m "Automatic update to version $opts{'v'}" 2>&1`;
-print `rm -rf /tmp/autorpm.* 2>&1`;
+print `rm -rf /opt/autopkg/tmp/autorpm.$$ 2>&1`;

@@ -109,13 +109,12 @@ else {
       die "Subversion repo failed somewhere.\n";
    }
 }
-copy($opts{file}, "/tmp/version.$$.tmp");
 
 my $major = 0;
 my $minor = 0;
 my $patch = 0;
 
-my $data = file_get_contents("/tmp/version.$$.tmp");
+my $data = file_get_contents($opts{file});
 my $version = '';
 if ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_PATCH = (\d+);@s) {
    print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
@@ -153,8 +152,6 @@ elsif ($version =~ m@^(\d+)\.(\d+)\.(\d+)$@) {
    $minor = $2;
    $patch = $3;
 }
-
-unlink("/tmp/version.$$.tmp");
 
 if ($opts{'rev'} ne 'HEAD') {
    $revision = '';

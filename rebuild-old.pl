@@ -18,6 +18,7 @@ use FindBin qw($Bin);
 use lib "$Bin/";
 use Helpers;
 
+`rm -rf /opt/autopkg/tmp`;
 `mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;
 if (-s '/opt/autopkg/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
@@ -61,7 +62,7 @@ my $osx = 0;
 my $aptget = 0;
 
 use IO::Tee;
-open my $log, ">/tmp/rebuild.$$.log";
+open my $log, ">/opt/autopkg/tmp/git/rebuild.$$.log";
 my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build $ENV{BUILDTYPE} started ".`date -u`;
 
@@ -596,7 +597,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `cat /tmp/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   `cat /opt/autopkg/tmp/git/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {
@@ -621,5 +622,5 @@ if ($aptget && !$release) {
 
 print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;
 close $log;
-unlink("/tmp/rebuild.$$.log");
+unlink("/opt/autopkg/tmp/git/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');
