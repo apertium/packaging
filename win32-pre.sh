@@ -17,7 +17,7 @@ rm -rf /opt/$WINX-pkg/$PKG_NAME
 
 if [[ "$BUILD_VCS" == "git" ]]; then
 	rm -rf /opt/win32-build/$PKG_NAME
-	cp -a /opt/autopkg/tmp/git/$PKG_NAME.git /opt/win32-build/$PKG_NAME
+	cp -a --reflink=auto /opt/autopkg/tmp/git/$PKG_NAME.git /opt/win32-build/$PKG_NAME || git clone --shallow-submodules /opt/autopkg/repos/$PKG_NAME.git /opt/win32-build/$PKG_NAME
 	cd /opt/win32-build/$PKG_NAME
 else
 	cd /opt/win32-build/$PKG_NAME
