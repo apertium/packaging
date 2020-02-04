@@ -1,0 +1,5 @@
+*/
++ include/.*
++ msoffice/.*
++ mozilla/native/.*
++ windows/.*

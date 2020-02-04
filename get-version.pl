@@ -42,7 +42,7 @@ my $pkg = $opts{'pkname'};
 chdir('/opt/autopkg/repos');
 if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    if (! -s "${pkg}.git") {
-      print STDERR `git clone --mirror '$opts{url}' 2>&1`;
+      print STDERR `git clone --mirror '$opts{url}' ${pkg}.git 2>&1`;
    }
 
    chdir("${pkg}.git");

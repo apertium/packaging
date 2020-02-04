@@ -86,12 +86,11 @@ print `mkdir -pv '$autopath' 2>&1`;
 chdir $autopath;
 
 if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
-   my $pkg = $1;
-   chdir("/opt/autopkg/tmp/git/${pkg}.git");
+   chdir("/opt/autopkg/tmp/git/${pkname}.git");
    print `git submodule update --init --depth 1 --recursive || git submodule update --init --depth 100 --recursive`;
    print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
    chdir('..');
-   print `cp -av --reflink=auto '${pkg}.git' '$autopath/$pkname-$opts{v}'`;
+   print `cp -av --reflink=auto '${pkname}.git' '$autopath/$pkname-$opts{v}'`;
    chdir $autopath;
 }
 else {

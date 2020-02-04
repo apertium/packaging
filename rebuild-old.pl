@@ -62,7 +62,7 @@ my $osx = 0;
 my $aptget = 0;
 
 use IO::Tee;
-open my $log, ">/opt/autopkg/tmp/git/rebuild.$$.log";
+open my $log, ">/opt/autopkg/tmp/rebuild.$$.log";
 my $out2 = IO::Tee->new($log, \*STDOUT);
 print {$out2} "Build $ENV{BUILDTYPE} started ".`date -u`;
 
@@ -358,7 +358,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          `echo 'Checking available updates for $distro $arch' >>$logpath/stderr.log 2>&1`;
-         my $avail = 0+`docker run --rm -it $img /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`;
+         my $avail = 0+`docker run --rm -i $img /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`;
          if ($avail || $?) {
             `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
             `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
@@ -597,7 +597,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `cat /opt/autopkg/tmp/git/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   `cat /opt/autopkg/tmp/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {
@@ -622,5 +622,5 @@ if ($aptget && !$release) {
 
 print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;
 close $log;
-unlink("/opt/autopkg/tmp/git/rebuild.$$.log");
+unlink("/opt/autopkg/tmp/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');
