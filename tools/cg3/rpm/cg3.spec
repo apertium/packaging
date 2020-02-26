@@ -10,6 +10,7 @@ Provides: vislcg3 = %{version}-%{release}
 
 BuildRequires: gcc-c++
 %if 0%{?el7}
+BuildRequires: devtoolset-7-gcc-c++
 BuildRequires: cmake3
 # Multiple packages provide libpython27, so picking the one from CentOS main repo
 BuildRequires: python-libs
@@ -18,9 +19,9 @@ BuildRequires: cmake >= 3.0.0
 %endif
 BuildRequires: boost-devel
 BuildRequires: libicu-devel
-BuildRequires: swig
 BuildRequires: pkgconfig
 %if ! ( 0%{?el7} )
+BuildRequires: swig
 BuildRequires: python3
 BuildRequires: python3-devel
 %endif
@@ -99,6 +100,7 @@ Python 3 module for CG-3
 %cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON
 %else
 %if 0%{?el7}
+source /opt/rh/devtoolset-7/enable
 %cmake3 .
 %else
 %cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON .
@@ -107,6 +109,9 @@ Python 3 module for CG-3
 make %{?_smp_mflags}
 
 %install
+%if 0%{?el7}
+source /opt/rh/devtoolset-7/enable
+%endif
 %if 0%{?suse_version}
 %cmake_install
 %else
