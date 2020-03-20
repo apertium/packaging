@@ -96,7 +96,7 @@ if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 else {
    print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{BUILDTYPE} '$pkname-$opts{v}'`;
 }
-for my $p (qw(.svn* .git* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL)) {
+for my $p (qw(.svn* .git* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL Jenkinsfile)) {
    print `find . -name '$p' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 

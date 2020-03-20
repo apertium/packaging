@@ -1,3 +1,9 @@
+apertium-por (0.3.0-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 20 Mar 2020 18:52:07 +0100
+
 apertium-por (0.2.0-1) unstable; urgency=low
 
   * Initial release
