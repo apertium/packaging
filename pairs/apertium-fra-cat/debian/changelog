@@ -1,9 +1,24 @@
-apertium-fra-cat (1.7.0-1) unstable; urgency=low
+apertium-fra-cat (1.8.0-1) unstable; urgency=low
 
   * New upstream release
-  * Bundles apertium-fra 1.7.0 and apertium-cat 2.8.0
+  * Bundles apertium-fra 1.8.0 and apertium-cat 2.9.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 26 Nov 2019 17:42:07 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 20 Mar 2020 18:52:07 +0100
+
+apertium-fra-cat (1.7.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Bundles apertium-fra 1.7.0 and apertium-cat 2.8.0
+  * debian/control:
+    + Updated Standards-Version to 4.4.1
+  * Updated dh to 12.
+
+  [ Kartik Mistry ]
+  * Added debian/gitlab-ci.yml.
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 28 Nov 2019 11:10:43 +0100
 
 apertium-fra-cat (1.5.0-1) unstable; urgency=low
 
