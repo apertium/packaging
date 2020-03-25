@@ -1,4 +1,5 @@
 debian/tmp/usr/bin/apertium
+debian/tmp/usr/bin/apertium-adapt-docx
 debian/tmp/usr/bin/apertium-cleanstream
 debian/tmp/usr/bin/apertium-des*
 debian/tmp/usr/bin/apertium-interchunk

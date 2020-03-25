@@ -11,6 +11,7 @@ BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: flex
 BuildRequires: gcc-c++
+BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2
 BuildRequires: libxml2-devel
@@ -102,6 +103,7 @@ make check
 %defattr(-,root,root)
 %doc AUTHORS NEWS README README-MODES
 %{_bindir}/apertium
+%{_bindir}/apertium-adapt-docx
 %{_bindir}/apertium-cleanstream
 %{_bindir}/apertium-des*
 %{_bindir}/apertium-interchunk

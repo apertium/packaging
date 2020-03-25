@@ -20,13 +20,15 @@ ar x pkg.deb data.tar.gz
 tar -zxf data.tar.gz
 cd usr
 
-echo "Fixing hardcoded paths"
-FILES=`grep -rl '/usr/share/' share/apertium/modes`
-for FILE in $FILES
-do
-        echo "Fixing $FILE"
-        perl -pe "s@/usr/share/@$WHERE/share/@g;" -i.orig "$FILE"
-done
+if [[ -e "share/apertium/modes" ]]; then
+	echo "Fixing hardcoded paths"
+	FILES=`grep -rl '/usr/share/' share/apertium/modes`
+	for FILE in $FILES
+	do
+		echo "Fixing $FILE"
+		perl -pe "s@/usr/share/@$WHERE/share/@g;" -i.orig "$FILE"
+	done
+fi
 
 echo "Copying files with sudo, so you may need to provide sudo password here:"
 sudo mkdir -p "$WHERE/"
