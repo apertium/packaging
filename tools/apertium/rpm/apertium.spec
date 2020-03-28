@@ -25,6 +25,9 @@ BuildRequires: swig
 BuildRequires: libzip-tools
 BuildRequires: unzip
 BuildRequires: zip
+%if 0%{?el7}
+BuildRequires: devtoolset-7-gcc-c++
+%endif
 
 Requires: libapertium3-3_6-1 = %{version}-%{release}
 Requires: lttoolbox >= 3.5.0
@@ -84,18 +87,27 @@ Python 3 module for the Apertium shallow-transfer machine translation engine
 %setup -q -n %{name}-%{version}
 
 %build
+%if 0%{?el7}
+source /opt/rh/devtoolset-7/enable
+%endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
 %configure --disable-static --enable-python-bindings
 make %{?_smp_mflags}
 
 %install
+%if 0%{?el7}
+source /opt/rh/devtoolset-7/enable
+%endif
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
 ln -s libapertium3-3.6.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.6.so
 
 %check
+%if 0%{?el7}
+source /opt/rh/devtoolset-7/enable
+%endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check
 

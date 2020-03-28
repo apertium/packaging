@@ -5,10 +5,11 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: debhelper (>= 12)
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-all-dev.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-all-dev
+Rules-Requires-Root: no
 
 Package: apertium-all-dev
 Architecture: all

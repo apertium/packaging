@@ -2,9 +2,8 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright:      2017, John Lyell <jjlyell@gmail.com>
-                2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
-           2013-2016, Francis M. Tyers <ftyers@prompsit.com>
+Copyright: 2013-2018, Francis M. Tyers <ftyers@prompsit.com>
+                2017, John Lyell <jjlyell@gmail.com>
                 2016, Vladislav Kiryukhin <kiryukhinv@gmail.com>
 License: GPL-3+
 

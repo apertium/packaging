@@ -22,10 +22,11 @@ Build-Depends: automake,
                swig,
                xsltproc,
                zlib1g-dev
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/lttoolbox.git
 Vcs-Browser: https://salsa.debian.org/science-team/lttoolbox
+Rules-Requires-Root: no
 
 Package: lttoolbox
 Architecture: any

@@ -14,10 +14,11 @@ Build-Depends: autoconf,
                libtool,
                pkg-config,
                zip
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://github.com/hfst/hfst-ospell
 Vcs-Git: https://salsa.debian.org/science-team/hfst-ospell.git
 Vcs-Browser: https://salsa.debian.org/science-team/hfst-ospell
+Rules-Requires-Root: no
 
 Package: hfst-ospell
 Architecture: any

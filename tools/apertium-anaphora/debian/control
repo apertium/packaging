@@ -9,10 +9,11 @@ Build-Depends: cmake,
                libxml2-dev,
                lttoolbox-dev,
                pkg-config
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-anaphora.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-anaphora
+Rules-Requires-Root: no
 
 Package: apertium-anaphora
 Architecture: any

@@ -348,6 +348,13 @@ CHLOG
       file_put_contents("$pkname-$chver/debian/rules", $rules);
    }
 
+   if ($distros->{$distro}{'dh'} >= 12) {
+      unlink("$pkname-$chver/debian/compat");
+      my $control = file_get_contents("$pkname-$chver/debian/control");
+      $control =~ s@debhelper \([^)]+\)@debhelper-compat (= $distros->{$distro}{'dh'})@g;
+      file_put_contents("$pkname-$chver/debian/control", $control);
+   }
+
 	chdir "$pkname-$chver";
 	run_fail('wrap-and-sort');
 	chdir '..';

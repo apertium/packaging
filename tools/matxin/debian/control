@@ -22,10 +22,11 @@ Build-Depends: autoconf,
                pkg-config,
                xsltproc,
                zlib1g-dev
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://github.com/matxin/matxin
 Vcs-Git: https://salsa.debian.org/science-team/matxin.git
 Vcs-Browser: https://salsa.debian.org/science-team/matxin.git
+Rules-Requires-Root: no
 
 Package: matxin
 Architecture: any

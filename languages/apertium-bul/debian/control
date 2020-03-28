@@ -11,10 +11,11 @@ Build-Depends: apertium-dev (>= 3.6.0),
                hfst,
                libhfst-dev,
                pkg-config
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-bul.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-bul.git
+Rules-Requires-Root: no
 
 Package: apertium-bul
 Architecture: all

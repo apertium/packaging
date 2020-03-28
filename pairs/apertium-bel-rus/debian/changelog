@@ -1,5 +1,36 @@
-apertium-bel-rus (0.2.0~r81186-1) experimental; urgency=low
+apertium-bel-rus (0.2.1-1) unstable; urgency=medium
 
-  * Initial release
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Bundles apertium-bel 0.1.1 and apertium-rus 0.2.1
+    + Fixes FTBFS with apertium 3.6 (Closes: #950552)
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Aug 2017 12:49:39 +0200
+  [ Kartik Mistry ]
+  * debian/control:
+    + Drop compat, switch to debhelper-compat.
+    + Added 'Rules-Requires-Root:no' field.
+    + Bumped Standards-Version to 4.5.0
+  * Added debian/gitlab-ci.yml
+  * Drop unnecessary dependency on dh-autoreconf.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 27 Mar 2020 18:26:47 +0530
+
+apertium-bel-rus (0.2.0~r81186-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4.
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Removed Depends on ${shlibs:Depends}
+  * debian/copyright:
+    + Use https in URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Jun 2018 08:42:01 +0530
+
+apertium-bel-rus (0.2.0~r81186-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #871500)
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 05 Sep 2017 11:33:22 +0530

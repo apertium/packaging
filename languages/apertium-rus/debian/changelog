@@ -1,3 +1,9 @@
+apertium-rus (0.2.1-1) unstable; urgency=low
+
+  * Minor fix
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 27 Mar 2020 18:16:36 +0100
+
 apertium-rus (0.2.0~r82706-1) unstable; urgency=low
 
   * Update to latest upstream release.

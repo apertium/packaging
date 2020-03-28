@@ -20,10 +20,11 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://hfst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/hfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/hfst
+Rules-Requires-Root: no
 
 Package: hfst
 Architecture: any

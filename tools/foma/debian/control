@@ -10,10 +10,11 @@ Build-Depends: bison,
                libtinfo-dev,
                libtool,
                zlib1g-dev
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: https://code.google.com/p/foma/
 Vcs-Git: https://salsa.debian.org/science-team/foma.git
 Vcs-Browser: https://salsa.debian.org/science-team/foma.git
+Rules-Requires-Root: no
 
 Package: foma
 Architecture: any

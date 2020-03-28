@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: debhelper (>= 9.0), qt5-default, qt5-qmake, qtbase5-dev
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 
 Package: apertium-simpleton
 Architecture: any
