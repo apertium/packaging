@@ -100,6 +100,20 @@ for my $p (qw(.svn* .git* .travis* .clang* .editorconfig autogen.sh cmake.sh CON
    print `find . -name '$p' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 
+my $sl = `find . -type l`;
+if ($sl !~ /^\s*$/) {
+   use File::Basename;
+   my @sls = split(/\n/, $sl);
+   for (@sls) {
+      my $d = dirname($_);
+      my $s = readlink($_);
+      if (! -e "$d/$s") {
+         print "Unresolvable symlink: $_\n";
+         unlink($_);
+      }
+   }
+}
+
 if (@excludes) {
    chdir "$pkname-$opts{v}";
    my @files = split(/\n/, `find . ! -type d`);

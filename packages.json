@@ -151,6 +151,7 @@
    ["pairs/apertium-fin-est"],
    ["pairs/apertium-fr-es"],
    ["pairs/apertium-fra-cat"],
+   ["pairs/apertium-fra-eng"],
    ["pairs/apertium-hbs-eng"],
    ["pairs/apertium-hbs-mkd"],
    ["pairs/apertium-hbs-slv"],
