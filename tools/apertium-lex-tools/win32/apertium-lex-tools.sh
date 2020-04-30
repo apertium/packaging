@@ -1,4 +1,3 @@
-patch_all
 install_dep lttoolbox
 install_dep apertium
 autoreconf -fi
