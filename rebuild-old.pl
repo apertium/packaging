@@ -42,6 +42,9 @@ my $rop = GetOptions(
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
 $ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
+$ENV{'DOCKER_BUILDKIT'} = 1;
+$ENV{'BUILDKIT_PROGRESS'} = 'plain';
+$ENV{'PROGRESS_NO_TRUNC'} = 1;
 
 use File::Copy;
 use Cwd;
@@ -82,9 +85,9 @@ foreach (split(/\n+/, `$Bin/enum-build-deps.sh`)) {
    s/\s+$//g;
    my ($n,$p) = split(/\s+/);
    if (defined $our_pkgs{$p}) {
-      $dep_our{$p} = 0+$n;
+      $dep_our{$p} = int($n);
    }
-   $dep_order{$p} = 0+$n;
+   $dep_order{$p} = int($n);
 }
 
 sub order_deps {
@@ -341,36 +344,33 @@ foreach my $k (@{$pkgs{'order'}}) {
 
          my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
          my $img = "autopkg-${distro}-${arch}/${hash}";
-         my $exists = 0+`docker images -q $img 2>/dev/null | wc -l`;
-         if (0+`docker history -q $img 2>/dev/null | wc -l` > 75) {
-            print {$out} "\tdocker $distro:$arch refreshing (depth > 75)\n";
-            $exists = 0;
-         }
+         my $exists = int(`docker images -q $img-base 2>/dev/null | wc -l`);
          my $force_refresh = 0;
          FORCE_REFRESH:
          if (!$exists || $refresh || $force_refresh) {
             `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
-            `docker build --pull -f $dpath/Dockerfile -t $img $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
+            `docker build --pull -f $dpath/Dockerfile -t $img-base $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                print {$out} "\tdocker $distro:$arch create fail\n";
                goto CLEANUP;
             }
+            `docker tag $img-base $img-build >>$logpath/$distro-$arch.log 2>&1`;
          }
 
          `echo 'Checking available updates for $distro $arch' >>$logpath/stderr.log 2>&1`;
-         my $avail = 0+`docker run --rm -i $img /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`;
+         my $avail = int(`docker run --rm -i $img-build /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`);
          if ($avail || $?) {
             `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
-            `docker tag $img $img-old >>$logpath/$distro-$arch.log 2>&1`;
+            `docker tag $img-build $img-old >>$logpath/$distro-$arch.log 2>&1`;
             my $deps = join(' ', @deps);
-            `echo -e 'FROM $img-old\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy install --no-install-recommends $deps && apt-get -qfy autoremove --purge' | docker build --no-cache -t $img - >>$logpath/$distro-$arch.log 2>&1`;
+            `echo -e 'FROM ${img}-old AS base\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy install --no-install-recommends ${deps} && apt-get -qfy autoremove --purge\nFROM ${arch}/${variant}:${distro}\nCOPY --from=base / /' | docker build --no-cache -t $img-build - >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
-               if (!$force_refresh && 0+`grep -c 'max depth exceeded' $logpath/$distro-$arch.log` > 0) {
+               if (!$force_refresh && int(`grep -c 'max depth exceeded' $logpath/$distro-$arch.log`) > 0) {
                   $force_refresh = 1;
                   print {$out} "\tdocker $distro:$arch refreshing (max depth exceeded)\n";
                   goto FORCE_REFRESH;
                }
-               if (!$force_refresh && 0+`egrep -c 'changed its '.+' value from' $logpath/$distro-$arch.log` > 0) {
+               if (!$force_refresh && int(`egrep -c 'changed its '.+' value from' $logpath/$distro-$arch.log`) > 0) {
                   $force_refresh = 1;
                   print {$out} "\tdocker $distro:$arch refreshing (repo fields changed)\n";
                   goto FORCE_REFRESH;
@@ -403,7 +403,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `docker run --rm --network none -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
 
          `find $dpath -type f -name '*.deb' | LC_ALL=C sort | xargs -rn1 '-I{}' ar p '{}' data.tar.gz data.tar.xz 2>/dev/null | sha256sum -b | awk '{print \$1}' >$logpath/$distro-$arch.sha256-new`;
-         if (! -s "$logpath/$distro-$arch.sha256" || 0+`diff '$logpath/$distro-$arch.sha256' '$logpath/$distro-$arch.sha256-new' | wc -l`) {
+         if (! -s "$logpath/$distro-$arch.sha256" || int(`diff '$logpath/$distro-$arch.sha256' '$logpath/$distro-$arch.sha256-new' | wc -l`)) {
             $changed = 1;
          }
          rename("$logpath/$distro-$arch.sha256-new", "$logpath/$distro-$arch.sha256");
