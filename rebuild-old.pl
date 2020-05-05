@@ -316,6 +316,8 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "\n";
          $docker .= "# Upgrade everything and install base builder dependencies\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils\n";
+         $docker .= "RUN apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install fakeroot\n";
