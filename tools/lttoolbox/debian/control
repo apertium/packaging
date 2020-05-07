@@ -10,18 +10,13 @@ Build-Depends: automake,
                dh-autoreconf,
                dh-exec,
                dh-python,
-               flex,
-               gawk,
-               libpcre3-dev,
                libtool,
                libxml2-dev,
                libxml2-utils,
                pkg-config,
                python3-dev,
                python3-setuptools,
-               swig,
-               xsltproc,
-               zlib1g-dev
+               swig
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/lttoolbox.git

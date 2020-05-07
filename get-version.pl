@@ -116,7 +116,11 @@ my $patch = 0;
 
 my $data = file_get_contents($opts{file});
 my $version = '';
-if ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_PATCH = (\d+);@s) {
+if ($data =~ m@_VERSION_MAJOR\], \[(\d+)\].*?_VERSION_MINOR\], \[(\d+)\].*?_VERSION_PATCH\], \[(\d+)\]@s) {
+   print STDERR "Found m4 _VERSION_MAJOR/MINOR/PATCH version\n";
+   $version = "$1.$2.$3";
+}
+elsif ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_PATCH = (\d+);@s) {
    print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
    $version = "$1.$2.$3";
 }

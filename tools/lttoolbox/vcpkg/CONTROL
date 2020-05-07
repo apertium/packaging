@@ -1,0 +1,5 @@
+Source: lttoolbox
+Version: 3.5.2
+Homepage: https://github.com/apertium/lttoolbox
+Description: Finite state compiler, processor and helper tools used by apertium.
+Build-Depends: libxml2, getopt
