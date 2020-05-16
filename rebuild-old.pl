@@ -57,6 +57,10 @@ my %pkgs = load_packages();
 my $authors = JSON->new->relaxed->decode(file_get_contents("$Bin/authors.json"));
 my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"));
 
+use Sys::MemInfo qw(totalmem);
+my $maxmem = int((totalmem() * 0.80)/(1024 * 1024));
+my $maxswap = $maxmem + 1024;
+
 my %rebuilt = ();
 my %blames = ();
 my @failed = ();
@@ -402,7 +406,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;
-         `docker run --rm --network none -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
+         `docker run --rm --memory "${maxmem}m" --memory-swap "${maxswap}m" --network none -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
 
          `find $dpath -type f -name '*.deb' | LC_ALL=C sort | xargs -rn1 '-I{}' ar p '{}' data.tar.gz data.tar.xz 2>/dev/null | sha256sum -b | awk '{print \$1}' >$logpath/$distro-$arch.sha256-new`;
          if (! -s "$logpath/$distro-$arch.sha256" || int(`diff '$logpath/$distro-$arch.sha256' '$logpath/$distro-$arch.sha256-new' | wc -l`)) {
