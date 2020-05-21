@@ -88,7 +88,6 @@ chdir $autopath;
 if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    chdir("/opt/autopkg/tmp/git/${pkname}.git");
    print `git submodule update --init --depth 1 --recursive || git submodule update --init --depth 100 --recursive`;
-   print `find . -name '.git*' -print0 | xargs -0rn1 rm -rfv 2>&1`;
    chdir('..');
    print `cp -av --reflink=auto '${pkname}.git' '$autopath/$pkname-$opts{v}'`;
    chdir $autopath;
@@ -96,7 +95,14 @@ if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 else {
    print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{BUILDTYPE} '$pkname-$opts{v}'`;
 }
-for my $p (qw(.svn* .git* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL Jenkinsfile)) {
+
+if (-s "$Bin/$opts{p}/hooks/post-clone" && -x "$Bin/$opts{p}/hooks/post-clone") {
+   chdir "$autopath/$pkname-$opts{v}";
+   print `$Bin/$opts{p}/hooks/post-clone >$ENV{AUTOPKG_LOGPATH}/hook-post-clone.log 2>&1`;
+   chdir $autopath;
+}
+
+for my $p (qw(.svn* .git* .gut* .circleci* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL Jenkinsfile)) {
    print `find . -name '$p' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 

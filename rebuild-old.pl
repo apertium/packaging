@@ -116,6 +116,7 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    $ENV{'PKPATH'} = "$Bin/".$pkg->[0];
    $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
+   $ENV{'AUTOPKG_LOGPATH'} = $logpath;
 
    if (!$pkg->[1]) {
       my ($path) = ($pkg->[0] =~ m@/([^/]+)$@);
@@ -538,8 +539,8 @@ foreach my $k (@{$pkgs{'order'}}) {
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `$Bin/reprepro.sh '$pkname' '$is_data' '$pkg->[3]' 2>>$logpath/stderr.log >&2`;
 
-   if (-s "$Bin/$pkg->[0]/hook.post" && -x "$Bin/$pkg->[0]/hook.post") {
-      `$Bin/$pkg->[0]/hook.post >$logpath/hook.post.log 2>&1`;
+   if (-s "$Bin/$pkg->[0]/hooks/post-publish" && -x "$Bin/$pkg->[0]/hooks/post-publish") {
+      `$Bin/$pkg->[0]/hooks/post-publish >$logpath/hook-post-publish.log 2>&1`;
    }
 
 =pod
