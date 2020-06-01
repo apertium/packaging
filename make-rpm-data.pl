@@ -90,9 +90,8 @@ print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/";
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
-   print `osc up 2>&1`;
    print `osc mkpac $pkname 2>&1`;
-   print `osc ci -m "Create package $pkname" 2>&1`;
+   print `osc ci -m "Create package $pkname" $pkname 2>&1`;
 }
 
 chdir "/root/osc/$opts{'oscp'}/$pkname/";

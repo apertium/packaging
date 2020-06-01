@@ -1,0 +1,37 @@
+Source: giella-udm
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: bc,
+               cg3-dev,
+               debhelper (>= 12),
+               divvun-gramcheck,
+               foma,
+               gawk,
+               giella-common,
+               giella-core,
+               hfst,
+               libhfst-dev,
+               pkg-config,
+               python3,
+               zip
+Standards-Version: 4.5.0
+Homepage: http://giellatekno.uit.no/
+Vcs-Git: https://salsa.debian.org/science-team/giella-udm.git
+Vcs-Browser: https://salsa.debian.org/science-team/giella-udm
+Rules-Requires-Root: no
+
+Package: giella-udm
+Architecture: all
+Depends: cg3, hfst, giella-udm-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: Giellatekno single language data for LANG1
+ Data package providing Giellatekno language resources for LANG1
+
+Package: giella-udm-speller
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: cg3, divvun-gramcheck, hfst-ospell
+Description: Giellatekno spellers for LANG1
+ Data package providing Giellatekno spellers for LANG1

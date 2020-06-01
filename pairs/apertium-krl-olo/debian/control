@@ -1,0 +1,36 @@
+Source: apertium-krl-olo
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-krl,
+               apertium-lex-tools,
+               apertium-olo,
+               apertium-separable,
+               cg3-dev,
+               debhelper (>= 12),
+               gawk,
+               hfst,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-krl-olo.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-krl-olo
+Rules-Requires-Root: no
+
+Package: apertium-krl-olo
+Architecture: all
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         apertium-separable,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-olo-krl
+Conflicts: apertium-olo-krl
+Description: Apertium translation data for the LANG1-LANG2 pair
+ Data package providing Apertium language resources for translating
+ between the LANG1 and LANG2 languages.

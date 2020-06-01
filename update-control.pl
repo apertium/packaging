@@ -37,10 +37,10 @@ if ($pkname =~ m@^apertium-([a-z]{2,3})$@ || $pkname =~ m@^apertium-([a-z]{2,3})
    `find $pkg -type f -exec sed -r -i 's/apertium-[a-z]{2,3}(-[a-z]{2,3})?/$pkname/g' '{}' \\;`;
    `find $pkg -type f -exec sed -i 's/$pkname\@dlsi.ua.es/apertium-pmc\@dlsi.ua.es/g' '{}' \\;`;
    if ($ARGV[1]) {
-      `find $pkg -type f -exec replace 'Kazakh' '$ARGV[1]' -- '{}' \\;`;
+      `find $pkg -type f -exec replace 'LANG1' '$ARGV[1]' -- '{}' \\;`;
    }
    if ($ARGV[2]) {
-      `find $pkg -type f -exec replace 'Tatar' '$ARGV[2]' -- '{}' \\;`;
+      `find $pkg -type f -exec replace 'LANG2' '$ARGV[2]' -- '{}' \\;`;
    }
 }
 
@@ -76,8 +76,8 @@ if ($pkname =~ m@-([a-z]{2,3})-([a-z]{2,3})$@) {
 
 file_put_contents("$pkg/debian/control", $control);
 
-my $gv = `$Bin/get-version.pl --url '$url' 2>/dev/null`;
-($gv) = ($gv =~ m@^(\d+\.\d+\.\d+)@);
+my $gv = `$Bin/get-version.pl --url '$url' --pkname '$pkname'`;
+($gv) = ($gv =~ m@^[^\t]+\t([^\t]+)@);
 $gv .= '-1';
 replace_in_file("$pkg/debian/changelog", "^$pkname.*urgency=low", "$pkname ($gv) experimental; urgency=low");
 

@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-chv-tat-$1.tar.gz%" \
+    https://github.com/apertium/apertium-chv-tat/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

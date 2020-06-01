@@ -1,0 +1,34 @@
+Source: apertium-tel-mar
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-lex-tools,
+               apertium-mar,
+               apertium-tel,
+               cg3-dev,
+               debhelper (>= 12),
+               gawk,
+               hfst,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-tel-mar.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-tel-mar
+Rules-Requires-Root: no
+
+Package: apertium-tel-mar
+Architecture: all
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-mar-tel
+Conflicts: apertium-mar-tel
+Description: Apertium translation data for the LANG1-LANG2 pair
+ Data package providing Apertium language resources for translating
+ between the LANG1 and LANG2 languages.

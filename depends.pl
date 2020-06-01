@@ -39,7 +39,7 @@ while (<>) {
    elsif (/\bLIBS\b.*?\blz\b/) {
       $build{'zlib1g-dev'} = 1;
    }
-   elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislc3g\b/ || /\bc3g\b/ || /\bcg3-autobin\b/) {
+   elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislcg3\b/ || /\bcg3\b/ || /\bcg3-autobin\b/) {
       $build{'cg3-dev'} = 1;
       $deps{'cg3'} = 1;
    }

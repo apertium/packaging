@@ -1,0 +1,38 @@
+Source: apertium-eng-spa
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-lex-tools,
+               debhelper (>= 12),
+               gawk,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-eng-spa.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-spa
+Rules-Requires-Root: no
+
+Package: apertium-eng-spa
+Architecture: all
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-spa-eng
+Conflicts: apertium-spa-eng
+Replaces: apertium-en-es (<< ${binary:Version})
+Breaks: apertium-en-es (<< ${binary:Version})
+Description: Apertium translation data for the English-Spanish pair
+ Data package providing Apertium language resources for translating
+ between the English and Spanish languages.
+
+Package: apertium-en-es
+Architecture: all
+Depends: apertium-eng-spa (= ${binary:Version}), ${misc:Depends}
+Section: oldlibs
+Provides: apertium-es-en
+Description: Transitional dummy package for apertium-eng-spa
+ This is a transitional dummy package. It can safely be removed.

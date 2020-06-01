@@ -60,13 +60,14 @@ my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"))
 use Sys::MemInfo qw(totalmem);
 my $maxmem = int((totalmem() * 0.80)/(1024 * 1024));
 my $maxswap = $maxmem + 1024;
+$ENV{'AUTOPKG_MAX_MEM'} = "${maxmem}m";
+$ENV{'AUTOPKG_MAX_SWAP'} = "${maxswap}m";
 
 my %rebuilt = ();
 my %blames = ();
 my @failed = ();
 my $win32 = 0;
 my $osx = 0;
-my $aptget = 0;
 
 use IO::Tee;
 open my $log, ">/opt/autopkg/tmp/rebuild.$$.log";
@@ -365,12 +366,12 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          `echo 'Checking available updates for $distro $arch' >>$logpath/stderr.log 2>&1`;
-         my $avail = int(`docker run --rm -i $img-build /bin/bash -c "apt-get -qqy update && apt-get -qfy dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`);
+         my $avail = int(`docker run --rm -i $img-build /bin/bash -c "apt-get -qqy update && apt-get -qfy --allow-downgrades dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`);
          if ($avail || $?) {
             `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
             `docker tag $img-build $img-old >>$logpath/$distro-$arch.log 2>&1`;
             my $deps = join(' ', @deps);
-            `echo -e 'FROM ${img}-old AS base\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade && apt-get -qfy install --no-install-recommends ${deps} && apt-get -qfy autoremove --purge\nFROM ${arch}/${variant}:${distro}\nCOPY --from=base / /' | docker build --no-cache -t $img-build - >>$logpath/$distro-$arch.log 2>&1`;
+            `echo -e 'FROM ${img}-old AS base\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends --allow-downgrades dist-upgrade && apt-get -qfy install --no-install-recommends --allow-downgrades ${deps} && apt-get -qfy autoremove --purge\nFROM ${arch}/${variant}:${distro}\nCOPY --from=base / /' | docker build --no-cache -t $img-build - >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                if (!$force_refresh && int(`grep -c 'max depth exceeded' $logpath/$distro-$arch.log`) > 0) {
                   $force_refresh = 1;
@@ -407,7 +408,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;
-         `docker run --rm --memory "${maxmem}m" --memory-swap "${maxswap}m" --network none -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
+         `docker run --rm --network none -v "$dpath/:/build/" lintian-$variant >$logpath/$distro-$arch-lintian.log 2>&1`;
 
          `find $dpath -type f -name '*.deb' | LC_ALL=C sort | xargs -rn1 '-I{}' ar p '{}' data.tar.gz data.tar.xz 2>/dev/null | sha256sum -b | awk '{print \$1}' >$logpath/$distro-$arch.sha256-new`;
          if (! -s "$logpath/$distro-$arch.sha256" || int(`diff '$logpath/$distro-$arch.sha256' '$logpath/$distro-$arch.sha256-new' | wc -l`)) {
@@ -431,7 +432,6 @@ foreach my $k (@{$pkgs{'order'}}) {
       print {$out} "\tparched\n";
       last;
    }
-
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
       if (-s "$pkg->[0]/rpm/$pkname.spec") {
@@ -456,7 +456,6 @@ foreach my $k (@{$pkgs{'order'}}) {
 
          $win32 = 1;
       }
-
 =pod
       if (-s "$pkg->[0]/osx/$pkname.sh") {
          print {$out} "\tbuilding osx\n";
@@ -464,10 +463,6 @@ foreach my $k (@{$pkgs{'order'}}) {
          $osx = 1;
       }
 =cut
-
-      if ($is_data) {
-         $aptget = 1;
-      }
    }
    print {$out} "\tstopped: ".`date -u`;
 
@@ -495,7 +490,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             goto CLEANUP;
          }
          $dir = getcwd();
-         chdir("/opt/autopkg/repos/$pkpath.git");
+         chdir("/opt/autopkg/repos/$pkname.git");
          $blames = `git log '--format=format:\%aE\%x0a\%cE' $oldrev..$newrev | sort | uniq`;
          chomp($blames);
          print {$out} "\tblames in revisions $oldrev..$newrev :\n";
@@ -604,7 +599,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `cat /opt/autopkg/tmp/rebuild.$$.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   `echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {
@@ -621,10 +616,6 @@ if ($win32) {
 if ($osx) {
    print {$out2} "Combining OS X builds\n";
    `$Bin/osx-combine.sh`;
-}
-if ($aptget && !$release) {
-   print {$out2} "Installing new data packages\n";
-   `$Bin/apt-get-upgrade.sh`;
 }
 
 print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;

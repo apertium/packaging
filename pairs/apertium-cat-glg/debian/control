@@ -15,7 +15,7 @@ Build-Depends: apertium-cat,
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-cat-glg.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-glg.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-glg
 Rules-Requires-Root: no
 
 Package: apertium-cat-glg

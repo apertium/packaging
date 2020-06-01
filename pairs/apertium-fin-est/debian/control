@@ -16,7 +16,7 @@ Build-Depends: apertium-dev (>= 3.6.0),
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-fin-est.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-fin-est.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-fin-est
 Rules-Requires-Root: no
 
 Package: apertium-fin-est

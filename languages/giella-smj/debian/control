@@ -21,7 +21,7 @@ Build-Depends: bc,
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/giella-smj.git
-Vcs-Browser: https://salsa.debian.org/science-team/giella-smj.git
+Vcs-Browser: https://salsa.debian.org/science-team/giella-smj
 Rules-Requires-Root: no
 
 Package: giella-smj

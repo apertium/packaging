@@ -10,7 +10,7 @@ Build-Depends: ant,
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/lttoolbox-java.git
-Vcs-Browser: https://salsa.debian.org/science-team/lttoolbox-java.git
+Vcs-Browser: https://salsa.debian.org/science-team/lttoolbox-java
 Rules-Requires-Root: no
 
 Package: lttoolbox-java

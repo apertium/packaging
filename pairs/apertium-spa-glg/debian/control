@@ -1,0 +1,26 @@
+Source: apertium-spa-glg
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-glg,
+               apertium-spa,
+               debhelper (>= 12),
+               gawk,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-spa-glg.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-glg
+Rules-Requires-Root: no
+
+Package: apertium-spa-glg
+Architecture: all
+Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-glg-spa
+Conflicts: apertium-glg-spa
+Description: Apertium translation data for the LANG1-LANG2 pair
+ Data package providing Apertium language resources for translating
+ between the LANG1 and LANG2 languages.

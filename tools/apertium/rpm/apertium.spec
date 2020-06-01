@@ -21,6 +21,7 @@ BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 BuildRequires: python3
 BuildRequires: python3-devel
+BuildRequires: python3-lxml
 BuildRequires: swig
 BuildRequires: libzip-tools
 BuildRequires: unzip

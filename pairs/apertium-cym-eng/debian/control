@@ -13,7 +13,7 @@ Build-Depends: apertium-cym,
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-cy-en.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-cy-en.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-cy-en
 Rules-Requires-Root: no
 
 Package: apertium-cym-eng

@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-fao-dan-$1.tar.gz%" \
+    https://github.com/apertium/apertium-fao-dan/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

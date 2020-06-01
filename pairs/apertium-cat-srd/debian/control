@@ -16,7 +16,7 @@ Build-Depends: apertium-cat (>= 2.3.1~r82994),
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-cat-srd.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-srd.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-cat-srd
 Rules-Requires-Root: no
 
 Package: apertium-cat-srd

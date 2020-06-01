@@ -1,0 +1,4 @@
+debian/tmp/usr/bin
+debian/tmp/usr/share/doc
+debian/tmp/usr/share/giella/bla
+debian/tmp/usr/share/pkgconfig

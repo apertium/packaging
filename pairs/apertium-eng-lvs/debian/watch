@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-eng-lvs-$1.tar.gz%" \
+    https://github.com/apertium/apertium-eng-lvs/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

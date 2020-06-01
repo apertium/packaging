@@ -16,7 +16,7 @@ Build-Depends: apertium-crh (>= 0.2.0~r83161),
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-crh-tur.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-crh-tur.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-crh-tur
 Rules-Requires-Root: no
 
 Package: apertium-crh-tur

@@ -22,16 +22,17 @@ Rules-Requires-Root: no
 
 Package: hfst-ospell
 Architecture: any
-Depends: libhfstospell10 (= ${binary:Version}),
+Depends: libhfstospell11 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Spell checker library and tool based on HFST
  Minimal HFST optimized lookup format based spell checker library and
  a demonstrational implementation of command line based spell checker.
 
-Package: libhfstospell10
+Package: libhfstospell11
 Architecture: any
 Multi-Arch: same
+Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfstospell
 Conflicts: libhfstospell
@@ -44,7 +45,6 @@ Description: HFST spell checker runtime libraries
 
 Package: hfst-ospell-dev
 Architecture: any
-Multi-Arch: same
 Section: devel
 Depends: hfst-ospell (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: HFST spell checker development files

@@ -1,0 +1,28 @@
+Source: apertium-kpv-mhr
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               cg3-dev,
+               debhelper (>= 12),
+               gawk,
+               giella-kpv,
+               giella-mhr,
+               hfst,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-kpv-mhr.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-kpv-mhr
+Rules-Requires-Root: no
+
+Package: apertium-kpv-mhr
+Architecture: all
+Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-mhr-kpv
+Conflicts: apertium-mhr-kpv
+Description: Apertium translation data for the LANG1-LANG2 pair
+ Data package providing Apertium language resources for translating
+ between the LANG1 and LANG2 languages.

@@ -10,4 +10,4 @@ Index: foma-0.9.17.227/Makefile
 +libdir = $(exec_prefix)/lib/$(DEB_HOST_MULTIARCH)
  bindir = $(exec_prefix)/bin
  includedir = $(prefix)/include
- 
+ pkgcfgdir = $(libdir)/pkgconfig

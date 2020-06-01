@@ -1,0 +1,22 @@
+Source: apertium-heb
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.6.0),
+               cg3-dev,
+               debhelper (>= 12),
+               gawk,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-heb.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-heb
+Rules-Requires-Root: no
+
+Package: apertium-heb
+Architecture: all
+Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for LANG1
+ Data package providing Apertium language resources for LANG1

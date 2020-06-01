@@ -1,0 +1,32 @@
+Source: apertium-ckb-eng
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-ckb,
+               apertium-dev (>= 3.6.0),
+               apertium-eng,
+               apertium-lex-tools,
+               cg3-dev,
+               debhelper (>= 12),
+               gawk,
+               pkg-config
+Standards-Version: 4.5.0
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-ckb-eng.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-ckb-eng
+Rules-Requires-Root: no
+
+Package: apertium-ckb-eng
+Architecture: all
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-eng-ckb
+Conflicts: apertium-eng-ckb
+Description: Apertium translation data for the LANG1-LANG2 pair
+ Data package providing Apertium language resources for translating
+ between the LANG1 and LANG2 languages.

@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-swe-eng-$1.tar.gz%" \
+    https://github.com/apertium/apertium-swe-eng/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

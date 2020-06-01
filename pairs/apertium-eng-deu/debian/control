@@ -16,7 +16,7 @@ Build-Depends: apertium-deu,
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eng-deu.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-deu.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-deu
 Rules-Requires-Root: no
 
 Package: apertium-eng-deu

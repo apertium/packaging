@@ -5,6 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-eng,
                apertium-kaz,
                apertium-lex-tools,
                cg3-dev,
@@ -15,7 +16,7 @@ Build-Depends: apertium-dev (>= 3.6.0),
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eng-kaz.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-kaz.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-kaz
 Rules-Requires-Root: no
 
 Package: apertium-eng-kaz

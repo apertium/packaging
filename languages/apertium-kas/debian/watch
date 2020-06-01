@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-kas-$1.tar.gz%" \
+    https://github.com/apertium/apertium-kas/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

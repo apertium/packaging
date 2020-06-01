@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-spa-glg-$1.tar.gz%" \
+    https://github.com/apertium/apertium-spa-glg/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

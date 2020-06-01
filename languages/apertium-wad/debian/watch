@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-wad-$1.tar.gz%" \
+    https://github.com/apertium/apertium-wad/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
