@@ -20,5 +20,5 @@ Rules-Requires-Root: no
 Package: apertium-qve
 Architecture: all
 Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
-Description: Apertium single language data for LANG1
- Data package providing Apertium language resources for LANG1
+Description: Apertium single language data for Eastern Apurímac Quechua
+ Data package providing Apertium language resources for Eastern Apurímac Quechua

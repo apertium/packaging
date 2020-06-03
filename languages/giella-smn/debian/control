@@ -25,6 +25,13 @@ Rules-Requires-Root: no
 
 Package: giella-smn
 Architecture: all
-Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3, hfst, giella-smn-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Giellatekno single language data for Inari Saami
  Data package providing Giellatekno language resources for Inari Saami
+
+Package: giella-smn-speller
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: cg3, divvun-gramcheck, hfst-ospell
+Description: Giellatekno spellers for Inari Sami
+ Data package providing Giellatekno spellers for Inari Sami

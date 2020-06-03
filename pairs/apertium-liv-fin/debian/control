@@ -27,6 +27,6 @@ Depends: apertium (>= 3.6.0),
          ${shlibs:Depends}
 Provides: apertium-fin-liv
 Conflicts: apertium-fin-liv
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Liv-Finnish pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Liv and Finnish languages.

@@ -26,12 +26,12 @@ Rules-Requires-Root: no
 Package: giella-bak
 Architecture: all
 Depends: cg3, hfst, giella-bak-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
-Description: Giellatekno single language data for LANG1
- Data package providing Giellatekno language resources for LANG1
+Description: Giellatekno single language data for Bashkir
+ Data package providing Giellatekno language resources for Bashkir
 
 Package: giella-bak-speller
 Architecture: all
 Depends: ${misc:Depends}
 Suggests: cg3, divvun-gramcheck, hfst-ospell
-Description: Giellatekno spellers for LANG1
- Data package providing Giellatekno spellers for LANG1
+Description: Giellatekno spellers for Bashkir
+ Data package providing Giellatekno spellers for Bashkir

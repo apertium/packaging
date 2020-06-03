@@ -115,9 +115,9 @@
    ["languages/giella-sjt",      "https://github.com/giellalt/lang-sjt"],
    ["languages/giella-skf",      "https://github.com/giellalt/lang-skf"],
    ["languages/giella-sma",      "https://github.com/giellalt/lang-sma"],
-#   ["languages/giella-sme",      "https://github.com/giellalt/lang-sme"], # RAM gobbler
-#   ["languages/giella-smj",      "https://github.com/giellalt/lang-smj"], # RAM gobbler
-#   ["languages/giella-smn",      "https://github.com/giellalt/lang-smn"], # RAM gobbler
+   ["languages/giella-sme",      "https://github.com/giellalt/lang-sme"],
+   ["languages/giella-smj",      "https://github.com/giellalt/lang-smj"],
+   ["languages/giella-smn",      "https://github.com/giellalt/lang-smn"],
    ["languages/giella-sms",      "https://github.com/giellalt/lang-sms"],
    ["languages/giella-som",      "https://github.com/giellalt/lang-som"],
    ["languages/giella-sqi",      "https://github.com/giellalt/lang-sqi"],

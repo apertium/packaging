@@ -30,6 +30,6 @@ Depends: apertium (>= 3.6.0),
          ${shlibs:Depends}
 Provides: apertium-nor-fin
 Conflicts: apertium-nor-fin
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Finnish-Norwegian pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Finnish and Norwegian languages.

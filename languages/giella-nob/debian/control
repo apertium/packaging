@@ -25,6 +25,13 @@ Rules-Requires-Root: no
 
 Package: giella-nob
 Architecture: all
-Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3, hfst, giella-nob-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Giellatekno single language data for Norwegian Bokmål
  Data package providing Giellatekno language resources for Norwegian Bokmål
+
+Package: giella-nob-speller
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: cg3, divvun-gramcheck, hfst-ospell
+Description: Giellatekno spellers for Norwegian Bokmål
+ Data package providing Giellatekno spellers for Norwegian Bokmål

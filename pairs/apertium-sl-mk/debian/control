@@ -16,6 +16,6 @@ Architecture: all
 Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-mk-sl
 Conflicts: apertium-mk-sl
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Slovenian-Macedonian pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Slovenian and Macedonian languages.

@@ -27,6 +27,6 @@ Depends: apertium (>= 3.6.0),
          ${shlibs:Depends}
 Provides: apertium-cat-oci
 Conflicts: apertium-cat-oci
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Occitan (post 1500)-Catalan pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Occitan (post 1500) and Catalan languages.

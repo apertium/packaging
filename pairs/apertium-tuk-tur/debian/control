@@ -29,6 +29,6 @@ Depends: apertium (>= 3.6.0),
          ${shlibs:Depends}
 Provides: apertium-tur-tuk
 Conflicts: apertium-tur-tuk
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Turkmen-Turkish pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Turkmen and Turkish languages.

@@ -23,6 +23,6 @@ Architecture: all
 Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-fin-kpv
 Conflicts: apertium-fin-kpv
-Description: Apertium translation data for the LANG1-LANG2 pair
+Description: Apertium translation data for the Komi-Zyrian-Finnish pair
  Data package providing Apertium language resources for translating
- between the LANG1 and LANG2 languages.
+ between the Komi-Zyrian and Finnish languages.

@@ -25,6 +25,13 @@ Rules-Requires-Root: no
 
 Package: giella-mrj
 Architecture: all
-Depends: cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3, hfst, giella-mrj-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Giellatekno single language data for Western Mari
  Data package providing Giellatekno language resources for Western Mari
+
+Package: giella-mrj-speller
+Architecture: all
+Depends: ${misc:Depends}
+Suggests: cg3, divvun-gramcheck, hfst-ospell
+Description: Giellatekno spellers for Western Mari
+ Data package providing Giellatekno spellers for Western Mari

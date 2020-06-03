@@ -8,5 +8,6 @@
 		"bionic":  {"variant": "ubuntu", "dh": 11, "archs": ["i386", "amd64"]},
 		"eoan":   {"variant": "ubuntu", "dh": 12, "archs": ["amd64"]},
 		"focal":   {"variant": "ubuntu", "dh": 12, "archs": ["amd64"]},
+		"groovy":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		},
 }
