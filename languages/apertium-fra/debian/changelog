@@ -1,3 +1,9 @@
+apertium-fra (1.9.0-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 03 Jun 2020 16:47:08 +0200
+
 apertium-fra (1.8.0-1) unstable; urgency=low
 
   * Update to latest upstream release
