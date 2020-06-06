@@ -333,7 +333,7 @@
    ["pairs/apertium-eng-kir"],
    ["pairs/apertium-eng-lin"],
    ["pairs/apertium-eng-lvs"],
-   ["pairs/apertium-eng-pes"],
+#   ["pairs/apertium-eng-pes"], # Or -pes-eng?
    ["pairs/apertium-eng-sco"],
    ["pairs/apertium-eng-spa"],
    ["pairs/apertium-eng-srn"],
@@ -448,7 +448,7 @@
    ["pairs/apertium-oci-fra"],
    ["pairs/apertium-oci-spa"],
    ["pairs/apertium-olo-fin"],
-   ["pairs/apertium-pes-eng"],
+#   ["pairs/apertium-pes-eng"], # Or -eng-pes?
    ["pairs/apertium-pl-csb"],
    ["pairs/apertium-pl-sk"],
    ["pairs/apertium-pol-ces"],

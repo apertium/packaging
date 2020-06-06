@@ -256,7 +256,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    if (-d "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed") {
       $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
    }
-   if (!$ARGV[0] && !$rebuild && ($oldhash eq $newhash)) {
+   if (!$ARGV[0] && !$rebuild && $oldhash && ($oldhash eq $newhash)) {
       print {$out} "\tno change in tarball - skipping\n";
       goto CLEANUP;
    }

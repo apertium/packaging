@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-cym,
                apertium-dev (>= 3.6.0),
+               apertium-eng,
                cg3-dev,
                debhelper (>= 12),
                gawk,
