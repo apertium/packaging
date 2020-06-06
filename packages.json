@@ -25,6 +25,7 @@
    ["tools/apertium-separable"],
    ["tools/apertium-anaphora",  null, "CMakeLists.txt"],
    ["tools/apertium-eval-translator", null, "CMakeLists.txt"],
+   ["tools/lexd", null, null, "xenial,stretch"],
    ["tools/giella-core",     "https://github.com/giellalt/giella-core"],
    ["tools/giella-common",   "https://github.com/giellalt/giella-shared"],
    ["tools/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko"],
