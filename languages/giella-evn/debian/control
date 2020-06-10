@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-evn
 Architecture: all
-Depends: cg3, hfst, giella-evn-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-evn-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Evenki
  Data package providing Giellatekno language resources for Evenki
 

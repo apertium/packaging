@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-izh
 Architecture: all
-Depends: cg3, hfst, giella-izh-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-izh-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Ingrian
  Data package providing Giellatekno language resources for Ingrian
 

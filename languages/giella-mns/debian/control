@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-mns
 Architecture: all
-Depends: cg3, hfst, giella-mns-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-mns-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Mansi
  Data package providing Giellatekno language resources for Mansi
 

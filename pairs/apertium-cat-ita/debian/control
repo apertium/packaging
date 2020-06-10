@@ -8,8 +8,8 @@ Build-Depends: apertium-cat (>= 2.8.0),
                apertium-dev (>= 3.6.0),
                apertium-ita (>= 0.10.5),
                apertium-lex-tools,
-               debhelper (>= 12),
                cg3-dev,
+               debhelper (>= 12),
                gawk,
                pkg-config
 Standards-Version: 4.5.0

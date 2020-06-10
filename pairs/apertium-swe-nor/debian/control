@@ -21,10 +21,7 @@ Rules-Requires-Root: no
 
 Package: apertium-swe-nor
 Architecture: all
-Depends: apertium (>= 3.6.0),
-         apertium-lex-tools,
-         cg3,
-         ${misc:Depends}
+Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}
 Provides: apertium-nor-swe
 Conflicts: apertium-nor-swe
 Description: Apertium translation data for the Swedish-Norwegian pair

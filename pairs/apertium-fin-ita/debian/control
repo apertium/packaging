@@ -20,7 +20,11 @@ Rules-Requires-Root: no
 
 Package: apertium-fin-ita
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-ita-fin
 Conflicts: apertium-ita-fin
 Description: Apertium translation data for the Finnish-Italian pair

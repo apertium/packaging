@@ -20,7 +20,11 @@ Rules-Requires-Root: no
 
 Package: apertium-fin-ces
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-ces-fin
 Conflicts: apertium-ces-fin
 Description: Apertium translation data for the Finnish-Czech pair

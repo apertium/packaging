@@ -20,10 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-nno-nob
 Architecture: all
-Depends: apertium (>= 3.6.0),
-         apertium-lex-tools,
-         cg3,
-         ${misc:Depends}
+Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}
 Provides: apertium-nob-nno
 Conflicts: apertium-nob-nno
 Description: Apertium translation data for the Norwegian Nynorsk-Norwegian Bokmål pair

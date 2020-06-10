@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-est
 Architecture: all
-Depends: cg3, hfst, giella-est-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-est-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: giella-est
 Conflicts: giella-est
 Description: Giellatekno single language data for Estonian

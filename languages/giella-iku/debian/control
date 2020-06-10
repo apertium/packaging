@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-iku
 Architecture: all
-Depends: cg3, hfst, giella-iku-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-iku-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Inuktitut
  Data package providing Giellatekno language resources for Inuktitut
 

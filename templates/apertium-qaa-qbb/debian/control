@@ -5,8 +5,8 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.6.0),
-               apertium-qaa,
                apertium-lex-tools,
+               apertium-qaa,
                apertium-qbb,
                cg3-dev,
                debhelper (>= 12),

@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-ndl
 Architecture: all
-Depends: cg3, hfst, giella-ndl-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-ndl-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Ndolo
  Data package providing Giellatekno language resources for Ndolo
 

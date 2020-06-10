@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-lav
 Architecture: all
-Depends: cg3, hfst, giella-lav-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-lav-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Latvian
  Data package providing Giellatekno language resources for Latvian
 

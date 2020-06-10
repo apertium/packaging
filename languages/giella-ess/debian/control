@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-ess
 Architecture: all
-Depends: cg3, hfst, giella-ess-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-ess-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Central Siberian Yupik
  Data package providing Giellatekno language resources for Central Siberian Yupik
 

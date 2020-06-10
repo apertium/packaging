@@ -7,8 +7,8 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
 Build-Depends: apertium-dev (>= 3.6.0),
                cg3-dev,
                debhelper (>= 12),
-               hfst,
                gawk,
+               hfst,
                pkg-config
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/

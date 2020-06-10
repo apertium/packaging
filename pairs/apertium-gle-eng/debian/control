@@ -20,7 +20,12 @@ Rules-Requires-Root: no
 
 Package: apertium-gle-eng
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-eng-gle
 Conflicts: apertium-eng-gle
 Description: Apertium translation data for the Irish-English pair

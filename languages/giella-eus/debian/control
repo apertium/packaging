@@ -25,7 +25,11 @@ Rules-Requires-Root: no
 
 Package: giella-eus
 Architecture: all
-Depends: cg3, hfst, giella-eus-speller (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3,
+         giella-eus-speller (= ${binary:Version}),
+         hfst,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Giellatekno single language data for Basque
  Data package providing Giellatekno language resources for Basque
 

@@ -20,7 +20,11 @@ Rules-Requires-Root: no
 
 Package: apertium-fin-spa
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.6.0),
+         apertium-lex-tools,
+         cg3,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-spa-fin
 Conflicts: apertium-spa-fin
 Description: Apertium translation data for the Finnish-Spanish pair

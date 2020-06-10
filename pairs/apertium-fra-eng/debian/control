@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-eng,
-               apertium-dev (>= 3.6.0),
+Build-Depends: apertium-dev (>= 3.6.0),
+               apertium-eng,
                apertium-fra,
                apertium-lex-tools,
                cg3-dev,
