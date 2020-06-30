@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.6.0),
                apertium-lex-tools,
+               apertium-recursive,
                apertium-separable,
                apertium-tur,
                apertium-uzb,
@@ -24,6 +25,7 @@ Package: apertium-tur-uzb
 Architecture: all
 Depends: apertium (>= 3.6.0),
          apertium-lex-tools,
+         apertium-recursive,
          apertium-separable,
          cg3,
          hfst,

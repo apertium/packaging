@@ -7,6 +7,7 @@ debian/tmp/usr/bin/apertium-multiple-translations
 debian/tmp/usr/bin/apertium-postchunk
 debian/tmp/usr/bin/apertium-postlatex
 debian/tmp/usr/bin/apertium-postlatex-raw
+debian/tmp/usr/bin/apertium-posttransfer
 debian/tmp/usr/bin/apertium-prelatex
 debian/tmp/usr/bin/apertium-preprocess-transfer
 debian/tmp/usr/bin/apertium-pretransfer

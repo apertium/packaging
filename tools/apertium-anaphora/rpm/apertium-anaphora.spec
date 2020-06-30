@@ -46,9 +46,14 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %endif
 rm -f %{buildroot}/%{_libdir}/*.la
 
+%check
+export LC_ALL=%(locale -a | grep -i utf | head -n1)
+ctest -V || make test
+
 %files
 %defattr(-,root,root)
 %{_bindir}/*
+%{_datadir}/apertium-anaphora
 %{_libdir}/pkgconfig/*
 
 %changelog

@@ -37,7 +37,7 @@ Python 3 module for Apertium lexical selection module
 %build
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
-%configure --enable-python-bindings
+%configure --with-yasmet --enable-python-bindings
 make %{?_smp_mflags}
 
 %install

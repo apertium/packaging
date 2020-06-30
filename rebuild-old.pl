@@ -18,12 +18,13 @@ use FindBin qw($Bin);
 use lib "$Bin/";
 use Helpers;
 
-`rm -rf /opt/autopkg/tmp`;
-`mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;
 if (-s '/opt/autopkg/rebuild.lock') {
    die "Another instance of builder is running - bailing out!\n";
 }
 `date -u > /opt/autopkg/rebuild.lock`;
+
+`rm -rf /opt/autopkg/tmp`;
+`mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;
 
 use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
@@ -392,6 +393,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          my $script = "#!/bin/bash\n";
          $script .= "set -e\n";
          $script .= "export 'VERBOSE=1' 'V=1'\n";
+         $script .= "export 'CTEST_OUTPUT_ON_FAILURE=1'\n";
          $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
          $script .= "cd /build/${pkname}-*/\n";
          $script .= "timeout 120m nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";

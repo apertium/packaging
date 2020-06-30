@@ -124,6 +124,7 @@ make check
 %{_bindir}/apertium-postchunk
 %{_bindir}/apertium-postlatex
 %{_bindir}/apertium-postlatex-raw
+%{_bindir}/apertium-posttransfer
 %{_bindir}/apertium-prelatex
 %{_bindir}/apertium-preprocess-transfer
 %{_bindir}/apertium-pretransfer
