@@ -12,7 +12,6 @@ Build-Depends: apertium-dev (>= 3.6.0),
                hfst-ospell-dev,
                libhfst-dev,
                pkg-config,
-               python,
                zip
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
