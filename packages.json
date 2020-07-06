@@ -23,7 +23,7 @@
    ["tools/apertium-apy",       null, "apertium_apy/apy.py"],
    ["tools/apertium-recursive"],
    ["tools/apertium-separable"],
-   ["tools/apertium-anaphora",  null, "CMakeLists.txt"],
+   ["tools/apertium-anaphora"],
    ["tools/apertium-eval-translator", null, "CMakeLists.txt"],
    ["tools/lexd", null, null, "xenial,stretch"],
    ["tools/giella-core",     "https://github.com/giellalt/giella-core"],

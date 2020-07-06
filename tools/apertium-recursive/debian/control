@@ -11,8 +11,7 @@ Build-Depends: apertium-dev (>= 3.6.0),
                libxml2-dev,
                lttoolbox-dev (>= 3.5.0),
                pkg-config,
-               python3,
-               zlib1g-dev
+               python3
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-recursive.git

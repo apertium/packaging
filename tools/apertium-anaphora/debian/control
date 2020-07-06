@@ -4,7 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake,
+Build-Depends: autoconf,
+               autotools-dev,
                debhelper (>= 9),
                libxml2-dev,
                lttoolbox-dev,
@@ -17,6 +18,6 @@ Rules-Requires-Root: no
 
 Package: apertium-anaphora
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: libxml2-utils, ${misc:Depends}, ${shlibs:Depends}
 Description: Anaphora resolution module
  This package provides a module for resolving anaphora in the pipeline.

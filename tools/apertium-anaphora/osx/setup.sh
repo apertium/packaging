@@ -1,1 +1,2 @@
-./cmake.sh
+autoreconf -fvi
+./configure

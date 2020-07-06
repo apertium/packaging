@@ -10,8 +10,7 @@ Build-Depends: apertium-dev (>= 3.6.0),
                dh-autoreconf,
                libxml2-dev,
                lttoolbox-dev (>= 3.5.0),
-               pkg-config,
-               zlib1g-dev
+               pkg-config
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-separable.git
