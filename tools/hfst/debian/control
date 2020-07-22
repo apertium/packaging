@@ -6,7 +6,6 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
                automake,
-               autotools-dev,
                bison,
                debhelper (>= 9.0),
                dh-autoreconf,

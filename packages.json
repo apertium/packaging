@@ -32,6 +32,7 @@
    ["tools/matxin",     "https://github.com/matxin/matxin"],
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
    ["tools/libdivvun", "https://github.com/divvun/libdivvun"],
+   ["tools/transfuse",       "https://github.com/TinoDidriksen/transfuse", "CMakeLists.txt"],
    ["tools/apertium-all-dev", null, "README"],
 
    # Then languages

@@ -176,7 +176,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    my $oldversion = '0.0.0';
    if (-e "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname") {
-      $oldversion = `dpkg -I \$(ls -1 /home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/*~sid*.deb | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+([~+][gsr][-.0-9a-f]+)?(~[-0-9a-f]+)?' | head -n 1`;
+      $oldversion = `dpkg -I \$(ls -1 /home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/*~sid*.deb | grep -v i386 | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+([~+][gsr][-.0-9a-f]+)?(~[-0-9a-f]+)?' | head -n 1`;
       chomp($oldversion);
    }
    print {$out} "\texisting: $oldversion\n";
@@ -602,6 +602,8 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
       $subject .= 'Success';
    }
    `echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+
+   `docker system prune -f 2>&1`;
 }
 
 if ($win32) {
