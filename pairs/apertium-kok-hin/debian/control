@@ -1,34 +1,34 @@
-Source: apertium-hin-pan
+Source: apertium-kok-hin
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.6.0),
+Build-Depends: apertium-anaphora,
+               apertium-dev (>= 3.6.0),
                apertium-hin,
+               apertium-kok,
                apertium-lex-tools,
-               apertium-separable,
-               apertium-pan,
                cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
-Vcs-Git: https://salsa.debian.org/science-team/apertium-hin-pan.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-hin-pan
+Vcs-Git: https://salsa.debian.org/science-team/apertium-kok-hin.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-kok-hin
 Rules-Requires-Root: no
 
-Package: apertium-hin-pan
+Package: apertium-kok-hin
 Architecture: all
 Depends: apertium (>= 3.6.0),
+         apertium-anaphora,
          apertium-lex-tools,
-         apertium-separable,
          cg3,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-pan-hin
-Conflicts: apertium-pan-hin
-Description: Apertium translation data for the Hindi-Panjabi pair
+Provides: apertium-hin-kok
+Conflicts: apertium-hin-kok
+Description: Apertium translation data for the Konkani (macrolanguage)-Hindi pair
  Data package providing Apertium language resources for translating
- between the Hindi and Panjabi languages.
+ between the Konkani (macrolanguage) and Hindi languages.

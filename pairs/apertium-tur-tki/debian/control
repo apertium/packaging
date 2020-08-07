@@ -1,34 +1,32 @@
-Source: apertium-hin-pan
+Source: apertium-tur-tki
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.6.0),
-               apertium-hin,
                apertium-lex-tools,
-               apertium-separable,
-               apertium-pan,
+               apertium-tki,
+               apertium-tur,
                cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/
-Vcs-Git: https://salsa.debian.org/science-team/apertium-hin-pan.git
-Vcs-Browser: https://salsa.debian.org/science-team/apertium-hin-pan
+Vcs-Git: https://salsa.debian.org/science-team/apertium-tur-tki.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-tur-tki
 Rules-Requires-Root: no
 
-Package: apertium-hin-pan
+Package: apertium-tur-tki
 Architecture: all
 Depends: apertium (>= 3.6.0),
          apertium-lex-tools,
-         apertium-separable,
          cg3,
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-pan-hin
-Conflicts: apertium-pan-hin
-Description: Apertium translation data for the Hindi-Panjabi pair
+Provides: apertium-tki-tur
+Conflicts: apertium-tki-tur
+Description: Apertium translation data for the Turkish-Iraqi Türkmen pair
  Data package providing Apertium language resources for translating
- between the Hindi and Panjabi languages.
+ between the Turkish and Iraqi Türkmen languages.
