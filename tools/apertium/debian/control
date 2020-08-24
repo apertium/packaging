@@ -38,7 +38,7 @@ Depends: libapertium3-3.6-1 (= ${binary:Version}),
          xsltproc,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: unzip, zip
+Recommends: transfuse, unzip, zip
 Description: Shallow-transfer machine translation engine
  An open-source shallow-transfer machine translation
  engine, Apertium is initially aimed at related-language pairs.
@@ -92,6 +92,7 @@ Depends: apertium (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
+Recommends: apertium-get
 Conflicts: libapertium3-dev
 Replaces: libapertium3-dev
 Description: Development tools and library for Apertium

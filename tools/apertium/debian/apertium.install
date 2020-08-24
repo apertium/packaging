@@ -17,6 +17,7 @@ debian/tmp/usr/bin/apertium-tmxbuild
 debian/tmp/usr/bin/apertium-transfer
 debian/tmp/usr/bin/apertium-unformat
 debian/tmp/usr/bin/apertium-utils-fixlatex
+debian/tmp/usr/bin/apertium-wblank-*
 debian/tmp/usr/share/apertium
 debian/tmp/usr/share/man/man1/apertium-des*
 debian/tmp/usr/share/man/man1/apertium-interchunk.*

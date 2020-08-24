@@ -33,6 +33,7 @@
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
    ["tools/libdivvun", "https://github.com/divvun/libdivvun"],
    ["tools/transfuse",       "https://github.com/TinoDidriksen/transfuse", "CMakeLists.txt"],
+   ["tools/apertium-get", null, "CMakeLists.txt"],
    ["tools/apertium-all-dev", null, "README"],
 
    # Then languages
@@ -486,6 +487,7 @@
    ["pairs/apertium-sl-mk"],
    ["pairs/apertium-slv-ita"],
    ["pairs/apertium-slv-spa"],
+   ["pairs/apertium-sma-nob"],
    ["pairs/apertium-sme-est"],
    ["pairs/apertium-sme-fin"],
    ["pairs/apertium-sme-nob"],

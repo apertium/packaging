@@ -8,7 +8,7 @@ echo ""
 echo "Building $1 from $2"
 echo ""
 
-timeout 180m docker run --rm --memory "$AUTOPKG_MAX_MEM" --memory-swap "$AUTOPKG_MAX_SWAP" --privileged --network none --user '1234:1234' -v "$2/:/build/" "$1-build" /build/build.sh 2>&1 | tee $2/build.log
+timeout 120m docker run --rm --memory "$AUTOPKG_MAX_MEM" --memory-swap "$AUTOPKG_MAX_SWAP" --privileged --network none --user '1234:1234' -v "$2/:/build/" "$1-build" /build/build.sh 2>&1 | tee $2/build.log
 EC=$?
 #if [ $EC -ne 0 ]; then
 #	docker stop -t 10 "$1"

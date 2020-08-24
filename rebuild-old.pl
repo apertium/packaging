@@ -59,8 +59,8 @@ my $authors = JSON->new->relaxed->decode(file_get_contents("$Bin/authors.json"))
 my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"));
 
 use Sys::MemInfo qw(totalmem);
-my $maxmem = int((totalmem() * 0.80)/(1024 * 1024));
-my $maxswap = $maxmem + 1024;
+my $maxmem = int((totalmem() * 0.85)/(1024 * 1024));
+my $maxswap = $maxmem + 10240;
 $ENV{'AUTOPKG_MAX_MEM'} = "${maxmem}m";
 $ENV{'AUTOPKG_MAX_SWAP'} = "${maxswap}m";
 
@@ -220,7 +220,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    $ENV{'AUTOPKG_DATA_ONLY'} = '';
    my $is_data = '';
    copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
-   if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-get$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
@@ -265,6 +265,11 @@ foreach my $k (@{$pkgs{'order'}}) {
    # Track whether this build resulted in actual data changes, because it's pointless to trigger downstream rebuilds if not
    my $changed = 0;
    my $failed = '';
+
+   my $config = '';
+   if (-s "$pkg->[0]/config.json") {
+      $config = JSON->new->relaxed->decode(file_get_contents("$pkg->[0]/config.json"));
+   }
 
    print {$out} "\tlaunching build\n";
    foreach my $distro (keys %{$targets->{'distros'}}) {
@@ -394,9 +399,14 @@ foreach my $k (@{$pkgs{'order'}}) {
          $script .= "set -e\n";
          $script .= "export 'VERBOSE=1' 'V=1'\n";
          $script .= "export 'CTEST_OUTPUT_ON_FAILURE=1'\n";
-         $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
+         if ($config && $config->{'max-threads'}) {
+            $script .= "export 'DEB_BUILD_OPTIONS=parallel=".$config->{'max-threads'}."'\n";
+         }
+         else {
+            $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
+         }
          $script .= "cd /build/${pkname}-*/\n";
-         $script .= "timeout 120m nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
+         $script .= "timeout 180m nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
          file_put_contents("$dpath/build.sh", $script);
          `chmod +x '$dpath/build.sh'`;
          `chown -R 1234:1234 '$dpath'`;
