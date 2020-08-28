@@ -17,7 +17,7 @@ function install_dep {
 	pushd /opt/autopkg/tmp/osx.$$
 	rm -rf $1
 	echo "Installing $1"
-	7za x -y ~apertium/public_html/osx/$BUILDTYPE/$1-latest.7z
+	7za x -y ~apertium/public_html/osx/$AUTOPKG_BUILDTYPE/$1-latest.7z
 	rsync -avu $1/* /opt/osx/
 	popd
 	rm -rf /opt/autopkg/tmp/osx.$$

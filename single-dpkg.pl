@@ -52,7 +52,7 @@ if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;
 }
 
-$ENV{'BUILDTYPE'} = ($opts{'auto'} == 0) ? 'release' : 'nightly';
+$ENV{'AUTOPKG_BUILDTYPE'} = ($opts{'auto'} == 0) ? 'release' : 'nightly';
 
 foreach my $k (@{$pkgs{'order'}}) {
    my $pkg = $pkgs{'packages'}->{$k};
@@ -69,8 +69,8 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    my ($pkname) = ($pkg->[0] =~ m@([^/]+)$@);
 
-   $ENV{'PKPATH'} = "$Bin/".$pkg->[0];
-   $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
+   $ENV{'AUTOPKG_PKPATH'} = "$Bin/".$pkg->[0];
+   $ENV{'AUTOPKG_AUTOPATH'} = "/opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$pkname";
 
    print "Making deb source for $pkname $pkg->[0]\n";
    my $gv = `$Bin/get-version.pl --rev=$opts{rev} --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$pkname'`;

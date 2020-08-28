@@ -20,8 +20,8 @@ mv win32 apertium-all-dev
 chmod -R uga+r apertium-all-dev
 zip -9r apertium-all-dev.zip apertium-all-dev
 7za a -l apertium-all-dev.7z apertium-all-dev
-mv -fv apertium-all-dev.zip ~apertium/public_html/$WINX/$BUILDTYPE/
-mv -fv apertium-all-dev.7z ~apertium/public_html/$WINX/$BUILDTYPE/
+mv -fv apertium-all-dev.zip ~apertium/public_html/$AUTOPKG_WINX/$AUTOPKG_BUILDTYPE/
+mv -fv apertium-all-dev.7z ~apertium/public_html/$AUTOPKG_WINX/$AUTOPKG_BUILDTYPE/
 rm -rf apertium-all-dev
 
 # CG-3 IDE
@@ -34,8 +34,8 @@ rm -rf cg3ide
 mv win32 cg3ide
 zip -9r cg3ide.zip cg3ide
 7za a -l cg3ide.7z cg3ide
-mv -fv cg3ide.zip ~apertium/public_html/$WINX/$BUILDTYPE/cg3ide-[0-9]*.zip
-mv -fv cg3ide.7z ~apertium/public_html/$WINX/$BUILDTYPE/cg3ide-[0-9]*.7z
+mv -fv cg3ide.zip ~apertium/public_html/$AUTOPKG_WINX/$AUTOPKG_BUILDTYPE/cg3ide-[0-9]*.zip
+mv -fv cg3ide.7z ~apertium/public_html/$AUTOPKG_WINX/$AUTOPKG_BUILDTYPE/cg3ide-[0-9]*.7z
 rm -rf cg3ide
 
-chown -R apertium:apertium ~apertium/public_html/$WINX
+chown -R apertium:apertium ~apertium/public_html/$AUTOPKG_WINX

@@ -1,5 +1,1 @@
-#!/bin/bash
-set -e
-set -o pipefail
-svn export https://github.com/giellalt/giella-core/trunk/am-shared
-grep -rlF '(top_srcdir)/../giella-core/am-shared' * | xargs -rn1 perl -pe 's~[(]top_srcdir[)]/[.][.]/giella-core/am-shared~(top_srcdir)/am-shared~g;' -i
+../../../hooks/giella-lang-post-clone

@@ -25,7 +25,7 @@ export EXTRA_INST=""
 rm -rf /opt/osx
 rm -rf /opt/osx-pkg/$PKG_NAME
 
-if [[ "$BUILD_VCS" == "git" ]]; then
+if [[ "$AUTOPKG_VCS" == "git" ]]; then
 	rm -rf /opt/osx-build/$PKG_NAME
 	cp -a /opt/autopkg/tmp/git/$PKG_NAME.git /opt/osx-build/$PKG_NAME
 	cd /opt/osx-build/$PKG_NAME

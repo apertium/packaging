@@ -26,7 +26,7 @@ my %opts = (
 	'dv' => 1,
 	'rev' => 'HEAD',
 	'auto' => 1,
-	'oscp' => $ENV{'BUILDTYPE'} || 'nightly',
+	'oscp' => $ENV{'AUTOPKG_BUILDTYPE'} || 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -45,14 +45,14 @@ my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u '+\%a \%b \%d \%Y'`;
 chomp($date);
 
-my $autopath = $ENV{AUTOPATH};
+my $autopath = $ENV{AUTOPKG_AUTOPATH};
 chdir $autopath;
 
 #`svn export $opts{r}/rpm >/dev/null 2>&1`;
-if (!(-s "$ENV{PKPATH}/rpm/$pkname.spec")) {
-   die "No such file $ENV{PKPATH}/rpm/$pkname.spec !\n";
+if (!(-s "$ENV{AUTOPKG_PKPATH}/rpm/$pkname.spec")) {
+   die "No such file $ENV{AUTOPKG_PKPATH}/rpm/$pkname.spec !\n";
 }
-print `cp -av --reflink=auto '$ENV{PKPATH}/rpm' ./`;
+print `cp -av --reflink=auto '$ENV{AUTOPKG_PKPATH}/rpm' ./`;
 my $spec = `cat rpm/$pkname.spec`;
 
 chdir "/root/osc/$opts{'oscp'}/";

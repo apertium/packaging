@@ -26,7 +26,7 @@ my %opts = (
 	'dv' => 1,
 	'rev' => 'HEAD',
 	'auto' => 1,
-	'oscp' => $ENV{'BUILDTYPE'} || 'nightly',
+	'oscp' => $ENV{'AUTOPKG_BUILDTYPE'} || 'nightly',
 );
 GetOptions(
 	'u=s' => \$opts{'u'},
@@ -48,7 +48,7 @@ chomp($date);
 print `mkdir -pv /opt/autopkg/tmp/autorpm.$$ 2>&1`;
 chdir "/opt/autopkg/tmp/autorpm.$$";
 
-my $autopath = $ENV{AUTOPATH};
+my $autopath = $ENV{AUTOPKG_AUTOPATH};
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
 print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.gz 2>&1`;
 print `tar -Jxvf data.tar.xz 2>&1`;
@@ -99,7 +99,7 @@ print `osc up 2>&1`;
 print `osc rm --force * 2>&1`;
 print `cp -av --reflink=auto /opt/autopkg/tmp/autorpm.$$/$pkname\_$opts{'v'}.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 
-my $btype = "\u$ENV{BUILDTYPE}";
+my $btype = "\u$ENV{AUTOPKG_BUILDTYPE}";
 
 my $spec = <<SPEC;
 Name: $pkname
@@ -150,7 +150,7 @@ CHLOG
 file_put_contents("/root/osc/$opts{'oscp'}/$pkname/$pkname.spec", $spec);
 
 my $meta = <<META;
-<package name="$pkname" project="home:TinoDidriksen:$ENV{BUILDTYPE}">
+<package name="$pkname" project="home:TinoDidriksen:$ENV{AUTOPKG_BUILDTYPE}">
   <title></title>
   <description></description>
   <build>

@@ -7,7 +7,6 @@ debian/tmp/usr/bin/apertium-gen-reformat
 debian/tmp/usr/bin/apertium-genvdix
 debian/tmp/usr/bin/apertium-genvldix
 debian/tmp/usr/bin/apertium-genvrdix
-debian/tmp/usr/bin/apertium-get
 debian/tmp/usr/bin/apertium-metalrx
 debian/tmp/usr/bin/apertium-metalrx-to-lrx
 debian/tmp/usr/bin/apertium-perceptron-trace

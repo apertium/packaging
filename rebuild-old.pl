@@ -42,7 +42,7 @@ my $rop = GetOptions(
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
-$ENV{'BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
+$ENV{'AUTOPKG_BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
 $ENV{'DOCKER_BUILDKIT'} = 1;
 $ENV{'BUILDKIT_PROGRESS'} = 'plain';
 $ENV{'PROGRESS_NO_TRUNC'} = 1;
@@ -73,7 +73,7 @@ my $osx = 0;
 use IO::Tee;
 open my $log, ">/opt/autopkg/tmp/rebuild.$$.log";
 my $out2 = IO::Tee->new($log, \*STDOUT);
-print {$out2} "Build $ENV{BUILDTYPE} started ".`date -u`;
+print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} started ".`date -u`;
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;
@@ -116,8 +116,8 @@ foreach my $k (@{$pkgs{'order'}}) {
    open my $pkglog, ">$logpath/rebuild.log";
    my $out = IO::Tee->new($out2, $pkglog);
 
-   $ENV{'PKPATH'} = "$Bin/".$pkg->[0];
-   $ENV{'AUTOPATH'} = "/opt/autopkg/$ENV{BUILDTYPE}/$pkname";
+   $ENV{'AUTOPKG_PKPATH'} = "$Bin/".$pkg->[0];
+   $ENV{'AUTOPKG_AUTOPATH'} = "/opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$pkname";
    $ENV{'AUTOPKG_LOGPATH'} = $logpath;
 
    if (!$pkg->[1]) {
@@ -131,10 +131,10 @@ foreach my $k (@{$pkgs{'order'}}) {
       $pkg->[3] = '';
    }
 
-   $ENV{'BUILD_VCS'} = 'svn';
+   $ENV{'AUTOPKG_VCS'} = 'svn';
    my $pkpath = '';
    if ($pkg->[1] =~ m@^https://github.com/[^/]+/([^/]+)$@) {
-      $ENV{'BUILD_VCS'} = 'git';
+      $ENV{'AUTOPKG_VCS'} = 'git';
       $pkpath = $1;
    }
 
@@ -175,8 +175,8 @@ foreach my $k (@{$pkgs{'order'}}) {
       $first = substr($pkname, 0, 4);
    }
    my $oldversion = '0.0.0';
-   if (-e "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname") {
-      $oldversion = `dpkg -I \$(ls -1 /home/apertium/public_html/apt/$ENV{BUILDTYPE}/pool/main/$first/$pkname/*~sid*.deb | grep -v i386 | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+([~+][gsr][-.0-9a-f]+)?(~[-0-9a-f]+)?' | head -n 1`;
+   if (-e "/home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/pool/main/$first/$pkname") {
+      $oldversion = `dpkg -I \$(ls -1 /home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/pool/main/$first/$pkname/*~sid*.deb | grep -v i386 | head -n1) | grep 'Version:' | egrep -o '[-.0-9]+([~+][gsr][-.0-9a-f]+)?(~[-0-9a-f]+)?' | head -n 1`;
       chomp($oldversion);
    }
    print {$out} "\texisting: $oldversion\n";
@@ -250,12 +250,12 @@ foreach my $k (@{$pkgs{'order'}}) {
    unlink("/opt/autopkg/rules.$$");
 
    my $oldhash = '';
-   my $newhash = `ls -1 --color=no /opt/autopkg/$ENV{BUILDTYPE}/$pkname/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
-   if (-d "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname") {
-      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   my $newhash = `ls -1 --color=no /opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$pkname/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   if (-d "/home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/source/$pkname") {
+      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/source/$pkname/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
    }
-   if (-d "/home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed") {
-      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{BUILDTYPE}/source/$pkname/failed/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
+   if (-d "/home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/source/$pkname/failed") {
+      $oldhash = `ls -1 --color=no /home/apertium/public_html/apt/$ENV{AUTOPKG_BUILDTYPE}/source/$pkname/failed/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
    }
    if (!$ARGV[0] && !$rebuild && $oldhash && ($oldhash eq $newhash)) {
       print {$out} "\tno change in tarball - skipping\n";
@@ -283,7 +283,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             next;
          }
 
-         my $dpath = $ENV{'AUTOPATH'}."/$arch/$distro";
+         my $dpath = $ENV{'AUTOPKG_AUTOPATH'}."/$arch/$distro";
 
          my $control = read_control((glob("$dpath/*/debian/control"))[0]);
          my ($bdeps) = ($control =~ m@Build-Depends:\s*([^\n]+)@);
@@ -348,7 +348,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "RUN echo 'Package: *' > /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'Pin: origin apertium.projectjj.com' >> /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
-            $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
+            $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{AUTOPKG_BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
             $docker .= "\n";
             foreach my $dep (@our_deps) {
                $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install $dep\n";
@@ -457,13 +457,13 @@ foreach my $k (@{$pkgs{'order'}}) {
 
       if (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
-         $ENV{'BITWIDTH'} = 'i686';
-         $ENV{'WINX'} = 'win32';
+         $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
+         $ENV{'AUTOPKG_WINX'} = 'win32';
          `bash -c '. $dir/win32-pre.sh; . $dir/$pkg->[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/$pkg->[0]' 2>$logpath/win32.log >&2`;
 
          print {$out} "\tbuilding win64\n";
-         $ENV{'BITWIDTH'} = 'x86_64';
-         $ENV{'WINX'} = 'win64';
+         $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
+         $ENV{'AUTOPKG_WINX'} = 'win64';
          `bash -c '. $dir/win32-pre.sh; . $dir/$pkg->[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/$pkg->[0]' 2>$logpath/win64.log >&2`;
 
          $win32 = 1;
@@ -496,7 +496,7 @@ foreach my $k (@{$pkgs{'order'}}) {
 
       # Determine who was most likely responsible for breaking the build
       my $blames = '';
-      if ($ENV{'BUILD_VCS'} eq 'git') {
+      if ($ENV{'AUTOPKG_VCS'} eq 'git') {
          my ($oldrev) = ($oldversion =~ m@^\d+\.\d+\.\d+\+g\d+~([0-9a-f]+)@);
          if (!$oldrev) {
             goto CLEANUP;
@@ -534,7 +534,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
       }
 
-      my $subject = "$pkg->[0] failed $ENV{BUILDTYPE} build";
+      my $subject = "$pkg->[0] failed $ENV{AUTOPKG_BUILDTYPE} build";
       # Don't send individual emails if this is a single package build
       if (!$ARGV[0] && $cc ne '') {
          `cat $logpath/rebuild.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
@@ -555,7 +555,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    if (-s "/home/apertium/rpmbuild/SRPMS/$pkname-$version-$distv.src.rpm") {
       open my $yumlog, ">$logpath/createrepo.log";
       my %distros;
-      `rm -rf /home/apertium/public_html/yum/$ENV{BUILDTYPE}/*/$first/$pkname`;
+      `rm -rf /home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/*/$first/$pkname`;
       my $rpms = `find /home/apertium/mock/ -type f -name '*.rpm'`;
       chomp($rpms);
       foreach my $rpm (split(/\n/, $rpms)) {
@@ -564,16 +564,16 @@ foreach my $k (@{$pkgs{'order'}}) {
          $nc =~ s@\.centos@@g;
          my ($distro,$arch) = $nc =~ m@\.([^.]+)\.([^.]+)\.rpm$@;
          $distros{$distro} = 1;
-         `mkdir -p /home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/$first/$pkname`;
+         `mkdir -p /home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/$distro/$first/$pkname`;
          `su apertium -c "/home/apertium/bin/rpmsign.exp '$rpm'"`;
-         print {$yumlog} `mv -fv '$rpm' /home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/$first/$pkname/`;
+         print {$yumlog} `mv -fv '$rpm' /home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/$distro/$first/$pkname/`;
       }
       `chown -R apertium:apertium /home/apertium/public_html/yum`;
       foreach my $distro (keys(%distros)) {
          print {$yumlog} "Recreating $distro yum repo\n";
-         print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/'"`;
-         unlink("/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/repodata/repomd.xml.asc");
-         `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/$ENV{BUILDTYPE}/$distro/repodata/repomd.xml'"`;
+         print {$yumlog} `su apertium -c "createrepo --database '/home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/$distro/'"`;
+         unlink("/home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/$distro/repodata/repomd.xml.asc");
+         `su apertium -c "gpg --detach-sign --armor '/home/apertium/public_html/yum/$ENV{AUTOPKG_BUILDTYPE}/$distro/repodata/repomd.xml'"`;
       }
       close $yumlog;
    }
@@ -618,13 +618,13 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
 
 if ($win32) {
    print {$out2} "Combining Win32 builds\n";
-   $ENV{'BITWIDTH'} = 'i686';
-   $ENV{'WINX'} = 'win32';
+   $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
+   $ENV{'AUTOPKG_WINX'} = 'win32';
    `$Bin/win32-combine.sh`;
 
    print {$out2} "Combining Win64 builds\n";
-   $ENV{'BITWIDTH'} = 'x86_64';
-   $ENV{'WINX'} = 'win64';
+   $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
+   $ENV{'AUTOPKG_WINX'} = 'win64';
    `$Bin/win32-combine.sh`;
 }
 if ($osx) {
@@ -632,7 +632,7 @@ if ($osx) {
    `$Bin/osx-combine.sh`;
 }
 
-print {$out2} "Build $ENV{BUILDTYPE} stopped at ".`date -u`;
+print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;
 unlink("/opt/autopkg/tmp/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');

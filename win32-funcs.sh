@@ -17,7 +17,7 @@ function install_dep {
 	pushd /opt/autopkg/tmp/win32.$$
 	rm -rf $1
 	echo "Installing $1"
-	7za x -y ~apertium/public_html/$WINX/$BUILDTYPE/$1-latest.7z
+	7za x -y ~apertium/public_html/$AUTOPKG_WINX/$AUTOPKG_BUILDTYPE/$1-latest.7z
 	rsync -avu $1/* /opt/win32/
 	popd
 	rm -rf /opt/autopkg/tmp/win32.$$

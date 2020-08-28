@@ -12,7 +12,7 @@ BEGIN {
 }
 use open qw( :encoding(UTF-8) :std );
 
-my $bitwidth = $ENV{'BITWIDTH'} || 'i686';
+my $bitwidth = $ENV{'AUTOPKG_BITWIDTH'} || 'i686';
 
 my @locs = (
    "/opt/win32/bin",

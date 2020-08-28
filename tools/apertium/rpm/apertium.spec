@@ -166,7 +166,6 @@ make check
 %{_bindir}/apertium-genvdix
 %{_bindir}/apertium-genvldix
 %{_bindir}/apertium-genvrdix
-%{_bindir}/apertium-get
 %{_bindir}/apertium-metalrx
 %{_bindir}/apertium-metalrx-to-lrx
 %{_bindir}/apertium-perceptron-trace

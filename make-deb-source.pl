@@ -80,7 +80,7 @@ if (-s $opts{p}.'/exclude.txt') {
 my ($pkname) = ($opts{p} =~ m@([-\w]+)$@);
 my $date = `date -u -R`; # Not chomped, but that's ok since it's used last on a line
 
-my $autopath = $ENV{AUTOPATH};
+my $autopath = $ENV{AUTOPKG_AUTOPATH};
 print `rm -rf '$autopath' 2>&1`;
 print `mkdir -pv '$autopath' 2>&1`;
 chdir $autopath;
@@ -93,7 +93,7 @@ if ($opts{'u'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    chdir $autopath;
 }
 else {
-   print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{BUILDTYPE} '$pkname-$opts{v}'`;
+   print `cp -av --reflink=auto /opt/autopkg/repos/$pkname.svn-$ENV{AUTOPKG_BUILDTYPE} '$pkname-$opts{v}'`;
 }
 
 if (-s "$Bin/$opts{p}/hooks/post-clone" && -x "$Bin/$opts{p}/hooks/post-clone") {
@@ -159,18 +159,18 @@ if (@excludes) {
 # If this is a release, bundle language resources to avoid drift
 my %cnfs = ( 'control' => '', 'copyright' => '', 'rules' => '' );
 my $config = '';
-my $rules = file_get_contents("$ENV{PKPATH}/debian/rules");
-if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && ($config = file_get_contents("$pkname-$opts{v}/configure.ac")) && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data' && $config =~ m@AP_CHECK_LING@ && $rules !~ m@dh_auto_configure|dh_auto_build@) {
+my $rules = file_get_contents("$ENV{AUTOPKG_PKPATH}/debian/rules");
+if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && ($config = file_get_contents("$pkname-$opts{v}/configure.ac")) && $ENV{'AUTOPKG_DATA_ONLY'} eq 'data' && $config =~ m@AP_CHECK_LING@ && $rules !~ m@dh_auto_configure|dh_auto_build@) {
    $cnfs{'rules'} = $rules;
 
    my %copyright = ();
-   for my $f (split(/\n\n+/, file_get_contents("$ENV{PKPATH}/debian/copyright"))) {
+   for my $f (split(/\n\n+/, file_get_contents("$ENV{AUTOPKG_PKPATH}/debian/copyright"))) {
       my ($a,$b) = ($f =~ m@^([^\n]+)\n(.+)$@s);
       $copyright{$a} = $b;
    }
 
    $cnfs{'rules'} =~ s@(\n\%:)@\nNUMJOBS = 1\nifneq (,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\n\tNUMJOBS = \$(patsubst parallel=\%,\%,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\nendif\n$1@gs;
-   $cnfs{'control'} = read_control("$ENV{PKPATH}/debian/control");
+   $cnfs{'control'} = read_control("$ENV{AUTOPKG_PKPATH}/debian/control");
    my ($bdeps) = ($cnfs{'control'} =~ m@(Build-Depends:\s*[^\n]+)@);
    my @ss = ('override_dh_auto_configure:', 'override_dh_auto_build:');
    my $withlang = '';
@@ -198,7 +198,7 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && ($co
       if (!$pkg->[2]) {
          $pkg->[2] = 'configure.ac';
       }
-      my $gv = `export 'PKPATH=$Bin/$pkg->[0]' && $Bin/get-version.pl --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$p' --rev v$v`;
+      my $gv = `export 'AUTOPKG_PKPATH=$Bin/$pkg->[0]' && $Bin/get-version.pl --url '$pkg->[1]' --file '$pkg->[2]' --pkname '$p' --rev v$v`;
       chomp($gv);
       my ($newrev,$version,$srcdate) = split(/\t/, $gv);
       if (!$newrev) {
@@ -207,9 +207,9 @@ if ($ENV{'BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac" && ($co
       print "Bundling $n $p $v $newrev $version $srcdate\n";
 
       my $cli = "--nobuild '$opts{nobuild}' -p '$pkg->[0]' -u '$pkg->[1]' -v '$version' --distv '0' -d '$srcdate' --rev $newrev -m 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>' -e 'Apertium Automaton <apertium-packaging\@lists.sourceforge.net>'";
-      `export 'PKPATH=$Bin/$pkg->[0]' 'AUTOPATH=/opt/autopkg/$ENV{BUILDTYPE}/$p' && $Bin/make-deb-source.pl $cli >&2`;
+      `export 'AUTOPKG_PKPATH=$Bin/$pkg->[0]' 'AUTOPKG_AUTOPATH=/opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$p' && $Bin/make-deb-source.pl $cli >&2`;
 
-      print `cp -av --reflink=auto /opt/autopkg/$ENV{BUILDTYPE}/$p/$p-$version '$pkname-$opts{v}/'`;
+      print `cp -av --reflink=auto /opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$p/$p-$version '$pkname-$opts{v}/'`;
       my ($bds) = (read_control("$pkname-$opts{v}/$p-$version/debian/control") =~ m@Build-Depends:\s*([^\n]+)@);
       $bdeps .= ", $bds ";
 
@@ -298,7 +298,7 @@ if ($rv ne $opts{v}) {
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$opts{v}.orig.tar' -T orig.lst`;
 `bzip2 -9c '${pkname}_$opts{v}.orig.tar' > '${pkname}_$opts{v}.orig.tar.bz2'`;
-print `cp -av --reflink=auto '$ENV{PKPATH}/debian' '$pkname-$opts{v}/'`;
+print `cp -av --reflink=auto '$ENV{AUTOPKG_PKPATH}/debian' '$pkname-$opts{v}/'`;
 
 while (my ($k,$v) = each(%cnfs)) {
    if ($v) {

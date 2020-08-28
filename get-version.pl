@@ -64,11 +64,11 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 }
 else {
    my $retried = 0;
-   my $sdir = "${pkg}.svn-$ENV{BUILDTYPE}";
+   my $sdir = "${pkg}.svn-$ENV{AUTOPKG_BUILDTYPE}";
 
    if ($opts{'rev'} ne 'HEAD' && $opts{'rev'} =~ m@^v(.+)$@) {
       my $v = $1;
-      my $clog = file_get_contents("$ENV{PKPATH}/debian/changelog");
+      my $clog = file_get_contents("$ENV{AUTOPKG_PKPATH}/debian/changelog");
       if ($clog =~ m@\Q($v+s\E(\d+)-@ || $clog =~ m@\Q($v.0+s\E(\d+)-@) {
          print STDERR "Version $opts{rev} => revision $1\n";
          $opts{'rev'} = int($1);
