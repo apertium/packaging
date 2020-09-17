@@ -54,7 +54,7 @@ my $distros = $targets->{'distros'};
 my $archs = $targets->{'archs'};
 
 my @includes = ();
-my @excludes = ();
+my @excludes = qw(\.svn.* \.git.* \.gut.* \.circleci.* \.travis.* \.clang.* \.editorconfig autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile);
 if (-s $opts{p}.'/exclude.txt') {
    open FILE, $opts{p}.'/exclude.txt';
    while (<FILE>) {
@@ -69,6 +69,7 @@ if (-s $opts{p}.'/exclude.txt') {
          push(@excludes, $1);
       }
       else {
+         s@\.@\\.@g;
          s@\*@.*@g;
          s@\?@.@g;
          push(@excludes, "$_.*");
@@ -100,10 +101,6 @@ if (-s "$Bin/$opts{p}/hooks/post-clone" && -x "$Bin/$opts{p}/hooks/post-clone") 
    chdir "$autopath/$pkname-$opts{v}";
    print `$Bin/$opts{p}/hooks/post-clone >$ENV{AUTOPKG_LOGPATH}/hook-post-clone.log 2>&1`;
    chdir $autopath;
-}
-
-for my $p (qw(.svn* .git* .gut* .circleci* .travis* .clang* .editorconfig autogen.sh cmake.sh CONTRIBUTING* INSTALL Jenkinsfile)) {
-   print `find . -name '$p' -print0 | xargs -0rn1 rm -rfv 2>&1`;
 }
 
 my $sl = `find . -type l`;

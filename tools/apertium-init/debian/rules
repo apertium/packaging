@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE=1
+export DH_OPTIONS
+export LC_ALL=C.UTF-8
+export PREFIX=/usr
+
+%:
+	dh $@ --fail-missing --parallel
+
+override_dh_auto_test:
+	# Disable test for now

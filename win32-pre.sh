@@ -12,6 +12,7 @@ export PKG_PATH=$4
 export EXTRA_DEPS="libstdc++-6.dll libgcc_s_*.dll"
 export EXTRA_INST=""
 export LDFLAGS="-fno-use-linker-plugin"
+export PREFIX=/opt/win32
 rm -rf /opt/win32
 rm -rf /opt/$AUTOPKG_WINX-pkg/$PKG_NAME
 

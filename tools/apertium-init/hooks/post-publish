@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+D="/tmp/${AUTOPKG_BUILDTYPE}/apertium-init"
+mkdir -pv "$D"
+pushd "$D"
+cp -av ~apertium/public_html/apt/${AUTOPKG_BUILDTYPE}/pool/main/a/apertium-init/apertium-init_*.deb ./apertium-init.deb
+ar x apertium-init.deb
+tar -zxvf data.tar.gz ./usr/bin/apertium-init
+chmod -x ./usr/bin/apertium-init
+chown apertium:apertium ./usr/bin/apertium-init
+mv -vf ./usr/bin/apertium-init ~apertium/public_html/apt/${AUTOPKG_BUILDTYPE}/
+popd
+rm -rf "$D"

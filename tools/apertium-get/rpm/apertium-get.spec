@@ -15,6 +15,7 @@ BuildRequires: cmake >= 3.0.0
 %endif
 
 Requires: apertium-devel >= 3.6.0
+Requires: python3
 
 %description
 Script to download and build Apertium and Giellatekno languages and pairs
