@@ -54,7 +54,7 @@ my $distros = $targets->{'distros'};
 my $archs = $targets->{'archs'};
 
 my @includes = ();
-my @excludes = qw(\.svn.* \.git.* \.gut.* \.circleci.* \.travis.* \.clang.* \.editorconfig autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile);
+my @excludes = qw(\.svn.* \.git.* \.gut.* \.circleci.* \.travis.* \.clang.* \.editorconfig \.readthedocs.* autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile);
 if (-s $opts{p}.'/exclude.txt') {
    open FILE, $opts{p}.'/exclude.txt';
    while (<FILE>) {
@@ -317,6 +317,7 @@ foreach my $distro (keys(%$distros)) {
    if ($opts{'nobuild'} =~ m@,$distro,@) {
       next;
    }
+   $ENV{'AUTOPKG_DISTRO'} = $distro;
 
 	my $chver = $opts{v}.'-';
    if ($opts{auto}) {
@@ -342,6 +343,12 @@ CHLOG
       file_put_contents("$pkname-$chver/debian/changelog", $chlog);
    }
 
+   if (-s "$Bin/$opts{p}/hooks/pre-distro" && -x "$Bin/$opts{p}/hooks/pre-distro") {
+      chdir "$autopath/$pkname-$chver";
+      print `$Bin/$opts{p}/hooks/pre-distro '$distro' >$ENV{AUTOPKG_LOGPATH}/hook-pre-distro.$distro.log 2>&1`;
+      chdir $autopath;
+   }
+
    if ($distros->{$distro}{'dh'} >= 10) {
       file_put_contents("$pkname-$chver/debian/compat", $distros->{$distro}{'dh'});
 
@@ -359,7 +366,7 @@ CHLOG
          $rules =~ s@(\tdh.*) --fail-missing@$1@g;
          $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
       }
-      if ($ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
+      if (defined $ENV{'AUTOPKG_DATA_ONLY'} && $ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
          $rules =~ s@\n%:\n@\nexport DEB_BUILD_MAINT_OPTIONS = hardening=+all\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;
       }
       file_put_contents("$pkname-$chver/debian/rules", $rules);

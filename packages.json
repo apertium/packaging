@@ -20,7 +20,7 @@
    ["tools/apertium-lex-tools"],
    ["tools/apertium-simpleton", null, "src/version.hpp"],
    ["tools/apertium-streamparser",    "https://github.com/apertium/streamparser", "streamparser.py"],
-   ["tools/apertium-apy",       null, "apertium_apy/apy.py"],
+   ["tools/apertium-apy",       null, "apertium_apy/apy.py", "xenial,stretch"],
    ["tools/apertium-recursive"],
    ["tools/apertium-separable"],
    ["tools/apertium-anaphora"],

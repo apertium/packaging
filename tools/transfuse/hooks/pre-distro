@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+if (preg_match('~stretch|xenial|bionic~', getenv('AUTOPKG_DISTRO'))) {
+	exit(0);
+}
+
+$c = file_get_contents('debian/control');
+$c = str_replace('cmake,', 'cmake, libxxhash-dev,', $c);
+file_put_contents('debian/control', $c);
+
+$r = file_get_contents('debian/rules');
+$r = str_replace(' -DBUNDLED_XXHASH=ON', '', $r);
+file_put_contents('debian/rules', $r);

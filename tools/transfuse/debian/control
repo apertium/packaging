@@ -19,8 +19,6 @@ Rules-Requires-Root: no
 
 Package: transfuse
 Architecture: any
-Depends: ${misc:Depends},
-         ${perl:Depends},
-         ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Runs formatted documents through transformations/translation
  Extract formatted text from documents, transform it, then put back in place.

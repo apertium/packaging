@@ -10,6 +10,7 @@ Build-Depends: apertium-dev (>= 3.6.0),
                gawk,
                hfst,
                hfst-ospell-dev,
+               lexd,
                pkg-config
 Standards-Version: 4.5.0
 Homepage: https://apertium.org/

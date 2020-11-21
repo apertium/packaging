@@ -2,7 +2,8 @@ Source: foma
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
-Uploaders: Tino Didriksen <tino@didriksen.cc>, Kartik Mistry <kartik@debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
 Build-Depends: bison,
                debhelper (>= 9.0),
                flex,
@@ -25,10 +26,7 @@ Description: Tools for constructing various finite-state automata
 
 Package: foma-bin
 Architecture: any
-Depends: foma (= ${binary:Version}),
-         libfoma0 (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: foma (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Priority: extra
 Section: oldlibs
 Description: Transitional dummy package for foma
@@ -42,7 +40,7 @@ Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Foma runtime libraries
  Runtime libraries for foma
 
-Package: libfoma0-dev
+Package: libfoma-dev
 Architecture: any
 Section: libdevel
 Multi-Arch: same
@@ -50,3 +48,11 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: Foma development files
  Development headers and libraries for foma
+
+Package: libfoma0-dev
+Architecture: any
+Depends: libfoma-dev (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Priority: extra
+Section: oldlibs
+Description: Transitional dummy package for libfoma-dev
+ This is a transitional dummy package. It can safely be removed.

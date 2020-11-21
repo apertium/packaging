@@ -220,7 +220,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    $ENV{'AUTOPKG_DATA_ONLY'} = '';
    my $is_data = '';
    copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
-   if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-(get|init)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-get$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
@@ -283,6 +283,11 @@ foreach my $k (@{$pkgs{'order'}}) {
             next;
          }
 
+         $ENV{'DOCKER_BUILDKIT'} = 1;
+         if ($arch eq 'i386') {
+            $ENV{'DOCKER_BUILDKIT'} = 0;
+         }
+
          my $dpath = $ENV{'AUTOPKG_AUTOPATH'}."/$arch/$distro";
 
          my $control = read_control((glob("$dpath/*/debian/control"))[0]);
@@ -303,8 +308,8 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          push(@deps, 'apt-utils', 'build-essential', 'fakeroot');
-         @os_deps = sort order_deps @os_deps;
-         @our_deps = sort order_deps @our_deps;
+         @os_deps = sort @os_deps;
+         @our_deps = sort @our_deps;
 
          my $docker = "FROM $arch/$variant:$distro\n";
          $docker .= "\n";
@@ -336,9 +341,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          if (scalar(@os_deps)) {
             $docker .= "\n";
             $docker .= "# OS dependencies\n";
-            foreach my $dep (@os_deps) {
-               $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install $dep\n";
-            }
+            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @os_deps)."\n";
          }
          if (scalar(@our_deps)) {
             $docker .= "\n";
@@ -350,9 +353,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{AUTOPKG_BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
             $docker .= "\n";
-            foreach my $dep (@our_deps) {
-               $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install $dep\n";
-            }
+            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @our_deps)."\n";
          }
          file_put_contents("$dpath/Dockerfile", $docker);
 
@@ -446,6 +447,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
+=pod
       if (-s "$pkg->[0]/rpm/$pkname.spec") {
          print {$out} "\tupdating rpm sources\n";
          `$Bin/make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
@@ -454,6 +456,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          print {$out} "\tupdating rpm from data\n";
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
+=cut
 
       if (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
