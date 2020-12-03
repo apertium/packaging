@@ -1,1 +1,1 @@
-./cmake.sh
+cmake .

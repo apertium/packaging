@@ -29,12 +29,13 @@ $ENV{'PATH'} = '/opt/local/bin:/opt/local/sbin:'.$ENV{'PATH'};
 $ENV{'TERM'} = 'putty';
 $ENV{'TERMCAP'} = '';
 
+$ENV{'MACOSX_DEPLOYMENT_TARGET'} = '10.15';
 $ENV{'CC'} = 'clang';
 $ENV{'CXX'} = 'clang++';
-$ENV{'CPATH'} = '/opt/local/include/:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/';
+$ENV{'CPATH'} = '/opt/local/include/';
 $ENV{'CFLAGS'} = '-Wall -Wextra -O2';
 $ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1 -DU_USING_ICU_NAMESPACE=1';
-$ENV{'LDFLAGS'} = '-L/opt/local/lib/ -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/ -stdlib=libc++ -Wl,-headerpad_max_install_names';
+$ENV{'LDFLAGS'} = '-L/opt/local/lib/ -stdlib=libc++ -Wl,-headerpad_max_install_names';
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
@@ -51,8 +52,10 @@ for my $k (@{$pkgs{'order'}}) {
    }
    print "Syncing ${pkname}\n";
 
-   print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
-   print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
+   for (my $i=0 ; $i<2 ; ++$i) {
+      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
+      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
+   }
 }
 
 # Ordered so that nightly is left installed after the build
@@ -263,7 +266,7 @@ for my $cadence (qw(  nightly )) {#release
 
    print "Uploading ${cadence}...\n";
    chdir("${Bin}/${cadence}/build");
-   unlink('upload.log');
+   file_put_contents('upload.log', '');
    for (my $i=0 ; $i<3 ; ++$i) {
       `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
    }
