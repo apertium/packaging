@@ -2,4 +2,4 @@
 package-contains-documentation-outside-usr-share-doc
 
 # The warning "name expected (got '\c'): treated as missing" is a false positive. The .Lk syntax is correct.
-manpage-has-errors-from-man
+groff-message

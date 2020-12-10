@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake, debhelper (>= 12)
-Standards-Version: 4.5.0
+Build-Depends: cmake, debhelper (>= 9)
+Standards-Version: 4.5.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-get.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-get
@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-get
 Architecture: all
-Depends: apertium-dev (>= 3.6.4), python3, ${misc:Depends}
+Depends: apertium-dev (>= 3.7.0), python3, ${misc:Depends}
 Description: Helper for Apertium and Giellatekno languages and pairs
  Helper script to download and build Apertium and Giellatekno
  languages and pairs

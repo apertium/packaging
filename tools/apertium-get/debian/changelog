@@ -1,5 +1,5 @@
-apertium-get (1.0.0-1) unstable; urgency=low
+apertium-get (1.0.0-1) experimental; urgency=low
 
   * Split from apertium, to avoid needing svn or submodules in random places
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 24 Aug 2020 13:27:24 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 27 Nov 2020 09:28:24 +0100

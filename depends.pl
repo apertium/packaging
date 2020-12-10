@@ -55,12 +55,16 @@ while (<>) {
       $build{'apertium-anaphora'} = 1;
       $deps{'apertium-anaphora'} = 1;
    }
+   elsif (/\bapertium-recursive\b/) {
+      $build{'apertium-recursive'} = 1;
+      $deps{'apertium-recursive'} = 1;
+   }
    elsif (/\bAP_CHECK_LING.*?(apertium-\w+)/ || /\bAP_CHECK_LING.*?(giella-\w+)/) {
       $build{$1} = 1;
    }
 }
 
-print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.6.0), gawk, pkg-config";
+print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.7.0), gawk, pkg-config";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }

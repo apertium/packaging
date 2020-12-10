@@ -1,4 +1,2 @@
 # Symbols file only gets in the way for C++
 no-symbols-control-file
-# Not a duplicate trigger
-repeated-trigger-name

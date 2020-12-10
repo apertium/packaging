@@ -42,6 +42,7 @@ make test
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
+%{_datadir}/*
 %{_libdir}/pkgconfig/*
 
 %changelog

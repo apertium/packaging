@@ -23,7 +23,7 @@ BuildRequires: zlib-devel
 BuildRequires: python3
 BuildRequires: python3-devel
 
-Requires: libhfst52 = %{version}-%{release}
+Requires: libhfst53 = %{version}-%{release}
 Requires: grep
 Requires: python3
 Requires: sed
@@ -33,14 +33,14 @@ The Helsinki Finite-State Transducer software is intended for the
 implementation of morphological analysers and other tools which are
 based on weighted and unweighted finite-state transducer technology.
 
-%package -n libhfst52
+%package -n libhfst53
 Summary: Helsinki Finite-State Transducer Technology Libraries
 Group: Development/Libraries
 Provides: libhfst = %{version}-%{release}
 Obsoletes: libhfst < %{version}-%{release}
 Obsoletes: libhfst3 < %{version}-%{release}
 
-%description -n libhfst52
+%description -n libhfst53
 Runtime libraries for HFST
 
 %package -n libhfst-devel
@@ -54,7 +54,7 @@ Development headers and libraries for HFST
 
 %package -n python3-hfst
 Summary: Python 3 modules for Helsinki Finite-State Transducer Technology
-Requires: libhfst52 = %{version}-%{release}
+Requires: libhfst53 = %{version}-%{release}
 Provides: python3-libhfst = %{version}-%{release}
 Obsoletes: python3-libhfst < %{version}-%{release}
 
@@ -85,7 +85,7 @@ make check || /bin/true
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
-%files -n libhfst52
+%files -n libhfst53
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -100,9 +100,9 @@ make check || /bin/true
 %defattr(-,root,root)
 %{python3_sitearch}/*
 
-%post -n libhfst52 -p /sbin/ldconfig
+%post -n libhfst53 -p /sbin/ldconfig
 
-%postun -n libhfst52 -p /sbin/ldconfig
+%postun -n libhfst53 -p /sbin/ldconfig
 
 %changelog
 * Fri Dec 19 2014 Tino Didriksen <tino@didriksen.cc> 3.8.2

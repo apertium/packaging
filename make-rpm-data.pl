@@ -89,6 +89,7 @@ print `cp -av --reflink=auto 'usr' '$pkname-$opts{'v'}/' 2>&1`;
 print `tar -jcvf '$pkname\_$opts{'v'}.tar.bz2' '$pkname-$opts{'v'}' 2>&1`;
 
 chdir "/root/osc/$opts{'oscp'}/";
+print `osc up 2>&1`;
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
    print `osc mkpac $pkname 2>&1`;
    print `osc ci -m "Create package $pkname" $pkname 2>&1`;

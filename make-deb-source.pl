@@ -366,7 +366,7 @@ CHLOG
          $rules =~ s@(\tdh.*) --fail-missing@$1@g;
          $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
       }
-      if (defined $ENV{'AUTOPKG_DATA_ONLY'} && $ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
+      if (!defined $ENV{'AUTOPKG_DATA_ONLY'} || $ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
          $rules =~ s@\n%:\n@\nexport DEB_BUILD_MAINT_OPTIONS = hardening=+all\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;
       }
       file_put_contents("$pkname-$chver/debian/rules", $rules);

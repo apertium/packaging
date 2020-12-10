@@ -34,7 +34,7 @@
    ["tools/libdivvun", "https://github.com/divvun/libdivvun"],
    ["tools/transfuse",       "https://github.com/TinoDidriksen/transfuse", "CMakeLists.txt"],
    ["tools/apertium-get", null, "CMakeLists.txt"],
-   ["tools/apertium-init", null, "apertium-init.py"],
+   ["tools/apertium-init", null, "main.py"],
    ["tools/apertium-all-dev", null, "README"],
 
    # Then languages

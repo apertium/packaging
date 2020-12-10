@@ -1,3 +1,32 @@
+hfst (3.15.3-1) unstable; urgency=low
+
+  * Update to latest upstream
+  * debian/:
+    + Updated Standards-Version to 4.5.1
+    + Renamed python3-libhfst to python3-hfst, with transitional package
+    + Only build for one python3 version,
+      because multi-version seems generally unsupported
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 09 Dec 2020 22:13:12 +0100
+
+hfst (3.15.1-3) unstable; urgency=low
+
+  * debian/rules:
+    + Fix Python module name.
+  * Add debian/gitlab-ci.yml.
+  * debian/control:
+    + Switched to debhelper-compat.
+    + Updated Standards-Version to 4.5.0
+  * Removed duplicate trigger and lintian-override for it.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 26 May 2020 20:15:46 +0530
+
+hfst (3.15.1-2) unstable; urgency=low
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 30 Sep 2019 14:25:08 +0530
+
 hfst (3.15.1-1) unstable; urgency=low
 
   * Update to latest upstream

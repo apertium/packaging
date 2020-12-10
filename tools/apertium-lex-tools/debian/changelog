@@ -1,3 +1,25 @@
+apertium-lex-tools (0.2.6-1) unstable; urgency=low
+
+  * Update to latest upstream
+  * Remove patch as it's been integrated upstream
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 10 Dec 2020 14:33:34 +0100
+
+apertium-lex-tools (0.2.3-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Patch to fix FTBFS with GCC 10 (Closes: #957001)
+  * debian/control:
+    + Updated dh to 13
+    + Updated Standards-Version to 4.5.0
+
+  [ Kartik Mistry ]
+  * Added debian/upstream/metadata.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 06 Jul 2020 12:37:50 +0530
+
 apertium-lex-tools (0.2.3-1) unstable; urgency=low
 
   [ Tino Didriksen ]

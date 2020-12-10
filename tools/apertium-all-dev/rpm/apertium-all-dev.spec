@@ -10,7 +10,7 @@ BuildArch: noarch
 Provides: apertium-all-devel = %{version}-%{release}
 
 Requires: apertium-anaphora >= 0.0.1
-Requires: apertium-devel >= 3.6.0
+Requires: apertium-devel >= 3.7.0
 Requires: apertium-eval-translator
 Requires: apertium-lex-tools >= 0.2.1
 Requires: apertium-recursive >= 0.0.1
@@ -24,7 +24,7 @@ Requires: libcg3-devel >= 1.3.0
 Requires: libhfst-devel >= 3.15.1
 Requires: libxml2
 Requires: libxslt
-Requires: lttoolbox-devel >= 3.5.0
+Requires: lttoolbox-devel >= 3.5.3
 
 %description
 Metapackage to get all tools required for development of Apertium

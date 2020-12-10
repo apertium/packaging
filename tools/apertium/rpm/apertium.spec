@@ -30,8 +30,8 @@ BuildRequires: zip
 BuildRequires: devtoolset-7-gcc-c++
 %endif
 
-Requires: libapertium3-3_6-1 = %{version}-%{release}
-Requires: lttoolbox >= 3.5.0
+Requires: libapertium3-3.7-1 = %{version}-%{release}
+Requires: lttoolbox >= 3.5.3
 # Require xmllint from:
 Requires: libxml2
 # Require xsltproc from:
@@ -55,14 +55,14 @@ It will be possible to use Apertium to build machine translation
 systems for a variety of related-language pairs simply providing
 the linguistic data needed in the right format.
 
-%package -n libapertium3-3_6-1
+%package -n libapertium3-3.7-1
 Summary: Shared library for apertium
 Group: Development/Libraries
 Provides: libapertium = %{version}-%{release}
 Obsoletes: libapertium < %{version}-%{release}
 Obsoletes: libapertium3 < %{version}-%{release}
 
-%description -n libapertium3-3_6-1
+%description -n libapertium3-3.7-1
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
@@ -70,7 +70,7 @@ machine translation engine.
 Summary: Development tools and library for apertium
 Group: Development/Tools
 Requires: apertium = %{version}-%{release}
-Requires: lttoolbox-devel >= 3.5.0
+Requires: lttoolbox-devel >= 3.5.3
 Obsoletes: libapertium3-devel < %{version}-%{release}
 
 %description -n apertium-devel
@@ -79,7 +79,7 @@ machine translation engine.
 
 %package -n python3-apertium-core
 Summary: Python 3 module for the Apertium shallow-transfer machine translation engine
-Requires: libapertium3-3_6-1 = %{version}-%{release}
+Requires: libapertium3-3.7-1 = %{version}-%{release}
 
 %description -n python3-apertium-core
 Python 3 module for the Apertium shallow-transfer machine translation engine
@@ -103,7 +103,7 @@ source /opt/rh/devtoolset-7/enable
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
-ln -s libapertium3-3.6.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.6.so
+ln -s libapertium3-3.7.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.7.so
 
 %check
 %if 0%{?el7}
@@ -134,6 +134,7 @@ make check
 %{_bindir}/apertium-transfer
 %{_bindir}/apertium-unformat
 %{_bindir}/apertium-utils-fixlatex
+%{_bindir}/apertium-wblank*
 %{_datadir}/%{name}
 %{_datadir}/man/man1/apertium.*
 %{_datadir}/man/man1/apertium-des*
@@ -151,7 +152,7 @@ make check
 %{_datadir}/man/man1/apertium-unformat.*
 %{_datadir}/man/man1/apertium-utils-fixlatex.*
 
-%files -n libapertium3-3_6-1
+%files -n libapertium3-3.7-1
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -192,9 +193,9 @@ make check
 %defattr(-,root,root)
 %{python3_sitearch}/*
 
-%post -n libapertium3-3_6-1 -p /sbin/ldconfig
+%post -n libapertium3-3.7-1 -p /sbin/ldconfig
 
-%postun -n libapertium3-3_6-1 -p /sbin/ldconfig
+%postun -n libapertium3-3.7-1 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0

@@ -1,3 +1,9 @@
+foma (0.9.18+s225-1) unstable; urgency=low
+
+  * Upstream fixes
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 27 Nov 2020 16:59:04 +0100
+
 foma (0.9.18+s197-1) unstable; urgency=low
 
   * New upstream release

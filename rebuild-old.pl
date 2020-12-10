@@ -109,6 +109,9 @@ foreach my $k (@{$pkgs{'order'}}) {
    if ($ARGV[0] && $pkg->[0] !~ m@/\Q$ARGV[0]\E$@) {
       next;
    }
+   if (-s '/opt/autopkg/halt-build') {
+      last;
+   }
 
    my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
    my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
@@ -417,7 +420,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
             $failed .= "$logpath/$distro-$arch.log\n";
-            next;
+            goto CLEANUP;
          }
 
          `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;
@@ -447,7 +450,6 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    # If debs did not fail building, try RPMs and win32
    if (!$failed) {
-=pod
       if (-s "$pkg->[0]/rpm/$pkname.spec") {
          print {$out} "\tupdating rpm sources\n";
          `$Bin/make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
@@ -456,7 +458,6 @@ foreach my $k (@{$pkgs{'order'}}) {
          print {$out} "\tupdating rpm from data\n";
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
-=cut
 
       if (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";

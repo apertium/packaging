@@ -56,6 +56,7 @@ print `cp -av --reflink=auto '$ENV{AUTOPKG_PKPATH}/rpm' ./`;
 my $spec = `cat rpm/$pkname.spec`;
 
 chdir "/root/osc/$opts{'oscp'}/";
+print `osc up 2>&1`;
 if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
    print `osc mkpac $pkname 2>&1`;
    print `osc ci -m "Create package $pkname" $pkname 2>&1`;

@@ -4,14 +4,14 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.6.0),
+Build-Depends: apertium-dev (>= 3.7.0),
                apertium-ind (>= 0.2.0),
                apertium-zlm (>= 0.2.0),
                cg3-dev,
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.5.0
+Standards-Version: 4.5.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-ind-zlm.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-ind-zlm

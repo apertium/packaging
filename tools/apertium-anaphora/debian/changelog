@@ -1,8 +1,25 @@
+apertium-anaphora (1.0.1-1) unstable; urgency=low
+
+  * Update to latest upstream
+  * Changed build system from CMake to autotools
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 10 Dec 2020 14:33:34 +0100
+
 apertium-anaphora (1.0.0-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream release
+  * debian/control:
+    + Updated Maintainer email address.
+    + Updated Standards-Version to 4.5.0
+    + Switch to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Updated debian/copyright.
+  * Updated debian/rules.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 01 Jul 2020 16:40:02 +0200
+ -- Kartik Mistry <kartik@debian.org>  Thu, 02 Jul 2020 10:10:35 +0530
 
 apertium-anaphora (0.0.4-1) unstable; urgency=medium
 

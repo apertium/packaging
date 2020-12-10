@@ -1,4 +1,4 @@
 version=4
-opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%transfuse-$1.tar.gz%" \
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%transfuse-$1.tar.bz2%" \
     https://github.com/TinoDidriksen/transfuse/tags \
     (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

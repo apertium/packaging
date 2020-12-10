@@ -6,6 +6,16 @@
 # Usage: svn log -q | awk '{print $3 "\t" $5}' | authors.php
 # Usage: git log '--date=format:%Y' '--format=format:%ad%x09%aN <%aE>' | authors.php
 
+function sort_authors($a, $b) {
+	if ($a['hi'] != $b['hi']) {
+		return ($a['hi'] > $b['hi']) ? -1 : 1;
+	}
+	if ($a['lo'] != $b['lo']) {
+		return ($a['lo'] < $b['lo']) ? -1 : 1;
+	}
+	return strcmp($a['name'], $b['name']);
+}
+
 $map = file_get_contents(__DIR__.'/authors.json');
 $map = json_decode($map, true);
 
@@ -25,7 +35,7 @@ while ($line = fgets(STDIN)) {
 		$user = $map[$m[1]];
 		$year = intval($m[2]);
 	}
-	else if (preg_match('~^(\d+)\t(.+?)\s+<(.+?@.+?)>$~u', $line, $m)) {
+	else if (preg_match('~^(\d+)\t(.+?)\s+<(.+?)>$~u', $line, $m)) {
 		$user = "{$m[2]} <{$m[3]}>";
 		$m[3] = mb_strtolower($m[3]);
 		if (!empty($map[$m[3]])) {
@@ -48,6 +58,7 @@ while ($line = fgets(STDIN)) {
 
 	if (empty($authors[$user])) {
 		$authors[$user] = [
+			'name' => $user,
 			'lo' => $year,
 			'hi' => $year,
 			'cnt' => 1,
@@ -65,6 +76,8 @@ while ($line = fgets(STDIN)) {
 
 	++$authors[$user]['cnt'];
 }
+
+uasort($authors, 'sort_authors');
 
 foreach ($authors as $user => $hilo) {
 	echo $hilo['lo'];

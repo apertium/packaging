@@ -14,7 +14,7 @@ Build-Depends: autoconf,
                libpcre3-dev,
                libxml2-dev,
                libxml2-utils,
-               lttoolbox-dev (>= 3.5.1),
+               lttoolbox-dev (>= 3.5.3),
                pkg-config,
                python3-dev,
                python3-lxml,
@@ -24,7 +24,7 @@ Build-Depends: autoconf,
                xsltproc,
                zip,
                zipcmp
-Standards-Version: 4.5.0
+Standards-Version: 4.5.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium
@@ -32,9 +32,9 @@ Rules-Requires-Root: no
 
 Package: apertium
 Architecture: any
-Depends: libapertium3-3.6-1 (= ${binary:Version}),
+Depends: libapertium3-3.7-1 (= ${binary:Version}),
          libxml2-utils,
-         lttoolbox (>= 3.5.1),
+         lttoolbox (>= 3.5.3),
          xsltproc,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -57,7 +57,7 @@ Description: Shallow-transfer machine translation engine
  systems for a variety of related-language pairs simply providing
  the linguistic data needed in the right format.
 
-Package: libapertium3-3.6-1
+Package: libapertium3-3.7-1
 Section: libs
 Architecture: any
 Multi-Arch: same
@@ -88,7 +88,7 @@ Architecture: any
 Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
-         lttoolbox-dev (>= 3.5.1),
+         lttoolbox-dev (>= 3.5.3),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

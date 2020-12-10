@@ -1,16 +1,44 @@
+apertium (3.7.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+  * Remove patch as it's been integrated upstream
+  * Split off apertium-get to its own package, but Recommend it
+  * Recommend Transfuse
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 26 Nov 2020 21:30:24 +0100
+
+apertium (3.6.1-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Added patch to fix FTBFS with GCC 10 (Closes: #957002)
+  * debian/control:
+    + Updated dh to 13.
+    + Updated Standards-Version to 4.5.0
+  * Remove superfluous trigger and warning.
+
+  [ Kartik Mistry ]
+  * Updated Lintian overrides.
+  * Added debian/upstream/metadata.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 05 Jul 2020 20:18:56 +0530
+
 apertium (3.6.1-1) unstable; urgency=low
 
   [ Tino Didriksen ]
-  * Update to latest upstream
-    + Added Python module
+  * Update to latest upstream:
+    + Added new binary for Python module.
   * Updated dh to 12
   * debian/control:
     + Updated Standards-Version to 4.4.1
-    + Split apertium-all-dev to its own package
-  * Prefer duplicate README-MODES in the modes folder
-  * Lintian ignore modes/README and man .Lk syntax warnings
+    + Split apertium-all-dev to its own package.
+  * Prefer duplicate README-MODES in the modes folder.
+  * Lintian overrides:
+    + Ignore modes/README.
+    + man .Lk syntax warnings.
 
- -- Kartik Mistry <kartik@debian.org>  Sun, 13 Oct 2019 18:03:31 +0530
+ -- Kartik Mistry <kartik@debian.org>  Thu, 24 Oct 2019 13:41:25 +0530
 
 apertium (3.5.2-2) unstable; urgency=low
 

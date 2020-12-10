@@ -97,32 +97,39 @@ Python 3 module for CG-3
 
 %build
 %if 0%{?suse_version}
-%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON
+	%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON
 %else
-%if 0%{?el7}
-source /opt/rh/devtoolset-7/enable
-%cmake3 .
+	%if 0%{?el7}
+		source /opt/rh/devtoolset-7/enable
+		%cmake3 .
+	%else
+		%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON .
+	%endif
+%endif
+%if 0%{?fedora} >= 33
+	%cmake_build %{?_smp_mflags}
 %else
-%cmake -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON -DENABLE_PYTHON_BINDINGS=ON .
+	make %{?_smp_mflags}
 %endif
-%endif
-make %{?_smp_mflags}
 
 %install
 %if 0%{?el7}
-source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-7/enable
 %endif
-%if 0%{?suse_version}
-%cmake_install
+%if 0%{?suse_version} || 0%{?fedora} >= 33
+	%cmake_install
 %else
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+	rm -rf $RPM_BUILD_ROOT
+	make install DESTDIR=$RPM_BUILD_ROOT
 %endif
 rm -f %{buildroot}/%{python3_sitelib}/*.py[co]
 ln -s vislcg3 %{buildroot}%{_bindir}/cg3
 ln -s vislcg3.1.gz %{buildroot}%{_datadir}/man/man1/cg3.1.gz
 
 %check
+%if 0%{?fedora} >= 33
+	cd %{_vpath_builddir}
+%endif
 make test
 
 %files
