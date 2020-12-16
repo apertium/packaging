@@ -10,7 +10,7 @@ Standards-Version: 4.5.1
 Package: apertium-simpleton
 Architecture: any
 Depends: apertium-anaphora,
-         apertium (>= 3.6.0),
+         apertium (>= 3.7.0),
          apertium-lex-tools,
          apertium-recursive,
          apertium-separable,

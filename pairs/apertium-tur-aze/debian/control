@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-tur-aze
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-aze-tur
 Conflicts: apertium-aze-tur
 Description: Apertium translation data for the Turkish-Azerbaijani pair

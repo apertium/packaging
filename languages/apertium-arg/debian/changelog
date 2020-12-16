@@ -1,3 +1,9 @@
+apertium-arg (0.1.2-1) experimental; urgency=low
+
+  * Initial release, but as git tag
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 15 Jun 2016 13:35:39 +0200
+
 apertium-arg (0.1.2~r65494-1) experimental; urgency=low
 
   * Initial release

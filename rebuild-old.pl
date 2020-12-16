@@ -223,7 +223,12 @@ foreach my $k (@{$pkgs{'order'}}) {
    $ENV{'AUTOPKG_DATA_ONLY'} = '';
    my $is_data = '';
    copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
-   if ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-get$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   if ($pkg->[0] =~ m@/apertium-all-dev$@) {
+      print {$out} "\tarch-all\n";
+      $is_data = 'arch-all';
+      $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
+   }
+   elsif ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-get$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';

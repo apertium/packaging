@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-pol-ces
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ces-pol, apertium-cs-pl, apertium-pl-cs
 Conflicts: apertium-ces-pol, apertium-cs-pl, apertium-pl-cs
 Description: Apertium translation data for the Polish-Czech pair

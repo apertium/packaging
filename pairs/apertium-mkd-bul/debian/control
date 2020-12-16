@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-mkd-bul
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-bul-mkd
 Conflicts: apertium-bul-mkd
 Replaces: apertium-mk-bg (<< ${binary:Version})

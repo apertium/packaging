@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-slv-spa
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-spa-slv
 Conflicts: apertium-spa-slv
 Description: Apertium translation data for the Slovenian-Spanish pair

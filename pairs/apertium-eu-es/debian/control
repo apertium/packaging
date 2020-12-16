@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eu-es
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-es-eu, apertium-eus-spa, apertium-spa-eus
 Conflicts: apertium-es-eu, apertium-eus-spa, apertium-spa-eus
 Description: Apertium translation data for the Basque-Spanish pair

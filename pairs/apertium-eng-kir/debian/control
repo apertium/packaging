@@ -23,7 +23,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eng-kir
 Architecture: all
-Depends: apertium (>= 3.6.0),
+Depends: apertium (>= 3.7.0),
          apertium-lex-tools,
          apertium-recursive,
          apertium-separable,

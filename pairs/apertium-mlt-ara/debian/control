@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-mlt-ara
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ar-mt, apertium-ara-mlt, apertium-mt-ar
 Conflicts: apertium-ar-mt, apertium-ara-mlt, apertium-mt-ar
 Replaces: apertium-mt-ar

@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-cym-eng
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-cym-eng, apertium-en-cy, apertium-eng-cym
 Conflicts: apertium-cym-eng, apertium-en-cy, apertium-eng-cym
 Description: Apertium translation data for the Welsh-English pair

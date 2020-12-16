@@ -1,3 +1,9 @@
+apertium-eo-en (1.0.0-1) unstable; urgency=low
+
+  * Update to latest from svn, to get compatible build files, but as git tag
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
+
 apertium-eo-en (1.0.0~r63833-1) unstable; urgency=low
 
   * Update to latest from svn, to get compatible build files

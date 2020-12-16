@@ -1,3 +1,9 @@
+apertium-crh-tur (0.3.0-1) unstable; urgency=low
+
+  * Update to latest upstream release, but as git tag
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 22 Nov 2017 13:51:21 +0100
+
 apertium-crh-tur (0.3.0~r83159-1) unstable; urgency=low
 
   * Update to latest upstream release

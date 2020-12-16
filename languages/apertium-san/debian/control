@@ -13,6 +13,6 @@ Rules-Requires-Root: no
 
 Package: apertium-san
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Sanskrit
  Data package providing Apertium language resources for Sanskrit

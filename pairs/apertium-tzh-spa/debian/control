@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-tzh-spa
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-spa-tzh
 Conflicts: apertium-spa-tzh
 Description: Apertium translation data for the Tzeltal-Spanish pair

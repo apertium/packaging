@@ -21,7 +21,7 @@ Rules-Requires-Root: no
 
 Package: apertium-dan-nor
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.0), apertium-lex-tools, cg3, ${misc:Depends}
 Provides: apertium-nor-dan
 Conflicts: apertium-nor-dan
 Description: Apertium translation data for the Danish-Norwegian pair

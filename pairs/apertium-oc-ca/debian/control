@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-oc-ca
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
 Conflicts: apertium-ca-oc, apertium-cat-oci, apertium-oci-cat
 Description: Apertium translation data for the Occitan-Catalan pair

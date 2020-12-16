@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-mkd-eng
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-eng-mkd
 Conflicts: apertium-eng-mkd
 Replaces: apertium-mk-en (<< ${binary:Version})

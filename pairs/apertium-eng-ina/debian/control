@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eng-ina
 Architecture: all
-Depends: apertium (>= 3.6.0),
+Depends: apertium (>= 3.7.0),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

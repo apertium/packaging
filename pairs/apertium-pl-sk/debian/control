@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-pl-sk
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-sk-pl
 Conflicts: apertium-sk-pl
 Description: Apertium translation data for the Polish-Slovak pair

@@ -2,18 +2,8 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2017-2020, Hèctor Alòs i Font <hectoralos@gmail.com>
-                2020, Diogo S.C. Fernandes <diogo.scf2003@gmail.com>
-           2017-2018, Lorenza Russo <lorenzarusso@hotmail.com>
-                2018, Claudi Balaguer <ratapenada@yahoo.com>
-                2017, Trond Trosterud <trond.trosterud@uit.no>
-                2017, Bernard Chardonneau <bechapertium@free.fr>
-           2016-2017, Toyama Tokanawa <cordawyn@tut.by>
-                2017, Xavi Ivars <xavi.ivars@gmail.com>
-           2014-2017, Francis M. Tyers <ftyers@prompsit.com>
-                2016, Ryan Chi <ryan.andrew.chi@gmail.com>
-           2015-2016, sabertooth-cat@users.sourceforge.net
-           2015-2016, Kevin Brubeck Unhammer <unhammer@fsfe.org>
+Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+ See AUTHORS for more copyrights
 License: GPL-3+
 
 Files: debian/*

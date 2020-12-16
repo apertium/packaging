@@ -1,3 +1,9 @@
+apertium-urd (0.1.0-1) unstable; urgency=low
+
+  * Update to latest upstream release, but as git tag
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 03 Aug 2015 06:53:49 +0000
+
 apertium-urd (0.1.0~r61311-1) unstable; urgency=low
 
   * Update to latest upstream release.

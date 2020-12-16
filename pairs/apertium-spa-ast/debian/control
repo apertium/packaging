@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-spa-ast
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ast-spa, apertium-spa-ast
 Conflicts: apertium-ast-spa, apertium-spa-ast
 Replaces: apertium-es-ast (<< ${binary:Version})

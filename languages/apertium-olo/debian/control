@@ -18,6 +18,6 @@ Rules-Requires-Root: no
 
 Package: apertium-olo
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Livvi
  Data package providing Apertium language resources for Livvi

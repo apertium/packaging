@@ -1,3 +1,11 @@
+apertium-eu-es (0.3.3-1) unstable; urgency=low
+
+  * New upstream release, but as git tag
+  * No significant changes in svn since tarball, so taking directly from svn
+  * Re-done packaging to take advantage of debhelper 9
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+
 apertium-eu-es (0.3.3~r56159-1) unstable; urgency=low
 
   * New upstream release

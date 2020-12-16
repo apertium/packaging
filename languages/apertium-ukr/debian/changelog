@@ -1,3 +1,9 @@
+apertium-ukr (0.1.0-1) unstable; urgency=low
+
+  * Initial release, but as git tag
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Oct 2017 13:53:01 +0200
+
 apertium-ukr (0.1.0~r82563-1) unstable; urgency=low
 
   * Initial release

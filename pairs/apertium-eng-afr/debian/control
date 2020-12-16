@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eng-afr
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-afr-eng
 Conflicts: apertium-afr-eng
 Description: Apertium translation data for the English-Afrikaans pair

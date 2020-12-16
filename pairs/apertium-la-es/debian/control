@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-la-es
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-es-la
 Conflicts: apertium-es-la
 Description: Apertium translation data for the Latin-Spanish pair

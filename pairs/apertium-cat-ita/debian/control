@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-cat-ita
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ita-cat
 Description: Apertium translation data for the Catalan-Italian pair
  Data package providing Apertium language resources for translating

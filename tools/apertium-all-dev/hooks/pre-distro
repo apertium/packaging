@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+if (preg_match('~stretch|xenial~', getenv('AUTOPKG_DISTRO')) || preg_match('~Debian~', getenv('AUTOPKG_MAINTAINER'))) {
+	$c = file_get_contents('debian/control');
+	$c = preg_replace('~[ \t]*lexd( [^,]*)?,\n~', '', $c);
+	file_put_contents('debian/control', $c);
+}

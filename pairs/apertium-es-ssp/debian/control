@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-es-ssp
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ssp-es
 Conflicts: apertium-ssp-es
 Description: Apertium translation data for the Spanish-Spanish Sign Language pair

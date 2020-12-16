@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-es-gl
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-gl-es, apertium-glg-spa, apertium-spa-glg
 Conflicts: apertium-gl-es, apertium-glg-spa, apertium-spa-glg
 Description: Apertium translation data for the Spanish-Galician pair

@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-zho-spa
 Architecture: all
-Depends: apertium (>= 3.6.0),
+Depends: apertium (>= 3.7.0),
          apertium-lex-tools,
          ${misc:Depends},
          ${shlibs:Depends}

@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-bel-rus
 Architecture: all
-Depends: apertium (>= 3.6.0), apertium-lex-tools, cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.0), apertium-lex-tools, cg3, ${misc:Depends}
 Provides: apertium-rus-bel
 Conflicts: apertium-rus-bel
 Description: Apertium translation data for the Belarusian-Russian pair

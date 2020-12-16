@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-fra-por
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-por-fra
 Conflicts: apertium-por-fra
 Description: Apertium translation data for the French-Portuguese pair

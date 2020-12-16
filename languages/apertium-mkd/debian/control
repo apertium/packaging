@@ -19,6 +19,6 @@ Rules-Requires-Root: no
 
 Package: apertium-mkd
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Macedonian
  Data package providing Apertium language resources for Macedonian

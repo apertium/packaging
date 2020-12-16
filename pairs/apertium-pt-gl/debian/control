@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-pt-gl
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-gl-pt, apertium-glg-por, apertium-por-glg
 Conflicts: apertium-gl-pt, apertium-glg-por, apertium-por-glg
 Description: Apertium translation data for the Portuguese-Galician pair

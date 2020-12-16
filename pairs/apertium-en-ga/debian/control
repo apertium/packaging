@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-en-ga
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ga-en
 Conflicts: apertium-ga-en
 Description: Apertium translation data for the English-Irish pair

@@ -70,7 +70,7 @@ foreach my $k (sort(keys(%build))) {
 }
 print "\n";
 
-print "Depends: apertium (>= 3.6.0)";
+print "Depends: apertium (>= 3.7.0)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

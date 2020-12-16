@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-isl-swe
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-swe-isl
 Conflicts: apertium-swe-isl
 Replaces: apertium-is-sv (<< ${binary:Version})

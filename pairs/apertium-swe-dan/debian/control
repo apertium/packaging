@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-swe-dan
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}
 Provides: apertium-da-sv, apertium-dan-swe, apertium-sv-da
 Conflicts: apertium-da-sv, apertium-dan-swe, apertium-sv-da
 Replaces: apertium-da-sv, apertium-sv-da

@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-slv-ita
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ita-slv
 Conflicts: apertium-ita-slv
 Description: Apertium translation data for the Slovenian-Italian pair

@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-es-cs
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-cs-es
 Conflicts: apertium-cs-es
 Description: Apertium translation data for the Spanish-Czech pair

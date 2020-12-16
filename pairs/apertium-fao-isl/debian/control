@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-fao-isl
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-isl-fao
 Conflicts: apertium-isl-fao
 Description: Apertium translation data for the Faroese-Icelandic pair

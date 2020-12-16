@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eo-fr
 Architecture: all
-Depends: apertium (>= 3.6.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-epo-fra, apertium-fr-eo, apertium-fra-epo
 Conflicts: apertium-epo-fra, apertium-fr-eo, apertium-fra-epo
 Description: Apertium translation data for the Esperanto-French pair

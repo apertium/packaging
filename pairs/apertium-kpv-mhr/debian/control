@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-kpv-mhr
 Architecture: all
-Depends: apertium (>= 3.6.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-mhr-kpv
 Conflicts: apertium-mhr-kpv
 Description: Apertium translation data for the Komi-Zyrian-Eastern Mari pair

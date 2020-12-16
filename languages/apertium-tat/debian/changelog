@@ -1,3 +1,11 @@
+apertium-tat (0.1.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #828100), but as git tag
+  * No tarball release, so taking directly from svn
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 28 Jun 2016 09:22:12 +0530
+
 apertium-tat (0.1.0~r60887-1) unstable; urgency=low
 
   [ Tino Didriksen ]
