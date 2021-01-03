@@ -14,7 +14,7 @@ BuildRequires: cmake3
 BuildRequires: cmake >= 3.0.0
 %endif
 
-Requires: apertium-devel >= 3.7.0
+Requires: apertium-devel >= 3.7.1
 Requires: python3
 
 %description

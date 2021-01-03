@@ -10,7 +10,7 @@ BuildArch: noarch
 Provides: apertium-all-devel = %{version}-%{release}
 
 Requires: apertium-anaphora >= 0.0.1
-Requires: apertium-devel >= 3.7.0
+Requires: apertium-devel >= 3.7.1
 Requires: apertium-eval-translator
 Requires: apertium-lex-tools >= 0.2.1
 Requires: apertium-recursive >= 0.0.1

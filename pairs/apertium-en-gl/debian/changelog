@@ -1,9 +1,8 @@
-apertium-en-gl (0.5.2-1) experimental; urgency=low
+apertium-en-gl (0.5.3-1) unstable; urgency=low
 
-  * Initial release, but as git tag
-  * No significant changes in svn since tarball, so taking directly from svn
+  * Fix the build
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
 
 apertium-en-gl (0.5.2~r57551-1) experimental; urgency=low
 

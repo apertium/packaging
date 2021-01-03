@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
+Build-Depends: apertium-dev (>= 3.7.1),
                apertium-lex-tools,
                apertium-nno (>= 1.1.0),
                apertium-nob (>= 1.1.0),
@@ -21,7 +21,7 @@ Rules-Requires-Root: no
 
 Package: apertium-swe-nor
 Architecture: all
-Depends: apertium (>= 3.7.0), apertium-lex-tools, cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.1), apertium-lex-tools, cg3, ${misc:Depends}
 Provides: apertium-nor-swe
 Conflicts: apertium-nor-swe
 Description: Apertium translation data for the Swedish-Norwegian pair

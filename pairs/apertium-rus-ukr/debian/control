@@ -4,10 +4,10 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
+Build-Depends: apertium-dev (>= 3.7.1),
                apertium-lex-tools,
-               apertium-rus (>= 0.2.0~r82706),
-               apertium-ukr (>= 0.1.0~r82563),
+               apertium-rus (>= 0.2.1),
+               apertium-ukr (>= 0.1.1),
                cg3-dev,
                debhelper (>= 12),
                gawk,
@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-rus-ukr
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

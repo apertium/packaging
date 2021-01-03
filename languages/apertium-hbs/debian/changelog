@@ -1,10 +1,8 @@
 apertium-hbs (0.5.0-1) unstable; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release (Closes: #815661), but as git tag
-  * No tarball release, so taking directly from svn
+  * Fix the build
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 23 Feb 2016 19:05:44 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
 
 apertium-hbs (0.5.0~r68212-1) unstable; urgency=low
 

@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
-               apertium-hbs,
+Build-Depends: apertium-dev (>= 3.7.1),
+               apertium-hbs (>= 0.5.0),
                apertium-lex-tools,
                cg3-dev,
                debhelper (>= 12),
@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-hbs-eng
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

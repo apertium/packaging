@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-anaphora,
                apertium-cat (>= 2.8.0),
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-lex-tools,
                apertium-ron (>= 1.0.0),
                cg3-dev,
@@ -22,7 +22,7 @@ Rules-Requires-Root: no
 
 Package: apertium-ron-cat
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-anaphora,
          apertium-lex-tools,
          cg3,

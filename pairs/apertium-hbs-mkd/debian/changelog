@@ -1,3 +1,9 @@
+apertium-hbs-mkd (0.1.1-1) unstable; urgency=low
+
+  * Fix the build
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
+
 apertium-hbs-mkd (0.1.0~r76450-1) unstable; urgency=low
 
   * Update to latest upstream release. Only minor fixes. (Closes: #868608)

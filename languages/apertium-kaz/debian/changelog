@@ -1,11 +1,3 @@
-apertium-kaz (0.1.0-1) unstable; urgency=low
-
-  [ Tino Didriksen ]
-  * Initial release (Closes: #828101), but as git tag
-  * No tarball release, so taking directly from svn
-
- -- Kartik Mistry <kartik@debian.org>  Mon, 27 Jun 2016 19:19:17 +0530
-
 apertium-kaz (0.1.0~r61338-1) unstable; urgency=low
 
   [ Tino Didriksen ]

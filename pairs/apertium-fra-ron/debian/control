@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
+Build-Depends: apertium-dev (>= 3.7.1),
                apertium-fra,
                apertium-lex-tools,
                apertium-ron,
@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-fra-ron
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

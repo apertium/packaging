@@ -1,3 +1,9 @@
+apertium-pt-gl (0.9.3-1) unstable; urgency=low
+
+  * Fix the build
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+
 apertium-pt-gl (0.9.2~r57551-1) unstable; urgency=low
 
   * New upstream release

@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dan,
                apertium-deu,
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-lex-tools,
                cg3-dev,
                debhelper (>= 12),
@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-deu-dan
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

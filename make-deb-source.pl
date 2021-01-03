@@ -173,9 +173,14 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
    my $withlang = '';
 
    my $bundle = sub {
-      my ($n,$p,$v) = ($_[0] =~ m@\[(.+?)\], \[(.+?)\](?:, \[(.+?)\])@);
+      print "Maybe bundle $_[0]\n";
+      my ($n,$p,$v) = ($_[0] =~ m@\[(.+?)\], \[(.+?)\](?:, \[(.+?)\])?@);
       if ($p !~ m@^(apertium|giella)-@) {
+         print "Not bundling unknown $p\n";
          return;
+      }
+      if (!$v) {
+         $v = '0.0.1';
       }
       if ($bdeps =~ m@\Q$p\E \(.*?([\d.]+)\)@) {
          `dpkg --compare-versions '$v' gt '$1'`;

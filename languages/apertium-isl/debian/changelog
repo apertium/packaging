@@ -1,8 +1,8 @@
-apertium-isl (0.1.0-1) experimental; urgency=low
+apertium-isl (0.1.1-1) unstable; urgency=low
 
-  * Initial release, but as git tag
+  * Fix the build
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 19 May 2014 14:31:49 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
 
 apertium-isl (0.1.0~r65494-1) experimental; urgency=low
 

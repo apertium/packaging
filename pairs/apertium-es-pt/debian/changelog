@@ -1,11 +1,8 @@
-apertium-es-pt (1.1.5-1) unstable; urgency=low
+apertium-es-pt (1.1.6-1) unstable; urgency=low
 
-  * New upstream release (Closes: #747917), but as git tag
-  * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
-  * Re-done packaging to take advantage of debhelper 9
+  * Fix the build
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
 
 apertium-es-pt (1.1.5~r49182-1) unstable; urgency=low
 

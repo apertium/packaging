@@ -1,2 +1,4 @@
-version=3
-http://sf.net/apertium/apertium-br-fr-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-br-fr-$1.tar.bz2%" \
+    https://github.com/apertium/apertium-br-fr/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

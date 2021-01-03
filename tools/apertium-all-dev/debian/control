@@ -14,7 +14,7 @@ Rules-Requires-Root: no
 Package: apertium-all-dev
 Architecture: all
 Depends: apertium-anaphora (>= 1.0.1),
-         apertium-dev (>= 3.7.0),
+         apertium-dev (>= 3.7.1),
          apertium-eval-translator,
          apertium-get (>= 1.0.0),
          apertium-lex-tools (>= 0.2.6),

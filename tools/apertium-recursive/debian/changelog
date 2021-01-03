@@ -1,4 +1,4 @@
-apertium-recursive (1.0.0-1) unstable; urgency=low
+apertium-recursive (1.0.1-1) unstable; urgency=low
 
   * Update to latest upstream
   * debian/control:

@@ -1,8 +1,9 @@
-apertium-mkd-eng (0.2.0~r49489-1) experimental; urgency=low
+apertium-mkd-eng (0.1.2-1) unstable; urgency=low
 
-  * REPLACE ME
+  * Fix the build
+  * Renamed to apertium-mkd-eng
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2017 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
 
 apertium-mk-en (0.1.1~r57554-1) unstable; urgency=low
 

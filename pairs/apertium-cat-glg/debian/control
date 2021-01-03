@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-cat,
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-glg,
                apertium-lex-tools,
                cg3-dev,
@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-cat-glg
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          ${misc:Depends},

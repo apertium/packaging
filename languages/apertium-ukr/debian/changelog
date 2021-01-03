@@ -1,8 +1,8 @@
-apertium-ukr (0.1.0-1) unstable; urgency=low
+apertium-ukr (0.1.1-1) unstable; urgency=low
 
-  * Initial release, but as git tag
+  * Fix the build
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 03 Oct 2017 13:53:01 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
 
 apertium-ukr (0.1.0~r82563-1) unstable; urgency=low
 

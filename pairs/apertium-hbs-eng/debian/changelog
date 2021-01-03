@@ -1,3 +1,9 @@
+apertium-hbs-eng (0.5.1-1) unstable; urgency=low
+
+  * Fix the build
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+
 apertium-hbs-eng (0.1.0~r57598-1) experimental; urgency=low
 
   * Initial release

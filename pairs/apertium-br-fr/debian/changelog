@@ -1,11 +1,8 @@
-apertium-br-fr (0.5.0-1) unstable; urgency=low
+apertium-br-fr (0.5.1-1) unstable; urgency=low
 
-  [ Tino Didriksen ]
-  * Initial release. (Closes: #530002), but as git tag
-  * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files.
+  * Fix the build
 
- -- Kartik Mistry <kartik@debian.org>  Sat, 01 Aug 2015 20:24:04 +0530
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 25 Dec 2020 11:40:22 +0100
 
 apertium-br-fr (0.5.0~r61062-1) unstable; urgency=low
 

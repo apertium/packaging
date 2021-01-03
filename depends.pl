@@ -64,13 +64,13 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.7.0), gawk, pkg-config";
+print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.7.1), gawk, pkg-config";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
 print "\n";
 
-print "Depends: apertium (>= 3.7.0)";
+print "Depends: apertium (>= 3.7.1)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

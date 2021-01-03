@@ -1,3 +1,9 @@
+apertium-rus-ukr (0.2.1-1) unstable; urgency=low
+
+  * Fix the build
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+
 apertium-rus-ukr (0.2.0~r82706-1) unstable; urgency=low
 
   * Initial release

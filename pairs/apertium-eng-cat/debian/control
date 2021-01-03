@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-anaphora,
                apertium-cat (>= 2.8.0),
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-eng (>= 0.1.0),
                apertium-lex-tools,
                apertium-separable,
@@ -23,7 +23,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eng-cat
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-anaphora,
          apertium-lex-tools,
          apertium-separable,

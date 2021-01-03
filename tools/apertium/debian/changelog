@@ -1,3 +1,9 @@
+apertium (3.7.1-1) unstable; urgency=low
+
+  * Append the endianness to the PCRE version (Closes: #977753)
+
+ -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 21 Dec 2020 10:01:01 +0100
+
 apertium (3.7.0-1) unstable; urgency=low
 
   * Update to latest upstream

@@ -1,8 +1,9 @@
-apertium-spa-ast (1.1.0~r51165-1) experimental; urgency=low
+apertium-spa-ast (1.1.1-1) unstable; urgency=low
 
-  * REPLACE ME
+  * Fix the build
+  * Renamed to apertium-spa-ast
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
 
 apertium-es-ast (1.1.0~r51165-1) experimental; urgency=low
 

@@ -2,7 +2,6 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
- apertium/tmx_builder.*
 Copyright: 2005-2007, Universitat d'Alacant / Universidad de Alicante
  2007-2008, Prompsit Language Engineering S.L.
  See AUTHORS for more copyrights.
@@ -29,7 +28,10 @@ License: GPL-2+
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
-Files: apertium/tmx_*
+Files: apertium/tmx_align* apertium/tmx_arguments_* apertium/tmx_book_*
+       apertium/tmx_dic* apertium/tmx_quasi* apertium/tmx_serialize*
+       apertium/tmx_strings* apertium/tmx_trail* apertium/tmx_translate.*
+       apertium/tmx_words.*
 Copyright: 2004, Media Research Centre at the
  Sociology and Communications Department of the
  Budapest University of Technology and Economics

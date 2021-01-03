@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-cat (>= 2.8.0),
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-ita (>= 0.10.5),
                apertium-lex-tools,
                cg3-dev,
@@ -20,7 +20,7 @@ Rules-Requires-Root: no
 
 Package: apertium-cat-ita
 Architecture: all
-Depends: apertium (>= 3.7.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-ita-cat
 Description: Apertium translation data for the Catalan-Italian pair
  Data package providing Apertium language resources for translating

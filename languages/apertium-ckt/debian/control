@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
+Build-Depends: apertium-dev (>= 3.7.1),
                cg3-dev,
                debhelper (>= 12),
                gawk,
@@ -19,6 +19,6 @@ Rules-Requires-Root: no
 
 Package: apertium-ckt
 Architecture: all
-Depends: apertium (>= 3.7.0), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Chukot
  Data package providing Apertium language resources for Chukot

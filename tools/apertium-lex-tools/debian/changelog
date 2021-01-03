@@ -1,3 +1,10 @@
+apertium-lex-tools (0.2.7-1) unstable; urgency=low
+
+  * Force raw I/O to little-endian,
+    which works around the runtime fails on big-endian archs
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 25 Dec 2020 11:40:22 +0100
+
 apertium-lex-tools (0.2.6-1) unstable; urgency=low
 
   * Update to latest upstream

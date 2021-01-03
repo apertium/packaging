@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-crh (>= 0.2.0~r83161),
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-lex-tools,
                apertium-tur (>= 0.2.0~r83161),
                cg3-dev,
@@ -21,7 +21,7 @@ Rules-Requires-Root: no
 
 Package: apertium-crh-tur
 Architecture: all
-Depends: apertium (>= 3.7.0),
+Depends: apertium (>= 3.7.1),
          apertium-lex-tools,
          cg3,
          hfst,

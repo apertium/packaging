@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-ces,
-               apertium-dev (>= 3.7.0),
+               apertium-dev (>= 3.7.1),
                apertium-slk,
                cg3-dev,
                debhelper (>= 12),
@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 
 Package: apertium-ces-slk
 Architecture: all
-Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-slk-ces
 Conflicts: apertium-slk-ces
 Description: Apertium translation data for the Czech-Slovak pair

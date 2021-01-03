@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.0),
-               apertium-isl,
+Build-Depends: apertium-dev (>= 3.7.1),
+               apertium-isl (>= 0.1.1),
                cg3-dev,
                debhelper (>= 12),
                gawk,
@@ -18,7 +18,7 @@ Rules-Requires-Root: no
 
 Package: apertium-isl-eng
 Architecture: all
-Depends: apertium (>= 3.7.0), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1), cg3, ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-eng-isl
 Conflicts: apertium-eng-isl
 Description: Apertium translation data for the Icelandic-English pair

@@ -1,11 +1,3 @@
-apertium-eo-fr (0.9.0-1) experimental; urgency=low
-
-  * Initial release, but as git tag
-  * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
-
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
-
 apertium-eo-fr (0.9.0~r57551-1) experimental; urgency=low
 
   * Initial release

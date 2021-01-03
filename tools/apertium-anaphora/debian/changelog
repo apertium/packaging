@@ -1,3 +1,9 @@
+apertium-anaphora (1.0.2-1) unstable; urgency=low
+
+  * Don't search for Bash (Closes: #979134)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+
 apertium-anaphora (1.0.1-1) unstable; urgency=low
 
   * Update to latest upstream
