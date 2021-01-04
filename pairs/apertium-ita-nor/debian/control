@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.7.1),
                apertium-ita,
-               apertium-lex-tools,
+               apertium-lex-tools (>= 0.2.7),
                apertium-nno,
                apertium-nob,
                debhelper (>= 12),
@@ -21,7 +21,7 @@ Rules-Requires-Root: no
 Package: apertium-ita-nor
 Architecture: all
 Depends: apertium (>= 3.7.1),
-         apertium-lex-tools,
+         apertium-lex-tools (>= 0.2.7),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-nor-ita

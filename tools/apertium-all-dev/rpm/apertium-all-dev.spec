@@ -1,5 +1,5 @@
 Name: apertium-all-dev
-Version: 3.6.1
+Version: 3.7.0
 Release: 1%{?dist}
 Summary: Metapackage for all tools required for Apertium development
 Group: Development/Tools
@@ -9,19 +9,19 @@ Source0: %{name}_%{version}.orig.tar.bz2
 BuildArch: noarch
 Provides: apertium-all-devel = %{version}-%{release}
 
-Requires: apertium-anaphora >= 0.0.1
+Requires: apertium-anaphora >= 1.0.2
 Requires: apertium-devel >= 3.7.1
 Requires: apertium-eval-translator
-Requires: apertium-lex-tools >= 0.2.1
-Requires: apertium-recursive >= 0.0.1
+Requires: apertium-lex-tools >= 0.2.7
+Requires: apertium-recursive >= 1.0.1
 Requires: apertium-separable >= 0.3.2
 Requires: autoconf
 Requires: automake
-Requires: cg3 >= 1.3.0
+Requires: cg3 >= 1.3.2
 Requires: git
-Requires: hfst >= 3.15.1
-Requires: libcg3-devel >= 1.3.0
-Requires: libhfst-devel >= 3.15.1
+Requires: hfst >= 3.15.3
+Requires: libcg3-devel >= 1.3.2
+Requires: libhfst-devel >= 3.15.3
 Requires: libxml2
 Requires: libxslt
 Requires: lttoolbox-devel >= 3.5.3

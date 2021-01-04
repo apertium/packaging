@@ -6,9 +6,9 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-bel (>= 0.1.1),
                apertium-dev (>= 3.7.1),
-               apertium-lex-tools,
+               apertium-lex-tools (>= 0.2.7),
                apertium-rus (>= 0.2.1),
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -20,7 +20,10 @@ Rules-Requires-Root: no
 
 Package: apertium-bel-rus
 Architecture: all
-Depends: apertium (>= 3.7.1), apertium-lex-tools, cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.1),
+         apertium-lex-tools (>= 0.2.7),
+         cg3 (>= 1.3.2),
+         ${misc:Depends}
 Provides: apertium-rus-bel
 Conflicts: apertium-rus-bel
 Description: Apertium translation data for the Belarusian-Russian pair

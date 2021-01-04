@@ -5,15 +5,15 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: bc,
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                divvun-gramcheck,
                foma,
                gawk,
                giella-common,
                giella-core,
-               hfst,
-               libhfst-dev,
+               hfst (>= 3.15.3),
+               libhfst-dev (>= 3.15.3),
                pkg-config,
                python3,
                zip
@@ -25,9 +25,9 @@ Rules-Requires-Root: no
 
 Package: giella-nds
 Architecture: all
-Depends: cg3,
+Depends: cg3 (>= 1.3.2),
          giella-nds-speller (= ${binary:Version}),
-         hfst,
+         hfst (>= 3.15.3),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Giellatekno single language data for Low German
@@ -36,6 +36,6 @@ Description: Giellatekno single language data for Low German
 Package: giella-nds-speller
 Architecture: all
 Depends: ${misc:Depends}
-Suggests: cg3, divvun-gramcheck, hfst-ospell
+Suggests: cg3 (>= 1.3.2), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.2)
 Description: Giellatekno spellers for Low German
  Data package providing Giellatekno spellers for Low German

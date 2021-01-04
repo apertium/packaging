@@ -21,16 +21,16 @@ while (<>) {
       next;
    }
    if (/\bPKG_CHECK_MODULES.*?hfst\b/) {
-      $build{'libhfst-dev'} = 1;
-      $build{'hfst'} = 1;
-      $deps{'hfst'} = 1;
+      $build{'libhfst-dev (>= 3.15.3)'} = 1;
+      $build{'hfst (>= 3.15.3)'} = 1;
+      $deps{'hfst (>= 3.15.3)'} = 1;
    }
    elsif (/\bhfstospell\b/ || /\bhfst-ospell\b/) {
-      $build{'hfst-ospell-dev'} = 1;
+      $build{'hfst-ospell-dev (>= 0.5.2)'} = 1;
    }
    elsif (/\bhfst\b/) {
-      $build{'hfst'} = 1;
-      $deps{'hfst'} = 1;
+      $build{'hfst (>= 3.15.3)'} = 1;
+      $deps{'hfst (>= 3.15.3)'} = 1;
    }
    elsif (/\blibxml-2.0\b/) {
       $build{'libxml2-dev'} = 1;
@@ -40,24 +40,24 @@ while (<>) {
       $build{'zlib1g-dev'} = 1;
    }
    elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislcg3\b/ || /\bcg3\b/ || /\bcg3-autobin\b/) {
-      $build{'cg3-dev'} = 1;
-      $deps{'cg3'} = 1;
+      $build{'cg3-dev (>= 1.3.2)'} = 1;
+      $deps{'cg3 (>= 1.3.2)'} = 1;
    }
    elsif (/\blrx-comp\b/ || /\blrx-proc\b/ || /\bapertium-lex-tools\b/) {
-      $build{'apertium-lex-tools'} = 1;
-      $deps{'apertium-lex-tools'} = 1;
+      $build{'apertium-lex-tools (>= 0.2.7)'} = 1;
+      $deps{'apertium-lex-tools (>= 0.2.7)'} = 1;
    }
    elsif (/\blsx-comp\b/ || /\blsx-proc\b/ || /\bapertium-separable\b/) {
-      $build{'apertium-separable'} = 1;
-      $deps{'apertium-separable'} = 1;
+      $build{'apertium-separable (>= 0.3.6)'} = 1;
+      $deps{'apertium-separable (>= 0.3.6)'} = 1;
    }
    elsif (/\bapertium-anaphora\b/) {
-      $build{'apertium-anaphora'} = 1;
-      $deps{'apertium-anaphora'} = 1;
+      $build{'apertium-anaphora (>= 1.0.2)'} = 1;
+      $deps{'apertium-anaphora (>= 1.0.2)'} = 1;
    }
    elsif (/\bapertium-recursive\b/) {
-      $build{'apertium-recursive'} = 1;
-      $deps{'apertium-recursive'} = 1;
+      $build{'apertium-recursive (>= 1.0.1)'} = 1;
+      $deps{'apertium-recursive (>= 1.0.1)'} = 1;
    }
    elsif (/\bAP_CHECK_LING.*?(apertium-\w+)/ || /\bAP_CHECK_LING.*?(giella-\w+)/) {
       $build{$1} = 1;

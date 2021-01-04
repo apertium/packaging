@@ -1,3 +1,9 @@
+apertium-kaz (0.2.1-2) unstable; urgency=low
+
+  * The same as 0.2.1, but as a git tag.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+
 apertium-kaz-tat (0.2.1~r57554-1) unstable; urgency=low
 
   [ Tino Didriksen ]

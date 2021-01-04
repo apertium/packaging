@@ -43,7 +43,9 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: liblttoolbox
 Conflicts: liblttoolbox, liblttoolbox3
-Replaces: liblttoolbox, liblttoolbox3, liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
+Replaces: liblttoolbox,
+          liblttoolbox3,
+          liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
 Breaks: liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
 Description: Shared library for lttoolbox
  The lttoolbox contains the augmented letter transducer tools for natural

@@ -4,14 +4,11 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake,
-               debhelper (>= 9.0),
-               qt5-qmake,
-               qtbase5-dev
+Build-Depends: cmake, debhelper (>= 9.0), qt5-qmake, qtbase5-dev
 Standards-Version: 4.5.1
 
 Package: cg3ide
 Architecture: any
-Depends: cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3 (>= 1.3.2), ${misc:Depends}, ${shlibs:Depends}
 Description: IDE for CG-3
  IDE for developing and debugging CG-3 grammars.

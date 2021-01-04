@@ -7,7 +7,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
 Build-Depends: apertium-dev (>= 3.7.1),
                apertium-ind (>= 0.2.0),
                apertium-zlm (>= 0.2.0),
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -19,7 +19,10 @@ Rules-Requires-Root: no
 
 Package: apertium-ind-zlm
 Architecture: all
-Depends: apertium (>= 3.7.1), cg3, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1),
+         cg3 (>= 1.3.2),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: apertium-zlm-ind
 Description: Apertium translation data for the Indonesian-Malay pair
  Data package providing Apertium language resources for translating

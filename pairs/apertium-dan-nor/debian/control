@@ -6,10 +6,10 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dan (>= 0.6.1),
                apertium-dev (>= 3.7.1),
-               apertium-lex-tools,
+               apertium-lex-tools (>= 0.2.7),
                apertium-nno (>= 1.1.0),
                apertium-nob (>= 1.1.0),
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -21,7 +21,10 @@ Rules-Requires-Root: no
 
 Package: apertium-dan-nor
 Architecture: all
-Depends: apertium (>= 3.7.1), apertium-lex-tools, cg3, ${misc:Depends}
+Depends: apertium (>= 3.7.1),
+         apertium-lex-tools (>= 0.2.7),
+         cg3 (>= 1.3.2),
+         ${misc:Depends}
 Provides: apertium-nor-dan
 Conflicts: apertium-nor-dan
 Description: Apertium translation data for the Danish-Norwegian pair

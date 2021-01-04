@@ -7,6 +7,3 @@ export LC_ALL=C.UTF-8
 
 %:
 	dh $@ --fail-missing --with autoreconf
-
-override_dh_builddeb:
-	dh_builddeb -- -Zgzip

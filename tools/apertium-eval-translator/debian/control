@@ -4,8 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: cmake (>= 3.0),
-               debhelper (>= 9)
+Build-Depends: cmake (>= 3.0), debhelper (>= 9)
 Standards-Version: 4.5.1
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eval-translator.git
@@ -14,8 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eval-translator
 Architecture: all
-Depends: ${misc:Depends},
-         ${perl:Depends}
+Depends: ${misc:Depends}, ${perl:Depends}
 Description: Evaluate machine translation output against reference
  This package contails Perl scripts to evaluate Apertium-based machine
  translation output against reference: WER, PER, TER, BLEU.

@@ -5,7 +5,7 @@ Build-Depends: autotools-dev,
                debhelper (>= 9.0.0),
                dh-autoreconf,
                dh-python,
-               hfst-ospell-dev,
+               hfst-ospell-dev (>= 0.5.2),
                pkg-config,
                python3
 Standards-Version: 4.5.1

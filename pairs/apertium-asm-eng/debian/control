@@ -6,7 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-asm,
                apertium-dev (>= 3.7.1),
-               apertium-lex-tools,
+               apertium-lex-tools (>= 0.2.7),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 Package: apertium-asm-eng
 Architecture: all
 Depends: apertium (>= 3.7.1),
-         apertium-lex-tools,
+         apertium-lex-tools (>= 0.2.7),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-eng-asm

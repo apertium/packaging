@@ -13,12 +13,12 @@ Rules-Requires-Root: no
 
 Package: apertium-all-dev
 Architecture: all
-Depends: apertium-anaphora (>= 1.0.1),
+Depends: apertium-anaphora (>= 1.0.2),
          apertium-dev (>= 3.7.1),
          apertium-eval-translator,
          apertium-get (>= 1.0.0),
-         apertium-lex-tools (>= 0.2.6),
-         apertium-recursive (>= 0.1.0),
+         apertium-lex-tools (>= 0.2.7),
+         apertium-recursive (>= 1.0.1),
          apertium-separable (>= 0.3.6),
          autoconf,
          automake,
@@ -30,10 +30,10 @@ Depends: apertium-anaphora (>= 1.0.1),
          lexd,
          libhfst-dev (>= 3.15.3),
          libtool,
-         lttoolbox-dev (>= 3.5.3),
          locales,
-         transfuse (>= 0.5.6),
+         lttoolbox-dev (>= 3.5.3),
          pkg-config,
+         transfuse (>= 0.5.6),
          ${misc:Depends}
 Description: Metapackage for all tools required for Apertium development
  A metapackage to get all tools required for development of Apertium

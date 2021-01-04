@@ -7,7 +7,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
 Build-Depends: apertium-cat (>= 2.8.0),
                apertium-dev (>= 3.7.1),
                apertium-spa (>= 1.2.0),
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config,
@@ -21,8 +21,8 @@ Rules-Requires-Root: no
 Package: apertium-spa-cat
 Architecture: all
 Depends: apertium (>= 3.7.1),
-         apertium-lex-tools,
-         cg3,
+         apertium-lex-tools (>= 0.2.7),
+         cg3 (>= 1.3.2),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-cat-spa

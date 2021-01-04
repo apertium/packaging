@@ -5,11 +5,11 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.7.1),
-               apertium-lex-tools,
-               apertium-recursive,
+               apertium-lex-tools (>= 0.2.7),
+               apertium-recursive (>= 1.0.1),
                apertium-tki,
                apertium-tur,
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -22,9 +22,9 @@ Rules-Requires-Root: no
 Package: apertium-tur-tki
 Architecture: all
 Depends: apertium (>= 3.7.1),
-         apertium-lex-tools,
-         apertium-recursive,
-         cg3,
+         apertium-lex-tools (>= 0.2.7),
+         apertium-recursive (>= 1.0.1),
+         cg3 (>= 1.3.2),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-tki-tur

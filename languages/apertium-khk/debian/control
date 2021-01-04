@@ -5,11 +5,11 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.7.1),
-               cg3-dev,
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
-               hfst,
-               hfst-ospell-dev,
+               hfst (>= 3.15.3),
+               hfst-ospell-dev (>= 0.5.2),
                pkg-config
 Standards-Version: 4.5.1
 Homepage: https://apertium.org/
@@ -19,6 +19,10 @@ Rules-Requires-Root: no
 
 Package: apertium-khk
 Architecture: all
-Depends: apertium (>= 3.7.1), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.7.1),
+         cg3 (>= 1.3.2),
+         hfst (>= 3.15.3),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Apertium single language data for Halh Mongolian
  Data package providing Apertium language resources for Halh Mongolian
