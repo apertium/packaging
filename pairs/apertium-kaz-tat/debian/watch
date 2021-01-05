@@ -1,2 +1,4 @@
-version=3
-http://sf.net/apertium/apertium-kaz-tat-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-kaz-tat-$1.tar.bz2%" \
+    https://github.com/apertium/apertium-kaz-tat/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

@@ -1,10 +1,61 @@
 apertium-br-fr (0.5.1-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest upstream (Closes: #978359)
+  * Remove temporary Debian patches
 
  -- Tino Didriksen <tino@didriksen.cc>  Fri, 25 Dec 2020 11:40:22 +0100
 
-apertium-br-fr (0.5.0~r61062-1) unstable; urgency=low
+apertium-br-fr (0.5.0~r61325-4) unstable; urgency=medium
+
+  * Team Upload.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Fixed Vcs-Git URL.
+
+  [ Nilesh Patra ]
+  * Fix Makefile (Closes: #950377)
+  * Drop compat, switch to debhelper-compat
+  * Add "Rules-Requires-Root:no"
+  * Bump standards version to 4.5.0
+  * Add a very simple autopkgtest
+  * Add-in relevant regression test files, and run regression test
+  * Switch to https
+
+  [ Andreas Tille ]
+  * Point Vcs fields to salsa.debian.org (routine-update)
+  * Add salsa-ci file (routine-update)
+  * Set field Upstream-Name in debian/copyright.
+  * Drop unnecessary dependency on dh-autoreconf.
+
+ -- Nilesh Patra <npatra974@gmail.com>  Fri, 06 Mar 2020 15:04:35 +0530
+
+apertium-br-fr (0.5.0~r61325-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4.
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Removed Depends on ${shlibs:Depends}
+  * debian/copyright:
+    + Use https in URLs.
+  * Updated debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Jun 2018 09:34:18 +0530
+
+apertium-br-fr (0.5.0~r61325-2) unstable; urgency=low
+
+  * debian/rules:
+    + Simple rules file.
+    + Do not install duplicate upstream changelog.
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+    + Fixed dependencies.
+    + Updated Vcs-Git URL.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Jul 2016 19:03:22 +0530
+
+apertium-br-fr (0.5.0~r61325-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * Initial release. (Closes: #530002)

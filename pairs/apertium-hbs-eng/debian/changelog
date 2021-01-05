@@ -1,12 +1,30 @@
 apertium-hbs-eng (0.5.1-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest upstream
+  * Bundles apertium-hbs 0.5.0
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 05 Jan 2021 16:32:03 +0100
 
-apertium-hbs-eng (0.1.0~r57598-1) experimental; urgency=low
+apertium-hbs-eng (0.1.0~r57598-2) unstable; urgency=low
 
-  * Initial release
-  * No tarball release, so taking directly from svn
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Added debian/watch file.
+  * Updated debian/copyright.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Mon, 09 Jul 2018 10:42:04 +0530
+
+apertium-hbs-eng (0.1.0~r57598-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #830758)
+  * No tarball release, so taking directly from svn.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Jul 2016 17:16:34 +0530

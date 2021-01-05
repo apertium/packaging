@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright (C) 2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-# Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
+# Licensed under the GNU GPL version 2 or later; see https://www.gnu.org/licenses/
 
 set -o pipefail
 

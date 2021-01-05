@@ -1,7 +1,44 @@
-apertium-eo-fr (0.9.0~r57551-1) experimental; urgency=low
+apertium-eo-fr (0.9.1-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream (Closes: #978377)
+  * Remove temporary Debian patches
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 25 Dec 2020 11:40:22 +0100
+
+apertium-eo-fr (0.9.0~r57551-3) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950378)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Updated dependencies.
+    + Added 'Rules-Requires-Root' field.
+    + Switched to debhelper-compat
+  * Updated debian/rules.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 19 Mar 2020 19:10:07 +0530
+
+apertium-eo-fr (0.9.0~r57551-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Bumped to dh 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+  * debian/rules:
+    + Use --no-parallel flag to avoid FTBFS.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 13 Jul 2018 12:19:06 +0530
+
+apertium-eo-fr (0.9.0~r57551-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #827527)
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
+ -- Kartik Mistry <kartik@debian.org>  Fri, 17 Jun 2016 19:15:15 +0530

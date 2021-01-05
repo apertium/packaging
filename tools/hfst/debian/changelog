@@ -1,4 +1,4 @@
-hfst (3.15.3-1) unstable; urgency=low
+hfst (3.15.4-1) unstable; urgency=low
 
   * Update to latest upstream
   * debian/:
@@ -6,6 +6,8 @@ hfst (3.15.3-1) unstable; urgency=low
     + Renamed python3-libhfst to python3-hfst, with transitional package
     + Only build for one python3 version,
       because multi-version seems generally unsupported
+    + Updated package name as per soname change: libhfst52 -> libhfst53.
+    + Fix copyright, partially by excluding conflicting files from Debian
 
  -- Tino Didriksen <tino@didriksen.cc>  Wed, 09 Dec 2020 22:13:12 +0100
 

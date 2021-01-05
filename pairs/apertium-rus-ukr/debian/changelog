@@ -1,6 +1,7 @@
 apertium-rus-ukr (0.2.1-1) unstable; urgency=low
 
   * Fix the build
+  * Bundles apertium-rus 0.2.1 and apertium-ukr 0.1.1
 
  -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
 

@@ -1,1 +1,9 @@
+back-ends/foma/cpp-version/
+back-ends/foma/lex.cmatrix.c
+back-ends/foma/lex.interface.c
+back-ends/foma/lex.lexc.c
+back-ends/foma/lex.yy.c
+back-ends/foma/regex.c
+back-ends/foma/regex.h
 check_installation/
+scripts/*/

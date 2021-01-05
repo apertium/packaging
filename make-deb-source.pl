@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # -*- mode: cperl; indent-tabs-mode: nil; tab-width: 3; cperl-indent-level: 3; -*-
 # Copyright (C) 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-# Licensed under the GNU GPL version 2 or later; see http://www.gnu.org/licenses/
+# Licensed under the GNU GPL version 2 or later; see https://www.gnu.org/licenses/
 use utf8;
 use strict;
 use warnings;
@@ -382,6 +382,12 @@ CHLOG
       my $control = file_get_contents("$pkname-$chver/debian/control");
       $control =~ s@debhelper \([^)]+\)@debhelper-compat (= $distros->{$distro}{'dh'})@g;
       file_put_contents("$pkname-$chver/debian/control", $control);
+   }
+
+   if ($distros->{$distro}{'dh'} >= 13) {
+      my $rules = file_get_contents("$pkname-$chver/debian/rules");
+      $rules =~ s@\s+--with autoreconf@@g;
+      file_put_contents("$pkname-$chver/debian/rules", $rules);
    }
 
 	chdir "$pkname-$chver";

@@ -1,17 +1,28 @@
-apertium-crh-tur (0.3.0-2) unstable; urgency=low
+apertium-crh-tur (0.3.0-1) unstable; urgency=low
 
-  * The same as 0.3.0, but as a git tag.
+  * The same as 0.3.0~r83159-2, but with
+    bundled apertium-crh 0.2.0 and apertium-tur 0.2.0
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 05 Jan 2021 16:32:03 +0100
+
+apertium-crh-tur (0.3.0~r83159-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Updated Standards-Version to 4.1.4
+    + Updated Depends.
+  * debian/copyright:
+    + Use https in URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 23 Jun 2018 09:10:21 +0530
 
 apertium-crh-tur (0.3.0~r83159-1) unstable; urgency=low
 
-  * Update to latest upstream release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #883046)
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 22 Nov 2017 13:51:21 +0100
-
-apertium-crh-tur (0.2.0~r81866-1) experimental; urgency=low
-
-  * Initial release
-
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 22 Aug 2017 19:41:31 +0200
+ -- Kartik Mistry <kartik@debian.org>  Wed, 29 Nov 2017 10:45:39 +0530

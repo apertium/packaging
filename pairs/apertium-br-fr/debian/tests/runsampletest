@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export PATH=$PATH:/usr/bin/wget
+arg1=$(echo "Brav eo an amzer" | apertium br-fr)
+if test "$arg1" = "Le temps est beau"
+then
+    echo "Test 1 passed! ..."
+else
+    echo "$arg1 is not equal to Le temps est beau!"
+    exit 1
+fi

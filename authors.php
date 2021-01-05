@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 # Copyright (C) 2014-2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-# Licensed under the GNU GPL version 3 or later; see http://www.gnu.org/licenses/
+# Licensed under the GNU GPL version 3 or later; see https://www.gnu.org/licenses/
 
 # Usage: svn log -q | awk '{print $3 "\t" $5}' | authors.php
 # Usage: git log '--date=format:%Y' '--format=format:%ad%x09%aN <%aE>' | authors.php

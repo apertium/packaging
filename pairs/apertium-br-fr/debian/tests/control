@@ -1,0 +1,7 @@
+Tests: runsampletest
+Depends: @, apertium-dev
+Restrictions: allow-stderr
+
+Tests: runregressiontest
+Depends: @, apertium-dev
+Restrictions: allow-stderr

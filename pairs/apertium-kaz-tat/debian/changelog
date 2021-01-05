@@ -1,8 +1,26 @@
-apertium-kaz (0.2.1-2) unstable; urgency=low
+apertium-kaz-tat (0.2.1-1) unstable; urgency=low
 
-  * The same as 0.2.1, but as a git tag.
+  * The same as 0.2.1~r57554-2, but with
+    bundled apertium-kaz 0.1.0 and apertium-tat 0.1.0
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 05 Jan 2021 16:32:03 +0100
+
+apertium-kaz-tat (0.2.1~r57554-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+    + Fixed Build-Dep: hfst->libhfst-dev.
+  * Updated debian/watch.
+  * Updated debian/copyright.
+  * Bumped dh to 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 17 Jul 2018 11:22:48 +0530
 
 apertium-kaz-tat (0.2.1~r57554-1) unstable; urgency=low
 
@@ -10,4 +28,4 @@ apertium-kaz-tat (0.2.1~r57554-1) unstable; urgency=low
   * Initial release. (Closes: #832498))
   * No significant changes in svn since tarball, so taking directly from svn.
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 26 Jul 2016 10:58:33 +0530
+ -- Kartik Mistry <kartik@debian.org>  Wed, 27 Jul 2016 11:16:29 +0530
