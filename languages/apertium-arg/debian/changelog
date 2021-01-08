@@ -1,11 +1,30 @@
+apertium-arg (0.1.4-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 08 Jan 2021 22:14:10 +0100
+
 apertium-arg (0.1.3-1) unstable; urgency=low
 
   * Minor fix
 
  -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
 
-apertium-arg (0.1.2~r65494-1) experimental; urgency=low
+apertium-arg (0.1.2~r65494-2) unstable; urgency=low
 
-  * Initial release
+  * debian/control:
+    + Updated Vcs-* URLs.
+    + Updated to Standards-Version 4.1.4
+    + Removed ${shlibs:Depends} from Depends.
+  * debian/copyright:
+    + Use https in URLs.
+  * Added debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 15 Jun 2016 13:35:39 +0200
+ -- Kartik Mistry <kartik@debian.org>  Sat, 09 Jun 2018 21:58:06 +0530
+
+apertium-arg (0.1.2~r65494-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #827386)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 15 Jun 2016 20:54:27 +0530

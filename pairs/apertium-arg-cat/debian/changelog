@@ -1,5 +1,28 @@
-apertium-arg-cat (0.1.0~r64925-1) experimental; urgency=low
+apertium-arg-cat (0.2.0-1) unstable; urgency=low
 
-  * Initial release
+  * New upstream release
+  * Bundles apertium-arg 0.1.4 and apertium-cat 2.10.1
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
+  * Updated debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 15 Jun 2016 13:35:39 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 08 Jan 2021 22:14:10 +0100
+
+apertium-arg-cat (0.1.0~r64925-2) unstable; urgency=low
+
+  * debian/control:
+    + Fixed Vcs-* URLs.
+    + Updated Standards-Version to 4.1.4
+  * Added debian/watch file.
+  * debian/copyright:
+    + Use https in URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 10 Jun 2018 19:25:16 +0530
+
+apertium-arg-cat (0.1.0~r64925-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #827667)
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 19 Jun 2016 17:25:54 +0530

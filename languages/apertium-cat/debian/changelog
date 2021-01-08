@@ -1,3 +1,22 @@
+apertium-cat (2.10.1-1) unstable; urgency=low
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 08 Jan 2021 22:14:10 +0100
+
+apertium-cat (2.6.0-2) unstable; urgency=medium
+
+  * Added patch to fix unversioned Python usage (Closes: #967122)
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Depends on Python3.
+    + Added Rules-Requires-Root field.
+    + Switched to debhelper-compat.
+  * Added debian/gitlab-ci.yml for Salsa CI.
+  * Added upstream metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 21 Dec 2020 14:08:46 +0530
+
 apertium-cat (2.10.0-1) unstable; urgency=low
 
   * Update to latest upstream release.

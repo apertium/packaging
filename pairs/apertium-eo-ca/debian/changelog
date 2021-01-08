@@ -1,9 +1,17 @@
-apertium-eo-ca (1:0.9.2-1) unstable; urgency=low
+apertium-eo-ca (1:0.9.2-1) unstable; urgency=medium
 
+  [ Tino Didriksen ]
   * Update to latest upstream (Closes: #978369)
-  * Remove temporary Debian patches
+  * Remove temporary Debian patches, fixed upstream.
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated dependencies.
+  * Updated debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 25 Dec 2020 11:40:22 +0100
+  [ Kartik Mistry ]
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 05 Jan 2021 13:39:08 +0530
 
 apertium-eo-ca (1:0.9.1~r60655-4) unstable; urgency=medium
 
