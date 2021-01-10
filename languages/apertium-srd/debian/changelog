@@ -1,8 +1,56 @@
-apertium-srd (1.2.0~r82994-1) unstable; urgency=low
+apertium-srd (1.3.0-1) unstable; urgency=low
 
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Oct 2017 13:02:44 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 10 Jan 2021 22:45:20 +0100
+
+apertium-srd (1.2.0-1) unstable; urgency=medium
+
+  [ Nilesh Patra ]
+  * Patch and remove dependence on python2 (Closes: #967120)
+  * Standards-Version: 4.5.1 (routine-update)
+  * debhelper-compat 13 (routine-update)
+  * Point Vcs fields to salsa.debian.org (routine-update)
+  * Respect DEB_BUILD_OPTIONS in override_dh_auto_test target (routine-
+    update)
+  * Add salsa-ci file (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * Set field Upstream-Name in debian/copyright.
+  * Set upstream metadata fields: Archive, Repository.
+
+  [ Kartik Mistry ]
+  * Added debian/gitlab-ci.yml.
+  * Add debian/upstream/metadata.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 21 Dec 2020 12:36:40 +0530
+
+apertium-srd (1.2.0~r82994-2) unstable; urgency=medium
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Updated Depends.
+  * Updated debian/copyright.
+  * Added debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 04 Aug 2018 13:41:31 +0800
+
+apertium-srd (1.2.0~r82994-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release.
+
+  [ Kartik Mistry ]
+  * Bumped dh compat to 11.
+  * debian/control:
+    + Updated Standards-Version to 4.1.3.
+    + Removed Build-Dep on autools-dev, dh-autoreconf.
+  * debian/rules:
+    + Removed obsolete dh-autoreconf sequence.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 09 Jan 2018 19:16:57 +0530
 
 apertium-srd (0.10.0~r82237-1) unstable; urgency=low
 

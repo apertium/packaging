@@ -2,15 +2,11 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2016-2019, Hèctor Alòs i Font <hectoralos@gmail.com>
+Copyright: 2016-2021, Hèctor Alòs i Font <hectoralos@gmail.com>
+           2016-2021, Gianfranco Fronteddu <gfro3d@gmail.com>
            2013-2018, Francis M. Tyers <ftyers@prompsit.com>
-           2018-2019, Lorenza Russo <lorenzarusso@hotmail.com>
            2016-2017, Gema Ramírez Sánchez <gramirez@prompsit.com>
-           2016-2017, Gianfranco Fronteddu <gfro3d@gmail.com>
-           2014-2017, Gianluca Grossi <gianluca.grossi@me.com>
-                2016, Xavi Ivars <xavi.ivars@gmail.com>
-                2016, Marina Loffredo <loffredomarina@gmail.com>
-                2016, Frankie Robertson <frankie@robertson.name>
+           See AUTHORS for more copyrights
 License: GPL-2+
 
 Files: debian/*

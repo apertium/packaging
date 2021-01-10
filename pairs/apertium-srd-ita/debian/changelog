@@ -1,3 +1,27 @@
+apertium-srd-ita (1.1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles apertium-srd 1.3.0 and apertium-ita 1.1.0
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
+  * Updated debian/watch file.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 10 Jan 2021 22:45:20 +0100
+
+apertium-srd-ita (0.9.5~r82237-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version 4.1.5
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Updated Build-Depends and Depends.
+  * Updated dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 05 Aug 2018 10:09:24 +0800
+
 apertium-srd-ita (0.9.5~r82237-1) unstable; urgency=low
 
   * Update to latest upstream release.
