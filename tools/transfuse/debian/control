@@ -21,4 +21,7 @@ Package: transfuse
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Runs formatted documents through transformations/translation
- Extract formatted text from documents, transform it, then put back in place.
+ Tool to take a document with nested inline complex formatting and extracts
+ formatting into manageable spans, optionally send the resulting stream
+ to a handler for transformation, inject the transformed stream back into
+ the original document and turn the spans back into formatting.

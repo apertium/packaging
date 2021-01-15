@@ -2,13 +2,12 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2019-2021, Daniel Swanson <awesomeevildudes@gmail.com>
-                2020, Nick Howell <nlhowell@gmail.com>
-           See AUTHORS for more copyrights
+Copyright: 2020, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+ See AUTHORS for more copyrights
 License: GPL-3+
 
 Files: debian/*
-Copyright: 2021, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2020, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 License: GPL-3+
 
 License: GPL-3+

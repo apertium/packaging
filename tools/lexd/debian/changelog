@@ -1,5 +1,5 @@
-lexd (0.0.1-1) unstable; urgency=low
+lexd (1.0.0-1) experimental; urgency=low
 
   * Initial release
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 06 Jun 2020 22:03:23 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 14 Jan 2021 22:25:20 +0100

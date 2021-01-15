@@ -1,5 +1,12 @@
+transfuse (0.5.7-1) experimental; urgency=low
+
+  * Fixes issues with big endian and/or unsigned char platforms.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jan 2021 21:31:10 +0100
+
 transfuse (0.5.6-1) experimental; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #977336)
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 28 Sep 2020 13:30:02 +0200
+ -- Kartik Mistry <kartik@debian.org>  Mon, 14 Dec 2020 12:05:25 +0530

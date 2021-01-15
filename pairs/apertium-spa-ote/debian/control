@@ -1,0 +1,39 @@
+Source: apertium-spa-ote
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.7.1),
+               apertium-lex-tools (>= 0.2.7),
+               apertium-ote,
+               apertium-recursive (>= 1.0.1),
+               apertium-separable (>= 0.3.6),
+               apertium-spa,
+               cg3-dev (>= 1.3.2),
+               debhelper (>= 12),
+               gawk,
+               hfst (>= 3.15.3),
+               libhfst-dev (>= 3.15.3),
+               pkg-config
+Standards-Version: 4.5.1
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-spa-ote.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-ote
+Rules-Requires-Root: no
+
+Package: apertium-spa-ote
+Architecture: all
+Depends: apertium (>= 3.7.1),
+         apertium-lex-tools (>= 0.2.7),
+         apertium-recursive (>= 1.0.1),
+         apertium-separable (>= 0.3.6),
+         cg3 (>= 1.3.2),
+         hfst (>= 3.15.3),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-ote-spa
+Conflicts: apertium-ote-spa
+Description: Apertium translation data for the Spanish-Mezquital Otomi pair
+ Data package providing Apertium language resources for translating
+ between the Spanish and Mezquital Otomi languages.
