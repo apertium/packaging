@@ -47,6 +47,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc README.org
 %{_bindir}/*
+%{_datadir}/man/man1/*
 
 %changelog
 * Mon Aug 24 2020 Tino Didriksen <tino@didriksen.cc> 1.0.0

@@ -40,6 +40,8 @@ make DESTDIR=%{buildroot} install
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
+%{_datadir}/man/man1/*
+%{_libdir}/pkgconfig/*
 
 %changelog
 * Sat Jun 06 2020 Tino Didriksen <tino@didriksen.cc> 0.0.1

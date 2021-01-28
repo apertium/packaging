@@ -1,8 +1,47 @@
+apertium-cat-srd (1.1.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Bundles apertium-cat 2.10.2 and apertium-srd 1.3.1
+  * debian/control:
+    + Updated Build-Depends
+  * Updated debian/watch file.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 28 Jan 2021 14:28:10 +0100
+
+apertium-cat-srd (1.0.0~r82995-3) unstable; urgency=medium
+
+  * Team upload.
+  * Source-only upload for testing migration.
+  * debian/control: Bump Standards-Version to 4.5.1.
+
+ -- Boyuan Yang <byang@debian.org>  Wed, 13 Jan 2021 00:12:21 -0500
+
+apertium-cat-srd (1.0.0~r82995-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Updated Standards-Version to 4.1.4.
+    + Updated Depends.
+  * debian/copyright:
+    + Use https in URLs.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 13 Jun 2018 10:16:31 +0530
+
 apertium-cat-srd (1.0.0~r82995-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Oct 2017 13:02:44 +0200
+  [ Kartik Mistry ]
+  * Bumped debian/compat to 11.
+  * debian/control:
+    + Updated Standards-Version to 4.1.3
+    + Removed obsolete dependencies.
+  * debian/rules:
+    + Removed --with autoreconf sequence.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 10 Jan 2018 09:25:11 +0530
 
 apertium-cat-srd (0.9.0~r82238-1) unstable; urgency=low
 

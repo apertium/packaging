@@ -1,13 +1,42 @@
 apertium-hbs-slv (0.5.1-1) unstable; urgency=low
 
   * Fix the build
+  * Bundles apertium-hbs 0.5.0
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Updated Build-Depends
+  * Updated debian/watch file.
 
  -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
 
+apertium-hbs-slv (0.5.0-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added debian/gitlab-ci.yml
+  * Bumped dh to 12.
+  * debian/control:
+    + Updated Standards-Version to 4.4.1
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 20 Oct 2019 18:24:40 +0530
+
+apertium-hbs-slv (0.1.0~r59294-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 Jul 2018 17:04:29 +0530
+
 apertium-hbs-slv (0.1.0~r59294-1) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #830757)
   * Significant changes in svn since tarball, so mixing new build scripts with
-    old data files
+    old data files.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 12 Jul 2016 19:04:18 +0530
