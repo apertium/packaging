@@ -16,7 +16,7 @@ P=`apt-cache policy`
 P="$P "`lsb_release -c`"/dummy"
 P="$P "`grep CODENAME /etc/lsb-release`"/dummy"
 DISTRO="$1"
-for D in sid stretch buster bullseye xenial bionic focal groovy hirsute
+for D in sid stretch buster bullseye xenial bionic focal groovy hirsute kali-rolling
 do
 	if [[ $P == *$D/* ]]
 	then
@@ -24,6 +24,11 @@ do
 		echo "Found evidence of $D..."
 	fi
 done
+if [[ $DISTRO == "kali-rolling" ]]
+then
+	DISTRO=bullseye
+	echo "Assuming kali-rolling = $DISTRO"
+fi
 if [[ -z "$DISTRO" ]]
 then
 	echo "No supported Debian or Ubuntu derivative detected - bailing out..."
