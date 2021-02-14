@@ -27,6 +27,8 @@ Files: libhfst/*
        python/*
 Copyright: 2009-2018, Department of Modern Languages, University of Helsinki
            See AUTHORS for more copyrights.
+Comment: Files libhfst/src/parsers/[Ss]fst* derived from SFST, but distributed
+ as part of libhfst under LGPL-3+ license with permission from Helmut Schmid.
 License: LGPL-3+
 
 License: LGPL-3+
@@ -42,7 +44,8 @@ License: LGPL-3+
 
 Files: back-ends/sfst/*
 Copyright: 2012 Helmut Schmid <schmid@cis.uni-muenchen.de>
-Comment: http://www.cis.uni-muenchen.de/~schmid/tools/SFST/ where upstream tarball is
+Comment: http://www.cis.uni-muenchen.de/~schmid/tools/SFST/
+ where upstream tarball is
  https://www.cis.uni-muenchen.de/~schmid/tools/SFST/data/SFST-1.4.6g.tar.gz
 License: GPL-2+
 
