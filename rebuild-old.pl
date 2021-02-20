@@ -425,7 +425,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
             $failed .= "$logpath/$distro-$arch.log\n";
-            goto CLEANUP;
+            goto FAILED;
          }
 
          `debsign --no-re-sign $dpath/${pkname}_*.changes >>$logpath/$distro-$arch.log 2>&1`;
@@ -439,6 +439,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
    }
 
+   FAILED:
    $failed .= `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
    chomp($failed);
 
