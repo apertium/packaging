@@ -19,6 +19,9 @@ chdir("$Bin/docker");
 # Install dependencies
 `apt-get install --no-install-recommends devscripts libipc-system-simple-perl liblist-moreutils-perl libjson-xs-perl libjson-perl libio-tee-perl php-cli`;
 
+# Create insecure docker buildx builder
+`docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'`
+
 # Create or start the .deb caching proxy
 my $exists = 0+`docker ps --filter status=running | grep squid-deb-proxy | wc -l`;
 if (!$exists) {

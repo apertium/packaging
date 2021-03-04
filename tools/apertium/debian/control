@@ -33,7 +33,8 @@ Rules-Requires-Root: no
 
 Package: apertium
 Architecture: any
-Depends: libapertium3-3.7-1 (= ${binary:Version}),
+Depends: gawk,
+         libapertium3-3.7-1 (= ${binary:Version}),
          libxml2-utils,
          lttoolbox (>= 3.5.3),
          xsltproc,

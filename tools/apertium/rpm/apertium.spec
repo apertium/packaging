@@ -30,6 +30,7 @@ BuildRequires: zip
 BuildRequires: devtoolset-7-gcc-c++
 %endif
 
+Requires: gawk
 Requires: libapertium3-3_7-1 = %{version}-%{release}
 Requires: lttoolbox >= 3.5.3
 # Require xmllint from:

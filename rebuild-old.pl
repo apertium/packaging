@@ -291,11 +291,6 @@ foreach my $k (@{$pkgs{'order'}}) {
             next;
          }
 
-         $ENV{'DOCKER_BUILDKIT'} = 1;
-         if ($arch eq 'i386') {
-            $ENV{'DOCKER_BUILDKIT'} = 0;
-         }
-
          my $dpath = $ENV{'AUTOPKG_AUTOPATH'}."/$arch/$distro";
 
          my $control = read_control((glob("$dpath/*/debian/control"))[0]);
@@ -319,7 +314,9 @@ foreach my $k (@{$pkgs{'order'}}) {
          @os_deps = sort @os_deps;
          @our_deps = sort @our_deps;
 
-         my $docker = "FROM $arch/$variant:$distro\n";
+         my $docker = '';
+         $docker .= "#syntax=docker/dockerfile:1.2-labs\n";
+         $docker .= "FROM $arch/$variant:$distro\n";
          $docker .= "\n";
          $docker .= "ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true\n";
          $docker .= "\n";
@@ -340,16 +337,16 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "\techo 'Acquire::http::Proxy \"http://'\$HOST_IP':3124\";' > /etc/apt/apt.conf.d/30autoproxy\n";
          $docker .= "\n";
          $docker .= "# Upgrade everything and install base builder dependencies\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils\n";
-         $docker .= "RUN apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install fakeroot\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential\n";
+         $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install fakeroot\n";
          if (scalar(@os_deps)) {
             $docker .= "\n";
             $docker .= "# OS dependencies\n";
-            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @os_deps)."\n";
+            $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @os_deps)."\n";
          }
          if (scalar(@our_deps)) {
             $docker .= "\n";
@@ -361,7 +358,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{AUTOPKG_BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
             $docker .= "\n";
-            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @our_deps)."\n";
+            $docker .= "RUN --security=insecure apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @our_deps)."\n";
          }
          file_put_contents("$dpath/Dockerfile", $docker);
 
@@ -372,7 +369,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          FORCE_REFRESH:
          if (!$exists || $refresh || $force_refresh) {
             `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
-            `docker build --pull -f $dpath/Dockerfile -t $img-base $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
+            `docker buildx build --allow security.insecure --pull --load -f $dpath/Dockerfile -t $img-base $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                print {$out} "\tdocker $distro:$arch create fail\n";
                goto CLEANUP;
@@ -381,12 +378,12 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
 
          `echo 'Checking available updates for $distro $arch' >>$logpath/stderr.log 2>&1`;
-         my $avail = int(`docker run --rm -i $img-build /bin/bash -c "apt-get -qqy update && apt-get -qfy --allow-downgrades dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`);
+         my $avail = int(`docker run --privileged --rm -i $img-build /bin/bash -c "apt-get -qqy update && apt-get -qfy --allow-downgrades dist-upgrade --simulate" | egrep '^(Conf|Remv|Inst) ' | wc -l`);
          if ($avail || $?) {
             `echo 'Updating $distro $arch ($avail packages)' >>$logpath/stderr.log 2>&1`;
             `docker tag $img-build $img-old >>$logpath/$distro-$arch.log 2>&1`;
             my $deps = join(' ', @deps);
-            `echo -e 'FROM ${img}-old AS base\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends --allow-downgrades dist-upgrade && apt-get -qfy install --no-install-recommends --allow-downgrades ${deps} && apt-get -qfy autoremove --purge\nFROM ${arch}/${variant}:${distro}\nCOPY --from=base / /' | docker build --no-cache -t $img-build - >>$logpath/$distro-$arch.log 2>&1`;
+            `echo -e 'FROM ${img}-old AS base\nRUN apt-get -qy update && apt-get -qfy --no-install-recommends --allow-downgrades dist-upgrade && apt-get -qfy install --no-install-recommends --allow-downgrades ${deps} && apt-get -qfy autoremove --purge\nFROM ${arch}/${variant}:${distro}\nCOPY --from=base / /' | docker buildx build --allow security.insecure --no-cache --load -t $img-build - >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                if (!$force_refresh && int(`grep -c 'max depth exceeded' $logpath/$distro-$arch.log`) > 0) {
                   $force_refresh = 1;
@@ -539,7 +536,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             my $who = $authors->{$blame};
             $cc .= " '$who'";
          }
-         elsif ($blame !~ m/github\.com$/ && $blame =~ m/^.+@.+?\..+$/) {
+         elsif ($blame !~ m/\.local$/ && $blame !~ m/github\.com$/ && $blame =~ m/^.+@.+?\..+$/) {
             $cc .= " '$blame'";
          }
       }
