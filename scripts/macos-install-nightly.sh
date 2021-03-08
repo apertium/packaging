@@ -1,6 +1,7 @@
 #!/bin/bash
 WHERE='/usr/local'
 CADENCE=nightly
+ARCH=`uname -m`
 
 # Other locales may make Perl unhappy
 export LANG=en_US.UTF-8
@@ -11,7 +12,7 @@ mkdir -p /tmp/aad.$$
 cd /tmp/aad.$$
 
 echo "Downloading"
-curl https://apertium.projectjj.com/osx/$CADENCE/apertium-all-dev.tar.bz2 > apertium-all-dev.tar.bz2
+curl https://apertium.projectjj.com/osx/$CADENCE/$ARCH/apertium-all-dev.$ARCH.tar.bz2 > apertium-all-dev.tar.bz2
 
 echo "Extracting"
 tar -jxf apertium-all-dev.tar.bz2

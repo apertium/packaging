@@ -41,6 +41,11 @@ $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
 my %pkgs = load_packages();
 
+chomp(my $arch = `uname -m`);
+if ($arch eq 'arm64') {
+   $ENV{'MACOSX_DEPLOYMENT_TARGET'} = '11.0';
+}
+
 `mkdir -p '${Bin}/nightly/source' '${Bin}/nightly/build/apertium-all-dev'`;
 `mkdir -p '${Bin}/release/source' '${Bin}/release/build/apertium-all-dev'`;
 
@@ -60,7 +65,7 @@ for my $k (@{$pkgs{'order'}}) {
 
 # Ordered so that nightly is left installed after the build
 for my $cadence (qw(  nightly )) {#release
-   print "Building ${cadence}...\n";
+   print "Building ${cadence} for ${arch}...\n";
    `rm -rf /tmp/build/${cadence}`;
    `mkdir -p /tmp/build/${cadence}`;
 
@@ -86,7 +91,7 @@ for my $cadence (qw(  nightly )) {#release
          next;
       }
 
-      my $rebuild = (!-s "${pkpath}/${pkname}-latest.tar.bz2");
+      my $rebuild = (!-s "${pkpath}/${pkname}-latest.${arch}.tar.bz2");
 
       if (!$rebuild) {
          my $deps = file_get_contents("${Bin}/@$pkg[0]/debian/control");
@@ -104,7 +109,7 @@ for my $cadence (qw(  nightly )) {#release
       }
 
       if (!$rebuild) {
-         if (-M "${pkpath}/${pkname}-latest.tar.bz2" > -M "source/${pkname}.tar.bz2") {
+         if (-M "${pkpath}/${pkname}-latest.${arch}.tar.bz2" > -M "source/${pkname}.tar.bz2") {
             print "\ttarball newer\n";
             $rebuild = 1;
          }
@@ -114,7 +119,7 @@ for my $cadence (qw(  nightly )) {#release
          print "\tno reason to build - extracting latest\n";
          `mkdir -p /tmp/$$`;
          chdir("/tmp/$$");
-         `tar -jxf '${pkpath}/${pkname}-latest.tar.bz2'`;
+         `tar -jxf '${pkpath}/${pkname}-latest.${arch}.tar.bz2'`;
          `cp -ac '${pkname}/'* /usr/local/`;
          chdir("/tmp");
          `rm -rf /tmp/$$`;
@@ -208,7 +213,7 @@ for my $cadence (qw(  nightly )) {#release
       `echo '======== PACKAGE: TAR ========' >>'${logfile}-package.log'`;
       chdir('/tmp/install/usr');
       rename('local', $pkname);
-      $log = `tar -jcvf '/tmp/${pkname}.tar.bz2' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
+      $log = `tar -jcvf '/tmp/${pkname}.${arch}.tar.bz2' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
       `cat '${logfile}-package.log' >>'${logfile}.log'`;
       if ($log =~ /PACKAGE FAILED/) {
          print "\tfailed packaging\n";
@@ -229,8 +234,8 @@ for my $cadence (qw(  nightly )) {#release
 
       `rm -rf '${pkpath}'`;
       `mkdir -p '${pkpath}'`;
-      `mv -v '/tmp/${pkname}.tar.bz2' '${pkpath}/${pkname}-latest.tar.bz2' >>'${logfile}.log' 2>&1`;
-      `ln -sv '${pkname}-latest.tar.bz2' '${pkpath}/${ver}.tar.bz2' >>'${logfile}.log' 2>&1`;
+      `mv -v '/tmp/${pkname}.${arch}.tar.bz2' '${pkpath}/${pkname}-latest.${arch}.tar.bz2' >>'${logfile}.log' 2>&1`;
+      `ln -sv '${pkname}-latest.${arch}.tar.bz2' '${pkpath}/${ver}.${arch}.tar.bz2' >>'${logfile}.log' 2>&1`;
       `cp -ac '${logfile}' '${pkpath}/${pkname}.log'`;
 
       $did = 1;
@@ -252,26 +257,26 @@ for my $cadence (qw(  nightly )) {#release
    `mkdir -p /tmp/combo/apertium-all-dev`;
    chdir('/tmp/combo');
    for my $pkname (@combo) {
-      if (! -s "${Bin}/${cadence}/build/${pkname}/${pkname}-latest.tar.bz2") {
+      if (! -s "${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.tar.bz2") {
          next;
       }
       print "\t${pkname}\n";
-      `tar -jxvf '${Bin}/${cadence}/build/${pkname}/${pkname}-latest.tar.bz2' >>apertium-all-dev.log 2>&1`;
+      `tar -jxvf '${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.tar.bz2' >>apertium-all-dev.log 2>&1`;
       `cp -ac '${pkname}/'* ./apertium-all-dev/`;
       `rm -rf '${pkname}'`;
    }
-   `tar -jcvf apertium-all-dev.tar.bz2 apertium-all-dev >>apertium-all-dev.log 2>&1`;
-   `7za a apertium-all-dev.7z apertium-all-dev >>apertium-all-dev.log 2>&1`;
-   `mv apertium-all-dev.tar.bz2 apertium-all-dev.7z apertium-all-dev.log '${Bin}/${cadence}/build/apertium-all-dev/'`;
+   `tar -jcvf apertium-all-dev.${arch}.tar.bz2 apertium-all-dev >>apertium-all-dev.log 2>&1`;
+   `7za a apertium-all-dev.${arch}.7z apertium-all-dev >>apertium-all-dev.log 2>&1`;
+   `mv apertium-all-dev.${arch}.tar.bz2 apertium-all-dev.${arch}.7z apertium-all-dev.log '${Bin}/${cadence}/build/apertium-all-dev/'`;
 
    print "Uploading ${cadence}...\n";
    chdir("${Bin}/${cadence}/build");
    file_put_contents('upload.log', '');
    for (my $i=0 ; $i<3 ; ++$i) {
-      `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
+      `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/${arch}/ >>upload.log 2>&1`;
    }
-   `ssh -l apertium oqaa.projectjj.com "find '/home/apertium/public_html/osx/${cadence}' -name '*-[0-9]*' | xargs -rn1 rm -fv" >>upload.log 2>&1`;
-   `rsync -avzc */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/ >>upload.log 2>&1`;
+   `ssh -l apertium oqaa.projectjj.com "find '/home/apertium/public_html/osx/${cadence}/${arch}' -name '*-[0-9]*.${arch}*' | xargs -rn1 rm -fv" >>upload.log 2>&1`;
+   `rsync -avzc */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/${arch}/ >>upload.log 2>&1`;
 
    print "\n";
 }
