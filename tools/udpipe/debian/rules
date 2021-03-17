@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE=1
+export DH_OPTIONS
+export LC_ALL=C.UTF-8
+
+%:
+	dh $@ --fail-missing
+
+override_dh_auto_build:
+	cd src/ && $(MAKE) -j3
+
+override_dh_auto_install:
+	cd src/ && /usr/bin/install -D udpipe $(CURDIR)/debian/tmp/usr/bin/udpipe
+
+override_dh_dwz:
+	dh_dwz --no-dwz-multifile || /bin/true

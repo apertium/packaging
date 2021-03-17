@@ -1,0 +1,19 @@
+Source: udpipe
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: debhelper (>= 9.0)
+Standards-Version: 4.5.1
+Homepage: https://github.com/ufal/udpipe
+Vcs-Git: https://salsa.debian.org/science-team/udpipe.git
+Vcs-Browser: https://salsa.debian.org/science-team/udpipe
+Rules-Requires-Root: no
+
+Package: udpipe
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Tokenizing, tagging, lemmatizing and parsing UD and CoNLL-U
+ Trainable pipeline for tokenizing, tagging, lemmatizing and parsing
+ Universal Treebanks and other CoNLL-U files

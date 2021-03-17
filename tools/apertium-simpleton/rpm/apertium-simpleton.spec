@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: Minimal GUI for Apertium
 Group: Development/Tools
 License: GPL-3.0+
-URL: http://wiki.apertium.org/wiki/Apertium_Simpleton_UI
+URL: https://wiki.apertium.org/wiki/Apertium_Simpleton_UI
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: gcc-c++

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 # Copyright (C) 2020, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
-# Licensed under the GNU GPL version 3 or later; see http://www.gnu.org/licenses/
+# Licensed under the GNU GPL version 3 or later; see https://www.gnu.org/licenses/
 
 chdir(__DIR__);
 

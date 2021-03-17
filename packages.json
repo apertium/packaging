@@ -28,6 +28,7 @@
    ["tools/lexd", null, null, "xenial,stretch"],
    ["tools/giella-core",     "https://github.com/giellalt/giella-core"],
    ["tools/giella-common",   "https://github.com/giellalt/giella-shared"],
+   ["tools/divvun-corpustools", "https://gtsvn.uit.no/langtech/trunk/tools/CorpusTools", "corpustools/_version.py", "xenial,stretch"],
    ["tools/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko"],
    ["tools/matxin",     "https://github.com/matxin/matxin"],
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
@@ -36,6 +37,7 @@
    ["tools/apertium-get", null, "CMakeLists.txt"],
    ["tools/apertium-init", null, "main.py"],
    ["tools/apertium-all-dev", null, "README"],
+   ["tools/udpipe",          "https://github.com/ufal/udpipe", "MANUAL"],
 
    # Then languages
    ["languages/giella-aka",      "https://github.com/giellalt/lang-aka"],
@@ -216,6 +218,7 @@
    ["languages/apertium-hin"],
    ["languages/apertium-hun"],
    ["languages/apertium-hye"],
+   ["languages/apertium-hyw"],
    ["languages/apertium-ibo"],
    ["languages/apertium-ina"],
    ["languages/apertium-ind"],

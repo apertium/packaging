@@ -58,7 +58,7 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
 
    chdir("${pkg}.git");
    print STDERR `git reset --hard '$opts{rev}'`;
-   my $logline = `git log --first-parent '--format=format:\%H\%x09\%ai' -n1 '$opts{rev}'`;
+   my $logline = `git log '--date=format-local:\%Y-\%m-\%d \%H:\%M:\%S' --first-parent '--format=format:\%H\%x09\%ad' -n1 '$opts{rev}'`;
    ($rawrev,$srcdate) = ($logline =~ m@^([^\t]+)\t([^\t]+)$@);
    $revision = '+g'.int(`git log '--format=format:\%H' '$opts{rev}' | sort | uniq | wc -l`).'~'.substr($rawrev, 0, 8);
 }
@@ -140,6 +140,10 @@ elsif ($data =~ m@PACKAGE_VERSION\s*=\s*"([\d.]+)@s) {
    print STDERR "Found PACKAGE_VERSION version\n";
    $version = $1;
 }
+elsif ($data =~ m@\nVersion ([\d.]+)@s) {
+   print STDERR "Found Version version\n";
+   $version = $1;
+}
 else {
    die "No version found!\n";
 }
@@ -161,4 +165,5 @@ if ($opts{'rev'} ne 'HEAD') {
    $revision = '';
 }
 
+print STDERR "$rawrev\t$major.$minor.$patch$revision\t$srcdate\n";
 print "$rawrev\t$major.$minor.$patch$revision\t$srcdate\n";

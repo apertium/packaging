@@ -1,0 +1,2 @@
+*/
++ lexd_components/.*

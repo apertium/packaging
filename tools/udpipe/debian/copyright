@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/ufal/udpipe
+
+Files: *
+Copyright: Copyright 2017 by Institute of Formal and Applied Linguistics,
+ Faculty of Mathematics and Physics, Charles University, Czech Republic
+License: MPL-2.0
+
+License: MPL-2.0
+ On Debian systems, the complete text of the Mozilla Public License Version 2.0
+ can be found in "/usr/share/common-licenses/MPL-2.0".
