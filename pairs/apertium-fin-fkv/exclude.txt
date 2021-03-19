@@ -1,2 +1,3 @@
 */
 + dev/punctuation.lexc
++ docs/.*
