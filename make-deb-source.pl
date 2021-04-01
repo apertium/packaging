@@ -255,6 +255,7 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
       `rm -rfv '$pkname-$opts{v}/$p-$version/debian'`;
    };
 
+   $config =~ s/(#|dnl )[^\n]+//sg;
    for my $dep ($config =~ m@AP_CHECK_LING\((.+?)\)@g) {
       $bundle->($dep);
    }

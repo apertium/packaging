@@ -2,10 +2,19 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright:      2007, Prompsit Language Engineering (Parts of build system, documentation, and lexical data)
-           2005-2006, Universidade de Vigo (Seminario de Lingüística Informática, http://sli.uvigo.es) (Galician monolingual data, Galician-Spanish bilingual lexical data, parts of Spanish monolingual data, and parts of Galician-Spanish bilingual structural data)
-           2005-2006, Universitat d'Alacant (Transducens group, http://transducens.dlsi.ua.es) (Spanish monolingual data and parts of Galician-Spanish bilingual structural data)
-           2005-2006, Universitat Politècnica de Catalunya (TALP group, http://www.talp.upc.edu) (parts of Spanish monolingual data)
+Copyright: 2007, Prompsit Language Engineering (Parts of build system,
+                 documentation, and lexical data)
+           2005-2006, Universidade de Vigo (Seminario de Lingüística
+                      Informática, http://sli.uvigo.es) (Galician monolingual
+                      data, Galician-Spanish bilingual lexical data, parts of
+                      Spanish monolingual data, and parts of Galician-Spanish
+                      bilingual structural data)
+           2005-2006, Universitat d'Alacant (Transducens group,
+                      http://transducens.dlsi.ua.es) (Spanish monolingual data
+                      and parts of Galician-Spanish bilingual structural data)
+           2005-2006, Universitat Politècnica de Catalunya (TALP group,
+                      http://www.talp.upc.edu) (parts of Spanish monolingual
+                      data)
 License: GPL-2
 
 License: GPL-2
@@ -19,13 +28,13 @@ License: GPL-2
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>.
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 Files: debian/*
-Copyright: 2014, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2014-2018, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 License: GPL-2+
 
 License: GPL-2+
@@ -40,7 +49,7 @@ License: GPL-2+
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>.
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".

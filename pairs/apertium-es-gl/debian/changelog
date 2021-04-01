@@ -1,10 +1,59 @@
-apertium-es-gl (1.0.8~r57542-1) unstable; urgency=low
+apertium-es-gl (1.0.9-1) unstable; urgency=low
 
   * New upstream release
-  * No significant changes in svn since tarball, so taking directly from svn
-  * Re-done packaging to take advantage of debhelper 9
+  * Bundles apertium-spa 1.2.1
+  * debian/control:
+    + Provide spa-glg and glg-spa
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 30 Mar 2021 20:44:21 +0200
+
+apertium-es-gl (1.0.8~r57542-4) unstable; urgency=medium
+
+  * Fix FTBFS: mkdir: cannot create directory. (Closes: 954620)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated to Standards-Version 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 04 Apr 2020 17:54:31 +0530
+
+apertium-es-gl (1.0.8~r57542-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated to Standards-Version 4.1.4
+    + Fixed Vcs-* URLs.
+    + Updated Homepage.
+    + Updated Depends.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+  * Updated dh to 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 03 Jul 2018 12:40:38 +0530
+
+apertium-es-gl (1.0.8~r57542-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated to Standards-Version 3.9.8
+    + Removed Build-dep on locales.
+    + Fixed Vcs-Git URL.
+    + Bumped dh to 9.
+  * Simplified debian/rules file.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 08 Jul 2016 10:21:09 +0530
+
+apertium-es-gl (1.0.8~r57542-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release.
+  * No significant changes in svn since tarball, so taking directly from svn.
+  * Re-done packaging to take advantage of debhelper 9.
+
+  [ Kartik Mistry ]
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 30 Jul 2015 17:50:32 +0530
 
 apertium-es-gl (1.0.7-1) unstable; urgency=low
 
