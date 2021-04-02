@@ -57,7 +57,7 @@ case $TOOL in
 	yum|dnf)
 		echo "Installing $URL to /etc/yum.repos.d/apertium-$CADENCE.repo..."
 		rm -fv /etc/yum.repos.d/apertium*
-		wget "$URL" -O /etc/yum.repos.d/apertium.repo
+		curl "$URL" >/etc/yum.repos.d/apertium.repo
 		echo "Running $TOOL updateinfo..."
 		$TOOL updateinfo
 		;;
