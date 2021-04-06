@@ -8,6 +8,15 @@ fi
 
 CADENCE=release
 
+if [[ -x "$(which curl)" ]]; then
+	GET="curl -sS"
+elif [[ -x "$(which wget)" ]]; then
+	GET="wget -nv -O -"
+else
+	echo "Neither curl nor wget found - need one of them!"
+	exit -1
+fi
+
 echo "Cleaning up old install, if any..."
 rm -fv /etc/apt/trusted.gpg.d/apertium* /etc/apt/preferences.d/apertium* /etc/apt/sources.list.d/apertium*
 
@@ -37,10 +46,10 @@ fi
 echo "Settling for $DISTRO - enabling the Apertium $CADENCE repo..."
 
 echo "Installing Apertium GnuPG key to /etc/apt/trusted.gpg.d/apertium.gpg"
-curl -sS https://apertium.projectjj.com/apt/apertium-packaging.public.gpg >/etc/apt/trusted.gpg.d/apertium.gpg
+$GET https://apertium.projectjj.com/apt/apertium-packaging.public.gpg >/etc/apt/trusted.gpg.d/apertium.gpg
 
 echo "Installing package override to /etc/apt/preferences.d/apertium.pref"
-curl -sS https://apertium.projectjj.com/apt/apertium.pref >/etc/apt/preferences.d/apertium.pref
+$GET https://apertium.projectjj.com/apt/apertium.pref >/etc/apt/preferences.d/apertium.pref
 
 echo "Creating /etc/apt/sources.list.d/apertium.list"
 echo "deb http://apertium.projectjj.com/apt/$CADENCE $DISTRO main" > /etc/apt/sources.list.d/apertium.list
