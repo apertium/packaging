@@ -5,8 +5,9 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.7.1),
-               apertium-ita (>= 0.9.0~r78828),
-               apertium-spa (>= 1.0.0~r78827),
+               apertium-ita (>= 1.1.1),
+               apertium-spa (>= 1.2.2),
+               cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -20,10 +21,11 @@ Package: apertium-spa-ita
 Architecture: all
 Depends: apertium (>= 3.7.1),
          apertium-lex-tools (>= 0.2.7),
+         cg3 (>= 1.3.2),
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-ita-spa
-Conflicts: apertium-ita-spa
+Provides: apertium-ita-spa, apertium-it-es
+Conflicts: apertium-ita-spa, apertium-it-es
 Description: Apertium translation data for the Spanish-Italian pair
  Data package providing Apertium language resources for translating
  between the Spanish and Italian languages.
@@ -32,6 +34,5 @@ Package: apertium-es-it
 Architecture: all
 Depends: apertium-spa-ita (= ${binary:Version}), ${misc:Depends}
 Section: oldlibs
-Provides: apertium-it-es
 Description: Transitional dummy package for apertium-spa-ita
  This is a transitional dummy package. It can safely be removed.

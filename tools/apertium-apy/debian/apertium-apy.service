@@ -7,6 +7,7 @@ After=network.target
 # Change this to your username and edit to how you start apy:
 User=apertium
 ExecStart=/usr/bin/apertium-apy /usr/share/apertium/modes
+Environment=LC_ALL=C.UTF-8
 
 # By default, if it restarts >10 times within 5 secs, it marks it as failed and gives up:
 Restart=always

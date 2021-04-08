@@ -1,26 +1,74 @@
 apertium-apy (0.11.7-1) unstable; urgency=low
 
   * Update to latest upstream release.
+    + Fixes the processing pipes yielding out-of-order results.
 
  -- Tino Didriksen <tino@didriksen.cc>  Thu, 01 Apr 2021 11:52:31 +0200
 
+apertium-apy (0.11.6-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * debian/control:
+    + Set debhelper-compat version in Build-Depends.
+  * Added debian/upstream/metadata.
+
+  [ Kartik Mistry ]
+  * New upstream release (Closes: #963324)
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Updated Maintainer email address.
+    + dh to 13.
+    + Added 'Rules-Requires-Root' field.
+  * Removed debian/apertium-apy.1. Already in upstream.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 01 Jul 2020 13:45:06 +0530
+
+apertium-apy (0.11.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/gitlab-ci.yml:
+    + Added salsa pipeline config.
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+    + Added Pre-Depends field.
+  * Bumped dh to 12.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 24 Sep 2019 16:12:18 +0530
+
+apertium-apy (0.11.4-2) unstable; urgency=low
+
+  * debian/apertium-apy.service:
+    + Apertium-apy require UTF-8 locale to be available to work properly.
+  * debian/apertium-apy.1:
+    + Added manpage.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 08 Nov 2018 11:39:18 +0530
+
+apertium-apy (0.11.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    + Bumped dh to 11.
+    + Updated Standards-Version to 4.2.1
+    + Updated Depends.
+  * debian/rules, debian/docs:
+    + Install docs properly and remove extra license file.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 01 Oct 2018 17:25:22 +0530
+
 apertium-apy (0.11.3-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream release.
     + APy now installs /usr/bin/apertium-apy, so make use of that in services
-  * Reduced dh from 11 to 9.
-  * Watch file for new upstream home https://github.com/apertium/apertium-apy
-
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 24 Apr 2018 10:31:32 +0200
-
-apertium-apy (0.9.1~r343-5) unstable; urgency=medium
-
   * debian/control:
-    + Added missing Build-Depends on dh-python (Closes: #896719).
     + Fixed Vcs-* URLs.
+    + Added missing Build-Depends on dh-python (Closes: #896719)
+    + Reduced dh from 11 to 9.
     + Updated Standards-Version to 4.1.4
+  * Updated debian/Watch file for new upstream home
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 24 Apr 2018 13:40:35 +0530
+ -- Kartik Mistry <kartik@debian.org>  Thu, 10 May 2018 11:54:25 +0530
 
 apertium-apy (0.9.1~r343-4) unstable; urgency=low
 
