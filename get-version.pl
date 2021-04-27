@@ -48,6 +48,17 @@ if ($opts{'url'} =~ m@^https://github.com/[^/]+/([^/]+)$@) {
    chdir("${pkg}.git");
    print STDERR `git fetch --all -f`;
    print STDERR `git remote update -p`;
+   if (int(`git branch | grep [*] | wc -l`) == 0) {
+      print STDERR "No default branch - trying to determine new default\n";
+      my $head = `git remote show origin | grep 'HEAD branch' | egrep -o '([^ ]+)\$'`;
+      chomp($head);
+      `git symbolic-ref HEAD refs/heads/$head`;
+      print STDERR `git fetch --all -f`;
+      print STDERR `git remote update -p`;
+      if (int(`git branch | grep [*] | wc -l`) == 0) {
+         die "Could not determine new default branch!\n";
+      }
+   }
    print STDERR `git reflog expire --expire=now --all`;
    print STDERR `git repack -ad`;
    print STDERR `git prune`;

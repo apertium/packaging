@@ -6,9 +6,10 @@ Uploaders: Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
 Build-Depends: debhelper (>= 9),
                dh-python,
-               python3 (>= 3.5),
+               python3 (>= 3.6),
                python3-chardet,
                python3-coverage,
+               python3-lxml,
                python3-pkg-resources,
                python3-requests,
                python3-setuptools,
@@ -26,12 +27,15 @@ Architecture: all
 Pre-Depends: ${misc:Pre-Depends}
 Depends: adduser,
          logrotate,
-         python3 (>= 3.5),
+         python3 (>= 3.6),
          python3-pkg-resources,
          python3-tornado,
          ${misc:Depends},
          ${python3:Depends}
-Recommends: python3-chardet, python3-requests, python3-streamparser
+Recommends: python3-chardet,
+            python3-lxml,
+            python3-requests,
+            python3-streamparser
 Description: Apertium APY service
  This package contains Apertium APY which is simple Apertium
  API written in Python 3 meant as a drop-in replacement for
