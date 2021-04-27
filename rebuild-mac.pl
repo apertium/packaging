@@ -39,6 +39,11 @@ $ENV{'LDFLAGS'} = '-L/opt/local/lib/ -stdlib=libc++ -Wl,-headerpad_max_install_n
 $ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
 $ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
 
+my $py3v = `python3 --version | egrep -o '[0-9]+[.][0-9]+'`;
+chomp($py3v);
+$ENV{'PYTHONPATH'} = "/usr/local/lib/python${py3v}/site-packages";
+my $python3 = "python${py3v}";
+
 my %pkgs = load_packages();
 
 chomp(my $arch = `uname -m`);
@@ -161,30 +166,37 @@ for my $cadence (qw(  nightly )) {#release
       print "\tbuilding...\n";
       `echo '======== BUILD ========' >>'${logfile}-build.log'`;
       `date -u >>'${logfile}-build.log'`;
-      $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+      if (-s 'Makefile') {
+         $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+      }
+      else {
+         $log = `$python3 setup.py build >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+      }
       `cat '${logfile}-build.log' >>'${logfile}.log'`;
       if ($log =~ /^BUILD FAILED/) {
          print "\tfailed build\n";
          next;
       }
 
-      my $test = '';
-      my $mkfile = file_get_contents('Makefile');
-      if ($mkfile =~ /^test:/m) {
-         $test = 'test';
-      }
-      elsif ($mkfile =~ /^check:/m) {
-         $test = 'check';
-      }
-      if ($test) {
-         print "\ttesting...\n";
-         `echo '======== TEST ========' >>'${logfile}-test.log'`;
-         `date -u >>'${logfile}-test.log'`;
-         $log = `make '${test}' V=1 VERBOSE=1 >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
-         `cat '${logfile}-test.log' >>'${logfile}.log'`;
-         if ($log =~ /^TEST FAILED/) {
-            print "\tfailed test\n";
-            next;
+      if (-s 'Makefile') {
+         my $test = '';
+         my $mkfile = file_get_contents('Makefile');
+         if ($mkfile =~ /^test:/m) {
+            $test = 'test';
+         }
+         elsif ($mkfile =~ /^check:/m) {
+            $test = 'check';
+         }
+         if ($test) {
+            print "\ttesting...\n";
+            `echo '======== TEST ========' >>'${logfile}-test.log'`;
+            `date -u >>'${logfile}-test.log'`;
+            $log = `make '${test}' V=1 VERBOSE=1 >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
+            `cat '${logfile}-test.log' >>'${logfile}.log'`;
+            if ($log =~ /^TEST FAILED/) {
+               print "\tfailed test\n";
+               next;
+            }
          }
       }
 
@@ -192,13 +204,23 @@ for my $cadence (qw(  nightly )) {#release
       `echo '======== INSTALL ========' >>'${logfile}-install.log'`;
       `date -u >>'${logfile}-install.log'`;
       `rm -rf /tmp/install`;
-      $log = `make -j4 install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+      if (-s 'Makefile') {
+         $log = `make -j4 install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+      }
+      else {
+         $log = `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/tmp/install >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+      }
       `cat '${logfile}-install.log' >>'${logfile}.log'`;
       if ($log =~ /^INSTALL FAILED/) {
          print "\tfailed install\n";
          next;
       }
-      `make -j4 install >/dev/null 2>&1`;
+      if (-s 'Makefile') {
+         `make -j4 install >/dev/null 2>&1`;
+      }
+      else {
+         `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/ >/dev/null 2>&1`;
+      }
 
       print "\tpackaging...\n";
       `echo '======== PACKAGE ========' >>'${logfile}-package.log'`;
