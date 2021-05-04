@@ -1,3 +1,4 @@
 debian/tmp/usr/bin
+debian/tmp/usr/share/doc
 debian/tmp/usr/share/giella/fkv
 debian/tmp/usr/share/pkgconfig

@@ -311,7 +311,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             }
          }
 
-         push(@deps, 'apt-utils', 'build-essential', 'fakeroot');
+         push(@deps, 'apt-utils', 'build-essential', 'fakeroot', 'time');
          @os_deps = sort @os_deps;
          @our_deps = sort @our_deps;
 
@@ -342,8 +342,11 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "RUN apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install fakeroot\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential fakeroot time\n";
+         if ($is_data) {
+            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install libgoogle-perftools-dev\n";
+            push(@deps, 'libgoogle-perftools-dev');
+         }
          if (scalar(@os_deps)) {
             $docker .= "\n";
             $docker .= "# OS dependencies\n";
@@ -400,8 +403,11 @@ foreach my $k (@{$pkgs{'order'}}) {
          else {
             $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
          }
+         if ($is_data) {
+            $script .= "export 'LD_PRELOAD=libtcmalloc_minimal.so'\n";
+         }
          $script .= "cd /build/${pkname}-*/\n";
-         $script .= "timeout 180m nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
+         $script .= "timeout 180m time nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
          file_put_contents("$dpath/build.sh", $script);
          `chmod +x '$dpath/build.sh'`;
          `chown -R 1234:1234 '$dpath'`;
