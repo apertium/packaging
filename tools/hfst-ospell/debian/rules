@@ -17,5 +17,5 @@ override_dh_auto_install:
 
 ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
 override_dh_auto_test:
-	make -j1 check
+	$(MAKE) -j1 check V=1 VERBOSE=1
 endif

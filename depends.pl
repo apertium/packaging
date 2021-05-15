@@ -29,8 +29,12 @@ while (<>) {
       $build{'hfst-ospell-dev (>= 0.5.2)'} = 1;
    }
    elsif (/\bhfst\b/) {
+      $build{'libhfst-dev (>= 3.15.3)'} = 1;
       $build{'hfst (>= 3.15.3)'} = 1;
       $deps{'hfst (>= 3.15.3)'} = 1;
+   }
+   elsif (/\blexd\b/) {
+      $build{'lexd (>= 1.0.0)'} = 1;
    }
    elsif (/\blibxml-2.0\b/) {
       $build{'libxml2-dev'} = 1;

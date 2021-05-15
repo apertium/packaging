@@ -11,7 +11,7 @@ override_dh_auto_configure:
 	dh_auto_configure -- --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu --enable-python-bindings 'PYTHON_INSTALL_PARAMS=--no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp'
 
 override_dh_auto_test:
-	$(MAKE) -j1 check
+	$(MAKE) -j1 check V=1 VERBOSE=1
 
 override_dh_auto_install:
 	dh_auto_install

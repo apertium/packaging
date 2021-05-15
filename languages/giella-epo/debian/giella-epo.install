@@ -1,4 +1,3 @@
 debian/tmp/usr/bin
-debian/tmp/usr/share/doc
 debian/tmp/usr/share/giella/epo
 debian/tmp/usr/share/pkgconfig
