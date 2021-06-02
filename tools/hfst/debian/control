@@ -11,6 +11,8 @@ Build-Depends: autoconf,
                dh-autoreconf,
                dh-python,
                flex,
+               libfoma-dev,
+               libfst-dev,
                libicu-dev,
                libreadline-dev,
                libtool,
@@ -27,7 +29,7 @@ Rules-Requires-Root: no
 
 Package: hfst
 Architecture: any
-Depends: libhfst53 (= ${binary:Version}),
+Depends: libhfst54 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
@@ -36,7 +38,7 @@ Description: Helsinki Finite-State Transducer Technology
  implementation of morphological analysers and other tools which are
  based on weighted and unweighted finite-state transducer technology.
 
-Package: libhfst53
+Package: libhfst54
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
@@ -54,7 +56,7 @@ Package: libhfst-dev
 Architecture: any
 Section: libdevel
 Depends: hfst (= ${binary:Version}),
-         libhfst53 (= ${binary:Version}),
+         libhfst54 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libhfst3-dev
@@ -69,7 +71,7 @@ Description: Helsinki Finite-State Transducer Technology Development files
 Package: python3-hfst
 Architecture: any
 Section: python
-Depends: libhfst53 (= ${binary:Version}),
+Depends: libhfst54 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

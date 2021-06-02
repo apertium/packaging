@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+#export DH_VERBOSE=1
+export DH_OPTIONS
+export LC_ALL=C.UTF-8
+
+include /usr/share/dpkg/architecture.mk
+
+%:
+	dh $@ --fail-missing --parallel --with autoreconf
+
+override_dh_auto_configure:
+	dh_auto_configure -- --enable-far --enable-pdt --enable-lookahead-fsts --enable-ngram-fsts --enable-const-fsts --enable-compact-fsts --enable-compress --enable-linear-fsts --enable-mpdt --enable-bin --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/22
+
+override_dh_auto_install:
+	dh_auto_install
+	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;

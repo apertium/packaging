@@ -1,0 +1,178 @@
+openfst (1.6.3-2) unstable; urgency=medium
+
+  * Disable compilation optimizations for the test suite on kfreebsd-i386
+    architecture.
+    The test suite compilation requires a lot of memory and
+    fails on some architectures with normal -O2 optimization.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Wed, 30 Aug 2017 22:30:48 +0200
+
+openfst (1.6.3-1) unstable; urgency=medium
+
+  [ Giulio Paci ]
+  * New upstream release 1.6.3 (Closes: #871170).
+  * Rename libfst4* packages into libfst22* according to SONAME change.
+    The plugin path is updated accordingly.
+  * Set DEB_COPYRIGHT_CHECK_IGNORE_REGEX in debian/rules.
+    This prevents most binary files to be checked for license changes.
+  * Bump Standards-Version to 4.0.1.
+    No changes needed.
+  * Add libfst22-plugins-base.lintian-overrides and source/lintian-overrides.
+  * Add libfstcompact and libfstconst entries to libfst22.lintian-overrides.
+  * Update copyright.
+  * Update copyright_hints.
+
+  [ Jakub Wilk ]
+  * Fix typo in a debian/rules comment.
+
+  [ Giulio Paci ]
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Sun, 30 Jul 2017 23:15:30 +0200
+
+openfst (1.5.3+r3-2) unstable; urgency=medium
+
+  * Limit parallelism using different limits for build and check.
+  * Limit parallelism everywhere.
+    A check to apply the limit only on buildds is removed.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Tue, 31 May 2016 15:15:19 +0200
+
+openfst (1.5.3+r3-1) unstable; urgency=medium
+
+  * New upstream release 1.5.3+r3.
+  * Drop 1005_kaldi_patch.patch and 1010_fix_typo.patch.
+    They have been accepted upstream with minor changes.
+  * Drop copyright section about 1005_kaldi_patch.patch.
+  * Disable compilation optimizations for the test suite on mips, mipsel
+    and hurd-i386 architectures.
+    The test suite compilation requires a lot of memory and
+    fails on some architectures with normal -O2 optimization.
+  * Add -mxgot compilation flag for the test suite on mips and mipsel
+    architectures. Without this flag the compilation fails with
+    "relocation truncated to fit" error.
+  * Rename libfst3* packages into libfst4* according to SONAME change.
+    The plugin path is updated accordingly.
+  * Apply minor stylistic changes in rules.
+    The syntax of ifneq checks changes from (x,y) to "x" "y".
+  * Drop unused entries in libfst4.lintian-overrides.
+  * Migrate to unstable.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Thu, 26 May 2016 23:33:27 +0200
+
+openfst (1.5.2-1) experimental; urgency=medium
+
+  [ Giulio Paci ]
+  * New upstream release 1.5.2.
+    + Refresh patches.
+  * Limit parallelism on buildds in order not to run out of RAM.
+  * Drop 1001_spelling_errors_fix.patch,
+    1002_add_with_libfstdir_argument_to_configure.patch,
+    1003_complete_soname_update.patch.
+    They were accepted upstream.
+  * Drop 2001_put_libfst_extension_libraries_in_usr_lib.patch.
+    No more needed.
+  * Add 1005_kaldi_patch.patch and 1010_fix_typo.patch.
+  * Drop unresolved-symbols.diff.
+    Modified patch has been accepted upstream.
+  * Remove autotools files from copyright.
+  * Fix typos in README.Debian, fstlinear.1 and fstloglinearapply.1.
+  * Update Vcs-* fields.
+  * Update copyright.
+  * Update copyright_hints.
+  * Update packages names according to SONAME change.
+  * Add README.source.	
+  * Add zlib1g-dev dependency.	
+  * Do not require specific automake version.
+  * Do not create -dbg package.
+    Rely on automatic dbgsym packages instead, as described in
+    https://lists.debian.org/5675E791.6060705@thykier.net
+  * Bump Standards-Version to 3.9.8.
+    No changes needed.
+  * Update manpages.
+  * Update openfstbc.
+  * Add libfst-tools.maintscript to remove openfstbc configuration file.
+  * Add libfst-tools.bash-completion to install openfstbc as appropriate.
+  * Add compress, linear-fsts and mpdt extensions.	
+  * Update fst plugin path according to SONAME change.
+
+  [ Jakub Wilk ]
+  * Rewrite watch file.
+    Upstream releases multiple revisions of the sources using the same
+    tarball name. The revision number is encoded in plain text, so the
+    new watch file uses pagemangle option to keep track of it.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Wed, 13 Apr 2016 15:20:56 +0200
+
+openfst (1.3.3-1) experimental; urgency=low
+
+  * New upstream release 1.3.3 (Closes: #677932).
+    + Refresh patches.
+  * Add 1002_add_with_libfstdir_argument_to_configure.patch.
+  * Add 1003_complete_soname_update.patch.
+  * Add 1004_set_tmpdir_default_to_TMPDIR.patch.
+  * Fix possible temporary-file race conditions in tests.
+  * Fix openfstbc file.
+  * Update man pages.
+  * Add python build dependency.
+  * Rename libfst0* packages to libfst1*.
+  * Move debian/libfst0* files to debian/libfst1*.
+    + Refresh debian/libfst1* files.
+  * Move plugins from /usr/lib/fst/ to /usr/lib/fst/1/.
+    + Update README.Debian.
+  * Fix copyright license information for some files.
+  * Update Vcs-Git in control.in.
+  * Bump Standards-Version to 3.9.4.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Wed, 27 Feb 2013 03:36:04 +0100
+
+openfst (1.3.2-1) experimental; urgency=low
+
+  * New upstream release (Closes: #675129).
+    + Refresh patches.
+  * Bump standards version to 3.9.3.
+  * Update watch file.
+  * Update copyright file.
+  * Convert the package to CDBS (Closes: #676376).
+  * Add man pages.
+  * Add bash auto-completion.
+  * Add hardening flags.
+  * Add README.Debian file.
+  * Fix spelling errors in binaries.
+    [1001_spelling_errors_fix.patch]
+  * Install libraries in /usr/lib.
+    [2001_put_libfst_extension_libraries_in_usr_lib.patch]
+  * Add lintian overrides for hardening-no-fortify-functions.
+  * Enable all available extensions.
+  * Bump compat version to 9.
+  * Set maintainer to Giulio Paci (Closes: #664163).
+  * Add Build-depends on autotools-dev, devscripts, automake1.11
+    (replaces automake1.9), cdbs (>= 0.4.85~), debhelper (>= 9~),
+    dh-buildinfo, dpkg-dev (>= 1.16.1~)	
+  * Remove Build-Conflicts on autoconf2.13, automake1.4.
+  * Add libfst0-dbg binary package.
+  * Add libfst0-plugins-base package.
+  * Add git repository in collab-maint.
+  * Enable test suite execution in rules.
+  * Modify libfst-dev and libfst-tools descriptions.
+
+ -- Giulio Paci <giuliopaci@gmail.com>  Sun, 02 Sep 2012 19:38:15 +0200
+
+openfst (1.2-1) experimental; urgency=low
+
+  * New upstream release.
+  * Bump standards version to 3.9.1 (no changes needed).
+  * libfstmain has been renamed to libfstscript: add Breaks.
+  * Use dh_makeshlibs -V.
+  * Update debian/clean.
+  * Link libfst* libraries with all the libraries they use symbols from.
+    [unresolved-symbols.diff]
+  * Use LDFLAGS=-Wl,--as-needed.
+  * Install AUTHORS, README and NEWS files.
+
+ -- Jakub Wilk <jwilk@debian.org>  Thu, 19 Aug 2010 15:02:45 +0200
+
+openfst (1.1-1) experimental; urgency=low
+
+  * Initial release (closes: #579398).
+
+ -- Jakub Wilk <jwilk@debian.org>  Tue, 18 May 2010 16:58:34 +0200

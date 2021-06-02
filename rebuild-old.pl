@@ -23,26 +23,28 @@ if (-s '/opt/autopkg/rebuild.lock') {
 }
 `date -u > /opt/autopkg/rebuild.lock`;
 
-`rm -rf /opt/autopkg/tmp`;
+`rm -rf /opt/autopkg/tmp /opt/autopkg/rules.*`;
 `mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;
 
 use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
-my $release = 0;
-my $refresh = 0;
-my $dry = 0;
-my $staccato = 0;
-my $distro = '';
-my $rop = GetOptions(
-   'release|r!' => \$release,
-   'refresh!' => \$refresh,
-   'dry|n!' => \$dry,
-   'staccato!' => \$staccato,
-   'distro=s' => \$distro,
+my %opts = (
+   'release' => 0,
+   'dry' => 0,
+   'staccato' => 0,
+   'distro' => '',
+   'only' => '',
+   );
+my $rop = GetOptions(\%opts,
+   'release|r!',
+   'dry|n!',
+   'staccato!',
+   'distro=s',
+   'only=s',
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
-$ENV{'AUTOPKG_BUILDTYPE'} = ($release == 1) ? 'release' : 'nightly';
+$ENV{'AUTOPKG_BUILDTYPE'} = ($opts{'release'} == 1) ? 'release' : 'nightly';
 $ENV{'DOCKER_BUILDKIT'} = 1;
 $ENV{'BUILDKIT_PROGRESS'} = 'plain';
 $ENV{'PROGRESS_NO_TRUNC'} = 1;
@@ -70,6 +72,8 @@ my %blames = ();
 my @failed = ();
 my $win32 = 0;
 my $osx = 0;
+
+my $exitcode = 0;
 
 use IO::Tee;
 open my $log, ">/opt/autopkg/tmp/rebuild.$$.log";
@@ -147,7 +151,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    print {$out} "\tstarted: ".`date -u`;
 
    my $rev = '';
-   if ($release) {
+   if ($opts{'release'}) {
       $rev = `head -n1 $pkg->[0]/debian/changelog`;
       chomp($rev);
       if ($rev =~ m@\((?:\d+:)?[\d.]+\+[gs]([^-)]+)@) {
@@ -191,7 +195,7 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    my $control = read_control($pkg->[0].'/debian/control');
 
-   if (!$staccato) {
+   if (!$opts{'staccato'}) {
       my ($bdeps) = ($control =~ m@Build-Depends:\s*([^\n]+)@);
       $bdeps =~ s@\([^)]+\)@@g;
       $bdeps =~ s@\s+@@gs;
@@ -223,6 +227,10 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    $ENV{'AUTOPKG_DATA_ONLY'} = '';
    my $is_data = '';
+   if ($opts{'dry'}) {
+      $is_data = 'dry';
+   }
+
    copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
    if ($pkg->[0] =~ m@/apertium-all-dev$@) {
       print {$out} "\tarch-all\n";
@@ -241,14 +249,13 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'arch-all';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
-   if ($dry || $is_data eq 'data') {
-      $is_data = 'data';
+   if ($opts{'dry'} || $is_data eq 'data') {
       # For data-only packages, skip all distros except Debian Sid
       $pkg->[3] = join(',', keys(%{$targets->{'distros'}}));
       $pkg->[3] =~ s@(^|,)sid(,|$)@,@g;
    }
-   if ($distro) {
-      $pkg->[3] = $distro;
+   if ($opts{'distro'}) {
+      $pkg->[3] = $opts{'distro'};
    }
 
    $pkg->[3] = ",$pkg->[3],";
@@ -281,6 +288,9 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
 
    print {$out} "\tlaunching build\n";
+   if ($opts{'only'} eq 'win') {
+      goto WINDOWS;
+   }
    foreach my $distro (keys %{$targets->{'distros'}}) {
       if ($pkg->[3] =~ m@,$distro,@) {
          next;
@@ -343,7 +353,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential fakeroot time\n";
-         if ($is_data) {
+         if ($is_data eq 'data') {
             $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install libgoogle-perftools-dev\n";
             push(@deps, 'libgoogle-perftools-dev');
          }
@@ -386,7 +396,7 @@ foreach my $k (@{$pkgs{'order'}}) {
 
             my $nonce = time();
             `echo 'Creating $distro $arch' >>$logpath/stderr.log 2>&1`;
-            `docker build --build-arg "CACHE_NONCE=$nonce" --pull -f $dpath/Dockerfile -t $img-build $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
+            `docker build --build-arg "CACHE_NONCE=$nonce" -f $dpath/Dockerfile -t $img-build $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                print {$out} "\tdocker $distro:$arch create fail\n";
                goto CLEANUP;
@@ -403,7 +413,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          else {
             $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
          }
-         if ($is_data) {
+         if ($is_data eq 'data') {
             $script .= "export 'LD_PRELOAD=libtcmalloc_minimal.so'\n";
          }
          $script .= "cd /build/${pkname}-*/\n";
@@ -417,6 +427,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($?) {
             print {$out} "\tdocker $distro:$arch build fail\n";
             $failed .= "$logpath/$distro-$arch.log\n";
+            $exitcode = 1;
             goto FAILED;
          }
 
@@ -442,12 +453,12 @@ foreach my $k (@{$pkgs{'order'}}) {
       print {$out} "\tsoft fail: unmet dependencies\n";
    }
 
-   if ($dry) {
+   if ($opts{'dry'}) {
       print {$out} "\tparched\n";
       last;
    }
    # If debs did not fail building, try RPMs and win32
-   if (!$failed) {
+   if (!$failed && $opts{'only'} ne 'deb') {
       if (-s "$pkg->[0]/rpm/$pkname.spec") {
          print {$out} "\tupdating rpm sources\n";
          `$Bin/make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
@@ -457,18 +468,31 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
 
-      if (-s "$pkg->[0]/win32/$pkname.sh") {
+      WINDOWS:
+      while (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
          $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
          $ENV{'AUTOPKG_WINX'} = 'win32';
          `bash -c '. $dir/win32-pre.sh; . $dir/$pkg->[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/$pkg->[0]' 2>$logpath/win32.log >&2`;
+         if ($?) {
+            print {$out} "\tFAILED: win32\n";
+            last;
+         }
 
          print {$out} "\tbuilding win64\n";
          $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
          $ENV{'AUTOPKG_WINX'} = 'win64';
          `bash -c '. $dir/win32-pre.sh; . $dir/$pkg->[0]/win32/$pkname.sh; . $dir/win32-post.sh;' -- '$pkname' '$newrev' '$version-$distv' '$dir/$pkg->[0]' 2>$logpath/win64.log >&2`;
+         if ($?) {
+            print {$out} "\tFAILED: win64\n";
+            last;
+         }
 
          $win32 = 1;
+         if ($opts{'only'} eq 'win') {
+            goto CLEANUP;
+         }
+         last;
       }
 =pod
       if (-s "$pkg->[0]/osx/$pkname.sh") {
@@ -648,3 +672,5 @@ print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;
 unlink("/opt/autopkg/tmp/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');
+
+exit($exitcode);

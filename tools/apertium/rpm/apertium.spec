@@ -159,6 +159,7 @@ make check
 
 %files -n apertium-devel
 %defattr(-,root,root)
+%{_bindir}/apertium-editdist
 %{_bindir}/apertium-filter-ambiguity
 %{_bindir}/apertium-filter-dix
 %{_bindir}/apertium-filter-rules

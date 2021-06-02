@@ -1,3 +1,4 @@
+debian/tmp/usr/bin/apertium-editdist
 debian/tmp/usr/bin/apertium-filter-ambiguity
 debian/tmp/usr/bin/apertium-filter-dix
 debian/tmp/usr/bin/apertium-filter-rules

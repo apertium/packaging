@@ -1,0 +1,78 @@
+Source: openfst
+Section: libs
+Priority: optional
+Maintainer: Giulio Paci <giuliopaci@gmail.com>
+Build-Depends: autoconf,
+               automake,
+               autotools-dev,
+               debhelper (>= 9.0),
+               libtool,
+               zlib1g-dev
+Standards-Version: 4.5.1
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/openfst.git
+Vcs-Browser: https://anonscm.debian.org/git/collab-maint/openfst.git
+Homepage: http://www.openfst.org/
+
+Package: libfst-tools
+Section: text
+Architecture: any
+Provides: openfst
+Depends: libfst22 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: weighted finite-state transducers library (tools)
+ OpenFst is a library for constructing, combining, optimizing, and searching
+ weighted finite-state transducers (FSTs). Weighted finite-state transducers
+ are automata where each transition has an input label, an output label, and a
+ weight. The more familiar finite-state acceptor is represented as a transducer
+ with each transition's input and output label equal. Finite-state acceptors
+ are used to represent sets of strings (specifically, regular or rational
+ sets); finite-state transducers are used to represent binary relations between
+ pairs of strings (specifically, rational transductions). The weights can be
+ used to represent the cost of taking a particular transition.
+ .
+ This package provides the command line tools.
+
+Package: libfst22-plugins-base
+Section: text
+Architecture: any
+Depends: libfst22 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: weighted finite-state transducers library (base plugins)
+ OpenFst is a library for constructing, combining, optimizing, and searching
+ weighted finite-state transducers (FSTs).
+ .
+ This package contains base extensions that will be dynamically loaded
+ into any binary compiled with OpenFst if the LD_LIBRARY_PATH (or
+ equivalent) includes /usr/lib/fst.
+
+Package: libfst-dev
+Section: libdevel
+Architecture: any
+Depends: libfst22 (= ${binary:Version}), ${misc:Depends}
+Description: weighted finite-state transducers library (development)
+ OpenFst is a library for constructing, combining, optimizing, and searching
+ weighted finite-state transducers (FSTs). Weighted finite-state transducers
+ are automata where each transition has an input label, an output label, and a
+ weight. The more familiar finite-state acceptor is represented as a transducer
+ with each transition's input and output label equal. Finite-state acceptors
+ are used to represent sets of strings (specifically, regular or rational
+ sets); finite-state transducers are used to represent binary relations between
+ pairs of strings (specifically, rational transductions). The weights can be
+ used to represent the cost of taking a particular transition.
+ .
+ This package contains the development support files.
+
+Package: libfst22
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Breaks: libfst-tools (<< 1.2)
+Description: weighted finite-state transducers library (runtime)
+ OpenFst is a library for constructing, combining, optimizing, and searching
+ weighted finite-state transducers (FSTs). Weighted finite-state transducers
+ are automata where each transition has an input label, an output label, and a
+ weight. The more familiar finite-state acceptor is represented as a transducer
+ with each transition's input and output label equal. Finite-state acceptors
+ are used to represent sets of strings (specifically, regular or rational
+ sets); finite-state transducers are used to represent binary relations between
+ pairs of strings (specifically, rational transductions). The weights can be
+ used to represent the cost of taking a particular transition.
+ .
+ This package includes the shared library.
