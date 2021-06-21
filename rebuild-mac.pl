@@ -56,8 +56,11 @@ if ($arch eq 'arm64') {
 
 for my $k (@{$pkgs{'order'}}) {
    my $pkg = $pkgs{'packages'}->{$k};
-   my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
-   if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
+   if ($ARGV[0] && $pkg->[0] !~ m@/\Q$ARGV[0]\E$@) {
+      next;
+   }
+   my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
+   if (! -s "${Bin}/$pkg->[0]/osx/setup.sh") {
       next;
    }
    print "Syncing ${pkname}\n";
@@ -81,11 +84,16 @@ for my $cadence (qw(  nightly )) {#release
 
    for my $k (@{$pkgs{'order'}}) {
       my $pkg = $pkgs{'packages'}->{$k};
-      my ($pkname) = (@$pkg[0] =~ m@([-\w]+)$@);
-      if (! -s "${Bin}/@$pkg[0]/osx/setup.sh") {
+      if ($ARGV[0] && $pkg->[0] !~ m@/\Q$ARGV[0]\E$@) {
+         next;
+      }
+      my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
+      if (! -s "${Bin}/$pkg->[0]/osx/setup.sh") {
          next;
       }
       push(@combo, $pkname);
+
+      $ENV{'AUTOPKG_PKG_DEF_PATH'} = "${Bin}/$pkg->[0]";
 
       print "${pkname}\n";
       my $pkpath = "${Bin}/${cadence}/build/${pkname}";
@@ -96,10 +104,10 @@ for my $cadence (qw(  nightly )) {#release
          next;
       }
 
-      my $rebuild = (!-s "${pkpath}/${pkname}-latest.${arch}.tar.bz2");
+      my $rebuild = (!-s "${pkpath}/${pkname}-latest.${arch}.tar.bz2") || $ARGV[0];
 
       if (!$rebuild) {
-         my $deps = file_get_contents("${Bin}/@$pkg[0]/debian/control");
+         my $deps = file_get_contents("${Bin}/$pkg->[0]/debian/control");
          $deps = join("\n", ($deps =~ m@Build-Depends:(\s*.*?)\n\S@gs));
          foreach my $dep (split(/[,|\n]/, $deps)) {
             $dep =~ s@\([^)]+\)@@g;
@@ -156,7 +164,7 @@ for my $cadence (qw(  nightly )) {#release
       print "\tsetting up build...\n";
       `echo '======== SETUP ========' >>'${logfile}-setup.log'`;
       `date -u >>'${logfile}-setup.log'`;
-      my $log = `bash '${Bin}/@$pkg[0]/osx/setup.sh' >>'${logfile}-setup.log' 2>&1 || echo 'SETUP FAILED'`;
+      my $log = `bash '${Bin}/$pkg->[0]/osx/setup.sh' >>'${logfile}-setup.log' 2>&1 || echo 'SETUP FAILED'`;
       `cat '${logfile}-setup.log' >>'${logfile}.log'`;
       if ($log =~ /^SETUP FAILED/) {
          print "\tfailed setup\n";
@@ -242,7 +250,7 @@ for my $cadence (qw(  nightly )) {#release
          next;
       }
 
-      my $deps = file_get_contents("${Bin}/@$pkg[0]/debian/control");
+      my $deps = file_get_contents("${Bin}/$pkg->[0]/debian/control");
       $deps = join("\n", ($deps =~ m@Package:(\s*.*?)\n\S@gs));
       foreach my $dep (split(/\n+/, $deps)) {
          $dep =~ s@\([^)]+\)@@g;
@@ -265,6 +273,11 @@ for my $cadence (qw(  nightly )) {#release
    }
 
    if (!$did) {
+      next;
+   }
+
+   if ($ARGV[0]) {
+      print "Specific package $ARGV[0] build - won't combine.\n";
       next;
    }
 
