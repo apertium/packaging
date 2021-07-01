@@ -8,7 +8,7 @@ URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 BuildArch: noarch
 
-Requires: apertium-devel >= 3.7.1
+Requires: apertium-devel >= 3.8.0
 Requires: python3
 
 %description

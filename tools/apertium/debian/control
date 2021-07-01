@@ -12,10 +12,10 @@ Build-Depends: autoconf,
                flex,
                gawk,
                libicu-dev,
-               libpcre3-dev,
+               libutfcpp-dev,
                libxml2-dev,
                libxml2-utils,
-               lttoolbox-dev (>= 3.5.3),
+               lttoolbox-dev (>= 3.6.0),
                pkg-config,
                python3-dev,
                python3-lxml,
@@ -34,9 +34,9 @@ Rules-Requires-Root: no
 Package: apertium
 Architecture: any
 Depends: gawk,
-         libapertium3-3.7-1 (= ${binary:Version}),
+         libapertium3-3.8-1 (= ${binary:Version}),
          libxml2-utils,
-         lttoolbox (>= 3.5.3),
+         lttoolbox (>= 3.6.0),
          xsltproc,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -59,7 +59,7 @@ Description: Shallow-transfer machine translation engine
  systems for a variety of related-language pairs simply providing
  the linguistic data needed in the right format.
 
-Package: libapertium3-3.7-1
+Package: libapertium3-3.8-1
 Section: libs
 Architecture: any
 Multi-Arch: same
@@ -90,7 +90,7 @@ Architecture: any
 Depends: apertium (= ${binary:Version}),
          libpcre3-dev,
          libxml2-dev,
-         lttoolbox-dev (>= 3.5.3),
+         lttoolbox-dev (>= 3.6.0),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

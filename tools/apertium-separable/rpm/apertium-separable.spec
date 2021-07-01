@@ -1,5 +1,5 @@
 Name: apertium-separable
-Version: 0.2.0
+Version: 0.3.0
 Release: 1%{?dist}
 Summary: Reordering separable/discontiguous multiwords
 Group: Development/Tools
@@ -9,14 +9,12 @@ Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: autoconf
 BuildRequires: automake
-BuildRequires: apertium-devel
 BuildRequires: gcc-c++
 BuildRequires: lttoolbox-devel
+BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2-devel
-BuildRequires: pcre-devel
 BuildRequires: pkgconfig
-BuildRequires: zlib-devel
 
 %description
 Apertium module for reordering separable/discontiguous multiwords

@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.1),
-               apertium-lex-tools (>= 0.2.7),
+Build-Depends: apertium-dev (>= 3.8.0),
+               apertium-lex-tools (>= 0.3.0),
                cg3-dev (>= 1.3.2),
                debhelper (>= 12),
                gawk,
@@ -19,8 +19,8 @@ Rules-Requires-Root: no
 
 Package: apertium-udm-rus
 Architecture: all
-Depends: apertium (>= 3.7.1),
-         apertium-lex-tools (>= 0.2.7),
+Depends: apertium (>= 3.8.0),
+         apertium-lex-tools (>= 0.3.0),
          cg3 (>= 1.3.2),
          hfst (>= 3.15.3),
          ${misc:Depends},

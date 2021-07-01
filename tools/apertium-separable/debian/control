@@ -4,12 +4,12 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.1),
-               autotools-dev,
+Build-Depends: autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
+               libicu-dev,
                libxml2-dev,
-               lttoolbox-dev (>= 3.5.3),
+               lttoolbox-dev (>= 3.6.0),
                pkg-config,
                python3
 Standards-Version: 4.5.1

@@ -1,5 +1,5 @@
 Name: apertium-anaphora
-Version: 1.0.0
+Version: 1.1.0
 Release: 1%{?dist}
 Summary: Anaphora resolution module
 Group: Development/Tools
@@ -11,6 +11,7 @@ BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: gcc-c++
 BuildRequires: lttoolbox-devel
+BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2-devel
 BuildRequires: pkgconfig

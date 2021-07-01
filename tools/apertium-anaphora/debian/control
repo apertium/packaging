@@ -6,8 +6,9 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autoconf,
                debhelper (>= 9),
+               libicu-dev,
                libxml2-dev,
-               lttoolbox-dev (>= 3.5.3),
+               lttoolbox-dev (>= 3.6.0),
                pkg-config
 Standards-Version: 4.5.1
 Homepage: https://apertium.org/

@@ -9,11 +9,11 @@ Source0: %{name}_%{version}.orig.tar.bz2
 BuildArch: noarch
 Provides: apertium-all-devel = %{version}-%{release}
 
-Requires: apertium-anaphora >= 1.0.2
-Requires: apertium-devel >= 3.7.1
+Requires: apertium-anaphora >= 1.1.0
+Requires: apertium-devel >= 3.8.0
 Requires: apertium-eval-translator
-Requires: apertium-lex-tools >= 0.2.7
-Requires: apertium-recursive >= 1.0.1
+Requires: apertium-lex-tools >= 0.3.0
+Requires: apertium-recursive >= 1.1.0
 Requires: apertium-separable >= 0.3.2
 Requires: autoconf
 Requires: automake
@@ -24,7 +24,7 @@ Requires: libcg3-devel >= 1.3.2
 Requires: libhfst-devel >= 3.15.3
 Requires: libxml2
 Requires: libxslt
-Requires: lttoolbox-devel >= 3.5.3
+Requires: lttoolbox-devel >= 3.6.0
 
 %description
 Metapackage to get all tools required for development of Apertium

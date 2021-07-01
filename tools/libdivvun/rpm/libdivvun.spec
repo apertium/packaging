@@ -25,6 +25,8 @@ BuildRequires: python3-devel
 BuildRequires: zip
 Requires: libdivvun0 = %{version}-%{release}
 Provides: divvun-gramcheck = %{version}-%{release}
+Provides: libdivvun-bin = %{version}-%{release}
+Provides: libdivvun-tools = %{version}-%{release}
 
 %description
 Helper tools for grammar checking for Divvun languages

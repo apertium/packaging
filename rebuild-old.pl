@@ -633,6 +633,9 @@ print {$out2} "\n";
 
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
+   print {$out2} `docker images | egrep '^autopkg' | egrep 'weeks|months' | cut '-d ' -f 1 | xargs -r docker rmi 2>&1`;
+   print {$out2} `docker system prune -f 2>&1`;
+
    my $subject = 'Nightly: ';
    if (%blames) {
       $subject .= 'Failures (att:';
@@ -648,10 +651,9 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
       $subject .= 'Success';
    }
    `echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
-
-   `docker system prune -f 2>&1`;
 }
 
+=pod
 if ($win32) {
    print {$out2} "Combining Win32 builds\n";
    $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
@@ -667,6 +669,7 @@ if ($osx) {
    print {$out2} "Combining OS X builds\n";
    `$Bin/osx-combine.sh`;
 }
+=cut
 
 print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;

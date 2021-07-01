@@ -29,6 +29,7 @@ Rules-Requires-Root: no
 Package: divvun-gramcheck
 Architecture: any
 Depends: libxml2-utils, ${misc:Depends}, ${shlibs:Depends}
+Provides: libdivvun-tools, libdivvun-bin
 Description: Grammar checker tools for Divvun languages
  Helper tools for grammar checking for Divvun languages
 

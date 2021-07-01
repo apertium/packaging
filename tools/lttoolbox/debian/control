@@ -10,7 +10,9 @@ Build-Depends: automake,
                dh-autoreconf,
                dh-exec,
                dh-python,
+               libicu-dev,
                libtool,
+               libutfcpp-dev,
                libxml2-dev,
                libxml2-utils,
                pkg-config,
@@ -25,7 +27,7 @@ Rules-Requires-Root: no
 
 Package: lttoolbox
 Architecture: any
-Depends: liblttoolbox3-3.5-1 (= ${binary:Version}),
+Depends: liblttoolbox3-3.6-1 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Apertium lexical processing modules and tools
@@ -35,7 +37,7 @@ Description: Apertium lexical processing modules and tools
  for making morphological analysers and generators for natural language
  processing applications.
 
-Package: liblttoolbox3-3.5-1
+Package: liblttoolbox3-3.6-1
 Section: libs
 Architecture: any
 Multi-Arch: same
@@ -58,7 +60,11 @@ Description: Shared library for lttoolbox
 
 Package: lttoolbox-dev
 Architecture: any
-Depends: lttoolbox (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libicu-dev,
+         libutfcpp-dev,
+         lttoolbox (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Conflicts: liblttoolbox3-dev
 Replaces: liblttoolbox3-dev
 Description: Development tools and library for lttoolbox
@@ -75,7 +81,7 @@ Architecture: any
 Section: python
 Provides: ${python3:Provides}
 XB-Python-Version: ${python3:Versions}
-Depends: liblttoolbox3-3.5-1 (= ${binary:Version}),
+Depends: liblttoolbox3-3.6-1 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

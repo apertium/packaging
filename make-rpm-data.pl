@@ -113,12 +113,12 @@ URL: https://apertium.org/
 Source0: \%{name}_\%{version}.tar.bz2
 BuildArch: noarch
 
-Requires: lttoolbox >= 3.5.3
-Requires: apertium >= 3.7.1
-Requires: apertium-lex-tools >= 0.2.7
-Requires: apertium-separable >= 0.3.6
-Requires: apertium-recursive >= 1.0.1
-Requires: apertium-anaphora >= 1.0.2
+Requires: lttoolbox >= 3.6.0
+Requires: apertium >= 3.8.0
+Requires: apertium-lex-tools >= 0.3.0
+Requires: apertium-separable >= 0.4.0
+Requires: apertium-recursive >= 1.1.0
+Requires: apertium-anaphora >= 1.1.0
 Requires: cg3 >= 1.3.2
 Requires: hfst >= 3.15.3
 Requires: hfst-ospell >= 0.5.2

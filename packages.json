@@ -176,6 +176,8 @@
    ["languages/apertium-bas"],
    ["languages/apertium-bel"],
    ["languages/apertium-ben"],
+   ["languages/apertium-bho"],
+   ["languages/apertium-bhw"],
    ["languages/apertium-bkl"],
    ["languages/apertium-bre"],
    ["languages/apertium-btc"],
@@ -196,6 +198,7 @@
    ["languages/apertium-dan"],
    ["languages/apertium-deu"],
    ["languages/apertium-dlg"],
+   ["languages/apertium-dzo"],
    ["languages/apertium-ell"],
    ["languages/apertium-eng"],
    ["languages/apertium-epo"],
@@ -247,6 +250,7 @@
    ["languages/apertium-lin"],
    ["languages/apertium-ltz"],
    ["languages/apertium-lvs"],
+   ["languages/apertium-mag"],
    ["languages/apertium-mal"],
    ["languages/apertium-mar"],
    ["languages/apertium-mkd"],
@@ -331,7 +335,10 @@
    ["pairs/apertium-ava-rus"],
    ["pairs/apertium-bas-btc"],
    ["pairs/apertium-bel-rus"],
+   ["pairs/apertium-ben-hin"],
    ["pairs/apertium-bg-en"],
+   ["pairs/apertium-bho-hin"],
+   ["pairs/apertium-bhw-eng"],
    ["pairs/apertium-bn-en"],
    ["pairs/apertium-br-fr"],
    ["pairs/apertium-bua-khk"],
@@ -356,6 +363,7 @@
    ["pairs/apertium-deu-ltz"],
    ["pairs/apertium-deu-nld"],
    ["pairs/apertium-deu-swe"],
+   ["pairs/apertium-dzo-eng"],
    ["pairs/apertium-ell-eng"],
    ["pairs/apertium-en-ga"],
    ["pairs/apertium-en-gl"],
@@ -469,6 +477,7 @@
    ["pairs/apertium-lat-eng"],
    ["pairs/apertium-liv-fin"],
    ["pairs/apertium-lv-lg"],
+   ["pairs/apertium-mag-eng"],
    ["pairs/apertium-mal-eng"],
    ["pairs/apertium-mar-hin"],
    ["pairs/apertium-mkd-bul"],
@@ -567,4 +576,7 @@
    ["pairs/apertium-zho-spa"],
 
    # Autodiscovered packages will appear below
+#   ["pairs/apertium-eng-gle"], # Need to be renamed from en-ga
+#   ["pairs/apertium-eng-pol"], # Need to be renamed from en-pl
+#   ["pairs/apertium-ita-por"], # Need to be renamed from it-pt
 ]

@@ -1,5 +1,5 @@
 Name: apertium-recursive
-Version: 0.2.0
+Version: 0.3.0
 Release: 1%{?dist}
 Summary: Recursive structural transfer module
 Group: Development/Tools
@@ -12,12 +12,12 @@ BuildRequires: automake
 BuildRequires: apertium-devel
 BuildRequires: gcc-c++
 BuildRequires: lttoolbox-devel
+BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2-devel
 BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 BuildRequires: python3
-BuildRequires: zlib-devel
 
 %description
 Apertium module for recursive structural transfer

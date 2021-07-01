@@ -1,5 +1,5 @@
 Name: apertium-lex-tools
-Version: 0.2.7
+Version: 0.3.0
 Release: 1%{?dist}
 Summary: Constraint-based lexical selection module
 Group: Development/Tools
@@ -7,16 +7,15 @@ License: GPL-3.0
 URL: https://apertium.org/
 Source0: %{name}_%{version}.orig.tar.bz2
 
-BuildRequires: apertium-devel
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: gcc-c++
+BuildRequires: libicu-devel
 BuildRequires: libtool
-BuildRequires: libxml2
 BuildRequires: libxml2-devel
+BuildRequires: lttoolbox-devel
 BuildRequires: pcre-devel
 BuildRequires: pkgconfig
-BuildRequires: zlib-devel
 %if 0%{?el7}
 BuildRequires: devtoolset-7-gcc-c++
 %else

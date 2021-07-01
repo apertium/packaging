@@ -1,0 +1,32 @@
+Source: apertium-bho-hin
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-bho,
+               apertium-dev (>= 3.8.0),
+               apertium-hin,
+               apertium-lex-tools (>= 0.3.0),
+               cg3-dev (>= 1.3.2),
+               debhelper (>= 12),
+               gawk,
+               pkg-config
+Standards-Version: 4.5.1
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-bho-hin.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-bho-hin
+Rules-Requires-Root: no
+
+Package: apertium-bho-hin
+Architecture: all
+Depends: apertium (>= 3.8.0),
+         apertium-lex-tools (>= 0.3.0),
+         cg3 (>= 1.3.2),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: apertium-hin-bho
+Conflicts: apertium-hin-bho
+Description: Apertium translation data for the Bhojpuri-Hindi pair
+ Data package providing Apertium language resources for translating
+ between the Bhojpuri and Hindi languages.

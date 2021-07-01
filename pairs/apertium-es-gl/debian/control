@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.7.1),
+Build-Depends: apertium-dev (>= 3.8.0),
                apertium-spa (>= 1.2.1),
                cg3-dev (>= 1.3.2),
                debhelper (>= 12),
@@ -18,7 +18,7 @@ Rules-Requires-Root: no
 
 Package: apertium-es-gl
 Architecture: all
-Depends: apertium (>= 3.7.1), cg3 (>= 1.3.2), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.8.0), cg3 (>= 1.3.2), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-gl-es, apertium-glg-spa, apertium-spa-glg
 Conflicts: apertium-gl-es, apertium-glg-spa, apertium-spa-glg
 Description: Apertium translation data for the Spanish-Galician pair
