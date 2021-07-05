@@ -5,8 +5,14 @@
 export DH_OPTIONS
 export LC_ALL=C.UTF-8
 
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
 %:
 	dh $@ --fail-missing --no-parallel
 
-override_dh_dwz:
-	dh_dwz --no-dwz-multifile || /bin/true
+override_dh_auto_install:
+	dh_auto_install
+
+	# Remove libtool and static library
+	rm -f debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/*.la
+	rm -f debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/*.a

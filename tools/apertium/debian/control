@@ -88,7 +88,6 @@ Description: Shallow-transfer machine translation engine (Python 3 module)
 Package: apertium-dev
 Architecture: any
 Depends: apertium (= ${binary:Version}),
-         libpcre3-dev,
          libxml2-dev,
          lttoolbox-dev (>= 3.6.0),
          ${misc:Depends},

@@ -1,17 +1,108 @@
-foma (0.9.18+s225-1) unstable; urgency=low
-
-  * Upstream fixes
-
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 27 Nov 2020 16:59:04 +0100
-
-foma (0.9.18+s197-1) unstable; urgency=low
+foma (1:0.10.0+s305-1) unstable; urgency=low
 
   * New upstream release
+    + Adds runtime options interface
+    + Fixes numerous memory leaks and segfaults
+  * debian/control:
+    + Swap libfoma0-dev and libfoma-dev
 
- -- Tino Didriksen <tino@didriksen.cc>  Sat, 28 Dec 2019 12:20:07 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Jul 2021 13:22:24 +0200
 
-foma (0.9.18~r248-1) experimental; urgency=low
+foma (1:0.9.18+r243-8) unstable; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Drop parallel builds again (Closes: #916192)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 09 Jul 2020 22:11:25 +0530
+
+foma (1:0.9.18+r243-7) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Patch to fix FTBFS with GCC 10 (Closes: #957216)
+  * debian/control:
+    + Updated dh to 13
+    + Updated Standards-Version to 4.5.0
+
+  [ Kartik Mistry ]
+  * Added debian/upstream/metadata.
+  * Fixed debian/debian/gitlab-ci.yml format.
+  * debian/rules:
+    + Added Hardening support.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 06 Jul 2020 14:13:22 +0530
+
+foma (1:0.9.18+r243-6) unstable; urgency=medium
+
+  * Team upload.
+  * Drop parallel builds.
+    Thanks to Adrian Bunk (Closes: #916192)
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Wed, 24 Apr 2019 15:53:09 +0200
+
+foma (1:0.9.18+r243-5) unstable; urgency=low
+
+  * debian/control:
+    + Add epoch in Breaks/Replaces (Closes: #904396). Thanks Andreas Beckmann.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 12 Dec 2018 09:44:42 +0530
+
+foma (1:0.9.18+r243-4) unstable; urgency=low
+
+  * debian/control:
+    + Added old packages as transitional packages to fix upgrade.
+      (Closes: #904396)
+    + Readded Timo Jyrinki <timo@debian.org> as Maintainer, was
+      dropped by mistake!
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 10 Dec 2018 20:31:04 +0530
+
+foma (1:0.9.18+r243-3) unstable; urgency=low
+
+  * debian/control:
+    + Added Breaks/Replaces for libfoma0-dev and foma.
+    + Fixed Multi-Arch fields.
+  * debian/rules:
+    + Fixed MULTIARCH installation.
+    + Remove Hardening rules, breaks build as of now.
+  * Updated debian/patches/foma_02_Makefile.diff from previous version.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 03 Dec 2018 18:18:24 +0530
+
+foma (1:0.9.18+r243-2) unstable; urgency=low
+
+  * Upload to unstable:
+    + Bring 0.9.18+r243 upstream version back.
+  * debian/control:
+    + Updated Standards-Version to 4.2.1
+    + Updated description for binaries.
+  * Added debian/watch file.
+  * debian/patches/foma_02_Makefile.diff:
+    + Do not add !Linux option in CFLAG.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 03 Dec 2018 16:41:38 +0530
+
+foma (1:0.9.18~r248-1) experimental; urgency=low
+
+  * New upstream release snapshot:
+    + Added epoch to fix: latest-debian-changelog-entry-without-new-version
+  * debian/control:
+    + Updated Standards-Version to 4.1.4.
+    + Updated Vcs-* fields.
+    + Updated Homepage.
+    + Use dh 11.
+    + Updated Section for libfoma.
+  * debian/copyright:
+    + Updated URLs.
+  * Added patch description.
+  * Added Hardening support.
+  * Removed debian/libfoma0.postinst.
+  * debian/rules:
+    + Do not generate -dbg packages, until fixed upstream.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 14 Jun 2018 19:31:13 +0530
+
+foma (0.9.18+r243-1) unstable; urgency=low
+
+  * Initial release (Closes: #809735)
 
  -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 11 Jan 2016 09:27:01 +0100

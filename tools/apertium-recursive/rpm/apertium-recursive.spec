@@ -15,7 +15,6 @@ BuildRequires: lttoolbox-devel
 BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2-devel
-BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 BuildRequires: python3
 

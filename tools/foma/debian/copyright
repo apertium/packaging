@@ -1,8 +1,8 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: https://github.com/mhulden/foma
+Source: https://fomafst.github.io/
 
 Files: *
-Copyright: 2008-2020, Mans Hulden
+Copyright: 2008-2021, Mans Hulden
 License: Apache-2.0
 
 License: Apache-2.0

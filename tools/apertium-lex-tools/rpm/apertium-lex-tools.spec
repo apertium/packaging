@@ -14,7 +14,6 @@ BuildRequires: libicu-devel
 BuildRequires: libtool
 BuildRequires: libxml2-devel
 BuildRequires: lttoolbox-devel
-BuildRequires: pcre-devel
 BuildRequires: pkgconfig
 %if 0%{?el7}
 BuildRequires: devtoolset-7-gcc-c++

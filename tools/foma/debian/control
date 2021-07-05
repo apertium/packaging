@@ -2,7 +2,8 @@ Source: foma
 Section: science
 Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
-Uploaders: Tino Didriksen <tino@didriksen.cc>,
+Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
+           Timo Jyrinki <timo@debian.org>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: bison,
                debhelper (>= 9.0),
@@ -12,7 +13,7 @@ Build-Depends: bison,
                libtool,
                zlib1g-dev
 Standards-Version: 4.5.1
-Homepage: https://github.com/mhulden/foma
+Homepage: https://fomafst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/foma.git
 Vcs-Browser: https://salsa.debian.org/science-team/foma
 Rules-Requires-Root: no
@@ -20,39 +21,53 @@ Rules-Requires-Root: no
 Package: foma
 Architecture: any
 Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Breaks: foma-bin (<< 1:0)
+Replaces: foma-bin (<< 1:0)
 Description: Tools for constructing various finite-state automata
  Compiler, programming language, and C library for
- constructing finite-state automata and transducers for various uses.
-
-Package: foma-bin
-Architecture: any
-Depends: foma (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
-Priority: extra
-Section: oldlibs
-Description: Transitional dummy package for foma
- This is a transitional dummy package. It can safely be removed.
+ constructing finite-state automata and transducers for
+ various uses.
 
 Package: libfoma0
 Architecture: any
+Section: libs
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Foma runtime libraries
- Runtime libraries for foma
+ Compiler, programming language, and C library for
+ constructing finite-state automata and transducers for
+ various uses.
+ .
+ This package provides runtime libraries for foma.
 
 Package: libfoma-dev
 Architecture: any
-Section: libdevel
-Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
-Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libfoma0 (= ${binary:Version}), ${misc:Depends}
+Breaks: libfoma0-dev (<< 1:0.10.0)
+Replaces: libfoma0-dev (<< 1:0.10.0)
+Section: libdevel
 Description: Foma development files
- Development headers and libraries for foma
+ Compiler, programming language, and C library for
+ constructing finite-state automata and transducers for
+ various uses.
+ .
+ This package provides development headers and libraries
+ for foma.
+
+Package: foma-bin
+Architecture: all
+Depends: foma (>= ${source:Version}), ${misc:Depends}
+Section: oldlibs
+Description: Transitional package for foma
+ This is dummy transitional package for foma. It can be
+ safely remove.
 
 Package: libfoma0-dev
-Architecture: any
-Depends: libfoma-dev (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
-Priority: extra
+Architecture: all
+Depends: libfoma-dev (>= ${source:Version}), ${misc:Depends}
 Section: oldlibs
-Description: Transitional dummy package for libfoma-dev
- This is a transitional dummy package. It can safely be removed.
+Description: Transitional package for libfoma-dev
+ This is dummy transitional package for libfoma-dev. It can
+ be safely remove.
