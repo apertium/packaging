@@ -43,10 +43,10 @@ export LC_ALL=%(locale -a | grep -i utf | head -n1)
 %if 0%{?el7}
 	source /opt/rh/devtoolset-7/enable
 	autoreconf -fi
-	%configure --with-yasmet
+	%configure --enable-yasmet
 %else
 	autoreconf -fi
-	%configure --with-yasmet --enable-python-bindings
+	%configure --enable-yasmet --enable-python-bindings
 %endif
 make %{?_smp_mflags}
 

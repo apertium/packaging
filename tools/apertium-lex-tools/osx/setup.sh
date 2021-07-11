@@ -1,2 +1,2 @@
 autoreconf -fvi
-./configure --with-yasmet --enable-python-bindings
+./configure --enable-yasmet --enable-python-bindings

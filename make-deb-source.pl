@@ -338,6 +338,10 @@ CHLOG
 
       `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$chver'`;
       file_put_contents("$pkname-$chver/debian/changelog", $chlog);
+
+      my $rules = file_get_contents("$pkname-$chver/debian/rules");
+      $rules .= "\noverride_dh_builddeb:\n\tdh_builddeb -- -Zxz\n";
+      file_put_contents("$pkname-$chver/debian/rules", $rules);
    }
    else {
       $chver .= $opts{'dv'};

@@ -231,7 +231,6 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'dry';
    }
 
-   copy("$pkg->[0]/debian/rules", "/opt/autopkg/rules.$$");
    if ($pkg->[0] =~ m@/apertium-all-dev$@) {
       print {$out} "\tarch-all\n";
       $is_data = 'arch-all';
@@ -242,7 +241,6 @@ foreach my $k (@{$pkgs{'order'}}) {
       print {$out} "\tdata only\n";
       $is_data = 'data';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
-      `cat data-gzip.Makefile >> "$pkg->[0]/debian/rules"`;
    }
    elsif ($control =~ m@Architecture: all@ && $control !~ m@Architecture: any@) {
       print {$out} "\tarch-all\n";
@@ -262,8 +260,6 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    # Build the packages for Debian/Ubuntu
    `$Bin/make-deb-source.pl $cli --nobuild '$pkg->[3]' 2>>$logpath/stderr.log >&2`;
-   copy("/opt/autopkg/rules.$$", "$pkg->[0]/debian/rules");
-   unlink("/opt/autopkg/rules.$$");
 
    my $oldhash = '';
    my $newhash = `ls -1 --color=no /opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$pkname/*.tar.bz2 2>/dev/null | head -n1 | xargs -rn1 tar -jxOf | sha256sum`;
