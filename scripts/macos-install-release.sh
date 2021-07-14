@@ -52,8 +52,8 @@ if [[ "$PATH" != *"$WHERE/bin"* ]]; then
 	echo '    export PATH="'$WHERE'/bin:$PATH"'
 fi
 
-echo "You may need to add these to your ~/.profile or session:"
-echo 'export PKG_CONFIG_PATH='$WHERE'/share/pkgconfig:${PKG_CONFIG_PATH}'
+echo "You may need to add these to your ~/.profile or ~/.zprofile or session:"
+echo 'export PKG_CONFIG_PATH='$WHERE'/lib/pkgconfig:'$WHERE'/share/pkgconfig:${PKG_CONFIG_PATH}'
 echo 'export ACLOCAL_PATH='$WHERE'/share/aclocal:${ACLOCAL_PATH}'
 
 echo "All done."

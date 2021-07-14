@@ -1,0 +1,19 @@
+Source: apertium-regtest
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 4.5.1
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-regtest.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-regtest
+Rules-Requires-Root: no
+
+Package: apertium-regtest
+Architecture: all
+Depends: python3, ${misc:Depends}
+Suggests: apertium-all-dev
+Description: Regression test suite for Apertium languages and pairs
+ Suite to run regression tests for Apertium languages and pairs.

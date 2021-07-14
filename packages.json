@@ -36,6 +36,7 @@
    ["tools/libdivvun", "https://github.com/divvun/libdivvun"],
    ["tools/transfuse",       "https://github.com/TinoDidriksen/transfuse", "CMakeLists.txt"],
    ["tools/apertium-get", null, "CMakeLists.txt"],
+   ["tools/apertium-regtest",],
    ["tools/apertium-init", null, "main.py"],
    ["tools/apertium-all-dev", null, "README"],
    ["tools/udpipe",          "https://github.com/ufal/udpipe", "MANUAL"],

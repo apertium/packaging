@@ -14,6 +14,7 @@ Requires: apertium-devel >= 3.8.0
 Requires: apertium-eval-translator
 Requires: apertium-lex-tools >= 0.3.0
 Requires: apertium-recursive >= 1.1.0
+Requires: apertium-regtest >= 0.0.1
 Requires: apertium-separable >= 0.3.2
 Requires: autoconf
 Requires: automake
