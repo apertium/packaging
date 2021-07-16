@@ -1,0 +1,41 @@
+package:
+  name: hfst
+  version: "3.15.4"
+
+source:
+  url: https://apertium.projectjj.com/apt/release/source/hfst/hfst_3.15.4.orig.tar.bz2
+  sha256: c8de70133b9ac11757158fba812b3e7979e685c1abcaffabf50bff7b3dcc3276
+
+build:
+  string: py39
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - flex
+    - bison
+    - autoconf
+    - automake
+    - make
+    - swig
+    - pkg-config
+    - libtool
+    - python
+    - setuptools
+  host:
+    - readline
+    - icu
+    - zlib
+
+test:
+  commands:
+    - hfst-info
+
+about:
+  home: https://github.com/hfst/hfst
+  license: GPL-3.0-or-later
+  summary: Helsinki Finite-State Transducer Technology
+
+extra:
+  maintainers:
+    - Tino Didriksen <mail@tinodidriksen.com>
