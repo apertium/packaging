@@ -236,7 +236,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'arch-all';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
-   elsif ($pkg->[0] =~ m@^languages/@ || $pkg->[0] =~ m@/apertium-\w{2,3}-\w{2,3}$@ || $pkg->[0] =~ m@/apertium-(get|regtest)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   elsif ($pkg->[0] =~ m@^(languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
@@ -315,6 +315,10 @@ foreach my $k (@{$pkgs{'order'}}) {
             else {
                push(@os_deps, $dep);
             }
+         }
+
+         if ($pkg->[0] =~ m@^(languages|pairs)/apertium@) {
+            push(@our_deps, 'apertium-regtest');
          }
 
          push(@deps, 'apt-utils', 'build-essential', 'fakeroot', 'time');

@@ -53,7 +53,7 @@ my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"))
 my $distros = $targets->{'distros'};
 my $archs = $targets->{'archs'};
 
-my @includes = ();
+my @includes = qw(test/tests\.json test/.*-input\.txt test/.*-expected\.txt test/.*-gold\.txt);
 my @excludes = qw(\.svn.* \.git.* \.gut.* \.circleci.* \.travis.* \.clang.* \.editorconfig \.readthedocs.* autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile);
 if (-s $opts{p}.'/exclude.txt') {
    open FILE, $opts{p}.'/exclude.txt';

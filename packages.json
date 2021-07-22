@@ -530,6 +530,8 @@
    ["pairs/apertium-sme-sma"],
    ["pairs/apertium-sme-smj"],
    ["pairs/apertium-sme-smn"],
+   ["pairs/apertium-smj-nob"],
+   ["pairs/apertium-smn-fin"],
    ["pairs/apertium-snd-hin"],
    ["pairs/apertium-spa-arg"],
    ["pairs/apertium-spa-ast"],
