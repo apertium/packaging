@@ -7,7 +7,7 @@
    # Meaning that for most Apertium packages, we only need the first field
 
    # Core tools and shared dependencies first
-   ["tools/cg3",             "https://github.com/TinoDidriksen/cg3", "src/version.hpp"],
+   ["tools/cg3",             "https://github.com/GrammarSoft/cg3", "src/version.hpp"],
    ["tools/cg3ide",          "https://github.com/GrammarSoft/cg3ide",        "src/version.hpp"],
    ["tools/foma",            "https://github.com/mhulden/foma/trunk/foma",     "Makefile"],
    ["tools/openfst",         "https://github.com/TinoDidriksen/openfst"],
