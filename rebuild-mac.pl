@@ -60,7 +60,7 @@ for my $k (@{$pkgs{'order'}}) {
       next;
    }
    my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
-   if (! -s "${Bin}/$pkg->[0]/osx/setup.sh") {
+   if (! -e "${Bin}/$pkg->[0]/osx/setup.sh") {
       next;
    }
    print "Syncing ${pkname}\n";
@@ -88,7 +88,7 @@ for my $cadence (qw(  nightly )) {#release
          next;
       }
       my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
-      if (! -s "${Bin}/$pkg->[0]/osx/setup.sh") {
+      if (! -e "${Bin}/$pkg->[0]/osx/setup.sh") {
          next;
       }
       push(@combo, $pkname);
@@ -186,8 +186,12 @@ for my $cadence (qw(  nightly )) {#release
          next;
       }
 
-      if (-s 'Makefile') {
-         my $test = '';
+      $log = '';
+      my $test = '';
+      if (-e "${Bin}/$pkg->[0]/osx/test.sh") {
+        $test = "${Bin}/$pkg->[0]/osx/test.sh";
+      }
+      elsif (-s 'Makefile') {
          my $mkfile = file_get_contents('Makefile');
          if ($mkfile =~ /^test:/m) {
             $test = 'test';
@@ -195,17 +199,18 @@ for my $cadence (qw(  nightly )) {#release
          elsif ($mkfile =~ /^check:/m) {
             $test = 'check';
          }
-         if ($test) {
-            print "\ttesting...\n";
-            `echo '======== TEST ========' >>'${logfile}-test.log'`;
-            `date -u >>'${logfile}-test.log'`;
-            $log = `make '${test}' V=1 VERBOSE=1 >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
-            `cat '${logfile}-test.log' >>'${logfile}.log'`;
-            if ($log =~ /^TEST FAILED/) {
-               print "\tfailed test\n";
-               next;
-            }
-         }
+         $test = "make '${test}' V=1 VERBOSE=1";
+      }
+      if ($test) {
+         print "\ttesting...\n";
+         `echo '======== TEST ========' >>'${logfile}-test.log'`;
+         `date -u >>'${logfile}-test.log'`;
+         $log = `${test} >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
+         `cat '${logfile}-test.log' >>'${logfile}.log'`;
+      }
+      if ($log =~ /^TEST FAILED/) {
+         print "\tfailed test\n";
+         next;
       }
 
       print "\tinstalling...\n";
