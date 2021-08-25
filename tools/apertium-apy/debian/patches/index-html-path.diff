@@ -1,0 +1,13 @@
+diff --git a/apertium_apy/apy.py b/apertium_apy/apy.py
+index 1f25d41..4b9860d 100755
+--- a/apertium_apy/apy.py
++++ b/apertium_apy/apy.py
+@@ -76,7 +76,7 @@ def sig_handler(sig, frame):
+ 
+ class RootHandler(BaseHandler):
+     def get(self):
+-        self.render('../index.html')
++        self.render('/usr/share/apertium-apy/index.html')
+ 
+ 
+ class GetLocaleHandler(BaseHandler):
