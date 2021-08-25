@@ -43,6 +43,9 @@ export INTERFACE
 # and status_of_proc is working.
 . /lib/lsb/init-functions
 
+# Need this working directory to properly load ../index.html
+cd /usr/share/apertium-apy/tools
+
 #
 # Function that starts the daemon/service
 #

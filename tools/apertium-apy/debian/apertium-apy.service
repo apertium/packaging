@@ -6,6 +6,7 @@ After=network.target
 [Service]
 # Change this to your username and edit to how you start apy:
 User=apertium
+WorkingDirectory=/usr/share/apertium-apy/tools
 ExecStart=/usr/bin/apertium-apy /usr/share/apertium/modes
 Environment=LC_ALL=C.UTF-8
 
