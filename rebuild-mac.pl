@@ -46,6 +46,7 @@ my $python3 = "python${py3v}";
 
 my %pkgs = load_packages();
 
+my $ncpu = int(`sysctl -n hw.ncpu`);
 chomp(my $arch = `uname -m`);
 if ($arch eq 'arm64') {
    $ENV{'MACOSX_DEPLOYMENT_TARGET'} = '11.0';
@@ -175,7 +176,7 @@ for my $cadence (qw(  nightly )) {#release
       `echo '======== BUILD ========' >>'${logfile}-build.log'`;
       `date -u >>'${logfile}-build.log'`;
       if (-s 'Makefile') {
-         $log = `make -j4 V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+         $log = `make -j${ncpu} V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
       }
       else {
          $log = `$python3 setup.py build >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
@@ -199,7 +200,9 @@ for my $cadence (qw(  nightly )) {#release
          elsif ($mkfile =~ /^check:/m) {
             $test = 'check';
          }
-         $test = "make '${test}' V=1 VERBOSE=1";
+         if ($test) {
+            $test = "make '${test}' V=1 VERBOSE=1";
+         }
       }
       if ($test) {
          print "\ttesting...\n";
@@ -218,7 +221,7 @@ for my $cadence (qw(  nightly )) {#release
       `date -u >>'${logfile}-install.log'`;
       `rm -rf /tmp/install`;
       if (-s 'Makefile') {
-         $log = `make -j4 install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+         $log = `make -j${ncpu} install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
       }
       else {
          $log = `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/tmp/install >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
