@@ -9,6 +9,9 @@ Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst_01_configure.ac.diff
 Patch1: hfst_02_notimestamp.diff
 
+%if 0%{?el7}
+BuildRequires: devtoolset-7-gcc-c++
+%endif
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: bison
@@ -47,6 +50,7 @@ Runtime libraries for HFST
 Summary: Helsinki Finite-State Transducer Technology Development files
 Group: Development/Libraries
 Requires: hfst = %{version}-%{release}
+Requires: libicu-devel
 Obsoletes: libhfst3-devel < %{version}-%{release}
 
 %description -n libhfst-devel
@@ -67,16 +71,25 @@ Python 3 modules for libhfst
 %patch1 -p1
 
 %build
+%if 0%{?el7}
+	source /opt/rh/devtoolset-7/enable
+%endif
 autoreconf -fi
 %configure --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu --enable-python-bindings
 make %{?_smp_mflags}
 
 %install
+%if 0%{?el7}
+	source /opt/rh/devtoolset-7/enable
+%endif
 make DESTDIR=%{buildroot} install
 sed -i 's/@GLIB_CFLAGS@//' %{buildroot}/%{_libdir}/pkgconfig/hfst.pc
 rm -f %{buildroot}/%{_libdir}/*.la
 
 %check
+%if 0%{?el7}
+	source /opt/rh/devtoolset-7/enable
+%endif
 make check || /bin/true
 
 %files

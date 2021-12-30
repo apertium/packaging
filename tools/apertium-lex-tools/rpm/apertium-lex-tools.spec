@@ -65,6 +65,7 @@ make check
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/*
+%{_datadir}/%{name}
 %{_libdir}/pkgconfig/*
 
 %if ! ( 0%{?el7} )

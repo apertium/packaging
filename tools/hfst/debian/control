@@ -57,6 +57,7 @@ Architecture: any
 Section: libdevel
 Depends: hfst (= ${binary:Version}),
          libhfst54 (= ${binary:Version}),
+         libicu-dev,
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: libhfst3-dev

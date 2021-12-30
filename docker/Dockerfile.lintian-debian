@@ -16,4 +16,4 @@ RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade
 RUN apt-get -qy update && apt-get -qfy --no-install-recommends install lintian
 
 USER 1234:1234
-CMD cd /build && find . -type f -name '*.changes' | grep -v _source | xargs -rn1 lintian -IEv --pedantic --color never
+CMD cd /build && find . -type f -name '*.changes' | grep -v _source | xargs -rn1 timeout 5m lintian -IEv --pedantic --color never

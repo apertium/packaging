@@ -29,7 +29,7 @@
    ["tools/lexd", null, null, "stretch"],
    ["tools/giella-core",     "https://github.com/giellalt/giella-core"],
    ["tools/giella-common",   "https://github.com/giellalt/giella-shared"],
-   ["tools/divvun-corpustools", "https://gtsvn.uit.no/langtech/trunk/tools/CorpusTools", "corpustools/_version.py", "stretch"],
+   ["tools/divvun-corpustools", "https://github.com/giellalt/CorpusTools", "corpustools/_version.py", "stretch"],
    ["tools/libvoikko",       "https://github.com/voikko/corevoikko/trunk/libvoikko"],
    ["tools/matxin",     "https://github.com/matxin/matxin"],
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],

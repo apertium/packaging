@@ -1,10 +1,20 @@
+lttoolbox (3.5.3-2) unstable; urgency=low
+
+  * Fixed debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 25 Jan 2021 21:27:52 +0530
+
 lttoolbox (3.5.3-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream
   * debian/control:
     + Updated Standards-Version to 4.5.1
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 26 Nov 2020 11:13:13 +0100
+  [ Kartik Mistry ]
+  * Removed unused lintian override.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 16 Dec 2020 13:41:27 +0530
 
 lttoolbox (3.5.1-2) unstable; urgency=low
 

@@ -416,8 +416,11 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($is_data eq 'data') {
             $script .= "export 'LD_PRELOAD=libtcmalloc_minimal.so'\n";
          }
+         if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'nightly') {
+            $script .= "export 'AP_REGTEST_MIN=80'\n";
+         }
          $script .= "cd /build/${pkname}-*/\n";
-         $script .= "timeout 180m time nice -n20 dpkg-buildpackage -us -uc -rfakeroot\n";
+         $script .= "timeout 180m time nice -n20 dpkg-buildpackage --no-sign\n";
          file_put_contents("$dpath/build.sh", $script);
          `chmod +x '$dpath/build.sh'`;
          `chown -R 1234:1234 '$dpath'`;
@@ -469,6 +472,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
 
       WINDOWS:
+=pod
       while (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
          $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
@@ -494,6 +498,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
          last;
       }
+=cut
 =pod
       if (-s "$pkg->[0]/osx/$pkname.sh") {
          print {$out} "\tbuilding osx\n";

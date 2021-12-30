@@ -164,12 +164,8 @@ make check
 %files -n apertium-devel
 %defattr(-,root,root)
 %{_bindir}/apertium-editdist
-%{_bindir}/apertium-filter-ambiguity
-%{_bindir}/apertium-filter-dix
-%{_bindir}/apertium-filter-rules
-%{_bindir}/apertium-gen-deformat
-%{_bindir}/apertium-gen-modes
-%{_bindir}/apertium-gen-reformat
+%{_bindir}/apertium-filter-*
+%{_bindir}/apertium-gen-*
 %{_bindir}/apertium-genvdix
 %{_bindir}/apertium-genvldix
 %{_bindir}/apertium-genvrdix
@@ -179,18 +175,12 @@ make check
 %{_bindir}/apertium-tagger-apply-new-rules
 %{_bindir}/apertium-tagger-readwords
 %{_bindir}/apertium-translate-to-default-equivalent
-%{_bindir}/apertium-validate-acx
-%{_bindir}/apertium-validate-dictionary
-%{_bindir}/apertium-validate-interchunk
-%{_bindir}/apertium-validate-modes
-%{_bindir}/apertium-validate-postchunk
-%{_bindir}/apertium-validate-tagger
-%{_bindir}/apertium-validate-transfer
+%{_bindir}/apertium-validate-*
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
-%{_datadir}/man/man1/apertium-filter-ambiguity.*
+%{_datadir}/man/man1/apertium-filter-*
 %{_datadir}/man/man1/apertium-gen-*
 %{_datadir}/man/man1/apertium-tagger-apply-new-rules.*
 %{_datadir}/man/man1/apertium-validate-*
