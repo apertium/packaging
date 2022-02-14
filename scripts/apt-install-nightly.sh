@@ -9,9 +9,9 @@ fi
 CADENCE=nightly
 
 if [[ -x "$(which curl)" ]]; then
-	GET="curl -sS"
+	GET="curl --insecure -sS"
 elif [[ -x "$(which wget)" ]]; then
-	GET="wget -nv -O -"
+	GET="wget --no-check-certificate -nv -O -"
 else
 	echo "Neither curl nor wget found - need one of them!"
 	exit -1

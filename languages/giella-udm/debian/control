@@ -17,7 +17,7 @@ Build-Depends: bc,
                pkg-config,
                python3,
                zip
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-udm.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-udm

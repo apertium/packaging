@@ -1,0 +1,4 @@
+version=4
+opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-tsz-$1.tar.bz2%" \
+    https://github.com/apertium/apertium-tsz/tags \
+    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate

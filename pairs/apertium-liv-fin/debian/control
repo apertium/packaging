@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.8.0),
                gawk,
                hfst (>= 3.15.3),
                pkg-config
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-liv-fin.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-liv-fin

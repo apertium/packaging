@@ -25,7 +25,7 @@ Build-Depends: autoconf,
                xsltproc,
                zip,
                zipcmp
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium

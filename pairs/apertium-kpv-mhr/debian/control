@@ -12,7 +12,7 @@ Build-Depends: apertium-dev (>= 3.8.0),
                giella-mhr,
                hfst (>= 3.15.3),
                pkg-config
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-kpv-mhr.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-kpv-mhr

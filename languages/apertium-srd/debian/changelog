@@ -14,7 +14,7 @@ apertium-srd (1.2.0-1) unstable; urgency=medium
 
   [ Nilesh Patra ]
   * Patch and remove dependence on python2 (Closes: #967120)
-  * Standards-Version: 4.5.1 (routine-update)
+  * Standards-Version: 4.6.0 (routine-update)
   * debhelper-compat 13 (routine-update)
   * Point Vcs fields to salsa.debian.org (routine-update)
   * Respect DEB_BUILD_OPTIONS in override_dh_auto_test target (routine-

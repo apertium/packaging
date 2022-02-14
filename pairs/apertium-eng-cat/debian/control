@@ -15,7 +15,7 @@ Build-Depends: apertium-anaphora (>= 1.1.0),
                gawk,
                pkg-config,
                python3
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eng-cat.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-eng-cat
