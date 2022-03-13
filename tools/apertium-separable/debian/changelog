@@ -1,3 +1,15 @@
+apertium-separable (0.5.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
+apertium-separable (0.3.6-2) unstable; urgency=high
+
+  * Fixed typo in Build-Depends: python->python3 (Closes: #984786)
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 08 Mar 2021 17:25:39 +0530
+
 apertium-separable (0.3.6-1) unstable; urgency=low
 
   * Update to latest upstream

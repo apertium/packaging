@@ -19,5 +19,6 @@ Rules-Requires-Root: no
 Package: apertium-anaphora
 Architecture: any
 Depends: libxml2-utils, ${misc:Depends}, ${shlibs:Depends}
-Description: Anaphora resolution module
- This package provides a module for resolving anaphora in the pipeline.
+Description: Anaphora resolution module for Apertium
+ This package provides a module for resolving anaphora in the pipeline for
+ Apertium.

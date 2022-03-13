@@ -1,8 +1,18 @@
-transfuse (0.5.7-1) experimental; urgency=low
+transfuse (0.5.8-1) unstable; urgency=low
 
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
+transfuse (0.5.7-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
   * Fixes issues with big endian and/or unsigned char platforms.
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 12 Jan 2021 21:31:10 +0100
+  [ Kartik Mistry ]
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 13 Jan 2021 08:56:29 +0530
 
 transfuse (0.5.6-1) experimental; urgency=low
 

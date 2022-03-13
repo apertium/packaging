@@ -1,13 +1,35 @@
+hfst-ospell (0.5.3-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
+hfst-ospell (0.5.2-2) UNRELEASED; urgency=low
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Drop unnecessary dependency on dh-autoreconf.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.6.0
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 05 Mar 2022 22:03:44 +0530
+
 hfst-ospell (0.5.2-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Update to latest upstream
   * Fixes build with GCC 10 (closes: #957334)
   * Incorporates ICU patch
   * debian/control:
     + Binary update: libhfstospell10 -> libhfstospell11
     + Updated Standards-Version to 4.5.0
+  [ Kartik Mistry ]
+  * Added debian/gitlab-ci.yml
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 25 May 2020 14:07:21 +0200
+ -- Kartik Mistry <kartik@debian.org>  Mon, 25 May 2020 18:29:25 +0530
 
 hfst-ospell (0.5.0-2) unstable; urgency=medium
 

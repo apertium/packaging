@@ -79,7 +79,6 @@ Package: python3-apertium-core
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
 Description: Shallow-transfer machine translation engine (Python 3 module)
  Python 3 module for applications using the Apertium shallow-transfer

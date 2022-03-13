@@ -1,5 +1,18 @@
+lexd (1.1.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
+lexd (1.0.0-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 08 Mar 2022 11:01:03 +0530
+
 lexd (1.0.0-1) experimental; urgency=low
 
-  * Initial release
+  [ Tino Didriksen ]
+  * Initial release (Closes: #980156)
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 14 Jan 2021 22:25:20 +0100
+ -- Kartik Mistry <kartik@debian.org>  Mon, 07 Mar 2022 13:21:41 +0530

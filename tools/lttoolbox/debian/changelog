@@ -1,3 +1,21 @@
+lttoolbox (3.6.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
+lttoolbox (3.5.4-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream non-ICU release
+  * Fixed debian/watch to what I actually meant
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated Standards-Version to 4.6.0
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 29 Oct 2021 10:41:38 +0530
+
 lttoolbox (3.5.3-2) unstable; urgency=low
 
   * Fixed debian/watch.

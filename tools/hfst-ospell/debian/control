@@ -35,8 +35,8 @@ Multi-Arch: same
 Section: libs
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfstospell
-Conflicts: libhfstospell
-Replaces: libhfstospell
+Conflicts: libhfstospell, libhfstospell11
+Replaces: libhfstospell, libhfstospell11
 Description: HFST spell checker runtime libraries
  Minimal HFST optimized lookup format based spell checker library and
  a demonstrational implementation of command line based spell checker.

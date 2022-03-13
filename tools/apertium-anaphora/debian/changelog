@@ -1,8 +1,19 @@
+apertium-anaphora (1.1.0-1) unstable; urgency=low
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+
 apertium-anaphora (1.0.2-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * Don't search for Bash (Closes: #979134)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+  [ Kartik Mistry ]
+  * debian/upstream/metadata:
+    + Use better Documentation link.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 17 Jan 2021 13:22:41 +0530
 
 apertium-anaphora (1.0.1-1) unstable; urgency=low
 
