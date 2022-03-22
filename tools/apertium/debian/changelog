@@ -1,17 +1,18 @@
-apertium (3.8.0-1) unstable; urgency=low
+apertium (3.8.1-1) experimental; urgency=low
 
-  * Update to latest upstream
+  [ Tino Didriksen ]
+  * Update to latest upstream:
+    + Updated package names for soname bump.
   * Switched from PCRE to ICU (Closes: #1000111)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
-
-apertium (3.7.2-3) unstable; urgency=low
-
+  [ Kartik Mistry ]
   * debian/control:
     + Removed deprecated XB-Python-Version field.
-  * Updated debian/copyright.
+  * debian/copyright:
+    + Updated Debian copyright year.
+    + Removed unused BSL-1.0 license block.
 
- -- Kartik Mistry <kartik@debian.org>  Thu, 18 Nov 2021 09:45:34 +0530
+ -- Kartik Mistry <kartik@debian.org>  Tue, 15 Mar 2022 08:51:57 +0530
 
 apertium (3.7.2-2) unstable; urgency=medium
 

@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.0), debhelper (>= 12), gawk, pkg-config
+Build-Depends: apertium-dev (>= 3.8.1), debhelper (>= 12), gawk, pkg-config
 Standards-Version: 4.6.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eo-fr.git
@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eo-fr
 Architecture: all
-Depends: apertium (>= 3.8.0), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.8.1), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-epo-fra, apertium-fr-eo, apertium-fra-epo
 Conflicts: apertium-epo-fra, apertium-fr-eo, apertium-fra-epo
 Description: Apertium translation data for the Esperanto-French pair

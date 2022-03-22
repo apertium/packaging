@@ -13,6 +13,6 @@ Rules-Requires-Root: no
 
 Package: apertium-init
 Architecture: all
-Depends: apertium-dev (>= 3.8.0), python3, ${misc:Depends}
+Depends: apertium-dev (>= 3.8.1), python3, ${misc:Depends}
 Description: Helper to create Apertium languages and pairs
  Helper to create and re-create Apertium languages and pairs

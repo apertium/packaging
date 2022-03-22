@@ -56,6 +56,7 @@ make %{?_smp_mflags}
 %endif
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
+rm -f %{buildroot}/%{_libdir}/*.a
 
 %check
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
@@ -66,7 +67,9 @@ make check
 %doc AUTHORS NEWS README
 %{_bindir}/*
 %{_datadir}/%{name}
+%{_includedir}/*
 %{_libdir}/pkgconfig/*
+%{_libdir}/*.so*
 
 %if ! ( 0%{?el7} )
 %files -n python3-apertium-lex-tools

@@ -1,0 +1,5 @@
+debian/tmp/usr/bin/lrx-comp
+debian/tmp/usr/include/*
+debian/tmp/usr/lib/*/*.so
+debian/tmp/usr/lib/*/pkgconfig/*
+debian/tmp/usr/share/*

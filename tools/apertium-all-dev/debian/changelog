@@ -1,12 +1,15 @@
-apertium-all-dev (3.7.0-1) unstable; urgency=low
+apertium-all-dev (3.8.1-1) unstable; urgency=low
 
-  * Bump versions
+  * Update to require latest versions of Apertium packages,
+    and add new packages to the list
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 16 Dec 2020 13:01:22 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 22 Mar 2022 10:33:02 +0100
 
-apertium-all-dev (3.6.1-1) unstable; urgency=low
+apertium-all-dev (3.6.1-1) experimental; urgency=low
 
-  * Split from apertium, to avoid misbehaving dependencies causing
-    apertium to be flagged all the time
+  [ Tino Didriksen ]
+  * Initial release:
+    + Split from apertium, to avoid misbehaving dependencies causing
+      apertium to be flagged all the time (Closes: #941791).
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 25 Sep 2019 10:25:21 +0200
+ -- Kartik Mistry <kartik@debian.org>  Tue, 15 Mar 2022 08:06:45 +0530

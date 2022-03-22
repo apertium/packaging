@@ -1,8 +1,31 @@
+lttoolbox (3.6.1-1) unstable; urgency=low
+
+  * Update to latest upstream:
+    + Fixes Python autopkgtest failure
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Mar 2022 09:39:27 +0100
+
+lttoolbox (3.6.0-2) unstable; urgency=low
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 15 Mar 2022 21:55:01 +0530
+
 lttoolbox (3.6.0-1) unstable; urgency=low
 
-  * Update to latest upstream
+  [ Tino Didriksen ]
+  * Update to latest upstream:
+    + Updated package names for soname bump.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+  [ Kartik Mistry ]
+  * debian/copyright:
+    + Updated Debian copyright year.
+    + Removed BSL-1.0 license. Files are no longer used.
+  * debian/control:
+    + Removed XB-Python-Version.
+  * Removed unused Lintian overrides.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 14 Mar 2022 17:42:48 +0530
 
 lttoolbox (3.5.4-1) unstable; urgency=low
 

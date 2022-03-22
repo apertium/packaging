@@ -7,7 +7,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
 Build-Depends: autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
-               hfst (>= 3.15.3),
+               hfst (>= 3.16.0),
                libicu-dev,
                lttoolbox-dev (>= 3.6.0),
                pkg-config

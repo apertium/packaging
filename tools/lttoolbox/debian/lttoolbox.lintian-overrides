@@ -1,2 +1,0 @@
-# Build log shows all hardening options used thanks to dh compat=9, so declaring this a false positive
-hardening-no-fortify-functions

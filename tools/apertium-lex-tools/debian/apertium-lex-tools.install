@@ -1,3 +1,5 @@
-debian/tmp/usr/bin/*
-debian/tmp/usr/share/*
-debian/tmp/usr/lib/*/pkgconfig/*
+debian/tmp/usr/bin/lrx-proc
+debian/tmp/usr/bin/multitrans
+debian/tmp/usr/bin/process-tagger-output
+debian/tmp/usr/bin/yasmet
+debian/tmp/usr/bin/irstlm-ranker

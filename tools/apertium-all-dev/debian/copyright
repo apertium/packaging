@@ -2,7 +2,7 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
 
 Files: *
-Copyright: 2019, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
+Copyright: 2019-2022, Apertium Project Management Committee <apertium-pmc@dlsi.ua.es>
 License: GPL-3+
 
 License: GPL-3+

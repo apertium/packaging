@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ "$AUTOPKG_MAINTAINER" == *"Debian"* ]]; then
+	echo "/* Not needed for cmdline use, but can be fetched from https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/css/bootstrap.min.css */" > static/bootstrap.css
+	echo "/* Not needed for cmdline use, but can be fetched from https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/js/bootstrap.min.js */" > static/bootstrap.js
+	echo "/* Not needed for cmdline use, but can be fetched from https://cdn.jsdelivr.net/npm/jquery@3.6/dist/jquery.min.js */" > static/jquery.js
+	echo "/* Not needed for cmdline use, but can be fetched from https://cdn.jsdelivr.net/npm/diff@4.0/dist/diff.min.js */" > static/diff.js
+fi

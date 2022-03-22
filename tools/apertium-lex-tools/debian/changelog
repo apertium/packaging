@@ -1,8 +1,23 @@
+apertium-lex-tools (0.3.1-1) unstable; urgency=low
+
+  * Update to latest upstream:
+    + Fixes Python autopkgtest failure
+  * debian/control:
+    + Upstream now makes a library,
+      so update package with consequences thereof
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Mar 2022 09:39:27 +0100
+
 apertium-lex-tools (0.3.0-1) unstable; urgency=low
 
-  * Update to latest upstream
+  [ Tino Didriksen ]
+  * Update to latest upstream release. (Closes: #1007985)
+  * debian/control:
+    + Updated Build-deps.
+    + Updated Standards-Version to 4.6.0
+  * Updated debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 13 Mar 2022 11:25:26 +0100
+ -- Kartik Mistry <kartik@debian.org>  Sun, 20 Mar 2022 16:39:19 +0530
 
 apertium-lex-tools (0.2.7-1) unstable; urgency=low
 

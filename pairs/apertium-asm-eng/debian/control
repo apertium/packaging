@@ -5,8 +5,8 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-asm,
-               apertium-dev (>= 3.8.0),
-               apertium-lex-tools (>= 0.3.0),
+               apertium-dev (>= 3.8.1),
+               apertium-lex-tools-dev (>= 0.3.1),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -18,8 +18,8 @@ Rules-Requires-Root: no
 
 Package: apertium-asm-eng
 Architecture: all
-Depends: apertium (>= 3.8.0),
-         apertium-lex-tools (>= 0.3.0),
+Depends: apertium (>= 3.8.1),
+         apertium-lex-tools (>= 0.3.1),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-eng-asm

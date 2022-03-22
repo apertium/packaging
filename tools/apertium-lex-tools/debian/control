@@ -24,19 +24,50 @@ Rules-Requires-Root: no
 
 Package: apertium-lex-tools
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: libapertium-lex-tools0-0.3-0 (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: Constraint-based lexical selection module
  Module for compiling lexical selection rules and processing them in the
  pipeline.
+
+Package: libapertium-lex-tools0-0.3-0
+Section: libs
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: libapertium-lex-tools
+Conflicts: libapertium-lex-tools
+Replaces: libapertium-lex-tools
+Description: Shared library for Apertium lexical selection module
+ Module for compiling lexical selection rules and processing them in the
+ pipeline.
+ .
+ This package contains shared library for the Apertium
+ constraint-based lexical selection module.
 
 Package: python3-apertium-lex-tools
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
 Description: Apertium lexical selection module (Python 3 module)
  Module for compiling lexical selection rules and processing them in the
  pipeline.
  .
  This package provides Python 3 module for apertium-lex-tools.
+
+Package: apertium-lex-tools-dev
+Architecture: any
+Depends: apertium-lex-tools (= ${binary:Version}),
+         lttoolbox-dev (>= 3.6.0),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Development library for Apertium lexical selection module
+ Module for compiling lexical selection rules and processing them in the
+ pipeline.
+ .
+ This package contains development files for the Apertium
+ constraint-based lexical selection module.

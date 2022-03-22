@@ -80,7 +80,6 @@ Package: python3-lttoolbox
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Depends: liblttoolbox3-3.6-1 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},

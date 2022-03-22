@@ -6,10 +6,10 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-anaphora (>= 1.1.0),
                apertium-cat (>= 2.8.0),
-               apertium-dev (>= 3.8.0),
-               apertium-lex-tools (>= 0.3.0),
+               apertium-dev (>= 3.8.1),
+               apertium-lex-tools-dev (>= 0.3.1),
                apertium-ron (>= 1.0.0),
-               cg3-dev (>= 1.3.2),
+               cg3-dev (>= 1.3.6),
                debhelper (>= 12),
                gawk,
                pkg-config,
@@ -22,10 +22,10 @@ Rules-Requires-Root: no
 
 Package: apertium-ron-cat
 Architecture: all
-Depends: apertium (>= 3.8.0),
+Depends: apertium (>= 3.8.1),
          apertium-anaphora (>= 1.1.0),
-         apertium-lex-tools (>= 0.3.0),
-         cg3 (>= 1.3.2),
+         apertium-lex-tools (>= 0.3.1),
+         cg3 (>= 1.3.6),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-cat-ron
