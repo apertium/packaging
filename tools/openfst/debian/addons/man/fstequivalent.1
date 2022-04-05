@@ -1,0 +1,104 @@
+.TH "fstequivalent" "1" "@DATE@" "OpenFst @VERSION@" "User Commands"
+.SH "NAME"
+fstequivalent \- determine whether two DFAs are equivalent
+.SH "SYNOPSIS"
+.B fstequivalent
+[\fIOPTIONS\fP] \fIin1.fst in2.fst\fP
+.SH "DESCRIPTION"
+.PP
+Determines whether two DFAs are equivalent.  The exit status is zero for
+equivalent DFAs, and nonzero for nonequivalent DFAs.
+.SH "OPTIONS"
+.PP
+Boolean options accept either \fItrue\fP or \fIfalse\fP as a value, or the
+implicit value \fItrue\fP if neither value is specified.
+.TP
+\fB\-\-delta\fP=\fIVALUE\fP
+Set the comparison/quantization delta.  Default: 0.000976562.
+.TP
+\fB\-\-fst_align\fP[=\fIBOOLEAN\fP]
+Write FST data aligned where appropriate.  Default: false.
+.TP
+\fB\-\-fst_compat_symbols\fP[=\fIBOOLEAN\fP]
+Require symbol tables to match when appropriate.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc\fP[=\fIBOOLEAN\fP]
+Enable garbage collection of cache.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc_limit\fP=\fIN\fP
+Set the cache byte size that triggers garbage collection.  Default: 1048576.
+.TP
+\fB\-\-fst_error_fatal[=\fIBOOLEAN\fP]
+If true, FST errors are fatal.  Otherwise, returned objects are flagged as bad.
+For example, FSTs are returned with the \fIkError\fP property set to true, and
+FST weights set so that \fIMember()\fP returns false.  Default: true.
+.TP
+\fB\-\-fst_field_separator\fP=\fISTRING\fP
+Set the characters used as a separator between printed fields.  Default:
+"	 ".
+.TP
+\fB\-\-fst_read_mode\fP=\fISTRING\fP
+Set the default file reading mode for mappable files, either "read" or "map".
+Default: "read".
+.TP
+\fB\-\-fst_verify_properties\fP[=\fIBOOLEAN\fP]
+Verify fst properties queried by TestProperties.  Default: false.
+.TP
+\fB\-\-fst_weight_parentheses\fP=\fISTRING\fP
+Set the characters enclosing the first weight of a printed composite weight
+(e.g., pair weight, tuple weight, and derived classes) to ensure proper I/O of
+nested composite weights.  Must have size 0 (none) or 2 (open and close
+parenthesis).  Default: no parentheses.
+.TP
+\fB\-\-fst_weight_separator\fP=\fICHARACTER\fP
+Set the character separator between printed composite weights.  Default: comma.
+.TP
+\fB\-\-help\fP[=\fIBOOLEAN\fP]
+Show usage information.  Default: false.
+.TP
+\fB\-\-helpshort\fP[=\fIBOOLEAN\fP]
+Show brief usage information.  Default: false.
+.TP
+\fB\-\-max_length\fP=\fILENGTH\fP
+Set the maximum path length.  Default: 2147483647.
+.TP
+\fB\-\-npath\fP=\fIINTEGER\fP
+Set the number of paths to generate.  Default: 1.
+.TP
+\fB\-\-random\fP[=\fIBOOLEAN\fP]
+Test equivalence by randomly selecting paths in the input FSTs.  Default:
+false.
+.TP
+\fB\-\-save_relabel_ipairs\fP=\fIFILENAME\fP
+Save input relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-save_relabel_opairs\fP=\fIFILENAME\fP
+Save output relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-seed\fP=\fIINTEGER\fP
+Set the seed for the random number generator.  Default: 1299098484.
+.TP
+\fB\-\-select\fP=\fITYPE\fP
+Set the selection type, one of \fIuniform\fP, \fIlog_prob\fP, or
+\fIfast_log_prob\fP.  Default: \fIuniform\fP.
+.TP
+\fB\-\-tmpdir\fP=\fIPATHNAME\fP
+Set the temporary directory to use.  Default: /tmp.
+.TP
+\fB\-\-v\fP[=\fIN\fP]
+Set the verbosity level.  Default: 0.
+.SH "SEE ALSO"
+.PP
+\fIfstarcsort\fP(1), \fIfstclosure\fP(1), \fIfstcompile\fP(1),
+\fIfstcompose\fP(1), \fIfstcompress\fP(1), \fIfstconcat\fP(1),
+\fIfstconnect\fP(1), \fIfstconvert\fP(1), \fIfstdeterminize\fP(1),
+\fIfstdifference\fP(1), \fIfstdisambiguate\fP(1), \fIfstdraw\fP(1),
+\fIfstencode\fP(1), \fIfstepsnormalize\fP(1), \fIfstequal\fP(1),
+\fIfstinfo\fP(1), \fIfstintersect\fP(1), \fIfstinvert\fP(1),
+\fIfstisomorphic\fP(1), \fIfstlinear\fP(1), \fIfstloglinearapply\fP(1),
+\fIfstmap\fP(1), \fIfstminimize\fP(1), \fIfstprint\fP(1), \fIfstproject\fP(1),
+\fIfstprune\fP(1), \fIfstpush\fP(1), \fIfstrandgen\fP(1),
+\fIfstrelabel\fP(1), \fIfstreplace\fP(1), \fIfstreverse\fP(1),
+\fIfstreweight\fP(1), \fIfstrmepsilon\fP(1), \fIfstshortestdistance\fP(1),
+\fIfstshortestpath\fP(1), \fIfstsymbols\fP(1), \fIfstsynchronize\fP(1),
+\fIfsttopsort\fP(1), \fIfstunion\fP(1)

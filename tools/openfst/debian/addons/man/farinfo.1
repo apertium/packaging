@@ -1,0 +1,81 @@
+.TH "farinfo" "1" "@DATE@" "OpenFst @VERSION@" "User Commands"
+.SH "NAME"
+farinfo \- query a finite\-state archive
+.SH "SYNOPSIS"
+.B farinfo
+[\fIOPTIONS\fP] [\fIin1.far in2.far\fP...]
+.SH "DESCRIPTION"
+.PP
+Prints some basic information about the FSTs in an FST archive.
+.SH "OPTIONS"
+.PP
+Boolean options accept either \fItrue\fP or \fIfalse\fP as a value, or the
+implicit value \fItrue\fP if neither value is specified.
+.TP
+\fB\-\-begin_key\fP=\fINAME\fP
+Set the first key to list.  Default: first key in the archive.
+.TP
+\fB\-\-end_key\fP=\fINAME\fP
+Set the last key to list.  Default: last key in the archive.
+.TP
+\fB\-\-fst_align\fP[=\fIBOOLEAN\fP]
+Write FST data aligned where appropriate.  Default: false.
+.TP
+\fB\-\-fst_compat_symbols\fP[=\fIBOOLEAN\fP]
+Require symbol tables to match when appropriate.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc\fP[=\fIBOOLEAN\fP]
+Enable garbage collection of cache.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc_limit\fP=\fIN\fP
+Set the cache byte size that triggers garbage collection.  Default: 1048576.
+.TP
+\fB\-\-fst_error_fatal[=\fIBOOLEAN\fP]
+If true, FST errors are fatal.  Otherwise, returned objects are flagged as bad.
+For example, FSTs are returned with the \fIkError\fP property set to true, and
+FST weights set so that \fIMember()\fP returns false.  Default: true.
+.TP
+\fB\-\-fst_field_separator\fP=\fISTRING\fP
+Set the characters used as a separator between printed fields.  Default:
+"	 ".
+.TP
+\fB\-\-fst_read_mode\fP=\fISTRING\fP
+Set the default file reading mode for mappable files, either "read" or "map".
+Default: "read".
+.TP
+\fB\-\-fst_verify_properties\fP[=\fIBOOLEAN\fP]
+Verify fst properties queried by TestProperties.  Default: false.
+.TP
+\fB\-\-fst_weight_parentheses\fP=\fISTRING\fP
+Set the characters enclosing the first weight of a printed composite weight
+(e.g., pair weight, tuple weight, and derived classes) to ensure proper I/O of
+nested composite weights.  Must have size 0 (none) or 2 (open and close
+parenthesis).  Default: no parentheses.
+.TP
+\fB\-\-fst_weight_separator\fP=\fICHARACTER\fP
+Set the character separator between printed composite weights.  Default: comma.
+.TP
+\fB\-\-help\fP[=\fIBOOLEAN\fP]
+Show usage information.  Default: false.
+.TP
+\fB\-\-helpshort\fP[=\fIBOOLEAN\fP]
+Show brief usage information.  Default: false.
+.TP
+\fB\-\-list_fsts\fP[=\fIBOOLEAN\fP]
+Display FST information for each key.  Default: false.
+.TP
+\fB\-\-save_relabel_ipairs\fP=\fIFILENAME\fP
+Save input relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-save_relabel_opairs\fP=\fIFILENAME\fP
+Save output relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-tmpdir\fP=\fIPATHNAME\fP
+Set the temporary directory to use.  Default: /tmp.
+.TP
+\fB\-\-v\fP[=\fIN\fP]
+Set the verbosity level.  Default: 0.
+.SH "SEE ALSO"
+.PP
+\fIfarcompilestrings\fP(1), \fIfarcreate\fP(1), \fIfarequal\fP(1),
+\fIfarextract\fP(1), \fIfarisomorphic\fP(1), \fIfarprintstrings\fP(1)

@@ -236,7 +236,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'arch-all';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
-   elsif ($pkg->[0] =~ m@^(languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   elsif ($pkg->[0] =~ m@^(languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest|shared)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
@@ -411,10 +411,11 @@ foreach my $k (@{$pkgs{'order'}}) {
             $script .= "export 'DEB_BUILD_OPTIONS=parallel=".$config->{'max-threads'}."'\n";
          }
          else {
-            $script .= "export 'DEB_BUILD_OPTIONS=parallel=3'\n";
+            $script .= "export 'DEB_BUILD_OPTIONS=parallel=7'\n";
          }
          if ($is_data eq 'data') {
             $script .= "export 'LD_PRELOAD=libtcmalloc_minimal.so'\n";
+            $script .= "export 'LT_JOBS=1'\n";
          }
          if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'nightly') {
             $script .= "export 'AP_REGTEST_MIN=80'\n";

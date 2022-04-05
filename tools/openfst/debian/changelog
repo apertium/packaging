@@ -1,3 +1,25 @@
+openfst (1.7.9-1) unstable; urgency=medium
+
+  [ Kartik Mistry ]
+  * Team upload.
+  * Updated to new upstream release 1.7.9.
+  * Migrate project under debian-science project.
+  * Added Salsa CI support (debian/gitlab-ci.yml)
+  * debian/control:
+    + Updated Maintainer field.
+    + Bumped to dh 13.
+    + Updated Standards-Version to 4.6.0
+    + Added Rules-Requires-Root field.
+  * Updated debian/copyright.
+
+  [ Tino Didriksen ]
+  * debian/control:
+    + Forbid multiple versions of the library,
+      and forcibly replace previous libfst8
+  * Add C++17 and SSE patch
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 22 Mar 2022 14:09:03 +0530
+
 openfst (1.6.3-2) unstable; urgency=medium
 
   * Disable compilation optimizations for the test suite on kfreebsd-i386
@@ -11,14 +33,14 @@ openfst (1.6.3-1) unstable; urgency=medium
 
   [ Giulio Paci ]
   * New upstream release 1.6.3 (Closes: #871170).
-  * Rename libfst4* packages into libfst22* according to SONAME change.
+  * Rename libfst4* packages into libfst8* according to SONAME change.
     The plugin path is updated accordingly.
   * Set DEB_COPYRIGHT_CHECK_IGNORE_REGEX in debian/rules.
     This prevents most binary files to be checked for license changes.
   * Bump Standards-Version to 4.0.1.
     No changes needed.
-  * Add libfst22-plugins-base.lintian-overrides and source/lintian-overrides.
-  * Add libfstcompact and libfstconst entries to libfst22.lintian-overrides.
+  * Add libfst8-plugins-base.lintian-overrides and source/lintian-overrides.
+  * Add libfstcompact and libfstconst entries to libfst8.lintian-overrides.
   * Update copyright.
   * Update copyright_hints.
 
@@ -80,8 +102,8 @@ openfst (1.5.2-1) experimental; urgency=medium
   * Update copyright.
   * Update copyright_hints.
   * Update packages names according to SONAME change.
-  * Add README.source.	
-  * Add zlib1g-dev dependency.	
+  * Add README.source.
+  * Add zlib1g-dev dependency.
   * Do not require specific automake version.
   * Do not create -dbg package.
     Rely on automatic dbgsym packages instead, as described in
@@ -92,7 +114,7 @@ openfst (1.5.2-1) experimental; urgency=medium
   * Update openfstbc.
   * Add libfst-tools.maintscript to remove openfstbc configuration file.
   * Add libfst-tools.bash-completion to install openfstbc as appropriate.
-  * Add compress, linear-fsts and mpdt extensions.	
+  * Add compress, linear-fsts and mpdt extensions.
   * Update fst plugin path according to SONAME change.
 
   [ Jakub Wilk ]
@@ -147,7 +169,7 @@ openfst (1.3.2-1) experimental; urgency=low
   * Set maintainer to Giulio Paci (Closes: #664163).
   * Add Build-depends on autotools-dev, devscripts, automake1.11
     (replaces automake1.9), cdbs (>= 0.4.85~), debhelper (>= 9~),
-    dh-buildinfo, dpkg-dev (>= 1.16.1~)	
+    dh-buildinfo, dpkg-dev (>= 1.16.1~)
   * Remove Build-Conflicts on autoconf2.13, automake1.4.
   * Add libfst0-dbg binary package.
   * Add libfst0-plugins-base package.

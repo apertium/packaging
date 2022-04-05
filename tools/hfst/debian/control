@@ -77,7 +77,6 @@ Depends: libhfst55 (= ${binary:Version}),
          ${python3:Depends},
          ${shlibs:Depends}
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Description: Helsinki Finite-State Transducer Technology (Python3 module)
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are

@@ -1,3 +1,4 @@
+Description: Enable C++17, needed for dependent packages
 diff --git a/configure.ac b/configure.ac
 index ae727b1..4d597de 100644
 --- a/configure.ac
@@ -7,7 +8,7 @@ index ae727b1..4d597de 100644
  # This library does not throw exceptions, so we do not generate exception
  # handling code. However, users are free to re-enable exception handling.
 -CXX="$CXX -std=c++11 -fno-exceptions"
-+CXX="$CXX -std=c++17 -msse -msse2 -mfpmath=sse -fno-exceptions"
++CXX="$CXX -std=c++17 -fno-exceptions"
  
  AC_DISABLE_STATIC
  AC_PROG_LIBTOOL

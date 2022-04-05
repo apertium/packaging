@@ -83,7 +83,6 @@ Package: python3-cg3
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Depends: libcg3-1 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},

@@ -1,0 +1,209 @@
+Description: Explicitly link against -latomic, because some platforms don't.
+ Patch generated via command:
+ grep -rl '[-]lm ' * | xargs -rn1 perl -pe 's/-lm /-lm -latomic /g;' -i
+diff --git a/src/bin/Makefile.am b/src/bin/Makefile.am
+index 8a81a34..9d486cb 100644
+--- a/src/bin/Makefile.am
++++ b/src/bin/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../include -I$(srcdir)/../script $(ICU_FLAGS)
+-LDADD = ../script/libfstscript.la ../lib/libfst.la -lm $(DL_LIBS)
++LDADD = ../script/libfstscript.la ../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ if HAVE_BIN
+ bin_PROGRAMS = fstarcsort fstclosure fstcompile fstcompose fstconcat \
+diff --git a/src/extensions/compact/Makefile.am b/src/extensions/compact/Makefile.am
+index d14ceed..0558958 100644
+--- a/src/extensions/compact/Makefile.am
++++ b/src/extensions/compact/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ libfstdir = @libfstdir@
+ libfst_LTLIBRARIES = compact8_acceptor-fst.la compact8_string-fst.la compact8_unweighted-fst.la compact8_unweighted_acceptor-fst.la compact8_weighted_string-fst.la compact16_acceptor-fst.la compact16_string-fst.la compact16_unweighted-fst.la compact16_unweighted_acceptor-fst.la compact16_weighted_string-fst.la compact64_acceptor-fst.la compact64_string-fst.la compact64_unweighted-fst.la compact64_unweighted_acceptor-fst.la compact64_weighted_string-fst.la
+diff --git a/src/extensions/compress/Makefile.am b/src/extensions/compress/Makefile.am
+index fc049bf..115e5fe 100644
+--- a/src/extensions/compress/Makefile.am
++++ b/src/extensions/compress/Makefile.am
+@@ -6,7 +6,7 @@ bin_PROGRAMS = fstcompress
+ LDADD = libfstcompressscript.la \
+         ../../script/libfstscript.la \
+         ../../lib/libfst.la \
+-        -lm $(DL_LIBS)
++        -lm -latomic $(DL_LIBS)
+ 
+ fstcompress_SOURCES = fstcompress.cc fstcompress-main.cc
+ endif
+@@ -16,7 +16,7 @@ libfstcompressscript_la_SOURCES = compressscript.cc
+ libfstcompressscript_la_LDFLAGS = -version-info 22:0:0
+ libfstcompressscript_la_LIBADD = ../../script/libfstscript.la \
+                                  ../../lib/libfst.la \
+-                                 -lm $(DL_LIBS)
++                                 -lm -latomic $(DL_LIBS)
+ endif
+ 
+ if HAVE_SCRIPT
+diff --git a/src/extensions/const/Makefile.am b/src/extensions/const/Makefile.am
+index e90a251..01e669b 100644
+--- a/src/extensions/const/Makefile.am
++++ b/src/extensions/const/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ libfstdir = @libfstdir@
+ libfst_LTLIBRARIES = const8-fst.la const16-fst.la const64-fst.la
+diff --git a/src/extensions/far/Makefile.am b/src/extensions/far/Makefile.am
+index ccb406c..4f34450 100644
+--- a/src/extensions/far/Makefile.am
++++ b/src/extensions/far/Makefile.am
+@@ -8,7 +8,7 @@ endif
+ 
+ libfstfar_la_SOURCES = sttable.cc stlist.cc
+ libfstfar_la_LDFLAGS = -version-info 22:0:0
+-libfstfar_la_LIBADD = ../../lib/libfst.la -lm $(DL_LIBS)
++libfstfar_la_LIBADD = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ if HAVE_SCRIPT
+ libfstfarscript_la_SOURCES = far-class.cc farscript.cc getters.cc script-impl.cc \
+@@ -16,7 +16,7 @@ libfstfarscript_la_SOURCES = far-class.cc farscript.cc getters.cc script-impl.cc
+ libfstfarscript_la_LDFLAGS = -version-info 22:0:0
+ libfstfarscript_la_LIBADD = \
+     libfstfar.la ../../script/libfstscript.la \
+-        ../../lib/libfst.la -lm $(DL_LIBS)
++        ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ endif
+ 
+ if HAVE_BIN
+@@ -24,7 +24,7 @@ bin_PROGRAMS = farcompilestrings farcreate farequal farextract farinfo \
+     farisomorphic farprintstrings
+ 
+ LDADD = libfstfarscript.la ../../script/libfstscript.la \
+-        ../../lib/libfst.la -lm $(DL_LIBS)
++        ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ farcompilestrings_SOURCES = farcompilestrings.cc farcompilestrings-main.cc
+ 
+diff --git a/src/extensions/linear/Makefile.am b/src/extensions/linear/Makefile.am
+index e8c9053..949771d 100644
+--- a/src/extensions/linear/Makefile.am
++++ b/src/extensions/linear/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ if HAVE_BIN
+ bin_PROGRAMS = fstlinear fstloglinearapply
+diff --git a/src/extensions/lookahead/Makefile.am b/src/extensions/lookahead/Makefile.am
+index a5687fd..220cae3 100644
+--- a/src/extensions/lookahead/Makefile.am
++++ b/src/extensions/lookahead/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ libfstdir = @libfstdir@
+ libfst_LTLIBRARIES = arc_lookahead-fst.la \
+diff --git a/src/extensions/mpdt/Makefile.am b/src/extensions/mpdt/Makefile.am
+index f6f12b7..b311c60 100644
+--- a/src/extensions/mpdt/Makefile.am
++++ b/src/extensions/mpdt/Makefile.am
+@@ -6,7 +6,7 @@ bin_PROGRAMS = mpdtcompose mpdtexpand mpdtinfo mpdtreverse
+ LDADD = libfstmpdtscript.la      \
+     ../pdt/libfstpdtscript.la    \
+     ../../script/libfstscript.la \
+-    ../../lib/libfst.la -lm $(DL_LIBS)
++    ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ mpdtcompose_SOURCES = mpdtcompose.cc mpdtcompose-main.cc
+ 
+@@ -22,5 +22,5 @@ lib_LTLIBRARIES = libfstmpdtscript.la
+ libfstmpdtscript_la_SOURCES = mpdtscript.cc
+ libfstmpdtscript_la_LDFLAGS = -version-info 22:0:0
+ libfstmpdtscript_la_LIBADD = ../../script/libfstscript.la \
+-                             ../../lib/libfst.la -lm $(DL_LIBS)
++                             ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ endif
+diff --git a/src/extensions/ngram/Makefile.am b/src/extensions/ngram/Makefile.am
+index 072580f..28efee2 100644
+--- a/src/extensions/ngram/Makefile.am
++++ b/src/extensions/ngram/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ libfstdir = @libfstdir@
+ libfst_LTLIBRARIES = ngram-fst.la
+diff --git a/src/extensions/pdt/Makefile.am b/src/extensions/pdt/Makefile.am
+index 80f5a7b..910a551 100644
+--- a/src/extensions/pdt/Makefile.am
++++ b/src/extensions/pdt/Makefile.am
+@@ -6,7 +6,7 @@ bin_PROGRAMS = pdtcompose pdtexpand pdtinfo pdtreplace pdtreverse \
+ 
+ LDADD = libfstpdtscript.la \
+         ../../script/libfstscript.la \
+-        ../../lib/libfst.la -lm $(DL_LIBS)
++        ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ pdtcompose_SOURCES = pdtcompose.cc pdtcompose-main.cc
+ 
+@@ -26,5 +26,5 @@ lib_LTLIBRARIES = libfstpdtscript.la
+ libfstpdtscript_la_SOURCES = getters.cc pdtscript.cc
+ libfstpdtscript_la_LDFLAGS = -version-info 22:0:0
+ libfstpdtscript_la_LIBADD = ../../script/libfstscript.la \
+-                            ../../lib/libfst.la -lm $(DL_LIBS)
++                            ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ endif
+diff --git a/src/extensions/python/Makefile.am b/src/extensions/python/Makefile.am
+index d8fa6a1..7e8d247 100644
+--- a/src/extensions/python/Makefile.am
++++ b/src/extensions/python/Makefile.am
+@@ -12,7 +12,7 @@ pywrapfst_la_CXXFLAGS = -fexceptions
+ pywrapfst_la_LDFLAGS = -avoid-version -module
+ pywrapfst_la_LIBADD = ../far/libfstfarscript.la ../far/libfstfar.la \
+                       ../../script/libfstscript.la ../../lib/libfst.la \
+-                      -lm $(DL_LIBS) $(PYTHON_LIBS)
++                      -lm -latomic $(DL_LIBS) $(PYTHON_LIBS)
+ 
+ # Exports the *.pxd/*.pxd source files.
+ EXTRA_DIST = cintegral_types.pxd cios.pxd cpywrapfst.pxd \
+diff --git a/src/extensions/special/Makefile.am b/src/extensions/special/Makefile.am
+index a9c25d5..20dcccd 100644
+--- a/src/extensions/special/Makefile.am
++++ b/src/extensions/special/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../../include -I$(srcdir)/../../bin $(ICU_CPPFLAGS)
+-LIBS = ../../lib/libfst.la -lm $(DL_LIBS)
++LIBS = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ if HAVE_BIN
+ bin_PROGRAMS = fstspecial
+diff --git a/src/script/Makefile.am b/src/script/Makefile.am
+index 2fb2773..185339c 100644
+--- a/src/script/Makefile.am
++++ b/src/script/Makefile.am
+@@ -12,6 +12,6 @@ randgen.cc relabel.cc replace.cc reverse.cc reweight.cc rmepsilon.cc        \
+ shortest-distance.cc shortest-path.cc stateiterator-class.cc synchronize.cc \
+ text-io.cc topsort.cc union.cc weight-class.cc verify.cc
+ 
+-libfstscript_la_LIBADD = ../lib/libfst.la -lm $(DL_LIBS)
++libfstscript_la_LIBADD = ../lib/libfst.la -lm -latomic $(DL_LIBS)
+ libfstscript_la_LDFLAGS = -version-info 22:0:0
+ endif
+diff --git a/src/test/Makefile.am b/src/test/Makefile.am
+index a2754e5..e10b863 100644
+--- a/src/test/Makefile.am
++++ b/src/test/Makefile.am
+@@ -1,5 +1,5 @@
+ AM_CPPFLAGS = -I$(srcdir)/../include $(ICU_CPPFLAGS)
+-LDADD = ../lib/libfst.la -lm $(DL_LIBS)
++LDADD = ../lib/libfst.la -lm -latomic $(DL_LIBS)
+ 
+ check_PROGRAMS = fst_test weight_test
+ 

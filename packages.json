@@ -38,6 +38,7 @@
    ["tools/apertium-get", null, "CMakeLists.txt"],
    ["tools/apertium-regtest",],
    ["tools/apertium-init", null, "main.py"],
+   ["tools/apertium-shared",],
    ["tools/apertium-all-dev", null, "README"],
    ["tools/udpipe",          "https://github.com/ufal/udpipe", "MANUAL"],
 

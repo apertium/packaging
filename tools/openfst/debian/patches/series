@@ -1,1 +1,3 @@
-openfst-sse2-cxx17.diff
+openfst-atomic.diff
+openfst-cxx17.diff
+#openfst-sse.diff # Only applied on non-x86 archs

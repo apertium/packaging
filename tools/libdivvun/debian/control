@@ -57,7 +57,6 @@ Package: python3-libdivvun
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-XB-Python-Version: ${python3:Versions}
 Depends: libdivvun0 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},

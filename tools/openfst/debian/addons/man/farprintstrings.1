@@ -1,0 +1,107 @@
+.TH "farprintstrings" "1" "@DATE@" "OpenFst @VERSION@" "User Commands"
+.SH "NAME"
+farprintstrings \- print FSTs in a finite\-state archive as strings
+.SH "SYNOPSIS"
+.B farprintstrings
+[\fIOPTIONS\fP] [\fIin1.far in2.far\fP...]
+.SH "DESCRIPTION"
+.PP
+Prints the FSTs a finite\-state archive as strings.
+.SH "OPTIONS"
+.PP
+Boolean options accept either \fItrue\fP or \fIfalse\fP as a value, or the
+implicit value \fItrue\fP if neither value is specified.
+.TP
+\fB\-\-begin_key\fP=\fINAME\fP
+Set the first key to extract.  Default: first key in the archive.
+.TP
+\fB\-\-end_key\fP=\fINAME\fP
+Set the last key to extract.  Default: last key in the archive.
+.TP
+\fB\-\-entry_type\fP=\fITYPE\fP
+Set the entry type, either \fIfile\fP (one FST per file) or \fIline\fP (one
+FST per line).  Default: line.
+.TP
+\fB\-\-filename_prefix\fP=\fISTRING\fP
+Set the prefix to prepend to filenames.  Default: no prefix.
+.TP
+\fB\-\-filename_suffix\fP=\fISTRING\fP
+Set the suffix to append to filenames.  Default: no suffix.
+.TP
+\fB\-\-fst_align\fP[=\fIBOOLEAN\fP]
+Write FST data aligned where appropriate.  Default: false.
+.TP
+\fB\-\-fst_compat_symbols\fP[=\fIBOOLEAN\fP]
+Require symbol tables to match when appropriate.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc\fP[=\fIBOOLEAN\fP]
+Enable garbage collection of cache.  Default: true.
+.TP
+\fB\-\-fst_default_cache_gc_limit\fP=\fIN\fP
+Set the cache byte size that triggers garbage collection.  Default: 1048576.
+.TP
+\fB\-\-fst_error_fatal[=\fIBOOLEAN\fP]
+If true, FST errors are fatal.  Otherwise, returned objects are flagged as bad.
+For example, FSTs are returned with the \fIkError\fP property set to true, and
+FST weights set so that \fIMember()\fP returns false.  Default: true.
+.TP
+\fB\-\-fst_field_separator\fP=\fISTRING\fP
+Set the characters used as a separator between printed fields.  Default:
+"	 ".
+.TP
+\fB\-\-fst_read_mode\fP=\fISTRING\fP
+Set the default file reading mode for mappable files, either "read" or "map".
+Default: "read".
+.TP
+\fB\-\-fst_verify_properties\fP[=\fIBOOLEAN\fP]
+Verify fst properties queried by TestProperties.  Default: false.
+.TP
+\fB\-\-fst_weight_parentheses\fP=\fISTRING\fP
+Set the characters enclosing the first weight of a printed composite weight
+(e.g., pair weight, tuple weight, and derived classes) to ensure proper I/O of
+nested composite weights.  Must have size 0 (none) or 2 (open and close
+parenthesis).  Default: no parentheses.
+.TP
+\fB\-\-fst_weight_separator\fP=\fICHARACTER\fP
+Set the character separator between printed composite weights.  Default: comma.
+.TP
+\fB\-\-generate_filenames\fP=\fIN\fP
+Generate N digit numeric filenames.  Default: use keys.
+.TP
+\fB\-\-help\fP[=\fIBOOLEAN\fP]
+Show usage information.  Default: false.
+.TP
+\fB\-\-helpshort\fP[=\fIBOOLEAN\fP]
+Show brief usage information.  Default: false.
+.TP
+\fB\-\-initial\-symbols[=\fIBOOLEAN\fP]
+Use the symbol table from the first FST in the archive for all entries.
+.TP
+\fB\-\-print_key\fP[=\fIBOOLEAN\fP]
+Prefix each string by its key.  Default: false.
+.TP
+\fB\-\-print_weight\fP[=\fIBOOLEAN\fP]
+Suffix each string by its weight.  Default: false.
+.TP
+\fB\-\-save_relabel_ipairs\fP=\fIFILENAME\fP
+Save input relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-save_relabel_opairs\fP=\fIFILENAME\fP
+Save output relabel pairs to file.  Default: do not save.
+.TP
+\fB\-\-symbols\fP=\fIFILENAME\fP
+Read the label symbol table from a file.  Default: do not read a table.
+.TP
+\fB\-\-tmpdir\fP=\fIPATHNAME\fP
+Set the temporary directory to use.  Default: /tmp.
+.TP
+\fB\-\-token_type\fP=\fITYPE\fP
+Set the token type, one of \fIsymbol\fP, \fIbyte\fP, or \fIutf8\fP.  Default:
+\fIsymbol\fP.
+.TP
+\fB\-\-v\fP[=\fIN\fP]
+Set the verbosity level.  Default: 0.
+.SH "SEE ALSO"
+.PP
+\fIfarcompilestrings\fP(1), \fIfarcreate\fP(1), \fIfarequal\fP(1),
+\fIfarextract\fP(1), \fIfarinfo\fP(1), \fIfarisomorphic\fP(1)

@@ -1,0 +1,12 @@
+The files in openfstbc directory has been retrieved from:
+https://github.com/edobashira/openfstbc.git
+with updates imported from the openfst rpm package from Jerry
+James.
+
+The files in man has been retrieved by the openfst rpm package
+from Jerry James.
+The src rpm package has been retrieved at:
+http://fr2.rpmfind.net/linux/rpm2html/search.php?query=openfst
+and extracted with:
+rpm2cpio <file>.src.rpm | cpio -idmv
+The files in man have been found in openfst-man.tar.xz.

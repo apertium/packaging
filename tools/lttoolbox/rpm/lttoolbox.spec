@@ -102,6 +102,7 @@ make test
 
 %files -n lttoolbox-devel
 %defattr(-,root,root)
+%{_bindir}/lt-append
 %{_bindir}/lt-comp
 %{_bindir}/lt-expand
 %{_bindir}/lt-print
@@ -110,6 +111,7 @@ make test
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/%{name}
+%{_datadir}/man/man1/lt-append.*
 %{_datadir}/man/man1/lt-comp.*
 %{_datadir}/man/man1/lt-expand.*
 %{_datadir}/man/man1/lt-print.*

@@ -3,7 +3,7 @@
 # Licensed under the GNU GPL version 2 or later; see https://www.gnu.org/licenses/
 
 rm -f /home/apertium/public_html/apt/logs/$1/reprepro.log
-for DISTRO in sid stretch buster bullseye bionic focal hirsute impish
+for DISTRO in sid stretch buster bullseye bionic focal impish jammy
 do
 	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/$1/reprepro.log
 	DISTRO_TRG=$DISTRO

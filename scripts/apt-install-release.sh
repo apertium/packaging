@@ -25,7 +25,7 @@ P=`apt-cache policy`
 P="$P "`lsb_release -c`"/dummy"
 P="$P "`grep CODENAME /etc/lsb-release`"/dummy"
 DISTRO="$1"
-for D in sid stretch buster bullseye bionic focal hirsute impish kali-rolling
+for D in sid stretch buster bullseye bionic focal impish jammy kali-rolling
 do
 	if [[ $P == *$D/* ]]
 	then

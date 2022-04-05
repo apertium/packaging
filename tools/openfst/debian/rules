@@ -9,9 +9,33 @@ include /usr/share/dpkg/architecture.mk
 %:
 	dh $@ --fail-missing --parallel --with autoreconf
 
+override_dh_autoreconf:
+ifeq ($(DEB_BUILD_ARCH),i386)
+	patch -p1 < debian/patches/openfst-sse.diff
+else ifeq ($(DEB_BUILD_ARCH),amd64)
+	patch -p1 < debian/patches/openfst-sse.diff
+endif
+	dh_autoreconf
+
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-far --enable-pdt --enable-lookahead-fsts --enable-ngram-fsts --enable-const-fsts --enable-compact-fsts --enable-compress --enable-linear-fsts --enable-mpdt --enable-bin --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/22
+	dh_auto_configure -- --enable-bin --enable-compact-fsts --enable-compress --enable-const-fsts --enable-far --enable-fsts --enable-grm --enable-linear-fsts --enable-lookahead-fsts --enable-mpdt --enable-ngram-fsts --enable-pdt --enable-special --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/22
+
+override_dh_auto_build:
+	mkdir -p debian/manpages_files
+	set -e ; for i in debian/addons/man/*.1; do \
+		sed -e 's/@DATE@/Jul 2020/g' -e 's/@VERSION@/1.7.9/g' $$i > debian/manpages_files/$$(basename $$i) ; \
+	done
+	dh_auto_build
 
 override_dh_auto_install:
 	dh_auto_install
 	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
+
+override_dh_clean:
+ifeq ($(DEB_BUILD_ARCH),i386)
+	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
+else ifeq ($(DEB_BUILD_ARCH),amd64)
+	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
+endif
+	dh_clean
+	$(RM) -r debian/manpages_files
