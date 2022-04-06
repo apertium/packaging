@@ -31,6 +31,11 @@ override_dh_auto_install:
 	dh_auto_install
 	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
 
+ifneq ($(findstring mips,$(DEB_BUILD_ARCH)),)
+override_dh_auto_test:
+	# Tests disabled on MIPS
+endif
+
 override_dh_clean:
 ifeq ($(DEB_BUILD_ARCH),i386)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
