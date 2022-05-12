@@ -1,19 +1,40 @@
-apertium-eo-en (1.0.1-1) unstable; urgency=low
+apertium-eo-en (1.0.2-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest release (Closes: #1005679)
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
+
+apertium-eo-en (1.0.0~r63833-3) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6.1 (Closes: #950558)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Added 'Rules-Requires-Root' field.
+    + Switch to debhelper-compat.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 18 Mar 2020 10:59:16 +0530
+
+apertium-eo-en (1.0.0~r63833-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4.
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+  * Bumped dh to 11.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 01 Jul 2018 12:43:30 +0530
 
 apertium-eo-en (1.0.0~r63833-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
+  * Initial release (Closes: #514031)
   * Update to latest from svn, to get compatible build files
-
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
-
-apertium-eo-en (1.0.0~r19299-1) unstable; urgency=low
-
-  * Initial release
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Wed, 15 Jun 2016 16:35:41 +0530

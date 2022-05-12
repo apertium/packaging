@@ -166,11 +166,11 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
       $copyright{$a} = $b;
    }
 
-   $cnfs{'rules'} =~ s@(\n\%:)@\nNUMJOBS = 1\nifneq (,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\n\tNUMJOBS = \$(patsubst parallel=\%,\%,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\nendif\n$1@gs;
    $cnfs{'control'} = read_control("$ENV{AUTOPKG_PKPATH}/debian/control");
    my ($bdeps) = ($cnfs{'control'} =~ m@(Build-Depends:\s*[^\n]+)@);
    my @ss = ('override_dh_auto_configure:', 'override_dh_auto_build:');
    my $withlang = '';
+   my $did_bundle = 0;
 
    my $bundle = sub {
       print "Maybe bundle $_[0]\n";
@@ -253,6 +253,7 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
       }
 
       `rm -rfv '$pkname-$opts{v}/$p-$version/debian'`;
+      $did_bundle = 1;
    };
 
    $config =~ s/(#|dnl )[^\n]+//sg;
@@ -266,20 +267,24 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
       $bundle->("[0], [$1], [$2]");
    }
 
-   for my $k (sort(keys(%copyright))) {
-      my $v = $copyright{$k};
-      if ($k =~ m@^Format@) {
-         $cnfs{'copyright'} = "$k\n$v\n\n".$cnfs{'copyright'};
-         next;
+   if ($did_bundle) {
+      $cnfs{'rules'} =~ s@(\n\%:)@\nNUMJOBS = 1\nifneq (,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\n\tNUMJOBS = \$(patsubst parallel=\%,\%,\$(filter parallel=\%,\$(DEB_BUILD_OPTIONS)))\nendif\n$1@gs;
+
+      for my $k (sort(keys(%copyright))) {
+         my $v = $copyright{$k};
+         if ($k =~ m@^Format@) {
+            $cnfs{'copyright'} = "$k\n$v\n\n".$cnfs{'copyright'};
+            next;
+         }
+         $cnfs{'copyright'} .= "$k\n$v\n\n";
       }
-      $cnfs{'copyright'} .= "$k\n$v\n\n";
+
+      $cnfs{'control'} =~ s@Build-Depends:\s*[^\n]+@$bdeps@;
+      $ss[0] .= "\n\tdh_auto_configure --$withlang";
+      $ss[1] .= "\n\tdh_auto_build";
+
+      $cnfs{'rules'} .= "\n".join("\n\n", @ss)."\n";
    }
-
-   $cnfs{'control'} =~ s@Build-Depends:\s*[^\n]+@$bdeps@;
-   $ss[0] .= "\n\tdh_auto_configure --$withlang";
-   $ss[1] .= "\n\tdh_auto_build";
-
-   $cnfs{'rules'} .= "\n".join("\n\n", @ss)."\n";
 }
 
 # RPM tar.bz2

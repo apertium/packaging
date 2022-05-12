@@ -29,18 +29,20 @@ if (-s '/opt/autopkg/rebuild.lock') {
 use Getopt::Long;
 Getopt::Long::Configure('no_ignore_case');
 my %opts = (
-   'release' => 0,
-   'dry' => 0,
-   'staccato' => 0,
    'distro' => '',
+   'dry' => 0,
+   'force' => 0,
    'only' => '',
+   'release' => 0,
+   'staccato' => 0,
    );
 my $rop = GetOptions(\%opts,
-   'release|r!',
-   'dry|n!',
-   'staccato!',
    'distro=s',
+   'dry|n!',
+   'force|f!',
    'only=s',
+   'release|r!',
+   'staccato!',
    );
 
 $ENV{'PATH'} = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:'.$ENV{'PATH'};
@@ -49,6 +51,7 @@ $ENV{'DOCKER_BUILDKIT'} = 1;
 $ENV{'BUILDKIT_PROGRESS'} = 'plain';
 $ENV{'PROGRESS_NO_TRUNC'} = 1;
 $ENV{'TZ'} = 'UTC';
+$ENV{'GIT_TERMINAL_PROMPT'} = '0';
 
 use File::Copy;
 use Cwd;
@@ -82,6 +85,13 @@ print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} started ".`date -u`;
 
 if ($ARGV[0]) {
    $ARGV[0] =~ s@/$@@g;
+
+   foreach my $k (@{$pkgs{'order'}}) {
+      my $pkg = $pkgs{'packages'}->{$k};
+      if ($pkg->[0] !~ m@/$ARGV[0]@) {
+         delete $pkgs{'packages'}->{$k};
+      }
+   }
 }
 
 my %our_pkgs = ();
@@ -109,11 +119,11 @@ sub order_deps {
 }
 
 foreach my $k (@{$pkgs{'order'}}) {
-   my $pkg = $pkgs{'packages'}->{$k};
-   # If a package path is given, only rebuild that package, but force a rebuild of it
-   if ($ARGV[0] && $pkg->[0] !~ m@/\Q$ARGV[0]\E$@) {
+   if (!exists($pkgs{'packages'}->{$k})) {
       next;
    }
+
+   my $pkg = $pkgs{'packages'}->{$k};
    if (-s '/opt/autopkg/halt-build') {
       last;
    }
@@ -208,7 +218,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
    }
 
-   if (!($gt || $rebuild || $ARGV[0])) {
+   if (!($gt || $rebuild || $opts{'force'})) {
       # Package doesn't need rebuilding, so skip to cleanup
       goto CLEANUP;
    }
@@ -236,7 +246,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'arch-all';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
-   elsif ($pkg->[0] =~ m@^(languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest|shared)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   elsif ($pkg->[0] =~ m@^(data|languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest|shared)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';
@@ -567,7 +577,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       }
 
       my $subject = "$pkg->[0] failed $ENV{AUTOPKG_BUILDTYPE} build";
-      # Don't send individual emails if this is a single package build
+      # Don't send individual emails if this is a manual build
       if (!$ARGV[0] && $cc ne '') {
          `cat $logpath/rebuild.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }

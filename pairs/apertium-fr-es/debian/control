@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.8.1),
                apertium-lex-tools-dev (>= 0.3.1),
+               apertium-regtest (>= 0.9.1),
                debhelper (>= 12),
                gawk,
                pkg-config

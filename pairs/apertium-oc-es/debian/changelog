@@ -1,16 +1,58 @@
-apertium-oc-es (1.0.7-1) unstable; urgency=low
+apertium-oc-es (1.0.8-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest release (Closes: #1005682)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
+
+apertium-oc-es (1.0.6~r57551-4) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950560)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 02 Apr 2020 10:52:23 +0530
+
+apertium-oc-es (1.0.6~r57551-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Updated debian/watch
+  * Updated debian/copyright
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 29 Jul 2018 11:09:14 +0800
+
+apertium-oc-es (1.0.6~r57551-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated to Standards-Version 3.9.8
+    + Fixed Vcs-Git URL.
+    + Removed dependency on locales.
+  * debian/rules:
+    + Simplify to not use locales package.
+    + Do not install duplicate upstream changelog.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Jul 2016 18:59:24 +0530
 
 apertium-oc-es (1.0.6~r57551-1) unstable; urgency=low
 
-  * New upstream release
-  * No significant changes in svn since tarball, so taking directly from svn
-  * Re-done packaging to take advantage of debhelper 9
+  [ Tino Didriksen ]
+  * New upstream release.
+  * No significant changes in svn since tarball, so taking directly from svn.
+  * Re-done packaging to take advantage of debhelper 9.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Bumped debian/compat to 9. Updated debhelper dependency.
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 20:04:44 +0530
 
 apertium-oc-es (1.0.5-1.1) unstable; urgency=low
 

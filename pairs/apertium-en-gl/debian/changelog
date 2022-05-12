@@ -1,12 +1,41 @@
-apertium-en-gl (0.5.3-1) unstable; urgency=low
+apertium-en-gl (0.5.4-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest release (Closes: #1005660)
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
 
-apertium-en-gl (0.5.2~r57551-1) experimental; urgency=low
+apertium-en-gl (0.5.2~r57551-3) unstable; urgency=medium
 
-  * Initial release
+  * Added patch to fix FTBFS with apertium 3.6.1 (Closes: #950557)
+  * Added debian/gitlab-ci.yml
+  * debian/control:
+    + Switch to debhelper-compat.
+    + Updated Standards-Version to 4.5.0
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 31 Mar 2020 11:48:01 +0530
+
+apertium-en-gl (0.5.2~r57551-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Use dh 11.
+    + Updated Build-Deps.
+    + Updated Depends.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+  * debian/rules:
+    + Do not install duplicated changelog.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 30 Jun 2018 10:56:19 +0530
+
+apertium-en-gl (0.5.2~r57551-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #506187)
   * No significant changes in svn since tarball, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 14 Jun 2016 20:13:27 +0530

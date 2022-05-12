@@ -1,2 +1,3 @@
-version=3
-http://sf.net/apertium/apertium-es-ro-(\d\S+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))
+version=4
+https://github.com/apertium/apertium-es-ro/releases \
+ .*/@PACKAGE@-(\d[\d.]*)\.tar\.(?:xz|bz2) debian uupdate

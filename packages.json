@@ -38,9 +38,15 @@
    ["tools/apertium-get", null, "CMakeLists.txt"],
    ["tools/apertium-regtest",],
    ["tools/apertium-init", null, "main.py"],
-   ["tools/apertium-shared",],
    ["tools/apertium-all-dev", null, "README"],
    ["tools/udpipe",          "https://github.com/ufal/udpipe", "MANUAL"],
+
+   # Shared/commonly used build data
+   ["data/apertium-shared",],
+   ["data/giella-shared-eng",   "https://github.com/giellalt/shared-eng"],
+   ["data/giella-shared-mul",   "https://github.com/giellalt/shared-mul"],
+   ["data/giella-shared-smi",   "https://github.com/giellalt/shared-smi"],
+   ["data/giella-shared-urj-cyrl",   "https://github.com/giellalt/shared-urj-cyrl"],
 
    # Then languages
    ["languages/giella-aka",      "https://github.com/giellalt/lang-aka"],
@@ -123,7 +129,7 @@
    ["languages/giella-qda",      "https://github.com/giellalt/lang-qda"],
    ["languages/giella-qya",      "https://github.com/giellalt/lang-qya"],
    ["languages/giella-rmf",      "https://github.com/giellalt/lang-rmf"],
-   ["languages/giella-rmn",      "https://github.com/giellalt/lang-rmn"],
+#   ["languages/giella-rmn",      "https://github.com/giellalt/lang-rmn"],
    ["languages/giella-rmu",      "https://github.com/giellalt/lang-rmu"],
    ["languages/giella-rmy",      "https://github.com/giellalt/lang-rmy"],
    ["languages/giella-ron",      "https://github.com/giellalt/lang-ron"],

@@ -1,0 +1,3 @@
+version=4
+https://github.com/giellalt/shared-smi/releases \
+ .*/shared-smi-(\d[\d.]*)\.tar\.(?:xz|bz2) debian uupdate

@@ -1,11 +1,44 @@
-apertium-isl-eng (0.1.1-1) unstable; urgency=low
+apertium-isl-eng (0.1.2-1) unstable; urgency=low
 
-  * Fix the build
+  * Update to latest release (Closes: #1005681)
+  * Now bundles apertium-isl v0.1.1
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
 
-apertium-isl-eng (0.1.0~r66083-1) experimental; urgency=low
+apertium-isl-eng (0.1.0~r66083-4) unstable; urgency=low
 
-  * Initial release
+  * Fixed debian/watch.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Mon, 25 Jan 2021 21:07:52 +0530
+
+apertium-isl-eng (0.1.0~r66083-3) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950383)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 24 Mar 2020 11:24:06 +0530
+
+apertium-isl-eng (0.1.0~r66083-2) unstable; urgency=medium
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Updated dh to 11.
+  * Updated debian/watch.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 14 Jul 2018 10:58:04 +0530
+
+apertium-isl-eng (0.1.0~r66083-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #572652)
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Jul 2016 18:07:21 +0530
