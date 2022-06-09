@@ -11,8 +11,9 @@ Build-Depends: bc,
                divvun-gramcheck,
                foma,
                gawk,
-               giella-common (>= 0.1.7),
-               giella-core (>= 0.3.7),
+               giella-core,
+               giella-shared-mul,
+               giella-shared-smi,
                hfst (>= 3.16.0),
                libhfst-dev (>= 3.16.0),
                pkg-config,
@@ -20,7 +21,7 @@ Build-Depends: bc,
                python3-libdivvun,
                python3-yaml,
                zip
-Standards-Version: 4.6.0
+Standards-Version: 4.6.0.1
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-sme.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-sme

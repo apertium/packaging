@@ -1,0 +1,134 @@
+diff --git a/configure.ac b/configure.ac
+index f89e82fa..6ec12d65 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -649,6 +649,7 @@ AS_IF([test "x$with_readline" = "xyes"],
+ AC_CHECK_HEADERS([limits.h stdlib.h string.h error.h glob.h locale.h langinfo.h])
+ 
+ AC_LANG_PUSH([C++])
++CXXFLAGS="$CXXFLAGS -D_USE_MATH_DEFINES=1"
+ 
+ # If we're using upstream OpenFST then use C++17, otherwise limit to C++14
+ AM_COND_IF([WANT_OPENFST_UPSTREAM], [CXXFLAGS="$CXXFLAGS -std=c++17"], [CXXFLAGS="$CXXFLAGS -std=c++14"])
+diff --git a/libhfst/src/Makefile.am b/libhfst/src/Makefile.am
+index 9b7eae6d..74b19529 100644
+--- a/libhfst/src/Makefile.am
++++ b/libhfst/src/Makefile.am
+@@ -14,7 +14,7 @@ AUTOMAKE_OPTIONS=subdir-objects
+ lib_LTLIBRARIES = libhfst.la
+ 
+ AM_CXXFLAGS=-Wno-deprecated -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -g
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src
+ 
+ # HFST bridge specific stuff
+ HFST_SRCS=HfstApply.cc HfstInputStream.cc HfstTransducer.cc HfstOutputStream.cc\
+@@ -29,7 +29,7 @@ HFST_SRCS=HfstApply.cc HfstInputStream.cc HfstTransducer.cc HfstOutputStream.cc\
+ 
+ # libtool takes over
+ libhfst_la_SOURCES = $(HFST_SRCS)
+-libhfst_la_LIBADD = implementations/libhfstimplementations.la \
++libhfst_la_LIBADD = -L$(prefix)/lib -L$(prefix)/bin -lz implementations/libhfstimplementations.la \
+ 			parsers/libhfstparsers.la $(ICU_LIBS)
+ 
+ if WANT_SFST
+@@ -42,7 +42,7 @@ endif
+ 
+ if WANT_FOMA
+ if WANT_FOMA_UPSTREAM
+-  libhfst_la_LIBADD += -lfoma
++  libhfst_la_LIBADD += -lfoma -lz
+ else
+   libhfst_la_LIBADD += $(top_builddir)/back-ends/foma/libfoma.la
+ endif
+diff --git a/libhfst/src/implementations/Makefile.am b/libhfst/src/implementations/Makefile.am
+index aa180678..083aa612 100644
+--- a/libhfst/src/implementations/Makefile.am
++++ b/libhfst/src/implementations/Makefile.am
+@@ -27,7 +27,7 @@ IMPLEMENTATION_SRCS=ConvertTransducerFormat.cc \
+ 
+ AM_CXXFLAGS=-Wno-deprecated -g
+ 
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/back-ends ${ICU_CPPFLAGS}
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src -I${top_srcdir}/back-ends ${ICU_CPPFLAGS}
+ if ! WANT_FOMA_UPSTREAM
+ AM_CPPFLAGS +=  -I${top_srcdir}/back-ends/foma
+ endif
+diff --git a/libhfst/src/parsers/Makefile.am b/libhfst/src/parsers/Makefile.am
+index 89af0f82..ce75bc13 100644
+--- a/libhfst/src/parsers/Makefile.am
++++ b/libhfst/src/parsers/Makefile.am
+@@ -120,7 +120,7 @@ htwolc3pre-lexer.ll: htwolcpre3-parser.$(HEADER)
+ 
+ libhfstparsers_la_SOURCES=$(XRE_SRCS) $(PMATCH_SRCS) $(LEXC_SRCS) $(XFST_SRCS) $(SFST_SRCS) $(TWOLC_SRCS)
+ 
+-AM_CPPFLAGS=-I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/libhfst/src \
++AM_CPPFLAGS=-I${prefix}/include -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/libhfst/src \
+ 		-Wno-deprecated ${ICU_CPPFLAGS}
+ 
+ if WANT_MINGW
+diff --git a/tools/src/Makefile.am b/tools/src/Makefile.am
+index afa3ce68..90a26f06 100644
+--- a/tools/src/Makefile.am
++++ b/tools/src/Makefile.am
+@@ -18,7 +18,7 @@
+ SUBDIRS=hfst-proc hfst-twolc hfst-tagger parsers
+ AUTOMAKE_OPTIONS=std-options subdir-objects
+ LDADD = $(top_builddir)/libhfst/src/libhfst.la $(ICU_LIBS)
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src/parsers -Wno-sign-compare ${ICU_CPPFLAGS}
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src/parsers -Wno-sign-compare ${ICU_CPPFLAGS}
+ AM_CXXFLAGS = -Wno-deprecated -Wno-sign-compare
+ 
+ # sort alphabetically:
+diff --git a/tools/src/hfst-proc/Makefile.am b/tools/src/hfst-proc/Makefile.am
+index e855f2ab..b39511ee 100644
+--- a/tools/src/hfst-proc/Makefile.am
++++ b/tools/src/hfst-proc/Makefile.am
+@@ -15,7 +15,7 @@
+ ## You should have received a copy of the GNU General Public License
+ ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/lib -I${top_builddir}/lib $(ICU_CPPFLAGS)
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src -I${top_srcdir}/lib -I${top_builddir}/lib $(ICU_CPPFLAGS)
+ 
+ if WANT_PROC
+ MAYBE_PROC=hfst-apertium-proc
+diff --git a/tools/src/hfst-tagger/src/Makefile.am b/tools/src/hfst-tagger/src/Makefile.am
+index 3ce7764c..fe455e12 100644
+--- a/tools/src/hfst-tagger/src/Makefile.am
++++ b/tools/src/hfst-tagger/src/Makefile.am
+@@ -14,7 +14,7 @@ EXTRA_DIST=hfst-train-tagger.sh hfst-train-tagger.bat hfst_tagger_compute_data_s
+ 
+ BUILD_MODEL_SRC=$(srcdir)/build_model_src
+ USE_MODEL_SRC=$(srcdir)/use_model_src
+-AM_CPPFLAGS=-I${top_srcdir}/libhfst/src -Wno-sign-compare -Wno-unused-parameter
++AM_CPPFLAGS=-I${prefix}/include -I${top_srcdir}/libhfst/src -Wno-sign-compare -Wno-unused-parameter
+ LDADD = $(top_builddir)/libhfst/src/libhfst.la
+ 
+ if WANT_TRAIN_TAGGER
+diff --git a/tools/src/hfst-twolc/src/Makefile.am b/tools/src/hfst-twolc/src/Makefile.am
+index 1b5ee9e5..4f1dd4ee 100644
+--- a/tools/src/hfst-twolc/src/Makefile.am
++++ b/tools/src/hfst-twolc/src/Makefile.am
+@@ -8,7 +8,7 @@ else
+   bin_SCRIPTS=
+ endif
+ 
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers
+ LDADD = $(top_builddir)/libhfst/src/libhfst.la $(ICU_LIBS)
+ 
+ # the preprocessor scripts do not support options per se, so we whitelist
+diff --git a/tools/src/parsers/Makefile.am b/tools/src/parsers/Makefile.am
+index 3480e0c0..b897c2d1 100644
+--- a/tools/src/parsers/Makefile.am
++++ b/tools/src/parsers/Makefile.am
+@@ -19,7 +19,7 @@ SUBDIRS=test
+ 
+ hfst_xfst_SOURCES = hfst-xfst.cc $(HFST_COMMON_SRC)
+ 
+-AM_CPPFLAGS = -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src $(GLIB_CPPFLAGS) $(ICU_CPPFLAGS) -Wno-deprecated
++AM_CPPFLAGS = -I${prefix}/include -I${top_srcdir}/libhfst/src -I${top_srcdir}/libhfst/src/parsers -I${top_srcdir}/tools/src $(GLIB_CPPFLAGS) $(ICU_CPPFLAGS) -Wno-deprecated
+ 
+ if WANT_XFST
+ MAYBE_XFST=hfst-xfst

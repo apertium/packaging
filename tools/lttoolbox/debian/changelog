@@ -1,9 +1,17 @@
-lttoolbox (3.6.4-1) unstable; urgency=low
+lttoolbox (3.6.6-1) unstable; urgency=low
 
+  * New upstream release
+    + Fixes data compilation bug
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 06 Jun 2022 12:32:36 +0200
+
+lttoolbox (3.6.4-1) unstable; urgency=high
+
+  [ Tino Didriksen ]
   * New upstream release
    + Includes fix for missing ICU linkage (Closes: #1010094)
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 26 Apr 2022 14:11:13 +0100
+ -- Kartik Mistry <kartik@debian.org>  Tue, 26 Apr 2022 20:05:34 +0530
 
 lttoolbox (3.6.1-2) unstable; urgency=medium
 

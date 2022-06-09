@@ -88,7 +88,7 @@ if ($ARGV[0]) {
 
    foreach my $k (@{$pkgs{'order'}}) {
       my $pkg = $pkgs{'packages'}->{$k};
-      if ($pkg->[0] !~ m@/$ARGV[0]@) {
+      if ($pkg->[0] !~ m@$ARGV[0]@) {
          delete $pkgs{'packages'}->{$k};
       }
    }
@@ -478,12 +478,16 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
       }
       elsif ($is_data eq 'data') {
+         $ENV{AUTOPKG_REBUILT} = '';
+         foreach my $pk ($control =~ m@Package:\s*(\S+)@g) {
+            chomp($pk);
+            $ENV{AUTOPKG_REBUILT} .= "$pk;";
+         }
          print {$out} "\tupdating rpm from data\n";
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
 
       WINDOWS:
-=pod
       while (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
          $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
@@ -494,6 +498,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             last;
          }
 
+=pod
          print {$out} "\tbuilding win64\n";
          $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
          $ENV{'AUTOPKG_WINX'} = 'win64';
@@ -502,6 +507,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             print {$out} "\tFAILED: win64\n";
             last;
          }
+=cut
 
          $win32 = 1;
          if ($opts{'only'} eq 'win') {
@@ -509,7 +515,6 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
          last;
       }
-=cut
 =pod
       if (-s "$pkg->[0]/osx/$pkname.sh") {
          print {$out} "\tbuilding osx\n";
@@ -669,23 +674,23 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    `echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
-=pod
 if ($win32) {
    print {$out2} "Combining Win32 builds\n";
    $ENV{'AUTOPKG_BITWIDTH'} = 'i686';
    $ENV{'AUTOPKG_WINX'} = 'win32';
    `$Bin/win32-combine.sh`;
 
+=pod
    print {$out2} "Combining Win64 builds\n";
    $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
    $ENV{'AUTOPKG_WINX'} = 'win64';
    `$Bin/win32-combine.sh`;
+=cut
 }
 if ($osx) {
    print {$out2} "Combining OS X builds\n";
    `$Bin/osx-combine.sh`;
 }
-=cut
 
 print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;

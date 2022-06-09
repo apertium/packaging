@@ -5,12 +5,19 @@ set -e
 
 # Apertium all-dev
 rm -rf /opt/win32
+install_dep transfuse
+install_dep foma
+install_dep openfst
 install_dep lttoolbox
 install_dep apertium
 install_dep apertium-lex-tools
+install_dep apertium-separable
+install_dep apertium-recursive
+install_dep apertium-anaphora
 install_dep hfst
 install_dep hfst-ospell
-install_dep cg3ide
+install_dep lexd
+#install_dep cg3ide
 install_dep cg3
 #install_dep trie-tools
 

@@ -49,10 +49,14 @@ print `mkdir -pv /opt/autopkg/tmp/autorpm.$$ 2>&1`;
 chdir "/opt/autopkg/tmp/autorpm.$$";
 
 my $autopath = $ENV{AUTOPKG_AUTOPATH};
-print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.xz 2>&1`;
-print `ar x $autopath/amd64/sid/$pkname*sid*_all.deb data.tar.gz 2>&1`;
-print `tar -Jxvf data.tar.xz 2>&1`;
-print `tar -zxvf data.tar.gz 2>&1`;
+my @rbs = split /;/, $ENV{AUTOPKG_REBUILT};
+foreach my $pk (@rbs) {
+   print `ar x $autopath/amd64/sid/${pk}_*sid*_all.deb data.tar.xz 2>&1`;
+   print `ar x $autopath/amd64/sid/${pk}_*sid*_all.deb data.tar.gz 2>&1`;
+   print `tar --overwrite -Jxvf data.tar.xz 2>&1`;
+   print `tar --overwrite -zxvf data.tar.gz 2>&1`;
+   print `rm -fv data.tar.* 2>&1`;
+}
 my $files = '';
 if (-e 'usr/bin') {
    $files .= "\%{_bindir}/*\n";

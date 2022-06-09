@@ -1,0 +1,41 @@
+diff --git a/configure.ac b/configure.ac
+index ae727b1..c200ec7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,7 +5,7 @@ AM_PROG_AR
+ AC_PROG_CXX
+ # This library does not throw exceptions, so we do not generate exception
+ # handling code. However, users are free to re-enable exception handling.
+-CXX="$CXX -std=c++11 -fno-exceptions"
++CXX="$CXX -std=c++17 -msse -msse2 -mfpmath=sse -fno-exceptions -D_USE_MATH_DEFINES=1"
+ 
+ AC_DISABLE_STATIC
+ AC_PROG_LIBTOOL
+@@ -152,6 +152,7 @@ AC_SUBST([libfstdir], $with_libfstdir)
+ # Flags may be changed after configuring, so this is checked again by
+ # weight_test.cc.  The check here is to save time in the common case,
+ # or when someone does not run `make check`.
++ifelse(`
+ AC_RUN_IFELSE([AC_LANG_PROGRAM([
+                  #include <cstdio>
+ 
+@@ -181,6 +182,7 @@ AC_RUN_IFELSE([AC_LANG_PROGRAM([
+                    Test float equality failed!
+                    Compile with -msse -mfpmath=sse if using g++.
+               ]))])
++')dnl
+ 
+ AC_CHECK_LIB([dl], dlopen, [DL_LIBS=-ldl])
+ AC_SUBST([DL_LIBS])
+diff --git a/src/include/fst/windows_defs.inc b/src/include/fst/windows_defs.inc
+index 4b222dd..ceec873 100644
+--- a/src/include/fst/windows_defs.inc
++++ b/src/include/fst/windows_defs.inc
+@@ -2,5 +2,5 @@
+ // for Windows.
+ #ifdef _WIN32
+ #include <basetsd.h>
+-using ssize_t = SSIZE_T;
++//using ssize_t = SSIZE_T;
+ #endif
+\ No newline at end of file

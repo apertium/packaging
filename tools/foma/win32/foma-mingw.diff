@@ -1,0 +1,51 @@
+Index: Makefile
+===================================================================
+--- Makefile	(revision 308)
++++ Makefile	(working copy)
+@@ -1,12 +1,12 @@
+-prefix = /usr/local
++prefix = $(DESTDIR)/opt/win32
+ exec_prefix = $(prefix)
+-libdir = $(exec_prefix)/lib
++libdir = $(exec_prefix)/bin
+ bindir = $(exec_prefix)/bin
+ includedir = $(prefix)/include
+ pkgcfgdir = $(libdir)/pkgconfig
+ 
+ VERSION = 0.10.0
+-CC = gcc
++CC = $(AUTOPKG_BITWIDTH)-w64-mingw32.shared-gcc
+ RANLIB = ranlib
+ YACC = bison -v
+ LEX = flex -8
+@@ -20,7 +20,7 @@
+ FOMAOBJS = foma.o stack.o iface.o lex.interface.o
+ LIBOBJS = int_stack.o define.o determinize.o apply.o rewrite.o lexcread.o topsort.o flags.o minimize.o reverse.o extract.o sigma.o io.o structures.o constructions.o coaccessible.o utf8.o spelling.o dynarray.o mem.o stringhash.o trie.o lex.lexc.o lex.yy.o lex.cmatrix.o regex.o
+ 
+-all: libfoma foma flookup cgflookup
++all: libfoma foma cgflookup
+ 
+ foma: $(FOMAOBJS) $(LIBOBJS)
+ 	$(CC) $(CFLAGS) $(FOMAOBJS) $(LIBOBJS) $(LDFLAGS) -o $@
+@@ -43,9 +43,9 @@
+ 	ARFLAGS = -static -o
+ 	DFLAG = -dylib_install_name
+ else 
+-	SHAREDLIB = libfoma.so
+-	SHAREDLIBV = libfoma.so.$(VERSION)
+-	SHAREDLIBM = libfoma.so.0
++	SHAREDLIB = libfoma.dll
++	SHAREDLIBV = libfoma.dll.$(VERSION)
++	SHAREDLIBM = libfoma.dll.0
+ 	AR = ar
+ 	ARFLAGS = cru
+ 	DFLAG = -soname
+@@ -82,7 +82,7 @@
+ 	-@if [ ! -d $(bindir)      ]; then mkdir -p $(bindir); fi
+ 	cp fomalib.h fomalibconf.h $(includedir);
+ 	chmod 644 $(includedir)/fomalib.h
+-	cp foma flookup cgflookup $(bindir)
++	cp foma.exe cgflookup.exe $(bindir)
+ 	cp libfoma.pc $(pkgcfgdir)
+ 	cp $(LIBS) $(libdir)
+ 	cd $(libdir); chmod 755 $(LIBS); \

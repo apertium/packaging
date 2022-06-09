@@ -1,5 +1,5 @@
 make clean
-make -j4 || make
+make -j6 || make
 make install DESTDIR=/opt/$AUTOPKG_WINX-pkg/$PKG_NAME
 for INST in $EXTRA_INST
 do

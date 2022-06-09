@@ -94,7 +94,7 @@ for my $cadence (qw(  nightly )) {#release
       }
       push(@combo, $pkname);
 
-      $ENV{'AUTOPKG_PKG_DEF_PATH'} = "${Bin}/$pkg->[0]";
+      $ENV{'AUTOPKG_PKPATH'} = "${Bin}/$pkg->[0]";
 
       print "${pkname}\n";
       my $pkpath = "${Bin}/${cadence}/build/${pkname}";
