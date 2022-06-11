@@ -135,6 +135,10 @@ elsif ($data =~ m@_VERSION_MAJOR = (\d+);.*?_VERSION_MINOR = (\d+);.*?_VERSION_P
    print STDERR "Found _VERSION_MAJOR/MINOR/PATCH version\n";
    $version = "$1.$2.$3";
 }
+elsif ($data =~ m@MAJOR_VERSION (\d+).*?MINOR_VERSION (\d+).*?BUILD_VERSION (\d+)@s) {
+   print STDERR "Found MAJOR_/MINOR_/BUILD_VERSION version\n";
+   $version = "$1.$2.$3";
+}
 elsif ($data =~ m@__version__ = "([\d.]+)"@s || $data =~ m@__version__ = '([\d.]+)'@s) {
    print STDERR "Found __version__ version\n";
    $version = $1;

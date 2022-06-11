@@ -1,10 +1,61 @@
-apertium-eo-en (0.9.2-1) unstable; urgency=low
+apertium-eo-es (1:0.9.2-1) unstable; urgency=medium
 
-  * Fix the build
+  * Update to latest upstream release (Closes: #1005665)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
 
-apertium-eo-es (0.9.1~r60655-1) unstable; urgency=low
+apertium-eo-es (1:0.9.1~r60655-4) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950554)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Added 'Rules-Requires-Root: no' field.
+    + Switched to debhelper-compat.
+    + Updated to Standards-Version 4.5.0
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 01 Apr 2020 12:12:33 +0530
+
+apertium-eo-es (1:0.9.1~r60655-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated to Standards-Version 4.1.4
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Use dh 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 02 Jul 2018 09:16:20 +0530
+
+apertium-eo-es (1:0.9.1~r60655-2) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Added quick patch to fix CG-3 parse error.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Updated to Standards-Version 4.0.0
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 25 Jul 2017 11:32:35 +0530
+
+apertium-eo-es (1:0.9.1~r60655-1) unstable; urgency=low
+
+  * debian/control:
+    + Removed dependency on locales.
+    + Updated Vcs-Git field.
+    + Updated maintainer email address.
+    + Updated to Standards-Version 3.9.8
+  * Simplified debian/rules.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 23 Jun 2016 11:20:39 +0530
+
+apertium-eo-es (1:0.9.0~r61322-1) unstable; urgency=low
 
   [ Tino Didriksen ]
   * New upstream release.

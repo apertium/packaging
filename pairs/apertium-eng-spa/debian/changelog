@@ -1,13 +1,75 @@
-apertium-eng-spa (0.8.0~r64901-1) unstable; urgency=low
+apertium-eng-spa (0.8.1-1) unstable; urgency=medium
 
-  * REPLACE ME
+  * Renamed to apertium-eng-spa
+  * Update to latest upstream release (Closes: #1002244)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
+    + Added transitional package from old to new name
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 04 Jan 2016 17:12:39 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
 
-apertium-en-es (0.8.0~r32463-1) unstable; urgency=low
+apertium-en-es (0.8.0~r57502-6) unstable; urgency=medium
+
+  * debian/control:
+    + Bumped Standards-Version to 4.6.0
+    + Bumped dh compat to 13.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 09 Mar 2022 12:37:54 +0530
+
+apertium-en-es (0.8.0~r57502-5) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6.1 (Closes: #950374)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Bumped Standards-Version to 4.5.0
+    + Added "Rules-Requires-Root: no" field.
+    + Use debhelper-compat instead of debian/compat.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 14 Mar 2020 22:18:03 +0530
+
+apertium-en-es (0.8.0~r57502-4) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Updated Depends.
+    + Use dh 11.
+    + Updated Build-Depends for dh 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 29 Jun 2018 18:33:59 +0530
+
+apertium-en-es (0.8.0~r57502-3) unstable; urgency=medium
+
+  * Added patch to fix FTBFS in test suites. Thanks to Andreas Moog.
+    (Closes: #876870)
+  * debian/control:
+    + Updated Standards-Version to 4.1.2
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Dec 2017 14:07:11 +0530
+
+apertium-en-es (0.8.0~r57502-2) unstable; urgency=low
 
   [ Tino Didriksen ]
-  * New upstream release (Closes: #761087)
+  * debian/control:
+    + Updated to Standards-Version 3.9.8
+    + Fixed Vcs-Git URL
+    + No longer depends on locales
+  * debian/rules:
+    + Simplified rules, removed use of locales.
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 10 Jul 2016 11:15:46 +0530
+
+apertium-en-es (0.8.0~r57502-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release.
   * Significant changes in svn since tarball, so mixing new build scripts with
     old data files
   * Re-done packaging to take advantage of debhelper 9
@@ -15,7 +77,7 @@ apertium-en-es (0.8.0~r32463-1) unstable; urgency=low
   [ Kartik Mistry ]
   * Added debian/watch file.
 
- -- Kartik Mistry <kartik@debian.org>  Mon, 13 Oct 2014 21:55:05 +0530
+ -- Kartik Mistry <kartik@debian.org>  Fri, 10 Jul 2015 12:12:54 +0530
 
 apertium-en-es (0.6.0-1.1) unstable; urgency=low
 

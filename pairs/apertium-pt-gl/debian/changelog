@@ -1,16 +1,62 @@
-apertium-pt-gl (0.9.3-1) unstable; urgency=low
+apertium-pt-gl (0.9.3-1) unstable; urgency=medium
 
-  * Fix the build
+  * Update to latest upstream release (Closes: #1005667)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 03 Jan 2021 13:06:03 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
+
+apertium-pt-gl (0.9.2~r57551-4) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium >= 3.6 (Closes: #950487)
+  * Added debian/gitlab-ci.yml
+  * debian/control:
+    + Drop compat, switch to debhelper-compat.
+    + Add "Rules-Requires-Root:no" field
+    + Bump standards version to 4.5.0
+  * Added debian/upstream/metadata
+  * Added sample test.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 14 Mar 2020 12:24:57 +0530
+
+apertium-pt-gl (0.9.2~r57551-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Updated debian/watch.
+  * Updated dh to 11.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 30 Jul 2018 10:23:23 +0800
+
+apertium-pt-gl (0.9.2~r57551-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+    + Removed Build-Depends on locales.
+    + Bumped to debhelper 9.
+    + Updated Vcs-* fields.
+  * Simplify debian/rules file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sun, 10 Jul 2016 09:57:24 +0530
 
 apertium-pt-gl (0.9.2~r57551-1) unstable; urgency=low
 
-  * New upstream release
-  * No significant changes in svn since tarball, so taking directly from svn
-  * Re-done packaging to take advantage of debhelper 9
+  [ Tino Didriksen ]
+  * New upstream release.
+  * No significant changes in svn since tarball, so taking directly from svn.
+  * Re-done packaging to take advantage of debhelper 9.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Fixed debian/copyright.
+  * Updated debian/compat to 9. Updated debhelper dependency to >= 9.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 21:04:50 +0530
 
 apertium-pt-gl (0.9.1-1) unstable; urgency=low
 

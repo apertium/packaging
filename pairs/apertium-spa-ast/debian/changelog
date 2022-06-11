@@ -1,13 +1,44 @@
-apertium-spa-ast (1.1.1-1) unstable; urgency=low
+apertium-spa-ast (1.1.1-1) unstable; urgency=medium
 
-  * Fix the build
   * Renamed to apertium-spa-ast
+  * Update to latest upstream release (Closes: #1005663)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
+    + Added transitional package from old to new name
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
 
-apertium-es-ast (1.1.0~r51165-1) experimental; urgency=low
+apertium-es-ast (1.1.0~r51165-3) unstable; urgency=medium
 
-  * Initial release
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950379)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switch to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 20 Mar 2020 11:42:06 +0530
+
+apertium-es-ast (1.1.0~r51165-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.4
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 03 Jul 2018 11:17:09 +0530
+
+apertium-es-ast (1.1.0~r51165-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #568637)
   * No significant changes in svn since tarball, so taking directly from svn
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Thu, 16 Jun 2016 12:36:28 +0530

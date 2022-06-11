@@ -1,14 +1,64 @@
-apertium-hbs-mkd (0.1.1-1) unstable; urgency=low
+apertium-hbs-mkd (0.1.1-1) unstable; urgency=medium
 
-  * Fix the build
+  * Update to latest upstream release (Closes: #1005673)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
+
+apertium-hbs-mkd (0.1.0~r76450-4) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950555)
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 21 Mar 2020 23:04:05 +0530
+
+apertium-hbs-mkd (0.1.0~r76450-3) unstable; urgency=low
+
+  * Acknowledge NMU. Thanks Christoph Biedl!
+  * Added debian/gitlab-ci.yml.
+  * Bumped dh to 12.
+  * debian/control:
+    + Updated Standards-Version to 4.4.0
+  * Updated debian/watch file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 24 Sep 2019 16:49:03 +0530
+
+apertium-hbs-mkd (0.1.0~r76450-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * Fix FTBFS on highly parallel builds. Closes: #910045
+
+ -- Christoph Biedl <debian.axhn@manchmal.in-ulm.de>  Sun, 28 Oct 2018 18:24:27 +0100
+
+apertium-hbs-mkd (0.1.0~r76450-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* fields.
+    + Updated Depends.
+  * Bumped dh to 11.
+  * Added debian/watch file.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 Jul 2018 11:37:30 +0530
 
 apertium-hbs-mkd (0.1.0~r76450-1) unstable; urgency=low
 
-  * Update to latest upstream release. Only minor fixes. (Closes: #868608)
+  [ Tino Didriksen ]
+  * Update to latest upstream release:
+    + Fix FTBFS (Closes: #868608)
+  * debian/control:
+    + Updated Standards-Version to 4.0.0
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Tue, 18 Jul 2017 14:41:31 +0200
+ -- Kartik Mistry <kartik@debian.org>  Thu, 20 Jul 2017 22:24:55 +0530
 
 apertium-hbs-mkd (0.1.0~r57554-1) unstable; urgency=low
 

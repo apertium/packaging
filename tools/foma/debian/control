@@ -6,11 +6,11 @@ Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Timo Jyrinki <timo@debian.org>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: bison,
+               cmake,
                debhelper (>= 9.0),
                flex,
                libreadline-dev,
-               libtinfo-dev,
-               libtool,
+               pkg-config,
                zlib1g-dev
 Standards-Version: 4.6.0.1
 Homepage: https://fomafst.github.io/

@@ -1,13 +1,46 @@
-apertium-mkd-bul (0.2.1-1) unstable; urgency=low
+apertium-mkd-bul (0.2.1-1) unstable; urgency=medium
 
-  * Fix the build
   * Renamed to apertium-mkd-bul
+  * Update to latest upstream release (Closes: #1005661)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
+    + Added transitional package from old to new name
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 31 Dec 2020 14:03:02 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
 
-apertium-mk-bg (0.2.0~r49489-1) experimental; urgency=low
+apertium-mk-bg (0.2.0~r49489-3) unstable; urgency=medium
 
-  * Initial release
-  * No significant changes in svn since tarball, so taking directly from svn
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950559)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+ -- Kartik Mistry <kartik@debian.org>  Tue, 24 Mar 2020 18:45:20 +0530
+
+apertium-mk-bg (0.2.0~r49489-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Homepage.
+    + Updated Vcs-* URLs.
+    + Updated Depends.
+  * Updated dh to 11.
+  * Updated debian/watch.
+  * Updated debian/copyright.
+  * debian/rules:
+    + Do not install duplicate changelog file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 18 Jul 2018 12:13:25 +0530
+
+apertium-mk-bg (0.2.0~r49489-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release. (Closes: #594392)
+  * No significant changes in svn since tarball, so taking directly from svn.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 07 Jul 2016 11:51:58 +0530

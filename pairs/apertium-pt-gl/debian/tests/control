@@ -1,0 +1,3 @@
+Tests: runsampletest
+Depends: @, apertium-dev
+Restrictions: allow-stderr

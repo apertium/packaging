@@ -1,1 +1,2 @@
-perl -pe 's@^prefix = /usr/local@prefix = \$(DESTDIR)/usr/local@g;' -i Makefile
+patch -p1 < ${AUTOPKG_PKPATH}/debian/patches/foma-cmake-paths.diff
+cmake .

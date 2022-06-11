@@ -1,16 +1,59 @@
-apertium-eu-es (0.3.4-1) unstable; urgency=low
+apertium-eu-es (0.3.4-1) unstable; urgency=medium
 
-  * Fix the build
+  * Update to latest upstream release (Closes: #1005675)
+  * debian/:
+    + Standards-Version: 4.6.0.1
+    + Removed all patches, as they're now superfluous
+    + Adjusted watch
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 21 Dec 2020 10:01:01 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 09 Jun 2022 15:04:02 +0200
+
+apertium-eu-es (0.3.3~r56159-4) unstable; urgency=medium
+
+  * Added patch to fix FTBFS with apertium 3.6 (Closes: #950373)
+  * Added debian/gitlab-ci.yml file.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switch to debhelper-compat
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 21 Mar 2020 12:57:37 +0530
+
+apertium-eu-es (0.3.3~r56159-3) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 4.1.5
+    + Updated Vcs-* URLs.
+    + Updated Homepage.
+    + Updated Depends.
+  * Bumped to dh 11.
+  * Updated debian/watch.
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 07 Jul 2018 10:22:34 +0530
+
+apertium-eu-es (0.3.3~r56159-2) unstable; urgency=low
+
+  * debian/control:
+    + Updated Standards-Version to 3.9.8
+    + Removed Build-Depends on locales.
+    + Updated Vcs-* fields.
+  * Simplify debian/rules file.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 09 Jul 2016 22:19:02 +0530
 
 apertium-eu-es (0.3.3~r56159-1) unstable; urgency=low
 
-  * New upstream release
-  * No significant changes in svn since tarball, so taking directly from svn
-  * Re-done packaging to take advantage of debhelper 9
+  [ Tino Didriksen ]
+  * New upstream release.
+  * No significant changes in svn since tarball, so taking directly from svn.
+  * Re-done packaging to take advantage of debhelper 9.
 
- -- Tino Didriksen <mail@tinodidriksen.com>  Mon, 13 Oct 2014 07:17:28 +0000
+  [ Kartik Mistry ]
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 31 Jul 2015 08:49:56 +0530
 
 apertium-eu-es (0.3.1-1) unstable; urgency=low
 
