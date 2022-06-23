@@ -102,6 +102,7 @@ make test
 
 %files -n lttoolbox-devel
 %defattr(-,root,root)
+%{_bindir}/lsx-comp
 %{_bindir}/lt-append
 %{_bindir}/lt-comp
 %{_bindir}/lt-expand
@@ -111,6 +112,7 @@ make test
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/%{name}
+%{_datadir}/man/man1/lsx-comp.*
 %{_datadir}/man/man1/lt-append.*
 %{_datadir}/man/man1/lt-comp.*
 %{_datadir}/man/man1/lt-expand.*

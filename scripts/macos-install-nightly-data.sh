@@ -16,8 +16,8 @@ echo "Downloading"
 curl "https://apertium.projectjj.com/osx/nightly/data.php?deb=$PKG" > pkg.deb
 
 echo "Extracting"
-ar x pkg.deb data.tar.gz
-tar -zxf data.tar.gz
+ar x pkg.deb data.tar.xz
+tar -Jxf data.tar.xz
 cd usr
 
 if [[ -e "share/apertium/modes" ]]; then

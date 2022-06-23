@@ -6,8 +6,7 @@ Group: Development/Tools
 License: GPL-3.0+
 URL: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/
 Source0: %{name}_%{version}.orig.tar.bz2
-Patch0: hfst_01_configure.ac.diff
-Patch1: hfst_02_notimestamp.diff
+Patch0: hfst_02_notimestamp.diff
 
 %if 0%{?el7}
 BuildRequires: devtoolset-7-gcc-c++
@@ -68,7 +67,6 @@ Python 3 modules for libhfst
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %if 0%{?el7}
