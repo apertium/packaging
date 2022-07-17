@@ -2,6 +2,7 @@ debian/tmp/usr/bin/lsx-comp
 debian/tmp/usr/bin/lt-append
 debian/tmp/usr/bin/lt-comp
 debian/tmp/usr/bin/lt-expand
+debian/tmp/usr/bin/lt-paradigm
 debian/tmp/usr/bin/lt-print
 debian/tmp/usr/bin/lt-trim
 debian/tmp/usr/include
@@ -12,5 +13,6 @@ debian/tmp/usr/share/man/man1/lsx-comp.*
 debian/tmp/usr/share/man/man1/lt-append.*
 debian/tmp/usr/share/man/man1/lt-comp.*
 debian/tmp/usr/share/man/man1/lt-expand.*
+debian/tmp/usr/share/man/man1/lt-paradigm.*
 debian/tmp/usr/share/man/man1/lt-print.*
 debian/tmp/usr/share/man/man1/lt-trim.*

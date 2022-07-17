@@ -106,6 +106,7 @@ make test
 %{_bindir}/lt-append
 %{_bindir}/lt-comp
 %{_bindir}/lt-expand
+%{_bindir}/lt-paradigm
 %{_bindir}/lt-print
 %{_bindir}/lt-trim
 %{_includedir}/*
@@ -116,6 +117,7 @@ make test
 %{_datadir}/man/man1/lt-append.*
 %{_datadir}/man/man1/lt-comp.*
 %{_datadir}/man/man1/lt-expand.*
+%{_datadir}/man/man1/lt-paradigm.*
 %{_datadir}/man/man1/lt-print.*
 %{_datadir}/man/man1/lt-trim.*
 

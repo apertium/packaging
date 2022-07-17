@@ -11,6 +11,7 @@ Build-Depends: autotools-dev,
                libicu-dev,
                libirstlm-dev,
                libxml2-dev,
+               libxml2-utils,
                lttoolbox-dev (>= 3.6.0),
                pkg-config,
                python3-dev,
@@ -61,6 +62,7 @@ Description: Apertium lexical selection module (Python 3 module)
 Package: apertium-lex-tools-dev
 Architecture: any
 Depends: apertium-lex-tools (= ${binary:Version}),
+         libxml2-utils,
          lttoolbox-dev (>= 3.6.0),
          ${misc:Depends},
          ${python3:Depends},

@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-if (preg_match('~stretch|bionic~', getenv('AUTOPKG_DISTRO'))) {
+if (preg_match('~bionic~', getenv('AUTOPKG_DISTRO'))) {
 	exit(0);
 }
 
