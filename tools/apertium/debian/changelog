@@ -1,3 +1,17 @@
+apertium (3.8.2-1) experimental; urgency=low
+
+  * Update to latest upstream:
+    + Updated package names for soname untangling.
+  * Fixes FTBFS with GCC 12 (Closes: #1012894)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 24 Jul 2022 13:26:47 +0200
+
+apertium (3.8.1-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 18 Mar 2022 18:03:11 +0530
+
 apertium (3.8.1-1) experimental; urgency=low
 
   [ Tino Didriksen ]

@@ -2,7 +2,7 @@ apertium-eu-es (0.3.4-1) unstable; urgency=medium
 
   * Update to latest upstream release (Closes: #1005675)
   * debian/:
-    + Standards-Version: 4.6.0.1
+    + Standards-Version: 4.6.1
     + Removed all patches, as they're now superfluous
     + Adjusted watch
 

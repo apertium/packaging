@@ -4,7 +4,7 @@ apertium-isl-swe (0.1.1-1) unstable; urgency=medium
   * Update to latest upstream release (Closes: #1005659)
   * Copyright downgraded from GPLv3+ to GPLv2-only
   * debian/:
-    + Standards-Version: 4.6.0.1
+    + Standards-Version: 4.6.1
     + Removed all patches, as they're now superfluous
     + Adjusted watch
     + Added transitional package from old to new name

@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake, debhelper (>= 9.0), libboost-dev, libgoogle-perftools-dev
-Standards-Version: 4.6.0.1
+Standards-Version: 4.6.1
 
 Package: trie-tools
 Architecture: any

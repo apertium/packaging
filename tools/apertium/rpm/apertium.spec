@@ -35,7 +35,7 @@ BuildRequires: devtoolset-7-gcc-c++
 %endif
 
 Requires: gawk
-Requires: libapertium3-3_8-1 = %{version}-%{release}
+Requires: libapertium3 = %{version}-%{release}
 Requires: lttoolbox >= 3.6.0
 # Require xmllint from:
 Requires: libxml2
@@ -60,14 +60,13 @@ It will be possible to use Apertium to build machine translation
 systems for a variety of related-language pairs simply providing
 the linguistic data needed in the right format.
 
-%package -n libapertium3-3_8-1
+%package -n libapertium3
 Summary: Shared library for apertium
 Group: Development/Libraries
 Provides: libapertium = %{version}-%{release}
 Obsoletes: libapertium < %{version}-%{release}
-Obsoletes: libapertium3 < %{version}-%{release}
 
-%description -n libapertium3-3_8-1
+%description -n libapertium3
 Contains shared library for the Apertium shallow-transfer
 machine translation engine.
 
@@ -84,7 +83,7 @@ machine translation engine.
 
 %package -n python3-apertium-core
 Summary: Python 3 module for the Apertium shallow-transfer machine translation engine
-Requires: libapertium3-3_8-1 = %{version}-%{release}
+Requires: libapertium3 = %{version}-%{release}
 
 %description -n python3-apertium-core
 Python 3 module for the Apertium shallow-transfer machine translation engine
@@ -108,7 +107,6 @@ source /opt/rh/devtoolset-7/enable
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
-ln -s libapertium3-3.8.so.1.0.0 %{buildroot}/%{_libdir}/libapertium3-3.8.so
 
 %check
 %if 0%{?el7}
@@ -157,7 +155,7 @@ make check
 %{_datadir}/man/man1/apertium-unformat.*
 %{_datadir}/man/man1/apertium-utils-fixlatex.*
 
-%files -n libapertium3-3_8-1
+%files -n libapertium3
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -189,9 +187,9 @@ make check
 %defattr(-,root,root)
 %{python3_sitearch}/*
 
-%post -n libapertium3-3_8-1 -p /sbin/ldconfig
+%post -n libapertium3 -p /sbin/ldconfig
 
-%postun -n libapertium3-3_8-1 -p /sbin/ldconfig
+%postun -n libapertium3 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0
