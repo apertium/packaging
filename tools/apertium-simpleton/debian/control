@@ -11,7 +11,7 @@ Package: apertium-simpleton
 Architecture: any
 Depends: apertium (>= 3.8.1),
          apertium-anaphora (>= 1.1.0),
-         apertium-lex-tools (>= 0.3.1),
+         apertium-lex-tools (>= 0.4.1),
          apertium-recursive (>= 1.1.0),
          apertium-separable (>= 0.5.0),
          binutils,

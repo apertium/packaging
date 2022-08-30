@@ -48,8 +48,8 @@ while (<>) {
       $deps{'cg3 (>= 1.3.6)'} = 1;
    }
    elsif (/\blrx-comp\b/ || /\blrx-proc\b/ || /\bapertium-lex-tools\b/) {
-      $build{'apertium-lex-tools-dev (>= 0.3.1)'} = 1;
-      $deps{'apertium-lex-tools (>= 0.3.1)'} = 1;
+      $build{'apertium-lex-tools-dev (>= 0.4.1)'} = 1;
+      $deps{'apertium-lex-tools (>= 0.4.1)'} = 1;
    }
    elsif (/\blsx-comp\b/ || /\blsx-proc\b/ || /\bapertium-separable\b/) {
       $build{'apertium-separable (>= 0.5.0)'} = 1;

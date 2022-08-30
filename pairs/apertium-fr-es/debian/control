@@ -5,7 +5,7 @@ Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.8.1),
-               apertium-lex-tools-dev (>= 0.3.1),
+               apertium-lex-tools-dev (>= 0.4.1),
                apertium-regtest (>= 0.9.1),
                debhelper (>= 12),
                gawk,
@@ -19,7 +19,7 @@ Rules-Requires-Root: no
 Package: apertium-fr-es
 Architecture: all
 Depends: apertium (>= 3.8.1),
-         apertium-lex-tools (>= 0.3.1),
+         apertium-lex-tools (>= 0.4.1),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-es-fr, apertium-fra-spa, apertium-spa-fra

@@ -1,8 +1,44 @@
-openfst (1.7.9-1) unstable; urgency=medium
+openfst (1.7.9-5) unstable; urgency=low
+
+  * debian/rules:
+    + Set --max-parallel=2 in override_dh_auto_test to avoid
+      excessive memory usage resulting in FTBFS (LP: #1984137).
+      Apply patch from Nick Rosbrook <nick.rosbrook@canonical.com>
+      (Closes: #1017468)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 16 Aug 2022 16:58:50 +0200
+
+openfst (1.7.9-4) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + libfst22: Drop versioned constraint on libfst-tools in Breaks.
+
+  [ Tino Didriksen ]
+  * debian/rules:
+    + Disable tests on mips64el and mipsel.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 05 Apr 2022 17:34:55 +0530
+
+openfst (1.7.9-3) unstable; urgency=medium
+
+  [ Tino Didriksen ]
+  * Added patch to explicitly link against -latomic (Fixes build failures on
+    armel and mipsel).
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 28 Mar 2022 13:36:50 +0530
+
+openfst (1.7.9-2) unstable; urgency=medium
+
+  * Upload to unstable:
+    + No longer depends on Python (Closes: #893842, #937201)
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 26 Mar 2022 09:25:37 +0530
+
+openfst (1.7.9-1) experimental; urgency=low
 
   [ Kartik Mistry ]
-  * Team upload.
-  * Updated to new upstream release 1.7.9.
+  * Updated to new upstream release 1.7.9 (Closes: #967187)
   * Migrate project under debian-science project.
   * Added Salsa CI support (debian/gitlab-ci.yml)
   * debian/control:
@@ -11,14 +47,18 @@ openfst (1.7.9-1) unstable; urgency=medium
     + Updated Standards-Version to 4.6.0
     + Added Rules-Requires-Root field.
   * Updated debian/copyright.
+  * Removed unused files:
+    + debian/source/lintian-overrides
+    + debian/addons/man/fstrandmod.1
 
   [ Tino Didriksen ]
   * debian/control:
-    + Forbid multiple versions of the library,
-      and forcibly replace previous libfst8
-  * Add C++17 and SSE patch
+    + Updated package names for soname bump: libfst8 -> libfst22
+    + Forbid multiple versions of the library, and forcibly replace previous
+      libfst8.
+  * Add C++17 and SSE patches, where the SSE patch is only for i386/amd64.
 
- -- Kartik Mistry <kartik@debian.org>  Tue, 22 Mar 2022 14:09:03 +0530
+ -- Kartik Mistry <kartik@debian.org>  Wed, 23 Mar 2022 10:55:15 +0530
 
 openfst (1.6.3-2) unstable; urgency=medium
 
