@@ -1,6 +1,12 @@
+apertium-por (0.3.1-1) unstable; urgency=medium
+
+  * Update to latest upstream release
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 25 Sep 2022 14:17:12 +0200
+
 apertium-por (0.3.0-1) unstable; urgency=low
 
-  * Initial release
+  * Update to latest upstream release
 
  -- Tino Didriksen <tino@didriksen.cc>  Fri, 20 Mar 2020 18:52:07 +0100
 

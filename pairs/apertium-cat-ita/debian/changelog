@@ -1,10 +1,60 @@
-apertium-cat-ita (0.2.1-1) unstable; urgency=low
+apertium-cat-ita (0.2.2-1) unstable; urgency=medium
 
-  * New upstream release
-  * Renamed from apertium-ca-it
+  * New upstream release (Closes: #1013654)
+  * Bundles apertium-cat 2.10.3 and apertium-ita 1.1.2
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 25 Sep 2022 14:17:12 +0200
+
+apertium-cat-ita (0.2.1-4) unstable; urgency=medium
+
+  * debian/control:
+    + Updated Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.0
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 17 Jun 2022 13:36:54 +0530
+
+apertium-cat-ita (0.2.1-3) unstable; urgency=low
+
+  [ Debian Janitor ]
+  * Drop unnecessary dependency on dh-autoreconf.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Bumped Standards-Version to 4.5.1
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 04 Feb 2021 17:04:36 +0530
+
+apertium-cat-ita (0.2.1-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/control:
+    + Bumped dh to 13.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 16 May 2020 21:12:42 +0530
+
+apertium-cat-ita (0.2.1-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release (Closes: #950482)
+  * Renamed to apertium-cat-ita from apertium-ca-it.
   * Bundles apertium-cat 2.8.0 and apertium-ita 0.10.5
 
- -- Tino Didriksen <tino@didriksen.cc>  Wed, 20 Nov 2019 09:41:26 +0100
+  [ Kartik Mistry ]
+  * Added debian/gitlab-ci.yml file.
+  * Fixed debian/watch.
+  * debian/control:
+    + Switched to debhelper-compat.
+    + Fixed Vcs-Browser field.
+    + Bumped Standards-Version to 4.5.0
+    + Updated Debian Science Maintainer email address.
+  * debian/copyright:
+    + Added Comment from upstream to clarifying GPL-2+ license.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 27 Apr 2020 19:15:12 +0530
 
 apertium-ca-it (0.1.1~r57554-2) unstable; urgency=low
 

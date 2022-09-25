@@ -1,5 +1,16 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://apertium.org/
+Comment: The official stance of the Apertium project is that when one of our
+ repositories don't clarify the license beyond putting the GPL COPYING file in
+ the repo, then it should be interpreted as the "or any later" version of it to
+ maximize reusability.
+ .
+ The data is often mixed with GPLv3 data at compile time, often by the same
+ authors, but where the GPLv2 stuff just predates wider GPLv3 adoption.
+ .
+ For more details, see email:
+ https://www.mail-archive.com/apertium-stuff@lists.sourceforge.net/msg06931.html
+ by Francis Tyers for reference Apertium Project Management Committee.
 
 Files: *
 Copyright: 2011-2019, Hèctor Alòs i Font <hectoralos@gmail.com>

@@ -1,9 +1,35 @@
+apertium-por-cat (0.10.1-2) unstable; urgency=medium
+
+  * New upstream release (Closes: #1013655)
+  * Bundles apertium-por 0.3.1 and apertium-cat 2.10.3
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 25 Sep 2022 14:17:12 +0200
+
+apertium-por-cat (0.10.0-2) unstable; urgency=medium
+
+  * debian/control:
+    + Fixed Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.0
+    + Bumped dh to 13.
+  * Fixed debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 16 Jun 2022 12:17:08 +0530
+
 apertium-por-cat (0.10.0-1) unstable; urgency=low
 
+  [ Tino Didriksen ]
   * New upstream release
   * Bundles apertium-por 0.3.0 and apertium-cat 2.9.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 20 Mar 2020 18:52:07 +0100
+  [ Kartik Mistry ]
+  * Source only upload.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 27 Mar 2020 11:30:54 +0530
 
 apertium-por-cat (0.9.0-1) unstable; urgency=low
 
