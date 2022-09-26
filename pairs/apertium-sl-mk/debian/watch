@@ -1,4 +1,4 @@
 version=4
-opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*)\.tar\.gz%apertium-sl-mk-$1.tar.gz%" \
-    https://github.com/apertium/apertium-sl-mk/tags \
-    (?:.*?/)?v?(\d[\d.]*)\.tar\.gz debian uupdate
+opts="searchmode=plain" \
+  https://api.github.com/repos/apertium/@PACKAGE@/releases \
+  https://github.com/apertium/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@

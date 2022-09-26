@@ -1,4 +1,4 @@
 version=4
-opts="filenamemangle=s%(?:.*?)?v?(\d[\d.]*@ARCHIVE_EXT@)%@PACKAGE@-$1%" \
-    https://github.com/apertium/apertium-fra-cat/tags \
-    (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@
+opts="searchmode=plain" \
+  https://api.github.com/repos/apertium/@PACKAGE@/releases \
+  https://github.com/apertium/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@
