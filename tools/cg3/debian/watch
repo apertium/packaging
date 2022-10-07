@@ -1,3 +1,4 @@
 version=4
-https://github.com/GrammarSoft/cg3/releases \
- .*/@PACKAGE@-(\d[\d.]*)\.tar\.(?:xz|bz2) debian uupdate
+opts="searchmode=plain" \
+  https://api.github.com/repos/grammarsoft/@PACKAGE@/releases \
+  https://github.com/grammarsoft/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@

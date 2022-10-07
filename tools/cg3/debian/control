@@ -88,4 +88,7 @@ Depends: libcg3-1 (= ${binary:Version}),
          ${python3:Depends},
          ${shlibs:Depends}
 Description: Wrapper for CG-3
- Wrapper to use CG-3 from Python
+ Constraint Grammar compiler and applicator for the 3rd edition of CG
+ that is developed and maintained by VISL SDU and GrammarSoft ApS.
+ .
+ This package provides wrapper to use CG-3 from Python.

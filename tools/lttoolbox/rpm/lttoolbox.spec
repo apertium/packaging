@@ -27,7 +27,7 @@ BuildRequires: utfcpp-devel
 BuildRequires: utf8cpp-devel
 %endif
 BuildRequires: zlib-devel
-Requires: liblttoolbox3-3_6-1 = %{version}-%{release}
+Requires: liblttoolbox3 = %{version}-%{release}
 
 %description
 The lttoolbox contains the augmented letter transducer tools for natural
@@ -36,14 +36,13 @@ and hybrid machine translation systems. The software is also useful
 for making morphological analysers and generators for natural language
 processing applications.
 
-%package -n liblttoolbox3-3_6-1
+%package -n liblttoolbox3
 Summary: Shared library for lttoolbox
 Group: Development/Libraries
 Provides: liblttoolbox = %{version}-%{release}
 Obsoletes: liblttoolbox < %{version}-%{release}
-Obsoletes: liblttoolbox3 < %{version}-%{release}
 
-%description -n liblttoolbox3-3_6-1
+%description -n liblttoolbox3
 Contains shared library for lttoolbox
 
 %package -n lttoolbox-devel
@@ -63,7 +62,7 @@ Contains development tools and library for lttoolbox.
 
 %package -n python3-lttoolbox
 Summary: Python 3 module for the Apertium lexical processing modules and tools
-Requires: liblttoolbox3-3_6-1 = %{version}-%{release}
+Requires: liblttoolbox3 = %{version}-%{release}
 
 %description -n python3-lttoolbox
 Python 3 module for the Apertium lexical processing modules and tools
@@ -80,7 +79,6 @@ make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
-ln -s liblttoolbox3-3.6.so.1.0.0 %{buildroot}/%{_libdir}/liblttoolbox3-3.6.so
 
 %check
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
@@ -96,7 +94,7 @@ make test
 %{_datadir}/man/man1/lt-tmxcomp.*
 %{_datadir}/man/man1/lt-tmxproc.*
 
-%files -n liblttoolbox3-3_6-1
+%files -n liblttoolbox3
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
@@ -104,8 +102,12 @@ make test
 %defattr(-,root,root)
 %{_bindir}/lsx-comp
 %{_bindir}/lt-append
+%{_bindir}/lt-apply-acx
 %{_bindir}/lt-comp
+%{_bindir}/lt-compose
 %{_bindir}/lt-expand
+%{_bindir}/lt-invert
+%{_bindir}/lt-restrict
 %{_bindir}/lt-paradigm
 %{_bindir}/lt-print
 %{_bindir}/lt-trim
@@ -116,6 +118,7 @@ make test
 %{_datadir}/man/man1/lsx-comp.*
 %{_datadir}/man/man1/lt-append.*
 %{_datadir}/man/man1/lt-comp.*
+%{_datadir}/man/man1/lt-compose.*
 %{_datadir}/man/man1/lt-expand.*
 %{_datadir}/man/man1/lt-paradigm.*
 %{_datadir}/man/man1/lt-print.*
@@ -125,9 +128,9 @@ make test
 %defattr(-,root,root)
 %{python3_sitearch}/*
 
-%post -n liblttoolbox3-3_6-1 -p /sbin/ldconfig
+%post -n liblttoolbox3 -p /sbin/ldconfig
 
-%postun -n liblttoolbox3-3_6-1 -p /sbin/ldconfig
+%postun -n liblttoolbox3 -p /sbin/ldconfig
 
 %changelog
 * Fri Sep 05 2014 Tino Didriksen <tino@didriksen.cc> 3.3.0

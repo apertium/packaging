@@ -358,19 +358,19 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "\techo 'Acquire::http::Proxy \"http://'\$HOST_IP':3124\";' > /etc/apt/apt.conf.d/30autoproxy\n";
          $docker .= "\n";
          $docker .= "# Upgrade everything and install base builder dependencies\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install apt-utils\n";
          $docker .= "RUN apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install man-db\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade\n";
-         $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install build-essential fakeroot time\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install man-db\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends dist-upgrade\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install build-essential fakeroot time\n";
          if ($is_data eq 'data') {
-            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install libgoogle-perftools-dev\n";
+            $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install libgoogle-perftools-dev\n";
             push(@deps, 'libgoogle-perftools-dev');
          }
          if (scalar(@os_deps)) {
             $docker .= "\n";
             $docker .= "# OS dependencies\n";
-            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @os_deps)."\n";
+            $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install ".join(' ', @os_deps)."\n";
          }
          if (scalar(@our_deps)) {
             $docker .= "\n";
@@ -382,7 +382,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{AUTOPKG_BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
             $docker .= "\n";
-            $docker .= "RUN apt-get -qy update && apt-get -qfy --no-install-recommends install ".join(' ', @our_deps)."\n";
+            $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install ".join(' ', @our_deps)."\n";
          }
          file_put_contents("$dpath/Dockerfile", $docker);
          my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
@@ -401,7 +401,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "\n";
             $docker .= "# Un-cacheable upgrade\n";
             $docker .= "ARG CACHE_NONCE=1\n";
-            $docker .= "RUN echo \"\$CACHE_NONCE\" && apt-get -qy update && apt-get -qfy --no-install-recommends --allow-downgrades dist-upgrade && apt-get -qfy install --no-install-recommends --allow-downgrades ${deps} && apt-get -qfy autoremove --purge\n";
+            $docker .= "RUN echo \"\$CACHE_NONCE\" && apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends --allow-downgrades dist-upgrade && apt-get -qfy -o DPkg::Options::=--force-overwrite install --no-install-recommends --allow-downgrades ${deps} && apt-get -qfy autoremove --purge\n";
             file_put_contents("$dpath/Dockerfile", $docker);
 
             my $nonce = time();

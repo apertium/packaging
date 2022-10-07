@@ -27,7 +27,7 @@ Rules-Requires-Root: no
 
 Package: lttoolbox
 Architecture: any
-Depends: liblttoolbox3-3.6-1 (= ${binary:Version}),
+Depends: liblttoolbox3 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Apertium lexical processing modules and tools
@@ -37,16 +37,15 @@ Description: Apertium lexical processing modules and tools
  for making morphological analysers and generators for natural language
  processing applications.
 
-Package: liblttoolbox3-3.6-1
+Package: liblttoolbox3
 Section: libs
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: liblttoolbox
-Conflicts: liblttoolbox, liblttoolbox3
+Conflicts: liblttoolbox
 Replaces: liblttoolbox,
-          liblttoolbox3,
           liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
 Breaks: liblttoolbox3-3.3-0v5 (<= 3.3.2~r61000-3.1)
 Description: Shared library for lttoolbox
@@ -80,7 +79,7 @@ Package: python3-lttoolbox
 Architecture: any
 Section: python
 Provides: ${python3:Provides}
-Depends: liblttoolbox3-3.6-1 (= ${binary:Version}),
+Depends: liblttoolbox3 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
