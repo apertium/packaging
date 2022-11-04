@@ -15,7 +15,7 @@ Build-Depends: autoconf,
                libutfcpp-dev,
                libxml2-dev,
                libxml2-utils,
-               lttoolbox-dev (>= 3.6.0),
+               lttoolbox-dev (>= 3.7.1),
                pkg-config,
                python3-dev,
                python3-lxml,
@@ -36,7 +36,7 @@ Architecture: any
 Depends: gawk,
          libapertium3 (= ${binary:Version}),
          libxml2-utils,
-         lttoolbox (>= 3.6.0),
+         lttoolbox (>= 3.7.1),
          xsltproc,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -88,7 +88,7 @@ Package: apertium-dev
 Architecture: any
 Depends: apertium (= ${binary:Version}),
          libxml2-dev,
-         lttoolbox-dev (>= 3.6.0),
+         lttoolbox-dev (>= 3.7.1),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

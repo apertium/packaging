@@ -9,7 +9,7 @@ Source0: %{name}_%{version}.orig.tar.bz2
 Patch0: hfst_02_notimestamp.diff
 
 %if 0%{?el7}
-BuildRequires: devtoolset-7-gcc-c++
+BuildRequires: devtoolset-11-gcc-c++
 %endif
 BuildRequires: autoconf
 BuildRequires: automake
@@ -70,7 +70,7 @@ Python 3 modules for libhfst
 
 %build
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 autoreconf -fi
 %configure --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu --enable-python-bindings
@@ -78,7 +78,7 @@ make %{?_smp_mflags}
 
 %install
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 make DESTDIR=%{buildroot} install
 sed -i 's/@GLIB_CFLAGS@//' %{buildroot}/%{_libdir}/pkgconfig/hfst.pc
@@ -86,7 +86,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 
 %check
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 make check || /bin/true
 

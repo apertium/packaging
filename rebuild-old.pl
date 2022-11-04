@@ -331,7 +331,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             push(@our_deps, 'apertium-regtest');
          }
 
-         push(@deps, 'apt-utils', 'build-essential', 'fakeroot', 'time');
+         push(@deps, 'apt-utils', 'build-essential', 'fakeroot', 'time', 'eatmydata');
          @os_deps = sort @os_deps;
          @our_deps = sort @our_deps;
 
@@ -339,7 +339,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          #$docker .= "#syntax=docker/dockerfile:1.2-labs\n";
          $docker .= "FROM $arch/$variant:$distro\n";
          $docker .= "\n";
-         $docker .= "ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true\n";
+         $docker .= "ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LD_PRELOAD=libeatmydata.so\n";
          $docker .= "\n";
          if ($arch ne 'i386' && $arch ne 'amd64') {
             `cp -av --reflink=auto /usr/bin/qemu-$arch-static $Bin/docker/`;
@@ -358,6 +358,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "\techo 'Acquire::http::Proxy \"http://'\$HOST_IP':3124\";' > /etc/apt/apt.conf.d/30autoproxy\n";
          $docker .= "\n";
          $docker .= "# Upgrade everything and install base builder dependencies\n";
+         $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install eatmydata\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install apt-utils\n";
          $docker .= "RUN apt-get -qy update && if [ -s /etc/dpkg/dpkg.cfg.d/excludes ]; then mv -v /etc/dpkg/dpkg.cfg.d/excludes /tmp/dpkg-excludes; echo 'y' | /usr/local/sbin/unminimize; mv -v /tmp/dpkg-excludes /etc/dpkg/dpkg.cfg.d/excludes; fi\n";
          $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install man-db\n";
@@ -423,12 +424,15 @@ foreach my $k (@{$pkgs{'order'}}) {
          else {
             $script .= "export 'DEB_BUILD_OPTIONS=parallel=7'\n";
          }
+         $script .= "export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH:+\"\$LD_LIBRARY_PATH:\"}/usr/lib/libeatmydata\n";
+         #$script .= "export LD_PRELOAD=\${LD_PRELOAD:+\"\$LD_PRELOAD \"}libeatmydata.so\n";
          if ($is_data eq 'data') {
-            $script .= "export 'LD_PRELOAD=libtcmalloc_minimal.so'\n";
+            $script .= "export LD_PRELOAD=\${LD_PRELOAD:+\"\$LD_PRELOAD \"}libtcmalloc_minimal.so\n";
             $script .= "export 'LT_JOBS=1'\n";
          }
          if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'nightly') {
             $script .= "export 'AP_REGTEST_MIN=80'\n";
+            $script .= "export 'AP_REGTEST_QUIET=yes'\n";
          }
          $script .= "cd /build/${pkname}-*/\n";
          $script .= "timeout 180m time nice -n20 dpkg-buildpackage --no-sign\n";
@@ -487,6 +491,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
 
+=pod
       WINDOWS:
       while (-s "$pkg->[0]/win32/$pkname.sh") {
          print {$out} "\tbuilding win32\n";
@@ -497,6 +502,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             print {$out} "\tFAILED: win32\n";
             last;
          }
+=cut
 
 =pod
          print {$out} "\tbuilding win64\n";
@@ -508,6 +514,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             last;
          }
 =cut
+=pod
 
          $win32 = 1;
          if ($opts{'only'} eq 'win') {
@@ -515,6 +522,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
          last;
       }
+=cut
 =pod
       if (-s "$pkg->[0]/osx/$pkname.sh") {
          print {$out} "\tbuilding osx\n";

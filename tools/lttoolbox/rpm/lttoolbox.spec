@@ -9,6 +9,9 @@ Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: autoconf
 BuildRequires: automake
+%if 0%{?el7}
+BuildRequires: devtoolset-11-gcc-c++
+%endif
 BuildRequires: flex
 BuildRequires: gawk
 BuildRequires: gcc-c++
@@ -71,16 +74,25 @@ Python 3 module for the Apertium lexical processing modules and tools
 %setup -q -n %{name}-%{version}
 
 %build
+%if 0%{?el7}
+	source /opt/rh/devtoolset-11/enable
+%endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
 %configure --disable-static --enable-python-bindings
 make %{?_smp_mflags}
 
 %install
+%if 0%{?el7}
+	source /opt/rh/devtoolset-11/enable
+%endif
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 
 %check
+%if 0%{?el7}
+	source /opt/rh/devtoolset-11/enable
+%endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make test
 

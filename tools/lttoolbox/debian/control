@@ -65,7 +65,8 @@ Depends: libicu-dev,
          ${misc:Depends},
          ${shlibs:Depends}
 Conflicts: liblttoolbox3-dev
-Replaces: liblttoolbox3-dev
+Replaces: liblttoolbox3-dev, apertium-separable (<< 0.6.1)
+Breaks: apertium-separable (<< 0.6.1)
 Description: Development tools and library for lttoolbox
  The lttoolbox contains the augmented letter transducer tools for natural
  language processing used by Apertium, a platform for building rule-based

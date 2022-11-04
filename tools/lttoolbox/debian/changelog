@@ -1,9 +1,27 @@
-lttoolbox (3.6.6-1) unstable; urgency=low
+lttoolbox (3.7.1-1) unstable; urgency=medium
 
-  * New upstream release
-    + Fixes data compilation bug
+  * Update to latest upstream
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 06 Jun 2022 12:32:36 +0200
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 01 Nov 2022 09:38:15 +0100
+
+lttoolbox (3.7.0-1) experimental; urgency=medium
+
+  * Update to latest upstream:
+    + Updated package names for soname untangling.
+    + Binary lsx-comp moved from package apertium-separable
+  * debian/
+    + docs: Removed AUTHORS in favour of installing it via rules -A
+    + copyright: python/* is GPLv3+
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 26 Oct 2022 13:41:14 +0200
+
+lttoolbox (3.6.6-1) unstable; urgency=medium
+
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Fixes data compilation bug.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 06 Jun 2022 16:44:19 +0530
 
 lttoolbox (3.6.4-1) unstable; urgency=high
 

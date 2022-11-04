@@ -1,2 +1,4 @@
 version=4
-https://bitbucket.org/mhulden/foma/downloads/foma-([\d\.]+)\.tar\.gz
+opts="searchmode=plain" \
+  https://api.github.com/repos/mhulden/@PACKAGE@/releases \
+  https://github.com/mhulden/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@

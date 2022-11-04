@@ -31,7 +31,7 @@ BuildRequires: utf8cpp-devel
 %endif
 BuildRequires: zip
 %if 0%{?el7}
-BuildRequires: devtoolset-7-gcc-c++
+BuildRequires: devtoolset-11-gcc-c++
 %endif
 
 Requires: gawk
@@ -93,7 +93,7 @@ Python 3 module for the Apertium shallow-transfer machine translation engine
 
 %build
 %if 0%{?el7}
-source /opt/rh/devtoolset-7/enable
+source /opt/rh/devtoolset-11/enable
 %endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 autoreconf -fi
@@ -102,7 +102,7 @@ make %{?_smp_mflags}
 
 %install
 %if 0%{?el7}
-source /opt/rh/devtoolset-7/enable
+source /opt/rh/devtoolset-11/enable
 %endif
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
@@ -110,7 +110,7 @@ rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
 
 %check
 %if 0%{?el7}
-source /opt/rh/devtoolset-7/enable
+source /opt/rh/devtoolset-11/enable
 %endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check

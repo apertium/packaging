@@ -9,6 +9,6 @@ Standards-Version: 4.6.1
 
 Package: cg3ide
 Architecture: any
-Depends: cg3 (>= 1.3.6), ${misc:Depends}, ${shlibs:Depends}
+Depends: cg3 (>= 1.3.9), ${misc:Depends}, ${shlibs:Depends}
 Description: IDE for CG-3
  IDE for developing and debugging CG-3 grammars.

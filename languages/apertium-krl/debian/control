@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.1),
-               cg3-dev (>= 1.3.6),
+Build-Depends: apertium-dev (>= 3.8.3),
+               cg3-dev (>= 1.3.9),
                debhelper (>= 12),
                gawk,
                hfst (>= 3.16.0),
@@ -18,8 +18,8 @@ Rules-Requires-Root: no
 
 Package: apertium-krl
 Architecture: all
-Depends: apertium (>= 3.8.1),
-         cg3 (>= 1.3.6),
+Depends: apertium (>= 3.8.3),
+         cg3 (>= 1.3.9),
          hfst (>= 3.16.0),
          ${misc:Depends},
          ${shlibs:Depends}

@@ -9,7 +9,7 @@ Build-Depends: autotools-dev,
                dh-autoreconf,
                libicu-dev,
                libxml2-dev,
-               lttoolbox-dev (>= 3.6.0),
+               lttoolbox-dev (>= 3.7.1),
                pkg-config,
                python3
 Standards-Version: 4.6.1

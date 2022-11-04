@@ -8,7 +8,7 @@ URL: https://github.com/divvun/libdivvun
 Source0: %{name}_%{version}.orig.tar.bz2
 
 %if 0%{?el7}
-BuildRequires: devtoolset-7-gcc-c++
+BuildRequires: devtoolset-11-gcc-c++
 %endif
 BuildRequires: autoconf
 BuildRequires: automake
@@ -60,7 +60,7 @@ Python 3 module for applications using the Divvun grammar checker API
 
 %build
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 autoreconf -fvi
 %configure --enable-checker --enable-cgspell --enable-python-bindings
@@ -68,7 +68,7 @@ make %{?_smp_mflags}
 
 %install
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 make DESTDIR=%{buildroot} install
 find %{buildroot}/%{_libdir}/ -type f -name '*.pyc' -exec rm -f '{}' \;
@@ -78,7 +78,7 @@ find %{buildroot}/%{_libdir}/ -type f -name '*.a' -exec rm -f '{}' \;
 
 %check
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 make check

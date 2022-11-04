@@ -1,12 +1,39 @@
-foma (1:0.10.0+s305-1) unstable; urgency=low
+foma (1:0.10.0+s311-1) unstable; urgency=medium
 
-  * New upstream release
-    + Adds runtime options interface
-    + Fixes numerous memory leaks and segfaults
+  * Update to latest upstream git
+    + Changed build system to CMake
+  * Deleted all patches, as they're either upstreamed or no longer needed
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 26 Oct 2022 13:41:14 +0200
+
+foma (1:0.10.0-3) unstable; urgency=low
+
+  * debian/patches/0001-Makefile-Fix-typo-when-generating-libfoma.pc.patch:
+    + Added patch forwarded link.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 09 Apr 2022 16:41:02 +0530
+
+foma (1:0.10.0-2) unstable; urgency=low
+
+  * Added patch to fix reproducible-builds. Thanks Vagrant Cascadian
+    <vagrant@reproducible-builds.org>. (Closes: #1006474)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 02 Mar 2022 17:21:19 +0530
+
+foma (1:0.10.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Adds runtime options interface.
+    + Fixes numerous memory leaks and segfaults. (Closes: #958291)
+    + Added patch to fix Blhc failures.
   * debian/control:
-    + Swap libfoma0-dev and libfoma-dev
+    + Swap libfoma0-dev and libfoma-dev.
 
- -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Jul 2021 13:22:24 +0200
+  [ Kartik Mistry ]
+  * Updated Standards-Version to 4.6.0
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 24 Feb 2022 19:49:05 +0530
 
 foma (1:0.9.18+r243-8) unstable; urgency=low
 

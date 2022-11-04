@@ -351,11 +351,12 @@ CHLOG
    else {
       $chver .= $opts{'dv'};
       `cp -a --reflink=auto '$pkname-$opts{v}' '$pkname-$chver'`;
-
+=pod
       # Remove +sREV in version numbers, as they're only used for the build system
       my $chlog = file_get_contents("$pkname-$chver/debian/changelog");
       $chlog =~ s@(\d+)\+s\d+-@$1-@g;
       file_put_contents("$pkname-$chver/debian/changelog", $chlog);
+=cut
    }
 
    if (-s "$Bin/$opts{p}/hooks/pre-distro" && -x "$Bin/$opts{p}/hooks/pre-distro") {
@@ -379,7 +380,9 @@ CHLOG
       $rules =~ s@(\tdh.*) --parallel@$1@g;
       if ($distros->{$distro}{'dh'} >= 11) {
          $rules =~ s@(\tdh.*) --fail-missing@$1@g;
-         $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
+         if ($distros->{$distro}{'dh'} < 13) {
+            $rules .= "\noverride_dh_missing:\n\tdh_missing --fail-missing\n";
+         }
       }
       if (!defined $ENV{'AUTOPKG_DATA_ONLY'} || $ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
          $rules =~ s@\n%:\n@\nexport "DEB_BUILD_MAINT_OPTIONS=hardening=+all optimize=+lto"\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;

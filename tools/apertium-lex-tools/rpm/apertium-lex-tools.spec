@@ -16,7 +16,7 @@ BuildRequires: libxml2-devel
 BuildRequires: lttoolbox-devel
 BuildRequires: pkgconfig
 %if 0%{?el7}
-BuildRequires: devtoolset-7-gcc-c++
+BuildRequires: devtoolset-11-gcc-c++
 %else
 BuildRequires: python3
 BuildRequires: python3-devel
@@ -41,7 +41,7 @@ Python 3 module for Apertium lexical selection module
 %build
 export LC_ALL=%(locale -a | grep -i utf | head -n1)
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 	autoreconf -fi
 	%configure --enable-yasmet
 %else
@@ -52,7 +52,7 @@ make %{?_smp_mflags}
 
 %install
 %if 0%{?el7}
-	source /opt/rh/devtoolset-7/enable
+	source /opt/rh/devtoolset-11/enable
 %endif
 make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la

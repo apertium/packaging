@@ -44,16 +44,16 @@ while (<>) {
       $build{'zlib1g-dev'} = 1;
    }
    elsif (/\bcg-comp\b/ || /\bcg-proc\b/ || /\bcg-conv\b/ || /\bvislcg3\b/ || /\bcg3\b/ || /\bcg3-autobin\b/) {
-      $build{'cg3-dev (>= 1.3.6)'} = 1;
-      $deps{'cg3 (>= 1.3.6)'} = 1;
+      $build{'cg3-dev (>= 1.3.9)'} = 1;
+      $deps{'cg3 (>= 1.3.9)'} = 1;
    }
    elsif (/\blrx-comp\b/ || /\blrx-proc\b/ || /\bapertium-lex-tools\b/) {
-      $build{'apertium-lex-tools-dev (>= 0.4.1)'} = 1;
-      $deps{'apertium-lex-tools (>= 0.4.1)'} = 1;
+      $build{'apertium-lex-tools-dev (>= 0.4.2)'} = 1;
+      $deps{'apertium-lex-tools (>= 0.4.2)'} = 1;
    }
    elsif (/\blsx-comp\b/ || /\blsx-proc\b/ || /\bapertium-separable\b/) {
-      $build{'apertium-separable (>= 0.5.0)'} = 1;
-      $deps{'apertium-separable (>= 0.5.0)'} = 1;
+      $build{'apertium-separable (>= 0.6.1)'} = 1;
+      $deps{'apertium-separable (>= 0.6.1)'} = 1;
    }
    elsif (/\bapertium-anaphora\b/) {
       $build{'apertium-anaphora (>= 1.1.0)'} = 1;
@@ -68,13 +68,13 @@ while (<>) {
    }
 }
 
-print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.8.1), gawk, pkg-config";
+print "Build-Depends: debhelper (>= 12), apertium-dev (>= 3.8.3), gawk, pkg-config";
 foreach my $k (sort(keys(%build))) {
    print ", $k";
 }
 print "\n";
 
-print "Depends: apertium (>= 3.8.1)";
+print "Depends: apertium (>= 3.8.3)";
 foreach my $k (sort(keys(%deps))) {
    print ", $k";
 }

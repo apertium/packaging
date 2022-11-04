@@ -1,5 +1,29 @@
-apertium-fra-frp (1.0.0-1) unstable; urgency=low
+apertium-fra-frp (1.1.0-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release (Closes: #1016338)
+  * Bundles apertium-fra 1.12.0 and apertium-frp 1.1.0
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 15 Dec 2020 14:29:39 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 01 Nov 2022 09:38:15 +0100
+
+apertium-fra-frp (1.0.0-3) unstable; urgency=medium
+
+  * debian/control:
+    + Updated Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.1
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 02 Jul 2022 13:15:54 +0530
+
+apertium-fra-frp (1.0.0-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 25 Aug 2021 10:43:57 +0530
+
+apertium-fra-frp (1.0.0-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * Initial release (Closes: #982450)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 10 Feb 2021 18:02:10 +0530

@@ -4,12 +4,12 @@ Priority: optional
 Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.1),
+Build-Depends: apertium-dev (>= 3.8.3),
                apertium-eng,
-               apertium-lex-tools-dev (>= 0.4.1),
+               apertium-lex-tools-dev (>= 0.4.2),
                apertium-nno,
                apertium-nob,
-               cg3-dev (>= 1.3.6),
+               cg3-dev (>= 1.3.9),
                debhelper (>= 12),
                gawk,
                pkg-config
@@ -21,9 +21,9 @@ Rules-Requires-Root: no
 
 Package: apertium-nor-eng
 Architecture: all
-Depends: apertium (>= 3.8.1),
-         apertium-lex-tools (>= 0.4.1),
-         cg3 (>= 1.3.6),
+Depends: apertium (>= 3.8.3),
+         apertium-lex-tools (>= 0.4.2),
+         cg3 (>= 1.3.9),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-eng-nor
