@@ -1,0 +1,25 @@
+Source: manatee-open
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>
+Build-Depends: autoconf-archive,
+               automake,
+               autotools-dev,
+               bison,
+               debhelper (>= 9.0),
+               dh-autoreconf,
+               libpcre3-dev,
+               python3-dev,
+               swig
+Standards-Version: 4.6.1
+Homepage: https://nlp.fi.muni.cz/trac/noske
+Vcs-Git: https://salsa.debian.org/science-team/manatee-open.git
+Vcs-Browser: https://salsa.debian.org/science-team/manatee-open
+Rules-Requires-Root: no
+
+Package: manatee-open
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Corpus management and query system
+ The corpus management and query system behind SketchEngine.

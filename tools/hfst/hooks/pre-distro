@@ -3,6 +3,6 @@
 
 if (preg_match('~debian-science-maintainers~', getenv('AUTOPKG_MAINTAINER'))) {
 	$c = file_get_contents('debian/rules');
-	$c = str_replace('$(MAKE) -j1 check V=1 VERBOSE=1', '# Disable because they still break on big-endian', $c);
+	$c = str_replace('dh_auto_test --no-parallel', '# Disable because they still break on big-endian', $c);
 	file_put_contents('debian/rules', $c);
 }

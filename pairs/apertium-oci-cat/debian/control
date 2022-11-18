@@ -30,3 +30,11 @@ Conflicts: apertium-cat-oci
 Description: Apertium translation data for the Occitan (post 1500)-Catalan pair
  Data package providing Apertium language resources for translating
  between the Occitan (post 1500) and Catalan languages.
+
+Package: apertium-oc-ca
+Architecture: all
+Depends: apertium-oci-cat (= ${binary:Version}), ${misc:Depends}
+Section: oldlibs
+Provides: apertium-ca-oc
+Description: Transitional dummy package for apertium-oci-cat
+ This is a transitional dummy package. It can safely be removed.

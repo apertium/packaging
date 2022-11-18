@@ -13,12 +13,12 @@ Rules-Requires-Root: no
 
 Package: apertium-all-dev
 Architecture: all
-Depends: apertium-anaphora (>= 1.1.0),
+Depends: apertium-anaphora (>= 1.1.1),
          apertium-dev (>= 3.8.3),
          apertium-eval-translator,
          apertium-get (>= 1.0.0),
          apertium-lex-tools-dev (>= 0.4.2),
-         apertium-recursive (>= 1.1.0),
+         apertium-recursive (>= 1.1.2),
          apertium-regtest (>= 0.9.1),
          apertium-separable (>= 0.6.1),
          autoconf,

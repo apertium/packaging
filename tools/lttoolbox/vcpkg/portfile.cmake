@@ -5,7 +5,7 @@ vcpkg_from_github(
 	REPO apertium/lttoolbox
 	REF 841a0e9a032438d78f5b3ee6aa298daf9f9d0838
 	SHA512 fdc94bad9e42427c26ecfa055df9a19135716be09716214394530e626273d2221ee14c4eb4f8d7cce6aeb01222e6e0e34531e19f0954c8f0faa5f5f85547996c
-	HEAD_REF master
+	HEAD_REF cmake
 )
 
 vcpkg_find_acquire_program(PYTHON3)

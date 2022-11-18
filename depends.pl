@@ -56,12 +56,12 @@ while (<>) {
       $deps{'apertium-separable (>= 0.6.1)'} = 1;
    }
    elsif (/\bapertium-anaphora\b/) {
-      $build{'apertium-anaphora (>= 1.1.0)'} = 1;
-      $deps{'apertium-anaphora (>= 1.1.0)'} = 1;
+      $build{'apertium-anaphora (>= 1.1.1)'} = 1;
+      $deps{'apertium-anaphora (>= 1.1.1)'} = 1;
    }
    elsif (/\bapertium-recursive\b/) {
-      $build{'apertium-recursive (>= 1.1.0)'} = 1;
-      $deps{'apertium-recursive (>= 1.1.0)'} = 1;
+      $build{'apertium-recursive (>= 1.1.2)'} = 1;
+      $deps{'apertium-recursive (>= 1.1.2)'} = 1;
    }
    elsif (/\bAP_CHECK_LING.*?(apertium-\w+)/ || /\bAP_CHECK_LING.*?(giella-\w+)/) {
       $build{$1} = 1;
