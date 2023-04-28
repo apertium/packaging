@@ -1,8 +1,37 @@
+hfst (3.16.0-5) unstable; urgency=medium
+
+  * Add Breaks+Replaces (Closes: #1034972)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 27 Apr 2023 15:46:23 +0200
+
+hfst (3.16.0-4) unstable; urgency=high
+
+  [ Tino Didriksen ]
+  * debian/patches/hfst-atomic.diff:
+    + Add atomic patch, to aid in building on armel/mipsel
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 20 Apr 2022 19:42:23 +0530
+
+hfst (3.16.0-3) unstable; urgency=high
+
+  * Depends on libfst-dev (>= 1.7.9) to avoid depends on libfst8
+    (Closes: #1009828)
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 20 Apr 2022 10:49:29 +0530
+
+hfst (3.16.0-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 07 Mar 2022 09:34:55 +0530
+
 hfst (3.16.0-1) experimental; urgency=low
 
-  * Update to latest upstream
+  [ Tino Didriksen ]
+  * Update to latest upstream.
+  * Bumped package libhfst53 -> libhfst55 for soname change.
 
- -- Tino Didriksen <tino@didriksen.cc>  Tue, 08 Feb 2022 15:51:07 +0100
+ -- Kartik Mistry <kartik@debian.org>  Wed, 02 Mar 2022 08:50:09 +0530
 
 hfst (3.15.4-1) experimental; urgency=low
 

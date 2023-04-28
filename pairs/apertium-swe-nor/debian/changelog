@@ -1,3 +1,24 @@
+apertium-swe-nor (0.4.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #1013646)
+  * Bundles apertium-swe 0.8.2, apertium-nno 1.4.0, and apertium-nob 1.4.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 21 Dec 2022 09:10:29 +0100
+
+apertium-swe-nor (0.3.1-2) unstable; urgency=medium
+
+  * debian/control:
+    + Fixed Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+      (Closes: #1013646)
+    + Updated Standards-Version to 4.6.1
+    + Switched to debhelper-compat.
+    + Added Rules-Requires-Root field.
+  * Updated debian/copyright.
+  * Updated debian/watch.
+  * Added upstream metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 05 Jul 2022 13:32:28 +0530
+
 apertium-swe-nor (0.3.1-1) unstable; urgency=low
 
   * New upstream release

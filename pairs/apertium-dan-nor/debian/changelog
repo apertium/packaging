@@ -1,3 +1,36 @@
+apertium-dan-nor (1.5.0-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #1013638)
+  * Bundles apertium-dan 0.7.0, apertium-nno 1.4.0, and apertium-nob 1.4.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 21 Dec 2022 09:10:29 +0100
+
+apertium-dan-nor (1.4.1-3) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * Drop unnecessary dependency on dh-autoreconf.
+
+  [ Kartik Mistry ]
+  * debian/control:
+    + Fixed Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.1
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Sat, 18 Jun 2022 16:39:19 +0530
+
+apertium-dan-nor (1.4.1-2) unstable; urgency=low
+
+  * Fixed debian/watch.
+  * debian/control:
+    + Updated Standards-Version to 4.5.0
+    + Switched to debhelper-compat.
+    + Added 'Rules-Requires-Root' field.
+    + Updated Maintainer email.
+  * Added debian/upstream/metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Tue, 19 May 2020 08:08:52 +0530
+
 apertium-dan-nor (1.4.1-1) unstable; urgency=low
 
   * New upstream release

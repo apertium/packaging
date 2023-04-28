@@ -385,7 +385,7 @@ CHLOG
          }
       }
       if (!defined $ENV{'AUTOPKG_DATA_ONLY'} || $ENV{'AUTOPKG_DATA_ONLY'} ne 'data') {
-         $rules =~ s@\n%:\n@\nexport "DEB_BUILD_MAINT_OPTIONS=hardening=+all optimize=+lto"\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;
+         $rules =~ s@\n%:\n@\nexport "DEB_BUILD_MAINT_OPTIONS=hardening=+all optimize=+lto reproducible=+fixfilepath"\nDPKG_EXPORT_BUILDFLAGS = 1\ninclude /usr/share/dpkg/buildflags.mk\n\n%:\n@;
       }
       file_put_contents("$pkname-$chver/debian/rules", $rules);
    }

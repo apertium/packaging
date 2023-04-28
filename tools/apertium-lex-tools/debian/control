@@ -67,6 +67,8 @@ Depends: apertium-lex-tools (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
+Breaks: apertium-lex-tools (<< 0.4.1)
+Replaces: apertium-lex-tools (<< 0.4.1)
 Description: Development library for Apertium lexical selection module
  Module for compiling lexical selection rules and processing
  them in the pipeline.

@@ -1,0 +1,21 @@
+Source: apertium-ita-por
+Section: science
+Priority: optional
+Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.8.3), debhelper (>= 12), gawk, pkg-config
+Standards-Version: 4.6.1
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-ita-por.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-ita-por
+Rules-Requires-Root: no
+
+Package: apertium-ita-por
+Architecture: all
+Depends: apertium (>= 3.8.3), ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-por-ita
+Conflicts: apertium-por-ita
+Description: Apertium translation data for the Italian-Portuguese pair
+ Data package providing Apertium language resources for translating
+ between the Italian and Portuguese languages.

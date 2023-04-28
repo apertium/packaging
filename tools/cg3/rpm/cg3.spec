@@ -19,6 +19,7 @@ BuildRequires: cmake >= 3.0.0
 %endif
 BuildRequires: boost-devel
 BuildRequires: libicu-devel
+BuildRequires: sqlite-devel
 BuildRequires: pkgconfig
 %if ! ( 0%{?el7} )
 BuildRequires: swig
@@ -134,7 +135,7 @@ make test
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md TODO
+%doc AUTHORS COPYING README.md
 %{_bindir}/*
 %{_datadir}/man/man1/*
 %{_datadir}/emacs/site-lisp/*

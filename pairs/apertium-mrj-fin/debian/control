@@ -9,7 +9,10 @@ Build-Depends: apertium-dev (>= 3.8.3),
                cg3-dev (>= 1.3.9),
                debhelper (>= 12),
                gawk,
+               giella-fin,
+               giella-mrj,
                hfst (>= 3.16.0),
+               libhfst-dev (>= 3.16.0),
                pkg-config
 Standards-Version: 4.6.1
 Homepage: https://apertium.org/

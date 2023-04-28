@@ -55,7 +55,7 @@ make check
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/*
 %{_datadir}/man/man1/*
 
