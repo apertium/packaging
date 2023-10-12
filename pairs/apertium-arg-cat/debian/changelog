@@ -1,13 +1,39 @@
-apertium-arg-cat (0.2.0-1) unstable; urgency=low
+apertium-arg-cat (0.3.0-1) experimental; urgency=medium
 
   * New upstream release
-  * Bundles apertium-arg 0.1.4 and apertium-cat 2.10.1
+  * Bundles apertium-arg 0.2.0 and apertium-cat 2.11.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 11 May 2023 09:58:14 +0200
+
+apertium-arg-cat (0.2.0-3) unstable; urgency=medium
+
+  * debian/control:
+    + Fixed Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.0
+  * Updated debian/copyright.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 16 Jun 2022 18:08:17 +0530
+
+apertium-arg-cat (0.2.0-2) unstable; urgency=high
+
+  * debian/control:
+    + Removed unused Build-Depends (Closes: #984785)
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 08 Mar 2021 18:03:51 +0530
+
+apertium-arg-cat (0.2.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Bundles apertium-arg 0.1.4 and apertium-cat 2.10.1
   * debian/control:
     + Updated Standards-Version to 4.5.1
-    + Updated Build-Depends
+    + Updated Build-Depends.
   * Updated debian/watch file.
+  * Added debian/upstream/metadata.
+  * Added debian/gitlab-ci.yml.
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 08 Jan 2021 22:14:10 +0100
+ -- Kartik Mistry <kartik@debian.org>  Mon, 11 Jan 2021 13:26:19 +0530
 
 apertium-arg-cat (0.1.0~r64925-2) unstable; urgency=low
 

@@ -1,3 +1,4 @@
+debian/tmp/usr/bin/apertium-compile-*
 debian/tmp/usr/bin/apertium-editdist
 debian/tmp/usr/bin/apertium-filter-*
 debian/tmp/usr/bin/apertium-gen-*
@@ -15,6 +16,7 @@ debian/tmp/usr/include
 debian/tmp/usr/lib/*/*.so
 debian/tmp/usr/lib/*/pkgconfig
 debian/tmp/usr/share/aclocal
+debian/tmp/usr/share/man/man1/apertium-compile-*
 debian/tmp/usr/share/man/man1/apertium-filter-*
 debian/tmp/usr/share/man/man1/apertium-gen-*
 debian/tmp/usr/share/man/man1/apertium-tagger-apply-new-rules.*

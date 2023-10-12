@@ -122,6 +122,7 @@ make check
 %{_bindir}/apertium-adapt-docx
 %{_bindir}/apertium-cleanstream
 %{_bindir}/apertium-des*
+%{_bindir}/apertium-extract-caps
 %{_bindir}/apertium-interchunk
 %{_bindir}/apertium-multiple-translations
 %{_bindir}/apertium-postchunk
@@ -132,6 +133,7 @@ make check
 %{_bindir}/apertium-preprocess-transfer
 %{_bindir}/apertium-pretransfer
 %{_bindir}/apertium-re*
+%{_bindir}/apertium-restore-caps
 %{_bindir}/apertium-tagger
 %{_bindir}/apertium-tmxbuild
 %{_bindir}/apertium-transfer
@@ -141,6 +143,7 @@ make check
 %{_datadir}/%{name}
 %{_datadir}/man/man1/apertium.*
 %{_datadir}/man/man1/apertium-des*
+%{_datadir}/man/man1/apertium-extract-caps.*
 %{_datadir}/man/man1/apertium-interchunk.*
 %{_datadir}/man/man1/apertium-multiple-translations.*
 %{_datadir}/man/man1/apertium-postchunk.*
@@ -150,6 +153,7 @@ make check
 %{_datadir}/man/man1/apertium-preprocess-transfer.*
 %{_datadir}/man/man1/apertium-pretransfer.*
 %{_datadir}/man/man1/apertium-re*
+%{_datadir}/man/man1/apertium-restore-caps.*
 %{_datadir}/man/man1/apertium-tagger.*
 %{_datadir}/man/man1/apertium-transfer.*
 %{_datadir}/man/man1/apertium-unformat.*
@@ -161,6 +165,7 @@ make check
 
 %files -n apertium-devel
 %defattr(-,root,root)
+%{_bindir}/apertium-compile-*
 %{_bindir}/apertium-editdist
 %{_bindir}/apertium-filter-*
 %{_bindir}/apertium-gen-*
@@ -178,6 +183,7 @@ make check
 %{_libdir}/pkgconfig/*
 %{_libdir}/*.so
 %{_datadir}/aclocal/*
+%{_datadir}/man/man1/apertium-compile-*
 %{_datadir}/man/man1/apertium-filter-*
 %{_datadir}/man/man1/apertium-gen-*
 %{_datadir}/man/man1/apertium-tagger-apply-new-rules.*

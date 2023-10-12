@@ -130,7 +130,9 @@ foreach my $k (@{$pkgs{'order'}}) {
 
    my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
    my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
-   `mkdir -p $logpath/ && rm -f $logpath/*-*.log`;
+   `mkdir -p $logpath/`;
+   `cp -a $logpath/sid-amd64.log $logpath/build.log >/dev/null 2>&1`;
+   `rm -f $logpath/*-*.log >/dev/null 2>&1`;
    open my $pkglog, ">$logpath/rebuild.log";
    my $out = IO::Tee->new($out2, $pkglog);
 
@@ -461,11 +463,11 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
 
    FAILED:
-   $failed .= `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   $failed .= `grep -L 'dpkg-genchanges' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f | pcregrep "[-][^/]*log\$"))`;
    chomp($failed);
 
    my $depfail = '';
-   $depfail = `grep -l 'packages have unmet dependencies' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f))`;
+   $depfail = `grep -l 'packages have unmet dependencies' \$(grep -l 'dpkg-buildpackage: info: source package' \$(find /home/apertium/public_html/apt/logs/$pkname -type f | pcregrep "[-][^/]*log\$"))`;
    chomp($depfail);
    if ($depfail) {
       print {$out} "\tsoft fail: unmet dependencies\n";
@@ -477,6 +479,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    # If debs did not fail building, try RPMs and win32
    if (!$failed && $opts{'only'} ne 'deb') {
+=pod
       if (-s "$pkg->[0]/rpm/$pkname.spec") {
          print {$out} "\tupdating rpm sources\n";
          `$Bin/make-rpm-source.pl $cli 2>>$logpath/stderr.log >&2`;
@@ -490,6 +493,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          print {$out} "\tupdating rpm from data\n";
          `$Bin/make-rpm-data.pl $cli 2>>$logpath/stderr.log >&2`;
       }
+=cut
 
 =pod
       WINDOWS:

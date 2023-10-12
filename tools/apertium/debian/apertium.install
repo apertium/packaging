@@ -2,6 +2,7 @@ debian/tmp/usr/bin/apertium
 debian/tmp/usr/bin/apertium-adapt-docx
 debian/tmp/usr/bin/apertium-cleanstream
 debian/tmp/usr/bin/apertium-des*
+debian/tmp/usr/bin/apertium-extract-caps
 debian/tmp/usr/bin/apertium-interchunk
 debian/tmp/usr/bin/apertium-multiple-translations
 debian/tmp/usr/bin/apertium-postchunk
@@ -12,6 +13,7 @@ debian/tmp/usr/bin/apertium-prelatex
 debian/tmp/usr/bin/apertium-preprocess-transfer
 debian/tmp/usr/bin/apertium-pretransfer
 debian/tmp/usr/bin/apertium-re*
+debian/tmp/usr/bin/apertium-restore-caps
 debian/tmp/usr/bin/apertium-tagger
 debian/tmp/usr/bin/apertium-tmxbuild
 debian/tmp/usr/bin/apertium-transfer
@@ -20,6 +22,7 @@ debian/tmp/usr/bin/apertium-utils-fixlatex
 debian/tmp/usr/bin/apertium-wblank-*
 debian/tmp/usr/share/apertium
 debian/tmp/usr/share/man/man1/apertium-des*
+debian/tmp/usr/share/man/man1/apertium-extract-caps.*
 debian/tmp/usr/share/man/man1/apertium-interchunk.*
 debian/tmp/usr/share/man/man1/apertium-multiple-translations.*
 debian/tmp/usr/share/man/man1/apertium-postchunk.*
@@ -29,6 +32,7 @@ debian/tmp/usr/share/man/man1/apertium-prelatex.*
 debian/tmp/usr/share/man/man1/apertium-preprocess-transfer.*
 debian/tmp/usr/share/man/man1/apertium-pretransfer.*
 debian/tmp/usr/share/man/man1/apertium-re*
+debian/tmp/usr/share/man/man1/apertium-restore-caps.*
 debian/tmp/usr/share/man/man1/apertium-tagger.*
 debian/tmp/usr/share/man/man1/apertium-transfer.*
 debian/tmp/usr/share/man/man1/apertium-unformat.*

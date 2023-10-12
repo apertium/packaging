@@ -64,7 +64,10 @@ if (!(-d "/root/osc/$opts{'oscp'}/$pkname")) {
 
 chdir "/root/osc/$opts{'oscp'}/$pkname/";
 print `osc up 2>&1`;
+print `osc rm * 2>&1`;
 print `osc rm --force * 2>&1`;
+print `osc rm *.bz2 2>&1`;
+print `osc rm --force *.bz2 2>&1`;
 print `cp -av --reflink=auto $autopath/$pkname\_$opts{'v'}.orig.tar.bz2 /root/osc/$opts{'oscp'}/$pkname/`;
 print `cp -av --reflink=auto $autopath/rpm/* /root/osc/$opts{'oscp'}/$pkname/`;
 

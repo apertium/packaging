@@ -1,3 +1,9 @@
+lttoolbox (3.7.1-2) experimental; urgency=medium
+
+  * Snip symlink creation from 3.6 days (Closes: #1035863)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 10 May 2023 12:10:11 +0200
+
 lttoolbox (3.7.1-1) unstable; urgency=medium
 
   * Update to latest upstream
