@@ -29,7 +29,7 @@ $ENV{'PATH'} = '/opt/local/bin:/opt/local/sbin:'.$ENV{'PATH'};
 $ENV{'TERM'} = 'putty';
 $ENV{'TERMCAP'} = '';
 
-$ENV{'MACOSX_DEPLOYMENT_TARGET'} = '10.15';
+$ENV{'MACOSX_DEPLOYMENT_TARGET'} = '11.0';
 $ENV{'CC'} = 'clang';
 $ENV{'CXX'} = 'clang++';
 $ENV{'CPATH'} = '/opt/local/include/';
@@ -48,9 +48,6 @@ my %pkgs = load_packages();
 
 my $ncpu = int(`sysctl -n hw.ncpu`);
 chomp(my $arch = `uname -m`);
-if ($arch eq 'arm64') {
-   $ENV{'MACOSX_DEPLOYMENT_TARGET'} = '11.0';
-}
 
 `mkdir -p '${Bin}/nightly/source' '${Bin}/nightly/build/apertium-all-dev'`;
 `mkdir -p '${Bin}/release/source' '${Bin}/release/build/apertium-all-dev'`;
@@ -73,7 +70,7 @@ for my $k (@{$pkgs{'order'}}) {
 }
 
 # Ordered so that nightly is left installed after the build
-for my $cadence (qw(  nightly )) {#release
+for my $cadence (qw( nightly )) {#release
    print "Building ${cadence} for ${arch}...\n";
    `rm -rf /tmp/build/${cadence}`;
    `mkdir -p /tmp/build/${cadence}`;
@@ -144,6 +141,8 @@ for my $cadence (qw(  nightly )) {#release
       my $logfile = "/tmp/build/${cadence}/${pkname}";
       `rm -fv '${logfile}'-*.log`;
 
+      $ENV{'AUTOPKG_BUILDPATH'} = "/tmp/build/${cadence}/${pkname}";
+
       print "\tunpacking source...\n";
       `echo '======== SOURCE ========' >>'${logfile}-source.log'`;
       `date -u >>'${logfile}-source.log'`;
@@ -184,6 +183,19 @@ for my $cadence (qw(  nightly )) {#release
       `cat '${logfile}-build.log' >>'${logfile}.log'`;
       if ($log =~ /^BUILD FAILED/) {
          print "\tfailed build\n";
+         next;
+      }
+
+      $log = '';
+      if (-e "${Bin}/$pkg->[0]/osx/post-build.sh") {
+         print "\tpost-build...\n";
+         `echo '======== POST-BUILD ========' >>'${logfile}-post-build.log'`;
+         `date -u >>'${logfile}-post-build.log'`;
+         $log = `${Bin}/$pkg->[0]/osx/post-build.sh >>'${logfile}-post-build.log' 2>&1 || echo 'POST-BUILD FAILED'`;
+         `cat '${logfile}-post-build.log' >>'${logfile}.log'`;
+      }
+      if ($log =~ /^POST-BUILD FAILED/) {
+         print "\tpost-build test\n";
          next;
       }
 
