@@ -16,10 +16,10 @@ Subject: [PATCH] Fixes for GCC 13 (see https://bugs.debian.org/1037663) and
  foma/spelling.c      | 2 +-
  9 files changed, 14 insertions(+), 11 deletions(-)
 
-diff --git a/foma/cgflookup.c b/foma/cgflookup.c
+diff --git a/cgflookup.c b/cgflookup.c
 index 1cc11be..1bdfddb 100644
---- a/foma/cgflookup.c
-+++ b/foma/cgflookup.c
+--- a/cgflookup.c
++++ b/cgflookup.c
 @@ -71,7 +71,7 @@ static FILE *INFILE;
  static struct lookup_chain *chain_head, *chain_tail, *chain_new, *chain_pos;
  static fsm_read_binary_handle fsrh;
@@ -29,10 +29,10 @@ index 1cc11be..1bdfddb 100644
  static void handle_line(char *s);
  static void app_print(char *result);
  static char *get_next_line();
-diff --git a/foma/constructions.c b/foma/constructions.c
+diff --git a/constructions.c b/constructions.c
 index dec4087..ca66db4 100644
---- a/foma/constructions.c
-+++ b/foma/constructions.c
+--- a/constructions.c
++++ b/constructions.c
 @@ -41,7 +41,7 @@ int sort_cmp(const void *a, const void *b) {
    return (((const struct fsm_state *)a)->state_no - ((const struct fsm_state *)b)->state_no);
  }
@@ -42,10 +42,10 @@ index dec4087..ca66db4 100644
  
  struct fsm *fsm_kleene_closure(struct fsm *net, int optionality);
  
-diff --git a/foma/flookup.c b/foma/flookup.c
+diff --git a/flookup.c b/flookup.c
 index 971549d..ecd3db3 100644
---- a/foma/flookup.c
-+++ b/foma/flookup.c
+--- a/flookup.c
++++ b/flookup.c
 @@ -77,7 +77,7 @@ static FILE *INFILE;
  static struct lookup_chain *chain_head, *chain_tail, *chain_new, *chain_pos;
  static fsm_read_binary_handle fsrh;
@@ -55,10 +55,10 @@ index 971549d..ecd3db3 100644
  static void handle_line(char *s);
  static void app_print(char *result);
  static char *get_next_line();
-diff --git a/foma/foma.h b/foma/foma.h
+diff --git a/foma.h b/foma.h
 index 06cb9f7..f5a5bfb 100644
---- a/foma/foma.h
-+++ b/foma/foma.h
+--- a/foma.h
++++ b/foma.h
 @@ -113,7 +113,7 @@ void iface_print_shortest_string();
  void iface_print_shortest_string_size();
  void iface_print_name(void);
@@ -68,10 +68,10 @@ index 06cb9f7..f5a5bfb 100644
  void iface_random_lower(int limit);
  void iface_random_upper(int limit);
  void iface_random_words(int limit);
-diff --git a/foma/fomalib.h b/foma/fomalib.h
+diff --git a/fomalib.h b/fomalib.h
 index 6f0218a..d937d15 100644
---- a/foma/fomalib.h
-+++ b/foma/fomalib.h
+--- a/fomalib.h
++++ b/fomalib.h
 @@ -307,7 +307,7 @@ FEXPORT struct fsm *flag_eliminate(struct fsm *net, char *name);
  FEXPORT struct fsm *flag_twosided(struct fsm *net);
  
@@ -81,10 +81,10 @@ index 6f0218a..d937d15 100644
  
  /* Boolean tests */
  FEXPORT int fsm_isempty(struct fsm *net);
-diff --git a/foma/iface.c b/foma/iface.c
+diff --git a/iface.c b/iface.c
 index f41e3ce..7ebd569 100644
---- a/foma/iface.c
-+++ b/foma/iface.c
+--- a/iface.c
++++ b/iface.c
 @@ -790,7 +790,7 @@ void iface_random_words(int limit) {
      iface_apply_random(&apply_random_words, limit);
  }
@@ -103,10 +103,10 @@ index f41e3ce..7ebd569 100644
      struct apply_handle *ah;
  
      if (type == 1) {
-diff --git a/foma/regex.l b/foma/regex.l
+diff --git a/regex.l b/regex.l
 index c303a40..8e3f1e5 100644
---- a/foma/regex.l
-+++ b/foma/regex.l
+--- a/regex.l
++++ b/regex.l
 @@ -49,7 +49,7 @@ struct parser_vars {
  struct parser_vars parservarstack[MAX_PARSE_DEPTH];
  int g_parse_depth = 0;
@@ -116,10 +116,10 @@ index c303a40..8e3f1e5 100644
  extern int get_iface_lineno(void);
  extern int rewrite, rule_direction, substituting;
  extern struct fsmcontexts *contexts;
-diff --git a/foma/regex.y b/foma/regex.y
+diff --git a/regex.y b/regex.y
 index eb00e5e..60ab2a4 100644
---- a/foma/regex.y
-+++ b/foma/regex.y
+--- a/regex.y
++++ b/regex.y
 @@ -21,8 +21,11 @@
  #include <string.h>
  #include "foma.h"
@@ -134,10 +134,10 @@ index eb00e5e..60ab2a4 100644
  extern int my_yyparse(char *my_string, int lineno, struct defined_networks *defined_nets, struct defined_functions *defined_funcs);
  struct fsm *current_parse;
  int rewrite, rule_direction;
-diff --git a/foma/spelling.c b/foma/spelling.c
+diff --git a/spelling.c b/spelling.c
 index ab11e98..ac92bd0 100644
---- a/foma/spelling.c
-+++ b/foma/spelling.c
+--- a/spelling.c
++++ b/spelling.c
 @@ -37,7 +37,7 @@
  #define min_(X, Y)  ((X) < (Y) ? (X) : (Y))
  

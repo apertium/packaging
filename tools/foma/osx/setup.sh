@@ -1,3 +1,3 @@
-patch -p2 < ${AUTOPKG_PKPATH}/osx/148.diff
+patch -p1 < ${AUTOPKG_PKPATH}/debian/patches/148.diff
 
 cmake .

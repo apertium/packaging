@@ -1,5 +1,12 @@
 foma (1:0.10.0+s311-1) unstable; urgency=medium
 
+  * !!! MERGE IN CHANGES FROM https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1037663
+  * !!! https://github.com/mhulden/foma/pull/148
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 26 Oct 2022 13:41:14 +0200
+
+foma (1:0.10.0+s311-1) unstable; urgency=medium
+
   * Update to latest upstream git
     + Changed build system to CMake
   * Deleted all patches, as they're either upstreamed or no longer needed
