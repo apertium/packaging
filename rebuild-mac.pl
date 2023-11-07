@@ -138,6 +138,10 @@ for my $cadence (qw( nightly )) {#release
          next;
       }
 
+      # Dirty hack for @rpath issue https://developer.apple.com/forums/thread/737920
+      `install_name_tool -id /usr/local/lib/libcg3.1.dylib /usr/local/lib/libcg3.1.dylib`;
+      `install_name_tool -id /usr/local/lib/libfoma.0.10.0.dylib /usr/local/lib/libfoma.0.10.0.dylib`;
+
       my $logfile = "/tmp/build/${cadence}/${pkname}";
       `rm -fv '${logfile}'-*.log`;
 
