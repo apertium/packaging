@@ -23,31 +23,25 @@ if (-s '/tmp/rebuild.lock') {
 }
 `date -u > /tmp/rebuild.lock`;
 
-$ENV{'LANG'} = 'en_US.UTF-8';
-$ENV{'LC_ALL'} = 'en_US.UTF-8';
-$ENV{'PATH'} = '/opt/local/bin:/opt/local/sbin:'.$ENV{'PATH'};
+$ENV{'LANG'} = 'C.UTF-8';
+$ENV{'LC_ALL'} = 'C.UTF-8';
+$ENV{'PATH'} = '/opt/mxe/usr/bin:'.$ENV{'PATH'};
 $ENV{'TERM'} = 'putty';
 $ENV{'TERMCAP'} = '';
 
-$ENV{'MACOSX_DEPLOYMENT_TARGET'} = '11.0';
-$ENV{'CC'} = 'clang';
-$ENV{'CXX'} = 'clang++';
-$ENV{'CPATH'} = '/opt/local/include/';
-$ENV{'CFLAGS'} = '-Wall -Wextra -O2';
-$ENV{'CXXFLAGS'} = '-stdlib=libc++ -Wall -Wextra -O2 -DSIZET_NOT_CSTDINT=1 -DU_USING_ICU_NAMESPACE=1';
-$ENV{'LDFLAGS'} = '-L/opt/local/lib/ -stdlib=libc++ -Wl,-headerpad_max_install_names';
-$ENV{'ACLOCAL_PATH'} = '/usr/local/share/aclocal';
-$ENV{'PKG_CONFIG_PATH'} = '/usr/local/lib/pkgconfig';
+my $arch = $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
+$ENV{'LDFLAGS'} = '-fno-use-linker-plugin';
+$ENV{'PKG_CONFIG'} = "/opt/mxe/usr/bin/${arch}-w64-mingw32.shared-pkg-config";
+$ENV{"PKG_CONFIG_PATH_${arch}_w64_mingw32_shared"} = "/opt/win-${arch}/lib/pkgconfig";
 
 my $py3v = `python3 --version | egrep -o '[0-9]+[.][0-9]+'`;
 chomp($py3v);
-$ENV{'PYTHONPATH'} = "/usr/local/lib/python${py3v}/site-packages";
+$ENV{'PYTHONPATH'} = "/opt/win-${arch}/lib/python${py3v}/site-packages";
 my $python3 = "python${py3v}";
 
 my %pkgs = load_packages();
 
-my $ncpu = int(`sysctl -n hw.ncpu`);
-chomp(my $arch = `uname -m`);
+my $ncpu = int(`nproc`);
 
 `mkdir -p '${Bin}/nightly/source' '${Bin}/nightly/build/apertium-all-dev'`;
 `mkdir -p '${Bin}/release/source' '${Bin}/release/build/apertium-all-dev'`;
@@ -58,14 +52,14 @@ for my $k (@{$pkgs{'order'}}) {
       next;
    }
    my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
-   if (! -e "${Bin}/$pkg->[0]/osx/setup.sh") {
+   if (! -e "${Bin}/$pkg->[0]/windows/setup.sh") {
       next;
    }
    print "Syncing ${pkname}\n";
 
    for (my $i=0 ; $i<2 ; ++$i) {
-      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
-      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
+      print `rsync -az --partial --inplace 'apertium\@oqaa.projectjj.com:~/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
+      print `rsync -az --partial --inplace 'apertium\@oqaa.projectjj.com:~/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
    }
 }
 
@@ -86,7 +80,7 @@ for my $cadence (qw( nightly )) {#release
          next;
       }
       my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
-      if (! -e "${Bin}/$pkg->[0]/osx/setup.sh") {
+      if (! -e "${Bin}/$pkg->[0]/windows/setup.sh") {
          next;
       }
       push(@combo, $pkname);
@@ -102,7 +96,7 @@ for my $cadence (qw( nightly )) {#release
          next;
       }
 
-      my $rebuild = (!-s "${pkpath}/${pkname}-latest.${arch}.tar.bz2") || $ARGV[0];
+      my $rebuild = (!-s "${pkpath}/${pkname}-latest.${arch}.7z") || $ARGV[0];
 
       if (!$rebuild) {
          my $deps = file_get_contents("${Bin}/$pkg->[0]/debian/control");
@@ -120,7 +114,7 @@ for my $cadence (qw( nightly )) {#release
       }
 
       if (!$rebuild) {
-         if (-M "${pkpath}/${pkname}-latest.${arch}.tar.bz2" > -M "source/${pkname}.tar.bz2") {
+         if (-M "${pkpath}/${pkname}-latest.${arch}.7z" > -M "source/${pkname}.tar.bz2") {
             print "\ttarball newer\n";
             $rebuild = 1;
          }
@@ -130,17 +124,13 @@ for my $cadence (qw( nightly )) {#release
          print "\tno reason to build - extracting latest\n";
          `mkdir -p /tmp/$$`;
          chdir("/tmp/$$");
-         `tar -jxf '${pkpath}/${pkname}-latest.${arch}.tar.bz2'`;
-         `cp -ac '${pkname}/'* /usr/local/`;
+         `unzip '${pkpath}/${pkname}-latest.${arch}.zip'`;
+         `cp -a --reflink=auto '${pkname}/'* /opt/win-${arch}/`;
          chdir("/tmp");
          `rm -rf /tmp/$$`;
          ++$done;
          next;
       }
-
-      # Dirty hack for @rpath issue https://developer.apple.com/forums/thread/737920
-      `install_name_tool -id /usr/local/lib/libcg3.1.dylib /usr/local/lib/libcg3.1.dylib`;
-      `install_name_tool -id /usr/local/lib/libfoma.0.10.0.dylib /usr/local/lib/libfoma.0.10.0.dylib`;
 
       my $logfile = "/tmp/build/${cadence}/${pkname}";
       `rm -fv '${logfile}'-*.log`;
@@ -161,14 +151,14 @@ for my $cadence (qw( nightly )) {#release
       chdir($ver);
 
       # Use binaries in $PATH
-      `grep -rl '^\#!/usr/bin/perl' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/perl\@\#!/usr/bin/env perl\@g;' -i`;
-      `grep -rl '^\#!/usr/bin/python' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/python\@\#!/usr/bin/env python\@g;' -i`;
-      `grep -rl '^\#!/bin/bash' * | xargs -n1 perl -pe 's\@^\#!/usr/bin/bash\@\#!/usr/bin/env bash\@g;' -i`;
+      `grep -rl '^\#!/usr/bin/perl' * | xargs -rn1 perl -pe 's\@^\#!/usr/bin/perl\@\#!/usr/bin/env perl\@g;' -i`;
+      `grep -rl '^\#!/usr/bin/python' * | xargs -rn1 perl -pe 's\@^\#!/usr/bin/python\@\#!/usr/bin/env python\@g;' -i`;
+      `grep -rl '^\#!/bin/bash' * | xargs -rn1 perl -pe 's\@^\#!/usr/bin/bash\@\#!/usr/bin/env bash\@g;' -i`;
 
       print "\tsetting up build...\n";
       `echo '======== SETUP ========' >>'${logfile}-setup.log'`;
       `date -u >>'${logfile}-setup.log'`;
-      my $log = `bash '${Bin}/$pkg->[0]/osx/setup.sh' >>'${logfile}-setup.log' 2>&1 || echo 'SETUP FAILED'`;
+      my $log = `bash '${Bin}/$pkg->[0]/windows/setup.sh' >>'${logfile}-setup.log' 2>&1 || echo 'SETUP FAILED'`;
       `cat '${logfile}-setup.log' >>'${logfile}.log'`;
       if ($log =~ /^SETUP FAILED/) {
          print "\tfailed setup\n";
@@ -191,44 +181,15 @@ for my $cadence (qw( nightly )) {#release
       }
 
       $log = '';
-      if (-e "${Bin}/$pkg->[0]/osx/post-build.sh") {
+      if (-e "${Bin}/$pkg->[0]/windows/post-build.sh") {
          print "\tpost-build...\n";
          `echo '======== POST-BUILD ========' >>'${logfile}-post-build.log'`;
          `date -u >>'${logfile}-post-build.log'`;
-         $log = `${Bin}/$pkg->[0]/osx/post-build.sh >>'${logfile}-post-build.log' 2>&1 || echo 'POST-BUILD FAILED'`;
+         $log = `${Bin}/$pkg->[0]/windows/post-build.sh >>'${logfile}-post-build.log' 2>&1 || echo 'POST-BUILD FAILED'`;
          `cat '${logfile}-post-build.log' >>'${logfile}.log'`;
       }
       if ($log =~ /^POST-BUILD FAILED/) {
          print "\tpost-build test\n";
-         next;
-      }
-
-      $log = '';
-      my $test = '';
-      if (-e "${Bin}/$pkg->[0]/osx/test.sh") {
-        $test = "${Bin}/$pkg->[0]/osx/test.sh";
-      }
-      elsif (-s 'Makefile') {
-         my $mkfile = file_get_contents('Makefile');
-         if ($mkfile =~ /^test:/m) {
-            $test = 'test';
-         }
-         elsif ($mkfile =~ /^check:/m) {
-            $test = 'check';
-         }
-         if ($test) {
-            $test = "make '${test}' V=1 VERBOSE=1";
-         }
-      }
-      if ($test) {
-         print "\ttesting...\n";
-         `echo '======== TEST ========' >>'${logfile}-test.log'`;
-         `date -u >>'${logfile}-test.log'`;
-         $log = `${test} >>'${logfile}-test.log' 2>&1 || echo 'TEST FAILED'`;
-         `cat '${logfile}-test.log' >>'${logfile}.log'`;
-      }
-      if ($log =~ /^TEST FAILED/) {
-         print "\tfailed test\n";
          next;
       }
 
@@ -240,8 +201,8 @@ for my $cadence (qw( nightly )) {#release
          $log = `make -j${ncpu} install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
       }
       else {
-         $log = `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/tmp/install >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
-         `grep -rl '^\#!/opt/local/bin/python' /tmp/install | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
+         $log = `$python3 setup.py install --prefix=/opt/win-${arch} --install-scripts=/opt/win-${arch}/bin --root=/tmp/install >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+         `grep -rl '^\#!/opt/local/bin/python' /tmp/install | xargs -rn1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
       }
       `cat '${logfile}-install.log' >>'${logfile}.log'`;
       if ($log =~ /^INSTALL FAILED/) {
@@ -252,24 +213,30 @@ for my $cadence (qw( nightly )) {#release
          `make -j4 install >/dev/null 2>&1`;
       }
       else {
-         `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/ >/dev/null 2>&1`;
-         `grep -rl '^\#!/opt/local/bin/python' /usr/local | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
+         `$python3 setup.py install --prefix=/opt/win-${arch} --install-scripts=/opt/win-${arch}/bin --root=/ >/dev/null 2>&1`;
+         `grep -rl '^\#!/opt/local/bin/python' /opt/win-${arch} | xargs -rn1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
       }
 
       print "\tpackaging...\n";
       `echo '======== PACKAGE ========' >>'${logfile}-package.log'`;
       `date -u >>'${logfile}-package.log'`;
-      if (-s "/tmp/${pkname}.tar.bz2") {
-         unlink("/tmp/${pkname}.tar.bz2");
+      if (-s "/tmp/${pkname}.${arch}.zip") {
+         unlink("/tmp/${pkname}.${arch}.zip");
       }
-      chdir('/tmp/install/usr/local');
-      `mkdir -p lib`;
+      if (-s "/tmp/${pkname}.${arch}.7z") {
+         unlink("/tmp/${pkname}.${arch}.7z");
+      }
+      chdir("/tmp/install/opt/win-${arch}/bin");
       `echo '======== PACKAGE: DEPS ========' >>'${logfile}-package.log'`;
-      `${Bin}/macos-copy-deps.pl >>'${logfile}-package.log' 2>&1`;
-      `echo '======== PACKAGE: TAR ========' >>'${logfile}-package.log'`;
-      chdir('/tmp/install/usr');
-      rename('local', $pkname);
-      $log = `tar -jcvf '/tmp/${pkname}.${arch}.tar.bz2' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
+      `${Bin}/mxe-copy-deps.pl >>'${logfile}-package.log' 2>&1`;
+      chdir("/tmp/install/opt/win-${arch}");
+      `${Bin}/mxe-strip.sh >>'${logfile}-package.log' 2>&1`;
+      `echo '======== PACKAGE: ZIP + 7Z ========' >>'${logfile}-package.log'`;
+      chdir('/tmp/install/opt');
+      rename("win-${arch}", $pkname);
+      $log = '';
+      $log .= `zip -9r '/tmp/${pkname}.${arch}.zip' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
+      $log .= `7za a '/tmp/${pkname}.${arch}.7z' * >>'${logfile}-package.log' 2>&1 || echo 'PACKAGE FAILED'`;
       `cat '${logfile}-package.log' >>'${logfile}.log'`;
       if ($log =~ /PACKAGE FAILED/) {
          print "\tfailed packaging\n";
@@ -290,9 +257,11 @@ for my $cadence (qw( nightly )) {#release
 
       `rm -rf '${pkpath}'`;
       `mkdir -p '${pkpath}'`;
-      `mv -v '/tmp/${pkname}.${arch}.tar.bz2' '${pkpath}/${pkname}-latest.${arch}.tar.bz2' >>'${logfile}.log' 2>&1`;
-      `ln -sv '${pkname}-latest.${arch}.tar.bz2' '${pkpath}/${ver}.${arch}.tar.bz2' >>'${logfile}.log' 2>&1`;
-      `cp -acf '${logfile}.log' '${pkpath}/${pkname}.log'`;
+      `mv -v '/tmp/${pkname}.${arch}.zip' '${pkpath}/${pkname}-latest.${arch}.zip' >>'${logfile}.log' 2>&1`;
+      `mv -v '/tmp/${pkname}.${arch}.7z' '${pkpath}/${pkname}-latest.${arch}.7z' >>'${logfile}.log' 2>&1`;
+      `ln -sv '${pkname}-latest.${arch}.zip' '${pkpath}/${ver}.${arch}.zip' >>'${logfile}.log' 2>&1`;
+      `ln -sv '${pkname}-latest.${arch}.7z' '${pkpath}/${ver}.${arch}.7z' >>'${logfile}.log' 2>&1`;
+      `cp -avf --reflink=auto '${logfile}.log' '${pkpath}/${pkname}.log'`;
 
       $did = 1;
       ++$done;
@@ -318,26 +287,27 @@ for my $cadence (qw( nightly )) {#release
    `mkdir -p /tmp/combo/apertium-all-dev`;
    chdir('/tmp/combo');
    for my $pkname (@combo) {
-      if (! -s "${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.tar.bz2") {
+      if (! -s "${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.zip") {
          next;
       }
       print "\t${pkname}\n";
-      `tar -jxvf '${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.tar.bz2' >>apertium-all-dev.log 2>&1`;
-      `cp -ac '${pkname}/'* ./apertium-all-dev/`;
+      `unzip -o '${Bin}/${cadence}/build/${pkname}/${pkname}-latest.${arch}.zip' >>apertium-all-dev.log 2>&1`;
+      `cp -af --reflink=auto '${pkname}/'* ./apertium-all-dev/`;
       `rm -rf '${pkname}'`;
    }
-   `tar -jcvf apertium-all-dev.${arch}.tar.bz2 apertium-all-dev >>apertium-all-dev.log 2>&1`;
+   `${Bin}/mxe-strip.sh >>apertium-all-dev.log 2>&1`;
+   `zip -9r apertium-all-dev.${arch}.zip apertium-all-dev >>apertium-all-dev.log 2>&1`;
    `7za a apertium-all-dev.${arch}.7z apertium-all-dev >>apertium-all-dev.log 2>&1`;
-   `mv apertium-all-dev.${arch}.tar.bz2 apertium-all-dev.${arch}.7z apertium-all-dev.log '${Bin}/${cadence}/build/apertium-all-dev/'`;
+   `mv apertium-all-dev.${arch}.zip apertium-all-dev.${arch}.7z apertium-all-dev.log '${Bin}/${cadence}/build/apertium-all-dev/'`;
 
    print "Uploading ${cadence}...\n";
    chdir("${Bin}/${cadence}/build");
    file_put_contents('upload.log', '');
    for (my $i=0 ; $i<3 ; ++$i) {
-      `rsync -avz */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/${arch}/ >>upload.log 2>&1`;
+      `rsync -avz */*.zip */*.7z apertium\@oqaa.projectjj.com:public_html/windows/${cadence}/${arch}/ >>upload.log 2>&1`;
    }
-   `ssh -l apertium oqaa.projectjj.com "find '/home/apertium/public_html/osx/${cadence}/${arch}' -name '*-[0-9]*.${arch}*' | xargs -rn1 rm -fv" >>upload.log 2>&1`;
-   `rsync -avzc */*.tar.bz2 */*.7z apertium\@oqaa.projectjj.com:public_html/osx/${cadence}/${arch}/ >>upload.log 2>&1`;
+   `ssh -l apertium oqaa.projectjj.com "find '/home/apertium/public_html/windows/${cadence}/${arch}' -name '*-[0-9]*.${arch}*' | xargs -rn1 rm -fv" >>upload.log 2>&1`;
+   `rsync -avzc */*.zip */*.7z apertium\@oqaa.projectjj.com:public_html/windows/${cadence}/${arch}/ >>upload.log 2>&1`;
 
    print "\n";
 }
