@@ -1,13 +1,13 @@
 Source: libdivvun
 Section: science
 Priority: optional
-Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autotools-dev,
                debhelper (>= 9.0),
                dh-autoreconf,
-               dh-python,
+               dh-sequence-python3,
                gawk,
                hfst-ospell-dev (>= 0.5.3),
                libarchive-dev,
@@ -20,7 +20,7 @@ Build-Depends: autotools-dev,
                python3-setuptools,
                swig,
                zip
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://github.com/divvun/libdivvun
 Vcs-Git: https://anonscm.debian.org/collab-maint/divvun-gramcheck.git
 Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.git;a=summary

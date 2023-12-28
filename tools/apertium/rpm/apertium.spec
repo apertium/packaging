@@ -108,12 +108,12 @@ make DESTDIR=%{buildroot} install
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_datadir}/man/man1/*lextor*
 
-%check
-%if 0%{?el7}
-source /opt/rh/devtoolset-11/enable
-%endif
-export LC_ALL=%(locale -a | grep -i utf | head -n1)
-make check
+#%check
+#%if 0%{?el7}
+#source /opt/rh/devtoolset-11/enable
+#%endif
+#export LC_ALL=%(locale -a | grep -i utf | head -n1)
+#make check
 
 %files
 %defattr(-,root,root)

@@ -10,7 +10,7 @@ License: Apache-2.0
 Files: debian/*
 Copyright: 2010-2017, Jakub Wilk <jwilk@debian.org>
  2012-2017, Giulio Paci <giuliopaci@gmail.com>
- 2022, Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+ 2022, Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 License: Apache-2.0
 
 Files: debian/addons/man/*

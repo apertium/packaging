@@ -1,3 +1,15 @@
+lttoolbox (3.7.6-1) unstable; urgency=medium
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 28 Dec 2023 01:40:15 +0100
+
+lttoolbox (3.7.1-3) unstable; urgency=medium
+
+  * Upload fix to unstable
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 30 Oct 2023 14:30:12 +0100
+
 lttoolbox (3.7.1-2) experimental; urgency=medium
 
   * Snip symlink creation from 3.6 days (Closes: #1035863)

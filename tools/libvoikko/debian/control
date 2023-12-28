@@ -4,11 +4,11 @@ Maintainer: Timo Jyrinki <timo@debian.org>
 Build-Depends: autotools-dev,
                debhelper (>= 9.0.0),
                dh-autoreconf,
-               dh-python,
+               dh-sequence-python3,
                hfst-ospell-dev (>= 0.5.3),
                pkg-config,
                python3
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Section: libs
 Homepage: http://voikko.puimula.org/
 Vcs-Git: https://anonscm.debian.org/collab-maint/libvoikko.git

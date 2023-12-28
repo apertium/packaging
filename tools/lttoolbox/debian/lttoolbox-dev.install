@@ -5,9 +5,9 @@ debian/tmp/usr/bin/lt-comp
 debian/tmp/usr/bin/lt-compose
 debian/tmp/usr/bin/lt-expand
 debian/tmp/usr/bin/lt-invert
-debian/tmp/usr/bin/lt-restrict
 debian/tmp/usr/bin/lt-paradigm
 debian/tmp/usr/bin/lt-print
+debian/tmp/usr/bin/lt-restrict
 debian/tmp/usr/bin/lt-trim
 debian/tmp/usr/include
 debian/tmp/usr/lib/*/*.so

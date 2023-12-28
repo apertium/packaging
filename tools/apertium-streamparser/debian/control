@@ -1,11 +1,11 @@
 Source: apertium-streamparser
 Section: science
 Priority: optional
-Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
-Build-Depends: debhelper (>= 9), dh-python, python3-all-dev, python3-setuptools
-Standards-Version: 4.6.1
+Build-Depends: debhelper (>= 9), dh-sequence-python3, python3-all-dev, python3-setuptools
+Standards-Version: 4.6.2
 Homepage: https://github.com/apertium/streamparser
 Vcs-Git: https://salsa.debian.org/science-team/streamparser.git
 Vcs-Browser: https://salsa.debian.org/science-team/streamparser

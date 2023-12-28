@@ -1,11 +1,11 @@
 Source: apertium-all-dev
 Section: science
 Priority: optional
-Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-all-dev.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-all-dev
@@ -32,7 +32,7 @@ Depends: apertium-anaphora (>= 1.1.1),
          libhfst-dev (>= 3.16.0),
          libtool,
          locales,
-         lttoolbox-dev (>= 3.7.1),
+         lttoolbox-dev (>= 3.7.6),
          pkg-config,
          transfuse (>= 0.5.8),
          ${misc:Depends}

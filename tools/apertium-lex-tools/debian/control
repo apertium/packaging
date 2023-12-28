@@ -1,23 +1,23 @@
 Source: apertium-lex-tools
 Section: science
 Priority: optional
-Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
-               dh-python,
+               dh-sequence-python3,
                libicu-dev,
                libirstlm-dev,
                libxml2-dev,
                libxml2-utils,
-               lttoolbox-dev (>= 3.7.1),
+               lttoolbox-dev (>= 3.7.6),
                pkg-config,
                python3-dev,
                python3-setuptools,
                swig
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-lex-tools.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-lex-tools
@@ -63,7 +63,7 @@ Package: apertium-lex-tools-dev
 Architecture: any
 Depends: apertium-lex-tools (= ${binary:Version}),
          libxml2-utils,
-         lttoolbox-dev (>= 3.7.1),
+         lttoolbox-dev (>= 3.7.6),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}

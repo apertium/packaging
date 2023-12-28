@@ -1,11 +1,11 @@
 Source: cg3ide
 Section: science
 Priority: optional
-Maintainer: Debian Science Team <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake, debhelper (>= 9.0), qt5-qmake, qtbase5-dev
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 
 Package: cg3ide
 Architecture: any
