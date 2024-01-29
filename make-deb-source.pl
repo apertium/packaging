@@ -54,7 +54,7 @@ my $distros = $targets->{'distros'};
 my $archs = $targets->{'archs'};
 
 my @includes = qw(test/tests\.json test/.*-input\.txt test/.*-expected\.txt test/.*-gold\.txt);
-my @excludes = qw(\.svn.* \.git.* \.circleci.* \.travis.* \.clang.* \.editorconfig \.readthedocs.* autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile);
+my @excludes = qw(\.svn.* \.git.* \.circleci.* \.travis.* \.clang.* \.editorconfig \.readthedocs.* autogen\.sh cmake\.sh CONTRIBUTING.* INSTALL Jenkinsfile \.build-config\.yml \.taskcluster\.yml);
 if (-s $opts{p}.'/exclude.txt') {
    open FILE, $opts{p}.'/exclude.txt';
    while (<FILE>) {
@@ -124,7 +124,7 @@ if (@excludes) {
       $f =~ s@^\./@@;
       my $keep = 0;
       foreach my $p (@includes) {
-         if ($f =~ m@^$p$@) {
+         if ($f =~ m@(^|/)$p$@) {
             print "keeping '$f'\n";
             $keep = 1;
             last;
@@ -134,7 +134,7 @@ if (@excludes) {
          next;
       }
       foreach my $p (@excludes) {
-         if ($f =~ m@^$p$@) {
+         if ($f =~ m@(^|/)$p$@) {
             print `rm -rfv '$f'`;
          }
       }
@@ -152,6 +152,12 @@ if (@excludes) {
 
 # Replace @APERTIUM_AUTO_VERSION@ with git/svn revision
 `grep -rl '\@APERTIUM_AUTO_VERSION\@' | xargs -rn1 perl -pe 's/\\\@APERTIUM_AUTO_VERSION\\\@/$opts{rev}/g;' -i`;
+
+if (-s "$Bin/$opts{p}/hooks/pre-bundle" && -x "$Bin/$opts{p}/hooks/pre-bundle") {
+   chdir "$autopath/$pkname-$opts{v}";
+   print `$Bin/$opts{p}/hooks/pre-bundle >$ENV{AUTOPKG_LOGPATH}/hook-pre-bundle.log 2>&1`;
+   chdir $autopath;
+}
 
 # If this is a release, bundle language resources to avoid drift
 my %cnfs = ( 'control' => '', 'copyright' => '', 'rules' => '' );
@@ -316,6 +322,12 @@ while (my ($k,$v) = each(%cnfs)) {
 
 if (!$opts{auto}) {
    print `grep -l ldconfig '$pkname-$opts{v}'/debian/*.post* -print0 | xargs -0rn1 rm -fv`;
+}
+
+if (-s "$Bin/$opts{p}/hooks/pre-control" && -x "$Bin/$opts{p}/hooks/pre-control") {
+   chdir "$autopath/$pkname-$opts{v}";
+   print `$Bin/$opts{p}/hooks/pre-control >$ENV{AUTOPKG_LOGPATH}/hook-pre-control.log 2>&1`;
+   chdir $autopath;
 }
 
 # dpkg tools are not happy if PERL_UNICODE is on

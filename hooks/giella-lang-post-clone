@@ -1,5 +1,27 @@
-#!/bin/bash
-set -e
-set -o pipefail
-svn export https://github.com/giellalt/giella-core/trunk/am-shared
-grep -rlF '(top_srcdir)/../giella-core/am-shared' * | xargs -rn1 perl -pe 's~[(]top_srcdir[)]/[.][.]/giella-core/am-shared~(top_srcdir)/am-shared~g;' -i
+#!/usr/bin/env perl
+# -*- mode: cperl; indent-tabs-mode: nil; tab-width: 3; cperl-indent-level: 3; -*-
+use utf8;
+use strict;
+use warnings;
+BEGIN {
+	$| = 1;
+	binmode(STDIN, ':encoding(UTF-8)');
+	binmode(STDOUT, ':encoding(UTF-8)');
+}
+use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
+
+use lib $ENV{'AUTOPKG_HOME'};
+use Helpers;
+
+my $control = read_control($ENV{'AUTOPKG_PKPATH'}.'/debian/control');
+my ($bdeps) = ($control =~ m@X-Giella-Bundles:\s*([^\n]+)@);
+$bdeps =~ s@\([^)]+\)@@g;
+$bdeps =~ s@\s+@@gs;
+
+my @deps = split(/,/, $bdeps);
+for my $dep (@deps) {
+   print "Bundling $dep\n";
+   print `'$ENV{'AUTOPKG_HOME'}/get-version.pl' --url 'https://github.com/giellalt/$dep' --pkname '$dep'`;
+   print `cp -av --reflink=auto '/opt/autopkg/tmp/git/$dep.git' './$dep'`;
+}

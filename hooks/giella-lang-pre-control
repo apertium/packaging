@@ -1,0 +1,38 @@
+#!/usr/bin/env perl
+# -*- mode: cperl; indent-tabs-mode: nil; tab-width: 3; cperl-indent-level: 3; -*-
+use utf8;
+use strict;
+use warnings;
+BEGIN {
+	$| = 1;
+	binmode(STDIN, ':encoding(UTF-8)');
+	binmode(STDOUT, ':encoding(UTF-8)');
+}
+use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
+
+use lib $ENV{'AUTOPKG_HOME'};
+use Helpers;
+
+my $control = read_control('debian/control');
+my ($bdeps) = ($control =~ m@X-Giella-Bundles:\s*([^\n]+)@);
+$bdeps =~ s@\([^)]+\)@@g;
+$bdeps =~ s@\s+@@gs;
+
+my $dhac = '';
+
+my @deps = split(/,/, $bdeps);
+for my $dep (@deps) {
+   print "DHAC += $dep\n";
+   $dhac .= "\n\trm -rfv ../$dep && ln -sfv \$(CURDIR)/$dep ../$dep && cd ../$dep && autoreconf -fvi && ./configure && make -j";
+}
+
+my $rules = file_get_contents('debian/rules');
+if ($rules =~ m/override_dh_autoreconf:/) {
+   $rules =~ s/override_dh_autoreconf:/override_dh_autoreconf:$dhac/;
+}
+else {
+   $dhac .= "\n\tdh_autoreconf";
+   $rules .= "\noverride_dh_autoreconf:$dhac\n";
+}
+file_put_contents('debian/rules', $rules);

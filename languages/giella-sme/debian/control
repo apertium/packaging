@@ -11,9 +11,6 @@ Build-Depends: bc,
                divvun-gramcheck,
                foma,
                gawk,
-               giella-core,
-               giella-shared-mul,
-               giella-shared-smi,
                hfst (>= 3.16.0),
                libhfst-dev (>= 3.16.0),
                pkg-config,
@@ -26,6 +23,7 @@ Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-sme.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-sme
 Rules-Requires-Root: no
+X-Giella-Bundles: giella-core, shared-mul, shared-smi
 
 Package: giella-sme
 Architecture: all
