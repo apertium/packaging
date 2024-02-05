@@ -22,7 +22,7 @@ Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-rmu.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-rmu
 Rules-Requires-Root: no
-X-Giella-Bundles: giella-core, shared-mul
+X-Giella-Bundles: giella-core, shared-mul, shared-smi
 
 Package: giella-rmu
 Architecture: all

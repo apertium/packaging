@@ -22,7 +22,7 @@ Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-mrj.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-mrj
 Rules-Requires-Root: no
-X-Giella-Bundles: giella-core, shared-mul
+X-Giella-Bundles: giella-core, shared-mul, shared-urj-Cyrl
 
 Package: giella-mrj
 Architecture: all

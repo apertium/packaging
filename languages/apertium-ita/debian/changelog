@@ -1,3 +1,9 @@
+apertium-ita (1.4.0-1) unstable; urgency=medium
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Feb 2024 11:58:24 +0100
+
 apertium-ita (1.3.0-1) unstable; urgency=medium
 
   * Update to latest upstream release.

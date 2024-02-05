@@ -1,3 +1,9 @@
+apertium-cat-ita (1.1.0-1) unstable; urgency=medium
+
+  * Bundles apertium-cat 2.12.0 and apertium-ita 1.4.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Feb 2024 11:58:24 +0100
+
 apertium-cat-ita (0.2.2-1) unstable; urgency=medium
 
   * New upstream release (Closes: #1013654)

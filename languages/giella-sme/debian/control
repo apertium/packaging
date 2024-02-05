@@ -16,6 +16,7 @@ Build-Depends: bc,
                pkg-config,
                python3,
                python3-libdivvun,
+               python3-lxml,
                python3-yaml,
                zip
 Standards-Version: 4.6.2

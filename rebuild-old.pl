@@ -593,11 +593,13 @@ foreach my $k (@{$pkgs{'order'}}) {
          }
       }
 
+=pod
       my $subject = "$pkg->[0] failed $ENV{AUTOPKG_BUILDTYPE} build";
       # Don't send individual emails if this is a manual build
       if (!$ARGV[0] && $cc ne '') {
          `cat $logpath/rebuild.log | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net' $cc`;
       }
+=cut
       goto CLEANUP;
    }
 

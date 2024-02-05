@@ -1,4 +1,10 @@
-apertium-cat (2.11.0-1) experimental; urgency=medium
+apertium-cat (2.12.0-1) unstable; urgency=medium
+
+  * Update to latest upstream release.
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Feb 2024 11:58:24 +0100
+
+apertium-cat (2.11.0-1) unstable; urgency=medium
 
   * Update to latest upstream release.
 

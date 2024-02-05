@@ -1,12 +1,30 @@
-apertium-cat-srd (1.1.0-1) unstable; urgency=low
+apertium-cat-srd (1.2.0-1) unstable; urgency=medium
 
   * New upstream release
-  * Bundles apertium-cat 2.10.2 and apertium-srd 1.3.1
+  * Bundles apertium-cat 2.12.0 and apertium-srd 1.5.0
+
+ -- Tino Didriksen <tino@didriksen.cc>  Mon, 05 Feb 2024 11:58:24 +0100
+
+apertium-cat-srd (1.1.0-2) unstable; urgency=medium
+
+  * debian/control:
+    + Fixed Build-Depends: apertium-lex-tools -> apertium-lex-tools-dev
+    + Updated Standards-Version to 4.6.0
+  * Updated debian/copyright.
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 17 Jun 2022 13:50:42 +0530
+
+apertium-cat-srd (1.1.0-1) unstable; urgency=low
+
+  [ Tino Didriksen ]
+  * New upstream release:
+    + Bundles apertium-cat 2.10.2 and apertium-srd 1.3.1
   * debian/control:
     + Updated Build-Depends
   * Updated debian/watch file.
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 28 Jan 2021 14:28:10 +0100
+ -- Kartik Mistry <kartik@debian.org>  Thu, 28 Jan 2021 19:40:51 +0530
 
 apertium-cat-srd (1.0.0~r82995-3) unstable; urgency=medium
 
