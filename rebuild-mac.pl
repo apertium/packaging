@@ -181,8 +181,11 @@ for my $cadence (qw( nightly )) {#release
       if (-s 'Makefile') {
          $log = `make -j${ncpu} V=1 VERBOSE=1 >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
       }
-      else {
+      elsif (-s 'setup.py') {
          $log = `$python3 setup.py build >>'${logfile}-build.log' 2>&1 || echo 'BUILD FAILED'`;
+      }
+      elsif (-s 'pyproject.toml') {
+         # Skip build
       }
       `cat '${logfile}-build.log' >>'${logfile}.log'`;
       if ($log =~ /^BUILD FAILED/) {
@@ -239,8 +242,12 @@ for my $cadence (qw( nightly )) {#release
       if (-s 'Makefile') {
          $log = `make -j${ncpu} install DESTDIR=/tmp/install V=1 VERBOSE=1 >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
       }
-      else {
+      elsif (-s 'setup.py') {
          $log = `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/tmp/install >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
+         `grep -rl '^\#!/opt/local/bin/python' /tmp/install | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
+      }
+      elsif (-s 'pyproject.toml') {
+         $log = `$python3 -m pip install --prefix=/usr/local --root=/tmp/install -I --no-deps . >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
          `grep -rl '^\#!/opt/local/bin/python' /tmp/install | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
       }
       `cat '${logfile}-install.log' >>'${logfile}.log'`;
@@ -251,8 +258,12 @@ for my $cadence (qw( nightly )) {#release
       if (-s 'Makefile') {
          `make -j4 install >/dev/null 2>&1`;
       }
-      else {
+      elsif (-s 'setup.py') {
          `$python3 setup.py install --prefix=/usr/local --install-scripts=/usr/local/bin --root=/ >/dev/null 2>&1`;
+         `grep -rl '^\#!/opt/local/bin/python' /usr/local | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
+      }
+      elsif (-s 'pyproject.toml') {
+         $log = `$python3 -m pip install --prefix=/usr/local --root=/ -I --no-deps . >>'${logfile}-install.log' 2>&1 || echo 'INSTALL FAILED'`;
          `grep -rl '^\#!/opt/local/bin/python' /usr/local | xargs -n1 perl -pe 's\@^\#!/opt/local/bin/python3[^\\n]*\@\#!/usr/bin/env python3\@g; s\@^\#!/opt/local/bin/python[^\\n]*\@\#!/usr/bin/env python\@g;' -i`;
       }
 
