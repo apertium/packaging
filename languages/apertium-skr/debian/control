@@ -12,7 +12,8 @@ Build-Depends: apertium-dev (>= 3.8.3),
                hfst-ospell-dev (>= 0.5.3),
                lexd (>= 1.1.0),
                libhfst-dev (>= 3.16.0),
-               pkg-config
+               pkg-config,
+               zip
 Standards-Version: 4.6.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-skr.git
