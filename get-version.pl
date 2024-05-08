@@ -143,6 +143,10 @@ elsif ($data =~ m@__version__ = "([\d.]+)"@s || $data =~ m@__version__ = '([\d.]
    print STDERR "Found __version__ version\n";
    $version = $1;
 }
+elsif ($data =~ m@version = "([\d.]+)"@s || $data =~ m@version = '([\d.]+)'@s) {
+   print STDERR "Found version = version\n";
+   $version = $1;
+}
 elsif ($data =~ m@AC_INIT.*?\[open-([\d.]+)[^\]]*\]@s) {
    print STDERR "Found Manatee AC_INIT version\n";
    $version = $1;

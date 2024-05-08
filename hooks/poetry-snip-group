@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+# -*- mode: cperl; indent-tabs-mode: nil; tab-width: 3; cperl-indent-level: 3; -*-
+use utf8;
+use strict;
+use warnings;
+BEGIN {
+	$| = 1;
+	binmode(STDIN, ':encoding(UTF-8)');
+	binmode(STDOUT, ':encoding(UTF-8)');
+}
+use open qw( :encoding(UTF-8) :std );
+use autodie qw(:all);
+
+use lib $ENV{'AUTOPKG_HOME'};
+use Helpers;
+
+my $pp = file_get_contents('pyproject.toml');
+$pp =~ s/\Q[tool.poetry.group.dev.dependencies]\E[^\[]*//s;
+$pp =~ s/\nname = "([^"]+)"\n/\nname = "\L$1"\n/s;
+file_put_contents('pyproject.toml', $pp);
