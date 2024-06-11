@@ -56,7 +56,7 @@ echo "You may need to add these to your ~/.profile or ~/.zprofile or session:"
 echo 'export PKG_CONFIG_PATH='$WHERE'/lib/pkgconfig:'$WHERE'/share/pkgconfig:${PKG_CONFIG_PATH}'
 echo 'export ACLOCAL_PATH='$WHERE'/share/aclocal:${ACLOCAL_PATH}'
 
-set GREP=`egrep '^export PYTHONPATH' ~/.profile ~/.zprofile 2>/dev/null | grep "$WHERE/lib/python3.12/site-packages"`
+GREP=`egrep '^export PYTHONPATH' ~/.profile ~/.zprofile 2>/dev/null | grep "$WHERE/lib/python3.12/site-packages"`
 if [[ -z "$GREP" ]]; then
 	echo ""
 	echo "Adding PYTHONPATH to your ~/.zprofile and ~/.profile - you should start a new terminal"
