@@ -15,6 +15,7 @@ Build-Depends: bc,
                libhfst-dev (>= 3.16.0),
                pkg-config,
                python3,
+               python3-gtgramtools,
                python3-lxml,
                python3-yaml,
                zip
