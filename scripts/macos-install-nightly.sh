@@ -3,6 +3,8 @@ WHERE='/usr/local'
 CADENCE=nightly
 ARCH=`uname -m`
 
+PYTHONVER=3.12
+
 # Other locales may make Perl unhappy
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -19,6 +21,13 @@ tar -jxf apertium-all-dev.tar.bz2
 cd apertium-all-dev
 set +e
 find . -type f -name '*.la' -exec rm -fv '{}' \;
+
+echo "Removing old Python modules"
+for P in 'apertium' 'apertium_lex_tools' 'corpustools' 'giellaltgramtools' 'libhfst_swig' 'lttoolbox' 'python_libdivvun'
+do
+	echo -e "\t$P"
+	rm -rfv "$WHERE/lib/python$PYTHONVER/site-packages/$P-"*
+done
 set -e
 
 echo "Fixing hardcoded paths"
@@ -56,13 +65,13 @@ echo "You may need to add these to your ~/.profile or ~/.zprofile or session:"
 echo 'export PKG_CONFIG_PATH='$WHERE'/lib/pkgconfig:'$WHERE'/share/pkgconfig:${PKG_CONFIG_PATH}'
 echo 'export ACLOCAL_PATH='$WHERE'/share/aclocal:${ACLOCAL_PATH}'
 
-GREP=`egrep '^export PYTHONPATH' ~/.profile ~/.zprofile 2>/dev/null | grep "$WHERE/lib/python3.12/site-packages"`
+GREP=`egrep '^export PYTHONPATH' ~/.profile ~/.zprofile 2>/dev/null | grep "$WHERE/lib/python$PYTHONVER/site-packages"`
 if [[ -z "$GREP" ]]; then
 	echo ""
 	echo "Adding PYTHONPATH to your ~/.zprofile and ~/.profile - you should start a new terminal"
 	echo ""
-	echo "export PYTHONPATH=\"\$PYTHONPATH:$WHERE/lib/python3.12/site-packages\"" >> ~/.zprofile
-	echo "export PYTHONPATH=\"\$PYTHONPATH:$WHERE/lib/python3.12/site-packages\"" >> ~/.profile
+	echo "export PYTHONPATH=\"\$PYTHONPATH:$WHERE/lib/python$PYTHONVER/site-packages\"" >> ~/.zprofile
+	echo "export PYTHONPATH=\"\$PYTHONPATH:$WHERE/lib/python$PYTHONVER/site-packages\"" >> ~/.profile
 fi
 
 echo "All done."
