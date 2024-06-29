@@ -136,6 +136,11 @@ foreach my $k (@{$pkgs{'order'}}) {
    open my $pkglog, ">$logpath/rebuild.log";
    my $out = IO::Tee->new($out2, $pkglog);
 
+   my $is_tool = 'data';
+   if ($pkg->[0] =~ m@^tools/@) {
+      $is_tool = 'tool';
+   }
+
    $ENV{'AUTOPKG_PKPATH'} = "$Bin/".$pkg->[0];
    $ENV{'AUTOPKG_AUTOPATH'} = "/opt/autopkg/$ENV{AUTOPKG_BUILDTYPE}/$pkname";
    $ENV{'AUTOPKG_LOGPATH'} = $logpath;
@@ -213,7 +218,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $bdeps =~ s@\s+@@gs;
 
       foreach my $dep (split(/,/, $bdeps)) {
-         if (defined $rebuilt{$dep}) {
+         if (defined $rebuilt{$is_tool}{$dep}) {
             $rebuild = 1;
             print {$out} "\tdependency $dep was rebuilt\n";
          }
@@ -653,7 +658,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    # Get a list of resulting packages and mark them all as rebuilt
    foreach my $pk ($control =~ m@Package:\s*(\S+)@g) {
       chomp($pk);
-      $rebuilt{$pk} = 1;
+      $rebuilt{$is_tool}{$pk} = 1;
       print {$out} "\trebuilt: $pk\n";
    }
 
