@@ -237,7 +237,7 @@ if ($ENV{'AUTOPKG_BUILDTYPE'} eq 'release' && -s "$pkname-$opts{v}/configure.ac"
             # Delete data files that won't be used for this bundled build, but leave the infrastructure for autoreconf and configure
             `cd '$pkname-$opts{v}/$p-$version/' && find devtools/ tools/analysers/ tools/tokenisers/ tools/freq_test/ tools/shellscripts/ tools/grammarcheckers/ tools/spellcheckers/ tools/hyphenators/ test/tools/grammarcheckers/ test/tools/hyphenators/ test/tools/spellcheckers/ test/tools/tokeniser/ -type f | grep -vF Makefile.am | grep -vF .in | xargs -r rm -fv >&2`;
 
-            $ss[0] .= " --with-hfst --without-xfst --enable-alignment --enable-reversed-intersect --enable-apertium --with-backend-format=foma --disable-analysers --disable-generators";
+            $ss[0] .= " --without-xfst --enable-alignment --enable-apertium --disable-analysers --disable-generators";
             $bdeps =~ s@\s+divvun-gramcheck,?@ @g;
             $withlang .= " --with-lang$n=\$(CURDIR)/$p-$version/tools/mt/apertium";
          }
