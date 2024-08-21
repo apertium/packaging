@@ -125,6 +125,10 @@ my $major = 0;
 my $minor = 0;
 my $patch = 0;
 
+if ($opts{file} eq 'configure.ac' && ! -s $opts{file}) {
+   $opts{file} = 'CMakeLists.txt';
+}
+
 my $data = file_get_contents($opts{file});
 my $version = '';
 if ($data =~ m@_VERSION_MAJOR\], \[(\d+)\].*?_VERSION_MINOR\], \[(\d+)\].*?_VERSION_PATCH\], \[(\d+)\]@s) {

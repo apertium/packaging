@@ -4,8 +4,7 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: automake,
-               autotools-dev,
+Build-Depends: cmake,
                debhelper (>= 9.0),
                dh-autoreconf,
                dh-exec,
