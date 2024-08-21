@@ -1,7 +1,6 @@
 {
 	"distros": {
 		"sid":     {"variant": "debian", "dh": 13, "archs": ["i386", "amd64"]},
-		"buster":  {"variant": "debian", "dh": 12, "archs": ["amd64"]},
 		"bullseye":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
 		"bookworm":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
 		"focal":   {"variant": "ubuntu", "dh": 12, "archs": ["amd64"]},

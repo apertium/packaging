@@ -302,7 +302,7 @@ if ($rv ne $opts{v}) {
 `find '$pkname-$rv' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$rv' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$rv.orig.tar' -T orig.lst`;
-`bzip2 -9c '${pkname}_$rv.orig.tar' > '${pkname}_$rv.orig.tar.bz2'`;
+`pbzip2 -9c '${pkname}_$rv.orig.tar' > '${pkname}_$rv.orig.tar.bz2'`;
 if ($rv ne $opts{v}) {
    `rm -rf '$pkname-$rv'`;
 }
@@ -311,7 +311,7 @@ if ($rv ne $opts{v}) {
 `find '$pkname-$opts{v}' ! -type d | LC_ALL=C sort > orig.lst`;
 `find '$pkname-$opts{v}' -type d -empty | LC_ALL=C sort >> orig.lst`;
 print `tar --no-acls --no-xattrs '--mtime=$opts{d}' -cf '${pkname}_$opts{v}.orig.tar' -T orig.lst`;
-`bzip2 -9c '${pkname}_$opts{v}.orig.tar' > '${pkname}_$opts{v}.orig.tar.bz2'`;
+`pbzip2 -9c '${pkname}_$opts{v}.orig.tar' > '${pkname}_$opts{v}.orig.tar.bz2'`;
 print `cp -av --reflink=auto '$ENV{AUTOPKG_PKPATH}/debian' '$pkname-$opts{v}/'`;
 
 while (my ($k,$v) = each(%cnfs)) {
