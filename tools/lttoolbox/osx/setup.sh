@@ -1,2 +1,1 @@
-autoreconf -fvi
-./configure --enable-python-bindings
+cmake -DENABLE_PYTHON_BINDINGS=ON .

@@ -69,6 +69,7 @@ my $maxmem = int((totalmem() * 0.85)/(1024 * 1024));
 my $maxswap = $maxmem + 10240;
 $ENV{'AUTOPKG_MAX_MEM'} = "${maxmem}m";
 $ENV{'AUTOPKG_MAX_SWAP'} = "${maxswap}m";
+my $nproc = int(`nproc`) - 1;
 
 my %rebuilt = ();
 my %blames = ();
@@ -429,7 +430,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $script .= "export 'DEB_BUILD_OPTIONS=parallel=".$config->{'max-threads'}."'\n";
          }
          else {
-            $script .= "export 'DEB_BUILD_OPTIONS=parallel=10'\n";
+            $script .= "export 'DEB_BUILD_OPTIONS=parallel=$nproc'\n";
          }
          $script .= "export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH:+\"\$LD_LIBRARY_PATH:\"}/usr/lib/libeatmydata\n";
          #$script .= "export LD_PRELOAD=\${LD_PRELOAD:+\"\$LD_PRELOAD \"}libeatmydata.so\n";
