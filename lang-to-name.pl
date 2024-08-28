@@ -43,8 +43,8 @@ while (<STDIN>) {
          print "NOT FOUND: 2 $_ $iso2\n";
          next;
       }
-      print `replace 'LANG1' '$ns{$iso1}' -- $_`;
-      print `replace 'LANG2' '$ns{$iso2}' -- $_`;
+      print `perl -Mutf8 -pe 's/LANG1/$ns{$iso1}/g' -i $_`;
+      print `perl -Mutf8 -pe 's/LANG2/$ns{$iso2}/g' -i $_`;
    }
    elsif (m@(?:apertium|giella)-(\w+)@) {
       my ($iso1) = ($1);
@@ -52,6 +52,6 @@ while (<STDIN>) {
          print "NOT FOUND: 1 $_ $iso1\n";
          next;
       }
-      print `replace 'LANG1' '$ns{$iso1}' -- $_`;
+      print `perl -Mutf8 -pe 's/LANG1/$ns{$iso1}/g' -i $_`;
    }
 }

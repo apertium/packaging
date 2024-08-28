@@ -22,6 +22,8 @@ requirements:
     - libtool
     - python
     - setuptools
+    - openfst
+    - foma
   host:
     - readline
     - icu

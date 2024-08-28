@@ -30,7 +30,8 @@ $ENV{'TERM'} = 'putty';
 $ENV{'TERMCAP'} = '';
 
 my $arch = $ENV{'AUTOPKG_BITWIDTH'} = 'x86_64';
-$ENV{'LDFLAGS'} = '-fno-use-linker-plugin';
+$ENV{'LDFLAGS'} = "-L/opt/win-${arch}/lib -fno-use-linker-plugin";
+$ENV{'CPPFLAGS'} = "-I/opt/win-${arch}/include";
 $ENV{'PKG_CONFIG'} = "/opt/mxe/usr/bin/${arch}-w64-mingw32.shared-pkg-config";
 $ENV{"PKG_CONFIG_PATH_${arch}_w64_mingw32_shared"} = "/opt/win-${arch}/lib/pkgconfig";
 

@@ -5,7 +5,7 @@
 		"bookworm":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
 		"focal":   {"variant": "ubuntu", "dh": 12, "archs": ["amd64"]},
 		"jammy":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
-		"mantic":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"noble":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
+		"oracular":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		},
 }

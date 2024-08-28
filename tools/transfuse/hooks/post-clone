@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [[ "$AUTOPKG_MAINTAINER" == *"Debian"* ]]; then
-	rm -rfv include/xxhash/*.[ch]*
-fi

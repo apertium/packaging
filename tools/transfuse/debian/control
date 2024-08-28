@@ -9,6 +9,7 @@ Build-Depends: cmake,
                libicu-dev,
                libsqlite3-dev,
                libxml2-dev,
+               libxxhash-dev,
                libzip-dev,
                pkg-config
 Standards-Version: 4.6.2

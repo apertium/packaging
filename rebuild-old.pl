@@ -133,7 +133,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    my $logpath = "/home/apertium/public_html/apt/logs/$pkname";
    `mkdir -p $logpath/`;
    `cp -a $logpath/sid-amd64.log $logpath/build.log >/dev/null 2>&1`;
-   `rm -f $logpath/*-*.log >/dev/null 2>&1`;
+   `rm -f $logpath/*-*.log $logpath/rsync.log >/dev/null 2>&1`;
    open my $pkglog, ">$logpath/rebuild.log";
    my $out = IO::Tee->new($out2, $pkglog);
 
@@ -391,7 +391,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $docker .= "\techo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \\\n";
             $docker .= "\techo 'deb http://apertium.projectjj.com/apt/$ENV{AUTOPKG_BUILDTYPE} $distro main' > /etc/apt/sources.list.d/apertium.list\n";
             $docker .= "\n";
-            $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends install ".join(' ', @our_deps)."\n";
+            $docker .= "RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends --allow-downgrades install ".join(' ', @our_deps)."\n";
          }
          file_put_contents("$dpath/Dockerfile", $docker);
          my $hash = substr(`sha256sum $dpath/Dockerfile`, 0, 16);
@@ -443,7 +443,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             $script .= "export 'AP_REGTEST_QUIET=yes'\n";
          }
          $script .= "cd /build/${pkname}-*/\n";
-         $script .= "timeout 180m time nice -n20 dpkg-buildpackage --no-sign\n";
+         $script .= "timeout 180m time ionice -c3 nice -n20 dpkg-buildpackage --no-sign\n";
          file_put_contents("$dpath/build.sh", $script);
          `chmod +x '$dpath/build.sh'`;
          `chown -R 1234:1234 '$dpath'`;
@@ -613,6 +613,8 @@ foreach my $k (@{$pkgs{'order'}}) {
    # Note that this does not happen if ANY failure was detected, to ensure we don't get partially-updated trees
    `$Bin/reprepro.sh '$pkname' '$is_data' '$pkg->[3]' 2>>$logpath/stderr.log >&2`;
 
+   `rsync -avzHAXx --partial --delete /home/apertium/public_html/apt root\@oqaa.projectjj.com:/home/apertium/public_html/ >>$logpath/rsync.log 2>&1`;
+
    if (-s "$Bin/$pkg->[0]/hooks/post-publish" && -x "$Bin/$pkg->[0]/hooks/post-publish") {
       `$Bin/$pkg->[0]/hooks/post-publish >$logpath/hook-post-publish.log 2>&1`;
    }
@@ -664,6 +666,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
 
    CLEANUP:
+   `rsync -avzHAXx --partial --delete /home/apertium/public_html/apt /home/apertium/public_html/pkg-stats root\@oqaa.projectjj.com:/home/apertium/public_html/ >>$logpath/rsync.log 2>&1`;
    close $pkglog;
 
    # Wipe temporary clone
@@ -675,7 +678,9 @@ print {$out2} "\n";
 # If any package was (attempted) rebuilt, send a status email
 if (!$ARGV[0] && (%rebuilt || %blames)) {
    print {$out2} `docker images | egrep '^autopkg' | egrep 'weeks|months' | cut '-d ' -f 1 | xargs -r docker rmi 2>&1`;
-   print {$out2} `docker system prune -f 2>&1`;
+   #print {$out2} `docker system prune -f 2>&1`;
+   print {$out2} `find ~apertium/public_html/apt/logs/ -type f -mtime +90 -print0 | xargs -0r rm -fv 2>&1`;
+   print {$out2} `find ~apertium/public_html/apt/logs/ -type d -empty -print0 | xargs -0r rm -rfv 2>&1`;
 
    my $subject = 'Nightly: ';
    if (%blames) {
@@ -691,7 +696,7 @@ if (!$ARGV[0] && (%rebuilt || %blames)) {
    else {
       $subject .= 'Success';
    }
-   `echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
+   #`echo 'See log at https://apertium.projectjj.com/apt/logs/nightly/' | mailx -s '$subject' -b 'mail\@tinodidriksen.com' -r 'apertium-packaging\@projectjj.com' 'apertium-packaging\@lists.sourceforge.net'`;
 }
 
 if ($win32) {
@@ -714,6 +719,7 @@ if ($osx) {
 
 print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;
+`rsync -avzHAXx --partial --delete /home/apertium/public_html/apt /home/apertium/public_html/pkg-stats root\@oqaa.projectjj.com:/home/apertium/public_html/`;
 unlink("/opt/autopkg/tmp/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');
 

@@ -9,4 +9,4 @@ export LC_ALL=C.UTF-8
 	dh $@ --fail-missing --parallel
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DBUNDLED_XXHASH=ON -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON
+	dh_auto_configure -- -DCMAKE_BUILD_RPATH_USE_ORIGIN=ON

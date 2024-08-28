@@ -12,7 +12,7 @@ fi
 
 export VERBOSE=1 V=1
 autoreconf -fvi
-./configure --disable-static --enable-all-tools --with-readline --with-unicode-handler=icu --enable-python-bindings --prefix=${PREFIX}
+./configure --disable-static --enable-all-tools --with-readline --enable-python-bindings --prefix=${PREFIX}
 make -j${CPU_COUNT}
 #make -j1 check
 find * -type f | xargs -rn1 ${BUILD}-strip -S -x >/dev/null 2>&1 || true
