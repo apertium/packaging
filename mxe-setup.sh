@@ -20,6 +20,7 @@ make -j11 \
 	qt5 \
 	dlfcn-win32 \
 	libxml++ \
+	xxhash \
 	"MXE_TARGETS=x86_64-w64-mingw32.shared" \
 	"MXE_PLUGIN_DIRS=plugins/gcc13"
 
