@@ -61,8 +61,8 @@ chdir($dir);
 
 use JSON;
 my %pkgs = load_packages();
-my $authors = JSON->new->relaxed->decode(file_get_contents("$Bin/authors.json"));
-my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"));
+my $authors = JSON->new->relaxed->decode(file_get_contents("$Bin/authors.json5"));
+my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json5"));
 
 use Sys::MemInfo qw(totalmem);
 my $maxmem = int((totalmem() * 0.85)/(1024 * 1024));
@@ -254,7 +254,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $is_data = 'arch-all';
       $ENV{'AUTOPKG_DATA_ONLY'} = $is_data;
    }
-   elsif ($pkg->[0] =~ m@^(data|languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest|shared)$@ || $pkg->[0] =~ m@/giella-@ || $pkg->[0] =~ m@-java$@) {
+   elsif ($pkg->[0] =~ m@^(data|languages|pairs)/@ || $pkg->[0] =~ m@/apertium-(get|regtest|shared)$@ || $pkg->[0] =~ m@/(giella|libreoffice|)-@ || $pkg->[0] =~ m@-java$@) {
       # If this is a data-only package, only build it once for latest Debian Sid
       print {$out} "\tdata only\n";
       $is_data = 'data';

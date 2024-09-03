@@ -167,6 +167,10 @@ elsif ($data =~ m@PACKAGE_VERSION\s*=\s*"([\d.]+)@s) {
    print STDERR "Found PACKAGE_VERSION version\n";
    $version = $1;
 }
+elsif ($data =~ m@\S_VERSION\s*=\s*([\d.]+)@s) {
+   print STDERR "Found xxx_VERSION version\n";
+   $version = $1;
+}
 elsif ($data =~ m@\nVersion ([\d.]+)@s) {
    print STDERR "Found Version version\n";
    $version = $1;

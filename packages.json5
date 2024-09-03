@@ -36,6 +36,7 @@
    ["tools/matxin",     "https://github.com/matxin/matxin"],
 #   ["tools/apertium-gp",     "https://github.com/denix56/Apertium-GP/trunk", "src/src.pro"],
    ["tools/libdivvun", "https://github.com/divvun/libdivvun"],
+   ["tools/libreoffice-divvun", "https://github.com/divvun/libreoffice-divvun", "Makefile"],
    ["tools/transfuse",       "https://github.com/TinoDidriksen/transfuse"],
    ["tools/apertium-get"],
    ["tools/apertium-regtest",],

@@ -1,0 +1,4 @@
+version=4
+opts="searchmode=plain" \
+  https://api.github.com/repos/divvun/@PACKAGE@/releases \
+  https://github.com/divvun/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@

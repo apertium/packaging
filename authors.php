@@ -16,7 +16,7 @@ function sort_authors($a, $b) {
 	return strcmp($a['name'], $b['name']);
 }
 
-$map = file_get_contents(__DIR__.'/authors.json');
+$map = file_get_contents(__DIR__.'/authors.json5');
 $map = json_decode($map, true);
 
 $authors = [];

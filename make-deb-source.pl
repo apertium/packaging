@@ -49,7 +49,7 @@ chdir($Bin);
 
 use JSON;
 my %pkgs = load_packages();
-my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json"));
+my $targets = JSON->new->relaxed->decode(file_get_contents("$Bin/targets.json5"));
 my $distros = $targets->{'distros'};
 my $archs = $targets->{'archs'};
 

@@ -75,7 +75,7 @@ sub load_packages {
    use JSON;
    my %ps = ('order' => [], 'packages' => {});
 
-   my $pkgs = JSON->new->relaxed->decode(file_get_contents("$Bin/packages.json"));
+   my $pkgs = JSON->new->relaxed->decode(file_get_contents("$Bin/packages.json5"));
    for my $pkg (@{$pkgs}) {
       my ($pkname) = ($pkg->[0] =~ m@([-\w]+)$@);
       push(@{$ps{'order'}}, $pkname);

@@ -1,0 +1,38 @@
+Source: libreoffice-divvun
+Section: text
+Priority: optional
+Maintainer: Tino Didriksen <tino@didriksen.cc>
+Build-Depends: debhelper (>= 9.0),
+               dh-python,
+               python3,
+               unzip,
+               zip
+Standards-Version: 4.6.2
+Homepage: https://github.com/divvun/libreoffice-divvun
+Vcs-Git: https://salsa.debian.org/debian/libreoffice-divvun.git
+Vcs-Browser: https://salsa.debian.org/debian/libreoffice-divvun
+Rules-Requires-Root: no
+
+Package: libreoffice-divvun
+Architecture: any
+Depends: libreoffice-core,
+         python3-libdivvun,
+         python3-uno,
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends},
+Recommends: libreoffice | libreoffice-writer | libreoffice-calc | libreoffice-impress | libreoffice-draw
+Suggests: giella-sme-speller, giella-sma-speller, giella-smj-speller, giella-kal-speller
+Enhances: libreoffice
+Description: Spellchecker, grammar checker and hyphenator for LibreOffice
+ This package contains a libreoffice-divvun, a multi language spellchecker,
+ grammar checker and hyphenator extension for LibreOffice. It uses
+ libdivvun for all linguistic operations.
+ .
+ Based on the configuration of libdivvun, spell checking is supported for
+ multiple languages.
+ .
+ NOTE: Usually spell-checking, grammar checking and hyphenation should be
+ automatically activated after installing this package. If this is not the
+ case, go to "Writing Aids" settings in LibreOffice and activate Divvun
+ components manually.
