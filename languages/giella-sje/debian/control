@@ -23,7 +23,7 @@ Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-sje.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-sje
 Rules-Requires-Root: no
-X-Giella-Bundles: giella-core, shared-mul
+X-Giella-Bundles: giella-core, shared-mul, shared-smi
 
 Package: giella-sje
 Architecture: all
