@@ -63,10 +63,8 @@ for my $k (@{$pkgs{'order'}}) {
    }
    print "Syncing ${pkname}\n";
 
-   for (my $i=0 ; $i<2 ; ++$i) {
-      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
-      print `rsync -az 'apertium\@oqaa.projectjj.com:~/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
-   }
+   print `rsync -az 'root\@192.168.1.19:/home/apertium/public_html/apt/nightly/source/${pkname}/*+*.tar.bz2' 'nightly/source/${pkname}.tar.bz2'`;
+   print `rsync -az 'root\@192.168.1.19:/home/apertium/public_html/apt/release/source/${pkname}/*.tar.bz2' 'release/source/${pkname}.tar.bz2'`;
 }
 
 # Ordered so that nightly is left installed after the build
