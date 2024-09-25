@@ -1,0 +1,5 @@
+*~
+.vstags
+build.log
+/nightly
+/release

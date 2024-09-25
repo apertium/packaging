@@ -17,7 +17,7 @@ use FindBin qw($Bin);
 chdir("$Bin/docker");
 
 # Install dependencies
-`apt-get install --no-install-recommends devscripts libipc-system-simple-perl liblist-moreutils-perl libjson-xs-perl libjson-perl libio-tee-perl php-cli`;
+`apt-get install --no-install-recommends devscripts libipc-system-simple-perl liblist-moreutils-perl libjson-xs-perl libjson-perl libio-tee-perl libcarp-always-perl php-cli rsync openssh-client`;
 
 # Create insecure docker buildx builder
 `docker buildx create --use --name insecure-builder --buildkitd-flags '--allow-insecure-entitlement security.insecure'`

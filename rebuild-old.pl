@@ -19,9 +19,13 @@ use lib "$Bin/";
 use Helpers;
 
 if (-s '/opt/autopkg/rebuild.lock') {
-   die "Another instance of builder is running - bailing out!\n";
+   my $pid = int(file_get_contents('/opt/autopkg/rebuild.lock'));
+   if (int(`ps ax | grep [r]ebuild | grep '$pid' | wc -l`) >= 1) {
+      die "Another instance of builder is running as PID $pid - bailing out!\n";
+   }
+   print "Clobbering stale builder lock from PID $pid\n";
 }
-`date -u > /opt/autopkg/rebuild.lock`;
+file_put_contents('/opt/autopkg/rebuild.lock', $$);
 
 `rm -rf /opt/autopkg/tmp /opt/autopkg/rules.*`;
 `mkdir -p /opt/autopkg /opt/autopkg/repos /opt/autopkg/tmp/git`;

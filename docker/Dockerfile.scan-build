@@ -1,0 +1,22 @@
+FROM amd64/debian:sid
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+
+# Use caching proxy
+RUN export HOST_IP=$(cat /proc/net/route | awk '/^[a-z]+[0-9]+	00000000/ { printf("%d.%d.%d.%d\n", "0x" substr($3, 7, 2), "0x" substr($3, 5, 2), "0x" substr($3, 3, 2), "0x" substr($3, 1, 2)) }') && \
+        echo 'Acquire::http::Proxy "http://'$HOST_IP':3124";' > /etc/apt/apt.conf.d/30autoproxy
+
+# Upgrade everything and install base builder dependencies
+RUN apt-get -qy update && apt-get -qfy --no-install-recommends install apt-utils
+RUN apt-get -qy update && apt-get -qfy --no-install-recommends dist-upgrade
+
+COPY apertium-packaging.public.gpg /etc/apt/trusted.gpg.d/apertium.gpg
+RUN chmod 0666 /etc/apt/trusted.gpg.d/apertium.gpg
+RUN echo 'Package: *' > /etc/apt/preferences.d/apertium.pref && \
+	echo 'Pin: origin apertium.projectjj.com' >> /etc/apt/preferences.d/apertium.pref && \
+	echo 'Pin-Priority: 1001' >> /etc/apt/preferences.d/apertium.pref && \
+	echo 'deb http://apertium.projectjj.com/apt/nightly sid main' > /etc/apt/sources.list.d/apertium.list
+
+RUN apt-get -qy update && apt-get -qfy -o DPkg::Options::=--force-overwrite --no-install-recommends --allow-downgrades install \
+	build-essential devscripts libipc-system-simple-perl liblist-moreutils-perl libjson-xs-perl libjson-perl libio-tee-perl libcarp-always-perl php-cli rsync openssh-client clang clang-tools libc++abi-dev libc++-dev \
+	autoconf automake autotools-dev bison cmake flex gawk libarchive-dev libboost-dev libicu-dev libirstlm-dev libpugixml-dev libreadline-dev libsqlite3-dev libtool libutfcpp-dev libxml2-dev libxml2-utils libxxhash-dev libzip-dev pkg-config python3 python3-dev python3-lxml python3-setuptools qt5-qmake qtbase5-dev swig unzip xsltproc zip zipcmp zlib1g-dev

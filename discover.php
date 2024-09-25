@@ -65,15 +65,15 @@ foreach ($langs as $lang) {
 		continue;
 	}
 
-	$cac = trim(shell_exec("svn cat https://github.com/giellalt/$lang/trunk/configure.ac 2>/dev/null | grep AC_INIT"));
+	$cac = trim(shell_exec("wget -nv https://raw.githubusercontent.com/giellalt/$lang/main/configure.ac https://raw.githubusercontent.com/giellalt/$lang/master/configure.ac -O - 2>/dev/null | grep AC_INIT"));
 	if (empty($cac)) {
 		echo "NO CAC: $lang\n";
 		continue;
 	}
 
-	$pkgs = file_get_contents('packages.json');
+	$pkgs = file_get_contents('packages.json5');
 	$pkgs = str_replace("\n]\n", "\n   [\"languages/$giella\",      \"https://github.com/giellalt/$lang\"],\n]\n", $pkgs);
-	file_put_contents('packages.json', $pkgs);
+	file_put_contents('packages.json5', $pkgs);
 	echo shell_exec("cp -av templates/giella-qaa/ languages/$giella");
 	rename("languages/$giella/debian/giella-qaa.install", "languages/$giella/debian/giella-$iso.install");
 	rename("languages/$giella/debian/giella-qaa-speller.install", "languages/$giella/debian/giella-$iso-speller.install");
@@ -125,15 +125,15 @@ foreach ($langs as $lang) {
 		continue;
 	}
 
-	$cac = trim(shell_exec("svn cat https://github.com/apertium/$lang/trunk/configure.ac 2>/dev/null | grep AC_INIT"));
+	$cac = trim(shell_exec("wget -nv https://raw.githubusercontent.com/apertium/$lang/main/configure.ac https://raw.githubusercontent.com/apertium/$lang/master/configure.ac -O - 2>/dev/null | grep AC_INIT"));
 	if (empty($cac)) {
 		echo "NO CAC: $lang\n";
 		continue;
 	}
 
-	$pkgs = file_get_contents('packages.json');
+	$pkgs = file_get_contents('packages.json5');
 	$pkgs = str_replace("\n]\n", "\n   [\"languages/$lang\"],\n]\n", $pkgs);
-	file_put_contents('packages.json', $pkgs);
+	file_put_contents('packages.json5', $pkgs);
 	echo shell_exec("cp -av templates/apertium-qaa/ languages/$lang");
 	echo shell_exec("./update-control.pl languages/$lang 2>&1");
 }
@@ -144,15 +144,15 @@ foreach ($pairs as $pair) {
 		continue;
 	}
 
-	$cac = trim(shell_exec("svn cat https://github.com/apertium/$pair/trunk/configure.ac 2>/dev/null | grep AC_INIT"));
+	$cac = trim(shell_exec("wget -nv https://raw.githubusercontent.com/apertium/$pair/main/configure.ac https://raw.githubusercontent.com/apertium/$pair/master/configure.ac -O - 2>/dev/null | grep AC_INIT"));
 	if (empty($cac)) {
 		echo "NO CAC: $pair\n";
 		continue;
 	}
 
-	$pkgs = file_get_contents('packages.json');
+	$pkgs = file_get_contents('packages.json5');
 	$pkgs = str_replace("\n]\n", "\n   [\"pairs/$pair\"],\n]\n", $pkgs);
-	file_put_contents('packages.json', $pkgs);
+	file_put_contents('packages.json5', $pkgs);
 	echo shell_exec("cp -av templates/apertium-qaa-qbb/ pairs/$pair");
 	echo shell_exec("./update-control.pl pairs/$pair 2>&1");
 }
