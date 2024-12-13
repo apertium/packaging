@@ -9,7 +9,7 @@ export LC_ALL=C.UTF-8
 	dh $@ --fail-missing --with autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --without-xfst --enable-spellers --enable-hfst-mobile-speller --enable-hyperminimisation --enable-alignment --enable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --enable-apertium --enable-dicts --enable-oahpa --enable-morpher --enable-tokenisers --disable-hfst-desktop-spellers # --enable-fst-hyphenator
+	dh_auto_configure -- --without-xfst --enable-grammarchecker --enable-spellers --enable-hfst-mobile-speller --enable-hyperminimisation --enable-alignment --enable-minimised-spellers --enable-syntax --enable-analysers --enable-generators --enable-apertium --enable-dicts --enable-oahpa --enable-morpher --enable-tokenisers --disable-hfst-desktop-spellers # --enable-fst-hyphenator
 
 override_dh_auto_test:
 	# Skip for now
