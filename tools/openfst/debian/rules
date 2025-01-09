@@ -43,5 +43,5 @@ ifeq ($(DEB_BUILD_ARCH),i386)
 else ifeq ($(DEB_BUILD_ARCH),amd64)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
 endif
-	dh_clean
 	$(RM) -r debian/manpages_files
+	dh_clean

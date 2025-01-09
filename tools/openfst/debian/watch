@@ -1,4 +1,4 @@
-version=3
+version=4
 opts="pagemangle=s!<a href=\x22[^\x22]+/FstDownload/([^\x22]+)\x22>\1</a>\s*</td>\s*<td[^>]*>\s*r(\d+)!<a href=/twiki/bin/viewfile/FST/FstDownload?filename=$1&rev=$2>!g, uversionmangle=s/\.(\d+)$/+r$1/;s/\+r1$//, filenamemangle=s/.*filename=//;s/.rev=.*//, pgpmode=none" \
 https://www.openfst.org/twiki/bin/view/FST/FstDownload \
 /twiki/bin/viewfile/FST/FstDownload\?filename=openfst-(\d[\d\.]*)\.(?:zip|tgz|tbz2|txz|tar\.gz|tar\.bz2|tar\.xz)[&;]rev=(\d+)

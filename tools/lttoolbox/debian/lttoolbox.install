@@ -1,6 +1,8 @@
+debian/tmp/usr/bin/lt-merge
 debian/tmp/usr/bin/lt-proc
 debian/tmp/usr/bin/lt-tmxcomp
 debian/tmp/usr/bin/lt-tmxproc
+debian/tmp/usr/share/man/man1/lt-merge.*
 debian/tmp/usr/share/man/man1/lt-proc.*
 debian/tmp/usr/share/man/man1/lt-tmxcomp.*
 debian/tmp/usr/share/man/man1/lt-tmxproc.*

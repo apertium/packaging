@@ -75,3 +75,5 @@ if [[ -z "$GREP" ]]; then
 fi
 
 echo "All done."
+echo ""
+echo "We recommend re-running this script at least monthly to get latest tools. You may also need to run it again if you see unexplained build errors."

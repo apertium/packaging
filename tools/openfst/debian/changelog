@@ -1,10 +1,16 @@
+openfst (1.7.9-6) unstable; urgency=medium
+
+  * Add patch to change std::unique_ptr assignment to .reset() for GCC 14
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 19 Dec 2024 08:55:40 +0100
+
 openfst (1.7.9-5) unstable; urgency=low
 
-  * debian/rules:
-    + Set --max-parallel=2 in override_dh_auto_test to avoid
-      excessive memory usage resulting in FTBFS (LP: #1984137).
-      Apply patch from Nick Rosbrook <nick.rosbrook@canonical.com>
-      (Closes: #1017468)
+  * debian/rules: Set --max-parallel=2 in override_dh_auto_test to avoid
+    excessive memory usage resulting in FTBFS (LP: #1984137).
+    Apply patch from Nick Rosbrook <nick.rosbrook@canonical.com>
+    (Closes: #1017468)
+  * debian/control: Bump S-V to 4.6.1
 
  -- Tino Didriksen <tino@didriksen.cc>  Tue, 16 Aug 2022 16:58:50 +0200
 

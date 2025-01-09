@@ -1,3 +1,23 @@
+hfst (3.16.1-3) unstable; urgency=medium
+
+  * Apparently, LDFLAGS only works in d/rules when passed to configure
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 19 Dec 2024 23:15:40 +0100
+
+hfst (3.16.1-2) unstable; urgency=medium
+
+  * armel and powerpc still need LDFLAGS=-latomic,
+    but thankfully not the full patch
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 19 Dec 2024 16:12:50 +0100
+
+hfst (3.16.1-1) unstable; urgency=medium
+
+  * Update to latest upstream.
+  * Require patched openfst (Closes: #1075066)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 19 Dec 2024 10:43:53 +0100
+
 hfst (3.16.0-5) unstable; urgency=medium
 
   * Add Breaks+Replaces (Closes: #1034972)

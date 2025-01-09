@@ -8,7 +8,8 @@ export LC_ALL=C.UTF-8
 	dh $@ --fail-missing --parallel --with autoreconf --with python3
 
 override_dh_auto_configure:
-	dh_auto_configure -- --disable-static --enable-all-tools --with-readline --enable-python-bindings 'PYTHON_INSTALL_PARAMS=--no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp'
+	# armel and powerpc still need -latomic
+	dh_auto_configure -- --disable-static --enable-all-tools --with-readline --enable-python-bindings 'PYTHON_INSTALL_PARAMS=--no-compile --prefix /usr --install-layout deb --root $(CURDIR)/debian/tmp' "LDFLAGS=$(LDFLAGS) -latomic"
 
 override_dh_auto_test:
 	dh_auto_test --no-parallel

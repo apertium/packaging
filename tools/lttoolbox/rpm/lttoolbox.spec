@@ -99,9 +99,11 @@ make test
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README
+%{_bindir}/lt-merge
 %{_bindir}/lt-proc
 %{_bindir}/lt-tmxcomp
 %{_bindir}/lt-tmxproc
+%{_datadir}/man/man1/lt-merge.*
 %{_datadir}/man/man1/lt-proc.*
 %{_datadir}/man/man1/lt-tmxcomp.*
 %{_datadir}/man/man1/lt-tmxproc.*
