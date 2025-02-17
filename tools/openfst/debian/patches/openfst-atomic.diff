@@ -13,7 +13,7 @@ index 8a81a34..9d486cb 100644
  if HAVE_BIN
  bin_PROGRAMS = fstarcsort fstclosure fstcompile fstcompose fstconcat \
 diff --git a/src/extensions/compact/Makefile.am b/src/extensions/compact/Makefile.am
-index d14ceed..0558958 100644
+index a7559e6..be03c58 100644
 --- a/src/extensions/compact/Makefile.am
 +++ b/src/extensions/compact/Makefile.am
 @@ -1,5 +1,5 @@
@@ -24,7 +24,7 @@ index d14ceed..0558958 100644
  libfstdir = @libfstdir@
  libfst_LTLIBRARIES = compact8_acceptor-fst.la compact8_string-fst.la compact8_unweighted-fst.la compact8_unweighted_acceptor-fst.la compact8_weighted_string-fst.la compact16_acceptor-fst.la compact16_string-fst.la compact16_unweighted-fst.la compact16_unweighted_acceptor-fst.la compact16_weighted_string-fst.la compact64_acceptor-fst.la compact64_string-fst.la compact64_unweighted-fst.la compact64_unweighted_acceptor-fst.la compact64_weighted_string-fst.la
 diff --git a/src/extensions/compress/Makefile.am b/src/extensions/compress/Makefile.am
-index fc049bf..115e5fe 100644
+index 94728c8..34b7932 100644
 --- a/src/extensions/compress/Makefile.am
 +++ b/src/extensions/compress/Makefile.am
 @@ -6,7 +6,7 @@ bin_PROGRAMS = fstcompress
@@ -37,7 +37,7 @@ index fc049bf..115e5fe 100644
  fstcompress_SOURCES = fstcompress.cc fstcompress-main.cc
  endif
 @@ -16,7 +16,7 @@ libfstcompressscript_la_SOURCES = compressscript.cc
- libfstcompressscript_la_LDFLAGS = -version-info 22:0:0
+ libfstcompressscript_la_LDFLAGS = -version-info 26:0:0
  libfstcompressscript_la_LIBADD = ../../script/libfstscript.la \
                                   ../../lib/libfst.la \
 -                                 -lm $(DL_LIBS)
@@ -46,7 +46,7 @@ index fc049bf..115e5fe 100644
  
  if HAVE_SCRIPT
 diff --git a/src/extensions/const/Makefile.am b/src/extensions/const/Makefile.am
-index e90a251..01e669b 100644
+index fe67550..3568879 100644
 --- a/src/extensions/const/Makefile.am
 +++ b/src/extensions/const/Makefile.am
 @@ -1,5 +1,5 @@
@@ -57,29 +57,28 @@ index e90a251..01e669b 100644
  libfstdir = @libfstdir@
  libfst_LTLIBRARIES = const8-fst.la const16-fst.la const64-fst.la
 diff --git a/src/extensions/far/Makefile.am b/src/extensions/far/Makefile.am
-index ccb406c..4f34450 100644
+index 7c6879d..1970f78 100644
 --- a/src/extensions/far/Makefile.am
 +++ b/src/extensions/far/Makefile.am
-@@ -8,7 +8,7 @@ endif
+@@ -10,14 +10,14 @@ endif
  
  libfstfar_la_SOURCES = sttable.cc stlist.cc
- libfstfar_la_LDFLAGS = -version-info 22:0:0
+ libfstfar_la_LDFLAGS = -version-info 26:0:0
 -libfstfar_la_LIBADD = ../../lib/libfst.la -lm $(DL_LIBS)
 +libfstfar_la_LIBADD = ../../lib/libfst.la -lm -latomic $(DL_LIBS)
  
  if HAVE_SCRIPT
- libfstfarscript_la_SOURCES = far-class.cc farscript.cc getters.cc script-impl.cc \
-@@ -16,7 +16,7 @@ libfstfarscript_la_SOURCES = far-class.cc farscript.cc getters.cc script-impl.cc
- libfstfarscript_la_LDFLAGS = -version-info 22:0:0
- libfstfarscript_la_LIBADD = \
-     libfstfar.la ../../script/libfstscript.la \
--        ../../lib/libfst.la -lm $(DL_LIBS)
-+        ../../lib/libfst.la -lm -latomic $(DL_LIBS)
+ libfstfarscript_la_SOURCES = compile-strings.cc far-class.cc farscript.cc \
+ 							 getters.cc script-impl.cc sttable.cc stlist.cc
+ libfstfarscript_la_LDFLAGS = -version-info 26:0:0
+ libfstfarscript_la_LIBADD = libfstfar.la ../../script/libfstscript.la \
+-        					../../lib/libfst.la -lm $(DL_LIBS)
++        					../../lib/libfst.la -lm -latomic $(DL_LIBS)
  endif
  
  if HAVE_BIN
-@@ -24,7 +24,7 @@ bin_PROGRAMS = farcompilestrings farcreate farequal farextract farinfo \
-     farisomorphic farprintstrings
+@@ -25,7 +25,7 @@ bin_PROGRAMS = farcompilestrings farconvert farcreate farencode farequal \
+ 			   farextract farinfo farisomorphic farprintstrings
  
  LDADD = libfstfarscript.la ../../script/libfstscript.la \
 -        ../../lib/libfst.la -lm $(DL_LIBS)
@@ -88,7 +87,7 @@ index ccb406c..4f34450 100644
  farcompilestrings_SOURCES = farcompilestrings.cc farcompilestrings-main.cc
  
 diff --git a/src/extensions/linear/Makefile.am b/src/extensions/linear/Makefile.am
-index e8c9053..949771d 100644
+index 258b796..f47d565 100644
 --- a/src/extensions/linear/Makefile.am
 +++ b/src/extensions/linear/Makefile.am
 @@ -1,5 +1,5 @@
@@ -99,7 +98,7 @@ index e8c9053..949771d 100644
  if HAVE_BIN
  bin_PROGRAMS = fstlinear fstloglinearapply
 diff --git a/src/extensions/lookahead/Makefile.am b/src/extensions/lookahead/Makefile.am
-index a5687fd..220cae3 100644
+index 7ce68ad..94c671b 100644
 --- a/src/extensions/lookahead/Makefile.am
 +++ b/src/extensions/lookahead/Makefile.am
 @@ -1,5 +1,5 @@
@@ -110,7 +109,7 @@ index a5687fd..220cae3 100644
  libfstdir = @libfstdir@
  libfst_LTLIBRARIES = arc_lookahead-fst.la \
 diff --git a/src/extensions/mpdt/Makefile.am b/src/extensions/mpdt/Makefile.am
-index f6f12b7..b311c60 100644
+index 4c57b40..95447ad 100644
 --- a/src/extensions/mpdt/Makefile.am
 +++ b/src/extensions/mpdt/Makefile.am
 @@ -6,7 +6,7 @@ bin_PROGRAMS = mpdtcompose mpdtexpand mpdtinfo mpdtreverse
@@ -124,13 +123,13 @@ index f6f12b7..b311c60 100644
  
 @@ -22,5 +22,5 @@ lib_LTLIBRARIES = libfstmpdtscript.la
  libfstmpdtscript_la_SOURCES = mpdtscript.cc
- libfstmpdtscript_la_LDFLAGS = -version-info 22:0:0
+ libfstmpdtscript_la_LDFLAGS = -version-info 26:0:0
  libfstmpdtscript_la_LIBADD = ../../script/libfstscript.la \
 -                             ../../lib/libfst.la -lm $(DL_LIBS)
 +                             ../../lib/libfst.la -lm -latomic $(DL_LIBS)
  endif
 diff --git a/src/extensions/ngram/Makefile.am b/src/extensions/ngram/Makefile.am
-index 072580f..28efee2 100644
+index 4dd98e0..dbc18b4 100644
 --- a/src/extensions/ngram/Makefile.am
 +++ b/src/extensions/ngram/Makefile.am
 @@ -1,5 +1,5 @@
@@ -141,7 +140,7 @@ index 072580f..28efee2 100644
  libfstdir = @libfstdir@
  libfst_LTLIBRARIES = ngram-fst.la
 diff --git a/src/extensions/pdt/Makefile.am b/src/extensions/pdt/Makefile.am
-index 80f5a7b..910a551 100644
+index f12bbe2..54ad27c 100644
 --- a/src/extensions/pdt/Makefile.am
 +++ b/src/extensions/pdt/Makefile.am
 @@ -6,7 +6,7 @@ bin_PROGRAMS = pdtcompose pdtexpand pdtinfo pdtreplace pdtreverse \
@@ -155,13 +154,13 @@ index 80f5a7b..910a551 100644
  
 @@ -26,5 +26,5 @@ lib_LTLIBRARIES = libfstpdtscript.la
  libfstpdtscript_la_SOURCES = getters.cc pdtscript.cc
- libfstpdtscript_la_LDFLAGS = -version-info 22:0:0
+ libfstpdtscript_la_LDFLAGS = -version-info 26:0:0
  libfstpdtscript_la_LIBADD = ../../script/libfstscript.la \
 -                            ../../lib/libfst.la -lm $(DL_LIBS)
 +                            ../../lib/libfst.la -lm -latomic $(DL_LIBS)
  endif
 diff --git a/src/extensions/python/Makefile.am b/src/extensions/python/Makefile.am
-index d8fa6a1..7e8d247 100644
+index 273fd06..b1dfed9 100644
 --- a/src/extensions/python/Makefile.am
 +++ b/src/extensions/python/Makefile.am
 @@ -12,7 +12,7 @@ pywrapfst_la_CXXFLAGS = -fexceptions
@@ -172,9 +171,9 @@ index d8fa6a1..7e8d247 100644
 +                      -lm -latomic $(DL_LIBS) $(PYTHON_LIBS)
  
  # Exports the *.pxd/*.pxd source files.
- EXTRA_DIST = cintegral_types.pxd cios.pxd cpywrapfst.pxd \
+ EXTRA_DIST = cios.pxd cmemory.pxd cpywrapfst.pxd pywrapfst.pxd pywrapfst.pyx
 diff --git a/src/extensions/special/Makefile.am b/src/extensions/special/Makefile.am
-index a9c25d5..20dcccd 100644
+index 3f7c4f6..a4416a1 100644
 --- a/src/extensions/special/Makefile.am
 +++ b/src/extensions/special/Makefile.am
 @@ -1,5 +1,5 @@
@@ -185,7 +184,7 @@ index a9c25d5..20dcccd 100644
  if HAVE_BIN
  bin_PROGRAMS = fstspecial
 diff --git a/src/script/Makefile.am b/src/script/Makefile.am
-index 2fb2773..185339c 100644
+index 0926203..79ce6ac 100644
 --- a/src/script/Makefile.am
 +++ b/src/script/Makefile.am
 @@ -12,6 +12,6 @@ randgen.cc relabel.cc replace.cc reverse.cc reweight.cc rmepsilon.cc        \
@@ -194,7 +193,7 @@ index 2fb2773..185339c 100644
  
 -libfstscript_la_LIBADD = ../lib/libfst.la -lm $(DL_LIBS)
 +libfstscript_la_LIBADD = ../lib/libfst.la -lm -latomic $(DL_LIBS)
- libfstscript_la_LDFLAGS = -version-info 22:0:0
+ libfstscript_la_LDFLAGS = -version-info 26:0:0
  endif
 diff --git a/src/test/Makefile.am b/src/test/Makefile.am
 index a2754e5..e10b863 100644

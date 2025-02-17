@@ -1,3 +1,20 @@
+openfst (1.8.4-2) unstable; urgency=medium
+
+  * New upstream release, now to unstable
+  * debian/control:
+    + Bump S-V to 4.7.0
+    + Relax Replaces/Conflicts so multiple libfst can co-exist
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 31 Jan 2025 11:06:31 +0100
+
+openfst (1.8.4-1) experimental; urgency=medium
+
+  * New upstream release
+  * Updated package names for soname bump: libfst22 -> libfst26
+  * Snip patches for C++17 and std::unique_ptr
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 18 Jan 2025 18:07:41 +0100
+
 openfst (1.7.9-6) unstable; urgency=medium
 
   * Add patch to change std::unique_ptr assignment to .reset() for GCC 14

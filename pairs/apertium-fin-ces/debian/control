@@ -12,7 +12,7 @@ Build-Depends: apertium-ces,
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-fin-ces.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-fin-ces

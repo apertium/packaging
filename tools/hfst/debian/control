@@ -21,7 +21,7 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Homepage: https://hfst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/hfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/hfst
@@ -43,8 +43,6 @@ Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Provides: libhfst
-Conflicts: libhfst, libhfst3
-Replaces: libhfst, libhfst3
 Description: Helsinki Finite-State Transducer Technology Libraries
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are
@@ -60,8 +58,6 @@ Depends: hfst (= ${binary:Version}),
          libicu-dev,
          ${misc:Depends},
          ${shlibs:Depends}
-Conflicts: libhfst3-dev
-Replaces: libhfst3-dev
 Description: Helsinki Finite-State Transducer Technology Development files
  The Helsinki Finite-State Transducer software is intended for the
  implementation of morphological analysers and other tools which are

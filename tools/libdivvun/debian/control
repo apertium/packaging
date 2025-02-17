@@ -21,7 +21,7 @@ Build-Depends: autotools-dev,
                python3-setuptools,
                swig,
                zip
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Homepage: https://github.com/divvun/libdivvun
 Vcs-Git: https://anonscm.debian.org/collab-maint/divvun-gramcheck.git
 Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.git;a=summary

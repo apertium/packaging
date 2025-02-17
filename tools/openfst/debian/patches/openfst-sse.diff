@@ -1,14 +1,14 @@
 Description: Enable SSE vectorization, needed for dependent packages
 diff --git a/configure.ac b/configure.ac
-index ae727b1..4d597de 100644
+index 9e326e9..84225aa 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -5,7 +5,7 @@ AM_PROG_AR
  AC_PROG_CXX
  # This library does not throw exceptions, so we do not generate exception
  # handling code. However, users are free to re-enable exception handling.
--CXX="$CXX -std=c++17 -fno-exceptions"
-+CXX="$CXX -std=c++17 -msse -msse2 -mfpmath=sse -fno-exceptions"
+-CXX="$CXX -std=c++17 -fno-exceptions -Wno-deprecated-declarations"
++CXX="$CXX -std=c++17 -msse -msse2 -mfpmath=sse -fno-exceptions -Wno-deprecated-declarations"
  
  AC_DISABLE_STATIC
  AC_PROG_LIBTOOL

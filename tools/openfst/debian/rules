@@ -18,12 +18,12 @@ endif
 	dh_autoreconf
 
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-bin --enable-compact-fsts --enable-compress --enable-const-fsts --enable-far --enable-fsts --enable-grm --enable-linear-fsts --enable-lookahead-fsts --enable-mpdt --enable-ngram-fsts --enable-pdt --enable-special --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/22
+	dh_auto_configure -- --enable-bin --enable-compact-fsts --enable-compress --enable-const-fsts --enable-far --enable-fsts --enable-grm --enable-linear-fsts --enable-lookahead-fsts --enable-mpdt --enable-ngram-fsts --enable-pdt --enable-special --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/26
 
 override_dh_auto_build:
 	mkdir -p debian/manpages_files
 	set -e ; for i in debian/addons/man/*.1; do \
-		sed -e 's/@DATE@/Jul 2020/g' -e 's/@VERSION@/1.7.9/g' $$i > debian/manpages_files/$$(basename $$i) ; \
+		sed -e 's/@DATE@/Dec 2024/g' -e 's/@VERSION@/1.8.4/g' $$i > debian/manpages_files/$$(basename $$i) ; \
 	done
 	dh_auto_build
 

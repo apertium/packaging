@@ -18,7 +18,7 @@ Build-Depends: bc,
                python3-lxml,
                python3-yaml,
                zip
-Standards-Version: 4.6.2
+Standards-Version: 4.7.0
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-qya.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-qya
