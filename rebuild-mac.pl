@@ -25,7 +25,7 @@ if (-s '/tmp/rebuild.lock') {
 
 $ENV{'LANG'} = 'en_US.UTF-8';
 $ENV{'LC_ALL'} = 'en_US.UTF-8';
-$ENV{'PATH'} = '/opt/local/bin:/opt/local/sbin:'.$ENV{'PATH'};
+$ENV{'PATH'} = '/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:'.$ENV{'PATH'};
 $ENV{'TERM'} = 'putty';
 $ENV{'TERMCAP'} = '';
 
