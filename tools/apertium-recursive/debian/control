@@ -4,16 +4,16 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3),
+Build-Depends: apertium-dev (>= 3.9.12),
                autotools-dev,
                debhelper (>= 9),
                dh-autoreconf,
                libicu-dev,
                libxml2-dev,
-               lttoolbox-dev (>= 3.7.6),
+               lttoolbox-dev (>= 3.8.0),
                pkg-config,
                python3
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-recursive.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-recursive

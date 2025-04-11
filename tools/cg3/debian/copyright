@@ -1,10 +1,10 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: cg3
 Upstream-Contact: Tino Didriksen <tino@didriksen.cc>
-Source: https://visl.sdu.dk/cg3.html
+Source: https://edu.visl.dk/cg3.html
 
 Files: *
-Copyright: 2007-2019 GrammarSoft ApS <info@grammarsoft.com>
+Copyright: 2007-2025 GrammarSoft ApS <info@grammarsoft.com>
 License: GPL-3+
 
 License: GPL-3+
@@ -25,7 +25,7 @@ License: GPL-3+
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
 Files: emacs/*
-Copyright: 2010-2017 Kevin Brubeck Unhammer <unhammer@fsfe.org>
+Copyright: 2010-2025 Kevin Brubeck Unhammer <unhammer@fsfe.org>
 License: GPL-2+
 
 License: GPL-2+

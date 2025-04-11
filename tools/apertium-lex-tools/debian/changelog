@@ -1,3 +1,9 @@
+apertium-lex-tools (0.5.0-1) unstable; urgency=medium
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 10 Apr 2025 14:40:22 +0200
+
 apertium-lex-tools (0.4.2-2) unstable; urgency=medium
 
   * Add Breaks+Replaces (Closes: 1034929)

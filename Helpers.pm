@@ -7,7 +7,16 @@ use utf8;
 use Carp::Always;
 use autodie qw(:all);
 use Exporter qw(import);
-our @EXPORT = qw( trim ltrim_lines file_get_contents file_put_contents replace_in_file run_fail read_control load_packages );
+our @EXPORT = qw( format_dur trim ltrim_lines file_get_contents file_put_contents replace_in_file run_fail read_control load_packages );
+
+sub format_dur {
+   my ($d) = @_;
+   my $rv = '';
+   if ($d >= 3600) { $rv .= sprintf('%02uh', int($d/3600)); $d -= int($d/3600)*3600; }
+   if ($d >= 60) { $rv .= sprintf('%02um', int($d/60)); $d -= int($d/60)*60; }
+   $rv .= sprintf('%02us', $d);
+   return $rv;
+}
 
 sub trim {
    my ($s) = @_;

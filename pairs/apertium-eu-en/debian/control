@@ -4,12 +4,12 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3),
+Build-Depends: apertium-dev (>= 3.9.12),
                apertium-regtest (>= 0.9.1),
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eu-en.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-eu-en
@@ -17,7 +17,7 @@ Rules-Requires-Root: no
 
 Package: apertium-eu-en
 Architecture: all
-Depends: apertium (>= 3.8.3), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.9.12), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-en-eu, apertium-eng-eus, apertium-eus-eng
 Conflicts: apertium-en-eu, apertium-eng-eus, apertium-eus-eng
 Description: Apertium translation data for the Basque-English pair

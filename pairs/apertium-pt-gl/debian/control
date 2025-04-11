@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3), debhelper (>= 12), gawk, pkg-config
-Standards-Version: 4.7.0
+Build-Depends: apertium-dev (>= 3.9.12), debhelper (>= 12), gawk, pkg-config
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-pt-gl.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-pt-gl
@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 
 Package: apertium-pt-gl
 Architecture: all
-Depends: apertium (>= 3.8.3), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.9.12), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-gl-pt, apertium-glg-por, apertium-por-glg
 Conflicts: apertium-gl-pt, apertium-glg-por, apertium-por-glg
 Description: Apertium translation data for the Portuguese-Galician pair

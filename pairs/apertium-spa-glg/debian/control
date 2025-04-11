@@ -4,13 +4,13 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3),
+Build-Depends: apertium-dev (>= 3.9.12),
                apertium-glg,
                apertium-spa,
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-spa-glg.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-spa-glg
@@ -18,7 +18,7 @@ Rules-Requires-Root: no
 
 Package: apertium-spa-glg
 Architecture: all
-Depends: apertium (>= 3.8.3), ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.9.12), ${misc:Depends}, ${shlibs:Depends}
 Provides: apertium-glg-spa
 Conflicts: apertium-glg-spa
 Description: Apertium translation data for the Spanish-Galician pair

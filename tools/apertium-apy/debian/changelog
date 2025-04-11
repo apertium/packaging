@@ -1,15 +1,59 @@
-apertium-apy (0.12.1-1) unstable; urgency=medium
+apertium-apy (0.13.0-1) unstable; urgency=medium
 
-  * Update to latest upstream release.
+  * Update to latest upstream release
+  * debian/control:
+    + Updated Standards-Version to 4.7.2
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 23 Feb 2024 16:55:21 +0100
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 25 Mar 2025 16:09:21 +0100
 
-apertium-apy (0.11.7-1) unstable; urgency=low
+apertium-apy (0.11.7-4) unstable; urgency=medium
 
-  * Update to latest upstream release.
+  * Team Upload
+  * Use dh-sequence-python3
+  * Remove dependency on python3-pkg-resources (Closes: #1083302)
+
+ -- Alexandre Detiste <tchet@debian.org>  Wed, 29 Jan 2025 18:57:24 +0100
+
+apertium-apy (0.11.7-3) unstable; urgency=low
+
+  [ Kartik Mistry ]
+  * Acknowledge NMU.
+  * Updated Standards-Version to 4.6.1
+
+  [ Debian Janitor ]
+  * Remove constraints unnecessary since buster:
+    + Build-Depends: Drop versioned constraint on python3.
+    + apertium-apy: Drop versioned constraint on python3 in Depends.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 21 Nov 2022 18:26:11 +0530
+
+apertium-apy (0.11.7-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * No source change upload to rebuild with debhelper 13.10.
+
+ -- Michael Biebl <biebl@debian.org>  Sat, 15 Oct 2022 11:51:48 +0200
+
+apertium-apy (0.11.7-2) unstable; urgency=high
+
+  * Upload to unstable. 0.11.6 is broken due to dependency on python3-tornado.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 01 Jul 2021 13:24:15 +0530
+
+apertium-apy (0.11.7-1) experimental; urgency=low
+
+  [ Tino Didriksen ]
+  * Update to latest upstream release:
     + Fixes the processing pipes yielding out-of-order results.
+  * debian/control:
+    + Updated Standards-Version to 4.5.1
+    + Bumped Build-Depends and Depends for Python3 and Python3-tornado
+    + Updated debian/upstream/metadata.
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 01 Apr 2021 11:52:31 +0200
+  [ Kartik Mistry ]
+  * Updated debian/watch.
+
+ -- Kartik Mistry <kartik@debian.org>  Fri, 09 Apr 2021 20:16:31 +0530
 
 apertium-apy (0.11.6-1) unstable; urgency=medium
 

@@ -5,7 +5,7 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake (>= 3.0), debhelper (>= 9)
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-eval-translator.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-eval-translator

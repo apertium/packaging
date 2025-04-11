@@ -17,12 +17,12 @@ Build-Depends: autoconf,
                libxml2-dev,
                libxml2-utils,
                libxslt1-dev,
-               lttoolbox-dev (>= 3.7.6),
+               lttoolbox-dev (>= 3.8.0),
                perl,
                pkg-config,
                xsltproc,
                zlib1g-dev
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://github.com/matxin/matxin
 Vcs-Git: https://salsa.debian.org/science-team/matxin.git
 Vcs-Browser: https://salsa.debian.org/science-team/matxin

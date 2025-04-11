@@ -138,6 +138,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    `mkdir -p $logpath/`;
    `cp -a $logpath/sid-amd64.log $logpath/build.log >/dev/null 2>&1`;
    `rm -f $logpath/*-*.log $logpath/rsync.log >/dev/null 2>&1`;
+   open my $zulip, ">$logpath/zulip.log";
    open my $pkglog, ">$logpath/rebuild.log";
    my $out = IO::Tee->new($out2, $pkglog);
 
@@ -168,6 +169,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       $pkpath = $1;
    }
 
+   my $start = time();
    print {$out} "\n";
    print {$out} "Package: $pkg->[0]\n";
    print {$out} "\tstarted: ".`date -u`;
@@ -187,6 +189,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          next;
       }
       print {$out} "\trelease rev: $rev\n";
+      print {$zulip} "Release rev: $rev\n";
       $rev = "--rev '$rev'";
    }
    # Determine latest version and date stamp from the repository
@@ -198,6 +201,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       next;
    }
    print {$out} "\tlatest: $version\n";
+   print {$zulip} "Upstream: $version\n";
 
    # Determine existing package version, if any
    my $first = substr($pkname, 0, 1);
@@ -210,6 +214,7 @@ foreach my $k (@{$pkgs{'order'}}) {
       chomp($oldversion);
    }
    print {$out} "\texisting: $oldversion\n";
+   print {$zulip} "Existing: $oldversion\n";
 
    # Figure out if the latest is newer than existing, which is complicated enough that we just ask dpkg
    my $gt = `dpkg --compare-versions '$version' gt '$oldversion' && echo 1 || echo 0` + 0;
@@ -226,8 +231,12 @@ foreach my $k (@{$pkgs{'order'}}) {
          if (defined $rebuilt{$is_tool}{$dep}) {
             $rebuild = 1;
             print {$out} "\tdependency $dep was rebuilt\n";
+            print {$zulip} "Reason: New $dep\n";
          }
       }
+   }
+   if ($opts{'force'}) {
+      print {$zulip} "Reason: Forced\n";
    }
 
    if (!($gt || $rebuild || $opts{'force'})) {
@@ -295,6 +304,8 @@ foreach my $k (@{$pkgs{'order'}}) {
       print {$out} "\tno change in tarball - skipping\n";
       goto CLEANUP;
    }
+
+   $rebuild = 1;
 
    # Track whether this build resulted in actual data changes, because it's pointless to trigger downstream rebuilds if not
    my $changed = 0;
@@ -366,7 +377,7 @@ foreach my $k (@{$pkgs{'order'}}) {
          $docker .= "RUN chown 1234:1234 /build\n";
          $docker .= "\n";
          $docker .= "# Use caching proxy\n";
-         $docker .= 'RUN export HOST_IP=$(cat /proc/net/route | awk \'/^[a-z]+[0-9]+\t00000000/ { printf("%d.%d.%d.%d\n", "0x" substr($3, 7, 2), "0x" substr($3, 5, 2), "0x" substr($3, 3, 2), "0x" substr($3, 1, 2)) }\') && \\'."\n";
+         $docker .= 'RUN export HOST_IP=$(cat /proc/net/route | awk --posix \'/^[a-z]+[0-9]+\t00000000/ { printf("%d.%d.%d.%d\n", "0x" substr($3, 7, 2), "0x" substr($3, 5, 2), "0x" substr($3, 3, 2), "0x" substr($3, 1, 2)) }\' 2>/dev/null) && \\'."\n";
          $docker .= "\techo 'Acquire::http::Proxy \"http://'\$HOST_IP':3124\";' > /etc/apt/apt.conf.d/30autoproxy\n";
          $docker .= "\n";
          $docker .= "# Upgrade everything and install base builder dependencies\n";
@@ -422,6 +433,7 @@ foreach my $k (@{$pkgs{'order'}}) {
             `docker build --build-arg "CACHE_NONCE=$nonce" -f $dpath/Dockerfile -t $img-build $Bin/docker/ >>$logpath/$distro-$arch.log 2>&1`;
             if ($?) {
                print {$out} "\tdocker $distro:$arch create fail\n";
+               $failed = 1;
                goto CLEANUP;
             }
          }
@@ -546,6 +558,8 @@ foreach my $k (@{$pkgs{'order'}}) {
 =cut
    }
    print {$out} "\tstopped: ".`date -u`;
+   my $dur = format_dur(time() - $start);
+   print {$zulip} "Duration: $dur\n";
 
    if ($failed) {
       `$Bin/failed.sh '$pkname' 2>>$logpath/stderr.log >&2`;
@@ -553,10 +567,12 @@ foreach my $k (@{$pkgs{'order'}}) {
       push(@failed, $pkname);
       # Gather up URLs for the logs of the failed builds
       print {$out} "\tFAILED:\n";
+      print {$zulip} "\nFAILED:\n- https://apertium.projectjj.com/apt/logs/$pkname/\n";
       foreach my $fail (uniq(sort(split(/\n/, $failed)))) {
          chomp($fail);
          $fail =~ s@^/home/apertium/public_html@https://apertium.projectjj.com@;
          print {$out} "\t\t$fail\n";
+         print {$zulip} "- $fail\n";
       }
 
       if ($depfail) {
@@ -574,7 +590,8 @@ foreach my $k (@{$pkgs{'order'}}) {
          chdir("/opt/autopkg/repos/$pkname.git");
          $blames = `git log '--format=format:\%aE\%x0a\%cE' $oldrev..$newrev | sort | uniq`;
          chomp($blames);
-         print {$out} "\tblames in revisions $oldrev..$newrev :\n";
+         print {$out} "\tblames in commits $oldrev..$newrev :\n";
+         print {$zulip} "\nBlames in commits $oldrev..$newrev :\n";
          chdir($dir);
       }
       else {
@@ -587,12 +604,14 @@ foreach my $k (@{$pkgs{'order'}}) {
          $blames = `svn log -q -r$oldrev:$newrev '$pkg->[1]' | egrep '^r' | awk '{ print \$3 }' | sort | uniq`;
          chomp($blames);
          print {$out} "\tblames in revisions $oldrev:$newrev :\n";
+         print {$zulip} "\nBlames in revisions $oldrev:$newrev :\n";
       }
       my $cc = '';
       foreach my $blame (split(/\n/, $blames)) {
          chomp($blame);
          $blames{$blame} = 1;
          print {$out} "\t\t$blame\n";
+         print {$zulip} "- $blame\n";
          # Add the suspect to CC so they are directly notified
          if (defined $authors->{$blame}) {
             my $who = $authors->{$blame};
@@ -622,6 +641,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    if (-s "$Bin/$pkg->[0]/hooks/post-publish" && -x "$Bin/$pkg->[0]/hooks/post-publish") {
       `$Bin/$pkg->[0]/hooks/post-publish >$logpath/hook-post-publish.log 2>&1`;
    }
+   print {$zulip} "\nDebian package published\n";
 
    if ($pkg->[0] =~ m@^(languages|pairs)/apertium-@ && $ENV{'AUTOPKG_BUILDTYPE'} eq 'nightly') {
       my $y = substr($srcdate, 0, 4);
@@ -672,6 +692,24 @@ foreach my $k (@{$pkgs{'order'}}) {
    CLEANUP:
    `rsync -avzHAXx --partial --delete /home/apertium/public_html/apt /home/apertium/public_html/pkg-stats root\@oqaa.projectjj.com:/home/apertium/public_html/ >>$logpath/rsync.log 2>&1`;
    close $pkglog;
+   close $zulip;
+
+   if ($rebuild && (!$ARGV[0] || !$failed)) {
+      my $topic = $pkname;
+      if ($failed) {
+         $topic .= ' (failure';
+      }
+      else {
+         $topic .= ' (success';
+      }
+      if ($ARGV[0]) {
+         $topic .= ', manual)';
+      }
+      else {
+         $topic .= ', auto)';
+      }
+      `./zulip.sh "$topic" "\@$logpath/zulip.log" >/tmp/zulip.out`;
+   }
 
    # Wipe temporary clone
    `rm -rf /opt/autopkg/tmp/git/$pkname.git`;

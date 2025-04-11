@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3), apertium-regtest, cg3, debhelper (>= 12), gawk, hfst, libcg3-dev, libhfst-dev, pkg-config, zip
-Standards-Version: 4.7.0
+Build-Depends: apertium-dev (>= 3.9.12), apertium-regtest, cg3, debhelper (>= 12), gawk, hfst, libcg3-dev, libhfst-dev, pkg-config, zip
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-nhw.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-nhw
@@ -13,6 +13,6 @@ Rules-Requires-Root: no
 
 Package: apertium-nhw
 Architecture: all
-Depends: apertium (>= 3.8.3), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
+Depends: apertium (>= 3.9.12), cg3, hfst, ${misc:Depends}, ${shlibs:Depends}
 Description: Apertium single language data for Western Huasteca Nahuatl
  Data package providing Apertium language resources for Western Huasteca Nahuatl

@@ -6,17 +6,16 @@ Uploaders: Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
 Build-Depends: debhelper (>= 9),
                dh-sequence-python3,
-               python3 (>= 3.6),
+               python3,
                python3-chardet,
                python3-coverage,
                python3-lxml,
-               python3-pkg-resources,
                python3-requests,
                python3-setuptools,
                python3-streamparser,
                python3-tornado,
                sqlite3
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-apy.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-apy
@@ -27,8 +26,7 @@ Architecture: all
 Pre-Depends: ${misc:Pre-Depends}
 Depends: adduser,
          logrotate,
-         python3 (>= 3.6),
-         python3-pkg-resources,
+         python3,
          python3-tornado,
          ${misc:Depends},
          ${python3:Depends}

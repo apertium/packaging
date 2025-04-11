@@ -12,7 +12,7 @@ Build-Depends: bison,
                libreadline-dev,
                pkg-config,
                zlib1g-dev
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://fomafst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/foma.git
 Vcs-Browser: https://salsa.debian.org/science-team/foma

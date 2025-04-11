@@ -19,9 +19,13 @@ use Helpers;
 chdir($Bin);
 
 if (-s '/tmp/rebuild.lock') {
-   die "Another instance of builder is running - bailing out!\n";
+   my $pid = int(file_get_contents('/tmp/rebuild.lock'));
+   if (int(`ps ax | grep [r]ebuild | grep '$pid' | wc -l`) >= 1) {
+      die "Another instance of builder is running as PID $pid - bailing out!\n";
+   }
+   print "Clobbering stale builder lock from PID $pid\n";
 }
-`date -u > /tmp/rebuild.lock`;
+file_put_contents('/tmp/rebuild.lock', $$);
 
 $ENV{'LANG'} = 'en_US.UTF-8';
 $ENV{'LC_ALL'} = 'en_US.UTF-8';

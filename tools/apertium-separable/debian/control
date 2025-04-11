@@ -9,10 +9,10 @@ Build-Depends: autotools-dev,
                dh-autoreconf,
                libicu-dev,
                libxml2-dev,
-               lttoolbox-dev (>= 3.7.6),
+               lttoolbox-dev (>= 3.8.0),
                pkg-config,
                python3
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-separable.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-separable

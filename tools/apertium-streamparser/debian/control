@@ -5,7 +5,7 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.
 Uploaders: Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
 Build-Depends: debhelper (>= 9), dh-sequence-python3, python3-all-dev, python3-setuptools
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://github.com/apertium/streamparser
 Vcs-Git: https://salsa.debian.org/science-team/streamparser.git
 Vcs-Browser: https://salsa.debian.org/science-team/streamparser

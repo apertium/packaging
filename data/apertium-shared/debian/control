@@ -4,11 +4,11 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.8.3),
+Build-Depends: apertium-dev (>= 3.9.12),
                debhelper (>= 12),
-               lttoolbox-dev (>= 3.7.6),
+               lttoolbox-dev (>= 3.8.0),
                pkg-config,
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-shared.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-shared
@@ -16,8 +16,8 @@ Rules-Requires-Root: no
 
 Package: apertium-shared
 Architecture: all
-Depends: apertium (>= 3.8.3),
-         lttoolbox (>= 3.7.6),
+Depends: apertium (>= 3.9.12),
+         lttoolbox (>= 3.8.0),
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Shared files for building Apertium languages and pairs

@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: Tools for using the 3rd edition of Constraint Grammar (CG-3)
 Group: Development/Tools
 License: GPL-3.0+
-URL: https://visl.sdu.dk/cg3.html
+URL: https://edu.visl.dk/cg3.html
 Source0: %{name}_%{version}.orig.tar.bz2
 Provides: vislcg3 = %{version}-%{release}
 
@@ -42,7 +42,7 @@ dependency markup, target language lemma choice for MT, QA systems, and
 much more. The core idea is that you choose what to do based on the whole
 available context, as opposed to n-grams.
 
-See https://visl.sdu.dk/cg3.html for more documentation
+See https://edu.visl.dk/cg3.html for more documentation
 
 %package -n libcg3-1
 Summary: Runtime for CG-3
@@ -55,7 +55,7 @@ Runtime library for applications using the CG-3 API.
 
 It is recommended to instrument the CLI tools instead of using this API.
 
-See https://visl.sdu.dk/cg3.html for more documentation
+See https://edu.visl.dk/cg3.html for more documentation
 
 
 %package -n libcg3-devel
@@ -68,7 +68,7 @@ Development files to use the CG-3 API.
 
 It is recommended to instrument the CLI tools instead of using this API.
 
-See https://visl.sdu.dk/cg3.html for more documentation
+See https://edu.visl.dk/cg3.html for more documentation
 
 
 %package -n cg3-devel
@@ -80,7 +80,7 @@ Requires: libcg3-devel = %{version}-%{release}
 %description -n cg3-devel
 Development files to use the CG-3 CLI tools and library API.
 
-See https://visl.sdu.dk/cg3.html for more documentation
+See https://edu.visl.dk/cg3.html for more documentation
 
 
 %if ! ( 0%{?el7} )

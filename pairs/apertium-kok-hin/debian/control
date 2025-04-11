@@ -5,16 +5,16 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-anaphora (>= 1.1.1),
-               apertium-dev (>= 3.8.3),
+               apertium-dev (>= 3.9.12),
                apertium-hin,
                apertium-kok,
-               apertium-lex-tools-dev (>= 0.4.2),
-               apertium-separable (>= 0.6.1),
-               cg3-dev (>= 1.3.9),
+               apertium-lex-tools-dev (>= 0.5.0),
+               apertium-separable (>= 0.7.1),
+               cg3-dev (>= 1.5.1),
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-kok-hin.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-kok-hin
@@ -22,11 +22,11 @@ Rules-Requires-Root: no
 
 Package: apertium-kok-hin
 Architecture: all
-Depends: apertium (>= 3.8.3),
+Depends: apertium (>= 3.9.12),
          apertium-anaphora (>= 1.1.1),
-         apertium-lex-tools (>= 0.4.2),
-         apertium-separable (>= 0.6.1),
-         cg3 (>= 1.3.9),
+         apertium-lex-tools (>= 0.5.0),
+         apertium-separable (>= 0.7.1),
+         cg3 (>= 1.5.1),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-hin-kok

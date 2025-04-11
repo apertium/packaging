@@ -1,5 +1,8 @@
 *~
+*.token
+*.log
 .vstags
 build.log
 /nightly
 /release
+zulip.sh

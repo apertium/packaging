@@ -21,7 +21,7 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://hfst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/hfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/hfst

@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Summary: IDE for CG-3
 Group: Development/Tools
 License: GPL-3.0+
-URL: https://visl.sdu.dk/cg3.html
+URL: https://edu.visl.dk/cg3.html
 Source0: %{name}_%{version}.orig.tar.bz2
 
 BuildRequires: gcc-c++

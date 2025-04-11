@@ -5,12 +5,12 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-asm,
-               apertium-dev (>= 3.8.3),
-               apertium-lex-tools-dev (>= 0.4.2),
+               apertium-dev (>= 3.9.12),
+               apertium-lex-tools-dev (>= 0.5.0),
                debhelper (>= 12),
                gawk,
                pkg-config
-Standards-Version: 4.7.0
+Standards-Version: 4.7.2
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-asm-eng.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-asm-eng
@@ -18,8 +18,8 @@ Rules-Requires-Root: no
 
 Package: apertium-asm-eng
 Architecture: all
-Depends: apertium (>= 3.8.3),
-         apertium-lex-tools (>= 0.4.2),
+Depends: apertium (>= 3.9.12),
+         apertium-lex-tools (>= 0.5.0),
          ${misc:Depends},
          ${shlibs:Depends}
 Provides: apertium-eng-asm

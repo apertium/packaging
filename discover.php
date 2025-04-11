@@ -24,6 +24,13 @@ $q = 'query {
 }';
 $p = '';
 $t = getenv('GITHUB_OAUTH_TOKEN');
+if (empty($t)) {
+	$t = file_get_contents('github.token');
+}
+if (empty($t)) {
+	echo "No GITHUB_OAUTH_TOKEN provided!\n";
+	exit(1);
+}
 
 ////////// GIELLATEKNO LANGUAGES
 
