@@ -689,6 +689,27 @@ foreach my $k (@{$pkgs{'order'}}) {
       print {$out} "\trebuilt: $pk\n";
    }
 
+   # Unpack the resulting debs
+   `rm -rf '/opt/autopkg/tmp/$pkname/'`;
+   my $c = $ENV{'AUTOPKG_BUILDTYPE'};
+   my $cf = substr($c, 0, 1);
+   my @folders = split(/\n/, `find /home/apertium/public_html/apt/$c/pool/main/ -type d -name '$pkname'`);
+   foreach my $folder (@folders) {
+      my @debs = glob("$folder/*~sid*_amd64.deb $folder/*~sid*_all.deb");
+      foreach my $deb (@debs) {
+         if ($deb =~ m/-dbgsym_/) {
+            next;
+         }
+         `dpkg -x '$deb' '/opt/autopkg/tmp/$pkname/'`
+      }
+   }
+   if (-d "/opt/autopkg/tmp/$pkname") {
+      my $fl = substr($pkname, 0, 1).substr($pkname, -1);
+      `rm -rf '/opt/autopkg/files/$cf/$fl/$pkname'`;
+      `mkdir -p '/opt/autopkg/files/$cf/$fl'`;
+      `mv '/opt/autopkg/tmp/$pkname' '/opt/autopkg/files/$cf/$fl/$pkname'`;
+   }
+
    CLEANUP:
    `rsync -avzHAXx --partial --delete /home/apertium/public_html/apt /home/apertium/public_html/pkg-stats root\@oqaa.projectjj.com:/home/apertium/public_html/ >>$logpath/rsync.log 2>&1`;
    close $pkglog;
@@ -762,6 +783,7 @@ if ($osx) {
 print {$out2} "Build $ENV{AUTOPKG_BUILDTYPE} stopped at ".`date -u`;
 close $log;
 `rsync -avzHAXx --partial --delete /home/apertium/public_html/apt /home/apertium/public_html/pkg-stats root\@oqaa.projectjj.com:/home/apertium/public_html/`;
+`rsync -avzHAXx --partial --delete /opt/autopkg/files/ wolfpkg\@timber.projectjj.com:public_html/f/`;
 unlink("/opt/autopkg/tmp/rebuild.$$.log");
 unlink('/opt/autopkg/rebuild.lock');
 

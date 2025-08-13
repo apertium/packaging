@@ -27,3 +27,14 @@ make -j11 \
 ln -sf /usr/include/utf8 /opt/mxe/usr/x86_64-w64-mingw32.shared/include/utf8
 ln -sf /usr/include/utf8.h /opt/mxe/usr/x86_64-w64-mingw32.shared/include/utf8.h
 ln -sf /usr/include/utf8cpp /opt/mxe/usr/x86_64-w64-mingw32.shared/include/utf8cpp
+
+export AUTOPKG_BITWIDTH=x86_64
+export PATH="/opt/mxe/usr/bin:$PATH"
+
+cd /opt/tmp
+rm -rf rapidjson
+git clone --depth 1 https://github.com/Tencent/rapidjson
+cd rapidjson
+$AUTOPKG_BITWIDTH-w64-mingw32.shared-cmake -DCMAKE_INSTALL_PREFIX=/opt/mxe/usr/$AUTOPKG_BITWIDTH-w64-mingw32.shared .
+make -j
+make install

@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+export DH_OPTIONS
+export LC_ALL=C.UTF-8
+
+export PYBUILD_NAME=pyhfst
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_test:
+	# Do nothing

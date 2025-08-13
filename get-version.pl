@@ -175,6 +175,10 @@ elsif ($data =~ m@\nVersion ([\d.]+)@s) {
    print STDERR "Found Version version\n";
    $version = $1;
 }
+elsif ($data =~ m@\s*"version": "([\d.]+)"@s) {
+   print STDERR "Found \"version\": version\n";
+   $version = $1;
+}
 else {
    die "No version found!\n";
 }
