@@ -15,6 +15,13 @@ use lib $ENV{'AUTOPKG_HOME'};
 use Helpers;
 
 my $pp = file_get_contents('pyproject.toml');
+$pp =~ s/\Q[tool.poetry.group.build.dependencies]\E[^\[]*//s;
 $pp =~ s/\Q[tool.poetry.group.dev.dependencies]\E[^\[]*//s;
+=pod
+$pp =~ s/\Q[project]\E/[tool.poetry]/;
+$pp =~ s/\Qlicense = {text = "CC0"}\E/license = "CC0"/;
+$pp =~ s/\{name = "(.+?)",email = "(.+?)"\}/"$1 <$2>"/g;
+$pp =~ s/\{name = "(.+?)"\}/"$1"/g;
+=cut
 $pp =~ s/\nname = "([^"]+)"\n/\nname = "\L$1"\n/s;
 file_put_contents('pyproject.toml', $pp);
