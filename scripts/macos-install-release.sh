@@ -23,7 +23,7 @@ set +e
 find . -type f -name '*.la' -exec rm -fv '{}' \;
 
 echo "Removing old Python modules"
-for P in 'apertium' 'apertium_lex_tools' 'corpustools' 'giellaltgramtools' 'libhfst_swig' 'lttoolbox' 'python_libdivvun'
+for P in 'apertium' 'apertium_lex_tools' 'c_pyhfst' 'corpustools' 'giellaltgramtools' 'giellaltlextools' 'gtmorphtest' 'libhfst_swig' 'lttoolbox' 'pyhfst' 'python_libdivvun'
 do
 	echo -e "\t$P"
 	rm -rfv "$WHERE/lib/python$PYTHONVER/site-packages/$P-"*
