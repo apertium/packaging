@@ -1,3 +1,10 @@
+transfuse (0.7.6-1) unstable; urgency=medium
+
+  * Update to latest upstream
+  * Fixes for newer libxml2 being stricter with HTML5 content
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 14 Aug 2025 14:29:21 +0200
+
 transfuse (0.6.7-1) unstable; urgency=medium
 
   * Update to latest upstream

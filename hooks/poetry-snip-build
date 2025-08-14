@@ -17,5 +17,6 @@ use Helpers;
 my $pp = file_get_contents('pyproject.toml');
 $pp =~ s/\Q[tool.poetry.group.build.dependencies]\E[^\[]*//s;
 $pp =~ s/\Q[tool.poetry.group.dev.dependencies]\E[^\[]*//s;
+$pp =~ s/\Q[tool.poetry.build]\E[^\[]*//s;
 $pp =~ s/\nname = "([^"]+)"\n/\nname = "\L$1"\n/s;
 file_put_contents('pyproject.toml', $pp);

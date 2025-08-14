@@ -4,10 +4,12 @@
 		"bullseye":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
 		"bookworm":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
 		"trixie":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
-		"focal":   {"variant": "ubuntu", "dh": 12, "archs": ["amd64"]},
+		"forky":  {"variant": "debian", "dh": 13, "archs": ["amd64"]},
+
 		"jammy":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"noble":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"oracular":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"plucky":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
+		"questing":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		},
 }

@@ -3,7 +3,7 @@
 # Licensed under the GNU GPL version 2 or later; see https://www.gnu.org/licenses/
 
 rm -f /home/apertium/public_html/apt/logs/$1/reprepro.log
-for DISTRO in sid bullseye bookworm trixie focal jammy noble oracular plucky
+for DISTRO in sid bullseye bookworm trixie forky  jammy noble oracular plucky questing
 do
 	echo "reprepro $DISTRO" >> /home/apertium/public_html/apt/logs/$1/reprepro.log
 	DISTRO_TRG=$DISTRO
