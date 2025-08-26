@@ -1,2 +1,3 @@
 openfst-atomic.diff
 #openfst-sse.diff # Only applied on non-x86 archs
+cross.patch

@@ -1,3 +1,10 @@
+lttoolbox (3.8.2-1) unstable; urgency=medium
+
+  * Update to latest upstream
+  * Fixes build with libxml 2.14 (Closes: #1106616)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 14 Aug 2025 21:46:21 +0200
+
 lttoolbox (3.8.0-1) unstable; urgency=medium
 
   * Update to latest upstream

@@ -1,4 +1,4 @@
 version=4
 opts="searchmode=plain" \
   https://api.github.com/repos/tinodidriksen/@PACKAGE@/releases \
-  https://github.com/tinodidriksen/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@
+  (?i)(?:https://github.com/tinodidriksen/@PACKAGE@/releases/download/v(?:\d[\d.]*)/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@)

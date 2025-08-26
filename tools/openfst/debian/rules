@@ -10,9 +10,9 @@ include /usr/share/dpkg/architecture.mk
 	dh $@ --fail-missing --parallel --with autoreconf
 
 override_dh_autoreconf:
-ifeq ($(DEB_BUILD_ARCH),i386)
+ifeq ($(DEB_HOST_ARCH),i386)
 	patch -p1 < debian/patches/openfst-sse.diff
-else ifeq ($(DEB_BUILD_ARCH),amd64)
+else ifeq ($(DEB_HOST_ARCH),amd64)
 	patch -p1 < debian/patches/openfst-sse.diff
 endif
 	dh_autoreconf
@@ -33,14 +33,14 @@ override_dh_auto_install:
 
 override_dh_auto_test:
 	# Tests disabled on MIPS
-ifeq ($(findstring mips,$(DEB_BUILD_ARCH)),)
+ifeq ($(findstring mips,$(DEB_HOST_ARCH)),)
 	dh_auto_test --max-parallel=2
 endif
 
 override_dh_clean:
-ifeq ($(DEB_BUILD_ARCH),i386)
+ifeq ($(DEB_HOST_ARCH),i386)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
-else ifeq ($(DEB_BUILD_ARCH),amd64)
+else ifeq ($(DEB_HOST_ARCH),amd64)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
 endif
 	$(RM) -r debian/manpages_files

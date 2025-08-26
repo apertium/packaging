@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: debhelper (>= 12), gawk, icu-devtools, pkg-config
+Build-Depends: debhelper (>= 12), gawk, icu-devtools, pkg-config, divvun-corpustools, divvun-gtgramtools, divvun-gtltlextools, divvun-gtmorphtest
 Standards-Version: 4.7.2
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-core.git

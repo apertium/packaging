@@ -466,7 +466,7 @@
    ["pairs/apertium-eus-fin"],
    ["pairs/apertium-fao-dan"],
    ["pairs/apertium-fao-isl"],
-   ["pairs/apertium-fao-nor"],
+#   ["pairs/apertium-fao-nor"], # https://github.com/apertium/apertium-fao-nor/issues/2
    ["pairs/apertium-fin-ces"],
    ["pairs/apertium-fin-dan"],
    ["pairs/apertium-fin-deu"],
@@ -482,7 +482,7 @@
    ["pairs/apertium-fin-ita"],
    ["pairs/apertium-fin-kaz"],
    ["pairs/apertium-fin-krl"],
-   ["pairs/apertium-fin-nor"],
+#   ["pairs/apertium-fin-nor"], # https://github.com/apertium/apertium-fin-nor/issues/2
    ["pairs/apertium-fin-olo"],
    ["pairs/apertium-fin-por"],
    ["pairs/apertium-fin-rus"],

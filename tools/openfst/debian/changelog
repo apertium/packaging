@@ -1,3 +1,16 @@
+openfst (1.8.4-4) unstable; urgency=medium
+
+  * Cross-build fixes by Helmut Grohne <helmut@subdivi.de> (Closes: #1069034)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 21 Aug 2025 15:04:21 +0200
+
+openfst (1.8.4-3) unstable; urgency=medium
+
+  * Team upload
+  * Drop Provides: libfst (Closes: #1109174)
+
+ -- Bastian Germann <bage@debian.org>  Mon, 21 Jul 2025 11:57:04 +0200
+
 openfst (1.8.4-2) unstable; urgency=medium
 
   * New upstream release, now to unstable

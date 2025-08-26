@@ -62,7 +62,6 @@ Description: weighted finite-state transducers library (development)
 Package: libfst26
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Provides: libfst
 Description: weighted finite-state transducers library (runtime)
  OpenFst is a library for constructing, combining, optimizing, and searching
  weighted finite-state transducers (FSTs). Weighted finite-state transducers
