@@ -1,5 +1,27 @@
+apertium-get (1.0.2-1) unstable; urgency=medium
+
+  * Require CMake 3.18+ (Closes: #1112704)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 09 Sep 2022 16:41:33 +0200
+
+apertium-get (1.0.0-3) unstable; urgency=low
+
+  * Fixed debian/watch.
+  * debian/control:
+    + Updated Standards-Version to 4.6.1
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 06 Jul 2022 07:55:01 +0530
+
+apertium-get (1.0.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 13 Jan 2021 09:15:35 +0530
+
 apertium-get (1.0.0-1) experimental; urgency=low
 
+  [ Tino Didriksen ]
   * Split from apertium, to avoid needing svn or submodules in random places
+    (Closes: #977800)
 
- -- Tino Didriksen <tino@didriksen.cc>  Fri, 27 Nov 2020 09:28:24 +0100
+ -- Kartik Mistry <kartik@debian.org>  Mon, 21 Dec 2020 09:25:56 +0530

@@ -14,6 +14,7 @@ Rules-Requires-Root: no
 Package: apertium-eval-translator
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends}
+Multi-Arch: foreign
 Description: Evaluate machine translation output against reference
  This package contails Perl scripts to evaluate Apertium-based machine
  translation output against reference: WER, PER, TER, BLEU.

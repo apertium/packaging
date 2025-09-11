@@ -1,3 +1,27 @@
+apertium-eval-translator (1.2.2-1) unstable; urgency=medium
+
+  * Require CMake 3.18+ (Closes: #1112703)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 09 Sep 2025 16:27:33 +0200
+
+apertium-eval-translator (1.2.1-3) unstable; urgency=low
+
+  * Apply hints suggested by the multi-arch hinter by Debian Janitor.
+  * debian/control:
+    + Added Rules-Requires-Root field.
+    + Use debhelper-compat.
+    + Updated Standards-Version to 4.6.1
+  * Updated debian/copyright.
+  * Added upstream metadata file.
+
+ -- Kartik Mistry <kartik@debian.org>  Wed, 23 Nov 2022 09:43:58 +0530
+
+apertium-eval-translator (1.2.1-2) unstable; urgency=medium
+
+  * Source only upload.
+
+ -- Kartik Mistry <kartik@debian.org>  Mon, 02 Dec 2019 07:17:34 +0530
+
 apertium-eval-translator (1.2.1-1) unstable; urgency=low
 
   [ Tino Didriksen ]
