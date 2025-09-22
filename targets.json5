@@ -8,7 +8,6 @@
 
 		"jammy":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"noble":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
-		"oracular":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"plucky":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		"questing":   {"variant": "ubuntu", "dh": 13, "archs": ["amd64"]},
 		},
