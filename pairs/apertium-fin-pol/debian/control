@@ -1,0 +1,21 @@
+Source: apertium-fin-pol
+Section: science
+Priority: optional
+Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.9.12), debhelper (>= 12), gawk, pkg-config
+Standards-Version: 4.7.2
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-fin-pol.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-fin-pol
+Rules-Requires-Root: no
+
+Package: apertium-fin-pol
+Architecture: all
+Depends: apertium (>= 3.9.12), ${misc:Depends}, ${shlibs:Depends}
+Provides: apertium-pol-fin
+Conflicts: apertium-pol-fin
+Description: Apertium translation data for the Finnish-Polish pair
+ Data package providing Apertium language resources for translating
+ between the Finnish and Polish languages.

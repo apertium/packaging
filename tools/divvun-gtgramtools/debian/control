@@ -6,6 +6,7 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>
 Build-Depends: debhelper (>= 9),
                dh-sequence-python3,
                pybuild-plugin-pyproject,
+               python3-click,
                python3-corpustools,
                python3-dev,
                python3-poetry
@@ -18,7 +19,8 @@ Rules-Requires-Root: no
 Package: python3-gtgramtools
 Provides: divvun-gtgramtools
 Architecture: all
-Depends: ${misc:Depends},
+Depends: python3-click,
+         ${misc:Depends},
          ${python3:Depends}
 Description: Scripts that creates GiellaLT gramchecker file and runs tests
  This package contains Divvun GiellaLTGramTools.

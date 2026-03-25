@@ -24,7 +24,12 @@ my $dhac = '';
 my @deps = split(/,/, $bdeps);
 for my $dep (@deps) {
    print "DHAC += $dep\n";
-   $dhac .= "\n\trm -rfv ../$dep && ln -sfv \$(CURDIR)/$dep ../$dep && cd ../$dep && autoreconf -fvi && ./configure && make -j";
+   if ($dep =~ m@^giella-([a-z]{3})$@) {
+      $dhac .= "\n\trm -rfv ../lang-$1 && ln -sfv \$(CURDIR)/$dep ../lang-$1";
+   }
+   else {
+      $dhac .= "\n\trm -rfv ../$dep && ln -sfv \$(CURDIR)/$dep ../$dep && cd ../$dep && autoreconf -fvi && ./configure && make -j";
+   }
 }
 
 my $rules = file_get_contents('debian/rules');

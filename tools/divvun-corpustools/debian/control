@@ -14,7 +14,7 @@ Rules-Requires-Root: no
 Package: python3-corpustools
 Provides: divvun-corpustools
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}
+Depends: python3-lxml, ${misc:Depends}, ${python3:Depends}
 Description: Divvun tools to manipulate a corpus in different ways
  This package contains Divvun CorpusTools.
 

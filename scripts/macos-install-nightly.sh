@@ -3,7 +3,7 @@ WHERE='/usr/local'
 CADENCE=nightly
 ARCH=`uname -m`
 
-PYTHONVER=3.13
+PYTHONVER=3.14
 
 # Other locales may make Perl unhappy
 export LANG=en_US.UTF-8

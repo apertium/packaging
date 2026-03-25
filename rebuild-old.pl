@@ -353,6 +353,13 @@ foreach my $k (@{$pkgs{'order'}}) {
          if ($pkg->[0] =~ m@^(languages|pairs)/apertium@) {
             push(@our_deps, 'apertium-regtest');
          }
+         if ($pkg->[0] =~ m@^(languages|pairs)/giella@) {
+            push(@our_deps, 'divvun-gtltlextools');
+            push(@our_deps, 'divvun-corpustools');
+            push(@our_deps, 'divvun-gtgramtools');
+            push(@our_deps, 'divvun-gtmorphtest');
+            push(@our_deps, 'pyhfst');
+         }
 
          push(@deps, 'apt-utils', 'build-essential', 'fakeroot', 'time', 'eatmydata');
          @os_deps = sort @os_deps;
