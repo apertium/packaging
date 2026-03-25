@@ -275,8 +275,8 @@ for my $cadence (qw( nightly )) {#release
       if (-s "/tmp/${pkname}.tar.bz2") {
          unlink("/tmp/${pkname}.tar.bz2");
       }
+      `mkdir -p /tmp/install/usr/local/lib`;
       chdir('/tmp/install/usr/local');
-      `mkdir -p lib`;
       `echo '======== PACKAGE: DEPS ========' >>'${logfile}-package.log'`;
       `${Bin}/macos-copy-deps.pl >>'${logfile}-package.log' 2>&1`;
       `echo '======== PACKAGE: TAR ========' >>'${logfile}-package.log'`;
