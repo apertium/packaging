@@ -1,7 +1,7 @@
 Source: foma
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <mail@tinodidriksen.com>,
            Timo Jyrinki <timo@debian.org>,
            Kartik Mistry <kartik@debian.org>
@@ -10,13 +10,12 @@ Build-Depends: bison,
                debhelper (>= 9.0),
                flex,
                libreadline-dev,
-               pkg-config,
+               pkgconf,
                zlib1g-dev
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Homepage: https://fomafst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/foma.git
 Vcs-Browser: https://salsa.debian.org/science-team/foma
-Rules-Requires-Root: no
 
 Package: foma
 Architecture: any

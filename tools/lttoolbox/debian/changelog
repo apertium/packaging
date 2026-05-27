@@ -1,3 +1,30 @@
+lttoolbox (3.8.3-2) unstable; urgency=medium
+
+  * Add libboost-dev to d/control for liblttoolbox-dev
+    (Closes: #1136756, #1136757, #1136758)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Fri, 15 May 2026 20:53:25 +0200
+
+lttoolbox (3.8.3-1) unstable; urgency=medium
+
+  * Update to latest upstream
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 10 May 2026 15:49:02 +0200
+
+lttoolbox (3.8.2-2) unstable; urgency=medium
+
+  * Team Upload
+  * Rix Team email address
+  * Drop "Rules-Requires-Root: no": it is the default now
+  * Bump Standards-Version to 4.7.3, drop Priority: tag
+  * Replace obsolete pkg-config build-dep with pkgconf
+  * Rewrite d/rules with newer & shorter syntax
+  * Rename file under debian/ for debhelper 15 compatibility
+  * Disable useless Salsa CI jobs
+  * Rewrite d/watch in v5 format
+
+ -- Alexandre Detiste <tchet@debian.org>  Thu, 26 Mar 2026 22:25:32 +0100
+
 lttoolbox (3.8.2-1) unstable; urgency=medium
 
   * Update to latest upstream

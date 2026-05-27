@@ -6,14 +6,13 @@ Build-Depends: autotools-dev,
                dh-autoreconf,
                dh-sequence-python3,
                hfst-ospell-dev (>= 0.5.3),
-               pkg-config,
+               pkgconf,
                python3
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Section: libs
 Homepage: http://voikko.puimula.org/
 Vcs-Git: https://anonscm.debian.org/collab-maint/libvoikko.git
 Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/libvoikko.git;a=summary
-Rules-Requires-Root: no
 
 Package: libvoikko-dev
 Section: libdevel
@@ -55,7 +54,6 @@ Description: Library of free natural language processing tools
  This package contains the shared library.
 
 Package: python-libvoikko
-Priority: extra
 Section: oldlibs
 Architecture: all
 Depends: python3-libvoikko, ${misc:Depends}

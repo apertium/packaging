@@ -13,4 +13,4 @@ override_dh_auto_configure:
 
 override_dh_auto_install:
 	dh_auto_install
-	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
+	find $(CURDIR) -type f -name '*.la' -delete

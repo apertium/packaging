@@ -369,6 +369,10 @@ CHLOG
       $chlog =~ s@(\d+)\+s\d+-@$1-@g;
       file_put_contents("$pkname-$chver/debian/changelog", $chlog);
 =cut
+
+      my $control = file_get_contents("$pkname-$chver/debian/control");
+      $control =~ s@\nPriority: optional\n@\n@g;
+      file_put_contents("$pkname-$chver/debian/control", $control);
    }
 
    if (-s "$Bin/$opts{p}/hooks/pre-distro" && -x "$Bin/$opts{p}/hooks/pre-distro") {

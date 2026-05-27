@@ -1,15 +1,14 @@
 Source: apertium-all-dev
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: debhelper (>= 9)
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-all-dev.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-all-dev
-Rules-Requires-Root: no
 
 Package: apertium-all-dev
 Architecture: all
@@ -33,7 +32,7 @@ Depends: apertium-anaphora (>= 1.1.1),
          libtool,
          locales,
          lttoolbox-dev (>= 3.8.0),
-         pkg-config,
+         pkgconf,
          transfuse (>= 0.5.8),
          ${misc:Depends}
 Description: Metapackage for all tools required for Apertium development

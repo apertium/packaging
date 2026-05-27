@@ -1,7 +1,7 @@
 Source: giella-aym
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: bc,
@@ -12,17 +12,16 @@ Build-Depends: bc,
                gawk,
                hfst (>= 3.16.0),
                libhfst-dev (>= 3.16.0),
-               pkg-config,
+               pkgconf,
                python3,
                python3-gtgramtools,
                python3-lxml,
                python3-yaml,
                zip
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-aym.git
 Vcs-Browser: https://salsa.debian.org/science-team/giella-aym
-Rules-Requires-Root: no
 X-Giella-Bundles: giella-core, shared-mul
 
 Package: giella-aym

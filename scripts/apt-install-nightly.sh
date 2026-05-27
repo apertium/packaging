@@ -25,7 +25,7 @@ P=`apt-cache policy`
 P="$P "`lsb_release -c`"/dummy"
 P="$P "`grep CODENAME /etc/lsb-release`"/dummy"
 DISTRO="$1"
-for D in sid bullseye bookworm trixie forky  jammy noble plucky questing kali-rolling
+for D in sid bookworm trixie forky  jammy noble questing resolute kali-rolling
 do
 	if [[ $P == *$D/* ]]
 	then
@@ -35,7 +35,7 @@ do
 done
 if [[ $DISTRO == "kali-rolling" ]]
 then
-	DISTRO=bullseye
+	DISTRO=trixie
 	echo "Assuming kali-rolling = $DISTRO"
 fi
 if [[ -z "$DISTRO" ]]

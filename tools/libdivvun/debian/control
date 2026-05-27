@@ -1,7 +1,7 @@
 Source: libdivvun
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: autotools-dev,
@@ -16,16 +16,15 @@ Build-Depends: autotools-dev,
                libpugixml-dev,
                libutfcpp-dev,
                libxml2-utils,
-               pkg-config,
+               pkgconf,
                python3-dev,
                python3-setuptools,
                swig,
                zip
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Homepage: https://github.com/divvun/libdivvun
 Vcs-Git: https://anonscm.debian.org/collab-maint/divvun-gramcheck.git
 Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.git;a=summary
-Rules-Requires-Root: no
 
 Package: divvun-gramcheck
 Architecture: any

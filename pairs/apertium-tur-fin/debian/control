@@ -1,7 +1,7 @@
 Source: apertium-tur-fin
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.9.12),
@@ -12,12 +12,11 @@ Build-Depends: apertium-dev (>= 3.9.12),
                gawk,
                giella-fin,
                hfst (>= 3.16.0),
-               pkg-config
-Standards-Version: 4.7.2
+               pkgconf
+Standards-Version: 4.7.3
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-tur-fin.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-tur-fin
-Rules-Requires-Root: no
 
 Package: apertium-tur-fin
 Architecture: all

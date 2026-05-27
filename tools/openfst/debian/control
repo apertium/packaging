@@ -1,16 +1,15 @@
 Source: openfst
 Section: libs
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Giulio Paci <giuliopaci@gmail.com>,
            Kartik Mistry <kartik@debian.org>,
            Tino Didriksen <tino@didriksen.cc>
 Build-Depends: autoconf, debhelper (>= 9.0), zlib1g-dev
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Vcs-Git: https://salsa.debian.org/science-team/openfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/openfst
 Homepage: https://www.openfst.org/
-Rules-Requires-Root: no
 
 Package: libfst-tools
 Section: text

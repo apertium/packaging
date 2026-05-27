@@ -1,15 +1,14 @@
 Source: apertium-get
 Section: science
 Priority: optional
-Maintainer: Debian Science Maintainers <debian-science-maintainers@alioth-lists.debian.net>
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake, debhelper (>= 9)
-Standards-Version: 4.7.2
+Standards-Version: 4.7.3
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-get.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-get
-Rules-Requires-Root: no
 
 Package: apertium-get
 Architecture: all

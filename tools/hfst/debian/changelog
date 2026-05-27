@@ -1,3 +1,24 @@
+hfst (3.17.1-1) unstable; urgency=medium
+
+  * New upstream release
+  * Bumped package libhfst55 -> libhfst56 for soname change
+
+ -- Tino Didriksen <tino@didriksen.cc>  Tue, 28 Apr 2026 14:23:21 +0200
+
+hfst (3.16.2-2) unstable; urgency=medium
+
+  * Team Upload
+  * Fix Team email address
+  * Remove Python2 leftover from d/rules
+  * Rewrite d/rules with newer & shorter syntax
+  * Drop "Rules-Requires-Root: no": it is the default now
+  * Bump Standards-Version to 4.7.3, drop Priority: tag
+  * Apply Multi-Arch: hint
+  * Rename file under debian/ for debhelper 15 compatibility
+  * Rewrite d/watch in v5 format
+
+ -- Alexandre Detiste <tchet@debian.org>  Sun, 29 Mar 2026 12:43:55 +0200
+
 hfst (3.16.2-1) unstable; urgency=medium
 
   * New upstream release

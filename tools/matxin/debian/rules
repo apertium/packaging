@@ -9,5 +9,5 @@ export DH_OPTIONS
 
 override_dh_auto_install:
 	dh_auto_install
-	find $(CURDIR) -type f -name '*.a' -exec rm -f '{}' \;
-	find $(CURDIR) -type f -name '*.la' -exec rm -f '{}' \;
+	find $(CURDIR) -type f -name '*.a' -delete
+	find $(CURDIR) -type f -name '*.la' -delete
