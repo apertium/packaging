@@ -41,6 +41,6 @@ Architecture: all
 Depends: ${misc:Depends}
 Provides: giella-est-speller
 Conflicts: giella-est-speller
-Recommends: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
+Suggests: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
 Description: Giellatekno spellers for Estonian
  Data package providing Giellatekno spellers for Estonian

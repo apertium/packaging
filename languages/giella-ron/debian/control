@@ -26,17 +26,14 @@ X-Giella-Bundles: giella-core, shared-mul
 
 Package: giella-ron
 Architecture: all
-Depends: cg3 (>= 1.5.1),
-         giella-ron-speller (= ${binary:Version}),
-         hfst (>= 3.16.0),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: giella-ron-speller (= ${binary:Version}), ${misc:Depends}
+Suggests: cg3 (>= 1.5.1), hfst (>= 3.16.0)
 Description: Giellatekno single language data for Romanian
  Data package providing Giellatekno language resources for Romanian
 
 Package: giella-ron-speller
 Architecture: all
 Depends: ${misc:Depends}
-Recommends: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
+Suggests: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
 Description: Giellatekno spellers for Romanian
  Data package providing Giellatekno spellers for Romanian

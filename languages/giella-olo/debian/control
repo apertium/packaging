@@ -26,17 +26,14 @@ X-Giella-Bundles: giella-core, shared-mul
 
 Package: giella-olo
 Architecture: all
-Depends: cg3 (>= 1.5.1),
-         giella-olo-speller (= ${binary:Version}),
-         hfst (>= 3.16.0),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends: giella-olo-speller (= ${binary:Version}), ${misc:Depends}
+Suggests: cg3 (>= 1.5.1), hfst (>= 3.16.0)
 Description: Giellatekno single language data for Livvi
  Data package providing Giellatekno language resources for Livvi
 
 Package: giella-olo-speller
 Architecture: all
 Depends: ${misc:Depends}
-Recommends: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
+Suggests: cg3 (>= 1.5.1), divvun-gramcheck (>= 0.3.9), hfst-ospell (>= 0.5.3)
 Description: Giellatekno spellers for Livvi
  Data package providing Giellatekno spellers for Livvi
