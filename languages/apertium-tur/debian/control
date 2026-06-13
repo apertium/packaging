@@ -11,7 +11,7 @@ Build-Depends: apertium-dev (>= 3.9.12),
                hfst (>= 3.16.0),
                libhfst-dev (>= 3.16.0),
                pkgconf
-Standards-Version: 4.7.3
+Standards-Version: 4.7.4
 Homepage: https://apertium.org/
 Vcs-Git: https://salsa.debian.org/science-team/apertium-tur.git
 Vcs-Browser: https://salsa.debian.org/science-team/apertium-tur

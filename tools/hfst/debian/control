@@ -12,7 +12,7 @@ Build-Depends: autoconf,
                dh-sequence-python3,
                flex,
                libfoma-dev,
-               libfst-dev,
+               libfst-dev (>= 1.8.5),
                libicu-dev,
                libreadline-dev,
                libtool,
@@ -21,7 +21,7 @@ Build-Depends: autoconf,
                python3-setuptools,
                swig,
                zlib1g-dev
-Standards-Version: 4.7.3
+Standards-Version: 4.7.4
 Homepage: https://hfst.github.io/
 Vcs-Git: https://salsa.debian.org/science-team/hfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/hfst

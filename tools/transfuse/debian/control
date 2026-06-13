@@ -12,7 +12,7 @@ Build-Depends: cmake,
                libxxhash-dev,
                libzip-dev,
                pkgconf
-Standards-Version: 4.7.3
+Standards-Version: 4.7.4
 Homepage: https://github.com/TinoDidriksen/transfuse
 Vcs-Git: https://salsa.debian.org/science-team/transfuse.git
 Vcs-Browser: https://salsa.debian.org/science-team/transfuse

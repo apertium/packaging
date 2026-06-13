@@ -1,6 +1,8 @@
 *~
 *.token
 *.log
+*.orig
+*.rej
 .vstags
 build.log
 /nightly

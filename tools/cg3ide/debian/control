@@ -5,7 +5,7 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: cmake, debhelper (>= 9.0), qt5-qmake, qtbase5-dev
-Standards-Version: 4.7.3
+Standards-Version: 4.7.4
 
 Package: cg3ide
 Architecture: any

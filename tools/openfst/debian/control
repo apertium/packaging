@@ -2,11 +2,10 @@ Source: openfst
 Section: libs
 Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Giulio Paci <giuliopaci@gmail.com>,
-           Kartik Mistry <kartik@debian.org>,
-           Tino Didriksen <tino@didriksen.cc>
-Build-Depends: autoconf, debhelper (>= 9.0), zlib1g-dev
-Standards-Version: 4.7.3
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: autoconf, debhelper (>= 9.0), libtool, zlib1g-dev
+Standards-Version: 4.7.4
 Vcs-Git: https://salsa.debian.org/science-team/openfst.git
 Vcs-Browser: https://salsa.debian.org/science-team/openfst
 Homepage: https://www.openfst.org/
@@ -15,7 +14,7 @@ Package: libfst-tools
 Section: text
 Architecture: any
 Provides: openfst
-Depends: libfst26 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libfst27 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: weighted finite-state transducers library (tools)
  OpenFst is a library for constructing, combining, optimizing, and searching
  weighted finite-state transducers (FSTs). Weighted finite-state transducers
@@ -29,10 +28,10 @@ Description: weighted finite-state transducers library (tools)
  .
  This package provides the command line tools.
 
-Package: libfst26-plugins-base
+Package: libfst27-plugins-base
 Section: text
 Architecture: any
-Depends: libfst26 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: libfst27 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: weighted finite-state transducers library (base plugins)
  OpenFst is a library for constructing, combining, optimizing, and searching
  weighted finite-state transducers (FSTs).
@@ -44,7 +43,7 @@ Description: weighted finite-state transducers library (base plugins)
 Package: libfst-dev
 Section: libdevel
 Architecture: any
-Depends: libfst26 (= ${binary:Version}), ${misc:Depends}
+Depends: libfst27 (= ${binary:Version}), ${misc:Depends}
 Description: weighted finite-state transducers library (development)
  OpenFst is a library for constructing, combining, optimizing, and searching
  weighted finite-state transducers (FSTs). Weighted finite-state transducers
@@ -58,7 +57,7 @@ Description: weighted finite-state transducers library (development)
  .
  This package contains the development support files.
 
-Package: libfst26
+Package: libfst27
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: weighted finite-state transducers library (runtime)

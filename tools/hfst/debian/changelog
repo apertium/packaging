@@ -1,3 +1,9 @@
+hfst (3.17.1-2) unstable; urgency=medium
+
+  * Rebuild for libfst27 (OpenFST 1.8.5)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 13 Jun 2026 20:30:40 +0200
+
 hfst (3.17.1-1) unstable; urgency=medium
 
   * New upstream release

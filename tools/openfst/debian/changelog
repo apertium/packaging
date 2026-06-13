@@ -1,3 +1,13 @@
+openfst (1.8.5-1) experimental; urgency=medium
+
+  * New upstream release
+  * Updated package names for soname bump: libfst26 -> libfst27
+  * debian/control:
+    + Bump S-V to 4.7.4
+    + Remove Giulio Paci <giuliopaci@gmail.com> (Closes: #1139842)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sat, 13 Jun 2026 20:00:40 +0200
+
 openfst (1.8.4-4) unstable; urgency=medium
 
   * Cross-build fixes by Helmut Grohne <helmut@subdivi.de> (Closes: #1069034)
