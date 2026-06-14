@@ -31,6 +31,7 @@ Description: weighted finite-state transducers library (tools)
 Package: libfst27-plugins-base
 Section: text
 Architecture: any
+Multi-Arch: same
 Depends: libfst27 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Description: weighted finite-state transducers library (base plugins)
  OpenFst is a library for constructing, combining, optimizing, and searching
@@ -43,6 +44,7 @@ Description: weighted finite-state transducers library (base plugins)
 Package: libfst-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: libfst27 (= ${binary:Version}), ${misc:Depends}
 Description: weighted finite-state transducers library (development)
  OpenFst is a library for constructing, combining, optimizing, and searching
@@ -59,6 +61,7 @@ Description: weighted finite-state transducers library (development)
 
 Package: libfst27
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: weighted finite-state transducers library (runtime)
  OpenFst is a library for constructing, combining, optimizing, and searching

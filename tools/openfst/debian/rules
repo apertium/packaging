@@ -9,39 +9,32 @@ include /usr/share/dpkg/architecture.mk
 %:
 	dh $@ --fail-missing --parallel --with autoreconf
 
-override_dh_autoreconf:
+execute_before_dh_autoreconf:
 ifeq ($(DEB_HOST_ARCH),i386)
 	patch -p1 < debian/patches/openfst-sse.diff
 else ifeq ($(DEB_HOST_ARCH),amd64)
 	patch -p1 < debian/patches/openfst-sse.diff
 endif
-	dh_autoreconf
 
 override_dh_auto_configure:
 	dh_auto_configure -- --enable-bin --enable-compact-fsts --enable-compress --enable-const-fsts --enable-far --enable-fsts --enable-grm --enable-linear-fsts --enable-lookahead-fsts --enable-mpdt --enable-ngram-fsts --enable-pdt --enable-special --disable-static --with-libfstdir=/usr/lib/$(DEB_HOST_MULTIARCH)/fst/27
 
-override_dh_auto_build:
+execute_before_dh_auto_build:
 	mkdir -p debian/manpages_files
 	set -e ; for i in debian/addons/man/*.1; do \
 		sed -e 's/@DATE@/Mar 2026/g' -e 's/@VERSION@/1.8.5/g' $$i > debian/manpages_files/$$(basename $$i) ; \
 	done
-	dh_auto_build
 
-override_dh_auto_install:
-	dh_auto_install
+execute_after_dh_auto_install:
 	find $(CURDIR) -type f -name '*.la' -delete
 
 override_dh_auto_test:
-	# Tests disabled on MIPS
-ifeq ($(findstring mips,$(DEB_HOST_ARCH)),)
 	dh_auto_test --max-parallel=2
-endif
 
-override_dh_clean:
+execute_before_dh_clean:
 ifeq ($(DEB_HOST_ARCH),i386)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
 else ifeq ($(DEB_HOST_ARCH),amd64)
 	[ ! -f config.log ] || patch -R -p1 < debian/patches/openfst-sse.diff
 endif
 	$(RM) -r debian/manpages_files
-	dh_clean

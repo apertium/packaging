@@ -1,3 +1,9 @@
+openfst (1.8.5-2) unstable; urgency=medium
+
+  * New upstream release, now to unstable
+
+ -- Tino Didriksen <tino@didriksen.cc>  Sun, 14 Jun 2026 11:31:30 +0200
+
 openfst (1.8.5-1) experimental; urgency=medium
 
   * New upstream release
@@ -5,14 +11,30 @@ openfst (1.8.5-1) experimental; urgency=medium
   * debian/control:
     + Bump S-V to 4.7.4
     + Remove Giulio Paci <giuliopaci@gmail.com> (Closes: #1139842)
+  * debian/rules:
+    + Re-limit tests to parallel=2
 
  -- Tino Didriksen <tino@didriksen.cc>  Sat, 13 Jun 2026 20:00:40 +0200
 
+openfst (1.8.4-5) unstable; urgency=medium
+
+  * Team upload.
+  * Apply Multi-Arch: hint
+
+ -- Alexandre Detiste <tchet@debian.org>  Thu, 26 Mar 2026 07:25:25 +0100
+
 openfst (1.8.4-4) unstable; urgency=medium
 
-  * Cross-build fixes by Helmut Grohne <helmut@subdivi.de> (Closes: #1069034)
+  * Team upload
+  * Drop "Rules-Requires-Root: no": it is the default now
+  * Bump Standards-Version to 4.7.3, drop Priority: tag
+  * Rewrite d/rules with newer & shorter syntax
+  * Drop "mips" hybridation, this architecture is gone
+  * Fix team email address
+  * Apply Multi-Arch: hint
+  * Disable useless Salsa CI jobs
 
- -- Tino Didriksen <tino@didriksen.cc>  Thu, 21 Aug 2025 15:04:21 +0200
+ -- Alexandre Detiste <tchet@debian.org>  Sun, 22 Mar 2026 14:08:22 +0100
 
 openfst (1.8.4-3) unstable; urgency=medium
 

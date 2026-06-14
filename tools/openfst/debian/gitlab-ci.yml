@@ -1,6 +1,11 @@
 include:
-  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/salsa-ci.yml
-  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/pipeline-jobs.yml
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
 
 variables:
   RELEASE: 'unstable'
+  # this does nothing
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ALL: 1
+  # this replicates the normal build
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ANY: 1
+  # there is no autopkgtest
+  SALSA_CI_DISABLE_AUTOPKGTEST: 1
