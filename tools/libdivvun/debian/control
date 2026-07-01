@@ -29,7 +29,7 @@ Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/divvun-gramcheck.
 Package: divvun-gramcheck
 Architecture: any
 Depends: libxml2-utils, ${misc:Depends}, ${shlibs:Depends}
-Provides: libdivvun-tools, libdivvun-bin
+Provides: libdivvun-bin, libdivvun-tools
 Description: Grammar checker tools for Divvun languages
  Helper tools for grammar checking for Divvun languages
 

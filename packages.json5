@@ -9,7 +9,7 @@
    # Core tools and shared dependencies first
    ["tools/cg3",             "https://github.com/GrammarSoft/cg3", "src/version.hpp"],
    ["tools/cg3ide",          "https://github.com/GrammarSoft/cg3ide"],
-   ["tools/foma",            "https://github.com/mhulden/foma",     "foma/fomalib.h"],
+   ["tools/foma",            "https://github.com/TinoDidriksen/foma",     "foma/fomalib.h"], # mhulden
    ["tools/openfst",         "https://github.com/TinoDidriksen/openfst"],
    ["tools/hfst",            "https://github.com/hfst/hfst"],
    ["tools/hfst-ospell",     "https://github.com/hfst/hfst-ospell"],

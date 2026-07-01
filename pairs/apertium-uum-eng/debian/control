@@ -5,11 +5,11 @@ Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.9.12),
+               apertium-eng,
                apertium-lex-tools-dev (>= 0.5.0),
                apertium-recursive (>= 1.2.1),
                apertium-regtest,
                apertium-uum,
-               apertium-eng,
                cg3-dev (>= 1.5.1),
                debhelper (>= 12),
                gawk,

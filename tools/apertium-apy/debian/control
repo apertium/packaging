@@ -30,9 +30,9 @@ Depends: adduser,
          ${misc:Depends},
          ${python3:Depends}
 Recommends: python3-chardet,
+            python3-fasttext,
             python3-lxml,
             python3-requests,
-            python3-fasttext,
             python3-streamparser
 Description: Apertium APY service
  This package contains Apertium APY which is simple Apertium

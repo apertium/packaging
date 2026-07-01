@@ -4,11 +4,11 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: apertium-dev (>= 3.9.12),
-               apertium-regtest,
-               apertium-nhi,
-               apertium-azz,
+Build-Depends: apertium-azz,
+               apertium-dev (>= 3.9.12),
                apertium-lex-tools-dev,
+               apertium-nhi,
+               apertium-regtest,
                cg3-dev (>= 1.5.1),
                debhelper (>= 12),
                gawk,

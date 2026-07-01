@@ -18,8 +18,6 @@ Vcs-Browser: https://salsa.debian.org/science-team/gtgramtool
 Package: python3-gtgramtools
 Provides: divvun-gtgramtools
 Architecture: all
-Depends: python3-click,
-         ${misc:Depends},
-         ${python3:Depends}
+Depends: python3-click, ${misc:Depends}, ${python3:Depends}
 Description: Scripts that creates GiellaLT gramchecker file and runs tests
  This package contains Divvun GiellaLTGramTools.

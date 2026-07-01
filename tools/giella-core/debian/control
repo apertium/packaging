@@ -4,7 +4,14 @@ Priority: optional
 Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
 Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
-Build-Depends: debhelper (>= 12), gawk, icu-devtools, pkgconf, divvun-corpustools, divvun-gtgramtools, divvun-gtltlextools, divvun-gtmorphtest
+Build-Depends: debhelper (>= 12),
+               divvun-corpustools,
+               divvun-gtgramtools,
+               divvun-gtltlextools,
+               divvun-gtmorphtest,
+               gawk,
+               icu-devtools,
+               pkgconf
 Standards-Version: 4.7.4
 Homepage: https://giellatekno.uit.no/
 Vcs-Git: https://salsa.debian.org/science-team/giella-core.git
@@ -12,6 +19,11 @@ Vcs-Browser: https://salsa.debian.org/science-team/giella-core
 
 Package: giella-core
 Architecture: all
-Depends: gawk, icu-devtools, python3, python3-lxml, ${misc:Depends}, ${shlibs:Depends}
+Depends: gawk,
+         icu-devtools,
+         python3,
+         python3-lxml,
+         ${misc:Depends},
+         ${shlibs:Depends}
 Description: GTCORE files for building Giellatekno language packages
  All Giellatekno language packages build-depends on this package.

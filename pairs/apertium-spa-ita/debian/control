@@ -6,8 +6,8 @@ Uploaders: Tino Didriksen <tino@didriksen.cc>,
            Kartik Mistry <kartik@debian.org>
 Build-Depends: apertium-dev (>= 3.9.12),
                apertium-ita (>= 1.1.1),
-               apertium-spa (>= 1.2.2),
                apertium-lex-tools-dev,
+               apertium-spa (>= 1.2.2),
                cg3-dev (>= 1.5.1),
                debhelper (>= 12),
                gawk,
@@ -24,8 +24,8 @@ Depends: apertium (>= 3.9.12),
          cg3 (>= 1.5.1),
          ${misc:Depends},
          ${shlibs:Depends}
-Provides: apertium-ita-spa, apertium-it-es
-Conflicts: apertium-ita-spa, apertium-it-es
+Provides: apertium-it-es, apertium-ita-spa
+Conflicts: apertium-it-es, apertium-ita-spa
 Description: Apertium translation data for the Spanish-Italian pair
  Data package providing Apertium language resources for translating
  between the Spanish and Italian languages.
