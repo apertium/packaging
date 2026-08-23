@@ -1,0 +1,17 @@
+Source: apertium-nya
+Section: science
+Priority: optional
+Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: Tino Didriksen <tino@didriksen.cc>,
+           Kartik Mistry <kartik@debian.org>
+Build-Depends: apertium-dev (>= 3.9.12), debhelper (>= 12), gawk, pkg-config
+Standards-Version: 4.7.4
+Homepage: https://apertium.org/
+Vcs-Git: https://salsa.debian.org/science-team/apertium-nya.git
+Vcs-Browser: https://salsa.debian.org/science-team/apertium-nya
+
+Package: apertium-nya
+Architecture: all
+Depends: apertium (>= 3.9.12), ${misc:Depends}, ${shlibs:Depends}
+Description: Apertium single language data for Nyanja
+ Data package providing Apertium language resources for Nyanja
