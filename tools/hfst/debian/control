@@ -28,7 +28,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/hfst
 
 Package: hfst
 Architecture: any
-Depends: libhfst56 (= ${binary:Version}),
+Depends: libhfst57 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
@@ -37,7 +37,7 @@ Description: Helsinki Finite-State Transducer Technology
  implementation of morphological analysers and other tools which are
  based on weighted and unweighted finite-state transducer technology.
 
-Package: libhfst56
+Package: libhfst57
 Section: libs
 Architecture: any
 Multi-Arch: same
@@ -54,7 +54,7 @@ Package: libhfst-dev
 Architecture: any
 Section: libdevel
 Depends: hfst (= ${binary:Version}),
-         libhfst56 (= ${binary:Version}),
+         libhfst57 (= ${binary:Version}),
          libicu-dev,
          ${misc:Depends},
          ${shlibs:Depends}
@@ -68,7 +68,7 @@ Description: Helsinki Finite-State Transducer Technology Development files
 Package: python3-hfst
 Architecture: any
 Section: python
-Depends: libhfst56 (= ${binary:Version}),
+Depends: libhfst57 (= ${binary:Version}),
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends}
