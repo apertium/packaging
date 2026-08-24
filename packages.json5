@@ -234,6 +234,7 @@
    ["languages/apertium-chv"],
    ["languages/apertium-ckb"],
 #   ["languages/apertium-ckt"], # RAM gobbler
+   ["languages/apertium-cor"],
    ["languages/apertium-cos"],
    ["languages/apertium-crh"],
    ["languages/apertium-cro"],
@@ -288,6 +289,7 @@
    ["languages/apertium-kbd"],
    ["languages/apertium-kfy"],
    ["languages/apertium-khk"],
+   ["languages/apertium-kic"],
    ["languages/apertium-kik"],
    ["languages/apertium-kir"],
    ["languages/apertium-kjh"],
@@ -394,6 +396,7 @@
    ["languages/apertium-zho"],
    ["languages/apertium-zlm"],
    ["languages/apertium-zul"],
+   ["languages/apertium-zza"],
 
    # Finally, language pairs
    ["pairs/apertium-afr-deu"],
