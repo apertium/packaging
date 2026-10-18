@@ -1,8 +1,15 @@
-apertium-eo-en (1.0.2-1) unstable; urgency=low
+apertium-eo-en (1.0.3-1) unstable; urgency=medium
 
+  * Update to latest release (Closes: #1060984, #1148384)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Wed, 23 Sep 2026 14:23:15 +0200
+
+apertium-eo-en (1.0.2-1) unstable; urgency=medium
+
+  [ Tino Didriksen ]
   * Update to latest release (Closes: #1005679)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
+ -- Kartik Mistry <kartik@debian.org>  Tue, 10 May 2022 11:36:53 +0530
 
 apertium-eo-en (1.0.0~r63833-3) unstable; urgency=medium
 

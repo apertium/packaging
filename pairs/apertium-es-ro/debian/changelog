@@ -1,14 +1,19 @@
-apertium-es-ro (0.7.5-1) unstable; urgency=low
+apertium-es-ro (0.7.6-1) unstable; urgency=medium
 
+  * Update to latest release (Closes: #1060980, #1146509)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Sep 2026 18:49:28 +0200
+
+apertium-es-ro (0.7.5-1) unstable; urgency=medium
+
+  [ Tino Didriksen ]
   * Update to latest release (Closes: #1005688)
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
-
-apertium-es-ro (0.7.3~r57551-5) unstable; urgency=low
-
+  [ Kartik Mistry ]
   * Updated debian/upstream/metadata.
+  * Updated debian/copyright.
 
- -- Kartik Mistry <kartik@debian.org>  Thu, 18 Nov 2021 09:49:56 +0530
+ -- Kartik Mistry <kartik@debian.org>  Thu, 12 May 2022 14:02:48 +0530
 
 apertium-es-ro (0.7.3~r57551-4) unstable; urgency=medium
 

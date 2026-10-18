@@ -202,6 +202,7 @@ foreach my $k (@{$pkgs{'order'}}) {
    }
    print {$out} "\tlatest: $version\n";
    print {$zulip} "Upstream: $version\n";
+   $ENV{'AUTOPKG_VERSION'} = $version;
 
    # Determine existing package version, if any
    my $first = substr($pkname, 0, 1);

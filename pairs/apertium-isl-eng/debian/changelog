@@ -1,9 +1,19 @@
-apertium-isl-eng (0.1.2-1) unstable; urgency=low
+apertium-isl-eng (0.1.3-1) unstable; urgency=medium
 
+  * Update to latest release (Closes: #1061014, #1146508)
+
+ -- Tino Didriksen <tino@didriksen.cc>  Thu, 03 Sep 2026 18:49:28 +0200
+
+apertium-isl-eng (0.1.2-1) unstable; urgency=medium
+
+  [ Tino Didriksen ]
   * Update to latest release (Closes: #1005681)
   * Now bundles apertium-isl v0.1.1
 
- -- Tino Didriksen <tino@didriksen.cc>  Sun, 08 May 2022 16:14:18 +0200
+  [ Kartik Mistry ]
+  * Do not install duplicate changelog.
+
+ -- Kartik Mistry <kartik@debian.org>  Thu, 12 May 2022 12:07:03 +0530
 
 apertium-isl-eng (0.1.0~r66083-4) unstable; urgency=low
 

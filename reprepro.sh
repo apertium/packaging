@@ -21,5 +21,10 @@ mkdir -pv /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/
 cp -av --reflink=auto $AUTOPKG_AUTOPATH/*.dsc /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/
 cp -av --reflink=auto $AUTOPKG_AUTOPATH/*.changes /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/
 cp -av --reflink=auto $AUTOPKG_AUTOPATH/*.tar.bz2 /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/
+echo "$AUTOPKG_VERSION" > /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/VERSION
+
+cd /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE/source/$1/
+sha512sum -b * >../tmp-sums
+mv ../tmp-sums ./SHA512SUMS
 
 chown -R apertium:apertium /home/apertium/public_html/apt/$AUTOPKG_BUILDTYPE

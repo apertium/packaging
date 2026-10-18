@@ -281,6 +281,7 @@
    ["languages/apertium-isl"],
    ["languages/apertium-ita"],
    ["languages/apertium-jpn"],
+   ["languages/apertium-jta"],
    ["languages/apertium-kaa"],
    ["languages/apertium-kan"],
    ["languages/apertium-kas"],
@@ -537,7 +538,7 @@
    ["pairs/apertium-isl-swe"],
    ["pairs/apertium-isl-rus"],
    ["pairs/apertium-it-pt"],
-   ["pairs/apertium-ita-nor"],
+#   ["pairs/apertium-ita-nor"], # same as https://github.com/apertium/apertium-fin-nor/issues/2
    ["pairs/apertium-jpn-eng"],
    ["pairs/apertium-kan-mar"],
    ["pairs/apertium-kaz-kaa"],
